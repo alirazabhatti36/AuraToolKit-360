@@ -157,6 +157,10 @@ def sitemap():
 def robots():
     return send_from_directory(app.root_path, 'robots.txt', mimetype='text/plain')
 
+@app.route('/health')
+def health():
+    return jsonify({'status': 'ok'})
+
 @app.route('/404')
 def custom_404_page():
     return send_from_directory(app.root_path, '404.html')
