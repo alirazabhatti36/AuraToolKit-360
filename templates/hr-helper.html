@@ -28,8 +28,6 @@
             "inLanguage": "en"
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { overflow-x: hidden; }
@@ -433,10 +431,10 @@
         let candidateNotes = {};
         let selectedCandidates = new Set();
         let resumeTextCache = new Map();
-
-        if (window.pdfjsLib) {
-            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.worker.min.js';
-        }
+        let iframeTransport = null;
+        let pendingUploadResolvers = new Map();
+        let pendingUploadRejectors = new Map();
+        let pendingUploadCounter = 0;
 
         const stopWords = new Set([
             'the','and','for','are','with','this','that','you','your','have','from','will','can','was','they','their','been','has','but','not','all','our','its','also','more','when','which','a','an','in','of','to','is','on','at','we','us','he','she','it','them','his','her','them','these','those','as','by','be','been','being','or','if','into','than','then','there','here','over','under','up','down','out','per','via','into','about','after','before','during','between','within','without','one','two','three','four','five','six','seven','eight','nine','ten'
@@ -489,32 +487,85 @@
                 return resumeTextCache.get(file.name);
             }
 
-            const lowerName = file.name.toLowerCase();
-            let text = '';
-
-            if (lowerName.endsWith('.pdf')) {
-                const buffer = await file.arrayBuffer();
-                const pdf = await window.pdfjsLib.getDocument({ data: buffer }).promise;
-                const pages = [];
-                for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
-                    const page = await pdf.getPage(pageNumber);
-                    const content = await page.getTextContent();
-                    pages.push(content.items.map(item => item.str).join(' '));
-                }
-                text = pages.join(' ');
-            } else if (lowerName.endsWith('.docx')) {
-                const buffer = await file.arrayBuffer();
-                const result = await window.mammoth.extractRawText({ arrayBuffer: buffer });
-                text = result.value || '';
-            } else if (lowerName.endsWith('.txt')) {
-                text = new TextDecoder('utf-8').decode(await file.arrayBuffer());
-            } else {
-                throw new Error('Unsupported file type. Use PDF or DOCX.');
+            if (!iframeTransport) {
+                iframeTransport = document.createElement('iframe');
+                iframeTransport.name = 'atsUploadTransport';
+                iframeTransport.style.display = 'none';
+                document.body.appendChild(iframeTransport);
             }
+
+            const token = `upload_${Date.now()}_${++pendingUploadCounter}`;
+            const text = await new Promise((resolve, reject) => {
+                pendingUploadResolvers.set(token, resolve);
+                pendingUploadRejectors.set(token, reject);
+
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.enctype = 'multipart/form-data';
+                form.target = 'atsUploadTransport';
+                form.action = `https://auratoolkit-360.onrender.com/upload-linkedin-file?transport=message`;
+
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.name = 'file';
+
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                fileInput.files = dataTransfer.files;
+
+                const tokenInput = document.createElement('input');
+                tokenInput.type = 'hidden';
+                tokenInput.name = 'token';
+                tokenInput.value = token;
+
+                form.appendChild(fileInput);
+                form.appendChild(tokenInput);
+                document.body.appendChild(form);
+
+                const cleanup = () => {
+                    form.remove();
+                    pendingUploadResolvers.delete(token);
+                    pendingUploadRejectors.delete(token);
+                };
+
+                const timer = setTimeout(() => {
+                    cleanup();
+                    reject(new Error('Timed out while extracting resume text'));
+                }, 120000);
+
+                const originalResolve = resolve;
+                const originalReject = reject;
+                pendingUploadResolvers.set(token, (value) => {
+                    clearTimeout(timer);
+                    cleanup();
+                    originalResolve(value);
+                });
+                pendingUploadRejectors.set(token, (error) => {
+                    clearTimeout(timer);
+                    cleanup();
+                    originalReject(error);
+                });
+
+                form.submit();
+            });
 
             resumeTextCache.set(file.name, text);
             return text;
         }
+
+        window.addEventListener('message', (event) => {
+            if (event.origin !== 'https://auratoolkit-360.onrender.com') return;
+            const data = event.data || {};
+            if (data.type !== 'ats-upload-result' || !data.token) return;
+
+            const resolve = pendingUploadResolvers.get(data.token);
+            const reject = pendingUploadRejectors.get(data.token);
+            if (data.error) {
+                if (reject) reject(new Error(data.error));
+                return;
+            }
+            if (resolve) resolve(data.text || '');
+        });
 
         async function processResume(file, jobDesc, jobTitle, index, total) {
             document.getElementById('processingInfo').innerHTML = `Processing ${index + 1} of ${total}: ${file.name}`;

@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file, send_from_directory, render_template, jsonify, redirect, abort
+from flask import Flask, request, send_file, send_from_directory, render_template, jsonify, redirect, abort, make_response
 from reportlab.lib.pagesizes import A4, letter
 from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable, Image as RLImage
@@ -891,9 +891,50 @@ def upload_linkedin_file():
         text = extract_text_from_supported_file(path, ext)
         if not text.strip():
             return jsonify({'error': 'Could not extract text from the uploaded file'}), 400
+
+        if request.args.get('transport') == 'message':
+            token = request.form.get('token', '')
+            payload = json.dumps({
+                'type': 'ats-upload-result',
+                'token': token,
+                'filename': filename,
+                'text': text,
+                'error': None,
+            })
+            html = f"""<!doctype html>
+<html>
+<body>
+<script>
+window.parent.postMessage({payload}, '*');
+</script>
+</body>
+</html>"""
+            response = make_response(html)
+            response.headers['Content-Type'] = 'text/html; charset=utf-8'
+            return response
         
         return jsonify({'text': text})
     except Exception as e:
+        if request.args.get('transport') == 'message':
+            token = request.form.get('token', '')
+            payload = json.dumps({
+                'type': 'ats-upload-result',
+                'token': token,
+                'filename': request.files['file'].filename if 'file' in request.files else '',
+                'text': '',
+                'error': str(e),
+            })
+            html = f"""<!doctype html>
+<html>
+<body>
+<script>
+window.parent.postMessage({payload}, '*');
+</script>
+</body>
+</html>"""
+            response = make_response(html)
+            response.headers['Content-Type'] = 'text/html; charset=utf-8'
+            return response
         return jsonify({'error': str(e)}), 500
 
 # ─────────────────────────────────────────
