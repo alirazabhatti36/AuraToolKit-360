@@ -10,6 +10,7 @@ import PyPDF2
 import docx
 import os, re, io, zipfile, shutil
 import json
+import tempfile
 
 try:
     from docx2pdf import convert as docx_to_pdf
@@ -77,6 +78,73 @@ def extract_text_from_pdf(path):
         for page in reader.pages:
             text += page.extract_text() or ''
     return text
+
+def normalize_ats_text(text):
+    stop_words = {
+        'the','and','for','are','with','this','that','you','your','have','from',
+        'will','can','was','they','their','been','has','but','not','all','our',
+        'its','also','more','when','which','a','an','in','of','to','is','on','at',
+        'we','us','he','she','it','them','his','her','these','those','as','by','be',
+        'being','or','if','into','than','then','there','here','over','under','up',
+        'down','out','per','via','about','after','before','during','between','within',
+        'without','one','two','three','four','five','six','seven','eight','nine','ten'
+    }
+    words = re.findall(r'\b[a-z0-9+#.-]{2,}\b', (text or '').lower())
+    return [word for word in words if word not in stop_words and len(word) > 2]
+
+def extract_text_from_image(path):
+    try:
+        if easyocr is not None:
+            reader = easyocr.Reader(['en'])
+            result = reader.readtext(path, detail=0)
+            if result:
+                return ' '.join(result)
+    except Exception:
+        pass
+
+    try:
+        return pytesseract.image_to_string(Image.open(path))
+    except Exception:
+        return ''
+
+def extract_text_from_supported_file(path, ext=None):
+    ext = (ext or os.path.splitext(path)[1].lstrip('.')).lower()
+    if ext == 'pdf':
+        return extract_text_from_pdf(path)
+    if ext == 'docx':
+        return extract_text_from_docx(path)
+    if ext in {'txt', 'csv', 'md', 'rtf'}:
+        with open(path, 'r', encoding='utf-8', errors='ignore') as f:
+            return f.read()
+    if ext in {'png', 'jpg', 'jpeg', 'bmp', 'webp', 'tif', 'tiff'}:
+        return extract_text_from_image(path)
+    if ext == 'zip':
+        combined_text = []
+        with tempfile.TemporaryDirectory() as temp_dir:
+            with zipfile.ZipFile(path, 'r') as archive:
+                archive.extractall(temp_dir)
+            for root, _, files in os.walk(temp_dir):
+                for name in files:
+                    inner_path = os.path.join(root, name)
+                    inner_ext = os.path.splitext(name)[1].lstrip('.').lower()
+                    if inner_ext in {'pdf','docx','txt','csv','md','rtf','png','jpg','jpeg','bmp','webp','tif','tiff'}:
+                        try:
+                            combined_text.append(extract_text_from_supported_file(inner_path, inner_ext))
+                        except Exception:
+                            continue
+        return '\n'.join(filter(None, combined_text))
+    return ''
+
+def score_resume_against_job_description(resume_text, job_desc):
+    resume_words = set(normalize_ats_text(resume_text))
+    job_words = normalize_ats_text(job_desc)
+    job_keywords = list(dict.fromkeys(job_words))
+    if not job_keywords:
+        return 0, [], []
+    matched = [word for word in job_keywords if word in resume_words]
+    missing = [word for word in job_keywords if word not in resume_words]
+    score = round((len(matched) / len(job_keywords)) * 100)
+    return score, matched, missing
 
 # ─────────────────────────────────────────
 #  PAGES (MAIN)
@@ -739,6 +807,25 @@ def download_resume(filename):
     path = os.path.join(UPLOAD, filename)
     return send_file(path, as_attachment=True, download_name=filename)
 
+@app.route('/ats-score', methods=['POST'])
+def ats_score():
+    file = request.files.get('file') or request.files.get('resume')
+    job_desc = request.form.get('job_desc', '') or request.form.get('jobDesc', '')
+
+    if not file:
+        return jsonify({'error': 'No file uploaded'}), 400
+
+    filename = file.filename or 'resume'
+    ext = filename.rsplit('.', 1)[-1].lower() if '.' in filename else ''
+    path = save(file, filename)
+
+    try:
+        resume_text = extract_text_from_supported_file(path, ext)
+        score, matched, missing = score_resume_against_job_description(resume_text, job_desc)
+        return jsonify({'score': score, 'matched': matched, 'missing': missing, 'filename': filename})
+    except Exception as e:
+        return jsonify({'error': str(e), 'filename': filename}), 500
+
 # ─────────────────────────────────────────
 #  OLD RESUME MAKER (kept for compatibility)
 # ─────────────────────────────────────────
@@ -790,16 +877,10 @@ def upload_linkedin_file():
         filename = file.filename
         ext = filename.rsplit('.', 1)[-1].lower()
         path = save(file, filename)
-        
-        if ext == 'pdf':
-            text = extract_text_from_pdf(path)
-        elif ext == 'docx':
-            text = extract_text_from_docx(path)
-        elif ext == 'txt':
-            with open(path, 'r', encoding='utf-8') as f:
-                text = f.read()
-        else:
-            return jsonify({'error': 'Unsupported file type'}), 400
+
+        text = extract_text_from_supported_file(path, ext)
+        if not text.strip():
+            return jsonify({'error': 'Could not extract text from the uploaded file'}), 400
         
         return jsonify({'text': text})
     except Exception as e:

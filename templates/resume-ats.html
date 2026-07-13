@@ -188,8 +188,8 @@
             <div class="form-panel">
                 <!-- Upload Old Resume with Two Options -->
                 <div class="upload-zone" onclick="document.getElementById('resumeUpload').click()">
-                    📁 Click to select resume (PDF/DOCX)
-                    <input type="file" id="resumeUpload" accept=".pdf,.docx" style="display:none">
+                    📁 Click to select resume (PDF/DOCX/PNG/JPG/ZIP)
+                    <input type="file" id="resumeUpload" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg,.bmp,.webp,.zip" style="display:none">
                 </div>
                 <div class="upload-buttons">
                     <button class="btn btn-primary btn-sm" onclick="uploadAndFillForm()">📝 Upload & Fill Form</button>
@@ -371,6 +371,15 @@
         let currentField = '';
         let currentTemplate = 'modern';
         let selectedFile = null;
+
+        const atsStopWords = new Set([
+            'the','and','for','are','with','this','that','you','your','have','from','will','can','was','they','their','been','has','but','not','all','our','its','also','more','when','which','a','an','in','of','to','is','on','at','we','us','he','she','it','them','his','her','these','those','as','by','be','being','or','if','into','than','then','there','here','over','under','up','down','out','per','via','about','after','before','during','between','within','without'
+        ]);
+
+        function tokenizeAtsText(text) {
+            return Array.from(new Set((text || '').toLowerCase().match(/[a-z0-9+#.-]{2,}/g) || []))
+                .filter(word => word.length > 2 && !atsStopWords.has(word));
+        }
         
         const synonyms = {
             "python": ["programming", "coding", "scripting"],
@@ -589,45 +598,32 @@
         }
         
         function calculateATSScore() {
-            const jobDesc = document.getElementById('jobDesc').value.toLowerCase();
-            const skills = document.getElementById('skills').value.toLowerCase();
-            const summary = document.getElementById('summary').value.toLowerCase();
-            const experience = experienceItems.map(e => e.description.toLowerCase()).join(' ');
-            const allText = skills + ' ' + summary + ' ' + experience;
-            
-            let keywords = [];
-            if (currentField && industryKeywords[currentField]) {
-                keywords = industryKeywords[currentField];
-            } else {
-                for (let [field, kwList] of Object.entries(industryKeywords)) {
-                    keywords.push(...kwList);
+            const jobDesc = document.getElementById('jobDesc').value;
+            const skills = document.getElementById('skills').value;
+            const summary = document.getElementById('summary').value;
+            const experience = experienceItems.map(e => e.description).join(' ');
+            const allText = `${skills} ${summary} ${experience}`;
+            const keywords = tokenizeAtsText(jobDesc);
+
+            let matchedKeywords = [];
+            let missingKeywords = [];
+
+            for (let keyword of keywords) {
+                const keywordLower = keyword.toLowerCase();
+                if (allText.toLowerCase().includes(keywordLower)) {
+                    matchedKeywords.push(keyword);
+                    continue;
                 }
-                keywords = [...new Set(keywords)];
-            }
-            
-            let matchedKeywords = [], synonymMatches = [], missingKeywords = [];
-            
-            for (let kw of keywords) {
-                const kwLower = kw.toLowerCase();
-                if (allText.includes(kwLower)) {
-                    matchedKeywords.push(kw);
-                } else if (synonyms[kwLower]) {
-                    let found = false;
-                    for (let syn of synonyms[kwLower]) {
-                        if (allText.includes(syn)) {
-                            synonymMatches.push(`${kw} (via: ${syn})`);
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found && jobDesc.includes(kwLower)) missingKeywords.push(kw);
-                } else if (jobDesc.includes(kwLower)) {
-                    missingKeywords.push(kw);
+                const synonymList = synonyms[keywordLower] || [];
+                const synonymHit = synonymList.find(syn => allText.toLowerCase().includes(syn.toLowerCase()));
+                if (synonymHit) {
+                    matchedKeywords.push(`${keyword} (via: ${synonymHit})`);
+                } else {
+                    missingKeywords.push(keyword);
                 }
             }
-            
-            const totalRelevant = matchedKeywords.length + synonymMatches.length + missingKeywords.length;
-            let atsScore = totalRelevant > 0 ? Math.round(((matchedKeywords.length + synonymMatches.length) / totalRelevant) * 100) : 0;
+
+            const atsScore = keywords.length > 0 ? Math.round((matchedKeywords.length / keywords.length) * 100) : 0;
             
             document.getElementById('atsPanel').style.display = 'block';
             document.getElementById('atsScoreCircle').textContent = atsScore + '%';
@@ -640,7 +636,7 @@
             document.getElementById('atsGrade').innerHTML = `<span style="color:${gradeColor}">${grade} - ${atsScore}% Match</span>`;
             
             document.getElementById('matchedKeywords').innerHTML = matchedKeywords.slice(0,15).map(k => `<span class="keyword-tag matched">${k}</span>`).join('') || 'None';
-            document.getElementById('synonymKeywords').innerHTML = synonymMatches.slice(0,10).map(k => `<span class="keyword-tag synonym">${k}</span>`).join('') || 'None';
+            document.getElementById('synonymKeywords').innerHTML = matchedKeywords.filter(k => k.includes('(via:')).slice(0,10).map(k => `<span class="keyword-tag synonym">${k}</span>`).join('') || 'None';
             document.getElementById('missingKeywords').innerHTML = missingKeywords.slice(0,15).map(k => `<span class="keyword-tag missing">${k}</span>`).join('') || 'None - Great job!';
             
             let suggestions = [];
@@ -680,11 +676,15 @@
         }
         
         function parseJobDescription() {
-            const jd = document.getElementById('jobDesc').value.toLowerCase();
-            const words = jd.match(/\b[a-z]{3,}\b/g) || [];
+            const jd = document.getElementById('jobDesc').value;
+            const words = tokenizeAtsText(jd);
             const freq = {};
             words.forEach(w => { freq[w] = (freq[w] || 0) + 1; });
             const topWords = Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,15).map(w=>w[0]);
+            if (!topWords.length) {
+                alert('No strong keywords found yet. Paste a fuller description or a keyword list, then try again.');
+                return;
+            }
             alert(`Top keywords in JD:\n${topWords.join(', ')}\n\nAdd these to your skills section!`);
         }
         
