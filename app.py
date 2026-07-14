@@ -1,48 +1,18 @@
 from flask import Flask, request, send_file, send_from_directory, render_template, jsonify, redirect, abort, make_response
-from reportlab.lib.pagesizes import A4, letter
-from reportlab.lib import colors
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable, Image as RLImage
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import cm
 from PIL import Image
 import pytesseract
-import PyPDF2
-import docx
 import os, re, io, zipfile, shutil
 import json
 import tempfile
-
-try:
-    from docx2pdf import convert as docx_to_pdf
-except ImportError:
-    docx_to_pdf = None
-
-try:
-    from pdf2docx import Converter as PDFToWordConverter
-except ImportError:
-    PDFToWordConverter = None
-
-try:
-    import pandas as pd
-except ImportError:
-    pd = None
-
-# Try to import optional dependencies for Render compatibility
-try:
-    import fitz  # PyMuPDF - for PDF to Image (no external dependencies)
-except ImportError:
-    fitz = None
-
-try:
-    import easyocr  # For OCR (no Tesseract needed)
-except ImportError:
-    easyocr = None
+import importlib
 
 # --- LinkedIn Optimizer import HATAYA ---
 # from linkedin_optimizer import analyze_linkedin_profile, fetch_profile_from_url
 
 # Tesseract path (Sirf Image OCR ke liye, agar Render pe nahi hai toh error dega)
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+WINDOWS_TESSERACT_PATH = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+if os.name == 'nt' and os.path.exists(WINDOWS_TESSERACT_PATH):
+    pytesseract.pytesseract.tesseract_cmd = WINDOWS_TESSERACT_PATH
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -77,11 +47,21 @@ def save(file, name):
     file.save(path)
     return path
 
+def is_windows_runtime():
+    return os.name == 'nt'
+
+def windows_only_response(feature_name):
+    return jsonify({
+        'error': f'{feature_name} is available only on a Windows server. For Railway/Linux deployment, use the PDF, OCR, ATS, and browser-safe converters instead.'
+    }), 501
+
 def extract_text_from_docx(path):
+    docx = importlib.import_module('docx')
     d = docx.Document(path)
     return ' '.join([p.text for p in d.paragraphs])
 
 def extract_text_from_pdf(path):
+    PyPDF2 = importlib.import_module('PyPDF2')
     text = ''
     with open(path, 'rb') as f:
         reader = PyPDF2.PdfReader(f)
@@ -104,15 +84,15 @@ def normalize_ats_text(text):
 
 def extract_text_from_image(path):
     try:
-        if easyocr is not None:
+        try:
+            easyocr = importlib.import_module('easyocr')
             reader = easyocr.Reader(['en'])
             result = reader.readtext(path, detail=0)
             if result:
                 return ' '.join(result)
-    except Exception:
-        pass
+        except Exception:
+            pass
 
-    try:
         return pytesseract.image_to_string(Image.open(path))
     except Exception:
         return ''
@@ -285,6 +265,7 @@ def ats_old():
 @app.route('/export-resume-docx', methods=['POST'])
 def export_resume_docx():
     try:
+        docx = importlib.import_module('docx')
         from docx.shared import Inches, Pt
         from docx.enum.text import WD_ALIGN_PARAGRAPH
         
@@ -399,9 +380,11 @@ def export_resume_docx():
 # ─────────────────────────────────────────
 @app.route('/word-to-pdf', methods=['POST'])
 def word_to_pdf():
+    if not is_windows_runtime():
+        return windows_only_response('Word to PDF')
     try:
-        if docx_to_pdf is None:
-            return jsonify({'error': 'Word to PDF dependency is not available on this server.'}), 503
+        docx2pdf = importlib.import_module('docx2pdf')
+        docx_to_pdf = docx2pdf.convert
         p = save(request.files['file'], 'input.docx')
         docx_to_pdf(p, os.path.join(UPLOAD,'output.pdf'))
         return send_file(os.path.join(UPLOAD,'output.pdf'), as_attachment=True, download_name='converted.pdf')
@@ -411,8 +394,8 @@ def word_to_pdf():
 @app.route('/pdf-to-word', methods=['POST'])
 def pdf_to_word():
     try:
-        if PDFToWordConverter is None:
-            return jsonify({'error': 'PDF to Word dependency is not available on this server.'}), 503
+        pdf2docx = importlib.import_module('pdf2docx')
+        PDFToWordConverter = pdf2docx.Converter
         p = save(request.files['file'], 'input.pdf')
         cv = PDFToWordConverter(p)
         out = os.path.join(UPLOAD,'output.docx')
@@ -423,10 +406,14 @@ def pdf_to_word():
 
 @app.route('/ppt-to-pdf', methods=['POST'])
 def ppt_to_pdf():
+    if not is_windows_runtime():
+        return windows_only_response('PPT to PDF')
     try:
         p = save(request.files['file'], 'input.pptx')
-        import comtypes.client
-        ppt = comtypes.client.CreateObject("Powerpoint.Application")
+        comtypes_client = importlib.import_module('comtypes.client')
+        import sys
+        sys.modules.setdefault('comtypes.client', comtypes_client)
+        ppt = comtypes_client.CreateObject("Powerpoint.Application")
         ppt.Visible = 1
         deck = ppt.Presentations.Open(os.path.abspath(p))
         out  = os.path.abspath(os.path.join(UPLOAD,'output.pdf'))
@@ -437,10 +424,14 @@ def ppt_to_pdf():
 
 @app.route('/excel-to-pdf', methods=['POST'])
 def excel_to_pdf():
+    if not is_windows_runtime():
+        return windows_only_response('Excel to PDF')
     try:
         p = save(request.files['file'], 'input.xlsx')
-        import comtypes.client
-        xl  = comtypes.client.CreateObject("Excel.Application")
+        comtypes_client = importlib.import_module('comtypes.client')
+        import sys
+        sys.modules.setdefault('comtypes.client', comtypes_client)
+        xl  = comtypes_client.CreateObject("Excel.Application")
         xl.Visible = 0
         wb  = xl.Workbooks.Open(os.path.abspath(p))
         out = os.path.abspath(os.path.join(UPLOAD,'output.pdf'))
@@ -451,10 +442,14 @@ def excel_to_pdf():
 
 @app.route('/rtf-to-docx', methods=['POST'])
 def rtf_to_docx():
+    if not is_windows_runtime():
+        return windows_only_response('RTF to DOCX')
     try:
         p = save(request.files['file'], 'input.rtf')
-        import comtypes.client
-        word = comtypes.client.CreateObject("Word.Application")
+        comtypes_client = importlib.import_module('comtypes.client')
+        import sys
+        sys.modules.setdefault('comtypes.client', comtypes_client)
+        word = comtypes_client.CreateObject("Word.Application")
         word.Visible = 0
         doc  = word.Documents.Open(os.path.abspath(p))
         out  = os.path.abspath(os.path.join(UPLOAD,'output.docx'))
@@ -478,8 +473,7 @@ def docx_to_txt():
 @app.route('/excel-to-csv', methods=['POST'])
 def excel_to_csv():
     try:
-        if pd is None:
-            return jsonify({'error': 'Excel to CSV dependency is not available on this server.'}), 503
+        pd = importlib.import_module('pandas')
         p = save(request.files['file'], 'input.xlsx')
         df = pd.read_excel(p)
         out = os.path.join(UPLOAD, 'output.csv')
@@ -493,6 +487,7 @@ def excel_to_csv():
 # ─────────────────────────────────────────
 @app.route('/merge-pdf', methods=['POST'])
 def merge_pdf():
+    PyPDF2 = importlib.import_module('PyPDF2')
     files  = request.files.getlist('files')
     writer = PyPDF2.PdfWriter()
     for f in files:
@@ -507,6 +502,7 @@ def merge_pdf():
 
 @app.route('/split-pdf', methods=['POST'])
 def split_pdf():
+    PyPDF2 = importlib.import_module('PyPDF2')
     p      = save(request.files['file'], 'input.pdf')
     reader = PyPDF2.PdfReader(p)
     zpath  = os.path.join(UPLOAD,'split_pages.zip')
@@ -522,6 +518,7 @@ def split_pdf():
 
 @app.route('/compress-pdf', methods=['POST'])
 def compress_pdf():
+    PyPDF2 = importlib.import_module('PyPDF2')
     p      = save(request.files['file'], 'input.pdf')
     reader = PyPDF2.PdfReader(p)
     writer = PyPDF2.PdfWriter()
@@ -535,6 +532,7 @@ def compress_pdf():
 
 @app.route('/rotate-pdf', methods=['POST'])
 def rotate_pdf():
+    PyPDF2 = importlib.import_module('PyPDF2')
     p       = save(request.files['file'], 'input.pdf')
     degrees = int(request.form.get('degrees', 90))
     reader  = PyPDF2.PdfReader(p)
@@ -549,6 +547,7 @@ def rotate_pdf():
 
 @app.route('/lock-pdf', methods=['POST'])
 def lock_pdf():
+    PyPDF2 = importlib.import_module('PyPDF2')
     p        = save(request.files['file'], 'input.pdf')
     password = request.form.get('password', '1234')
     reader   = PyPDF2.PdfReader(p)
@@ -563,6 +562,7 @@ def lock_pdf():
 
 @app.route('/unlock-pdf', methods=['POST'])
 def unlock_pdf():
+    PyPDF2 = importlib.import_module('PyPDF2')
     p        = save(request.files['file'], 'input.pdf')
     password = request.form.get('password', '')
     reader   = PyPDF2.PdfReader(p)
@@ -578,15 +578,20 @@ def unlock_pdf():
 
 @app.route('/watermark-pdf', methods=['POST'])
 def watermark_pdf():
+    PyPDF2 = importlib.import_module('PyPDF2')
+    pagesizes = importlib.import_module('reportlab.lib.pagesizes')
+    colors = importlib.import_module('reportlab.lib.colors')
+    platypus = importlib.import_module('reportlab.platypus')
+    styles = importlib.import_module('reportlab.lib.styles')
     p    = save(request.files['file'], 'input.pdf')
     text = request.form.get('watermark', 'CONFIDENTIAL')
     reader = PyPDF2.PdfReader(p)
     writer = PyPDF2.PdfWriter()
     wm_path = os.path.join(UPLOAD,'wm.pdf')
-    c = SimpleDocTemplate(wm_path, pagesize=A4)
-    style = ParagraphStyle('wm', fontSize=40, textColor=colors.Color(0.7,0.7,0.7,0.4),
+    c = platypus.SimpleDocTemplate(wm_path, pagesize=pagesizes.A4)
+    style = styles.ParagraphStyle('wm', fontSize=40, textColor=colors.Color(0.7,0.7,0.7,0.4),
         fontName='Helvetica-Bold')
-    c.build([Paragraph(text, style)])
+    c.build([platypus.Paragraph(text, style)])
     wm_reader = PyPDF2.PdfReader(wm_path)
     wm_page   = wm_reader.pages[0]
     for page in reader.pages:
@@ -599,6 +604,7 @@ def watermark_pdf():
 
 @app.route('/delete-pages', methods=['POST'])
 def delete_pages():
+    PyPDF2 = importlib.import_module('PyPDF2')
     p     = save(request.files['file'], 'input.pdf')
     pages = request.form.get('pages', '')
     to_delete = set()
@@ -621,6 +627,7 @@ def delete_pages():
 
 @app.route('/extract-pages', methods=['POST'])
 def extract_pages():
+    PyPDF2 = importlib.import_module('PyPDF2')
     p     = save(request.files['file'], 'input.pdf')
     pages = request.form.get('pages', '')
     to_keep = set()
@@ -647,7 +654,7 @@ def extract_pages():
 @app.route('/pdf-to-image', methods=['POST'])
 def pdf_to_image():
     try:
-        import fitz
+        fitz = importlib.import_module('fitz')
         p = save(request.files['file'], 'input.pdf')
         doc = fitz.open(p)
         zpath = os.path.join(UPLOAD, 'pdf_images.zip')
@@ -673,29 +680,39 @@ def pdf_to_txt():
 
 @app.route('/txt-to-pdf', methods=['POST'])
 def txt_to_pdf():
+    pagesizes = importlib.import_module('reportlab.lib.pagesizes')
+    platypus = importlib.import_module('reportlab.platypus')
+    styles = importlib.import_module('reportlab.lib.styles')
+    units = importlib.import_module('reportlab.lib.units')
     p = save(request.files['file'], 'input.txt')
     with open(p,'r', encoding='utf-8') as f:
         text = f.read()
     out = os.path.join(UPLOAD,'output.pdf')
-    doc = SimpleDocTemplate(out, pagesize=A4,
-        rightMargin=2*cm, leftMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm)
-    style = ParagraphStyle('body', fontSize=11, leading=16)
-    story = [Paragraph(line or ' ', style) for line in text.split('\n')]
+    doc = platypus.SimpleDocTemplate(out, pagesize=pagesizes.A4,
+        rightMargin=2*units.cm, leftMargin=2*units.cm, topMargin=2*units.cm, bottomMargin=2*units.cm)
+    style = styles.ParagraphStyle('body', fontSize=11, leading=16)
+    story = [platypus.Paragraph(line or ' ', style) for line in text.split('\n')]
     doc.build(story)
     return send_file(out, as_attachment=True, download_name='converted.pdf')
 
 @app.route('/add-page-numbers', methods=['POST'])
 def add_page_numbers():
+    PyPDF2 = importlib.import_module('PyPDF2')
+    pagesizes = importlib.import_module('reportlab.lib.pagesizes')
+    platypus = importlib.import_module('reportlab.platypus')
+    styles = importlib.import_module('reportlab.lib.styles')
+    units = importlib.import_module('reportlab.lib.units')
+    colors = importlib.import_module('reportlab.lib.colors')
     p      = save(request.files['file'], 'input.pdf')
     reader = PyPDF2.PdfReader(p)
     writer = PyPDF2.PdfWriter()
     total  = len(reader.pages)
     for i, page in enumerate(reader.pages):
         pn_path = os.path.join(UPLOAD, f'pn_{i}.pdf')
-        pn_doc  = SimpleDocTemplate(pn_path, pagesize=A4,
-            rightMargin=1*cm, leftMargin=1*cm, topMargin=1*cm, bottomMargin=1*cm)
-        style = ParagraphStyle('pn', fontSize=9, textColor=colors.grey)
-        pn_doc.build([Spacer(1, 26*cm), Paragraph(f'Page {i+1} of {total}', style)])
+        pn_doc  = platypus.SimpleDocTemplate(pn_path, pagesize=pagesizes.A4,
+            rightMargin=1*units.cm, leftMargin=1*units.cm, topMargin=1*units.cm, bottomMargin=1*units.cm)
+        style = styles.ParagraphStyle('pn', fontSize=9, textColor=colors.grey)
+        pn_doc.build([platypus.Spacer(1, 26*units.cm), platypus.Paragraph(f'Page {i+1} of {total}', style)])
         pn_reader = PyPDF2.PdfReader(pn_path)
         page.merge_page(pn_reader.pages[0])
         writer.add_page(page)
@@ -721,7 +738,8 @@ def image_to_pdf():
 @app.route('/image-to-word', methods=['POST'])
 def image_to_word():
     try:
-        import easyocr
+        easyocr = importlib.import_module('easyocr')
+        docx = importlib.import_module('docx')
         p = save(request.files['file'], 'input_img.png')
         reader = easyocr.Reader(['en'])
         result = reader.readtext(p)
@@ -741,7 +759,8 @@ def image_to_word():
 @app.route('/image-to-excel', methods=['POST'])
 def image_to_excel():
     try:
-        import easyocr
+        easyocr = importlib.import_module('easyocr')
+        pd = importlib.import_module('pandas')
         p = save(request.files['file'], 'input_img.png')
         reader = easyocr.Reader(['en'])
         result = reader.readtext(p)
@@ -758,7 +777,7 @@ def image_to_excel():
 @app.route('/ocr-to-text', methods=['POST'])
 def ocr_to_text():
     try:
-        import easyocr
+        easyocr = importlib.import_module('easyocr')
         p = save(request.files['file'], 'input_img.png')
         reader = easyocr.Reader(['en'])
         result = reader.readtext(p)
@@ -795,7 +814,7 @@ def webp_to_png():
 @app.route('/svg-to-png', methods=['POST'])
 def svg_to_png():
     try:
-        import cairosvg
+        cairosvg = importlib.import_module('cairosvg')
         p   = save(request.files['file'], 'input.svg')
         out = os.path.join(UPLOAD,'output.png')
         cairosvg.svg2png(url=p, write_to=out)
@@ -841,36 +860,41 @@ def ats_score():
 # ─────────────────────────────────────────
 @app.route('/make-resume', methods=['POST'])
 def make_resume():
+    pagesizes = importlib.import_module('reportlab.lib.pagesizes')
+    colors = importlib.import_module('reportlab.lib.colors')
+    platypus = importlib.import_module('reportlab.platypus')
+    styles = importlib.import_module('reportlab.lib.styles')
+    units = importlib.import_module('reportlab.lib.units')
     data = request.json
     out  = os.path.join(UPLOAD,'my_resume.pdf')
-    doc  = SimpleDocTemplate(out, pagesize=A4,
-        rightMargin=2*cm, leftMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm)
-    name_s    = ParagraphStyle('n', fontSize=24, fontName='Helvetica-Bold', textColor=colors.HexColor('#2d3748'), spaceAfter=4)
-    contact_s = ParagraphStyle('c', fontSize=10, fontName='Helvetica',     textColor=colors.HexColor('#718096'), spaceAfter=2)
-    section_s = ParagraphStyle('s', fontSize=13, fontName='Helvetica-Bold', textColor=colors.HexColor('#2b6cb0'), spaceBefore=14, spaceAfter=4)
-    body_s    = ParagraphStyle('b', fontSize=10, fontName='Helvetica',     textColor=colors.HexColor('#2d3748'), spaceAfter=3, leading=15)
-    bold_s    = ParagraphStyle('bl',fontSize=10, fontName='Helvetica-Bold', textColor=colors.HexColor('#2d3748'), spaceAfter=1)
-    hr = lambda: HRFlowable(width="100%", thickness=0.5, color=colors.HexColor('#e2e8f0'), spaceAfter=5)
+    doc  = platypus.SimpleDocTemplate(out, pagesize=pagesizes.A4,
+        rightMargin=2*units.cm, leftMargin=2*units.cm, topMargin=2*units.cm, bottomMargin=2*units.cm)
+    name_s    = styles.ParagraphStyle('n', fontSize=24, fontName='Helvetica-Bold', textColor=colors.HexColor('#2d3748'), spaceAfter=4)
+    contact_s = styles.ParagraphStyle('c', fontSize=10, fontName='Helvetica',     textColor=colors.HexColor('#718096'), spaceAfter=2)
+    section_s = styles.ParagraphStyle('s', fontSize=13, fontName='Helvetica-Bold', textColor=colors.HexColor('#2b6cb0'), spaceBefore=14, spaceAfter=4)
+    body_s    = styles.ParagraphStyle('b', fontSize=10, fontName='Helvetica',     textColor=colors.HexColor('#2d3748'), spaceAfter=3, leading=15)
+    bold_s    = styles.ParagraphStyle('bl',fontSize=10, fontName='Helvetica-Bold', textColor=colors.HexColor('#2d3748'), spaceAfter=1)
+    hr = lambda: platypus.HRFlowable(width="100%", thickness=0.5, color=colors.HexColor('#e2e8f0'), spaceAfter=5)
     story = []
-    story.append(Paragraph(data.get('name',''), name_s))
-    story.append(Paragraph(' | '.join(filter(None,[data.get('email',''),data.get('phone',''),data.get('location',''),data.get('linkedin','')])), contact_s))
-    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor('#2b6cb0'), spaceAfter=8))
+    story.append(platypus.Paragraph(data.get('name',''), name_s))
+    story.append(platypus.Paragraph(' | '.join(filter(None,[data.get('email',''),data.get('phone',''),data.get('location',''),data.get('linkedin','')])), contact_s))
+    story.append(platypus.HRFlowable(width="100%", thickness=1.5, color=colors.HexColor('#2b6cb0'), spaceAfter=8))
     if data.get('summary'):
-        story += [Paragraph('PROFESSIONAL SUMMARY',section_s), hr(), Paragraph(data['summary'],body_s)]
+        story += [platypus.Paragraph('PROFESSIONAL SUMMARY',section_s), hr(), platypus.Paragraph(data['summary'],body_s)]
     if data.get('education'):
-        story += [Paragraph('EDUCATION',section_s), hr()]
+        story += [platypus.Paragraph('EDUCATION',section_s), hr()]
         for e in data['education']:
-            story += [Paragraph(f"{e.get('degree','')} — {e.get('school','')}",bold_s), Paragraph(f"{e.get('year','')}  {e.get('gpa','')}",body_s)]
+            story += [platypus.Paragraph(f"{e.get('degree','')} — {e.get('school','')}",bold_s), platypus.Paragraph(f"{e.get('year','')}  {e.get('gpa','')}",body_s)]
     if data.get('experience'):
-        story += [Paragraph('WORK EXPERIENCE',section_s), hr()]
+        story += [platypus.Paragraph('WORK EXPERIENCE',section_s), hr()]
         for e in data['experience']:
-            story += [Paragraph(f"{e.get('title','')} — {e.get('company','')}",bold_s), Paragraph(e.get('duration',''),body_s), Paragraph(e.get('description',''),body_s), Spacer(1,4)]
+            story += [platypus.Paragraph(f"{e.get('title','')} — {e.get('company','')}",bold_s), platypus.Paragraph(e.get('duration',''),body_s), platypus.Paragraph(e.get('description',''),body_s), platypus.Spacer(1,4)]
     if data.get('skills'):
-        story += [Paragraph('SKILLS',section_s), hr(), Paragraph(data['skills'],body_s)]
+        story += [platypus.Paragraph('SKILLS',section_s), hr(), platypus.Paragraph(data['skills'],body_s)]
     if data.get('projects'):
-        story += [Paragraph('PROJECTS',section_s), hr()]
+        story += [platypus.Paragraph('PROJECTS',section_s), hr()]
         for p in data['projects']:
-            story += [Paragraph(p.get('title',''),bold_s), Paragraph(p.get('description',''),body_s), Spacer(1,4)]
+            story += [platypus.Paragraph(p.get('title',''),bold_s), platypus.Paragraph(p.get('description',''),body_s), platypus.Spacer(1,4)]
     doc.build(story)
     return send_file(out, as_attachment=True, download_name='my_resume.pdf')
 

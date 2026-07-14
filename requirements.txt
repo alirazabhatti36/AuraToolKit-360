@@ -1,5 +1,5 @@
 Flask==3.1.3
-docx2pdf==0.1.8
+docx2pdf==0.1.8; platform_system == "Windows"
 pdf2docx==0.5.13
 reportlab==5.0.0
 Pillow==12.3.0
@@ -7,7 +7,7 @@ pandas==3.0.3
 PyPDF2==3.0.1
 python-docx==1.2.0
 pytesseract==0.3.13
-comtypes==1.4.10
+comtypes==1.4.10; platform_system == "Windows"
 cairosvg==2.7.1
 gunicorn==21.2.0
 PyMuPDF==1.28.0
