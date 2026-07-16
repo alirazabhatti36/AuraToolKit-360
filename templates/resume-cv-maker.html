@@ -20,6 +20,12 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --accent: #1d4ed8;
+            --ink: #1e293b;
+            --paper: #ffffff;
+            --muted: #64748b;
+        }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f3f6fb; color: #1e293b; }
         .navbar { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.8rem 1rem; position: sticky; top: 0; z-index: 30; }
         .nav-inner { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
@@ -35,6 +41,8 @@
         .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem; }
         .section { margin-top: 0.9rem; }
         .section h3 { font-size: 0.95rem; margin-bottom: 0.45rem; color: #1d4ed8; }
+        .section-head { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0.45rem; }
+        .section-head h3 { margin-bottom: 0; }
         .field { margin-bottom: 0.55rem; }
         .field label { display: block; font-size: 0.78rem; font-weight: 600; color: #475569; margin-bottom: 0.25rem; }
         .field input, .field textarea { width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.55rem 0.7rem; font-size: 0.84rem; font-family: inherit; }
@@ -48,6 +56,53 @@
         .entry-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; }
         .entry-head strong { font-size: 0.8rem; color: #334155; }
         .small { font-size: 0.75rem; color: #64748b; }
+        .template-toolbar { display: grid; gap: 0.75rem; margin-top: 0.5rem; }
+        .template-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
+        .template-chip {
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 0.7rem;
+            text-align: left;
+            color: #334155;
+            min-height: 92px;
+        }
+        .template-chip.active { border-color: #1d4ed8; background: #dbeafe; color: #1d4ed8; box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.08); }
+        .template-thumb {
+            display: block;
+            height: 46px;
+            border-radius: 10px;
+            margin-bottom: 0.55rem;
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            background: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+        .template-chip.active .template-thumb { border-color: rgba(29, 78, 216, 0.35); }
+        .thumb-modern { background: linear-gradient(180deg, #eff6ff 0 32%, #ffffff 32% 100%); }
+        .thumb-modern::before { content: ''; position: absolute; inset: 7px 9px auto; height: 8px; background: #2563eb; border-radius: 999px; }
+        .thumb-modern::after { content: ''; position: absolute; left: 9px; right: 9px; top: 22px; height: 14px; background: linear-gradient(180deg, #dbeafe 0 45%, #f8fafc 45% 100%); border-radius: 7px; }
+        .thumb-classic { background: linear-gradient(180deg, #ffffff 0 100%); }
+        .thumb-classic::before { content: ''; position: absolute; left: 8px; right: 8px; top: 8px; height: 3px; background: #475569; }
+        .thumb-classic::after { content: ''; position: absolute; left: 8px; right: 8px; top: 18px; height: 18px; background: repeating-linear-gradient(180deg, #e2e8f0 0 3px, #ffffff 3px 6px); }
+        .thumb-minimal { background: #ffffff; }
+        .thumb-minimal::before { content: ''; position: absolute; left: 9px; top: 10px; width: 54%; height: 4px; background: #0f172a; border-radius: 999px; }
+        .thumb-minimal::after { content: ''; position: absolute; left: 9px; right: 15px; top: 22px; height: 10px; background: linear-gradient(180deg, #f1f5f9 0 45%, #ffffff 45% 100%); }
+        .thumb-corporate { background: linear-gradient(90deg, #0f172a 0 34%, #ffffff 34% 100%); }
+        .thumb-corporate::before { content: ''; position: absolute; left: 8px; top: 8px; width: 22%; height: 6px; background: #93c5fd; border-radius: 999px; }
+        .thumb-corporate::after { content: ''; position: absolute; left: 42%; right: 8px; top: 10px; height: 24px; background: repeating-linear-gradient(180deg, #dbeafe 0 3px, #ffffff 3px 7px); }
+        .thumb-accent { background: linear-gradient(90deg, #2563eb, #06b6d4, #14b8a6); }
+        .thumb-accent::before { content: ''; position: absolute; inset: 8px; background: #ffffff; border-radius: 8px; }
+        .thumb-accent::after { content: ''; position: absolute; left: 16px; right: 16px; top: 18px; height: 10px; background: linear-gradient(90deg, #ccfbf1 0 38%, #f8fafc 38% 100%); border-radius: 999px; }
+        .thumb-slate { background: #0f172a; }
+        .thumb-slate::before { content: ''; position: absolute; left: 9px; right: 9px; top: 9px; height: 7px; background: #93c5fd; border-radius: 999px; }
+        .thumb-slate::after { content: ''; position: absolute; left: 9px; right: 9px; top: 22px; height: 12px; background: linear-gradient(180deg, #1e3a8a 0 45%, #1f2937 45% 100%); border-radius: 7px; }
+        .thumb-timeline { background: #fffdf5; }
+        .thumb-timeline::before { content: ''; position: absolute; left: 16px; top: 7px; bottom: 7px; width: 2px; background: #f59e0b; }
+        .thumb-timeline::after { content: ''; position: absolute; left: 24px; right: 8px; top: 10px; height: 22px; background: repeating-linear-gradient(180deg, #fef3c7 0 4px, #fffdf5 4px 8px); }
+        .template-chip strong { display: block; font-size: 0.8rem; margin-bottom: 0.2rem; }
+        .template-chip span { display: block; font-size: 0.72rem; line-height: 1.45; color: inherit; opacity: 0.85; }
+        .template-note { font-size: 0.76rem; color: #64748b; }
         .preview { background: #ffffff; border-radius: 12px; border: 1px solid #dbeafe; padding: 1rem; min-height: 420px; }
         .preview h2 { font-size: 1.2rem; color: #0f172a; }
         .preview .line { font-size: 0.8rem; color: #475569; margin-top: 0.25rem; }
@@ -58,7 +113,53 @@
         .preview li { font-size: 0.8rem; color: #334155; margin-bottom: 0.2rem; }
         .skills { display: flex; gap: 0.3rem; flex-wrap: wrap; }
         .skills span { background: #dbeafe; color: #1d4ed8; padding: 0.2rem 0.45rem; border-radius: 999px; font-size: 0.72rem; }
-        @media (max-width: 960px) { .layout { grid-template-columns: 1fr; } }
+        .preview-shell { background: #eaf0f8; border-radius: 14px; padding: 0.8rem; }
+        .preview-meta { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+        .preview-meta strong { font-size: 0.85rem; color: #0f172a; }
+        .preview-meta span { font-size: 0.75rem; color: #64748b; }
+        .preview.template-classic { font-family: 'Georgia', 'Times New Roman', serif; border-color: #cbd5e1; }
+        .preview.template-classic .title { color: #475569; letter-spacing: 0.04em; text-transform: uppercase; }
+        .preview.template-classic section h4 { border-bottom: 1px solid #cbd5e1; padding-bottom: 0.18rem; }
+        .preview.template-minimal { border: none; box-shadow: 0 16px 30px rgba(15, 23, 42, 0.06); }
+        .preview.template-minimal h2 { font-size: 1.5rem; }
+        .preview.template-minimal section h4 { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.74rem; color: #64748b; }
+        .preview.template-minimal .skills span { background: #e2e8f0; color: #0f172a; }
+        .preview.template-corporate { border: none; padding: 0; overflow: hidden; }
+        .preview.template-corporate .preview-inner { display: grid; grid-template-columns: 220px 1fr; min-height: 560px; }
+        .preview.template-corporate .sidebar { background: #0f172a; color: #e2e8f0; padding: 1.2rem; }
+        .preview.template-corporate .main { padding: 1.2rem; background: #ffffff; }
+        .preview.template-corporate h2, .preview.template-corporate .sidebar h4, .preview.template-corporate .main h4 { color: inherit; }
+        .preview.template-corporate .sidebar .title { color: #93c5fd; }
+        .preview.template-corporate .sidebar .line, .preview.template-corporate .sidebar .small, .preview.template-corporate .sidebar li { color: #cbd5e1; }
+        .preview.template-corporate .sidebar .skills span { background: rgba(147, 197, 253, 0.16); color: #dbeafe; }
+        .preview.template-corporate .main h4 { color: #1d4ed8; }
+        .preview.template-accent { border: none; box-shadow: 0 20px 40px rgba(37, 99, 235, 0.10); }
+        .preview.template-accent .accent-band { height: 10px; border-radius: 10px; background: linear-gradient(90deg, #2563eb, #06b6d4, #14b8a6); margin-bottom: 1rem; }
+        .preview.template-accent .title { color: #0f766e; }
+        .preview.template-accent section { background: #f8fafc; border-radius: 12px; padding: 0.8rem; }
+        .preview.template-accent section + section { margin-top: 0.7rem; }
+        .preview.template-accent .skills span { background: #ccfbf1; color: #0f766e; }
+        .preview.template-slate { background: #111827; color: #f8fafc; border: 1px solid #1f2937; }
+        .preview.template-slate h2, .preview.template-slate section h4 { color: #f8fafc; }
+        .preview.template-slate .line, .preview.template-slate li, .preview.template-slate .small { color: #cbd5e1; }
+        .preview.template-slate .title { color: #93c5fd; }
+        .preview.template-slate .skills span { background: #1e3a8a; color: #dbeafe; }
+        .preview.template-timeline { border-color: #fde68a; }
+        .preview.template-timeline section h4 { color: #92400e; }
+        .preview.template-timeline .timeline-list { list-style: none; padding-left: 0; }
+        .preview.template-timeline .timeline-list li { position: relative; padding-left: 1rem; margin-bottom: 0.65rem; }
+        .preview.template-timeline .timeline-list li::before { content: ''; position: absolute; left: 0; top: 0.4rem; width: 0.45rem; height: 0.45rem; border-radius: 999px; background: #f59e0b; }
+        .preview.template-timeline .skills span { background: #fef3c7; color: #92400e; }
+        @media (max-width: 1080px) {
+            .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 960px) {
+            .layout { grid-template-columns: 1fr; }
+            .preview.template-corporate .preview-inner { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .template-grid { grid-template-columns: 1fr; }
+        }
     </style>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
@@ -87,6 +188,16 @@
         <div class="layout">
             <div class="card">
                 <div class="section">
+                    <div class="section-head">
+                        <h3>Templates</h3>
+                    </div>
+                    <div class="template-toolbar">
+                        <div class="template-grid" id="templateGrid"></div>
+                        <p class="template-note">Choose from multiple static templates. Your resume content stays the same and the preview updates instantly.</p>
+                    </div>
+                </div>
+
+                <div class="section">
                     <h3>Personal Info</h3>
                     <div class="field"><label>Full Name</label><input id="name" type="text" oninput="updatePreview()"></div>
                     <div class="field"><label>Email</label><input id="email" type="email" oninput="updatePreview()"></div>
@@ -107,12 +218,18 @@
                 </div>
 
                 <div class="section">
-                    <h3>Experience <button class="btn-outline" type="button" onclick="addExperience()">+ Add</button></h3>
+                    <div class="section-head">
+                        <h3>Experience</h3>
+                        <button class="btn-outline" type="button" onclick="addExperience()">+ Add</button>
+                    </div>
                     <div id="experienceList"></div>
                 </div>
 
                 <div class="section">
-                    <h3>Education <button class="btn-outline" type="button" onclick="addEducation()">+ Add</button></h3>
+                    <div class="section-head">
+                        <h3>Education</h3>
+                        <button class="btn-outline" type="button" onclick="addEducation()">+ Add</button>
+                    </div>
                     <div id="educationList"></div>
                 </div>
 
@@ -128,31 +245,15 @@
             </div>
 
             <div class="card">
-                <div class="preview" id="preview">
-                    <h2 id="pvName">Your Name</h2>
-                    <div class="title" id="pvRole">Target Role</div>
-                    <div class="line" id="pvContact"></div>
-                    <div class="line" id="pvLinks"></div>
-
-                    <section>
-                        <h4>Summary</h4>
-                        <p id="pvSummary" class="small">Write a short, impact-focused summary.</p>
-                    </section>
-
-                    <section>
-                        <h4>Skills</h4>
-                        <div class="skills" id="pvSkills"></div>
-                    </section>
-
-                    <section>
-                        <h4>Experience</h4>
-                        <ul id="pvExperience"></ul>
-                    </section>
-
-                    <section>
-                        <h4>Education</h4>
-                        <ul id="pvEducation"></ul>
-                    </section>
+                <div class="preview-shell">
+                    <div class="preview-meta">
+                        <div>
+                            <strong id="templateNameLabel">Modern Blue</strong>
+                            <span id="templateDescriptionLabel">Balanced layout for general professional roles.</span>
+                        </div>
+                        <span>Live preview updates automatically</span>
+                    </div>
+                    <div class="preview template-modern" id="preview"></div>
                 </div>
             </div>
         </div>
@@ -160,11 +261,22 @@
 
     <script>
         const BACKEND_BASE = 'https://auratoolkit-360.onrender.com';
+        const templates = [
+            { id: 'modern', name: 'Modern Blue', description: 'Balanced layout for general professional roles.' },
+            { id: 'classic', name: 'Classic Serif', description: 'Traditional resume style for formal applications.' },
+            { id: 'minimal', name: 'Minimal Clean', description: 'Simple, airy structure for concise resumes.' },
+            { id: 'corporate', name: 'Corporate Sidebar', description: 'Executive layout with a strong left profile column.' },
+            { id: 'accent', name: 'Accent Split', description: 'Color-led sections for creative and product roles.' },
+            { id: 'slate', name: 'Slate Pro', description: 'Dark premium preview for standout presentation.' },
+            { id: 'timeline', name: 'Timeline Focus', description: 'Experience-first layout with visual chronology.' }
+        ];
         let experienceItems = [];
         let educationItems = [];
+        let selectedTemplate = 'modern';
 
         function state() {
             return {
+                template: selectedTemplate,
                 name: document.getElementById('name').value.trim(),
                 email: document.getElementById('email').value.trim(),
                 phone: document.getElementById('phone').value.trim(),
@@ -176,6 +288,27 @@
                 experience: experienceItems,
                 education: educationItems
             };
+        }
+
+        function renderTemplateSelector() {
+            const root = document.getElementById('templateGrid');
+            root.innerHTML = templates.map(template => `
+                <button
+                    type="button"
+                    class="template-chip ${template.id === selectedTemplate ? 'active' : ''}"
+                    onclick="setTemplate('${template.id}')"
+                >
+                    <span class="template-thumb thumb-${template.id}" aria-hidden="true"></span>
+                    <strong>${template.name}</strong>
+                    <span>${template.description}</span>
+                </button>
+            `).join('');
+        }
+
+        function setTemplate(templateId) {
+            selectedTemplate = templateId;
+            renderTemplateSelector();
+            updatePreview();
         }
 
         function addExperience(item = { id: Date.now() + Math.random(), title: '', company: '', duration: '', description: '' }) {
@@ -241,24 +374,199 @@
 
         function updatePreview() {
             const s = state();
-            document.getElementById('pvName').textContent = s.name || 'Your Name';
-            document.getElementById('pvRole').textContent = s.targetRole || 'Target Role';
-            document.getElementById('pvContact').textContent = [s.email, s.phone, s.location].filter(Boolean).join(' | ');
-            document.getElementById('pvLinks').textContent = s.links || '';
-            document.getElementById('pvSummary').textContent = s.summary || 'Write a short, impact-focused summary.';
-
             const skillList = s.skills.split(',').map(v => v.trim()).filter(Boolean);
-            document.getElementById('pvSkills').innerHTML = skillList.map(v => `<span>${escapeHtml(v)}</span>`).join('') || '<span>Add skills</span>';
 
-            const expHtml = s.experience.filter(v => v.title || v.company || v.description).map(v =>
-                `<li><strong>${escapeHtml(v.title || 'Role')}</strong> ${v.company ? 'at ' + escapeHtml(v.company) : ''} ${v.duration ? '(' + escapeHtml(v.duration) + ')' : ''}<br>${escapeHtml(v.description || '')}</li>`
-            ).join('');
-            document.getElementById('pvExperience').innerHTML = expHtml || '<li>No experience added yet.</li>';
+            const expHtml = s.experience.filter(v => v.title || v.company || v.description).map(v => {
+                const meta = [v.company ? 'at ' + escapeHtml(v.company) : '', v.duration ? '(' + escapeHtml(v.duration) + ')' : ''].filter(Boolean).join(' ');
+                return `<li><strong>${escapeHtml(v.title || 'Role')}</strong>${meta ? ' ' + meta : ''}<br>${escapeHtml(v.description || '')}</li>`;
+            }).join('') || '<li>No experience added yet.</li>';
+
+            const timelineExpHtml = s.experience.filter(v => v.title || v.company || v.description).map(v => {
+                const meta = [v.company ? escapeHtml(v.company) : '', v.duration ? escapeHtml(v.duration) : ''].filter(Boolean).join(' | ');
+                return `<li><strong>${escapeHtml(v.title || 'Role')}</strong>${meta ? '<br><span class="small">' + meta + '</span>' : ''}<br>${escapeHtml(v.description || '')}</li>`;
+            }).join('') || '<li>No experience added yet.</li>';
 
             const eduHtml = s.education.filter(v => v.degree || v.school).map(v =>
                 `<li><strong>${escapeHtml(v.degree || '')}</strong> ${v.school ? '- ' + escapeHtml(v.school) : ''} ${v.year ? '(' + escapeHtml(v.year) + ')' : ''}</li>`
-            ).join('');
-            document.getElementById('pvEducation').innerHTML = eduHtml || '<li>No education added yet.</li>';
+            ).join('') || '<li>No education added yet.</li>';
+
+            const skillsHtml = skillList.map(v => `<span>${escapeHtml(v)}</span>`).join('') || '<span>Add skills</span>';
+            const contactLine = [s.email, s.phone, s.location].filter(Boolean).join(' | ');
+            const summaryText = escapeHtml(s.summary || 'Write a short, impact-focused summary.');
+            const roleText = escapeHtml(s.targetRole || 'Target Role');
+            const nameText = escapeHtml(s.name || 'Your Name');
+            const linksText = s.links ? `<div class="line">${escapeHtml(s.links)}</div>` : '';
+
+            const preview = document.getElementById('preview');
+            const templateContent = {
+                modern: `
+                    <h2>${nameText}</h2>
+                    <div class="title">${roleText}</div>
+                    <div class="line">${escapeHtml(contactLine)}</div>
+                    ${linksText}
+                    <section>
+                        <h4>Summary</h4>
+                        <p class="small">${summaryText}</p>
+                    </section>
+                    <section>
+                        <h4>Skills</h4>
+                        <div class="skills">${skillsHtml}</div>
+                    </section>
+                    <section>
+                        <h4>Experience</h4>
+                        <ul>${expHtml}</ul>
+                    </section>
+                    <section>
+                        <h4>Education</h4>
+                        <ul>${eduHtml}</ul>
+                    </section>
+                `,
+                classic: `
+                    <h2>${nameText}</h2>
+                    <div class="title">${roleText}</div>
+                    <div class="line">${escapeHtml(contactLine)}</div>
+                    ${linksText}
+                    <section>
+                        <h4>Professional Profile</h4>
+                        <p class="small">${summaryText}</p>
+                    </section>
+                    <section>
+                        <h4>Core Skills</h4>
+                        <div class="skills">${skillsHtml}</div>
+                    </section>
+                    <section>
+                        <h4>Professional Experience</h4>
+                        <ul>${expHtml}</ul>
+                    </section>
+                    <section>
+                        <h4>Education</h4>
+                        <ul>${eduHtml}</ul>
+                    </section>
+                `,
+                minimal: `
+                    <h2>${nameText}</h2>
+                    <div class="title">${roleText}</div>
+                    <div class="line">${escapeHtml(contactLine)}</div>
+                    ${linksText}
+                    <section>
+                        <h4>About</h4>
+                        <p class="small">${summaryText}</p>
+                    </section>
+                    <section>
+                        <h4>Capabilities</h4>
+                        <div class="skills">${skillsHtml}</div>
+                    </section>
+                    <section>
+                        <h4>Work History</h4>
+                        <ul>${expHtml}</ul>
+                    </section>
+                    <section>
+                        <h4>Education</h4>
+                        <ul>${eduHtml}</ul>
+                    </section>
+                `,
+                corporate: `
+                    <div class="preview-inner">
+                        <aside class="sidebar">
+                            <h2>${nameText}</h2>
+                            <div class="title">${roleText}</div>
+                            <div class="line">${escapeHtml(contactLine)}</div>
+                            ${linksText}
+                            <section>
+                                <h4>Profile</h4>
+                                <p class="small">${summaryText}</p>
+                            </section>
+                            <section>
+                                <h4>Skills</h4>
+                                <div class="skills">${skillsHtml}</div>
+                            </section>
+                        </aside>
+                        <div class="main">
+                            <section>
+                                <h4>Experience</h4>
+                                <ul>${expHtml}</ul>
+                            </section>
+                            <section>
+                                <h4>Education</h4>
+                                <ul>${eduHtml}</ul>
+                            </section>
+                        </div>
+                    </div>
+                `,
+                accent: `
+                    <div class="accent-band"></div>
+                    <h2>${nameText}</h2>
+                    <div class="title">${roleText}</div>
+                    <div class="line">${escapeHtml(contactLine)}</div>
+                    ${linksText}
+                    <section>
+                        <h4>Profile Summary</h4>
+                        <p class="small">${summaryText}</p>
+                    </section>
+                    <section>
+                        <h4>Key Skills</h4>
+                        <div class="skills">${skillsHtml}</div>
+                    </section>
+                    <section>
+                        <h4>Experience Highlights</h4>
+                        <ul>${expHtml}</ul>
+                    </section>
+                    <section>
+                        <h4>Academic Background</h4>
+                        <ul>${eduHtml}</ul>
+                    </section>
+                `,
+                slate: `
+                    <h2>${nameText}</h2>
+                    <div class="title">${roleText}</div>
+                    <div class="line">${escapeHtml(contactLine)}</div>
+                    ${linksText}
+                    <section>
+                        <h4>Executive Summary</h4>
+                        <p class="small">${summaryText}</p>
+                    </section>
+                    <section>
+                        <h4>Skill Stack</h4>
+                        <div class="skills">${skillsHtml}</div>
+                    </section>
+                    <section>
+                        <h4>Career Experience</h4>
+                        <ul>${expHtml}</ul>
+                    </section>
+                    <section>
+                        <h4>Education</h4>
+                        <ul>${eduHtml}</ul>
+                    </section>
+                `,
+                timeline: `
+                    <h2>${nameText}</h2>
+                    <div class="title">${roleText}</div>
+                    <div class="line">${escapeHtml(contactLine)}</div>
+                    ${linksText}
+                    <section>
+                        <h4>Summary</h4>
+                        <p class="small">${summaryText}</p>
+                    </section>
+                    <section>
+                        <h4>Skills</h4>
+                        <div class="skills">${skillsHtml}</div>
+                    </section>
+                    <section>
+                        <h4>Career Timeline</h4>
+                        <ul class="timeline-list">${timelineExpHtml}</ul>
+                    </section>
+                    <section>
+                        <h4>Education</h4>
+                        <ul class="timeline-list">${eduHtml}</ul>
+                    </section>
+                `
+            };
+
+            const template = templates.find(item => item.id === selectedTemplate) || templates[0];
+            preview.className = `preview template-${selectedTemplate}`;
+            preview.innerHTML = templateContent[selectedTemplate] || templateContent.modern;
+            document.getElementById('templateNameLabel').textContent = template.name;
+            document.getElementById('templateDescriptionLabel').textContent = template.description;
 
             localStorage.setItem('resumeCvMakerDraft', JSON.stringify(s));
         }
@@ -300,10 +608,12 @@
                     document.getElementById('targetRole').value = data.targetRole || '';
                     document.getElementById('summary').value = data.summary || '';
                     document.getElementById('skills').value = data.skills || '';
+                    selectedTemplate = data.template || 'modern';
                     experienceItems = Array.isArray(data.experience) ? data.experience : [];
                     educationItems = Array.isArray(data.education) ? data.education : [];
                     renderExperience();
                     renderEducation();
+                    renderTemplateSelector();
                     updatePreview();
                 } catch (_e) {
                     alert('Invalid JSON file.');
@@ -384,10 +694,12 @@
                     document.getElementById('targetRole').value = data.targetRole || '';
                     document.getElementById('summary').value = data.summary || '';
                     document.getElementById('skills').value = data.skills || '';
+                    selectedTemplate = data.template || 'modern';
                     experienceItems = Array.isArray(data.experience) ? data.experience : [];
                     educationItems = Array.isArray(data.education) ? data.education : [];
                 } catch (_e) {}
             }
+            renderTemplateSelector();
             if (!experienceItems.length) addExperience();
             else renderExperience();
             if (!educationItems.length) addEducation();

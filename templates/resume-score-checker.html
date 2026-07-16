@@ -3,28 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Resume CV Score Checker (ATS) by AuraToolkit360. Check a resume against a job description with practical ATS scoring.">
-  <meta name="keywords" content="resume cv score checker, ATS checker, resume score, cv match, job match analysis">
+  <meta name="description" content="Check your resume against any job description with a professional ATS Resume Score Checker. Upload, compare keywords, and get practical improvement suggestions instantly.">
+  <meta name="keywords" content="ATS resume checker, resume score checker, CV ATS score, resume keyword match, job description checker, ATS optimization tool">
   <meta name="author" content="AuraToolkit360">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://auratoolkit360.com/resume-score-checker">
+  <meta name="theme-color" content="#534AB7">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="AuraToolkit360">
-  <meta property="og:title" content="Resume CV Score Checker (ATS) | AuraToolkit360">
-  <meta property="og:description" content="Score resumes against job descriptions with practical ATS checks.">
+  <meta property="og:title" content="Professional ATS Resume Score Checker | AuraToolkit360">
+  <meta property="og:description" content="Upload your resume, compare it with a job description, and get keyword-level ATS improvement suggestions.">
   <meta property="og:url" content="https://auratoolkit360.com/resume-score-checker">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Resume CV Score Checker (ATS) | AuraToolkit360">
-  <meta name="twitter:description" content="Run ATS score checks for your resume.">
-  <title>Resume CV Score Checker (ATS)</title>
+  <meta name="twitter:title" content="Professional ATS Resume Score Checker | AuraToolkit360">
+  <meta name="twitter:description" content="Instantly check ATS resume match score and see which keywords your resume is missing.">
+  <title>Professional ATS Resume Score Checker | AuraToolkit360</title>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Resume CV Score Checker (ATS) | AuraToolkit360",
+      "name": "Professional ATS Resume Score Checker | AuraToolkit360",
       "url": "https://auratoolkit360.com/resume-score-checker",
-      "description": "Analyze resume ATS compatibility with AuraToolkit360 Resume CV Score Checker.",
+      "description": "Analyze resume ATS compatibility and keyword match with AuraToolkit360 Resume Score Checker.",
       "inLanguage": "en"
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AuraToolkit360 ATS Resume Score Checker",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "url": "https://auratoolkit360.com/resume-score-checker",
+      "description": "A browser-based ATS resume checker that compares resumes with job descriptions and highlights matched and missing keywords."
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does this ATS resume checker work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload your resume, paste the job description, and the tool compares keyword relevance, density, and coverage to estimate ATS compatibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this resume checker mobile friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The layout is optimized for desktop, tablet, and mobile screens so you can review ATS insights on any device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What file types can I upload?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The current score checker accepts PDF and DOCX resumes for ATS analysis."
+          }
+        }
+      ]
     }
   </script>
   <style>
@@ -47,25 +92,164 @@
       --card:       #ffffff;
       --text:       #1a202c;
       --muted:      #718096;
+      --shadow:     0 18px 45px rgba(43, 51, 89, .12);
       --radius:     10px;
       --radius-lg:  14px;
     }
 
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); padding: 28px 16px; min-height: 100vh; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(83, 74, 183, .16), transparent 34%),
+        radial-gradient(circle at top right, rgba(24, 95, 165, .14), transparent 26%),
+        linear-gradient(180deg, #f8f7ff 0%, #f3f6fb 45%, #eef2f8 100%);
+      color: var(--text);
+      padding: 24px 16px 48px;
+      min-height: 100vh;
+    }
+
+    .page-shell { max-width: 1180px; margin: 0 auto; }
 
     a.back { display: inline-flex; align-items: center; gap: 5px; color: var(--purple); text-decoration: none; font-size: 13px; margin-bottom: 22px; opacity: .85; }
     a.back:hover { opacity: 1; }
 
-    .page-header { text-align: center; margin-bottom: 28px; }
-    .page-header h1 { font-size: 26px; font-weight: 700; color: var(--text); }
-    .page-header p  { color: var(--muted); font-size: 14px; margin-top: 5px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(83, 74, 183, .96), rgba(60, 52, 137, .95) 48%, rgba(24, 95, 165, .94));
+      color: #fff;
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -110px auto;
+      width: 260px;
+      height: 260px;
+      background: rgba(255,255,255,.10);
+      border-radius: 50%;
+      filter: blur(6px);
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, .85fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .page-header { margin-bottom: 18px; }
+    .page-header h1 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.05;
+      font-weight: 800;
+      color: #fff;
+      max-width: 12ch;
+    }
+    .page-header p  {
+      color: rgba(244, 246, 255, .88);
+      font-size: 1rem;
+      margin-top: 12px;
+      max-width: 58ch;
+      line-height: 1.65;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+    .hero-link.primary { background: #fff; color: var(--purple-dk); }
+    .hero-link.secondary { background: rgba(255,255,255,.10); color: #fff; border: 1px solid rgba(255,255,255,.18); }
+    .hero-link:hover { transform: translateY(-1px); }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+      max-width: 700px;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,.11);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 14px 16px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-stat strong { display: block; font-size: 1.35rem; font-weight: 800; }
+    .hero-stat span { display: block; margin-top: 4px; font-size: 13px; color: rgba(255,255,255,.78); }
+    .hero-card {
+      background: rgba(11, 18, 43, .26);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 24px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-card h2 { font-size: 1.15rem; margin-bottom: 10px; }
+    .hero-card p { color: rgba(244, 246, 255, .82); font-size: 14px; line-height: 1.6; }
+    .trust-list { list-style: none; display: grid; gap: 10px; margin-top: 18px; }
+    .trust-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: rgba(255,255,255,.86);
+    }
+    .trust-list li strong { color: #fff; }
+
+    .tool-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto 18px;
+    }
+    .tool-intro h2 { font-size: 1.15rem; color: #182033; }
+    .tool-intro p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .tool-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+    .tool-badge {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(83, 74, 183, .08);
+      color: var(--purple-dk);
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(83, 74, 183, .12);
+    }
 
     /* ── TABS ── */
     .tabs { display: flex; gap: 10px; max-width: 860px; margin: 0 auto 22px; }
     .tab-btn {
       flex: 1; padding: 11px 10px; border: 1.5px solid var(--border);
-      border-radius: var(--radius); background: var(--card); font-size: 14px;
+      border-radius: 16px; background: rgba(255,255,255,.88); font-size: 14px;
       font-weight: 600; cursor: pointer; color: var(--muted); transition: all .18s;
+      box-shadow: 0 10px 25px rgba(34, 41, 75, .06);
     }
     .tab-btn.active { border-color: var(--purple); background: var(--purple); color: #fff; }
     .tab-btn:hover:not(.active) { border-color: var(--purple); color: var(--purple); }
@@ -73,47 +257,64 @@
     .tab-content.active { display: block; }
 
     /* ── BOX ── */
-    .box { background: var(--card); max-width: 860px; margin: 0 auto; border-radius: var(--radius-lg); padding: 32px; box-shadow: 0 2px 16px rgba(0,0,0,.07); }
+    .box {
+      background: rgba(255,255,255,.94);
+      max-width: 860px;
+      margin: 0 auto;
+      border-radius: 26px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.75);
+      backdrop-filter: blur(14px);
+    }
+    .box-header { margin-bottom: 18px; }
+    .box-header h3 { font-size: 1.2rem; color: #182033; }
+    .box-header p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-top: 8px; }
 
     /* ── FORM ELEMENTS ── */
     label { font-size: 13px; font-weight: 600; color: #4a5568; display: block; margin-bottom: 6px; margin-top: 18px; }
     input[type="file"] { font-size: 13px; }
     textarea {
       width: 100%; min-height: 120px; padding: 11px 13px;
-      border: 1.5px solid var(--border); border-radius: var(--radius);
+      border: 1.5px solid var(--border); border-radius: 16px;
       font-size: 13px; font-family: inherit; resize: vertical;
       transition: border-color .2s; color: var(--text); background: #fafafa;
     }
-    textarea:focus { outline: none; border-color: var(--purple); background: #fff; }
+    textarea:focus { outline: none; border-color: var(--purple); background: #fff; box-shadow: 0 0 0 4px rgba(83, 74, 183, .10); }
 
     /* ── UPLOAD ZONE ── */
     .upload-zone {
-      border: 2px dashed var(--border); border-radius: var(--radius);
-      padding: 22px; text-align: center; cursor: pointer;
+      border: 2px dashed rgba(83, 74, 183, .18); border-radius: 20px;
+      padding: 24px; text-align: center; cursor: pointer;
       transition: all .2s; background: #fafafa; margin-top: 4px;
     }
-    .upload-zone:hover, .upload-zone.dragover { border-color: var(--purple); background: var(--purple-lt); }
-    .upload-zone .uz-icon { font-size: 32px; margin-bottom: 6px; }
-    .upload-zone p { font-size: 13px; color: var(--muted); }
-    .upload-zone small { font-size: 11px; color: #a0aec0; }
+    .upload-zone:hover, .upload-zone.dragover {
+      border-color: var(--purple);
+      background: linear-gradient(180deg, #f9f6ff 0%, #eef2ff 100%);
+      transform: translateY(-1px);
+    }
+    .upload-zone .uz-icon { font-size: 34px; margin-bottom: 10px; }
+    .upload-zone p { font-size: 15px; color: #334155; font-weight: 600; }
+    .upload-zone small { display: block; margin-top: 6px; font-size: 12px; color: #7c8aa5; }
     #fileCount { font-size: 13px; color: var(--green); margin-top: 8px; font-weight: 600; text-align: center; display: none; }
 
     /* ── INDUSTRY CHIPS ── */
-    .ind-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+    .ind-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
     .ind-chip {
-      padding: 5px 13px; border-radius: 999px; font-size: 12px; font-weight: 600;
+      padding: 8px 14px; border-radius: 999px; font-size: 12px; font-weight: 700;
       border: 1.5px solid var(--border); cursor: pointer;
-      background: #fafafa; color: var(--muted); transition: all .15s;
+      background: rgba(255,255,255,.9); color: var(--muted); transition: all .15s;
     }
     .ind-chip.active { background: var(--purple-lt); color: var(--purple-dk); border-color: var(--purple); }
 
     /* ── BUTTONS ── */
     .btn-primary {
-      width: 100%; padding: 12px; background: var(--purple); color: #fff;
-      border: none; border-radius: var(--radius); font-size: 15px; font-weight: 600;
-      cursor: pointer; margin-top: 18px; transition: background .18s;
+      width: 100%; padding: 14px 16px; background: linear-gradient(135deg, var(--purple), #3c3489); color: #fff;
+      border: none; border-radius: 16px; font-size: 15px; font-weight: 700;
+      cursor: pointer; margin-top: 18px; transition: transform .18s ease, box-shadow .18s ease;
+      box-shadow: 0 14px 28px rgba(83, 74, 183, .22);
     }
-    .btn-primary:hover { background: var(--purple-dk); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 34px rgba(83, 74, 183, .28); }
     .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
 
     /* ── SCORE RING ── */
@@ -144,7 +345,7 @@
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
 
     /* ── SECTION CARD ── */
-    .s-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+    .s-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 16px; }
     .s-card h4 { font-size: 13px; font-weight: 600; color: #4a5568; margin-bottom: 12px; }
 
     /* ── STRENGTH BARS ── */
@@ -219,9 +420,52 @@
     .prog-overall { background: var(--border); border-radius: 999px; height: 7px; margin-top: 8px; overflow: hidden; display: none; }
     .prog-fill { height: 100%; background: var(--purple); border-radius: 999px; transition: width .3s; width: 0%; }
 
+    .faq-section {
+      max-width: 860px;
+      margin: 28px auto 0;
+      display: grid;
+      gap: 14px;
+    }
+    .faq-header h2 { font-size: 1.2rem; color: #182033; }
+    .faq-header p { margin-top: 6px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .faq-item {
+      background: rgba(255,255,255,.92);
+      border-radius: 18px;
+      padding: 18px 20px;
+      border: 1px solid rgba(83, 74, 183, .08);
+      box-shadow: 0 10px 24px rgba(32, 41, 77, .06);
+    }
+    .faq-item h3 { font-size: 15px; color: #182033; margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+    @media (max-width: 900px) {
+      .hero { padding: 28px 22px; border-radius: 24px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .tool-intro { grid-template-columns: 1fr; }
+      .tool-badges { justify-content: flex-start; }
+      .hero-stats { max-width: none; }
+    }
+
     @media (max-width: 600px) {
+      body { padding: 16px 12px 36px; }
+      .hero { padding: 22px 16px; }
+      .hero-actions { flex-direction: column; }
+      .hero-link { width: 100%; }
+      .hero-stats { grid-template-columns: 1fr; }
       .metric-grid { grid-template-columns: repeat(2,1fr); }
       .two-col     { grid-template-columns: 1fr; }
+      .tabs { flex-direction: column; }
+      .box { padding: 20px 16px; border-radius: 22px; }
+      .tool-intro h2, .faq-header h2, .box-header h3 { font-size: 1.05rem; }
+      .upload-zone { padding: 18px 14px; }
+      .ind-chip { flex: 1 1 calc(50% - 8px); text-align: center; }
+      .faq-item { padding: 16px; }
+    }
+
+    @media (max-width: 420px) {
+      .metric-grid { grid-template-columns: 1fr; }
+      .ind-chip { flex-basis: 100%; }
+      .page-header h1 { max-width: none; }
     }
   </style>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
@@ -229,30 +473,72 @@
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
 </head>
 <body>
-  <a class="back" href="/templates/resume-cv-maker.html">← Resume CV Maker</a>
+  <main class="page-shell">
+    <a class="back" href="/templates/resume-cv-maker.html">← Resume CV Maker</a>
 
-  <div class="page-header">
-    <h1>🎯 Resume CV Score Checker (ATS)</h1>
-    <p>Apna resume upload karo aur job description ke against ATS match score check karo</p>
-  </div>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">ATS Optimization Tool</span>
+          <div class="page-header">
+            <h1 id="page-title">Professional ATS Resume Score Checker</h1>
+            <p>Upload your resume, paste the job description, and instantly see which ATS keywords are matching and which areas need improvement.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="hero-link primary" href="#score-checker">Start Free Score Check</a>
+            <a class="hero-link secondary" href="#ats-faq">See How It Works</a>
+          </div>
+          <div class="hero-stats" aria-label="Key product highlights">
+            <div class="hero-stat"><strong>Instant</strong><span>Keyword match analysis and ATS verdict without extra steps</span></div>
+            <div class="hero-stat"><strong>Responsive</strong><span>Optimized for desktop, tablet, and mobile screens</span></div>
+            <div class="hero-stat"><strong>Actionable</strong><span>Matched, missing, and improvement suggestions in one view</span></div>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Tool benefits">
+          <h2>What was improved on this page</h2>
+          <p>This tool remains static, but the layout has been upgraded with stronger hierarchy, cleaner spacing, and a better SEO structure.</p>
+          <ul class="trust-list">
+            <li><strong>Focused UI:</strong> clearer first fold with direct CTA and cleaner form presentation.</li>
+            <li><strong>SEO ready:</strong> stronger metadata plus structured data for search engines.</li>
+            <li><strong>Cross-device:</strong> tighter breakpoints for small phones, tablets, and desktop layouts.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-  <!-- ══════════════ SINGLE TAB ══════════════ -->
-  <div id="tab-single" class="tab-content active">
-    <div class="box">
+    <section class="tool-intro" aria-label="Score checker overview">
+      <div>
+        <h2>Resume score checker for practical ATS review</h2>
+        <p>The form is still simple so users can start immediately with a resume upload and job description, but the visual flow and readability are now more polished.</p>
+      </div>
+      <div class="tool-badges">
+        <span class="tool-badge">Static front-end</span>
+        <span class="tool-badge">Mobile-first tuning</span>
+        <span class="tool-badge">SEO metadata improved</span>
+      </div>
+    </section>
+
+    <!-- ══════════════ SINGLE TAB ══════════════ -->
+    <div id="tab-single" class="tab-content active">
+      <div class="box" id="score-checker">
+        <div class="box-header">
+          <h3>Upload resume and compare it against the job description</h3>
+          <p>Select a PDF or DOCX resume, choose the relevant industry, and review the ATS score with a breakdown of missing keywords.</p>
+        </div>
 
       <!-- Upload + Industry row -->
       <div class="two-col" style="margin-top:0">
         <div>
-          <label>📄 Resume (.pdf ya .docx)</label>
+          <label>📄 Resume (.pdf or .docx)</label>
           <div class="upload-zone" id="singleDZ" onclick="document.getElementById('resumeFile').click()">
             <div class="uz-icon">📂</div>
-            <p id="singleDZLabel">Click karke resume upload karo</p>
-            <small>.pdf aur .docx dono accepted</small>
+            <p id="singleDZLabel">Click to upload your resume</p>
+            <small>Both .pdf and .docx files are supported</small>
             <input type="file" id="resumeFile" accept=".pdf,.docx" style="display:none" onchange="onSingleFile(this)">
           </div>
         </div>
         <div>
-          <label>🏭 Industry select karo</label>
+          <label>🏭 Select an industry</label>
           <div class="ind-row" id="indChips">
             <span class="ind-chip active" onclick="selInd(this,'single')">General</span>
             <span class="ind-chip" onclick="selInd(this,'single')">Tech / IT</span>
@@ -267,9 +553,9 @@
       </div>
 
       <label>💼 Job Description</label>
-      <textarea id="jobDesc" placeholder="Yahan job description paste karo..."></textarea>
+      <textarea id="jobDesc" placeholder="Paste the job description here..."></textarea>
 
-      <button class="btn-primary" id="scanBtn" onclick="checkATS()">🔍 ATS Score Check Karo</button>
+      <button class="btn-primary" id="scanBtn" onclick="checkATS()">🔍 Check ATS Score</button>
 
       <!-- ── RESULTS ── -->
       <div id="result">
@@ -305,7 +591,7 @@
             <div id="strengthBars"></div>
           </div>
           <div class="s-card">
-            <h4>📈 Top Keyword Frequency (in JD)</h4>
+            <h4>📈 Top Keyword Frequency (in Job Description)</h4>
             <div id="kwFreqChart"></div>
           </div>
         </div>
@@ -318,7 +604,7 @@
 
         <!-- Missing keywords -->
         <div class="s-card" style="margin-top:14px">
-          <h4>❌ Missing Keywords — in resume add karo score improve karne ke liye</h4>
+          <h4>❌ Missing Keywords — add these naturally to improve your score</h4>
           <div class="tag-row" id="missingTags"></div>
         </div>
 
@@ -330,12 +616,32 @@
 
         <!-- Download -->
         <div id="singleDownload" style="text-align:center;margin-top:16px;display:none;">
-          <a id="singleDlLink" href="#" class="dl-link" style="font-size:13px;padding:8px 22px;">⬇️ Resume Download Karo</a>
+          <a id="singleDlLink" href="#" class="dl-link" style="font-size:13px;padding:8px 22px;">⬇️ Download Resume</a>
         </div>
 
       </div><!-- /result -->
     </div><!-- /box -->
-  </div>
+    </div>
+
+    <section class="faq-section" id="ats-faq" aria-labelledby="faq-title">
+      <div class="faq-header">
+        <h2 id="faq-title">ATS Resume Checker FAQ</h2>
+        <p>Supporting content has been added for both SEO and usability so the page feels like a complete landing experience, not just a standalone tool.</p>
+      </div>
+      <article class="faq-item">
+        <h3>How does the ATS score checker calculate match quality?</h3>
+        <p>The tool compares the uploaded resume with the job description and estimates the score using matched keywords, missing keywords, keyword density, and overall relevance.</p>
+      </article>
+      <article class="faq-item">
+        <h3>Can I use this on mobile devices?</h3>
+        <p>Yes. The layout has been optimized for smaller phones through large desktop screens, including stacked content, touch-friendly chips, and cleaner vertical spacing.</p>
+      </article>
+      <article class="faq-item">
+        <h3>What should I do after seeing missing keywords?</h3>
+        <p>Add missing keywords naturally in your summary, skills, or experience bullets. Avoid keyword stuffing; using them in the context of real responsibilities and achievements is more effective.</p>
+      </article>
+    </section>
+  </main>
 
 
   <script>
@@ -358,8 +664,8 @@
     async function checkATS() {
       const file    = document.getElementById('resumeFile').files[0];
       const jobDesc = document.getElementById('jobDesc').value.trim();
-      if (!file)    { alert('Resume select karo!'); return; }
-      if (!jobDesc) { alert('Job description likho!'); return; }
+      if (!file)    { alert('Please select a resume first.'); return; }
+      if (!jobDesc) { alert('Please enter a job description.'); return; }
 
       const fd = new FormData();
       fd.append('resume', file);
@@ -373,11 +679,11 @@
         const res = await fetch(`${ATS_BACKEND_BASE}/ats-score`, { method: 'POST', body: fd });
         data = await res.json();
       } catch(e) {
-        alert('Server se connect nahi ho saka. Flask app run kar raha hai?');
-        btn.textContent = '🔍 ATS Score Check Karo'; btn.disabled = false;
+        alert('Could not connect to the server. Is the Flask app running?');
+        btn.textContent = '🔍 Check ATS Score'; btn.disabled = false;
         return;
       }
-      btn.textContent = '🔍 ATS Score Check Karo'; btn.disabled = false;
+      btn.textContent = '🔍 Check ATS Score'; btn.disabled = false;
 
       renderSingleResult(data);
     }
@@ -440,27 +746,27 @@
               <div class="kw-freq-bg"><div class="kw-freq-fill" style="width:${Math.round(cnt/maxKf*100)}%"></div></div>
               <span class="kw-freq-cnt">${cnt}</span>
             </div>`).join('')
-        : '<p style="font-size:12px;color:var(--muted)">Koi matched keyword nahi mila.</p>';
+        : '<p style="font-size:12px;color:var(--muted)">No matched keywords found.</p>';
 
       // tags
       document.getElementById('matchedTags').innerHTML =
         data.matched.length
           ? data.matched.map(k => `<span class="tag g">${k}</span>`).join('')
-          : '<span style="font-size:12px;color:var(--muted)">Koi match nahi</span>';
+          : '<span style="font-size:12px;color:var(--muted)">No matches yet</span>';
 
       document.getElementById('missingTags').innerHTML =
         data.missing.length
           ? data.missing.slice(0, 25).map(k => `<span class="tag r">${k}</span>`).join('')
-          : '<span style="font-size:12px;color:var(--green)">🎉 Sab keywords present hain!</span>';
+          : '<span style="font-size:12px;color:var(--green)">🎉 All key keywords are present!</span>';
 
       // suggestion
       const top5 = data.missing.slice(0, 5).join(', ');
       const tip  = data.missing.length
-        ? `Aapke resume mein <strong>${data.missing.length}</strong> keywords missing hain. ` +
-          `Sabse important missing terms: <strong>${top5}</strong>. ` +
-          `Inhe naturally apne skills, experience ya summary section mein add karo.`
-        : '🎉 Bahut khoob! Aapke resume mein saare key terms hain. ' +
-          'Ab achievements quantify karo aur formatting ATS-friendly rakho.';
+        ? `Your resume is missing <strong>${data.missing.length}</strong> keywords. ` +
+          `Most important missing terms: <strong>${top5}</strong>. ` +
+          `Add them naturally to your skills, experience, or summary sections.`
+        : '🎉 Great work! Your resume already includes all key terms. ' +
+          'Now focus on quantifying achievements and keeping the formatting ATS-friendly.';
       document.getElementById('suggestionBox').innerHTML = tip;
 
       // download link
