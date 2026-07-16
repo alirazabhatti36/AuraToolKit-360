@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Resume CV Score Checker (ATS) by AuraToolkit360. Check single or bulk resumes against job description with practical scoring.">
+  <meta name="description" content="Resume CV Score Checker (ATS) by AuraToolkit360. Check a resume against a job description with practical ATS scoring.">
   <meta name="keywords" content="resume cv score checker, ATS checker, resume score, cv match, job match analysis">
   <meta name="author" content="AuraToolkit360">
   <meta name="robots" content="index,follow,max-image-preview:large">
@@ -11,11 +11,11 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="AuraToolkit360">
   <meta property="og:title" content="Resume CV Score Checker (ATS) | AuraToolkit360">
-  <meta property="og:description" content="Score resumes against job descriptions with single and bulk ATS checks.">
+  <meta property="og:description" content="Score resumes against job descriptions with practical ATS checks.">
   <meta property="og:url" content="https://auratoolkit360.com/resume-score-checker">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Resume CV Score Checker (ATS) | AuraToolkit360">
-  <meta name="twitter:description" content="Run ATS score checks for single or bulk resumes.">
+  <meta name="twitter:description" content="Run ATS score checks for your resume.">
   <title>Resume CV Score Checker (ATS)</title>
   <script type="application/ld+json">
     {
@@ -233,12 +233,7 @@
 
   <div class="page-header">
     <h1>🎯 Resume CV Score Checker (ATS)</h1>
-    <p>Single resume check karo ya bulk mein 300 tak resumes filter karo</p>
-  </div>
-
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('single', this)">🔍 Single Resume</button>
-    <button class="tab-btn" onclick="switchTab('bulk', this)">📁 Bulk Scan</button>
+    <p>Apna resume upload karo aur job description ke against ATS match score check karo</p>
   </div>
 
   <!-- ══════════════ SINGLE TAB ══════════════ -->
@@ -342,78 +337,8 @@
     </div><!-- /box -->
   </div>
 
-  <!-- ══════════════ BULK TAB ══════════════ -->
-  <div id="tab-bulk" class="tab-content">
-    <div class="box">
-
-      <label>📁 Multiple Resumes Upload Karo (max 300)</label>
-      <div class="upload-zone" id="dropZone" onclick="document.getElementById('bulkFiles').click()">
-        <div class="uz-icon">📂</div>
-        <p id="dropLabel">Click karo ya files yahan drag karo</p>
-        <small>.pdf aur .docx dono accepted</small>
-        <input type="file" id="bulkFiles" accept=".pdf,.docx" multiple style="display:none" onchange="onBulkFilesSelected(this.files)">
-      </div>
-      <div id="fileCount"></div>
-
-      <label>💼 Job Description</label>
-      <textarea id="bulkJobDesc" placeholder="Yahan job description paste karo — sab resumes iske against check honge..."></textarea>
-
-      <div class="filter-row">
-        <label>Minimum Score:</label>
-        <input type="range" id="minScore" min="0" max="90" value="20" step="1"
-               oninput="document.getElementById('minScoreVal').textContent=this.value+'%'">
-        <span id="minScoreVal" class="min-score-val">20%</span>
-        <label style="margin-left:10px;">Sort:</label>
-        <select class="sort-sel" id="sortOrder">
-          <option value="desc">Highest First</option>
-          <option value="asc">Lowest First</option>
-        </select>
-      </div>
-
-      <button class="btn-primary" id="bulkBtn" onclick="runBulkATS()">🚀 Bulk Scan Shuru Karo</button>
-
-      <div class="proc-info" id="processingInfo">
-        ⏳ Processing... <span id="processedCount">0</span> / <span id="totalCount">0</span> resumes
-      </div>
-      <div class="prog-overall" id="overallBar">
-        <div class="prog-fill" id="overallFill"></div>
-      </div>
-
-      <div id="bulkResult">
-        <div class="result-head">
-          <h3>📊 Scan Results</h3>
-          <button class="btn-csv" onclick="downloadCSV()">⬇️ CSV Download Karo</button>
-        </div>
-        <div class="stats-row" id="statsRow"></div>
-        <div style="overflow-x:auto;">
-          <table class="bulk-tbl" id="resultTable">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Resume File</th>
-                <th>ATS Score</th>
-                <th>Matched</th>
-                <th>Missing</th>
-                <th>Verdict</th>
-              </tr>
-            </thead>
-            <tbody id="resultBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
   <script>
-    // ── tab switching ──
-    function switchTab(name, btn) {
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('tab-' + name).classList.add('active');
-      btn.classList.add('active');
-    }
-
     // ── industry chips ──
     function selInd(el) {
       el.closest('.ind-row').querySelectorAll('.ind-chip').forEach(c => c.classList.remove('active'));
@@ -423,23 +348,6 @@
     // ── single file ──
     function onSingleFile(inp) {
       if (inp.files[0]) document.getElementById('singleDZLabel').textContent = inp.files[0].name;
-    }
-
-    // ── drag & drop (bulk) ──
-    const dropZone = document.getElementById('dropZone');
-    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
-    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
-    dropZone.addEventListener('drop', e => {
-      e.preventDefault(); dropZone.classList.remove('dragover');
-      onBulkFilesSelected(e.dataTransfer.files);
-    });
-
-    let selectedFiles = [];
-    function onBulkFilesSelected(files) {
-      selectedFiles = Array.from(files).filter(f => f.name.match(/\.(pdf|docx)$/i)).slice(0, 300);
-      const fc = document.getElementById('fileCount');
-      fc.textContent = `✅ ${selectedFiles.length} resume(s) selected`;
-      fc.style.display = 'block';
     }
 
     // ─────────────────────────────────────────
@@ -567,119 +475,6 @@
       document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // ─────────────────────────────────────────
-    //  BULK ATS
-    // ─────────────────────────────────────────
-    let bulkResults = [];
-
-    async function runBulkATS() {
-      if (!selectedFiles.length) { alert('Pehle resumes select karo!'); return; }
-      const jobDesc = document.getElementById('bulkJobDesc').value.trim();
-      if (!jobDesc) { alert('Job description likho!'); return; }
-
-      const btn = document.getElementById('bulkBtn');
-      btn.disabled = true; btn.textContent = '⏳ Scanning...';
-      document.getElementById('processingInfo').style.display = 'block';
-      document.getElementById('overallBar').style.display = 'block';
-      document.getElementById('totalCount').textContent = selectedFiles.length;
-      document.getElementById('bulkResult').style.display = 'none';
-
-      bulkResults = [];
-
-      for (let i = 0; i < selectedFiles.length; i++) {
-        const file = selectedFiles[i];
-        document.getElementById('processedCount').textContent = i + 1;
-        document.getElementById('overallFill').style.width = Math.round((i+1)/selectedFiles.length*100) + '%';
-        try {
-          const fd = new FormData();
-          fd.append('resume', file);
-          fd.append('job_desc', jobDesc);
-          const res  = await fetch(`${ATS_BACKEND_BASE}/ats-score`, { method: 'POST', body: fd });
-          const data = await res.json();
-          bulkResults.push({
-            name:    data.filename || file.name,
-            score:   data.score,
-            grade:   data.grade || '–',
-            matched: data.matched,
-            missing: data.missing,
-          });
-        } catch(e) {
-          bulkResults.push({ name: file.name, score: 0, grade: 'D', matched: [], missing: [] });
-        }
-      }
-
-      btn.disabled = false; btn.textContent = '🚀 Bulk Scan Shuru Karo';
-      document.getElementById('processingInfo').style.display = 'none';
-      renderBulkResults();
-    }
-
-    function renderBulkResults() {
-      const minScore  = parseInt(document.getElementById('minScore').value);
-      const sortOrder = document.getElementById('sortOrder').value;
-      const sorted = [...bulkResults].sort((a, b) => sortOrder === 'desc' ? b.score - a.score : a.score - b.score);
-
-      const above    = sorted.filter(r => r.score >= minScore).length;
-      const below    = sorted.length - above;
-      const avgScore = sorted.length ? Math.round(sorted.reduce((s, r) => s + r.score, 0) / sorted.length) : 0;
-      const topScore = sorted.length ? Math.max(...sorted.map(r => r.score)) : 0;
-
-      document.getElementById('statsRow').innerHTML = `
-        <div class="stat-box"><div class="snum" style="color:var(--purple)">${sorted.length}</div><div class="slbl">Total Resumes</div></div>
-        <div class="stat-box"><div class="snum" style="color:var(--green)">${above}</div><div class="slbl">Score ≥ ${minScore}%</div></div>
-        <div class="stat-box"><div class="snum" style="color:var(--red)">${below}</div><div class="slbl">Score < ${minScore}%</div></div>
-        <div class="stat-box"><div class="snum" style="color:var(--amber)">${avgScore}%</div><div class="slbl">Average Score</div></div>
-        <div class="stat-box"><div class="snum" style="color:var(--green)">${topScore}%</div><div class="slbl">Top Score</div></div>`;
-
-      let html = '';
-      sorted.forEach((r, idx) => {
-        const show  = r.score >= minScore;
-        const color = scoreColor(r.score);
-        const verdict =
-          r.score >= 70 ? `<span style="padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;background:var(--green-lt);color:var(--green)">Excellent Fit ⭐</span>` :
-          r.score >= 50 ? `<span style="padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;background:var(--blue-lt);color:var(--blue)">Good Match 👍</span>` :
-          r.score >= 30 ? `<span style="padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;background:var(--amber-lt);color:var(--amber)">Average ⚠️</span>` :
-                          `<span style="padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;background:var(--red-lt);color:var(--red)">Low Match ❌</span>`;
-        const rank = idx + 1;
-        const bc   = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
-        html += `<tr class="${show ? '' : 'filtered-out'}">
-          <td><span class="rank-badge ${bc}">${rank}</span></td>
-          <td>
-            <div class="fname-cell" title="${r.name}">📄 ${r.name}</div>
-            <a href="/download-resume/${encodeURIComponent(r.name)}" class="dl-link" download>⬇️ Download</a>
-          </td>
-          <td>
-            <div class="mini-bar-wrap">
-              <div class="mini-bar"><div class="mini-fill" style="width:${r.score}%;background:${color}"></div></div>
-              <span style="font-weight:700;font-size:14px;color:${color}">${r.score}%</span>
-              <span style="font-size:11px;color:var(--muted)">${r.grade}</span>
-            </div>
-          </td>
-          <td><span style="color:var(--green);font-weight:700">${r.matched.length}</span> keywords</td>
-          <td><span style="color:var(--red);font-weight:700">${r.missing.length}</span> missing</td>
-          <td>${verdict}</td>
-        </tr>`;
-      });
-      document.getElementById('resultBody').innerHTML = html;
-      document.getElementById('bulkResult').style.display = 'block';
-    }
-
-    document.getElementById('minScore').addEventListener('input', () => { if (bulkResults.length) renderBulkResults(); });
-    document.getElementById('sortOrder').addEventListener('change', () => { if (bulkResults.length) renderBulkResults(); });
-
-    function downloadCSV() {
-      const minScore  = parseInt(document.getElementById('minScore').value);
-      const sortOrder = document.getElementById('sortOrder').value;
-      const sorted    = [...bulkResults].sort((a, b) => sortOrder === 'desc' ? b.score - a.score : a.score - b.score);
-      const filtered  = sorted.filter(r => r.score >= minScore);
-      let csv = 'Rank,File Name,ATS Score,Grade,Matched Keywords,Missing Keywords,Verdict\n';
-      filtered.forEach((r, i) => {
-        const verdict = r.score>=70?'Excellent Fit':r.score>=50?'Good Match':r.score>=30?'Average Match':'Low Match';
-        csv += `${i+1},"${r.name}",${r.score}%,${r.grade},"${r.matched.join(', ')}","${r.missing.join(', ')}","${verdict}"\n`;
-      });
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const a    = document.createElement('a');
-      a.href = URL.createObjectURL(blob); a.download = 'ats_bulk_results.csv'; a.click();
-    }
   </script>
 </body>
 </html>
