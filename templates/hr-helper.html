@@ -609,11 +609,16 @@
             const keywords = extractKeywords(jobDesc);
             const average = results.length ? Math.round(results.reduce((sum, item) => sum + item.score, 0) / results.length) : 0;
             const best = results.length ? Math.max(...results.map(item => item.score)) : 0;
-            const reportHeadline = results.length
-                ? `${results.filter(item => item.score >= 60).length} strong matches`
-                : 'Waiting';
+            const strongMatches = results.filter(item => item.score >= 60).length;
+            const reportHeadline = !results.length
+                ? 'Waiting'
+                : strongMatches > 0
+                    ? `${strongMatches} strong matches`
+                    : `Best fit ${best}%`;
             const focusCopy = results.length
-                ? `Processed ${results.length} resume(s) against ${keywords.length} unique job description keywords.`
+                ? strongMatches > 0
+                    ? `Processed ${results.length} resume(s) against ${keywords.length} unique job description keywords.`
+                    : `Processed ${results.length} resume(s). No profile crossed the strong-match threshold yet, but the best file scored ${best}%.`
                 : 'Upload resumes and add a job description to generate a match report.';
 
             document.getElementById('reportKeywords').textContent = keywords.length;
@@ -775,6 +780,11 @@
             const jobTitle = getSelectedJobTitle();
             const jobDesc = document.getElementById('jobDesc').value.trim();
             if (!jobDesc) { alert('Please paste job description!'); return; }
+
+            document.getElementById('minScore').value = '0';
+            document.getElementById('statusFilter').value = 'all';
+            document.getElementById('sortOrder').value = 'desc';
+            updateFilter();
 
             scanState = 'running';
             updateScanControls();
