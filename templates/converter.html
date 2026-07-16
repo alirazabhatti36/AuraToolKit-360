@@ -427,6 +427,9 @@
     <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
     <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/tesseract.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
     <script>
         const BACKEND_BASE_URL = 'https://auratoolkit-360.onrender.com';
@@ -805,6 +808,51 @@
             downloadBlob(outBlob, 'flipped.png');
         }
 
+        async function recognizeImageText(file) {
+            if (!window.Tesseract) throw new Error('OCR library not loaded');
+            const result = await window.Tesseract.recognize(file, 'eng');
+            const text = (result?.data?.text || '').trim();
+            if (!text) {
+                throw new Error('No OCR text detected in the image.');
+            }
+            return text;
+        }
+
+        async function handleOcrToTextClient(form) {
+            const file = readSingleFile(form);
+            const text = await recognizeImageText(file);
+            downloadBlob(new Blob([text], { type: 'text/plain;charset=utf-8' }), 'ocr_text.txt');
+        }
+
+        async function handleImageToWordClient(form) {
+            if (!window.docx || !window.docx.Packer) throw new Error('docx library not loaded');
+            const file = readSingleFile(form);
+            const text = await recognizeImageText(file);
+            const paragraphs = text.split(/\r?\n+/).map(line => line.trim()).filter(Boolean);
+            const children = [
+                new docx.Paragraph({ text: 'Extracted Text', heading: docx.HeadingLevel.HEADING_1 }),
+                ...paragraphs.map(line => new docx.Paragraph({ text: line }))
+            ];
+            const document = new docx.Document({ sections: [{ children }] });
+            const blob = await docx.Packer.toBlob(document);
+            downloadBlob(blob, 'converted.docx');
+        }
+
+        async function handleImageToExcelClient(form) {
+            if (!window.XLSX) throw new Error('XLSX library not loaded');
+            const file = readSingleFile(form);
+            const text = await recognizeImageText(file);
+            const rows = text
+                .split(/\r?\n+/)
+                .map(line => line.split(/\t| {2,}/).map(cell => cell.trim()).filter(Boolean))
+                .filter(row => row.length > 0);
+            const sheet = XLSX.utils.aoa_to_sheet(rows.length ? rows : [[text]]);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, sheet, 'OCR');
+            const out = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+            downloadBlob(new Blob([out], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), 'converted.xlsx');
+        }
+
         const clientSideHandlers = {
             '/merge-pdf': handleMergePdfClient,
             '/split-pdf': handleSplitPdfClient,
@@ -822,7 +870,10 @@
             '/csv-to-json': handleCsvToJsonClient,
             '/json-to-csv': handleJsonToCsvClient,
             '/json-formatter': handleJsonFormatterClient,
-            '/flip-image': handleFlipImageClient
+            '/flip-image': handleFlipImageClient,
+            '/image-to-word': handleImageToWordClient,
+            '/image-to-excel': handleImageToExcelClient,
+            '/ocr-to-text': handleOcrToTextClient
         };
 
         function submitToBackend(form, path) {

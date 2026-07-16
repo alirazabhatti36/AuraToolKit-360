@@ -9,6 +9,7 @@ import time
 import csv
 import html
 import textwrap
+import xml.etree.ElementTree as ET
 
 # --- LinkedIn Optimizer import HATAYA ---
 # from linkedin_optimizer import analyze_linkedin_profile, fetch_profile_from_url
@@ -83,6 +84,11 @@ BLOG_POST_TEMPLATES = {
     'pdf-to-word-formatting-fixes': 'blog/pdf-to-word-formatting-fixes.html',
     'hr-shortlisting-checklist-small-teams': 'blog/hr-shortlisting-checklist-small-teams.html',
     'privacy-first-file-conversion-guide': 'blog/privacy-first-file-conversion-guide.html',
+    'best-converter-tool-for-all-files-2026': 'blog/best-converter-tool-for-all-files-2026.html',
+    'best-resume-cv-maker-tool-ats-friendly-2026': 'blog/best-resume-cv-maker-tool-ats-friendly-2026.html',
+    'how-to-make-job-getting-resume-cv-2026': 'blog/how-to-make-job-getting-resume-cv-2026.html',
+    'free-hr-screening-helper-2026': 'blog/free-hr-screening-helper-2026.html',
+    'best-resume-score-checker-2026': 'blog/best-resume-score-checker-2026.html',
 }
 
 def save(file, name):
@@ -167,6 +173,106 @@ def extract_text_from_supported_file(path, ext=None):
                             continue
         return '\n'.join(filter(None, combined_text))
     return ''
+
+def read_excel_workbook(path):
+    pd = importlib.import_module('pandas')
+    ext = os.path.splitext(path)[1].lower()
+    engine = 'xlrd' if ext == '.xls' else 'openpyxl'
+    return pd.read_excel(path, sheet_name=None, engine=engine, dtype=str)
+
+def read_excel_first_sheet(path):
+    workbook = read_excel_workbook(path)
+    first_sheet = next(iter(workbook.values()), None)
+    return first_sheet if first_sheet is not None else None
+
+def workbook_to_lines(path):
+    sheets = read_excel_workbook(path)
+    lines = []
+    for sheet_name, dataframe in sheets.items():
+        lines.append(f'Sheet: {sheet_name}')
+        if dataframe is None or dataframe.empty:
+            lines.append('(empty sheet)')
+        else:
+            headers = [str(column) for column in dataframe.columns.tolist()]
+            if headers:
+                lines.append(' | '.join(headers))
+            for _, row in dataframe.fillna('').iterrows():
+                row_values = [str(value) for value in row.tolist()]
+                lines.append(' | '.join(row_values))
+        lines.append('')
+    return lines
+
+def extract_text_from_rtf(path):
+    with open(path, 'r', encoding='utf-8', errors='ignore') as f:
+        raw = f.read()
+    raw = raw.replace('\r\n', '\n')
+    raw = re.sub(r"\\'[0-9a-fA-F]{2}", lambda match: chr(int(match.group(0)[2:], 16)), raw)
+    raw = re.sub(r'\\par[d]?', '\n', raw)
+    raw = re.sub(r'\\[a-zA-Z]+-?\d*\s?', '', raw)
+    raw = raw.replace('{', '').replace('}', '')
+    raw = re.sub(r'\n{3,}', '\n\n', raw)
+    raw = re.sub(r'[ \t]{2,}', ' ', raw)
+    return raw.strip()
+
+def extract_text_from_pptx(path):
+    slide_texts = []
+    slide_pattern = re.compile(r'ppt/slides/slide(\d+)\.xml$')
+    with zipfile.ZipFile(path, 'r') as archive:
+        slide_names = sorted(
+            [name for name in archive.namelist() if slide_pattern.search(name)],
+            key=lambda name: int(slide_pattern.search(name).group(1))
+        )
+        for slide_name in slide_names:
+            try:
+                root = ET.fromstring(archive.read(slide_name))
+                text_nodes = [node.text.strip() for node in root.iter() if node.tag.endswith('}t') and node.text and node.text.strip()]
+                if text_nodes:
+                    slide_texts.append('\n'.join(text_nodes))
+            except Exception:
+                continue
+    return '\n\n'.join(slide_texts)
+
+def render_lines_to_pdf(lines, output_pdf_path, title='Converted Document'):
+    reportlab_canvas = importlib.import_module('reportlab.pdfgen.canvas')
+    reportlab_pagesizes = importlib.import_module('reportlab.lib.pagesizes')
+    pdfmetrics = importlib.import_module('reportlab.pdfbase.pdfmetrics')
+
+    page_width, page_height = reportlab_pagesizes.A4
+    canvas = reportlab_canvas.Canvas(output_pdf_path, pagesize=reportlab_pagesizes.A4)
+    canvas.setTitle(title)
+
+    font_name = 'Helvetica'
+    font_size = 11
+    line_height = 14
+    margin_x = 40
+    margin_y = 40
+    y = page_height - margin_y
+    canvas.setFont(font_name, font_size)
+
+    max_line_width = page_width - (2 * margin_x)
+    avg_char_width = max(pdfmetrics.stringWidth('M', font_name, font_size), 1)
+    wrap_width = max(40, int(max_line_width / avg_char_width))
+
+    source_lines = lines or ['']
+    for raw_line in source_lines:
+        paragraphs = textwrap.wrap(raw_line.strip(), width=wrap_width) if raw_line and raw_line.strip() else ['']
+        for line in paragraphs:
+            if y <= margin_y:
+                canvas.showPage()
+                canvas.setFont(font_name, font_size)
+                y = page_height - margin_y
+            canvas.drawString(margin_x, y, line)
+            y -= line_height
+
+    canvas.save()
+
+def render_text_to_docx(text, output_docx_path, title='Converted Document'):
+    docx = importlib.import_module('docx')
+    document = docx.Document()
+    document.add_heading(title, level=0)
+    for paragraph in (text or '').split('\n'):
+        document.add_paragraph(paragraph.strip() if paragraph.strip() else '')
+    document.save(output_docx_path)
 
 def render_docx_text_to_pdf(docx_path, output_pdf_path):
     reportlab_canvas = importlib.import_module('reportlab.pdfgen.canvas')
@@ -507,54 +613,66 @@ def pdf_to_word():
 
 @app.route('/ppt-to-pdf', methods=['POST'])
 def ppt_to_pdf():
-    if not is_windows_runtime():
-        return windows_only_response('PPT to PDF')
     try:
         p = save(request.files['file'], 'input.pptx')
-        comtypes_client = importlib.import_module('comtypes.client')
-        import sys
-        sys.modules.setdefault('comtypes.client', comtypes_client)
-        ppt = comtypes_client.CreateObject("Powerpoint.Application")
-        ppt.Visible = 1
-        deck = ppt.Presentations.Open(os.path.abspath(p))
-        out  = os.path.abspath(os.path.join(UPLOAD,'output.pdf'))
-        deck.SaveAs(out, 32); deck.Close(); ppt.Quit()
+        out = os.path.abspath(os.path.join(UPLOAD, 'output.pdf'))
+        if is_windows_runtime():
+            comtypes_client = importlib.import_module('comtypes.client')
+            import sys
+            sys.modules.setdefault('comtypes.client', comtypes_client)
+            ppt = comtypes_client.CreateObject("Powerpoint.Application")
+            ppt.Visible = 1
+            deck = ppt.Presentations.Open(os.path.abspath(p))
+            deck.SaveAs(out, 32)
+            deck.Close()
+            ppt.Quit()
+        else:
+            text = extract_text_from_pptx(p)
+            render_lines_to_pdf(text.split('\n') if text else ['No slide text detected.'], out, 'Converted Presentation')
         return send_file(out, as_attachment=True, download_name='converted.pdf')
     except Exception as e:
         return jsonify({'error': f'PPT to PDF failed: {str(e)}'}), 500
 
 @app.route('/excel-to-pdf', methods=['POST'])
 def excel_to_pdf():
-    if not is_windows_runtime():
-        return windows_only_response('Excel to PDF')
     try:
         p = save(request.files['file'], 'input.xlsx')
-        comtypes_client = importlib.import_module('comtypes.client')
-        import sys
-        sys.modules.setdefault('comtypes.client', comtypes_client)
-        xl  = comtypes_client.CreateObject("Excel.Application")
-        xl.Visible = 0
-        wb  = xl.Workbooks.Open(os.path.abspath(p))
-        out = os.path.abspath(os.path.join(UPLOAD,'output.pdf'))
-        wb.ExportAsFixedFormat(0, out); wb.Close(False); xl.Quit()
+        out = os.path.abspath(os.path.join(UPLOAD, 'output.pdf'))
+        if is_windows_runtime():
+            comtypes_client = importlib.import_module('comtypes.client')
+            import sys
+            sys.modules.setdefault('comtypes.client', comtypes_client)
+            xl  = comtypes_client.CreateObject("Excel.Application")
+            xl.Visible = 0
+            wb  = xl.Workbooks.Open(os.path.abspath(p))
+            wb.ExportAsFixedFormat(0, out)
+            wb.Close(False)
+            xl.Quit()
+        else:
+            lines = workbook_to_lines(p)
+            render_lines_to_pdf(lines, out, 'Converted Workbook')
         return send_file(out, as_attachment=True, download_name='converted.pdf')
     except Exception as e:
         return jsonify({'error': f'Excel to PDF failed: {str(e)}'}), 500
 
 @app.route('/rtf-to-docx', methods=['POST'])
 def rtf_to_docx():
-    if not is_windows_runtime():
-        return windows_only_response('RTF to DOCX')
     try:
         p = save(request.files['file'], 'input.rtf')
-        comtypes_client = importlib.import_module('comtypes.client')
-        import sys
-        sys.modules.setdefault('comtypes.client', comtypes_client)
-        word = comtypes_client.CreateObject("Word.Application")
-        word.Visible = 0
-        doc  = word.Documents.Open(os.path.abspath(p))
-        out  = os.path.abspath(os.path.join(UPLOAD,'output.docx'))
-        doc.SaveAs2(out, 16); doc.Close(); word.Quit()
+        out = os.path.abspath(os.path.join(UPLOAD, 'output.docx'))
+        if is_windows_runtime():
+            comtypes_client = importlib.import_module('comtypes.client')
+            import sys
+            sys.modules.setdefault('comtypes.client', comtypes_client)
+            word = comtypes_client.CreateObject("Word.Application")
+            word.Visible = 0
+            doc  = word.Documents.Open(os.path.abspath(p))
+            doc.SaveAs2(out, 16)
+            doc.Close()
+            word.Quit()
+        else:
+            text = extract_text_from_rtf(p)
+            render_text_to_docx(text, out, 'Converted RTF')
         return send_file(out, as_attachment=True, download_name='converted.docx')
     except Exception as e:
         return jsonify({'error': f'RTF to DOCX failed: {str(e)}'}), 500
@@ -574,9 +692,10 @@ def docx_to_txt():
 @app.route('/excel-to-csv', methods=['POST'])
 def excel_to_csv():
     try:
-        pd = importlib.import_module('pandas')
         p = save(request.files['file'], 'input.xlsx')
-        df = pd.read_excel(p)
+        df = read_excel_first_sheet(p)
+        if df is None:
+            raise ValueError('No worksheet data found.')
         out = os.path.join(UPLOAD, 'output.csv')
         df.to_csv(out, index=False, encoding='utf-8-sig')
         return send_file(out, as_attachment=True, download_name='converted.csv', mimetype='text/csv')
