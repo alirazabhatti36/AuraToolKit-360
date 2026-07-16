@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a professional resume with AuraToolkit360 Resume CV Maker. Live preview, JSON import/export, PDF export, and DOCX export.">
+    <meta name="keywords" content="resume cv maker, cv builder, resume creator, professional cv, AuraToolkit360">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/resume-cv-maker">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AuraToolkit360">
+    <meta property="og:title" content="AuraToolkit360 | Resume CV Maker">
+    <meta property="og:description" content="Build a clean, professional CV with live preview and one-click exports.">
+    <meta property="og:url" content="https://auratoolkit360.com/resume-cv-maker">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AuraToolkit360 | Resume CV Maker">
+    <meta name="twitter:description" content="Create your resume CV quickly with templates, preview, and exports.">
+    <title>AuraToolkit360 | Resume CV Maker</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f3f6fb; color: #1e293b; }
+        .navbar { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.8rem 1rem; position: sticky; top: 0; z-index: 30; }
+        .nav-inner { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+        .logo { font-weight: 800; color: #1d4ed8; text-decoration: none; }
+        .nav-links { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: #334155; font-size: 0.85rem; padding: 0.4rem 0.7rem; border-radius: 8px; }
+        .nav-links a.active, .nav-links a:hover { background: #dbeafe; color: #1d4ed8; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 1rem; }
+        .hero { background: linear-gradient(135deg, #0f172a, #1d4ed8); color: #ffffff; border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+        .hero h1 { font-size: 1.35rem; }
+        .hero p { opacity: 0.9; margin-top: 0.3rem; font-size: 0.9rem; }
+        .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem; }
+        .section { margin-top: 0.9rem; }
+        .section h3 { font-size: 0.95rem; margin-bottom: 0.45rem; color: #1d4ed8; }
+        .field { margin-bottom: 0.55rem; }
+        .field label { display: block; font-size: 0.78rem; font-weight: 600; color: #475569; margin-bottom: 0.25rem; }
+        .field input, .field textarea { width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.55rem 0.7rem; font-size: 0.84rem; font-family: inherit; }
+        .field textarea { min-height: 80px; resize: vertical; }
+        .btn-row { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 0.6rem; }
+        button, .btn-link { border: none; border-radius: 10px; padding: 0.5rem 0.75rem; cursor: pointer; font-size: 0.8rem; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: #1d4ed8; color: #fff; }
+        .btn-outline { background: #fff; color: #1d4ed8; border: 1px solid #1d4ed8; }
+        .btn-danger { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+        .entry { border: 1px dashed #cbd5e1; border-radius: 10px; padding: 0.6rem; margin-bottom: 0.5rem; background: #f8fafc; }
+        .entry-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; }
+        .entry-head strong { font-size: 0.8rem; color: #334155; }
+        .small { font-size: 0.75rem; color: #64748b; }
+        .preview { background: #ffffff; border-radius: 12px; border: 1px solid #dbeafe; padding: 1rem; min-height: 420px; }
+        .preview h2 { font-size: 1.2rem; color: #0f172a; }
+        .preview .line { font-size: 0.8rem; color: #475569; margin-top: 0.25rem; }
+        .preview .title { color: #1d4ed8; font-weight: 600; margin: 0.35rem 0; }
+        .preview section { margin-top: 0.8rem; }
+        .preview section h4 { font-size: 0.85rem; color: #1e293b; margin-bottom: 0.25rem; }
+        .preview ul { padding-left: 1rem; }
+        .preview li { font-size: 0.8rem; color: #334155; margin-bottom: 0.2rem; }
+        .skills { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .skills span { background: #dbeafe; color: #1d4ed8; padding: 0.2rem 0.45rem; border-radius: 999px; font-size: 0.72rem; }
+        @media (max-width: 960px) { .layout { grid-template-columns: 1fr; } }
+    </style>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+    <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a class="logo" href="/">AuraToolkit360</a>
+            <div class="nav-links">
+                <a href="/templates/index.html">Home</a>
+                <a href="/templates/converter.html">Converter</a>
+                <a href="/templates/resume-cv-maker.html" class="active">Resume CV Maker</a>
+                <a href="/templates/resume-score-checker.html">Resume CV Score Checker</a>
+                <a href="/templates/hr-helper.html">HR Helper</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Resume CV Maker</h1>
+            <p>Live preview, clean template, JSON import/export, and PDF/DOCX download.</p>
+        </div>
+
+        <div class="layout">
+            <div class="card">
+                <div class="section">
+                    <h3>Personal Info</h3>
+                    <div class="field"><label>Full Name</label><input id="name" type="text" oninput="updatePreview()"></div>
+                    <div class="field"><label>Email</label><input id="email" type="email" oninput="updatePreview()"></div>
+                    <div class="field"><label>Phone</label><input id="phone" type="text" oninput="updatePreview()"></div>
+                    <div class="field"><label>Location</label><input id="location" type="text" oninput="updatePreview()"></div>
+                    <div class="field"><label>LinkedIn / Portfolio</label><input id="links" type="text" oninput="updatePreview()" placeholder="https://linkedin.com/in/..., https://yourportfolio.com"></div>
+                </div>
+
+                <div class="section">
+                    <h3>Target Role & Summary</h3>
+                    <div class="field"><label>Target Role</label><input id="targetRole" type="text" oninput="updatePreview()" placeholder="Frontend Developer"></div>
+                    <div class="field"><label>Professional Summary</label><textarea id="summary" oninput="updatePreview()"></textarea></div>
+                </div>
+
+                <div class="section">
+                    <h3>Skills</h3>
+                    <div class="field"><label>Comma separated skills</label><input id="skills" type="text" oninput="updatePreview()" placeholder="JavaScript, React, API, SQL"></div>
+                </div>
+
+                <div class="section">
+                    <h3>Experience <button class="btn-outline" type="button" onclick="addExperience()">+ Add</button></h3>
+                    <div id="experienceList"></div>
+                </div>
+
+                <div class="section">
+                    <h3>Education <button class="btn-outline" type="button" onclick="addEducation()">+ Add</button></h3>
+                    <div id="educationList"></div>
+                </div>
+
+                <div class="btn-row">
+                    <button class="btn-primary" onclick="downloadPDF()">Download PDF</button>
+                    <button class="btn-primary" onclick="downloadDOCX()">Download DOCX</button>
+                    <button class="btn-outline" onclick="exportJSON()">Export JSON</button>
+                    <button class="btn-outline" onclick="triggerImport()">Import JSON</button>
+                    <button class="btn-danger" onclick="clearAll()">Clear Form</button>
+                    <a class="btn-link btn-outline" href="/templates/resume-score-checker.html">Open Score Checker</a>
+                </div>
+                <input id="importJsonInput" type="file" accept="application/json,.json" style="display:none" onchange="importJSON(event)">
+            </div>
+
+            <div class="card">
+                <div class="preview" id="preview">
+                    <h2 id="pvName">Your Name</h2>
+                    <div class="title" id="pvRole">Target Role</div>
+                    <div class="line" id="pvContact"></div>
+                    <div class="line" id="pvLinks"></div>
+
+                    <section>
+                        <h4>Summary</h4>
+                        <p id="pvSummary" class="small">Write a short, impact-focused summary.</p>
+                    </section>
+
+                    <section>
+                        <h4>Skills</h4>
+                        <div class="skills" id="pvSkills"></div>
+                    </section>
+
+                    <section>
+                        <h4>Experience</h4>
+                        <ul id="pvExperience"></ul>
+                    </section>
+
+                    <section>
+                        <h4>Education</h4>
+                        <ul id="pvEducation"></ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BACKEND_BASE = 'https://auratoolkit-360.onrender.com';
+        let experienceItems = [];
+        let educationItems = [];
+
+        function state() {
+            return {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                location: document.getElementById('location').value.trim(),
+                links: document.getElementById('links').value.trim(),
+                targetRole: document.getElementById('targetRole').value.trim(),
+                summary: document.getElementById('summary').value.trim(),
+                skills: document.getElementById('skills').value.trim(),
+                experience: experienceItems,
+                education: educationItems
+            };
+        }
+
+        function addExperience(item = { id: Date.now() + Math.random(), title: '', company: '', duration: '', description: '' }) {
+            experienceItems.push(item);
+            renderExperience();
+            updatePreview();
+        }
+
+        function addEducation(item = { id: Date.now() + Math.random(), degree: '', school: '', year: '' }) {
+            educationItems.push(item);
+            renderEducation();
+            updatePreview();
+        }
+
+        function renderExperience() {
+            const root = document.getElementById('experienceList');
+            root.innerHTML = experienceItems.map(item => `
+                <div class="entry">
+                    <div class="entry-head"><strong>Experience</strong><button class="btn-danger" type="button" onclick="removeExperience('${item.id}')">Remove</button></div>
+                    <div class="field"><input placeholder="Job Title" value="${escapeHtml(item.title)}" onchange="setExperience('${item.id}','title',this.value)"></div>
+                    <div class="field"><input placeholder="Company" value="${escapeHtml(item.company)}" onchange="setExperience('${item.id}','company',this.value)"></div>
+                    <div class="field"><input placeholder="Duration" value="${escapeHtml(item.duration)}" onchange="setExperience('${item.id}','duration',this.value)"></div>
+                    <div class="field"><textarea placeholder="Impact-driven description" onchange="setExperience('${item.id}','description',this.value)">${escapeHtml(item.description)}</textarea></div>
+                </div>
+            `).join('');
+        }
+
+        function renderEducation() {
+            const root = document.getElementById('educationList');
+            root.innerHTML = educationItems.map(item => `
+                <div class="entry">
+                    <div class="entry-head"><strong>Education</strong><button class="btn-danger" type="button" onclick="removeEducation('${item.id}')">Remove</button></div>
+                    <div class="field"><input placeholder="Degree" value="${escapeHtml(item.degree)}" onchange="setEducation('${item.id}','degree',this.value)"></div>
+                    <div class="field"><input placeholder="Institute" value="${escapeHtml(item.school)}" onchange="setEducation('${item.id}','school',this.value)"></div>
+                    <div class="field"><input placeholder="Year" value="${escapeHtml(item.year)}" onchange="setEducation('${item.id}','year',this.value)"></div>
+                </div>
+            `).join('');
+        }
+
+        function setExperience(id, key, value) {
+            const item = experienceItems.find(e => String(e.id) === String(id));
+            if (item) item[key] = value;
+            updatePreview();
+        }
+
+        function setEducation(id, key, value) {
+            const item = educationItems.find(e => String(e.id) === String(id));
+            if (item) item[key] = value;
+            updatePreview();
+        }
+
+        function removeExperience(id) {
+            experienceItems = experienceItems.filter(e => String(e.id) !== String(id));
+            renderExperience();
+            updatePreview();
+        }
+
+        function removeEducation(id) {
+            educationItems = educationItems.filter(e => String(e.id) !== String(id));
+            renderEducation();
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const s = state();
+            document.getElementById('pvName').textContent = s.name || 'Your Name';
+            document.getElementById('pvRole').textContent = s.targetRole || 'Target Role';
+            document.getElementById('pvContact').textContent = [s.email, s.phone, s.location].filter(Boolean).join(' | ');
+            document.getElementById('pvLinks').textContent = s.links || '';
+            document.getElementById('pvSummary').textContent = s.summary || 'Write a short, impact-focused summary.';
+
+            const skillList = s.skills.split(',').map(v => v.trim()).filter(Boolean);
+            document.getElementById('pvSkills').innerHTML = skillList.map(v => `<span>${escapeHtml(v)}</span>`).join('') || '<span>Add skills</span>';
+
+            const expHtml = s.experience.filter(v => v.title || v.company || v.description).map(v =>
+                `<li><strong>${escapeHtml(v.title || 'Role')}</strong> ${v.company ? 'at ' + escapeHtml(v.company) : ''} ${v.duration ? '(' + escapeHtml(v.duration) + ')' : ''}<br>${escapeHtml(v.description || '')}</li>`
+            ).join('');
+            document.getElementById('pvExperience').innerHTML = expHtml || '<li>No experience added yet.</li>';
+
+            const eduHtml = s.education.filter(v => v.degree || v.school).map(v =>
+                `<li><strong>${escapeHtml(v.degree || '')}</strong> ${v.school ? '- ' + escapeHtml(v.school) : ''} ${v.year ? '(' + escapeHtml(v.year) + ')' : ''}</li>`
+            ).join('');
+            document.getElementById('pvEducation').innerHTML = eduHtml || '<li>No education added yet.</li>';
+
+            localStorage.setItem('resumeCvMakerDraft', JSON.stringify(s));
+        }
+
+        function clearAll() {
+            document.querySelectorAll('input, textarea').forEach(el => el.value = '');
+            experienceItems = [];
+            educationItems = [];
+            renderExperience();
+            renderEducation();
+            updatePreview();
+        }
+
+        function exportJSON() {
+            const blob = new Blob([JSON.stringify(state(), null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'resume-cv-data.json';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        }
+
+        function triggerImport() {
+            document.getElementById('importJsonInput').click();
+        }
+
+        function importJSON(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+                try {
+                    const data = JSON.parse(reader.result);
+                    document.getElementById('name').value = data.name || '';
+                    document.getElementById('email').value = data.email || '';
+                    document.getElementById('phone').value = data.phone || '';
+                    document.getElementById('location').value = data.location || '';
+                    document.getElementById('links').value = data.links || '';
+                    document.getElementById('targetRole').value = data.targetRole || '';
+                    document.getElementById('summary').value = data.summary || '';
+                    document.getElementById('skills').value = data.skills || '';
+                    experienceItems = Array.isArray(data.experience) ? data.experience : [];
+                    educationItems = Array.isArray(data.education) ? data.education : [];
+                    renderExperience();
+                    renderEducation();
+                    updatePreview();
+                } catch (_e) {
+                    alert('Invalid JSON file.');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        async function downloadDOCX() {
+            const payload = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                location: document.getElementById('location').value,
+                linkedin: document.getElementById('links').value,
+                summary: document.getElementById('summary').value,
+                skills: document.getElementById('skills').value,
+                education: educationItems,
+                experience: experienceItems,
+                customSections: []
+            };
+
+            const res = await fetch(`${BACKEND_BASE}/export-resume-docx`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!res.ok) {
+                alert('DOCX export failed. Please try again.');
+                return;
+            }
+
+            const blob = await res.blob();
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${(payload.name || 'resume').replace(/\s+/g, '-').toLowerCase()}.docx`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadPDF() {
+            if (typeof html2pdf === 'undefined') {
+                alert('PDF module is loading. Please try again in a moment.');
+                return;
+            }
+            const preview = document.getElementById('preview').cloneNode(true);
+            html2pdf().set({
+                margin: 0.4,
+                filename: `${(document.getElementById('name').value || 'resume').replace(/\s+/g, '-').toLowerCase()}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            }).from(preview).save();
+        }
+
+        function escapeHtml(value) {
+            return String(value || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        (function init() {
+            const draft = localStorage.getItem('resumeCvMakerDraft');
+            if (draft) {
+                try {
+                    const data = JSON.parse(draft);
+                    document.getElementById('name').value = data.name || '';
+                    document.getElementById('email').value = data.email || '';
+                    document.getElementById('phone').value = data.phone || '';
+                    document.getElementById('location').value = data.location || '';
+                    document.getElementById('links').value = data.links || '';
+                    document.getElementById('targetRole').value = data.targetRole || '';
+                    document.getElementById('summary').value = data.summary || '';
+                    document.getElementById('skills').value = data.skills || '';
+                    experienceItems = Array.isArray(data.experience) ? data.experience : [];
+                    educationItems = Array.isArray(data.education) ? data.education : [];
+                } catch (_e) {}
+            }
+            if (!experienceItems.length) addExperience();
+            else renderExperience();
+            if (!educationItems.length) addEducation();
+            else renderEducation();
+            updatePreview();
+
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+            document.head.appendChild(script);
+        })();
+    </script>
+</body>
+</html>

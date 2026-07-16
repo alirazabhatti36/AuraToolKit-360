@@ -71,7 +71,9 @@ def add_cors_headers(response):
 PAGE_TEMPLATES = {
     'index': 'index.html',
     'converter': 'converter.html',
-    'resume-ats': 'resume-ats.html',
+    'resume-ats': 'resume-cv-maker.html',
+    'resume-cv-maker': 'resume-cv-maker.html',
+    'resume-score-checker': 'resume-score-checker.html',
     'hr-helper': 'hr-helper.html',
     'privacy-policy': 'privacy-policy.html',
     'terms': 'terms.html',
@@ -337,7 +339,19 @@ def converter():
 @app.route('/resume-ats.html')
 @app.route('/templates/resume-ats.html')
 def resume_ats():
-    return render_template('resume-ats.html')
+    return redirect('/resume-cv-maker', code=301)
+
+@app.route('/resume-cv-maker')
+@app.route('/resume-cv-maker.html')
+@app.route('/templates/resume-cv-maker.html')
+def resume_cv_maker():
+    return render_template('resume-cv-maker.html')
+
+@app.route('/resume-score-checker')
+@app.route('/resume-score-checker.html')
+@app.route('/templates/resume-score-checker.html')
+def resume_score_checker():
+    return render_template('resume-score-checker.html')
 
 @app.route('/hr-helper')
 @app.route('/hr-helper.html')
@@ -453,11 +467,11 @@ def favicon_ico():
 
 @app.route('/resume')
 def resume_old():
-    return redirect('/resume-ats')
+    return redirect('/resume-cv-maker')
 
 @app.route('/ats')
 def ats_old():
-    return redirect('/hr-helper')
+    return redirect('/resume-score-checker')
 
 # ─────────────────────────────────────────
 #  RESUME BUILDER - DOCX EXPORT
