@@ -3,42 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use AuraToolkit360 HR Helper to bulk screen resumes, shortlist candidates, and speed up hiring.">
+    <meta name="description" content="Use AuraToolkit360 HR Helper to bulk screen resumes, shortlist candidates, and speed up hiring with 100% client side privacy.">
     <meta name="keywords" content="HR helper, resume screening, bulk resume screening, candidate shortlisting, hiring tools, recruiter tools">
     <meta name="author" content="AuraToolkit360">
     <meta name="robots" content="index,follow,max-image-preview:large">
-    <link rel="canonical" href="https://auratoolkit360.com/hr-helper">
+    <link rel="canonical" href="https://auratoolkit360.com/hr-helper/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
     <meta property="og:title" content="AuraToolkit360 | HR Helper - Bulk Resume Screening">
-    <meta property="og:description" content="Analyze and shortlist candidates faster with intelligent bulk resume screening.">
-    <meta property="og:url" content="https://auratoolkit360.com/hr-helper">
+    <meta property="og:description" content="Analyze and shortlist candidates faster with intelligent bulk resume screening in your browser.">
+    <meta property="og:url" content="https://auratoolkit360.com/hr-helper/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AuraToolkit360 | HR Helper">
     <meta name="twitter:description" content="Bulk screen resumes and streamline hiring workflow with AuraToolkit360.">
     <title>AuraToolkit360 | HR Helper - Bulk Resume Screening</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "AuraToolkit360 | HR Helper - Bulk Resume Screening",
-            "url": "https://auratoolkit360.com/hr-helper",
-            "description": "Use AuraToolkit360 HR Helper to bulk screen resumes, shortlist candidates, and speed up hiring.",
-            "inLanguage": "en"
-        }
-    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { overflow-x: hidden; }
         body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: #f0f4f8; color: #1a1a2e; line-height: 1.5; overflow-x: hidden; }
         
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
         ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 10px; }
         
-        /* Navbar */
         .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 0.8rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(102,126,234,0.1); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; letter-spacing: -0.5px; }
@@ -48,201 +36,47 @@
         .nav-links a.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
         
         .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
-        
-        /* Page Header */
-        .page-header { text-align: center; margin-bottom: 2rem; padding: 1rem; }
-        .page-header h1 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; }
-        .page-header p { color: #64748b; font-size: 1rem; margin-top: 0.25rem; }
+        .page-header { text-align: center; margin-bottom: 1.5rem; padding: 0.5rem; }
+        .page-header h1 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .page-header p { color: #64748b; font-size: 1rem; }
 
-        .hero-strip {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.85rem;
-            margin-bottom: 1.25rem;
-        }
-        .hero-pill {
-            background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.08));
-            border: 1px solid rgba(102,126,234,0.16);
-            border-radius: 16px;
-            padding: 0.95rem 1rem;
-            box-shadow: 0 10px 30px rgba(102,126,234,0.06);
-        }
-        .hero-pill .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; }
-        .hero-pill .value { font-size: 0.95rem; font-weight: 700; color: #1e293b; margin-top: 0.2rem; }
-        .hero-pill .sub { font-size: 0.75rem; color: #64748b; margin-top: 0.15rem; }
-        
-        /* Cards */
-        .card { background: white; border-radius: 20px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 1.5rem; border: 1px solid rgba(226,232,240,0.5); transition: all 0.3s; }
-        .card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.08); }
-        
-        /* Upload Zone */
+        .card { background: white; border-radius: 20px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 1.5rem; border: 1px solid rgba(226,232,240,0.5); }
         .upload-zone { border: 2px dashed #e2e8f0; border-radius: 16px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s; background: #fafbff; }
-        .upload-zone:hover { border-color: #667eea; background: #f5f3ff; transform: translateY(-2px); }
+        .upload-zone:hover { border-color: #667eea; background: #f5f3ff; }
         .upload-zone .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .upload-zone p { font-size: 0.95rem; color: #475569; }
-        .upload-zone small { font-size: 0.75rem; color: #94a3b8; }
 
-        .field-label {
-            margin-top: 0.95rem;
-            display: block;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #475569;
-        }
+        .btn { padding: 0.6rem 1.2rem; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .btn-outline { background: white; border: 1px solid #cbd5e1; color: #475569; }
+        .btn-success { background: #10b981; color: white; }
+        .btn-danger { background: #ef4444; color: white; }
+        .btn-warning { background: #f59e0b; color: white; }
+        .btn-sm { padding: 0.35rem 0.65rem; font-size: 0.75rem; border-radius: 8px; }
 
-        .select-field {
-            width: 100%;
-            padding: 0.7rem 0.85rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 0.875rem;
-            font-family: inherit;
-            transition: all 0.3s;
-            background: #fafbff;
-        }
+        textarea { width: 100%; height: 120px; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 0.85rem; margin-top: 0.5rem; resize: vertical; }
 
-        .select-field:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
-            background: white;
-        }
-        
-        textarea { width: 100%; min-height: 100px; padding: 0.75rem 1rem; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.875rem; font-family: inherit; resize: vertical; transition: all 0.3s; background: #fafbff; }
-        textarea:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 4px rgba(102,126,234,0.1); background: white; }
-        
-        /* Filter Row */
-        .filter-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin: 1rem 0; background: #f8fafc; padding: 1rem; border-radius: 14px; }
-        .filter-row label { font-size: 0.8rem; font-weight: 600; color: #475569; display: flex; align-items: center; gap: 0.5rem; }
-        .filter-row input[type="range"] { accent-color: #667eea; cursor: pointer; }
-        .filter-row select { padding: 0.4rem 0.8rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 0.8rem; background: white; cursor: pointer; }
-        
-        /* Buttons */
-        .btn { padding: 0.5rem 1.2rem; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; font-size: 0.8rem; transition: all 0.3s; }
-        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.4); }
-        .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
-        .btn-success:hover { transform: translateY(-2px); }
-        .btn-danger { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; box-shadow: 0 4px 15px rgba(239,68,68,0.3); }
-        .btn-danger:hover { transform: translateY(-2px); }
-        .btn-warning { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; box-shadow: 0 4px 15px rgba(245,158,11,0.3); }
-        .btn-warning:hover { transform: translateY(-2px); }
-        .btn-outline { background: white; border: 2px solid #667eea; color: #667eea; }
-        .btn-outline:hover { background: #667eea; color: white; transform: translateY(-2px); }
-        .btn-sm { padding: 0.25rem 0.7rem; font-size: 0.7rem; border-radius: 8px; }
-        .btn-glow { animation: glow 2s infinite; }
-        @keyframes glow { 0%,100% { box-shadow: 0 4px 15px rgba(102,126,234,0.3); } 50% { box-shadow: 0 4px 30px rgba(102,126,234,0.6); } }
-        
-        /* Stats Row */
-        .stats-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
-        .stat-box { background: white; border-radius: 16px; padding: 1rem 1.5rem; text-align: center; flex: 1; min-width: 100px; cursor: pointer; transition: all 0.3s; border: 1px solid rgba(226,232,240,0.5); box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
-        .stat-box:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-        .stat-box .num { font-size: 1.8rem; font-weight: 800; }
-        .stat-box .lbl { font-size: 0.7rem; color: #64748b; font-weight: 500; }
-        .stat-box.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-color: transparent; }
-        .stat-box.active .lbl { color: rgba(255,255,255,0.8); }
-        
-        /* Charts */
-        .chart-container { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-        .chart-card { background: white; border-radius: 16px; padding: 1.2rem; flex: 1; min-width: 200px; border: 1px solid rgba(226,232,240,0.5); box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
-        .chart-title { font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem; color: #475569; }
-        .progress-bar-chart { background: #f1f5f9; border-radius: 999px; height: 28px; overflow: hidden; margin: 0.25rem 0; transition: all 0.3s; }
-        .progress-bar-chart:hover { transform: scaleX(1.02); }
-        .progress-fill-chart { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 0.75rem; color: white; font-size: 0.7rem; font-weight: 600; border-radius: 999px; transition: width 1s ease; }
-        
-        /* Table */
-        .table-wrapper { overflow-x: auto; border-radius: 16px; border: 1px solid rgba(226,232,240,0.5); }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        th { background: #f8fafc; padding: 0.75rem 1rem; text-align: left; font-weight: 600; color: #475569; border-bottom: 2px solid #e2e8f0; }
-        td { padding: 0.75rem 1rem; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
-        tr:hover td { background: #f8faff; }
-        tr:last-child td { border-bottom: none; }
-        
-        .score-badge { padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: 600; font-size: 0.7rem; display: inline-block; }
+        .table-responsive { overflow-x: auto; margin-top: 1rem; border-radius: 12px; border: 1px solid #e2e8f0; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
+        th { background: #f8fafc; padding: 0.75rem 1rem; border-bottom: 2px solid #e2e8f0; font-weight: 700; color: #475569; }
+        td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; color: #334155; }
+        tr:hover { background: #f8fafc; }
+
+        .score-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 700; font-size: 0.75rem; }
         .score-excellent { background: #d1fae5; color: #065f46; }
         .score-good { background: #fef3c7; color: #92400e; }
         .score-low { background: #fee2e2; color: #991b1b; }
-        
-        .status-badge { padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.65rem; font-weight: 600; }
+
+        .status-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 600; font-size: 0.7rem; }
         .status-shortlisted { background: #d1fae5; color: #065f46; }
         .status-rejected { background: #fee2e2; color: #991b1b; }
         .status-pending { background: #fef3c7; color: #92400e; }
-        
-        .progress-bar { background: #e2e8f0; border-radius: 999px; height: 6px; overflow: hidden; margin: 0.5rem 0; }
-        .progress-fill { height: 100%; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 999px; width: 0%; transition: width 0.8s ease; }
-        .report-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.85rem; margin-top: 1rem; }
-        .report-card { background: #f8fafc; border: 1px solid rgba(226,232,240,0.8); border-radius: 16px; padding: 0.95rem 1rem; }
-        .report-card strong { display: block; font-size: 1.1rem; color: #1e293b; }
-        .report-card span { display: block; margin-top: 0.25rem; font-size: 0.78rem; color: #64748b; }
-        .report-card em { display: block; margin-top: 0.4rem; font-size: 0.72rem; color: #475569; font-style: normal; line-height: 1.45; }
-        .detail-section { margin-top: 0.9rem; }
-        .detail-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.45rem; }
-        .detail-tag { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; }
-        .detail-tag.matched { background: #d1fae5; color: #065f46; }
-        .detail-tag.missing { background: #fee2e2; color: #991b1b; }
-        .detail-tag.neutral { background: #eef2ff; color: #4338ca; }
-        
-        /* Bulk Actions */
-        .bulk-actions { background: #eef2ff; border-radius: 14px; padding: 0.75rem 1.25rem; margin-bottom: 1rem; display: none; align-items: center; gap: 1rem; flex-wrap: wrap; border: 1px solid #c7d2fe; }
-        .bulk-actions span { font-weight: 600; color: #4f46e5; font-size: 0.85rem; }
-        
-        /* Checkbox */
-        .checkbox { width: 18px; height: 18px; accent-color: #667eea; cursor: pointer; }
-        
-        /* Modal */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.6); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .modal-content { background: white; border-radius: 24px; padding: 2rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 25px 60px rgba(0,0,0,0.2); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-        .modal-header h3 { font-size: 1.3rem; font-weight: 700; }
-        .close-btn { background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
-        .close-btn:hover { background: #fee2e2; color: #ef4444; transform: rotate(90deg); }
-        
-        #fileCount { margin-top: 0.5rem; font-size: 0.8rem; color: #667eea; font-weight: 500; }
-        
-        @media (max-width: 900px) {
-            .chart-container { flex-direction: column; }
-            .hero-strip { grid-template-columns: 1fr; }
-        }
 
-        @media (max-width: 768px) {
-            .navbar { padding: 0.7rem 1rem; }
-            .nav-container { flex-direction: column; align-items: stretch; }
-            .logo { font-size: 1.3rem; text-align: center; }
-            .nav-links { justify-content: center; }
-            .container { padding: 1rem; }
-            .page-header h1 { font-size: 1.6rem; }
-            .page-header p { font-size: 0.9rem; }
-            .card { padding: 1rem; }
-            .upload-zone { padding: 1.25rem; }
-            .filter-row { flex-direction: column; align-items: stretch; }
-            .filter-row label { width: 100%; }
-            .filter-row input[type="range"], .filter-row select { width: 100%; }
-            .filter-row .btn { width: 100%; }
-            .stats-row { flex-direction: column; }
-            .chart-container { gap: 1rem; }
-            .chart-card { min-width: 0; }
-            .bulk-actions { justify-content: stretch; }
-            .bulk-actions .btn { flex: 1 1 100%; }
-            .modal-content { width: 94%; padding: 1.25rem; }
-            table { font-size: 0.68rem; }
-            th, td { padding: 0.55rem 0.65rem; }
-            .stat-box { min-width: 80px; padding: 0.75rem; }
-            .results-table { overflow-x: auto; }
-        }
-
-        @media (max-width: 480px) {
-            .nav-links a { font-size: 0.7rem; padding: 0.25rem 0.45rem; }
-            .page-header h1 { font-size: 1.35rem; }
-            .upload-zone p { font-size: 0.85rem; }
-            .upload-zone small { font-size: 0.7rem; }
-            .btn { width: 100%; }
-            .stat-box .num { font-size: 1.45rem; }
-            .stat-box .lbl { font-size: 0.65rem; }
-        }
+        .progress-bar-container { background: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 0.5rem; display: none; }
+        .progress-fill { background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; width: 0%; transition: width 0.2s; }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
-    <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
 </head>
 <body>
@@ -251,137 +85,63 @@
             <a href="/" class="logo">AuraToolkit360</a>
             <div class="nav-links">
                 <a href="/">Home</a>
-                <a href="/templates/converter.html">Converter</a>
-                <a href="/templates/resume-cv-maker.html">Resume CV Maker</a>
-                <a href="/templates/resume-score-checker.html">Score Checker</a>
-                <a href="/templates/hr-helper.html" class="active">HR Helper</a>
-                <a href="/templates/about.html">About</a>
-                <a href="/templates/blogs.html">Blogs</a>
-                <a href="/templates/contact.html">Contact</a>
-                <a href="/templates/privacy-policy.html">Privacy</a>
-                <a href="/templates/terms.html">Terms</a>
-                <a href="/templates/disclaimer.html">Disclaimer</a>
+                <a href="/converter/">Converter</a>
+                <a href="/resume-cv-maker/">Resume CV Maker</a>
+                <a href="/resume-score-checker/">Score Checker</a>
+                <a href="/hr-helper/" class="active">HR Helper</a>
+                <a href="/about/">About</a>
+                <a href="/blogs/">Blogs</a>
             </div>
         </div>
     </nav>
 
     <div class="container">
         <div class="page-header">
-            <h1>👥 HR Helper</h1>
-            <p>Choose a role, paste the job description, and screen resumes by keyword match instantly</p>
-        </div>
-
-        <div class="hero-strip">
-            <div class="hero-pill">
-                <div class="label">Scoring Mode</div>
-                <div class="value">Description-only ATS</div>
-                <div class="sub">Job title is for role context only</div>
-            </div>
-            <div class="hero-pill">
-                <div class="label">Privacy</div>
-                <div class="value">Files stay in workflow</div>
-                <div class="sub">Resume text is extracted, then matched</div>
-            </div>
-            <div class="hero-pill">
-                <div class="label">Signal Quality</div>
-                <div class="value">Stop words removed</div>
-                <div class="sub">The, they, is, we and similar filler are ignored</div>
-            </div>
+            <h1>👥 HR Bulk Resume Screening</h1>
+            <p>100% Client-Side Privacy: Screen hundreds of resumes locally in your browser with zero server uploads.</p>
         </div>
 
         <div class="card">
-            <div class="upload-zone" onclick="document.getElementById('bulkFiles').click()">
-                <div class="icon">📁</div>
-                <p><strong>Click or drag & drop</strong> resumes (PDF/DOCX)</p>
-                <small>Max 300 files supported</small>
-                <input type="file" id="bulkFiles" accept=".pdf,.docx" multiple style="display:none" onchange="handleFiles(this.files)">
-            </div>
-            <div id="fileCount"></div>
-
-            <label class="field-label" for="jobTitle">💼 Job Title</label>
-            <select id="jobTitle" class="select-field" onchange="updateRolePreview()">
-                <option value="">Select job title</option>
-                <option value="Software Engineer">Software Engineer</option>
-                <option value="Frontend Developer">Frontend Developer</option>
-                <option value="Backend Developer">Backend Developer</option>
-                <option value="Full Stack Developer">Full Stack Developer</option>
-                <option value="Data Analyst">Data Analyst</option>
-                <option value="Product Manager">Product Manager</option>
-                <option value="UI/UX Designer">UI/UX Designer</option>
-                <option value="Digital Marketer">Digital Marketer</option>
-                <option value="HR Manager">HR Manager</option>
-                <option value="Sales Executive">Sales Executive</option>
-                <option value="Other">Other / Custom</option>
-            </select>
-            <input type="text" id="customJobTitle" class="select-field" placeholder="Type custom job title" style="display:none; margin-top:0.5rem;">
-
-            <label class="field-label" for="jobDesc">📝 Job Description</label>
-            <textarea id="jobDesc" placeholder="Paste job description here..." oninput="updateRolePreview()"></textarea>
-
-            <div class="filter-row">
-                <label>🎯 Min Score: <input type="range" id="minScore" min="0" max="90" value="0" step="1" oninput="updateFilter()"> <span id="minScoreVal" style="font-weight:700; color:#667eea;">0%</span></label>
-                <label>📊 Status: <select id="statusFilter" onchange="renderTable()"><option value="all">All</option><option value="shortlisted">⭐ Shortlisted</option><option value="rejected">❌ Rejected</option><option value="pending">⏳ Pending</option></select></label>
-                <label>🔽 Sort: <select id="sortOrder" onchange="renderTable()"><option value="desc">Highest First</option><option value="asc">Lowest First</option></select></label>
-                <button class="btn btn-primary btn-glow" id="scanBtn" onclick="startBulkScan()">🚀 Start Screening</button>
-                <button class="btn btn-outline btn-sm" id="pauseBtn" onclick="togglePauseScan()" style="display:none;">⏸️ Pause Screening</button>
-                <button class="btn btn-outline btn-sm" id="cancelBtn" onclick="cancelScan()" style="display:none; border-color:#ef4444; color:#ef4444;">✖ Cancel Screening</button>
+            <h3>1. Upload Candidate Resumes (PDF / DOCX)</h3>
+            <div style="margin-top:0.8rem;">
+                <div class="upload-zone" onclick="document.getElementById('bulkFiles').click()">
+                    <div class="icon">📂</div>
+                    <p>Click or Drag & Drop Multiple Resumes (up to 300 files)</p>
+                    <div id="fileCount" style="margin-top:0.5rem; font-weight:700; color:#667eea;">No files selected</div>
+                    <input type="file" id="bulkFiles" accept=".pdf,.docx,.txt" multiple style="display:none;" onchange="handleFiles(this.files)">
+                </div>
             </div>
 
-            <div style="margin-top:0.85rem; padding:0.85rem 1rem; border-radius:14px; background:linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08)); border:1px solid rgba(102,126,234,0.12); color:#475569; font-size:0.85rem; line-height:1.55;">
-                <strong style="color:#1e293b;">Current focus:</strong>
-                <span id="rolePreview">Select a job title and paste a description to start screening.</span>
+            <h3 style="margin-top:1.5rem;">2. Job Description</h3>
+            <textarea id="jobDesc" placeholder="Paste the target job description and required qualifications here..."></textarea>
+
+            <div style="margin-top:1.2rem; text-align:center;">
+                <button class="btn btn-primary" id="startBtn" onclick="startBulkScan()">⚡ Start Bulk Screening</button>
             </div>
 
-            <div class="report-grid" id="keywordReportGrid">
-                <div class="report-card"><strong id="reportKeywords">0</strong><span>Target keywords</span><em>Unique terms extracted from the job description.</em></div>
-                <div class="report-card"><strong id="reportAverage">0%</strong><span>Average match score</span><em>Average file-to-description fit across processed resumes.</em></div>
-                <div class="report-card"><strong id="reportBest">0%</strong><span>Best file score</span><em>Highest observed score from the uploaded resumes.</em></div>
-                <div class="report-card"><strong id="reportFocus">Waiting</strong><span>Current report</span><em id="reportFocusCopy">Upload resumes and add a job description to generate a match report.</em></div>
+            <div class="progress-bar-container" id="progressBar">
+                <div class="progress-fill" id="progressFill"></div>
             </div>
-
-            <div class="progress-bar" id="progressBar" style="display:none;"><div class="progress-fill" id="progressFill"></div></div>
-            <div id="processingInfo" style="font-size:0.8rem; text-align:center; display:none; color:#667eea; font-weight:500;"></div>
+            <div id="processingInfo" style="text-align:center; font-size:0.8rem; color:#64748b; margin-top:0.4rem; display:none;"></div>
         </div>
 
-        <!-- Stats -->
-        <div class="stats-row" id="statsRow" style="display:none;"></div>
-        
-        <!-- Charts -->
-        <div class="chart-container" id="chartContainer" style="display:none;">
-            <div class="chart-card">
-                <div class="chart-title">📊 Score Distribution</div>
-                <div id="scoreChart"></div>
+        <div class="card" id="resultsDiv" style="display:none;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                <h3>Screening Results</h3>
+                <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇️ Export CSV Report</button>
             </div>
-            <div class="chart-card">
-                <div class="chart-title">📈 Summary</div>
-                <div id="summaryChart"></div>
-            </div>
-        </div>
 
-        <!-- Bulk Actions -->
-        <div class="bulk-actions" id="bulkActionsBar">
-            <span id="selectedCount">0 selected</span>
-            <button class="btn btn-success btn-sm" onclick="bulkShortlist()">⭐ Shortlist</button>
-            <button class="btn btn-danger btn-sm" onclick="bulkReject()">🗑️ Reject</button>
-            <button class="btn btn-primary btn-sm" onclick="bulkEmail()">📧 Email</button>
-            <button class="btn btn-outline btn-sm" onclick="clearSelection()">Clear</button>
-            <button class="btn btn-outline btn-sm" onclick="downloadCSV()">⬇️ CSV</button>
-        </div>
-
-        <!-- Results Table -->
-        <div id="resultsDiv" style="display:none;">
-            <div class="table-wrapper">
-                <table id="resultsTable">
+            <div class="table-responsive">
+                <table>
                     <thead>
                         <tr>
-                            <th style="width:40px;"><input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll()"></th>
-                            <th style="width:50px;">#</th>
-                            <th>Resume File</th>
-                            <th style="width:100px;">ATS Score</th>
-                            <th style="width:80px;">Matched</th>
-                            <th style="width:80px;">Missing</th>
-                            <th style="width:130px;">Status</th>
-                            <th style="width:160px;">Actions</th>
+                            <th>#</th>
+                            <th>Candidate File</th>
+                            <th>ATS Match Score</th>
+                            <th>Matched Skills</th>
+                            <th>Missing Skills</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody"></tbody>
@@ -390,658 +150,166 @@
         </div>
     </div>
 
-    <!-- Candidate Detail Modal -->
-    <div id="detailModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header"><h3>📄 Candidate Details</h3><button class="close-btn" onclick="closeDetailModal()">✕</button></div>
-            <div id="detailContent"></div>
-            <div style="margin-top:1rem;">
-                <label style="font-weight:600; font-size:0.85rem; color:#475569;">📝 Internal Notes:</label>
-                <textarea id="candidateNotes" rows="3" style="width:100%; margin-top:0.25rem; border:2px solid #e2e8f0; border-radius:12px; padding:0.75rem; font-family:inherit; resize:vertical;" placeholder="Add notes about this candidate..."></textarea>
-                <button class="btn btn-primary btn-sm" onclick="saveNotes()" style="margin-top:0.5rem;">💾 Save Notes</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Email Modal -->
-    <div id="emailModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header"><h3>📧 Send Email</h3><button class="close-btn" onclick="closeEmailModal()">✕</button></div>
-            <div id="emailContent"></div>
-            <div style="margin-top:1rem;">
-                <label style="font-weight:600; font-size:0.85rem; color:#475569;">Subject:</label>
-                <input type="text" id="emailSubject" style="width:100%; padding:0.6rem 0.75rem; border:2px solid #e2e8f0; border-radius:12px; margin-bottom:0.5rem;" value="Interview Invitation">
-                <label style="font-weight:600; font-size:0.85rem; color:#475569;">Message:</label>
-                <textarea id="emailMessage" rows="5" style="width:100%; padding:0.6rem 0.75rem; border:2px solid #e2e8f0; border-radius:12px; font-family:inherit; resize:vertical;"></textarea>
-                <button class="btn btn-primary btn-sm" onclick="sendEmails()" style="margin-top:0.5rem;">📧 Send Emails</button>
-            </div>
-        </div>
-    </div>
-
-    <footer style="margin-top:2rem; background:#ffffff; border-top:1px solid #e2e8f0; box-shadow:0 -4px 20px rgba(0,0,0,0.04);">
-        <div style="max-width:1400px; margin:0 auto; padding:1.5rem 1rem; display:flex; flex-wrap:wrap; gap:1.2rem; align-items:flex-start;">
-            <div style="flex:1 1 280px; color:#475569;">
-                <h3 style="font-size:1rem; margin-bottom:0.45rem; color:#1e293b;">AuraToolkit360</h3>
-                <p style="font-size:0.85rem; line-height:1.6;">Screen candidates in bulk, shortlist faster, and streamline your hiring workflow.</p>
-                <p style="font-size:0.8rem; margin-top:0.5rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
-            </div>
-            <div style="flex:1 1 220px; color:#475569;">
-                <h4 style="font-size:0.9rem; margin-bottom:0.45rem; color:#1e293b;">Quick Links</h4>
-                <div style="display:grid; gap:0.35rem; font-size:0.82rem;">
-                    <a href="/templates/index.html" style="color:#475569; text-decoration:none;">Home</a>
-                    <a href="/templates/converter.html" style="color:#475569; text-decoration:none;">Converter</a>
-                    <a href="/templates/resume-cv-maker.html" style="color:#475569; text-decoration:none;">Resume CV Maker</a>
-                    <a href="/templates/resume-score-checker.html" style="color:#475569; text-decoration:none;">Score Checker</a>
-                    <a href="/templates/hr-helper.html" style="color:#475569; text-decoration:none;">HR Helper</a>
-                </div>
-            </div>
-            <div style="flex:1 1 320px; color:#475569;">
-                <h4 style="font-size:0.9rem; margin-bottom:0.45rem; color:#1e293b;">Feedback</h4>
-                <form onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'\nEmail: '+fd.get('email')+'\n\nFeedback:\n'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
-                    <input name="name" type="text" placeholder="Your name" required style="width:100%; padding:0.5rem 0.7rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.8rem; margin-bottom:0.4rem;">
-                    <input name="email" type="email" placeholder="Your email" required style="width:100%; padding:0.5rem 0.7rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.8rem; margin-bottom:0.4rem;">
-                    <textarea name="message" rows="3" placeholder="Share your feedback..." required style="width:100%; padding:0.5rem 0.7rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.8rem; resize:vertical; margin-bottom:0.5rem;"></textarea>
-                    <button type="submit" style="background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border:none; border-radius:10px; padding:0.45rem 0.9rem; font-size:0.8rem; cursor:pointer;">Send Feedback</button>
-                </form>
-            </div>
-        </div>
-        <div style="border-top:1px solid #e2e8f0; text-align:center; padding:0.75rem; font-size:0.75rem; color:#64748b;">© 2026 AuraToolkit360. All rights reserved.</div>
-    </footer>
-
     <script>
+        if (window.pdfjsLib) {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+        }
+
         let selectedFiles = [];
         let bulkResults = [];
-        let candidateStatus = {};
-        let candidateNotes = {};
-        let selectedCandidates = new Set();
-        let resumeTextCache = new Map();
-        let iframeTransport = null;
-        let pendingUploadResolvers = new Map();
-        let pendingUploadRejectors = new Map();
-        let pendingUploadCounter = 0;
-        let scanState = 'idle';
-        let pauseResolvers = [];
 
-        function updateScanControls() {
-            const scanBtn = document.getElementById('scanBtn');
-            const pauseBtn = document.getElementById('pauseBtn');
-            const cancelBtn = document.getElementById('cancelBtn');
-            if (!scanBtn || !pauseBtn || !cancelBtn) return;
-
-            if (scanState === 'idle') {
-                scanBtn.disabled = false;
-                scanBtn.textContent = '🚀 Start Screening';
-                pauseBtn.style.display = 'none';
-                cancelBtn.style.display = 'none';
-            } else if (scanState === 'running') {
-                scanBtn.disabled = true;
-                scanBtn.textContent = '⏳ Scanning...';
-                pauseBtn.style.display = 'inline-flex';
-                pauseBtn.textContent = '⏸️ Pause Screening';
-                cancelBtn.style.display = 'inline-flex';
-            } else if (scanState === 'paused') {
-                scanBtn.disabled = true;
-                scanBtn.textContent = '⏸️ Paused';
-                pauseBtn.style.display = 'inline-flex';
-                pauseBtn.textContent = '▶️ Resume Screening';
-                cancelBtn.style.display = 'inline-flex';
-            } else if (scanState === 'cancelled') {
-                scanBtn.disabled = false;
-                scanBtn.textContent = '🚀 Start Screening';
-                pauseBtn.style.display = 'none';
-                cancelBtn.style.display = 'none';
-            }
+        function handleFiles(files) {
+            selectedFiles = Array.from(files);
+            document.getElementById('fileCount').textContent = `✅ ${selectedFiles.length} resume(s) selected`;
         }
 
-        function releasePausedWorkers() {
-            const resolvers = pauseResolvers.splice(0, pauseResolvers.length);
-            resolvers.forEach(resolve => resolve());
-        }
-
-        function waitIfPaused() {
-            if (scanState !== 'paused') return Promise.resolve();
-            return new Promise(resolve => pauseResolvers.push(resolve));
-        }
-
-        function togglePauseScan() {
-            if (scanState === 'running') {
-                scanState = 'paused';
-                document.getElementById('processingInfo').textContent = 'Scanning paused. You can resume or cancel.';
-                updateScanControls();
-                return;
-            }
-            if (scanState === 'paused') {
-                scanState = 'running';
-                document.getElementById('processingInfo').textContent = 'Resuming screening...';
-                updateScanControls();
-                releasePausedWorkers();
-            }
-        }
-
-        function cancelScan() {
-            if (scanState !== 'running' && scanState !== 'paused') return;
-            scanState = 'cancelled';
-            releasePausedWorkers();
-            document.getElementById('processingInfo').textContent = 'Screening cancelled.';
-            document.getElementById('progressBar').style.display = 'none';
-            updateScanControls();
-        }
-
-        const stopWords = new Set([
-            'the','and','for','are','with','this','that','you','your','have','from','will','can','was','they','their','been','has','but','not','all','our','its','also','more','when','which','a','an','in','of','to','is','on','at','we','us','he','she','it','them','his','her','them','these','those','as','by','be','been','being','or','if','into','than','then','there','here','over','under','up','down','out','per','via','into','about','after','before','during','between','within','without','one','two','three','four','five','six','seven','eight','nine','ten'
+        const STOP_WORDS = new Set([
+            'the','and','for','are','with','this','that','you','your','have','from',
+            'will','can','was','they','their','been','has','but','not','all','our',
+            'its','also','more','when','which','a','an','in','of','to','is','on','at',
+            'we','us','he','she','it','them','his','her','these','those','as','by','be',
+            'being','or','if','into','than','then','there','here','over','under','up',
+            'down','out','per','via','about','after','before','during','between','within',
+            'without','one','two','three','four','five','six','seven','eight','nine','ten',
+            'role','job','skills','experience','ability','work','responsibilities','requirements'
         ]);
 
-        function getSelectedJobTitle() {
-            const selected = document.getElementById('jobTitle').value.trim();
-            if (selected === 'Other') {
-                return document.getElementById('customJobTitle').value.trim() || 'Custom Role';
-            }
-            return selected || 'Select a job title';
-        }
-
-        function updateRolePreview() {
-            const title = getSelectedJobTitle();
-            const desc = document.getElementById('jobDesc').value.trim();
-            const count = extractKeywords(desc).length;
-            const suffix = desc ? ` • ${count} target keywords` : '';
-            document.getElementById('rolePreview').textContent = `${title}${suffix}`;
-        }
-
-        function toggleCustomTitleField() {
-            const titleField = document.getElementById('jobTitle');
-            const customField = document.getElementById('customJobTitle');
-            const isCustom = titleField.value === 'Other';
-            customField.style.display = isCustom ? 'block' : 'none';
-            if (!isCustom) customField.value = '';
-            updateRolePreview();
-        }
-
         function extractKeywords(text) {
-            return Array.from(new Set(
-                (text || '')
-                    .toLowerCase()
-                    .match(/[a-z0-9+.#-]{2,}/g) || []
-            )).filter(word => word.length > 2 && !stopWords.has(word));
+            if (!text) return [];
+            const words = text.toLowerCase().match(/\b[a-z0-9+#.-]{2,}\b/g) || [];
+            return words.filter(w => !STOP_WORDS.has(w) && w.length > 2);
         }
 
-        function analyzeResumeAgainstDescription(resumeText, jobDesc) {
-            const resumeTokens = ((resumeText || '').toLowerCase().match(/[a-z0-9+.#-]{2,}/g) || []).filter(word => word.length > 2 && !stopWords.has(word));
-            const resumeWords = new Set(resumeTokens);
-            const keywords = extractKeywords(jobDesc);
-            const matched = keywords.filter(word => resumeWords.has(word));
-            const missing = keywords.filter(word => !resumeWords.has(word));
-            const score = keywords.length ? Math.round((matched.length / keywords.length) * 100) : 0;
-            const matchedOccurrences = matched.reduce((sum, word) => sum + resumeTokens.filter(token => token === word).length, 0);
-            const density = Math.round((matchedOccurrences / Math.max(resumeTokens.length, 1)) * 100);
-            const keywordDensity = Math.min(100, density * 4);
-            const keywordFreq = Object.fromEntries(keywords.map(word => [word, keywords.filter(token => token === word).length || 1]));
-            const grade = score >= 80 ? 'A' : score >= 65 ? 'B' : score >= 50 ? 'C' : score >= 35 ? 'D' : 'F';
-            const headline = score >= 80 ? 'Excellent match' : score >= 65 ? 'Strong match' : score >= 50 ? 'Average match' : score >= 35 ? 'Weak match' : 'Low match';
-            const suggestions = [];
-            if (missing.length) suggestions.push(`Missing terms: ${missing.slice(0, 5).join(', ')}`);
-            if (density < 8) suggestions.push('Low keyword density. Add role-specific terms to the summary and experience bullets.');
-            if (!suggestions.length) suggestions.push('Good alignment. Validate achievements and keep formatting ATS-friendly.');
-            return {
-                score,
-                matched,
-                missing,
-                matched_count: matched.length,
-                missing_count: missing.length,
-                total_keywords: keywords.length,
-                density,
-                grade,
-                keyword_freq: keywordFreq,
-                strength: {
-                    keyword_match: score,
-                    coverage: score,
-                    keyword_density: keywordDensity
-                },
-                report: {
-                    headline,
-                    summary: `Matched ${matched.length} of ${keywords.length} keywords from the job description.`,
-                    matched_ratio: `${matched.length} / ${keywords.length}`,
-                    top_missing: missing.slice(0, 5)
-                },
-                suggestions
-            };
-        }
-
-        function updateKeywordReport(jobDesc, results = []) {
-            const keywords = extractKeywords(jobDesc);
-            const average = results.length ? Math.round(results.reduce((sum, item) => sum + item.score, 0) / results.length) : 0;
-            const best = results.length ? Math.max(...results.map(item => item.score)) : 0;
-            const strongMatches = results.filter(item => item.score >= 60).length;
-            const reportHeadline = !results.length
-                ? 'Waiting'
-                : strongMatches > 0
-                    ? `${strongMatches} strong matches`
-                    : `Best fit ${best}%`;
-            const focusCopy = results.length
-                ? strongMatches > 0
-                    ? `Processed ${results.length} resume(s) against ${keywords.length} unique job description keywords.`
-                    : `Processed ${results.length} resume(s). No profile crossed the strong-match threshold yet, but the best file scored ${best}%.`
-                : 'Upload resumes and add a job description to generate a match report.';
-
-            document.getElementById('reportKeywords').textContent = keywords.length;
-            document.getElementById('reportAverage').textContent = `${average}%`;
-            document.getElementById('reportBest').textContent = `${best}%`;
-            document.getElementById('reportFocus').textContent = reportHeadline;
-            document.getElementById('reportFocusCopy').textContent = focusCopy;
-        }
-
-        async function extractResumeText(file) {
-            if (resumeTextCache.has(file.name)) {
-                return resumeTextCache.get(file.name);
-            }
-
-            if (!iframeTransport) {
-                iframeTransport = document.createElement('iframe');
-                iframeTransport.name = 'atsUploadTransport';
-                iframeTransport.style.display = 'none';
-                document.body.appendChild(iframeTransport);
-            }
-
-            const token = `upload_${Date.now()}_${++pendingUploadCounter}`;
-            const text = await new Promise((resolve, reject) => {
-                pendingUploadResolvers.set(token, resolve);
-                pendingUploadRejectors.set(token, reject);
-
-                const form = document.createElement('form');
-                form.method = 'POST';
-                form.enctype = 'multipart/form-data';
-                form.target = 'atsUploadTransport';
-                form.action = `https://auratoolkit-360.onrender.com/upload-linkedin-file?transport=message`;
-
-                const fileInput = document.createElement('input');
-                fileInput.type = 'file';
-                fileInput.name = 'file';
-
-                const dataTransfer = new DataTransfer();
-                dataTransfer.items.add(file);
-                fileInput.files = dataTransfer.files;
-
-                const tokenInput = document.createElement('input');
-                tokenInput.type = 'hidden';
-                tokenInput.name = 'token';
-                tokenInput.value = token;
-
-                form.appendChild(fileInput);
-                form.appendChild(tokenInput);
-                document.body.appendChild(form);
-
-                const cleanup = () => {
-                    form.remove();
-                    pendingUploadResolvers.delete(token);
-                    pendingUploadRejectors.delete(token);
-                };
-
-                const timer = setTimeout(() => {
-                    cleanup();
-                    reject(new Error('Timed out while extracting resume text'));
-                }, 120000);
-
-                const originalResolve = resolve;
-                const originalReject = reject;
-                pendingUploadResolvers.set(token, (value) => {
-                    clearTimeout(timer);
-                    cleanup();
-                    originalResolve(value);
-                });
-                pendingUploadRejectors.set(token, (error) => {
-                    clearTimeout(timer);
-                    cleanup();
-                    originalReject(error);
-                });
-
-                form.submit();
-            });
-
-            resumeTextCache.set(file.name, text);
-            return text;
-        }
-
-        window.addEventListener('message', (event) => {
-            if (event.origin !== 'https://auratoolkit-360.onrender.com') return;
-            const data = event.data || {};
-            if (data.type !== 'ats-upload-result' || !data.token) return;
-
-            const resolve = pendingUploadResolvers.get(data.token);
-            const reject = pendingUploadRejectors.get(data.token);
-            if (data.error) {
-                if (reject) reject(new Error(data.error));
-                return;
-            }
-            if (resolve) resolve(data.text || '');
-        });
-
-        async function processResume(file, jobDesc, jobTitle, index, total) {
-            if (scanState === 'cancelled') throw new Error('cancelled');
-            await waitIfPaused();
-            if (scanState === 'cancelled') throw new Error('cancelled');
-            document.getElementById('processingInfo').innerHTML = `Processing ${index + 1} of ${total}: ${file.name}`;
-            const text = await extractResumeText(file);
-            await waitIfPaused();
-            if (scanState === 'cancelled') throw new Error('cancelled');
-            const analysis = analyzeResumeAgainstDescription(text, jobDesc);
-
-            return {
-                id: index,
-                name: file.name,
-                title: jobTitle,
-                score: analysis.score,
-                matched: analysis.matched,
-                missing: analysis.missing,
-                matched_count: analysis.matched_count,
-                missing_count: analysis.missing_count,
-                total_keywords: analysis.total_keywords,
-                density: analysis.density,
-                grade: analysis.grade,
-                keyword_freq: analysis.keyword_freq,
-                strength: analysis.strength,
-                report: analysis.report,
-                suggestions: analysis.suggestions,
-                status: candidateStatus[file.name] || 'pending',
-                notes: candidateNotes[file.name] || '',
-                file: file,
-                resumeText: text
-            };
-        }
-
-        async function runWithConcurrency(items, concurrency, worker) {
-            const results = new Array(items.length);
-            let nextIndex = 0;
-
-            async function runWorker() {
-                while (nextIndex < items.length) {
-                    if (scanState === 'cancelled') return;
-                    await waitIfPaused();
-                    if (scanState === 'cancelled') return;
-                    const current = nextIndex++;
-                    results[current] = await worker(items[current], current, items.length);
-                    document.getElementById('progressFill').style.width = `${Math.round(((current + 1) / items.length) * 100)}%`;
+        async function extractText(file) {
+            const name = file.name.toLowerCase();
+            if (name.endsWith('.pdf')) {
+                const data = await file.arrayBuffer();
+                const pdf = await window.pdfjsLib.getDocument({ data }).promise;
+                let fullText = '';
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const content = await page.getTextContent();
+                    fullText += ' ' + content.items.map(item => item.str).join(' ');
                 }
+                return fullText;
+            } else if (name.endsWith('.docx')) {
+                const arrayBuffer = await file.arrayBuffer();
+                const res = await window.mammoth.extractRawText({ arrayBuffer });
+                return res.value || '';
+            } else {
+                return await file.text();
             }
-
-            const workers = Array.from({ length: Math.min(concurrency, items.length) }, () => runWorker());
-            await Promise.all(workers);
-            return results;
         }
 
-        document.getElementById('jobTitle').addEventListener('change', toggleCustomTitleField);
-        document.getElementById('customJobTitle').addEventListener('input', updateRolePreview);
-        updateRolePreview();
-        
-        function handleFiles(files) {
-            selectedFiles = Array.from(files).filter(f => f.name.match(/\.(pdf|docx)$/i)).slice(0, 300);
-            document.getElementById('fileCount').innerHTML = `✅ ${selectedFiles.length} resume(s) selected`;
-        }
-        
         async function startBulkScan() {
             if (!selectedFiles.length) { alert('Please select resumes first!'); return; }
-            const jobTitle = getSelectedJobTitle();
             const jobDesc = document.getElementById('jobDesc').value.trim();
-            if (!jobDesc) { alert('Please paste job description!'); return; }
+            if (!jobDesc) { alert('Please enter a job description!'); return; }
 
-            document.getElementById('minScore').value = '0';
-            document.getElementById('statusFilter').value = 'all';
-            document.getElementById('sortOrder').value = 'desc';
-            updateFilter();
+            const btn = document.getElementById('startBtn');
+            const pBar = document.getElementById('progressBar');
+            const pFill = document.getElementById('progressFill');
+            const pInfo = document.getElementById('processingInfo');
 
-            scanState = 'running';
-            updateScanControls();
-            document.getElementById('progressBar').style.display = 'block';
-            document.getElementById('processingInfo').style.display = 'block';
-            document.getElementById('resultsDiv').style.display = 'none';
-            document.getElementById('statsRow').style.display = 'none';
-            document.getElementById('chartContainer').style.display = 'none';
+            btn.disabled = true;
+            pBar.style.display = 'block';
+            pInfo.style.display = 'block';
             bulkResults = [];
-            candidateStatus = {};
-            candidateNotes = {};
-            selectedCandidates.clear();
 
-            const startedAt = performance.now();
-            const processed = await runWithConcurrency(selectedFiles, 4, async (file, index, total) => {
+            const jdKeywords = Array.from(new Set(extractKeywords(jobDesc)));
+            const totalJd = jdKeywords.length || 1;
+
+            for (let i = 0; i < selectedFiles.length; i++) {
+                const file = selectedFiles[i];
+                pInfo.textContent = `Processing ${i + 1} of ${selectedFiles.length}: ${file.name}`;
+                pFill.style.width = `${Math.round(((i + 1) / selectedFiles.length) * 100)}%`;
+
                 try {
-                    return await processResume(file, jobDesc, jobTitle, index, total);
-                } catch (e) {
-                    if (scanState === 'cancelled') return null;
-                    return {
-                        id: index,
+                    const text = await extractText(file);
+                    const resumeKeywords = new Set(extractKeywords(text));
+                    const matched = [];
+                    const missing = [];
+
+                    jdKeywords.forEach(k => {
+                        if (resumeKeywords.has(k)) matched.push(k);
+                        else missing.push(k);
+                    });
+
+                    const score = Math.min(100, Math.max(10, Math.round((matched.length / totalJd) * 100)));
+                    bulkResults.push({
+                        id: i + 1,
                         name: file.name,
-                        title: jobTitle,
+                        score,
+                        matched,
+                        missing,
+                        status: score >= 70 ? 'shortlisted' : 'pending'
+                    });
+                } catch (err) {
+                    bulkResults.push({
+                        id: i + 1,
+                        name: file.name,
                         score: 0,
                         matched: [],
-                        missing: [],
-                        status: 'pending',
-                        notes: '',
-                        file: file,
-                        resumeText: ''
-                    };
+                        missing: jdKeywords,
+                        status: 'rejected'
+                    });
                 }
-            });
+            }
 
-            bulkResults = processed.filter(Boolean);
-            const elapsed = Math.round(performance.now() - startedAt);
-            document.getElementById('processingInfo').innerHTML = scanState === 'cancelled'
-                ? `Screening cancelled after ${bulkResults.length} resume(s).`
-                : `Completed ${bulkResults.length} resumes in ${elapsed}ms`;
+            btn.disabled = false;
+            pBar.style.display = 'none';
+            pInfo.style.display = 'none';
 
-            scanState = 'idle';
-            updateScanControls();
-            document.getElementById('progressBar').style.display = 'none';
-            document.getElementById('processingInfo').style.display = 'none';
-            updateKeywordReport(jobDesc, bulkResults);
-            renderStatsAndCharts();
+            bulkResults.sort((a, b) => b.score - a.score);
             renderTable();
             document.getElementById('resultsDiv').style.display = 'block';
+            document.getElementById('resultsDiv').scrollIntoView({ behavior: 'smooth' });
         }
-        
-        function renderStatsAndCharts() {
-            const total = bulkResults.length;
-            const shortlisted = bulkResults.filter(r => r.status === 'shortlisted').length;
-            const rejected = bulkResults.filter(r => r.status === 'rejected').length;
-            const pending = total - shortlisted - rejected;
-            const avgScore = Math.round(bulkResults.reduce((s,r)=>s+r.score,0)/total);
-            const topScore = Math.max(...bulkResults.map(r=>r.score));
-            const roleName = getSelectedJobTitle();
-            
-            document.getElementById('statsRow').innerHTML = `
-                <div class="stat-box" onclick="filterByStatus('all')"><div class="num">${total}</div><div class="lbl">${roleName}</div></div>
-                <div class="stat-box" onclick="filterByStatus('shortlisted')"><div class="num" style="color:#10b981;">${shortlisted}</div><div class="lbl">⭐ Shortlisted</div></div>
-                <div class="stat-box" onclick="filterByStatus('rejected')"><div class="num" style="color:#ef4444;">${rejected}</div><div class="lbl">❌ Rejected</div></div>
-                <div class="stat-box" onclick="filterByStatus('pending')"><div class="num" style="color:#f59e0b;">${pending}</div><div class="lbl">⏳ Pending</div></div>
-                <div class="stat-box"><div class="num" style="color:#667eea;">${avgScore}%</div><div class="lbl">Average Score</div></div>
-                <div class="stat-box"><div class="num" style="color:#10b981;">${topScore}%</div><div class="lbl">Top Score</div></div>
-            `;
-            document.getElementById('statsRow').style.display = 'flex';
-            
-            const excellent = bulkResults.filter(r => r.score >= 80).length;
-            const good = bulkResults.filter(r => r.score >= 60 && r.score < 80).length;
-            const average = bulkResults.filter(r => r.score >= 40 && r.score < 60).length;
-            const poor = bulkResults.filter(r => r.score < 40).length;
-            
-            document.getElementById('scoreChart').innerHTML = `
-                <div>🌟 Excellent (80-100%) <div class="progress-bar-chart"><div class="progress-fill-chart" style="width:${(excellent/total)*100}%; background:#10b981;">${excellent}</div></div></div>
-                <div>👍 Good (60-79%) <div class="progress-bar-chart"><div class="progress-fill-chart" style="width:${(good/total)*100}%; background:#f59e0b;">${good}</div></div></div>
-                <div>📊 Average (40-59%) <div class="progress-bar-chart"><div class="progress-fill-chart" style="width:${(average/total)*100}%; background:#eab308;">${average}</div></div></div>
-                <div>📉 Poor (0-39%) <div class="progress-bar-chart"><div class="progress-fill-chart" style="width:${(poor/total)*100}%; background:#ef4444;">${poor}</div></div></div>
-            `;
-            
-            document.getElementById('summaryChart').innerHTML = `
-                <div>⭐ Shortlisted: <strong>${shortlisted}</strong></div>
-                <div>⏳ Pending: <strong>${pending}</strong></div>
-                <div>❌ Rejected: <strong>${rejected}</strong></div>
-                <div>📊 Selection Rate: <strong>${Math.round((shortlisted/total)*100)}%</strong></div>
-            `;
-            document.getElementById('chartContainer').style.display = 'flex';
-        }
-        
-        function filterByStatus(status) {
-            document.getElementById('statusFilter').value = status;
-            renderTable();
-        }
-        
+
         function renderTable() {
-            const minScore = parseInt(document.getElementById('minScore').value);
-            const sortOrder = document.getElementById('sortOrder').value;
-            const statusFilter = document.getElementById('statusFilter').value;
-            
-            let filtered = bulkResults.filter(r => r.score >= minScore);
-            if (statusFilter !== 'all') filtered = filtered.filter(r => r.status === statusFilter);
-            let sorted = [...filtered].sort((a,b) => sortOrder === 'desc' ? b.score - a.score : a.score - b.score);
-            
-            let html = '';
-            if (!sorted.length) {
-                html = `
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = bulkResults.map(r => {
+                const sClass = r.score >= 80 ? 'score-excellent' : r.score >= 60 ? 'score-good' : 'score-low';
+                const stClass = r.status === 'shortlisted' ? 'status-shortlisted' : r.status === 'rejected' ? 'status-rejected' : 'status-pending';
+                const stText = r.status === 'shortlisted' ? '⭐ Shortlisted' : r.status === 'rejected' ? '❌ Rejected' : '⏳ Pending';
+
+                return `
                     <tr>
-                        <td colspan="8" style="padding:1.5rem; text-align:center; color:#64748b; font-weight:500;">
-                            No records match the current filters. Lower Min Score to see candidates with 0% scores.
-                        </td>
-                    </tr>
-                `;
-            } else {
-                sorted.forEach((r, idx) => {
-                let scoreClass = r.score >= 80 ? 'score-excellent' : r.score >= 60 ? 'score-good' : 'score-low';
-                let statusClass = r.status === 'shortlisted' ? 'status-shortlisted' : r.status === 'rejected' ? 'status-rejected' : 'status-pending';
-                let statusText = r.status === 'shortlisted' ? '⭐ Shortlisted' : r.status === 'rejected' ? '❌ Rejected' : '⏳ Pending';
-                let isChecked = selectedCandidates.has(r.id);
-                
-                html += `
-                    <tr>
-                        <td><input type="checkbox" class="checkbox" data-id="${r.id}" ${isChecked ? 'checked' : ''} onchange="toggleCandidate(${r.id})"></td>
-                        <td>${idx+1}</td>
-                        <td style="cursor:pointer; color:#667eea; font-weight:500;" onclick="showCandidateDetail(${r.id})">📄 ${r.name}<div style="font-size:0.7rem; color:#94a3b8; margin-top:0.15rem;">${r.title || getSelectedJobTitle()}</div><div style="font-size:0.7rem; color:#64748b; margin-top:0.15rem;">${r.report?.matched_ratio || `${r.matched.length} / ${r.total_keywords || 0}`} matched</div></td>
-                        <td><span class="score-badge ${scoreClass}">${r.score}%</span><div style="font-size:0.68rem; color:#94a3b8; margin-top:0.15rem;">Grade ${r.grade || '–'} • ${r.density || 0}% density</div></td>
-                        <td>${r.matched.length}</td>
-                        <td>${r.missing.length}</td>
-                        <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                        <td>${r.id}</td>
+                        <td><strong>📄 ${r.name}</strong></td>
+                        <td><span class="score-badge ${sClass}">${r.score}%</span></td>
+                        <td><span style="color:#10b981; font-weight:600;">${r.matched.length} terms</span> (${r.matched.slice(0, 4).join(', ')})</td>
+                        <td><span style="color:#ef4444;">${r.missing.length} terms</span></td>
+                        <td><span class="status-badge ${stClass}">${stText}</span></td>
                         <td>
-                            <button class="btn btn-success btn-sm" onclick="updateStatus(${r.id}, 'shortlisted')" title="Shortlist">⭐</button>
-                            <button class="btn btn-warning btn-sm" onclick="updateStatus(${r.id}, 'pending')" title="Pending">⏳</button>
-                            <button class="btn btn-danger btn-sm" onclick="updateStatus(${r.id}, 'rejected')" title="Reject">🗑️</button>
-                            <button class="btn btn-outline btn-sm" onclick="showCandidateDetail(${r.id})" title="View Details">📋</button>
+                            <button class="btn btn-success btn-sm" onclick="updateStatus(${r.id}, 'shortlisted')">⭐</button>
+                            <button class="btn btn-warning btn-sm" onclick="updateStatus(${r.id}, 'pending')">⏳</button>
+                            <button class="btn btn-danger btn-sm" onclick="updateStatus(${r.id}, 'rejected')">❌</button>
                         </td>
                     </tr>
                 `;
-                });
-            }
-            document.getElementById('tableBody').innerHTML = html;
-            updateBulkActionsBar();
+            }).join('');
         }
-        
-        function toggleCandidate(id) {
-            if (selectedCandidates.has(id)) selectedCandidates.delete(id);
-            else selectedCandidates.add(id);
-            updateBulkActionsBar();
-        }
-        
-        function toggleSelectAll() {
-            const checkbox = document.getElementById('selectAllCheckbox');
-            const minScore = parseInt(document.getElementById('minScore').value);
-            const statusFilter = document.getElementById('statusFilter').value;
-            let filtered = bulkResults.filter(r => r.score >= minScore);
-            if (statusFilter !== 'all') filtered = filtered.filter(r => r.status === statusFilter);
-            if (checkbox.checked) filtered.forEach(r => selectedCandidates.add(r.id));
-            else filtered.forEach(r => selectedCandidates.delete(r.id));
-            renderTable();
-        }
-        
-        function updateBulkActionsBar() {
-            const count = selectedCandidates.size;
-            document.getElementById('selectedCount').innerHTML = `${count} selected`;
-            document.getElementById('bulkActionsBar').style.display = count > 0 ? 'flex' : 'none';
-        }
-        
-        function clearSelection() { selectedCandidates.clear(); renderTable(); }
-        
+
         function updateStatus(id, status) {
-            const candidate = bulkResults.find(r => r.id == id);
-            if (candidate) { candidate.status = status; candidateStatus[candidate.name] = status; renderStatsAndCharts(); renderTable(); }
-        }
-        
-        function bulkShortlist() { selectedCandidates.forEach(id => { const c = bulkResults.find(r => r.id == id); if(c) c.status = 'shortlisted'; }); renderStatsAndCharts(); renderTable(); clearSelection(); }
-        function bulkReject() { selectedCandidates.forEach(id => { const c = bulkResults.find(r => r.id == id); if(c) c.status = 'rejected'; }); renderStatsAndCharts(); renderTable(); clearSelection(); }
-        
-        let currentDetailCandidate = null;
-        async function showCandidateDetail(id) {
-            const candidate = bulkResults.find(r => r.id == id);
-            if (!candidate) return;
-            currentDetailCandidate = candidate;
-            
-            let resumeText = candidate.resumeText || resumeTextCache.get(candidate.name) || 'Unable to extract resume text.';
-            if (resumeText !== 'Unable to extract resume text.') {
-                resumeText = resumeText.substring(0, 1000);
-            }
-            
-            document.getElementById('detailContent').innerHTML = `
-                <div><strong>📄 File:</strong> ${candidate.name}</div>
-                <div><strong>💼 Job Title:</strong> ${candidate.title || getSelectedJobTitle()}</div>
-                <div><strong>🎯 Score:</strong> ${candidate.score}%</div>
-                <div><strong>📊 Report:</strong> ${candidate.report?.headline || 'Keyword report'} • ${candidate.report?.matched_ratio || `${candidate.matched.length} / ${candidate.total_keywords || 0}`} matched • Grade ${candidate.grade || '–'}</div>
-                <div><strong>🧪 Density:</strong> ${candidate.density || 0}% keyword density in extracted resume text</div>
-                <div class="detail-section"><strong>✅ Matched Keywords (${candidate.matched.length})</strong><div class="detail-tags">${candidate.matched.length ? candidate.matched.slice(0, 20).map(word => `<span class="detail-tag matched">${word}</span>`).join('') : '<span class="detail-tag neutral">No matched terms</span>'}</div></div>
-                <div class="detail-section"><strong>❌ Missing Keywords (${candidate.missing.length})</strong><div class="detail-tags">${candidate.missing.length ? candidate.missing.slice(0, 20).map(word => `<span class="detail-tag missing">${word}</span>`).join('') : '<span class="detail-tag neutral">No missing terms</span>'}</div></div>
-                <div class="detail-section"><strong>💡 Suggestions</strong><div class="detail-tags">${(candidate.suggestions || []).map(item => `<span class="detail-tag neutral">${item}</span>`).join('') || '<span class="detail-tag neutral">No suggestions</span>'}</div></div>
-                <div style="margin-top:0.5rem;"><strong>📄 Resume Preview:</strong></div>
-                <div style="background:#f1f5f9; padding:0.5rem; border-radius:8px; max-height:200px; overflow-y:auto; font-size:0.75rem;">${resumeText.replace(/\n/g, '<br>')}</div>
-                <div style="margin-top:0.5rem;"><strong>⭐ Status:</strong> 
-                    <button class="btn btn-success btn-sm" onclick="updateStatus(${candidate.id}, 'shortlisted'); closeDetailModal();">Shortlist</button>
-                    <button class="btn btn-warning btn-sm" onclick="updateStatus(${candidate.id}, 'pending'); closeDetailModal();">Pending</button>
-                    <button class="btn btn-danger btn-sm" onclick="updateStatus(${candidate.id}, 'rejected'); closeDetailModal();">Reject</button>
-                </div>
-            `;
-            document.getElementById('candidateNotes').value = candidate.notes || '';
-            document.getElementById('detailModal').style.display = 'flex';
-        }
-        
-        function saveNotes() {
-            if (currentDetailCandidate) {
-                currentDetailCandidate.notes = document.getElementById('candidateNotes').value;
-                candidateNotes[currentDetailCandidate.name] = currentDetailCandidate.notes;
-                alert('✅ Notes saved!');
+            const item = bulkResults.find(r => r.id === id);
+            if (item) {
+                item.status = status;
+                renderTable();
             }
         }
-        function closeDetailModal() { document.getElementById('detailModal').style.display = 'none'; currentDetailCandidate = null; }
-        
-        let emailCandidates = [];
-        function bulkEmail() {
-            emailCandidates = [];
-            selectedCandidates.forEach(id => { const c = bulkResults.find(r => r.id == id); if(c) emailCandidates.push(c); });
-            if (!emailCandidates.length) { alert('No candidates selected!'); return; }
-            document.getElementById('emailContent').innerHTML = `<p><strong>Selected Candidates:</strong> ${emailCandidates.length}</p><p>${emailCandidates.map(c => c.name).join('<br>')}</p>`;
-            document.getElementById('emailMessage').value = `Dear Candidate,\n\nWe are pleased to inform you that you have been shortlisted for the next round.\n\nPlease confirm your availability for an interview.\n\nBest regards,\nHR Team`;
-            document.getElementById('emailModal').style.display = 'flex';
-        }
-        function sendEmails() {
-            const subject = document.getElementById('emailSubject').value;
-            const message = document.getElementById('emailMessage').value;
-            alert(`📧 Emails would be sent to ${emailCandidates.length} candidates.\n\nSubject: ${subject}\n\nMessage: ${message.substring(0,100)}...\n\n(Email sending requires SMTP configuration)`);
-            closeEmailModal(); clearSelection();
-        }
-        function closeEmailModal() { document.getElementById('emailModal').style.display = 'none'; }
-        
-        function updateFilter() {
-            document.getElementById('minScoreVal').innerHTML = document.getElementById('minScore').value + '%';
-            if(bulkResults.length) renderTable();
-        }
-        
-        function downloadCSV() {
-            let csv = "Name,Score,Grade,Matched Count,Missing Count,Total Keywords,Density,Status,Notes\n";
-            bulkResults.forEach(r => { csv += `"${r.name}",${r.score}%,${r.grade || ''},${r.matched.length},${r.missing.length},${r.total_keywords || 0},${r.density || 0}%,"${r.status}","${(r.notes || '').replace(/"/g, '""')}"\n`; });
-            const blob = new Blob([csv], {type: 'text/csv'});
+
+        function exportCSV() {
+            let csv = "ID,Filename,Match Score,Matched Count,Missing Count,Status\n";
+            bulkResults.forEach(r => {
+                csv += `${r.id},"${r.name}",${r.score}%,${r.matched.length},${r.missing.length},"${r.status}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'hr_helper_results.csv';
+            a.download = 'candidate_screening_report.csv';
             a.click();
         }
-        
-        // Add CSV button to filter row
-        const csvBtn = document.createElement('button');
-        csvBtn.className = 'btn btn-outline btn-sm';
-        csvBtn.innerHTML = '⬇️ CSV';
-        csvBtn.onclick = downloadCSV;
-        document.querySelector('.filter-row').appendChild(csvBtn);
-        updateKeywordReport(document.getElementById('jobDesc').value.trim(), []);
     </script>
 </body>
 </html>

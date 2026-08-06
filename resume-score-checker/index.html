@@ -3,19 +3,338 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume CV Score Checker (ATS) - AuraToolkit360</title>
-  <meta name="description" content="Redirecting to AuraToolkit360 Resume CV Score Checker.">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://auratoolkit360.com/resume-score-checker">
+  <meta name="description" content="Check your resume against any job description with a professional ATS Resume Score Checker. Upload, compare keywords, and get practical improvement suggestions instantly.">
+  <meta name="keywords" content="ATS resume checker, resume score checker, CV ATS score, resume keyword match, job description checker, ATS optimization tool">
+  <meta name="author" content="AuraToolkit360">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://auratoolkit360.com/resume-score-checker/">
+  <meta name="theme-color" content="#534AB7">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Resume CV Score Checker (ATS) - AuraToolkit360">
-  <meta property="og:description" content="Redirecting to AuraToolkit360 Resume CV Score Checker.">
-  <meta property="og:url" content="https://auratoolkit360.com/resume-score-checker">
+  <meta property="og:site_name" content="AuraToolkit360">
+  <meta property="og:title" content="Professional ATS Resume Score Checker | AuraToolkit360">
+  <meta property="og:description" content="Upload your resume, compare it with a job description, and get keyword-level ATS improvement suggestions.">
+  <meta property="og:url" content="https://auratoolkit360.com/resume-score-checker/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Resume CV Score Checker (ATS) - AuraToolkit360">
-  <meta name="twitter:description" content="Redirecting to AuraToolkit360 Resume CV Score Checker.">
-  <meta http-equiv="refresh" content="0; url=/templates/resume-score-checker.html">
-  <script>window.location.replace('/templates/resume-score-checker.html');</script>
+  <meta name="twitter:title" content="Professional ATS Resume Score Checker | AuraToolkit360">
+  <meta name="twitter:description" content="Instantly check ATS resume match score and see which keywords your resume is missing.">
+  <title>Professional ATS Resume Score Checker | AuraToolkit360</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple:     #534AB7;
+      --purple-lt:  #EEEDFE;
+      --purple-dk:  #3C3489;
+      --green:      #3B6D11;
+      --green-lt:   #EAF3DE;
+      --red:        #A32D2D;
+      --red-lt:     #FCEBEB;
+      --amber:      #BA7517;
+      --amber-lt:   #FAEEDA;
+      --blue:       #185FA5;
+      --blue-lt:    #E6F1FB;
+      --border:     #e2e8f0;
+      --bg:         #f7f8fc;
+      --card:       #ffffff;
+      --text:       #1a202c;
+      --muted:      #718096;
+      --shadow:     0 18px 45px rgba(43, 51, 89, .12);
+      --radius:     10px;
+      --radius-lg:  14px;
+    }
+
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
+
+    .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 0.8rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(102,126,234,0.1); }
+    .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; }
+    .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: #4a5568; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
+    .nav-links a:hover { background: #f0f4ff; color: #667eea; }
+    .nav-links a.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+
+    .hero { background: linear-gradient(135deg, #534AB7 0%, #3C3489 100%); color: white; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .hero p { max-width: 620px; margin: 0 auto; opacity: .9; font-size: 1rem; }
+
+    .main-wrap { max-width: 1100px; margin: -2rem auto 3rem; padding: 0 1rem; flex: 1; width: 100%; }
+    .grid-input { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; background: var(--card); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    @media(max-width: 768px){ .grid-input { grid-template-columns: 1fr; } }
+
+    .box-title { font-size: .95rem; font-weight: 700; color: var(--purple-dk); margin-bottom: .8rem; display: flex; align-items: center; gap: .5rem; }
+    .drop-zone { border: 2px dashed #cbd5e1; border-radius: var(--radius); padding: 1.8rem 1rem; text-align: center; background: #fafbff; cursor: pointer; transition: all .2s; }
+    .drop-zone:hover { border-color: var(--purple); background: var(--purple-lt); }
+    .drop-zone input { display: none; }
+    .drop-icon { font-size: 2.2rem; margin-bottom: .5rem; }
+    .file-name { font-size: .85rem; font-weight: 600; color: var(--purple); margin-top: .5rem; word-break: break-all; }
+
+    textarea { width: 100%; height: 160px; padding: .8rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit; font-size: .85rem; resize: vertical; outline: none; }
+    textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px var(--purple-lt); }
+
+    .scan-btn-wrap { grid-column: 1 / -1; text-align: center; margin-top: .5rem; }
+    .btn-scan { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: .9rem 2.5rem; border-radius: var(--radius); font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+    .btn-scan:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,.4); }
+
+    /* Results */
+    .result-card { background: var(--card); border-radius: var(--radius-lg); padding: 2rem; margin-top: 2rem; box-shadow: var(--shadow); border: 1px solid var(--border); display: none; }
+    .res-top { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; align-items: center; }
+    @media(max-width: 600px){ .res-top { grid-template-columns: 1fr; text-align: center; } }
+
+    .score-circle { position: relative; width: 140px; height: 140px; margin: 0 auto; }
+    .score-circle svg { width: 140px; height: 140px; transform: rotate(-90deg); }
+    .score-circle circle { fill: none; stroke-width: 10; }
+    .bg-circle { stroke: #f1f5f9; }
+    .fill-circle { stroke: var(--purple); stroke-dasharray: 264; stroke-dashoffset: 264; transition: stroke-dashoffset 1s ease; stroke-linecap: round; }
+    .score-num { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; }
+
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    @media(max-width: 600px){ .metrics-grid { grid-template-columns: repeat(2, 1fr); } }
+    .metric-box { background: var(--bg); padding: .8rem; border-radius: var(--radius); text-align: center; }
+    .metric-val { font-size: 1.3rem; font-weight: 800; color: var(--purple); }
+    .metric-lbl { font-size: .75rem; color: var(--muted); margin-top: .2rem; }
+
+    .tags-wrap { margin-top: 1.5rem; }
+    .tags-title { font-size: .85rem; font-weight: 700; margin-bottom: .6rem; color: var(--text); }
+    .tag { display: inline-block; padding: .25rem .6rem; border-radius: 20px; font-size: .75rem; font-weight: 600; margin: 0 .3rem .4rem 0; }
+    .tag.g { background: var(--green-lt); color: var(--green); }
+    .tag.r { background: var(--red-lt); color: var(--red); }
+
+    .suggestion-box { background: var(--purple-lt); border-left: 4px solid var(--purple); padding: 1rem; border-radius: var(--radius); margin-top: 1.5rem; font-size: .85rem; color: var(--purple-dk); }
+  </style>
+  <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+  <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
 </head>
-<body>Redirecting...</body>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo">AuraToolkit360</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/converter/">Converter</a>
+        <a href="/resume-cv-maker/">Resume CV Maker</a>
+        <a href="/resume-score-checker/" class="active">Score Checker</a>
+        <a href="/hr-helper/">HR Helper</a>
+        <a href="/about/">About</a>
+        <a href="/blogs/">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>🎯 Professional ATS Resume Score Checker</h1>
+    <p>100% Client-Side Privacy: Compare your resume against any job description inside your browser.</p>
+  </div>
+
+  <div class="main-wrap">
+    <div class="grid-input">
+      <div>
+        <div class="box-title">📄 Upload Resume (PDF / DOCX / TXT)</div>
+        <div class="drop-zone" onclick="document.getElementById('resumeFile').click()">
+          <div class="drop-icon">📁</div>
+          <div>Click or Drag & Drop Resume File</div>
+          <div class="file-name" id="fileName">No file selected</div>
+          <input type="file" id="resumeFile" accept=".pdf,.docx,.txt" onchange="document.getElementById('fileName').textContent = this.files[0] ? this.files[0].name : 'No file selected'">
+        </div>
+      </div>
+
+      <div>
+        <div class="box-title">💼 Paste Job Description</div>
+        <textarea id="jobDesc" placeholder="Paste the required job description, skills, and key qualifications here..."></textarea>
+      </div>
+
+      <div class="scan-btn-wrap">
+        <button class="btn-scan" id="scanBtn" onclick="runATSCheck()">🔍 Check ATS Score</button>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="result-card" id="resultCard">
+      <div class="res-top">
+        <div class="score-circle">
+          <svg>
+            <circle class="bg-circle" cx="70" cy="70" r="42"></circle>
+            <circle class="fill-circle" id="ringFill" cx="70" cy="70" r="42"></circle>
+          </svg>
+          <div class="score-num" id="scorePct">0%</div>
+        </div>
+        <div>
+          <span id="verdictBadge" style="display:inline-block; padding:.3rem .8rem; border-radius:20px; font-weight:700; font-size:.85rem;"></span>
+          <h2 style="font-size:1.3rem; margin-top:.5rem; color:var(--text);" id="reportHeadline">ATS Compatibility Analysis</h2>
+          <p style="font-size:.85rem; color:var(--muted); margin-top:.2rem;" id="resumeFileLabel">Uploaded file</p>
+        </div>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-box"><div class="metric-val" id="mMatched">0</div><div class="metric-lbl">Matched Keywords</div></div>
+        <div class="metric-box"><div class="metric-val" id="mMissing">0</div><div class="metric-lbl">Missing Keywords</div></div>
+        <div class="metric-box"><div class="metric-val" id="mDensity">0%</div><div class="metric-lbl">Keyword Density</div></div>
+        <div class="metric-box"><div class="metric-val" id="mGrade">-</div><div class="metric-lbl">Match Grade</div></div>
+      </div>
+
+      <div class="tags-wrap">
+        <div class="tags-title">✅ Matched Keywords</div>
+        <div id="matchedTags"></div>
+      </div>
+
+      <div class="tags-wrap">
+        <div class="tags-title">⚠️ Missing Key Terms</div>
+        <div id="missingTags"></div>
+      </div>
+
+      <div class="suggestion-box" id="suggestionBox"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    }
+
+    const STOP_WORDS = new Set([
+      'the','and','for','are','with','this','that','you','your','have','from',
+      'will','can','was','they','their','been','has','but','not','all','our',
+      'its','also','more','when','which','a','an','in','of','to','is','on','at',
+      'we','us','he','she','it','them','his','her','these','those','as','by','be',
+      'being','or','if','into','than','then','there','here','over','under','up',
+      'down','out','per','via','about','after','before','during','between','within',
+      'without','one','two','three','four','five','six','seven','eight','nine','ten',
+      'role','job','skills','experience','ability','work','responsibilities','requirements',
+      'seeking','looking','candidate','team','strong','good','must','should','knowledge'
+    ]);
+
+    function extractKeywordsFromText(text) {
+      if (!text) return [];
+      const words = text.toLowerCase().match(/\b[a-z0-9+#.-]{2,}\b/g) || [];
+      return words.filter(w => !STOP_WORDS.has(w) && w.length > 2);
+    }
+
+    async function extractTextFromFile(file) {
+      const name = file.name.toLowerCase();
+      if (name.endsWith('.pdf')) {
+        if (!window.pdfjsLib) throw new Error('pdf.js not loaded');
+        const data = await file.arrayBuffer();
+        const pdf = await window.pdfjsLib.getDocument({ data }).promise;
+        let fullText = '';
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const content = await page.getTextContent();
+          fullText += ' ' + content.items.map(item => item.str).join(' ');
+        }
+        return fullText;
+      } else if (name.endsWith('.docx')) {
+        if (!window.mammoth) throw new Error('mammoth.js not loaded');
+        const arrayBuffer = await file.arrayBuffer();
+        const res = await window.mammoth.extractRawText({ arrayBuffer });
+        return res.value || '';
+      } else {
+        return await file.text();
+      }
+    }
+
+    async function runATSCheck() {
+      const file = document.getElementById('resumeFile').files[0];
+      const jobDesc = document.getElementById('jobDesc').value.trim();
+      const btn = document.getElementById('scanBtn');
+
+      if (!file) { alert('Please upload a resume file.'); return; }
+      if (!jobDesc) { alert('Please enter a job description.'); return; }
+
+      btn.disabled = true;
+      btn.textContent = '⚡ Analyzing in Browser...';
+
+      try {
+        const resumeText = await extractTextFromFile(file);
+        const jdKeywords = extractKeywordsFromText(jobDesc);
+        const resumeKeywords = extractKeywordsFromText(resumeText);
+
+        const jdFreq = {};
+        jdKeywords.forEach(k => { jdFreq[k] = (jdFreq[k] || 0) + 1; });
+        const uniqueJdKeywords = Object.keys(jdFreq);
+
+        const resumeSet = new Set(resumeKeywords);
+        const matched = [];
+        const missing = [];
+
+        uniqueJdKeywords.forEach(k => {
+          if (resumeSet.has(k)) {
+            matched.push(k);
+          } else {
+            missing.push(k);
+          }
+        });
+
+        const totalJd = uniqueJdKeywords.length || 1;
+        const score = Math.min(100, Math.max(10, Math.round((matched.length / totalJd) * 100)));
+        const density = Math.min(100, Math.round((matched.length / (resumeKeywords.length || 1)) * 500));
+        const grade = score >= 80 ? 'A+' : score >= 70 ? 'A' : score >= 55 ? 'B' : score >= 40 ? 'C' : 'D';
+
+        renderResults({
+          score,
+          grade,
+          density,
+          filename: file.name,
+          matched,
+          missing,
+          total: totalJd
+        });
+
+      } catch (err) {
+        alert('Error analyzing resume: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '🔍 Check ATS Score';
+      }
+    }
+
+    function renderResults(data) {
+      const score = data.score;
+      const circ = 2 * Math.PI * 42;
+      const color = score >= 70 ? 'var(--green)' : score >= 45 ? 'var(--amber)' : 'var(--red)';
+
+      const rf = document.getElementById('ringFill');
+      rf.style.stroke = color;
+      rf.style.strokeDashoffset = circ - (circ * score / 100);
+
+      document.getElementById('scorePct').textContent = score + '%';
+      document.getElementById('scorePct').style.color = color;
+
+      const [vLabel, vBg, vColor] =
+        score >= 70 ? ['✅ Excellent Fit', 'var(--green-lt)', 'var(--green)'] :
+        score >= 50 ? ['👍 Good Match', 'var(--blue-lt)', 'var(--blue)'] :
+        score >= 30 ? ['⚠️ Average Match', 'var(--amber-lt)', 'var(--amber)'] :
+                      ['❌ Low Match', 'var(--red-lt)', 'var(--red)'];
+
+      const vb = document.getElementById('verdictBadge');
+      vb.textContent = vLabel; vb.style.background = vBg; vb.style.color = vColor;
+
+      document.getElementById('reportHeadline').textContent = `Matched ${data.matched.length} of ${data.total} Key Terms`;
+      document.getElementById('resumeFileLabel').textContent = data.filename;
+
+      document.getElementById('mMatched').textContent = data.matched.length;
+      document.getElementById('mMissing').textContent = data.missing.length;
+      document.getElementById('mDensity').textContent = data.density + '%';
+      document.getElementById('mGrade').textContent = data.grade;
+
+      document.getElementById('matchedTags').innerHTML = data.matched.length
+        ? data.matched.map(k => `<span class="tag g">${k}</span>`).join('')
+        : '<span style="font-size:12px;color:var(--muted)">No keyword matches found.</span>';
+
+      document.getElementById('missingTags').innerHTML = data.missing.length
+        ? data.missing.slice(0, 25).map(k => `<span class="tag r">${k}</span>`).join('')
+        : '<span style="font-size:12px;color:var(--green)">🎉 Excellent! Your resume covers all required key terms.</span>';
+
+      const topMissing = data.missing.slice(0, 6).join(', ');
+      document.getElementById('suggestionBox').innerHTML = data.missing.length
+        ? `<strong>Improvement Tip:</strong> Consider adding these missing keywords to your resume experience or skills section: <strong>${topMissing}</strong>.`
+        : `🎉 Great work! Your resume is strongly aligned with this job description.`;
+
+      const card = document.getElementById('resultCard');
+      card.style.display = 'block';
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
 </html>
