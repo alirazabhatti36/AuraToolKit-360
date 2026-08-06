@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: aura-toolkit-360
-    runtime: python
-    plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn wsgi:app
-    autoDeploy: true
