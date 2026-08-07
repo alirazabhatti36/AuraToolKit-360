@@ -45,10 +45,11 @@
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
         .btn-outline { background: white; color: #667eea; border: 1px solid #667eea; }
         .btn-outline:hover { background: #f0f4ff; }
-        .btn-sm { padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 6px; }
+        .btn-sm { padding: 0.3rem 0.65rem; font-size: 0.75rem; border-radius: 6px; }
         .btn-success { background: #10b981; color: white; }
         .btn-warning { background: #f59e0b; color: white; }
         .btn-danger { background: #ef4444; color: white; }
+        .btn-info { background: #3b82f6; color: white; }
         .progress-bar-container { background: #e2e8f0; border-radius: 10px; height: 10px; overflow: hidden; margin-top: 1rem; display: none; }
         .progress-fill { background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; width: 0%; transition: width 0.3s; }
         
@@ -85,9 +86,18 @@
         .status-shortlisted { background: #d1fae5; color: #065f46; }
         .status-rejected { background: #fee2e2; color: #991b1b; }
         .status-pending { background: #fef3c7; color: #92400e; }
+
+        /* Modal Backdrop */
+        .modal-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(4px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+        .modal-card { background: white; border-radius: 18px; max-width: 800px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 1.5rem; box-shadow: 0 25px 60px rgba(0,0,0,0.3); border: 1px solid #cbd5e1; position: relative; }
+        .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.6rem; }
+        .modal-head h3 { font-size: 1.1rem; color: #1e293b; }
+        .btn-close { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #64748b; padding: 0 0.4rem; }
+        .btn-close:hover { color: #0f172a; }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
@@ -148,12 +158,16 @@
         </div>
 
         <div class="card" id="resultsDiv" style="display:none;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; margin-bottom:1rem;">
                 <div>
                     <h3 id="resultsTitle">Candidate Screening Results</h3>
                     <div id="screeningMeta" style="font-size:0.8rem; color:#475569; margin-top:0.2rem;"></div>
                 </div>
-                <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇️ Export CSV Report</button>
+                <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                    <button class="btn btn-success btn-sm" onclick="exportShortlistedCSV()">⭐ Export Shortlisted CSV</button>
+                    <button class="btn btn-primary btn-sm" onclick="downloadShortlistedZIP()">📦 Download Shortlisted (ZIP)</button>
+                    <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇️ Export Full CSV Report</button>
+                </div>
             </div>
 
             <!-- Summary Stats Counter Grid -->
@@ -179,7 +193,7 @@
             <!-- Score Slider & Status Filter Bar -->
             <div class="filter-toolbar">
                 <div>
-                    <label for="scoreFilter" style="font-size:0.85rem; font-weight:700; color:#334155; display:flex; justify-space-between; align-items:center;">
+                    <label for="scoreFilter" style="font-size:0.85rem; font-weight:700; color:#334155; display:flex; justify-content:space-between; align-items:center;">
                         <span>🎯 Min Match Score Filter:</span>
                         <span id="scoreFilterVal" style="color:#2563eb; font-weight:800;">Show All (≥ 0%)</span>
                     </label>
@@ -209,6 +223,25 @@
                     </thead>
                     <tbody id="tableBody"></tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Candidate Resume Preview Modal -->
+    <div id="viewModal" class="modal-backdrop" style="display:none;" onclick="if(event.target===this)closeViewModal()">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3 id="modalTitle">📄 Candidate Resume Preview</h3>
+                <button class="btn-close" aria-label="Close Preview Modal" onclick="closeViewModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalMeta" style="margin-bottom:1rem;"></div>
+                <div style="font-weight:700; font-size:0.85rem; color:#475569; margin-bottom:0.4rem;">Extracted Resume Content:</div>
+                <pre id="modalText" style="white-space:pre-wrap; font-family:inherit; font-size:0.82rem; color:#334155; background:#f8fafc; padding:1rem; border-radius:10px; max-height:380px; overflow-y:auto; border:1px solid #cbd5e1;"></pre>
+            </div>
+            <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center; margin-top:1.2rem; padding-top:0.8rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:0.5rem;">
+                <div id="modalActions" style="display:flex; gap:0.4rem;"></div>
+                <button class="btn btn-outline btn-sm" onclick="closeViewModal()">Close</button>
             </div>
         </div>
     </div>
@@ -298,7 +331,6 @@
                     const resumeSet = new Set(resumeKeywords);
 
                     if (isStandaloneMode) {
-                        // General Candidate Structure & Skill Screening Mode
                         const topSkills = Array.from(resumeSet).slice(0, 8);
                         const hasEmail = /@/.test(text);
                         const hasPhone = /\+?\d[\d\s-]{7,}/.test(text);
@@ -315,13 +347,13 @@
                         bulkResults.push({
                             id: i + 1,
                             name: file.name,
+                            text,
                             score,
                             matched: topSkills,
                             missing: ['None (General Screening)'],
                             status: score >= 75 ? 'shortlisted' : 'pending'
                         });
                     } else {
-                        // Job Title & JD Matching Mode
                         const matched = [];
                         const missing = [];
 
@@ -335,6 +367,7 @@
                         bulkResults.push({
                             id: i + 1,
                             name: file.name,
+                            text,
                             score,
                             matched,
                             missing,
@@ -345,6 +378,7 @@
                     bulkResults.push({
                         id: i + 1,
                         name: file.name,
+                        text: 'Failed to extract text from file.',
                         score: 0,
                         matched: [],
                         missing: ['Error reading file'],
@@ -361,7 +395,6 @@
             document.getElementById('screeningMeta').textContent = `Screened ${bulkResults.length} candidates for: ${activeJobTitle}`;
             document.getElementById('resultsDiv').style.display = 'block';
 
-            // Reset score slider
             document.getElementById('scoreFilter').value = 0;
             activeStatusFilter = 'all';
             document.querySelectorAll('.status-chips .chip').forEach((c, idx) => {
@@ -424,6 +457,7 @@
                         <td><span style="color:#ef4444;">${r.missing.length} terms</span></td>
                         <td><span class="status-badge ${stClass}">${stText}</span></td>
                         <td>
+                            <button class="btn btn-info btn-sm" aria-label="View Candidate Resume" onclick="showResumeModal(${r.id})">👁️ View</button>
                             <button class="btn btn-success btn-sm" aria-label="Shortlist Candidate" onclick="updateStatus(${r.id}, 'shortlisted')">⭐</button>
                             <button class="btn btn-warning btn-sm" aria-label="Pending Candidate" onclick="updateStatus(${r.id}, 'pending')">⏳</button>
                             <button class="btn btn-danger btn-sm" aria-label="Reject Candidate" onclick="updateStatus(${r.id}, 'rejected')">❌</button>
@@ -439,6 +473,79 @@
                 item.status = status;
                 applyFilters();
             }
+        }
+
+        function showResumeModal(id) {
+            const r = bulkResults.find(item => item.id === id);
+            if (!r) return;
+
+            document.getElementById('modalTitle').textContent = `📄 ${r.name}`;
+            document.getElementById('modalMeta').innerHTML = `
+                <div style="display:flex; gap:0.6rem; align-items:center; flex-wrap:wrap;">
+                    <span class="score-badge ${r.score >= 80 ? 'score-excellent' : r.score >= 60 ? 'score-good' : 'score-low'}">ATS Match Score: ${r.score}%</span>
+                    <span style="font-size:0.8rem; font-weight:700; color:#475569;">Status: ${r.status.toUpperCase()}</span>
+                </div>
+                <div style="margin-top:0.4rem; font-size:0.8rem; color:#10b981;"><strong>Matched Terms (${r.matched.length}):</strong> ${r.matched.slice(0, 10).join(', ')}</div>
+            `;
+            document.getElementById('modalText').textContent = r.text || 'No text extracted.';
+
+            document.getElementById('modalActions').innerHTML = `
+                <button class="btn btn-success btn-sm" onclick="updateStatus(${r.id}, 'shortlisted'); closeViewModal();">⭐ Shortlist</button>
+                <button class="btn btn-warning btn-sm" onclick="updateStatus(${r.id}, 'pending'); closeViewModal();">⏳ Set Pending</button>
+                <button class="btn btn-danger btn-sm" onclick="updateStatus(${r.id}, 'rejected'); closeViewModal();">❌ Reject</button>
+            `;
+
+            document.getElementById('viewModal').style.display = 'flex';
+        }
+
+        function closeViewModal() {
+            document.getElementById('viewModal').style.display = 'none';
+        }
+
+        function exportShortlistedCSV() {
+            const shortlisted = bulkResults.filter(r => r.status === 'shortlisted');
+            if (!shortlisted.length) {
+                alert('No candidates shortlisted yet! Click ⭐ on candidates to shortlist them first.');
+                return;
+            }
+            let csv = `Shortlisted Candidates Report - Job Role: "${activeJobTitle}"\n`;
+            csv += "Rank,Filename,Match Score,Matched Skills Count,Missing Terms Count\n";
+            shortlisted.forEach((r, idx) => {
+                csv += `${idx + 1},"${r.name}",${r.score}%,${r.matched.length},${r.missing.length}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `shortlisted_candidates_${activeJobTitle.replace(/\s+/g, '_').toLowerCase()}.csv`;
+            a.click();
+        }
+
+        async function downloadShortlistedZIP() {
+            const shortlisted = bulkResults.filter(r => r.status === 'shortlisted');
+            if (!shortlisted.length) {
+                alert('No candidates shortlisted yet! Click ⭐ on candidates to shortlist them first.');
+                return;
+            }
+            if (!window.JSZip) {
+                alert('ZIP generator module is loading...');
+                return;
+            }
+
+            const zip = new JSZip();
+            const folder = zip.folder("Shortlisted_Resumes");
+
+            shortlisted.forEach(r => {
+                const fileObj = selectedFiles.find(f => f.name === r.name);
+                if (fileObj) {
+                    folder.file(fileObj.name, fileObj);
+                }
+            });
+
+            const content = await zip.generateAsync({ type: "blob" });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(content);
+            a.download = `shortlisted_resumes_${activeJobTitle.replace(/\s+/g, '_').toLowerCase()}.zip`;
+            a.click();
         }
 
         function exportCSV() {
