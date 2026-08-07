@@ -41,7 +41,8 @@
         .hero { background: linear-gradient(135deg, #0f172a, #1d4ed8); color: #ffffff; border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
         .hero h1 { font-size: 1.35rem; }
         .hero p { opacity: 0.9; margin-top: 0.3rem; font-size: 0.9rem; }
-        .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
+        .sticky-preview { position: sticky; top: 75px; max-height: calc(100vh - 90px); overflow-y: auto; border: 1px solid #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem; }
         .section { margin-top: 0.9rem; }
         .section h3 { font-size: 0.95rem; margin-bottom: 0.45rem; color: #1d4ed8; }
@@ -260,8 +261,8 @@
                 </div>
             </div>
 
-            <div class="card">
-                <h3>Live Preview</h3>
+            <div class="card sticky-preview">
+                <div style="display:flex; justify-space-between; align-items:center; margin-bottom:0.6rem;"><h3 style="margin:0;">Live Preview</h3><span style="font-size:0.7rem; background:#dbeafe; color:#1d4ed8; padding:0.15rem 0.5rem; border-radius:999px; font-weight:600;">📌 Pinned View</span></div>
                 <div id="preview" class="preview-paper"></div>
             </div>
         </div>
