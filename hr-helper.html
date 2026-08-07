@@ -51,6 +51,27 @@
         .btn-danger { background: #ef4444; color: white; }
         .progress-bar-container { background: #e2e8f0; border-radius: 10px; height: 10px; overflow: hidden; margin-top: 1rem; display: none; }
         .progress-fill { background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; width: 0%; transition: width 0.3s; }
+        
+        /* Stats Cards */
+        .stats-summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-bottom: 1.2rem; }
+        @media(max-width: 600px) { .stats-summary-grid { grid-template-columns: repeat(2, 1fr); } }
+        .stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.8rem; text-align: center; }
+        .stat-card .stat-num { font-size: 1.4rem; font-weight: 800; color: #1e293b; }
+        .stat-card .stat-label { font-size: 0.72rem; color: #64748b; font-weight: 600; margin-top: 0.2rem; }
+        .stat-card.stat-shortlisted { background: #ecfdf5; border-color: #a7f3d0; }
+        .stat-card.stat-shortlisted .stat-num { color: #047857; }
+        .stat-card.stat-pending { background: #fffbeb; border-color: #fde68a; }
+        .stat-card.stat-pending .stat-num { color: #b45309; }
+        .stat-card.stat-rejected { background: #fef2f2; border-color: #fecaca; }
+        .stat-card.stat-rejected .stat-num { color: #b91c1c; }
+
+        /* Filter Toolbar */
+        .filter-toolbar { background: #f1f5f9; border-radius: 12px; padding: 0.9rem; margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; border: 1px solid #e2e8f0; }
+        .status-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .status-chips .chip { background: white; border: 1px solid #cbd5e1; border-radius: 999px; padding: 0.3rem 0.8rem; font-size: 0.75rem; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.2s; }
+        .status-chips .chip:hover { border-color: #667eea; color: #667eea; }
+        .status-chips .chip.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-color: transparent; }
+
         .table-responsive { overflow-x: auto; margin-top: 1rem; }
         table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
         th { background: #f1f5f9; padding: 0.75rem; color: #475569; font-weight: 600; border-bottom: 2px solid #e2e8f0; }
@@ -127,12 +148,50 @@
         </div>
 
         <div class="card" id="resultsDiv" style="display:none;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
                 <div>
                     <h3 id="resultsTitle">Candidate Screening Results</h3>
                     <div id="screeningMeta" style="font-size:0.8rem; color:#475569; margin-top:0.2rem;"></div>
                 </div>
                 <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇️ Export CSV Report</button>
+            </div>
+
+            <!-- Summary Stats Counter Grid -->
+            <div class="stats-summary-grid">
+                <div class="stat-card">
+                    <div class="stat-num" id="statTotal">0</div>
+                    <div class="stat-label">Total Resumes</div>
+                </div>
+                <div class="stat-card stat-shortlisted">
+                    <div class="stat-num" id="statShortlisted">0</div>
+                    <div class="stat-label">⭐ Shortlisted</div>
+                </div>
+                <div class="stat-card stat-pending">
+                    <div class="stat-num" id="statPending">0</div>
+                    <div class="stat-label">⏳ Pending</div>
+                </div>
+                <div class="stat-card stat-rejected">
+                    <div class="stat-num" id="statRejected">0</div>
+                    <div class="stat-label">❌ Rejected</div>
+                </div>
+            </div>
+
+            <!-- Score Slider & Status Filter Bar -->
+            <div class="filter-toolbar">
+                <div>
+                    <label for="scoreFilter" style="font-size:0.85rem; font-weight:700; color:#334155; display:flex; justify-space-between; align-items:center;">
+                        <span>🎯 Min Match Score Filter:</span>
+                        <span id="scoreFilterVal" style="color:#2563eb; font-weight:800;">Show All (≥ 0%)</span>
+                    </label>
+                    <input type="range" id="scoreFilter" aria-label="Min Match Score Filter" min="0" max="100" value="0" style="width:100%; margin-top:0.4rem; cursor:pointer;" oninput="applyFilters()">
+                </div>
+
+                <div class="status-chips">
+                    <span class="chip active" onclick="setStatusFilter('all', this)">All Candidates</span>
+                    <span class="chip" onclick="setStatusFilter('shortlisted', this)">⭐ Shortlisted</span>
+                    <span class="chip" onclick="setStatusFilter('pending', this)">⏳ Pending</span>
+                    <span class="chip" onclick="setStatusFilter('rejected', this)">❌ Rejected</span>
+                </div>
             </div>
 
             <div class="table-responsive">
@@ -162,6 +221,7 @@
         let selectedFiles = [];
         let bulkResults = [];
         let activeJobTitle = '';
+        let activeStatusFilter = 'all';
 
         function handleFiles(files) {
             selectedFiles = Array.from(files);
@@ -298,15 +358,59 @@
             pInfo.style.display = 'none';
 
             bulkResults.sort((a, b) => b.score - a.score);
-            renderTable();
             document.getElementById('screeningMeta').textContent = `Screened ${bulkResults.length} candidates for: ${activeJobTitle}`;
             document.getElementById('resultsDiv').style.display = 'block';
+
+            // Reset score slider
+            document.getElementById('scoreFilter').value = 0;
+            activeStatusFilter = 'all';
+            document.querySelectorAll('.status-chips .chip').forEach((c, idx) => {
+                if (idx === 0) c.classList.add('active'); else c.classList.remove('active');
+            });
+
+            applyFilters();
             document.getElementById('resultsDiv').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function renderTable() {
+        function setStatusFilter(status, element) {
+            activeStatusFilter = status;
+            document.querySelectorAll('.status-chips .chip').forEach(c => c.classList.remove('active'));
+            if (element) element.classList.add('active');
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const minScore = parseInt(document.getElementById('scoreFilter').value, 10) || 0;
+            const filterLabel = document.getElementById('scoreFilterVal');
+            filterLabel.textContent = minScore > 0 ? `≥ ${minScore}% Match` : 'Show All (≥ 0%)';
+
+            let filtered = bulkResults.filter(r => r.score >= minScore);
+
+            if (activeStatusFilter !== 'all') {
+                filtered = filtered.filter(r => r.status === activeStatusFilter);
+            }
+
+            renderTable(filtered);
+            updateSummaryStats();
+        }
+
+        function updateSummaryStats() {
+            document.getElementById('statTotal').textContent = bulkResults.length;
+            document.getElementById('statShortlisted').textContent = bulkResults.filter(r => r.status === 'shortlisted').length;
+            document.getElementById('statPending').textContent = bulkResults.filter(r => r.status === 'pending').length;
+            document.getElementById('statRejected').textContent = bulkResults.filter(r => r.status === 'rejected').length;
+        }
+
+        function renderTable(listToRender) {
+            const list = listToRender || bulkResults;
             const tbody = document.getElementById('tableBody');
-            tbody.innerHTML = bulkResults.map((r, index) => {
+
+            if (!list.length) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.5rem; color:#64748b;">No candidate resumes match the selected score slider or status filter.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = list.map((r, index) => {
                 const sClass = r.score >= 80 ? 'score-excellent' : r.score >= 60 ? 'score-good' : 'score-low';
                 const stClass = r.status === 'shortlisted' ? 'status-shortlisted' : r.status === 'rejected' ? 'status-rejected' : 'status-pending';
                 const stText = r.status === 'shortlisted' ? '⭐ Shortlisted' : r.status === 'rejected' ? '❌ Rejected' : '⏳ Pending';
@@ -333,7 +437,7 @@
             const item = bulkResults.find(r => r.id === id);
             if (item) {
                 item.status = status;
-                renderTable();
+                applyFilters();
             }
         }
 
