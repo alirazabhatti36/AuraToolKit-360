@@ -417,12 +417,12 @@
         function sanitizeWinAnsiText(str) {
             if (!str) return '';
             return str
-                .replace(/[“”„‟]/g, '"')
-                .replace(/[‘’‚‛]/g, "'")
-                .replace(/[–—―]/g, '-')
-                .replace(/[•‣◦⁃∙]/g, '* ')
-                .replace(/…/g, '...')
-                .replace(/[^ -ÿ]/g, ' ');
+                .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
+                .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+                .replace(/[\u2013\u2014\u2015]/g, '-')
+                .replace(/[\u2022\u2023\u25E6\u2043\u2219]/g, '* ')
+                .replace(/\u2026/g, '...')
+                .replace(/[^\x00-\xFF]/g, ' ');
         }
 
         function imageToCanvasBlob(file, format = 'image/png', quality = 0.95, extraTransform = null) {
@@ -480,8 +480,7 @@
             let y = pageHeight - margin;
 
             const sanitizedText = sanitizeWinAnsiText(text);
-            const rawLines = sanitizedText.split(/?
-/);
+            const rawLines = sanitizedText.split(/\r?\n/);
             const lines = rawLines.flatMap(line => {
                 if (!line.trim()) return [' '];
                 const wrapped = [];
@@ -499,7 +498,7 @@
                 try {
                     page.drawText(line, { x: margin, y, size: fontSize, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
                 } catch(e) {
-                    page.drawText(line.replace(/[^ -~]/g, ' '), { x: margin, y, size: fontSize, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
+                    page.drawText(line.replace(/[^\x20-\x7E]/g, ' '), { x: margin, y, size: fontSize, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
                 }
                 y -= lineHeight;
             }
@@ -539,8 +538,10 @@
             const zip = await JSZip.loadAsync(file);
             const slideFiles = Object.keys(zip.files).filter(f => f.startsWith('ppt/slides/slide') && f.endsWith('.xml'));
             slideFiles.sort((a, b) => {
-                const numA = parseInt((a.match(/slide(\d+)\.xml/) || [0,0])[1], 10);
-                const numB = parseInt((b.match(/slide(\d+)\.xml/) || [0,0])[1], 10);
+                const matchA = a.match(/slide(\d+)\.xml/);
+                const matchB = b.match(/slide(\d+)\.xml/);
+                const numA = parseInt(matchA ? matchA[1] : '0', 10);
+                const numB = parseInt(matchB ? matchB[1] : '0', 10);
                 return numA - numB;
             });
 
@@ -587,8 +588,7 @@
             const page = pdfDoc.addPage([842, 595]);
             let y = 550;
 
-            const lines = sanitizeWinAnsiText(csvText).split('
-');
+            const lines = sanitizeWinAnsiText(csvText).split('\n');
             for (const line of lines) {
                 if (y < 40) break;
                 page.drawText(line.slice(0, 120), { x: 40, y, size: 10, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
@@ -603,10 +603,9 @@
             if (!window.docx || !window.docx.Packer) throw new Error('docx library not loaded');
             const file = readSingleFile(form);
             const text = await file.text();
-            const cleanText = text.replace(/\'[0-9a-fA-F]{2}/g, '').replace(/\[a-zA-Z]+\d*\s?/g, '').replace(/[{}]/g, '').trim();
+            const cleanText = text.replace(/\\'[0-9a-fA-F]{2}/g, '').replace(/\\[a-zA-Z]+\d*\s?/g, '').replace(/[{}]/g, '').trim();
 
-            const paragraphs = cleanText.split(/?
-+/).map(l => new docx.Paragraph({ text: l || ' ' }));
+            const paragraphs = cleanText.split(/\r?\n+/).map(l => new docx.Paragraph({ text: l || ' ' }));
             const doc = new docx.Document({ sections: [{ children: paragraphs }] });
             const blob = await docx.Packer.toBlob(doc);
             downloadBlob(blob, 'converted.docx');
@@ -856,9 +855,7 @@
                 const textContent = await page.getTextContent();
                 chunks.push(textContent.items.map(item => item.str).join(' '));
             }
-            downloadBlob(new Blob([chunks.join('
-
-')], { type: 'text/plain;charset=utf-8' }), 'extracted_pdf_text.txt');
+            downloadBlob(new Blob([chunks.join('\n\n')], { type: 'text/plain;charset=utf-8' }), 'extracted_pdf_text.txt');
         }
 
         async function handleDocxToTxt(form) {
@@ -878,8 +875,7 @@
             let page = pdfDoc.addPage([595, 842]);
             let y = 800;
             const sanitizedText = sanitizeWinAnsiText(text);
-            for (const line of sanitizedText.split('
-')) {
+            for (const line of sanitizedText.split('\n')) {
                 if (y < 40) { page = pdfDoc.addPage([595, 842]); y = 800; }
                 page.drawText(line.slice(0, 90), { x: 40, y, size: 10, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
                 y -= 14;
@@ -965,8 +961,7 @@
             const btn = form.querySelector('button[type="submit"]');
             const file = readSingleFile(form);
             const txt = await recognizeText(file, btn);
-            const paras = (txt || 'No text recognized').split('
-').map(t => new docx.Paragraph({ text: t || ' ' }));
+            const paras = (txt || 'No text recognized').split('\n').map(t => new docx.Paragraph({ text: t || ' ' }));
             const doc = new docx.Document({ sections: [{ children: paras }] });
             const blob = await docx.Packer.toBlob(doc);
             downloadBlob(blob, 'ocr_converted.docx');
@@ -977,8 +972,7 @@
             const btn = form.querySelector('button[type="submit"]');
             const file = readSingleFile(form);
             const txt = await recognizeText(file, btn);
-            const rows = txt.split('
-').map(l => l.split(/\s{2,}|	/));
+            const rows = txt.split('\n').map(l => l.split(/\s{2,}|\t/));
             const sheet = XLSX.utils.aoa_to_sheet(rows);
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, sheet, 'OCR Data');
