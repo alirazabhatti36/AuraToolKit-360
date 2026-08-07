@@ -979,7 +979,11 @@
             </div>
             <div class="footer-col">
                 <h4>Feedback & Contact</h4>
-                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'\\nEmail: '+fd.get('email')+'\\n\\nFeedback:\\n'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
+                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'
+Email: '+fd.get('email')+'
+
+Feedback:
+'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
                     <input name="name" type="text" placeholder="Your Name" required aria-label="Your Name">
                     <input name="email" type="email" placeholder="Your Email" required aria-label="Your Email">
                     <textarea name="message" rows="3" placeholder="Share your feedback..." required aria-label="Share your feedback"></textarea>
