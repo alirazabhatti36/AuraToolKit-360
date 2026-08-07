@@ -24,7 +24,7 @@
             --accent: #1d4ed8;
             --ink: #1e293b;
             --paper: #ffffff;
-            --muted: #64748b;
+            --muted: #475569;
         }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f3f6fb; color: #1e293b; }
         .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 0.8rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(102,126,234,0.1); }
@@ -56,7 +56,7 @@
         .entry { border: 1px dashed #cbd5e1; border-radius: 10px; padding: 0.6rem; margin-bottom: 0.5rem; background: #f8fafc; }
         .entry-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; }
         .entry-head strong { font-size: 0.8rem; color: #334155; }
-        .small { font-size: 0.75rem; color: #64748b; }
+        .small { font-size: 0.75rem; color: #475569; }
         .template-toolbar { display: grid; gap: 0.75rem; margin-top: 0.5rem; }
         .template-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
         .template-chip {
@@ -93,14 +93,28 @@
         .thumb-compact::before { content: ''; position: absolute; left: 4px; top: 8px; width: 18px; height: 30px; background: #dbeafe; border-radius: 5px; }
         .thumb-compact::after { content: ''; position: absolute; left: 26px; right: 6px; top: 8px; height: 30px; background: repeating-linear-gradient(180deg, #94a3b8 0 2px, #ffffff 2px 5px); }
         .preview-paper { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.2rem; min-height: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+        
+        @media print {
+            body * { visibility: hidden; }
+            #preview, #preview * { visibility: visible; }
+            #preview {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 1.5cm !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+        }
         @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
-    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
-    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
 </head>
 <body>
     <nav class="navbar" aria-label="Main Navigation">
@@ -131,19 +145,19 @@
                     <div class="small">Draft auto-saved</div>
                 </div>
 
-                <div class="field"><label>Full Name</label><input aria-label="name" type="text" id="name" placeholder="John Doe" oninput="updatePreview()"></div>
-                <div class="field"><label>Target Role</label><input aria-label="targetRole" type="text" id="targetRole" placeholder="Senior Software Engineer" oninput="updatePreview()"></div>
-                <div class="field"><label>Email</label><input aria-label="email" type="email" id="email" placeholder="john@example.com" oninput="updatePreview()"></div>
-                <div class="field"><label>Phone</label><input aria-label="phone" type="text" id="phone" placeholder="+1 555-0199" oninput="updatePreview()"></div>
-                <div class="field"><label>Location</label><input aria-label="location" type="text" id="location" placeholder="New York, USA" oninput="updatePreview()"></div>
-                <div class="field"><label>LinkedIn / Portfolio Links</label><input aria-label="links" type="text" id="links" placeholder="linkedin.com/in/johndoe | github.com/johndoe" oninput="updatePreview()"></div>
-                <div class="field"><label>Professional Summary</label><textarea aria-label="summary" id="summary" placeholder="Experienced engineer specializing in web application design..." oninput="updatePreview()"></textarea></div>
-                <div class="field"><label>Skills & Tools (Comma separated)</label><input aria-label="skills" type="text" id="skills" placeholder="JavaScript, Python, React, SQL, Project Management" oninput="updatePreview()"></div>
+                <div class="field"><label for="name">Full Name</label><input type="text" id="name" aria-label="name" placeholder="John Doe" oninput="updatePreview()"></div>
+                <div class="field"><label for="targetRole">Target Role</label><input type="text" id="targetRole" aria-label="targetRole" placeholder="Senior Software Engineer" oninput="updatePreview()"></div>
+                <div class="field"><label for="email">Email</label><input type="email" id="email" aria-label="email" placeholder="john@example.com" oninput="updatePreview()"></div>
+                <div class="field"><label for="phone">Phone</label><input type="text" id="phone" aria-label="phone" placeholder="+1 555-0199" oninput="updatePreview()"></div>
+                <div class="field"><label for="location">Location</label><input type="text" id="location" aria-label="location" placeholder="New York, USA" oninput="updatePreview()"></div>
+                <div class="field"><label for="links">LinkedIn / Portfolio Links</label><input type="text" id="links" aria-label="links" placeholder="linkedin.com/in/johndoe | github.com/johndoe" oninput="updatePreview()"></div>
+                <div class="field"><label for="summary">Professional Summary</label><textarea id="summary" aria-label="summary" placeholder="Experienced engineer specializing in web application design..." oninput="updatePreview()"></textarea></div>
+                <div class="field"><label for="skills">Skills & Tools (Comma separated)</label><input type="text" id="skills" aria-label="skills" placeholder="JavaScript, Python, React, SQL, Project Management" oninput="updatePreview()"></div>
 
                 <div class="section">
                     <div class="section-head">
                         <h3>Work Experience</h3>
-                        <button type="button" class="btn-outline" onclick="addExperience()">+ Add Experience</button>
+                        <button type="button" class="btn-outline" aria-label="Add Experience" onclick="addExperience()">+ Add Experience</button>
                     </div>
                     <div id="experienceList"></div>
                 </div>
@@ -151,7 +165,7 @@
                 <div class="section">
                     <div class="section-head">
                         <h3>Education & Certifications</h3>
-                        <button type="button" class="btn-outline" onclick="addEducation()">+ Add Education</button>
+                        <button type="button" class="btn-outline" aria-label="Add Education" onclick="addEducation()">+ Add Education</button>
                     </div>
                     <div id="educationList"></div>
                 </div>
@@ -159,12 +173,12 @@
                 <div class="template-toolbar">
                     <div class="template-grid" id="templateGrid"></div>
                     <div class="btn-row">
-                        <button class="btn-primary" onclick="downloadPDF()">📄 Download PDF</button>
-                        <button class="btn-outline" onclick="downloadDOCX()">📝 Download DOCX</button>
-                        <button class="btn-outline" onclick="exportJSON()">💾 Save JSON Draft</button>
-                        <button class="btn-outline" onclick="document.getElementById('importFile').click()">📂 Load JSON Draft</button>
-                        <input aria-label="importFile" type="file" id="importFile" accept=".json" style="display:none" onchange="importJSON(event)">
-                        <button class="btn-danger" onclick="resetForm()">Reset All</button>
+                        <button class="btn-primary" aria-label="Download PDF" onclick="downloadPDF()">📄 Download PDF</button>
+                        <button class="btn-outline" aria-label="Download DOCX" onclick="downloadDOCX()">📝 Download DOCX</button>
+                        <button class="btn-outline" aria-label="Save JSON Draft" onclick="exportJSON()">💾 Save JSON Draft</button>
+                        <button class="btn-outline" aria-label="Load JSON Draft" onclick="document.getElementById('importFile').click()">📂 Load JSON Draft</button>
+                        <input type="file" id="importFile" aria-label="importFile" accept=".json" style="display:none" onchange="importJSON(event)">
+                        <button class="btn-danger" aria-label="Reset All" onclick="resetForm()">Reset All</button>
                     </div>
                 </div>
             </div>
@@ -296,9 +310,9 @@
 
             preview.innerHTML = `
                 <div style="${headerStyle}">
-                    <h1 style="font-size:1.6rem; color:${titleColor}; font-weight:800;">${escapeHtml(data.name || 'Your Full Name')}</h1>
+                    <h1 style="font-size:1.6rem; color:${titleColor}; font-weight:800; margin-bottom:0.2rem;">${escapeHtml(data.name || 'Your Full Name')}</h1>
                     <div style="font-size:0.9rem; color:#475569; font-weight:600; margin-top:0.2rem;">${escapeHtml(data.targetRole || 'Target Role / Title')}</div>
-                    <div style="font-size:0.78rem; color:#64748b; margin-top:0.4rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+                    <div style="font-size:0.78rem; color:#475569; margin-top:0.4rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
                         ${data.email ? `<span>✉️ ${escapeHtml(data.email)}</span>` : ''}
                         ${data.phone ? `<span>📞 ${escapeHtml(data.phone)}</span>` : ''}
                         ${data.location ? `<span>📍 ${escapeHtml(data.location)}</span>` : ''}
@@ -327,9 +341,9 @@
                         <h3 style="font-size:0.95rem; color:${titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">Work Experience</h3>
                         ${data.experience.map(exp => `
                             <div style="margin-bottom:0.8rem;">
-                                <div style="display:flex; justify-space-between; align-items:baseline; flex-wrap:wrap;">
+                                <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
                                     <strong style="font-size:0.85rem; color:#1e293b;">${escapeHtml(exp.title || 'Role Title')}</strong>
-                                    <span style="font-size:0.75rem; color:#64748b;">${escapeHtml(exp.years || '')}</span>
+                                    <span style="font-size:0.75rem; color:#475569;">${escapeHtml(exp.years || '')}</span>
                                 </div>
                                 <div style="font-size:0.78rem; color:#2563eb; font-weight:600;">${escapeHtml(exp.company || '')}</div>
                                 <p style="font-size:0.8rem; color:#334155; margin-top:0.2rem; white-space:pre-line;">${escapeHtml(exp.bullets || '')}</p>
@@ -343,9 +357,9 @@
                         <h3 style="font-size:0.95rem; color:${titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">Education & Qualifications</h3>
                         ${data.education.map(edu => `
                             <div style="margin-bottom:0.6rem;">
-                                <div style="display:flex; justify-space-between; align-items:baseline; flex-wrap:wrap;">
+                                <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
                                     <strong style="font-size:0.83rem; color:#1e293b;">${escapeHtml(edu.degree || 'Degree')}</strong>
-                                    <span style="font-size:0.75rem; color:#64748b;">${escapeHtml(edu.years || '')}</span>
+                                    <span style="font-size:0.75rem; color:#475569;">${escapeHtml(edu.years || '')}</span>
                                 </div>
                                 <div style="font-size:0.78rem; color:#475569;">${escapeHtml(edu.school || '')}</div>
                             </div>
@@ -356,19 +370,36 @@
         }
 
         function downloadPDF() {
-            if (typeof html2pdf === 'undefined') {
-                alert('PDF module loading...');
+            const preview = document.getElementById('preview');
+            if (!preview || !preview.innerHTML.trim()) {
+                alert('Please enter your resume details first.');
                 return;
             }
+
             const name = document.getElementById('name').value || 'resume';
-            const element = document.getElementById('preview');
-            html2pdf().set({
-                margin: 0.4,
-                filename: `${name.replace(/\s+/g, '-').toLowerCase()}-cv.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-            }).from(element).save();
+            const filename = `${name.replace(/\s+/g, '-').toLowerCase()}-cv.pdf`;
+
+            if (typeof html2pdf !== 'undefined') {
+                const opt = {
+                    margin: [0.3, 0.4, 0.3, 0.4],
+                    filename: filename,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: {
+                        scale: 2,
+                        useCORS: true,
+                        scrollY: 0,
+                        scrollX: 0
+                    },
+                    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+                    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                };
+
+                html2pdf().set(opt).from(preview).save().catch(_err => {
+                    window.print();
+                });
+            } else {
+                window.print();
+            }
         }
 
         async function downloadDOCX() {
