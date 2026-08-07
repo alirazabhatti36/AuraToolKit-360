@@ -37,11 +37,9 @@
         .upload-zone { border: 2px dashed #cbd5e1; border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s; background: #f8fafc; }
         .upload-zone:hover { border-color: #667eea; background: #f0f4ff; }
         .upload-zone .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .job-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
-        @media (max-width: 768px) { .job-grid { grid-template-columns: 1fr; } }
-        .input-field { width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.8rem; font-size: 0.88rem; font-family: inherit; margin-top: 0.3rem; outline: none; }
+        .input-field { width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.7rem 0.9rem; font-size: 0.9rem; font-family: inherit; margin-top: 0.3rem; outline: none; transition: all 0.2s; }
         .input-field:focus { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.15); }
-        textarea.input-field { min-height: 90px; resize: vertical; }
+        textarea.input-field { min-height: 100px; resize: vertical; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; border: none; font-size: 0.9rem; transition: all 0.3s; }
         .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
@@ -96,25 +94,26 @@
         </div>
 
         <div class="card">
-            <h3>1. Upload Candidate Resumes (PDF / DOCX / TXT)</h3>
-            <div style="margin-top:0.8rem;">
-                <div class="upload-zone" onclick="document.getElementById('bulkFiles').click()">
-                    <div class="icon">📂</div>
-                    <p>Click or Drag & Drop Multiple Resumes (up to 300 files)</p>
-                    <div id="fileCount" style="margin-top:0.5rem; font-weight:700; color:#667eea;">No files selected</div>
-                    <input aria-label="bulkFiles" type="file" id="bulkFiles" accept=".pdf,.docx,.txt" multiple style="display:none;" onchange="handleFiles(this.files)">
+            <div style="margin-bottom: 1.4rem;">
+                <h3>1. Job Title / Role (Optional)</h3>
+                <input type="text" id="jobTitle" aria-label="jobTitle" class="input-field" placeholder="e.g. Senior Frontend Engineer, HR Manager, Sales Specialist...">
+            </div>
+
+            <div style="margin-bottom: 1.4rem;">
+                <h3>2. Upload Candidate Resumes (PDF / DOCX / TXT)</h3>
+                <div style="margin-top:0.6rem;">
+                    <div class="upload-zone" onclick="document.getElementById('bulkFiles').click()">
+                        <div class="icon">📂</div>
+                        <p>Click or Drag & Drop Multiple Resumes (up to 300 files)</p>
+                        <div id="fileCount" style="margin-top:0.5rem; font-weight:700; color:#667eea;">No files selected</div>
+                        <input aria-label="bulkFiles" type="file" id="bulkFiles" accept=".pdf,.docx,.txt" multiple style="display:none;" onchange="handleFiles(this.files)">
+                    </div>
                 </div>
             </div>
 
-            <div class="job-grid">
-                <div>
-                    <h3>2. Job Title / Role (Optional)</h3>
-                    <input type="text" id="jobTitle" aria-label="jobTitle" class="input-field" placeholder="e.g. Senior Frontend Engineer, HR Manager, Sales Specialist...">
-                </div>
-                <div>
-                    <h3>3. Job Description & Requirements (Optional)</h3>
-                    <textarea id="jobDesc" aria-label="jobDesc" class="input-field" placeholder="Paste full job description or key required skills here (or leave blank to run general quality screening)..."></textarea>
-                </div>
+            <div style="margin-bottom: 1rem;">
+                <h3>3. Job Description & Requirements (Optional)</h3>
+                <textarea id="jobDesc" aria-label="jobDesc" class="input-field" placeholder="Paste full job description or key required skills here (or leave blank to run general quality screening)..."></textarea>
             </div>
 
             <div style="margin-top:1.4rem; text-align:center;">
