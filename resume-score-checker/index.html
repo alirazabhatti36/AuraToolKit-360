@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <meta name="description" content="Check your ATS Resume score with AuraToolkit360. Analyze key terms, keyword density, missing terms, formatting, and structural compatibility instantly. 100% client side.">
   <meta name="keywords" content="ATS resume checker, ATS score scanner, resume compatibility, keyword matcher, AuraToolkit360">
   <meta name="author" content="AuraToolkit360">
@@ -89,7 +89,34 @@
     .cta-recommend-box p { font-size: 0.85rem; color: #c7d2fe; margin-bottom: 0.9rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4; }
     .btn-cta { display: inline-block; background: linear-gradient(135deg, #3b82f6, #6366f1); color: #ffffff; font-weight: 700; padding: 0.65rem 1.5rem; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 15px rgba(59,130,246,0.4); transition: all 0.3s; }
     .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.6); }
-  </style>
+  
+        /* ===== A-Z & Apple iOS Responsiveness Rules ===== */
+        html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        
+        /* Prevent iOS Safari auto-zoom on form inputs */
+        @media screen and (max-width: 768px) {
+            input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="file"], select, textarea {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Smooth touch momentum scrolling for iOS */
+        .preview-paper, .sticky-preview, .search-results, .navbar {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Small screen adjustments (iPhone SE, 320px - 480px) */
+        @media (max-width: 480px) {
+            .navbar { padding: 0.5rem 0.75rem; }
+            .logo { font-size: 1.2rem; }
+            .nav-links a { font-size: 0.7rem; padding: 0.3rem 0.5rem; }
+            .hero { padding: 1.2rem 0.8rem; }
+            .card { padding: 0.9rem; }
+            .btn-row button, button { font-size: 0.78rem; padding: 0.45rem 0.7rem; }
+        }
+
+    </style>
   <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
   <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>

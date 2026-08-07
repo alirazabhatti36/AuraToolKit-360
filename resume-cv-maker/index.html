@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <meta name="description" content="Create a professional, ATS-friendly resume with AuraToolkit360 Resume CV Maker. 7 modern templates, candidate photo support, Certifications, Awards, Projects, Languages, live preview, JSON import/export, PDF export, and DOCX export. 100% client side.">
     <meta name="keywords" content="resume cv maker, cv builder, resume creator, professional cv, photo resume, resume templates, AuraToolkit360">
     <meta name="author" content="AuraToolkit360">
@@ -123,7 +123,41 @@
                 box-shadow: none !important;
             }
         }
-        @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 900px) {
+            .layout { grid-template-columns: 1fr; }
+            .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .sticky-preview { position: relative; top: 0; max-height: none; margin-top: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .template-grid { grid-template-columns: 1fr; }
+        }
+    
+        /* ===== A-Z & Apple iOS Responsiveness Rules ===== */
+        html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        
+        /* Prevent iOS Safari auto-zoom on form inputs */
+        @media screen and (max-width: 768px) {
+            input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="file"], select, textarea {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Smooth touch momentum scrolling for iOS */
+        .preview-paper, .sticky-preview, .search-results, .navbar {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Small screen adjustments (iPhone SE, 320px - 480px) */
+        @media (max-width: 480px) {
+            .navbar { padding: 0.5rem 0.75rem; }
+            .logo { font-size: 1.2rem; }
+            .nav-links a { font-size: 0.7rem; padding: 0.3rem 0.5rem; }
+            .hero { padding: 1.2rem 0.8rem; }
+            .card { padding: 0.9rem; }
+            .btn-row button, button { font-size: 0.78rem; padding: 0.45rem 0.7rem; }
+        }
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>

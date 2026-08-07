@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <meta name="description" content="Convert PDF, Word, Excel, PPT, and image files with AuraToolkit360 File Converter. Fast, easy, and 100% privacy-first client side.">
     <meta name="keywords" content="file converter, PDF tools, word to pdf, pdf to word, image converter, excel converter, online converter, free tools">
     <meta name="author" content="AuraToolkit360">
@@ -84,6 +84,33 @@
             .container { padding: 1rem; }
             .grid { grid-template-columns: 1fr; }
         }
+    
+        /* ===== A-Z & Apple iOS Responsiveness Rules ===== */
+        html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        
+        /* Prevent iOS Safari auto-zoom on form inputs */
+        @media screen and (max-width: 768px) {
+            input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="file"], select, textarea {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Smooth touch momentum scrolling for iOS */
+        .preview-paper, .sticky-preview, .search-results, .navbar {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Small screen adjustments (iPhone SE, 320px - 480px) */
+        @media (max-width: 480px) {
+            .navbar { padding: 0.5rem 0.75rem; }
+            .logo { font-size: 1.2rem; }
+            .nav-links a { font-size: 0.7rem; padding: 0.3rem 0.5rem; }
+            .hero { padding: 1.2rem 0.8rem; }
+            .card { padding: 0.9rem; }
+            .btn-row button, button { font-size: 0.78rem; padding: 0.45rem 0.7rem; }
+        }
+
     </style>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">

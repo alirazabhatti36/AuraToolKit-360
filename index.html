@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>AuraToolkit360 | Free Online File Converter, Resume Builder & HR Toolkit</title>
     <meta name="description" content="AuraToolkit360 is a free, privacy-first online toolkit featuring 30+ file conversion tools, ATS resume score checker, 7 professional resume builder templates with photo support, and bulk HR candidate screening. 100% browser-based.">
     <meta name="keywords" content="AuraToolkit360, file converter, PDF to Word, Word to PDF, merge PDF, compress PDF, resume builder, photo resume, ATS score checker, HR screening helper, free online tools">
@@ -157,6 +157,33 @@
             .hero h1 { font-size: 1.8rem; }
             .stats { grid-template-columns: 1fr; }
         }
+    
+        /* ===== A-Z & Apple iOS Responsiveness Rules ===== */
+        html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        
+        /* Prevent iOS Safari auto-zoom on form inputs */
+        @media screen and (max-width: 768px) {
+            input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="file"], select, textarea {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Smooth touch momentum scrolling for iOS */
+        .preview-paper, .sticky-preview, .search-results, .navbar {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Small screen adjustments (iPhone SE, 320px - 480px) */
+        @media (max-width: 480px) {
+            .navbar { padding: 0.5rem 0.75rem; }
+            .logo { font-size: 1.2rem; }
+            .nav-links a { font-size: 0.7rem; padding: 0.3rem 0.5rem; }
+            .hero { padding: 1.2rem 0.8rem; }
+            .card { padding: 0.9rem; }
+            .btn-row button, button { font-size: 0.78rem; padding: 0.45rem 0.7rem; }
+        }
+
     </style>
 
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">

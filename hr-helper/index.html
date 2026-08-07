@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <meta name="description" content="HR Bulk Resume Screening Tool by AuraToolkit360. Screen hundreds of candidate resumes locally in browser against Job Titles or Descriptions. 100% private.">
     <meta name="keywords" content="HR helper, bulk resume screening, candidate shortlisting, resume scanner, recruiter tool, AuraToolkit360">
     <meta name="author" content="AuraToolkit360">
@@ -98,6 +98,33 @@
         .modal-head h3 { font-size: 1.1rem; color: #1e293b; }
         .btn-close { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #64748b; padding: 0 0.4rem; }
         .btn-close:hover { color: #0f172a; }
+    
+        /* ===== A-Z & Apple iOS Responsiveness Rules ===== */
+        html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        
+        /* Prevent iOS Safari auto-zoom on form inputs */
+        @media screen and (max-width: 768px) {
+            input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="file"], select, textarea {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Smooth touch momentum scrolling for iOS */
+        .preview-paper, .sticky-preview, .search-results, .navbar {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Small screen adjustments (iPhone SE, 320px - 480px) */
+        @media (max-width: 480px) {
+            .navbar { padding: 0.5rem 0.75rem; }
+            .logo { font-size: 1.2rem; }
+            .nav-links a { font-size: 0.7rem; padding: 0.3rem 0.5rem; }
+            .hero { padding: 1.2rem 0.8rem; }
+            .card { padding: 0.9rem; }
+            .btn-row button, button { font-size: 0.78rem; padding: 0.45rem 0.7rem; }
+        }
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
