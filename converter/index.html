@@ -1039,30 +1039,7 @@
             const file = readSingleFile(form);
             const arrayBuffer = await file.arrayBuffer();
             const res = await window.mammoth.convertToHtml({ arrayBuffer });
-            const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Converted Word Document</title><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"><\/script></head><body>${res.value}
-    <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
-    <script>
-        (function() {
-            let lastScrollY = window.scrollY;
-            const navbar = document.querySelector('.navbar');
-            if (!navbar) return;
-
-            window.addEventListener('scroll', function() {
-                const currentScrollY = window.scrollY;
-                if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    navbar.classList.add('nav-hidden');
-                } else if (currentScrollY < lastScrollY) {
-                    navbar.classList.remove('nav-hidden');
-                }
-                if (currentScrollY <= 10) {
-                    navbar.classList.remove('nav-hidden');
-                }
-                lastScrollY = currentScrollY;
-            }, { passive: true });
-        })();
-    </script>
-
-</body></html>`;
+            const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Converted Document</title></head><body>` + result.value + `</body></html>`;
             downloadBlob(new Blob([html], { type: 'text/html;charset=utf-8' }), 'converted.html');
         }
 
@@ -1208,6 +1185,10 @@
         });
     </script>
 
+    
+    
+
+
     <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
     <script>
         (function() {
@@ -1229,6 +1210,5 @@
             }, { passive: true });
         })();
     </script>
-
 </body>
 </html>
