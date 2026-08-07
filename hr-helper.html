@@ -3,83 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Use AuraToolkit360 HR Helper to bulk screen resumes, shortlist candidates, and speed up hiring with 100% client side privacy.">
-    <meta name="keywords" content="HR helper, resume screening, bulk resume screening, candidate shortlisting, hiring tools, recruiter tools">
+    <meta name="description" content="HR Bulk Resume Screening Tool by AuraToolkit360. Screen hundreds of candidate resumes locally in browser against Job Titles or Descriptions. 100% private.">
+    <meta name="keywords" content="HR helper, bulk resume screening, candidate shortlisting, resume scanner, recruiter tool, AuraToolkit360">
     <meta name="author" content="AuraToolkit360">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/hr-helper/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
-    <meta property="og:title" content="AuraToolkit360 | HR Helper - Bulk Resume Screening">
-    <meta property="og:description" content="Analyze and shortlist candidates faster with intelligent bulk resume screening in your browser.">
+    <meta property="og:title" content="AuraToolkit360 | HR Bulk Resume Helper">
+    <meta property="og:description" content="Screen up to 300 resumes locally in your browser. Rank candidates with custom Job Titles & Descriptions.">
     <meta property="og:url" content="https://auratoolkit360.com/hr-helper/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AuraToolkit360 | HR Helper">
-    <meta name="twitter:description" content="Bulk screen resumes and streamline hiring workflow with AuraToolkit360.">
-    <title>AuraToolkit360 | HR Helper - Bulk Resume Screening</title>
+    <meta name="twitter:title" content="AuraToolkit360 | HR Bulk Resume Helper">
+    <meta name="twitter:description" content="Bulk screen candidate CVs with optional Job Titles and export CSV reports locally.">
+    <title>AuraToolkit360 | HR Bulk Resume Helper</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: #f0f4f8; color: #1a1a2e; line-height: 1.5; overflow-x: hidden; }
-        
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 10px; }
-        
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f8fafc; color: #1e293b; min-height: 100vh; }
         .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 0.8rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(102,126,234,0.1); }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
         .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; letter-spacing: -0.5px; }
         .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: #4a5568; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
+        .nav-links a { text-decoration: none; color: #4a5568; font-weight: 500; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; }
         .nav-links a:hover { background: #f0f4ff; color: #667eea; }
         .nav-links a.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
-        
-        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
-        .page-header { text-align: center; margin-bottom: 1.5rem; padding: 0.5rem; }
-        .page-header h1 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .page-header p { color: #64748b; font-size: 1rem; }
-
-        .card { background: white; border-radius: 20px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 1.5rem; border: 1px solid rgba(226,232,240,0.5); }
-        .upload-zone { border: 2px dashed #e2e8f0; border-radius: 16px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s; background: #fafbff; }
-        .upload-zone:hover { border-color: #667eea; background: #f5f3ff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; }
+        .page-header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 16px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(102,126,234,0.2); }
+        .page-header h1 { font-size: 1.8rem; margin-bottom: 0.4rem; }
+        .page-header p { opacity: 0.9; font-size: 0.95rem; }
+        .card { background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; margin-bottom: 1.5rem; }
+        .card h3 { color: #1e293b; font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .upload-zone { border: 2px dashed #cbd5e1; border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s; background: #f8fafc; }
+        .upload-zone:hover { border-color: #667eea; background: #f0f4ff; }
         .upload-zone .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-
-        .btn { padding: 0.6rem 1.2rem; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
-        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
-        .btn-outline { background: white; border: 1px solid #cbd5e1; color: #475569; }
+        .job-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+        @media (max-width: 768px) { .job-grid { grid-template-columns: 1fr; } }
+        .input-field { width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.8rem; font-size: 0.88rem; font-family: inherit; margin-top: 0.3rem; outline: none; }
+        .input-field:focus { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.15); }
+        textarea.input-field { min-height: 90px; resize: vertical; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; border: none; font-size: 0.9rem; transition: all 0.3s; }
+        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+        .btn-outline { background: white; color: #667eea; border: 1px solid #667eea; }
+        .btn-outline:hover { background: #f0f4ff; }
+        .btn-sm { padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 6px; }
         .btn-success { background: #10b981; color: white; }
-        .btn-danger { background: #ef4444; color: white; }
         .btn-warning { background: #f59e0b; color: white; }
-        .btn-sm { padding: 0.35rem 0.65rem; font-size: 0.75rem; border-radius: 8px; }
-
-        textarea { width: 100%; height: 120px; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 0.85rem; margin-top: 0.5rem; resize: vertical; }
-
-        .table-responsive { overflow-x: auto; margin-top: 1rem; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .btn-danger { background: #ef4444; color: white; }
+        .progress-bar-container { background: #e2e8f0; border-radius: 10px; height: 10px; overflow: hidden; margin-top: 1rem; display: none; }
+        .progress-fill { background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; width: 0%; transition: width 0.3s; }
+        .table-responsive { overflow-x: auto; margin-top: 1rem; }
         table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
-        th { background: #f8fafc; padding: 0.75rem 1rem; border-bottom: 2px solid #e2e8f0; font-weight: 700; color: #475569; }
-        td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; color: #334155; }
+        th { background: #f1f5f9; padding: 0.75rem; color: #475569; font-weight: 600; border-bottom: 2px solid #e2e8f0; }
+        td { padding: 0.75rem; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
         tr:hover { background: #f8fafc; }
-
-        .score-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 700; font-size: 0.75rem; }
+        .score-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 700; font-size: 0.75rem; }
         .score-excellent { background: #d1fae5; color: #065f46; }
-        .score-good { background: #fef3c7; color: #92400e; }
+        .score-good { background: #dbeafe; color: #1e40af; }
         .score-low { background: #fee2e2; color: #991b1b; }
-
-        .status-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 600; font-size: 0.7rem; }
+        .status-badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 600; text-transform: uppercase; }
         .status-shortlisted { background: #d1fae5; color: #065f46; }
         .status-rejected { background: #fee2e2; color: #991b1b; }
         .status-pending { background: #fef3c7; color: #92400e; }
-
-        .progress-bar-container { background: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 0.5rem; display: none; }
-        .progress-fill { background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; width: 0%; transition: width 0.2s; }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
-    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
-    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
 </head>
 <body>
     <nav class="navbar" aria-label="Main Navigation">
@@ -104,7 +96,7 @@
         </div>
 
         <div class="card">
-            <h3>1. Upload Candidate Resumes (PDF / DOCX)</h3>
+            <h3>1. Upload Candidate Resumes (PDF / DOCX / TXT)</h3>
             <div style="margin-top:0.8rem;">
                 <div class="upload-zone" onclick="document.getElementById('bulkFiles').click()">
                     <div class="icon">📂</div>
@@ -114,22 +106,33 @@
                 </div>
             </div>
 
-            <h3 style="margin-top:1.5rem;">2. Job Description</h3>
-            <textarea aria-label="jobDesc" id="jobDesc" placeholder="Paste the target job description and required qualifications here..."></textarea>
+            <div class="job-grid">
+                <div>
+                    <h3>2. Job Title / Role (Optional)</h3>
+                    <input type="text" id="jobTitle" aria-label="jobTitle" class="input-field" placeholder="e.g. Senior Frontend Engineer, HR Manager, Sales Specialist...">
+                </div>
+                <div>
+                    <h3>3. Job Description & Requirements (Optional)</h3>
+                    <textarea id="jobDesc" aria-label="jobDesc" class="input-field" placeholder="Paste full job description or key required skills here (or leave blank to run general quality screening)..."></textarea>
+                </div>
+            </div>
 
-            <div style="margin-top:1.2rem; text-align:center;">
+            <div style="margin-top:1.4rem; text-align:center;">
                 <button class="btn btn-primary" id="startBtn" onclick="startBulkScan()">⚡ Start Bulk Screening</button>
             </div>
 
             <div class="progress-bar-container" id="progressBar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div id="processingInfo" style="text-align:center; font-size:0.8rem; color:#64748b; margin-top:0.4rem; display:none;"></div>
+            <div id="processingInfo" style="text-align:center; font-size:0.8rem; color:#475569; margin-top:0.4rem; display:none;"></div>
         </div>
 
         <div class="card" id="resultsDiv" style="display:none;">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-                <h3>Screening Results</h3>
+                <div>
+                    <h3 id="resultsTitle">Candidate Screening Results</h3>
+                    <div id="screeningMeta" style="font-size:0.8rem; color:#475569; margin-top:0.2rem;"></div>
+                </div>
                 <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇️ Export CSV Report</button>
             </div>
 
@@ -140,8 +143,8 @@
                             <th>#</th>
                             <th>Candidate File</th>
                             <th>ATS Match Score</th>
-                            <th>Matched Skills</th>
-                            <th>Missing Skills</th>
+                            <th>Key Matched / Found Skills</th>
+                            <th>Missing Terms</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -159,6 +162,7 @@
 
         let selectedFiles = [];
         let bulkResults = [];
+        let activeJobTitle = '';
 
         function handleFiles(files) {
             selectedFiles = Array.from(files);
@@ -204,9 +208,15 @@
         }
 
         async function startBulkScan() {
-            if (!selectedFiles.length) { alert('Please select resumes first!'); return; }
+            if (!selectedFiles.length) { alert('Please select candidate resumes first!'); return; }
+
+            const jobTitle = document.getElementById('jobTitle').value.trim();
             const jobDesc = document.getElementById('jobDesc').value.trim();
-            if (!jobDesc) { alert('Please enter a job description!'); return; }
+            activeJobTitle = jobTitle || 'General HR Screening';
+
+            const combinedTargetText = [jobTitle, jobDesc].filter(Boolean).join(' ');
+            const targetKeywords = Array.from(new Set(extractKeywords(combinedTargetText)));
+            const isStandaloneMode = targetKeywords.length === 0;
 
             const btn = document.getElementById('startBtn');
             const pBar = document.getElementById('progressBar');
@@ -218,41 +228,67 @@
             pInfo.style.display = 'block';
             bulkResults = [];
 
-            const jdKeywords = Array.from(new Set(extractKeywords(jobDesc)));
-            const totalJd = jdKeywords.length || 1;
-
             for (let i = 0; i < selectedFiles.length; i++) {
                 const file = selectedFiles[i];
-                pInfo.textContent = `Processing ${i + 1} of ${selectedFiles.length}: ${file.name}`;
+                pInfo.textContent = `Screening ${i + 1} of ${selectedFiles.length}: ${file.name}`;
                 pFill.style.width = `${Math.round(((i + 1) / selectedFiles.length) * 100)}%`;
 
                 try {
                     const text = await extractText(file);
-                    const resumeKeywords = new Set(extractKeywords(text));
-                    const matched = [];
-                    const missing = [];
+                    const resumeKeywords = extractKeywords(text);
+                    const resumeSet = new Set(resumeKeywords);
 
-                    jdKeywords.forEach(k => {
-                        if (resumeKeywords.has(k)) matched.push(k);
-                        else missing.push(k);
-                    });
+                    if (isStandaloneMode) {
+                        // General Candidate Structure & Skill Screening Mode
+                        const topSkills = Array.from(resumeSet).slice(0, 8);
+                        const hasEmail = /@/.test(text);
+                        const hasPhone = /\+?\d[\d\s-]{7,}/.test(text);
+                        const hasExp = /experience|work|history|roles/i.test(text);
+                        const hasEdu = /education|degree|university/i.test(text);
 
-                    const score = Math.min(100, Math.max(10, Math.round((matched.length / totalJd) * 100)));
-                    bulkResults.push({
-                        id: i + 1,
-                        name: file.name,
-                        score,
-                        matched,
-                        missing,
-                        status: score >= 70 ? 'shortlisted' : 'pending'
-                    });
+                        let score = 40;
+                        if (hasEmail) score += 15;
+                        if (hasPhone) score += 15;
+                        if (hasExp) score += 15;
+                        if (hasEdu) score += 15;
+                        score = Math.min(100, Math.max(30, score));
+
+                        bulkResults.push({
+                            id: i + 1,
+                            name: file.name,
+                            score,
+                            matched: topSkills,
+                            missing: ['None (General Screening)'],
+                            status: score >= 75 ? 'shortlisted' : 'pending'
+                        });
+                    } else {
+                        // Job Title & JD Matching Mode
+                        const matched = [];
+                        const missing = [];
+
+                        targetKeywords.forEach(k => {
+                            if (resumeSet.has(k)) matched.push(k);
+                            else missing.push(k);
+                        });
+
+                        const totalTarget = targetKeywords.length || 1;
+                        const score = Math.min(100, Math.max(10, Math.round((matched.length / totalTarget) * 100)));
+                        bulkResults.push({
+                            id: i + 1,
+                            name: file.name,
+                            score,
+                            matched,
+                            missing,
+                            status: score >= 70 ? 'shortlisted' : 'pending'
+                        });
+                    }
                 } catch (err) {
                     bulkResults.push({
                         id: i + 1,
                         name: file.name,
                         score: 0,
                         matched: [],
-                        missing: jdKeywords,
+                        missing: ['Error reading file'],
                         status: 'rejected'
                     });
                 }
@@ -264,29 +300,30 @@
 
             bulkResults.sort((a, b) => b.score - a.score);
             renderTable();
+            document.getElementById('screeningMeta').textContent = `Screened ${bulkResults.length} candidates for: ${activeJobTitle}`;
             document.getElementById('resultsDiv').style.display = 'block';
             document.getElementById('resultsDiv').scrollIntoView({ behavior: 'smooth' });
         }
 
         function renderTable() {
             const tbody = document.getElementById('tableBody');
-            tbody.innerHTML = bulkResults.map(r => {
+            tbody.innerHTML = bulkResults.map((r, index) => {
                 const sClass = r.score >= 80 ? 'score-excellent' : r.score >= 60 ? 'score-good' : 'score-low';
                 const stClass = r.status === 'shortlisted' ? 'status-shortlisted' : r.status === 'rejected' ? 'status-rejected' : 'status-pending';
                 const stText = r.status === 'shortlisted' ? '⭐ Shortlisted' : r.status === 'rejected' ? '❌ Rejected' : '⏳ Pending';
 
                 return `
                     <tr>
-                        <td>${r.id}</td>
-                        <td><strong>📄 ${r.name}</strong></td>
+                        <td>${index + 1}</td>
+                        <td><strong>📄 ${escapeHtml(r.name)}</strong></td>
                         <td><span class="score-badge ${sClass}">${r.score}%</span></td>
                         <td><span style="color:#10b981; font-weight:600;">${r.matched.length} terms</span> (${r.matched.slice(0, 4).join(', ')})</td>
                         <td><span style="color:#ef4444;">${r.missing.length} terms</span></td>
                         <td><span class="status-badge ${stClass}">${stText}</span></td>
                         <td>
-                            <button class="btn btn-success btn-sm" onclick="updateStatus(${r.id}, 'shortlisted')">⭐</button>
-                            <button class="btn btn-warning btn-sm" onclick="updateStatus(${r.id}, 'pending')">⏳</button>
-                            <button class="btn btn-danger btn-sm" onclick="updateStatus(${r.id}, 'rejected')">❌</button>
+                            <button class="btn btn-success btn-sm" aria-label="Shortlist Candidate" onclick="updateStatus(${r.id}, 'shortlisted')">⭐</button>
+                            <button class="btn btn-warning btn-sm" aria-label="Pending Candidate" onclick="updateStatus(${r.id}, 'pending')">⏳</button>
+                            <button class="btn btn-danger btn-sm" aria-label="Reject Candidate" onclick="updateStatus(${r.id}, 'rejected')">❌</button>
                         </td>
                     </tr>
                 `;
@@ -302,15 +339,25 @@
         }
 
         function exportCSV() {
-            let csv = "ID,Filename,Match Score,Matched Count,Missing Count,Status\n";
-            bulkResults.forEach(r => {
-                csv += `${r.id},"${r.name}",${r.score}%,${r.matched.length},${r.missing.length},"${r.status}"\n`;
+            let csv = `Candidate Screening Report - Job Role: "${activeJobTitle}"\n`;
+            csv += "Rank,Filename,Match Score,Matched Skills Count,Missing Terms Count,Status\n";
+            bulkResults.forEach((r, idx) => {
+                csv += `${idx + 1},"${r.name}",${r.score}%,${r.matched.length},${r.missing.length},"${r.status}"\n`;
             });
             const blob = new Blob([csv], { type: 'text/csv' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'candidate_screening_report.csv';
+            a.download = `screening_report_${activeJobTitle.replace(/\s+/g, '_').toLowerCase()}.csv`;
             a.click();
+        }
+
+        function escapeHtml(value) {
+            return String(value || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
         }
     </script>
 </body>
