@@ -3,159 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta name="description" content="AuraToolkit360 is an all-in-one online toolkit for file conversion, resume building, ATS checks, and HR screening tools.">
-    <meta name="keywords" content="AuraToolkit360, file converter, PDF converter, resume builder, ATS checker, HR helper, online tools, free tools">
+    <title>AuraToolkit360 | Free Online File Converter, Resume Builder & HR Toolkit</title>
+    <meta name="description" content="AuraToolkit360 is a free, privacy-first online toolkit featuring 30+ file conversion tools, ATS resume score checker, 7 professional resume builder templates with photo support, and bulk HR candidate screening. 100% browser-based.">
+    <meta name="keywords" content="AuraToolkit360, file converter, PDF to Word, Word to PDF, merge PDF, compress PDF, resume builder, photo resume, ATS score checker, HR screening helper, free online tools">
     <meta name="author" content="AuraToolkit360">
+    <meta name="theme-color" content="#667eea">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/">
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
-    <meta property="og:title" content="AuraToolkit360 | Smart File Toolkit">
-    <meta property="og:description" content="Convert files, build ATS-ready resumes, and screen candidates with AuraToolkit360.">
+    <meta property="og:title" content="AuraToolkit360 | All-in-One File & Resume Smart Toolkit">
+    <meta property="og:description" content="Convert 30+ file formats, build ATS-optimized resumes with 7 templates, check ATS scores, and screen candidates 100% in your browser.">
     <meta property="og:url" content="https://auratoolkit360.com/">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AuraToolkit360 | Smart File Toolkit">
-    <meta name="twitter:description" content="All-in-one toolkit for file conversion, ATS resume checks, and HR workflows.">
-    <title>AuraToolkit360 | Smart File Toolkit</title>
+    <meta name="twitter:title" content="AuraToolkit360 | Smart Online Toolkit">
+    <meta name="twitter:description" content="Free file conversion, resume builder, ATS check, and HR screening. 100% private browser processing.">
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "AuraToolkit360 | Smart File Toolkit",
-            "url": "https://auratoolkit360.com/",
-            "description": "AuraToolkit360 is an all-in-one online toolkit for file conversion, resume building, ATS checks, and HR screening tools.",
-            "inLanguage": "en"
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AuraToolkit360",
+        "operatingSystem": "All",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0.00",
+            "priceCurrency": "USD"
+        },
+        "description": "AuraToolkit360 is a free, privacy-first online toolkit featuring 30+ file conversion tools, ATS resume score checker, 7 professional resume builder templates, and bulk HR candidate screening.",
+        "url": "https://auratoolkit360.com/",
+        "author": {
+            "@type": "Organization",
+            "name": "AuraToolkit360"
         }
+    }
     </script>
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: #1a1a2e; display: flex; flex-direction: column; line-height: 1.5; overflow-x: hidden; }
+        html { overflow-x: hidden; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: hidden; position: relative; }
         
+        /* Ambient Gradient Orbs */
+        body::before { content: ''; position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(102,126,234,0.18) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
+        body::after { content: ''; position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(118,75,162,0.18) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
+
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.4); border-radius: 10px; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(15,23,42,0.8); }
+        ::-webkit-scrollbar-thumb { background: rgba(102,126,234,0.4); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(102,126,234,0.7); }
         
         /* ===== NAVBAR ===== */
-        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 0.8rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(102,126,234,0.1); overflow-x: auto; }
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 100; overflow-x: auto; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 1rem; min-width: max-content; }
-        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; }
-        .nav-links { display: flex; gap: 0.3rem; flex-wrap: nowrap; align-items: center; }
-        .nav-links a { text-decoration: none; color: #4a5568; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { background: rgba(102,126,234,0.1); color: #667eea; }
-        .nav-links a.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .logo span { font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 0.4rem; flex-wrap: nowrap; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; box-shadow: 0 4px 20px rgba(37,99,235,0.35); }
         
         /* ===== HERO ===== */
-        .hero { text-align: center; padding: 2rem 1rem 1.5rem; color: white; }
-        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.3rem; text-shadow: 0 4px 20px rgba(0,0,0,0.15); letter-spacing: -1px; }
-        .hero p { font-size: 1rem; opacity: 0.9; max-width: 500px; margin: 0 auto; }
-        .hero .sub-badge { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); padding: 0.2rem 1rem; border-radius: 999px; font-size: 0.65rem; margin-bottom: 0.8rem; border: 1px solid rgba(255,255,255,0.1); }
+        .hero { text-align: center; padding: 3rem 1rem 2rem; position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 0.6rem; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -1px; }
+        .hero p { font-size: 1.05rem; color: #94a3b8; max-width: 620px; margin: 0 auto 1.5rem; font-weight: 400; }
+        .sub-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 0.3rem 1.1rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2); margin-bottom: 1rem; }
         
-        /* ===== SEARCH ===== */
-        .search-container { max-width: 600px; margin: 0 auto; padding: 0 1rem; position: relative; }
-        .search-box { display: flex; align-items: center; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-radius: 14px; padding: 0.3rem; box-shadow: 0 8px 30px rgba(0,0,0,0.12); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; }
-        .search-box:focus-within { box-shadow: 0 8px 40px rgba(0,0,0,0.2); transform: translateY(-2px); }
-        .search-box .icon { padding: 0 0.6rem; font-size: 1rem; opacity: 0.5; }
-        .search-box input { flex: 1; padding: 0.6rem 0.2rem; border: none; background: transparent; font-size: 0.9rem; font-family: inherit; outline: none; color: #1e293b; min-width: 80px; }
-        .search-box input::placeholder { color: #475569; font-size: 0.8rem; }
-        .search-box .clear-btn { background: none; border: none; padding: 0 0.6rem; font-size: 1rem; cursor: pointer; opacity: 0.4; display: none; }
-        .search-box .clear-btn:hover { opacity: 0.8; }
+        /* ===== SEARCH CONTAINER ===== */
+        .search-container { max-width: 650px; margin: 0 auto; padding: 0 1rem; position: relative; z-index: 2; }
+        .search-box { display: flex; align-items: center; background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(16px); border-radius: 16px; padding: 0.4rem 0.6rem; box-shadow: 0 12px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.12); transition: all 0.3s; }
+        .search-box:focus-within { border-color: #38bdf8; box-shadow: 0 0 25px rgba(56,189,248,0.25); transform: translateY(-2px); }
+        .search-box .icon { padding: 0 0.6rem; font-size: 1.1rem; color: #64748b; }
+        .search-box input { flex: 1; padding: 0.6rem 0.2rem; border: none; background: transparent; font-size: 0.95rem; font-family: inherit; outline: none; color: #f8fafc; }
+        .search-box input::placeholder { color: #64748b; }
+        .search-box .clear-btn { background: none; border: none; padding: 0 0.6rem; font-size: 1rem; cursor: pointer; color: #94a3b8; display: none; }
+        .search-box .clear-btn:hover { color: #f8fafc; }
         
-        /* ===== SEARCH RESULTS ===== */
-        .search-results { background: rgba(255,255,255,0.98); backdrop-filter: blur(16px); border-radius: 14px; margin-top: 0.6rem; padding: 0.3rem 0; max-height: 350px; overflow-y: auto; box-shadow: 0 12px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.2); display: none; }
+        .search-results { background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(20px); border-radius: 16px; margin-top: 0.6rem; padding: 0.4rem 0; max-height: 360px; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.12); display: none; position: absolute; left: 1rem; right: 1rem; z-index: 10; }
         .search-results.show { display: block; animation: fadeDown 0.2s ease; }
         @keyframes fadeDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-        .search-result-item { display: flex; align-items: center; padding: 0.5rem 1rem; cursor: pointer; transition: all 0.2s; text-decoration: none; color: #1e293b; gap: 0.6rem; border-bottom: 1px solid #f1f5f9; }
+        .search-result-item { display: flex; align-items: center; padding: 0.65rem 1.1rem; cursor: pointer; transition: all 0.2s; text-decoration: none; color: #f8fafc; gap: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .search-result-item:last-child { border-bottom: none; }
-        .search-result-item:hover { background: #f1f5f9; }
-        .search-result-item .icon { font-size: 1.2rem; min-width: 1.8rem; text-align: center; }
+        .search-result-item:hover { background: rgba(56, 189, 248, 0.12); }
+        .search-result-item .icon { font-size: 1.3rem; min-width: 1.8rem; text-align: center; }
         .search-result-item .info { flex: 1; min-width: 0; }
-        .search-result-item .info .name { font-weight: 600; font-size: 0.85rem; }
-        .search-result-item .info .desc { font-size: 0.65rem; color: #475569; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .search-result-item .badge { font-size: 0.55rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: #e0e7ff; color: #3730a3; font-weight: 600; flex-shrink: 0; }
-        .search-empty { padding: 1.2rem; text-align: center; color: #475569; font-size: 0.85rem; }
-        .search-empty .emoji { font-size: 1.5rem; display: block; margin-bottom: 0.2rem; }
+        .search-result-item .info .name { font-weight: 600; font-size: 0.88rem; color: #f8fafc; }
+        .search-result-item .info .desc { font-size: 0.7rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .search-result-item .badge { font-size: 0.6rem; padding: 0.15rem 0.6rem; border-radius: 999px; background: rgba(56,189,248,0.15); color: #38bdf8; font-weight: 600; border: 1px solid rgba(56,189,248,0.2); }
+        .search-empty { padding: 1.5rem; text-align: center; color: #94a3b8; font-size: 0.88rem; }
+        .search-empty .emoji { font-size: 1.8rem; display: block; margin-bottom: 0.3rem; }
         
-        /* ===== QUICK SUGGESTIONS ===== */
-        .quick-suggestions { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; margin-top: 0.6rem; padding: 0 1rem; }
-        .quick-suggestions .chip { background: rgba(255,255,255,0.12); backdrop-filter: blur(4px); padding: 0.2rem 0.8rem; border-radius: 999px; font-size: 0.6rem; color: rgba(255,255,255,0.85); cursor: pointer; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.08); white-space: nowrap; }
-        .quick-suggestions .chip:hover { background: rgba(255,255,255,0.22); color: white; transform: translateY(-2px); }
+        .quick-suggestions { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 0.8rem; padding: 0 1rem; }
+        .quick-suggestions .chip { background: rgba(255,255,255,0.05); backdrop-filter: blur(4px); padding: 0.25rem 0.85rem; border-radius: 999px; font-size: 0.72rem; color: #cbd5e1; cursor: pointer; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.08); font-weight: 500; }
+        .quick-suggestions .chip:hover { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: rgba(56,189,248,0.3); transform: translateY(-2px); }
         
-        /* ===== CARDS ===== */
-        .cards-container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem 2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-        .card { background: white; border-radius: 20px; padding: 1.5rem; width: 100%; max-width: 280px; text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; text-decoration: none; color: inherit; box-shadow: 0 20px 50px rgba(0,0,0,0.12); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-        .card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(102,126,234,0.08), transparent); transition: left 0.6s; }
+        /* ===== ADSENSE CONTAINER ===== */
+        .adsense-container { max-width: 1200px; margin: 1.5rem auto; padding: 0 1rem; text-align: center; }
+        .adsense-slot { background: rgba(30, 41, 59, 0.4); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.5rem; min-height: 90px; display: flex; align-items: center; justify-content: center; }
+
+        /* ===== MAIN CARDS GRID ===== */
+        .cards-container { max-width: 1250px; margin: 1.5rem auto 2.5rem; padding: 0 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
+        .card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border-radius: 20px; padding: 1.8rem 1.5rem; text-align: center; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; color: inherit; border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent); transition: left 0.6s; }
         .card:hover::before { left: 100%; }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 30px 70px rgba(0,0,0,0.18); }
-        .card-icon { font-size: 3rem; margin-bottom: 0.5rem; }
-        .card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .card p { color: #64748b; line-height: 1.5; margin-bottom: 0.8rem; font-size: 0.75rem; }
-        .badge { display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.6rem; font-weight: 600; margin-top: 0.3rem; }
-        .badge-blue { background: #ebf8ff; color: #2b6cb0; }
-        .badge-green { background: #f0fff4; color: #276749; }
-        .badge-purple { background: #faf5ff; color: #6b46c1; }
+        .card:hover { transform: translateY(-8px); border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.25); }
+        .card-icon { font-size: 2.8rem; margin-bottom: 0.8rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+        .card h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #f8fafc; }
+        .card p { color: #94a3b8; line-height: 1.5; margin-bottom: 1.2rem; font-size: 0.82rem; flex: 1; }
+        .card-badge { display: inline-block; padding: 0.25rem 0.85rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; border: 1px solid transparent; }
+        .badge-blue { background: rgba(56,189,248,0.12); color: #38bdf8; border-color: rgba(56,189,248,0.25); }
+        .badge-green { background: rgba(52,211,153,0.12); color: #34d399; border-color: rgba(52,211,153,0.25); }
+        .badge-purple { background: rgba(167,139,250,0.12); color: #a78bfa; border-color: rgba(167,139,250,0.25); }
         
         /* ===== STATS ===== */
-        .stats { max-width: 1000px; margin: 0 auto 2rem; padding: 1.5rem; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1.5rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.06); }
-        .stat-item { text-align: center; color: white; min-width: 70px; }
-        .stat-number { font-size: 2rem; font-weight: 800; }
-        .stat-label { font-size: 0.75rem; opacity: 0.8; }
+        .stats { max-width: 1000px; margin: 0 auto 3rem; padding: 1.8rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); text-align: center; }
+        .stat-item .stat-number { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .stat-item .stat-label { font-size: 0.78rem; color: #94a3b8; font-weight: 500; margin-top: 0.2rem; }
         
+        /* ===== FOOTER ===== */
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; transition: all 0.2s; }
+        .footer-links a:hover { color: #38bdf8; }
+        .feedback-form input, .feedback-form textarea { width: 100%; padding: 0.55rem 0.8rem; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.8rem; color: #f8fafc; margin-bottom: 0.5rem; outline: none; font-family: inherit; }
+        .feedback-form input:focus, .feedback-form textarea:focus { border-color: #38bdf8; }
+        .feedback-form button { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .feedback-form button:hover { opacity: 0.9; transform: translateY(-1px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+
         @media (max-width: 900px) {
-            .cards-container { gap: 1rem; }
-            .card { max-width: 100%; }
-            .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
-            .stat-item { min-width: 0; }
+            .stats { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .hero h1 { font-size: 2.2rem; }
         }
-        
-        @media (max-width: 768px) {
-            .navbar { padding: 0.5rem 0.8rem; }
-            .nav-container { flex-direction: column; align-items: stretch; min-width: 0; }
-            .logo { font-size: 1.2rem; text-align: center; }
-            .nav-links { justify-content: center; flex-wrap: wrap; }
-            .nav-links a { font-size: 0.65rem; padding: 0.3rem 0.5rem; }
-            .hero { padding: 1.5rem 0.8rem 1rem; }
+        @media (max-width: 600px) {
+            .navbar { padding: 0.6rem 1rem; }
+            .hero { padding: 2rem 1rem 1.5rem; }
             .hero h1 { font-size: 1.8rem; }
-            .hero p { font-size: 0.85rem; }
-            .hero .sub-badge { font-size: 0.55rem; padding: 0.15rem 0.8rem; }
-            .search-container { max-width: 100%; }
-            .search-box { padding: 0.2rem; border-radius: 12px; }
-            .search-box input { font-size: 0.8rem; padding: 0.4rem 0.2rem; }
-            .search-results { max-height: 280px; }
-            .quick-suggestions .chip { font-size: 0.55rem; padding: 0.15rem 0.6rem; }
-            .cards-container { padding: 1rem 0.8rem; gap: 1rem; }
-            .card { max-width: 100%; padding: 1.2rem; }
-            .card-icon { font-size: 2.4rem; }
-            .card p { font-size: 0.7rem; }
-            .stats { gap: 0.8rem; padding: 1rem; border-radius: 18px; grid-template-columns: 1fr; }
-            .stat-number { font-size: 1.4rem; }
-            .stat-label { font-size: 0.65rem; }
-        }
-        
-        @media (max-width: 480px) {
-            .nav-container { flex-direction: column; gap: 0.3rem; }
-            .nav-links { justify-content: center; }
-            .nav-links a { font-size: 0.6rem; padding: 0.2rem 0.4rem; }
-            .hero h1 { font-size: 1.5rem; }
-            .hero p { font-size: 0.75rem; }
-            .card { padding: 1rem; }
-            .card-icon { font-size: 2rem; }
-            .card h2 { font-size: 0.9rem; }
-            .card p { font-size: 0.65rem; }
+            .stats { grid-template-columns: 1fr; }
         }
     </style>
+
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
 </head>
 <body>
+
     <!-- ===== NAVBAR ===== -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="nav-container">
-            <a href="/" class="logo">AuraToolkit360</a>
+    <header class="navbar">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="/" class="logo"><span>⚡</span> AuraToolkit360</a>
             <div class="nav-links">
                 <a href="/" class="active">Home</a>
                 <a href="/converter/">Converter</a>
@@ -169,40 +183,139 @@
                 <a href="/terms/">Terms</a>
                 <a href="/disclaimer/">Disclaimer</a>
             </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="sub-badge">🔒 100% Client-Side Privacy</div>
+            <h1>Smart File & Resume Toolkit</h1>
+            <p>Convert 30+ file formats, build ATS-ready resumes with 7 templates, score CVs, and screen candidates — 100% in your browser.</p>
+        </section>
+
+        <!-- ===== SMART SEARCH ===== -->
+        <div class="search-container">
+            <div class="search-box">
+                <span class="icon">🔍</span>
+                <input type="text" id="searchInput" aria-label="Search tools" placeholder="Search tools (e.g. Word to PDF, Image to PDF, Merge PDF...)" autocomplete="off">
+                <button class="clear-btn" id="clearBtn" aria-label="Clear search text" onclick="clearSearch()">✕</button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
         </div>
-    </nav>
 
-    <!-- ===== HERO ===== -->
-    <div class="hero">
-        <div class="sub-badge">⚡ Privacy-First Browser Toolkit</div>
-        <h1>🎯 AuraToolkit360</h1>
-        <p>Your All-in-One Smart Toolkit — Convert, Build, Screen, Optimize</p>
-    </div>
-
-    <!-- ===== SMART SEARCH ===== -->
-    <div class="search-container">
-        <div class="search-box">
-            <span class="icon">🔍</span>
-            <input type="text" id="searchInput" aria-label="Search tools" placeholder="Search tools..." autocomplete="off">
-            <button class="clear-btn" id="clearBtn" aria-label="Clear search text" onclick="clearSearch()">✕</button>
+        <!-- Quick Suggestions -->
+        <div class="quick-suggestions" id="quickSuggestions">
+            <span class="chip" onclick="searchQuick('pdf to image')">🖼️ PDF→Image</span>
+            <span class="chip" onclick="searchQuick('merge pdf')">➕ Merge PDF</span>
+            <span class="chip" onclick="searchQuick('compress pdf')">🗜️ Compress PDF</span>
+            <span class="chip" onclick="searchQuick('word to pdf')">📝 Word→PDF</span>
+            <span class="chip" onclick="searchQuick('ocr')">📄 OCR to Text</span>
+            <span class="chip" onclick="searchQuick('resume')">📄 Resume Builder</span>
         </div>
-        <div class="search-results" id="searchResults"></div>
-    </div>
 
-    <!-- Quick Suggestions -->
-    <div class="quick-suggestions" id="quickSuggestions">
-        <span class="chip" onclick="searchQuick('pdf to image')">🖼️ PDF→Image</span>
-        <span class="chip" onclick="searchQuick('merge pdf')">➕ Merge</span>
-        <span class="chip" onclick="searchQuick('compress pdf')">🗜️ Compress</span>
-        <span class="chip" onclick="searchQuick('word to pdf')">📝 Word→PDF</span>
-        <span class="chip" onclick="searchQuick('ocr')">📄 OCR</span>
-        <span class="chip" onclick="searchQuick('resume')">📄 Resume</span>
-    </div>
+        <!-- ===== ADSENSE CONTAINER TOP ===== -->
+        <div class="adsense-container">
+            <div class="adsense-slot">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1373118680696037"
+                     data-ad-slot="auto"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
 
-    <!-- ===== TOOLS DATABASE ===== -->
+        <!-- ===== MAIN FEATURE CARDS ===== -->
+        <section class="cards-container">
+            <a href="/converter/" class="card">
+                <div class="card-icon">🔄</div>
+                <h2>File Converter Suite</h2>
+                <p>Convert PDF, Word, Excel, PPT, Images & OCR — 34 tools with zero server uploads.</p>
+                <span class="card-badge badge-blue">34 Free Tools</span>
+            </a>
+
+            <a href="/resume-cv-maker/" class="card">
+                <div class="card-icon">📄</div>
+                <h2>Resume CV Maker</h2>
+                <p>Build ATS-friendly CVs with 7 templates, photo upload, certs, projects & DOCX export.</p>
+                <span class="card-badge badge-green">7 Formats + Photo</span>
+            </a>
+
+            <a href="/resume-score-checker/" class="card">
+                <div class="card-icon">🎯</div>
+                <h2>ATS Resume Score Checker</h2>
+                <p>Audit resumes, analyze keywords, and score match percentage with or without a JD.</p>
+                <span class="card-badge badge-purple">Standalone Audit</span>
+            </a>
+
+            <a href="/hr-helper/" class="card">
+                <div class="card-icon">👥</div>
+                <h2>HR Screening Helper</h2>
+                <p>Bulk screen candidate resumes, filter scores, view skills tags, and download CSV/ZIP bundles.</p>
+                <span class="card-badge badge-purple">Bulk Screening</span>
+            </a>
+        </section>
+
+        <!-- ===== STATS SECTION ===== -->
+        <section class="stats">
+            <div class="stat-item">
+                <div class="stat-number">34+</div>
+                <div class="stat-label">File Tools</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Browser Privacy</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">7</div>
+                <div class="stat-label">CV Formats</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">Instant</div>
+                <div class="stat-label">No Server Delay</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, and HR candidate screening.</p>
+                <p style="margin-top:0.6rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Tools</h4>
+                <div class="footer-links">
+                    <a href="/">Home Page</a>
+                    <a href="/converter/">File Converter Suite</a>
+                    <a href="/resume-cv-maker/">Resume CV Maker</a>
+                    <a href="/resume-score-checker/">ATS Score Checker</a>
+                    <a href="/hr-helper/">HR Screening Helper</a>
+                    <a href="/blogs/">Blog Articles</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Feedback & Contact</h4>
+                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'\nEmail: '+fd.get('email')+'\n\nFeedback:\n'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
+                    <input name="name" type="text" placeholder="Your Name" required aria-label="Your Name">
+                    <input name="email" type="email" placeholder="Your Email" required aria-label="Your Email">
+                    <textarea name="message" rows="3" placeholder="Share your feedback..." required aria-label="Share your feedback"></textarea>
+                    <button type="submit">Send Feedback</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing
+        </div>
+    </footer>
+
+    <!-- ===== SEARCH ENGINE LOGIC ===== -->
     <script>
         const toolsDatabase = [
-            // Office Converters
             { name: "Word to PDF", icon: "📝→📕", url: "/converter/", category: "Office", keywords: ["word", "docx", "pdf", "convert", "document"] },
             { name: "PDF to Word", icon: "📕→📝", url: "/converter/", category: "Office", keywords: ["pdf", "word", "docx", "convert", "document"] },
             { name: "PPT to PDF", icon: "📊→📕", url: "/converter/", category: "Office", keywords: ["ppt", "powerpoint", "pdf", "convert", "presentation"] },
@@ -211,8 +324,6 @@
             { name: "TXT to PDF", icon: "📄→📕", url: "/converter/", category: "Office", keywords: ["txt", "text", "pdf", "convert"] },
             { name: "DOCX to TXT", icon: "📝→📄", url: "/converter/", category: "Office", keywords: ["docx", "txt", "text", "extract", "convert"] },
             { name: "Excel to CSV", icon: "📗→📄", url: "/converter/", category: "Office", keywords: ["excel", "xlsx", "csv", "spreadsheet", "convert"] },
-            
-            // PDF Tools
             { name: "Merge PDF", icon: "➕", url: "/converter/", category: "PDF", keywords: ["merge", "combine", "join", "pdf", "multiple files"] },
             { name: "Split PDF", icon: "✂️", url: "/converter/", category: "PDF", keywords: ["split", "divide", "separate", "pdf", "pages"] },
             { name: "Compress PDF", icon: "🗜️", url: "/converter/", category: "PDF", keywords: ["compress", "reduce", "size", "pdf", "smaller"] },
@@ -225,8 +336,6 @@
             { name: "Add Page Numbers", icon: "🔢", url: "/converter/", category: "PDF", keywords: ["page numbers", "numbering", "pdf", "footer"] },
             { name: "PDF to Image", icon: "🖼️", url: "/converter/", category: "PDF", keywords: ["pdf", "image", "png", "jpg", "convert"] },
             { name: "PDF to TXT", icon: "📄", url: "/converter/", category: "PDF", keywords: ["pdf", "text", "extract", "txt", "convert"] },
-            
-            // Image Tools
             { name: "Image to PDF", icon: "🖼️→📕", url: "/converter/", category: "Image", keywords: ["image", "pdf", "png", "jpg", "convert"] },
             { name: "Image to Word (OCR)", icon: "🖼️→📝", url: "/converter/", category: "Image", keywords: ["image", "word", "ocr", "extract", "text"] },
             { name: "Image to Excel (OCR)", icon: "🖼️→📊", url: "/converter/", category: "Image", keywords: ["image", "excel", "ocr", "extract", "data"] },
@@ -236,16 +345,9 @@
             { name: "WEBP to PNG", icon: "WEBP→PNG", url: "/converter/", category: "Image", keywords: ["webp", "png", "convert", "image"] },
             { name: "SVG to PNG", icon: "SVG→PNG", url: "/converter/", category: "Image", keywords: ["svg", "png", "convert", "vector", "image"] },
             { name: "Compress Image", icon: "🗜️", url: "/converter/", category: "Image", keywords: ["compress", "reduce", "size", "image", "quality"] },
-            
-            // Resume Tools
-            { name: "Resume CV Maker", icon: "📄", url: "/resume-cv-maker/", category: "Resume", keywords: ["resume", "cv", "builder", "create", "professional"] },
+            { name: "Resume CV Maker", icon: "📄", url: "/resume-cv-maker/", category: "Resume", keywords: ["resume", "cv", "builder", "create", "photo", "templates"] },
             { name: "Resume CV Score Checker", icon: "🎯", url: "/resume-score-checker/", category: "Resume", keywords: ["ats", "score", "checker", "resume", "job description"] },
-            { name: "Cover Letter Helper", icon: "📝", url: "/resume-cv-maker/", category: "Resume", keywords: ["cover letter", "write", "application", "resume"] },
-            
-            // HR Helper
-            { name: "Bulk Resume Screening", icon: "👥", url: "/hr-helper/", category: "HR", keywords: ["hr", "bulk", "screening", "resume", "recruitment"] },
-            { name: "Candidate Shortlisting", icon: "⭐", url: "/hr-helper/", category: "HR", keywords: ["shortlist", "candidate", "hr", "recruitment"] },
-            { name: "Bulk Email", icon: "📧", url: "/hr-helper/", category: "HR", keywords: ["email", "bulk", "candidate", "hr", "communication"] },
+            { name: "Bulk Resume Screening", icon: "👥", url: "/hr-helper/", category: "HR", keywords: ["hr", "bulk", "screening", "resume", "recruitment"] }
         ];
 
         const searchInput = document.getElementById('searchInput');
@@ -259,7 +361,6 @@
                 clearBtn.style.display = 'none';
                 return;
             }
-
             clearBtn.style.display = 'block';
 
             const results = toolsDatabase.filter(tool => {
@@ -271,7 +372,7 @@
                 searchResults.innerHTML = `
                     <div class="search-empty">
                         <span class="emoji">🔍</span>
-                        No tools found for "<strong>${query}</strong>"
+                        No tools found for "<strong>${escapeHtml(query)}</strong>"
                     </div>
                 `;
             } else {
@@ -279,127 +380,30 @@
                     <a href="${tool.url}" class="search-result-item">
                         <span class="icon">${tool.icon}</span>
                         <div class="info">
-                            <div class="name">${tool.name}</div>
-                            <div class="desc">${tool.category}</div>
+                            <div class="name">${escapeHtml(tool.name)}</div>
+                            <div class="desc">${escapeHtml(tool.category)} Tool</div>
                         </div>
-                        <span class="badge">${tool.category}</span>
+                        <span class="badge">${escapeHtml(tool.category)}</span>
                     </a>
                 `).join('');
             }
-
             searchResults.classList.add('show');
         }
 
-        searchInput.addEventListener('input', function(e) {
-            performSearch(e.target.value);
-        });
-
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.search-container')) {
-                searchResults.classList.remove('show');
-            }
-        });
-
-        function clearSearch() {
-            searchInput.value = '';
-            searchResults.classList.remove('show');
-            clearBtn.style.display = 'none';
-            searchInput.focus();
+        function escapeHtml(value) {
+            return String(value || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
         }
 
-        function searchQuick(query) {
-            searchInput.value = query;
-            performSearch(query);
-            searchInput.focus();
-        }
-
-        searchInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                clearSearch();
-            }
-        });
+        searchInput.addEventListener('input', e => performSearch(e.target.value));
+        document.addEventListener('click', e => { if (!e.target.closest('.search-container')) searchResults.classList.remove('show'); });
+        function clearSearch() { searchInput.value = ''; searchResults.classList.remove('show'); clearBtn.style.display = 'none'; searchInput.focus(); }
+        function searchQuick(q) { searchInput.value = q; performSearch(q); searchInput.focus(); }
+        searchInput.addEventListener('keydown', e => { if (e.key === 'Escape') clearSearch(); });
     </script>
-
-    <!-- ===== CARDS ===== -->
-    <div class="cards-container">
-        <a href="/converter/" class="card">
-            <div class="card-icon">🔄</div>
-            <h2>File Converter</h2>
-            <p>Convert PDF, Word, Excel, PPT, Images — 30+ formats in browser</p>
-            <span class="badge badge-blue">30+ Tools</span>
-        </a>
-
-        <a href="/resume-cv-maker/" class="card">
-            <div class="card-icon">📄🎯</div>
-            <h2>Resume CV Maker</h2>
-            <p>Create polished resumes with live preview and instant PDF export</p>
-            <span class="badge badge-green">100% Free & Private</span>
-        </a>
-
-        <a href="/resume-score-checker/" class="card">
-            <div class="card-icon">🎯</div>
-            <h2>Resume CV Score Checker</h2>
-            <p>Instant ATS scoring and keyword analysis directly in browser</p>
-            <span class="badge badge-purple">ATS Insights</span>
-        </a>
-
-        <a href="/hr-helper/" class="card">
-            <div class="card-icon">👥</div>
-            <h2>HR Helper</h2>
-            <p>Screen candidate resumes against job descriptions with zero server uploads</p>
-            <span class="badge badge-purple">Bulk Screening</span>
-        </a>
-    </div>
-
-    <!-- ===== STATS ===== -->
-    <div class="stats">
-        <div class="stat-item">
-            <div class="stat-number">30+</div>
-            <div class="stat-label">File Tools</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Client-Side Private</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">Instant</div>
-            <div class="stat-label">No Server Delay</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">Free</div>
-            <div class="stat-label">Unlimited Use</div>
-        </div>
-    </div>
-
-    <!-- ===== FOOTER ===== -->
-    <footer style="margin-top:2rem; background:#ffffff; border-top:1px solid #e2e8f0; box-shadow:0 -4px 20px rgba(0,0,0,0.04);">
-        <div style="max-width:1400px; margin:0 auto; padding:1.5rem 1rem; display:flex; flex-wrap:wrap; gap:1.2rem; align-items:flex-start;">
-            <div style="flex:1 1 280px; color:#475569;">
-                <h3 style="font-size:1rem; margin-bottom:0.45rem; color:#1e293b;">AuraToolkit360</h3>
-                <p style="font-size:0.85rem; line-height:1.6;">Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, and HR screening.</p>
-                <p style="font-size:0.8rem; margin-top:0.5rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
-            </div>
-            <div style="flex:1 1 220px; color:#475569;">
-                <h4 style="font-size:0.9rem; margin-bottom:0.45rem; color:#1e293b;">Quick Links</h4>
-                <div style="display:grid; gap:0.35rem; font-size:0.82rem;">
-                    <a href="/" style="color:#475569; text-decoration:none;">Home</a>
-                    <a href="/converter/" style="color:#475569; text-decoration:none;">Converter</a>
-                    <a href="/resume-cv-maker/" style="color:#475569; text-decoration:none;">Resume CV Maker</a>
-                    <a href="/resume-score-checker/" style="color:#475569; text-decoration:none;">Score Checker</a>
-                    <a href="/hr-helper/" style="color:#475569; text-decoration:none;">HR Helper</a>
-                </div>
-            </div>
-            <div style="flex:1 1 320px; color:#475569;">
-                <h4 style="font-size:0.9rem; margin-bottom:0.45rem; color:#1e293b;">Feedback</h4>
-                <form onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'\nEmail: '+fd.get('email')+'\n\nFeedback:\n'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
-                    <input name="name" type="text" placeholder="Your name" required style="width:100%; padding:0.5rem 0.7rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.8rem; margin-bottom:0.4rem;">
-                    <input name="email" type="email" placeholder="Your email" required style="width:100%; padding:0.5rem 0.7rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.8rem; margin-bottom:0.4rem;">
-                    <textarea name="message" rows="3" placeholder="Share your feedback..." required style="width:100%; padding:0.5rem 0.7rem; border:1px solid #cbd5e1; border-radius:10px; font-size:0.8rem; resize:vertical; margin-bottom:0.5rem;"></textarea>
-                    <button type="submit" style="background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border:none; border-radius:10px; padding:0.45rem 0.9rem; font-size:0.8rem; cursor:pointer;">Send Feedback</button>
-                </form>
-            </div>
-        </div>
-        <div style="border-top:1px solid #e2e8f0; text-align:center; padding:0.75rem; font-size:0.75rem; color:#64748b;">© 2026 AuraToolkit360. All rights reserved.</div>
-    </footer>
 </body>
 </html>
