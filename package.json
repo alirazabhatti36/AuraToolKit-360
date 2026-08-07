@@ -2,11 +2,8 @@
   "name": "auratoolkit-360",
   "version": "1.0.0",
   "description": "AuraToolKit 360 - All-in-One Online PDF, Resume & HR Tools",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
-    "start": "npx -y serve . -p ${PORT:-8080}"
-  },
-  "dependencies": {
-    "serve": "^14.2.4"
+    "start": "node server.js"
   }
 }
