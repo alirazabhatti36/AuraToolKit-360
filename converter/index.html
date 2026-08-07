@@ -517,12 +517,58 @@
             const pdf = await loadingTask.promise;
             const paragraphs = [];
 
-            for (let i = 1; i <= pdf.numPages; i++) {
-                const page = await pdf.getPage(i);
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                const page = await pdf.getPage(pageNum);
                 const content = await page.getTextContent();
-                const pageText = content.items.map(item => item.str).join(' ');
-                paragraphs.push(new docx.Paragraph({ text: `--- Page ${i} ---` }));
-                paragraphs.push(new docx.Paragraph({ text: pageText || '[Empty Page]' }));
+                
+                if (pdf.numPages > 1) {
+                    const headingStyle = (window.docx && window.docx.HeadingLevel) ? window.docx.HeadingLevel.HEADING_3 : undefined;
+                    paragraphs.push(new docx.Paragraph({
+                        text: `--- Page ${pageNum} ---`,
+                        heading: headingStyle
+                    }));
+                }
+
+                const lines = [];
+                let currentLine = [];
+                let lastY = null;
+
+                for (const item of content.items) {
+                    const str = item.str;
+                    if (!str && !item.hasEOL) continue;
+
+                    const y = item.transform ? item.transform[5] : null;
+                    const isNewLine = (lastY !== null && y !== null && Math.abs(lastY - y) > 3) || item.hasEOL;
+
+                    if (isNewLine && currentLine.length > 0) {
+                        lines.push(currentLine.join(' ').replace(/\s+/g, ' ').trim());
+                        currentLine = [];
+                    }
+
+                    if (str && str.trim()) {
+                        currentLine.push(str.trim());
+                    }
+
+                    if (y !== null) lastY = y;
+                }
+
+                if (currentLine.length > 0) {
+                    lines.push(currentLine.join(' ').replace(/\s+/g, ' ').trim());
+                }
+
+                if (lines.length > 0) {
+                    lines.forEach(lineText => {
+                        if (lineText) {
+                            paragraphs.push(new docx.Paragraph({
+                                text: lineText
+                            }));
+                        }
+                    });
+                } else {
+                    paragraphs.push(new docx.Paragraph({ text: '[Empty Page]' }));
+                }
+
+                paragraphs.push(new docx.Paragraph({ text: '' }));
             }
 
             const doc = new docx.Document({ sections: [{ children: paragraphs }] });
