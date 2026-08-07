@@ -899,7 +899,7 @@
             const file = readSingleFile(form);
             const arrayBuffer = await file.arrayBuffer();
             const res = await window.mammoth.convertToHtml({ arrayBuffer });
-            const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Converted Word Document</title><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script></head><body>${res.value}</body></html>`;
+            const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Converted Word Document</title><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"><\/script></head><body>${res.value}</body></html>`;
             downloadBlob(new Blob([html], { type: 'text/html;charset=utf-8' }), 'converted.html');
         }
 
