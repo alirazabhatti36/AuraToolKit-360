@@ -160,6 +160,35 @@
             top: 85px !important;
         }
 
+    
+        /* ===== UNIFIED PREMIUM DARK NAVBAR STYLING ===== */
+        .navbar { background: rgba(15, 23, 42, 0.85) !important; backdrop-filter: blur(16px) !important; padding: 0.8rem 2rem !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 1000 !important; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .nav-links { display: flex; gap: 0.4rem; flex-wrap: nowrap; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed) !important; color: white !important; box-shadow: 0 4px 20px rgba(37,99,235,0.35) !important; }
+
+        /* Dark Glassmorphism Rules for HR Helper */
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a !important; color: #f8fafc !important; min-height: 100vh; padding-top: 65px; overflow-x: clip; }
+        .card { background: rgba(30, 41, 59, 0.75) !important; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 18px !important; color: #f8fafc !important; }
+        .card h3 { color: #38bdf8 !important; }
+        .upload-zone { background: rgba(15, 23, 42, 0.5) !important; border: 2px dashed rgba(255,255,255,0.15) !important; color: #cbd5e1 !important; }
+        .upload-zone:hover { border-color: #38bdf8 !important; background: rgba(56,189,248,0.08) !important; }
+        .input-field { background: rgba(15, 23, 42, 0.8) !important; border: 1px solid rgba(255,255,255,0.12) !important; color: #f8fafc !important; }
+        .input-field:focus { border-color: #38bdf8 !important; box-shadow: 0 0 15px rgba(56,189,248,0.2) !important; }
+        .page-header { background: rgba(30, 41, 59, 0.6) !important; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 18px !important; }
+        .page-header h1 { background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+        table { color: #f8fafc !important; }
+        th { background: rgba(15, 23, 42, 0.8) !important; color: #94a3b8 !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
+        td { border-bottom: 1px solid rgba(255,255,255,0.06) !important; color: #e2e8f0 !important; }
+        tr:hover { background: rgba(255,255,255,0.03) !important; }
+        .stat-card { background: rgba(15, 23, 42, 0.5) !important; border: 1px solid rgba(255,255,255,0.08) !important; }
+        .stat-card .val { color: #38bdf8 !important; }
+        .stat-card .lbl { color: #94a3b8 !important; }
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
@@ -169,7 +198,7 @@
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
 </head>
 <body>
-    <nav class="navbar" aria-label="Main Navigation">
+        <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/" class="logo">AuraToolkit360</a>
             <div class="nav-links">
@@ -180,6 +209,10 @@
                 <a href="/hr-helper/" class="active">HR Helper</a>
                 <a href="/about/">About</a>
                 <a href="/blogs/">Blogs</a>
+                <a href="/contact/">Contact</a>
+                <a href="/privacy-policy/">Privacy</a>
+                <a href="/terms/">Terms</a>
+                <a href="/disclaimer/">Disclaimer</a>
             </div>
         </div>
     </nav>
