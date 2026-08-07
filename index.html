@@ -184,6 +184,27 @@
             .btn-row button, button { font-size: 0.78rem; padding: 0.45rem 0.7rem; }
         }
 
+    
+        /* ===== SMART SCROLL NAVBAR ===== */
+        .navbar {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+        }
+        .navbar.nav-hidden {
+            transform: translateY(-100%);
+        }
+        body {
+            padding-top: 65px; /* Offset for fixed navbar */
+        }
+        .sticky-preview {
+            top: 85px !important;
+        }
+
     </style>
 
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
@@ -432,5 +453,28 @@
         function searchQuick(q) { searchInput.value = q; performSearch(q); searchInput.focus(); }
         searchInput.addEventListener('keydown', e => { if (e.key === 'Escape') clearSearch(); });
     </script>
+
+    <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
+    <script>
+        (function() {
+            let lastScrollY = window.scrollY;
+            const navbar = document.querySelector('.navbar');
+            if (!navbar) return;
+
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    navbar.classList.add('nav-hidden');
+                } else if (currentScrollY < lastScrollY) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                if (currentScrollY <= 10) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                lastScrollY = currentScrollY;
+            }, { passive: true });
+        })();
+    </script>
+
 </body>
 </html>

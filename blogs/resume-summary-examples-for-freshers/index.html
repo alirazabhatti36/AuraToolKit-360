@@ -36,6 +36,27 @@
         .meta { color: #64748b; font-size: 0.95rem; margin-bottom: 18px; }
         .bad { background: #fee2e2; padding: 10px; border-radius: 8px; }
         .good { background: #dcfce7; padding: 10px; border-radius: 8px; margin-top: 8px; }
+    
+        /* ===== SMART SCROLL NAVBAR ===== */
+        .navbar {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+        }
+        .navbar.nav-hidden {
+            transform: translateY(-100%);
+        }
+        body {
+            padding-top: 65px; /* Offset for fixed navbar */
+        }
+        .sticky-preview {
+            top: 85px !important;
+        }
+
     </style>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
@@ -111,5 +132,28 @@
             <p>Write your summary last. Once your project and internship bullets are final, summary writing becomes easier and more accurate.</p>
         </article>
     </div>
+
+    <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
+    <script>
+        (function() {
+            let lastScrollY = window.scrollY;
+            const navbar = document.querySelector('.navbar');
+            if (!navbar) return;
+
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    navbar.classList.add('nav-hidden');
+                } else if (currentScrollY < lastScrollY) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                if (currentScrollY <= 10) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                lastScrollY = currentScrollY;
+            }, { passive: true });
+        })();
+    </script>
+
 </body>
 </html>

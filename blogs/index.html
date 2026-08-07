@@ -39,6 +39,27 @@
         .blog-card h3 { font-size: 1.1rem; color: #1e293b; margin: 0.5rem 0; }
         .blog-card p { color: #64748b; font-size: 0.85rem; line-height: 1.5; }
         .blog-card .tag { display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.65rem; margin-top: 0.5rem; }
+    
+        /* ===== SMART SCROLL NAVBAR ===== */
+        .navbar {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+        }
+        .navbar.nav-hidden {
+            transform: translateY(-100%);
+        }
+        body {
+            padding-top: 65px; /* Offset for fixed navbar */
+        }
+        .sticky-preview {
+            top: 85px !important;
+        }
+
     </style>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
@@ -109,5 +130,28 @@
             </div>
         </div>
     </div>
+
+    <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
+    <script>
+        (function() {
+            let lastScrollY = window.scrollY;
+            const navbar = document.querySelector('.navbar');
+            if (!navbar) return;
+
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    navbar.classList.add('nav-hidden');
+                } else if (currentScrollY < lastScrollY) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                if (currentScrollY <= 10) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                lastScrollY = currentScrollY;
+            }, { passive: true });
+        })();
+    </script>
+
 </body>
 </html>

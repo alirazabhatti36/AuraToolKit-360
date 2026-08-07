@@ -27,7 +27,28 @@
   <style>
     body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:#f7f9fc;color:#1f2937}.wrap{max-width:880px;margin:0 auto;padding:24px}.card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
     a{color:#1d4ed8;text-decoration:none} h1{font-size:2rem;margin:0 0 8px} h2{font-size:1.2rem;margin-top:24px} p,li{line-height:1.72}.meta{color:#64748b;font-size:.95rem;margin-bottom:18px}.note{background:#fef3c7;border-left:4px solid #f59e0b;padding:12px;border-radius:8px}
-  </style>
+  
+        /* ===== SMART SCROLL NAVBAR ===== */
+        .navbar {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+        }
+        .navbar.nav-hidden {
+            transform: translateY(-100%);
+        }
+        body {
+            padding-top: 65px; /* Offset for fixed navbar */
+        }
+        .sticky-preview {
+            top: 85px !important;
+        }
+
+    </style>
   <meta name="google-adsense-account" content="ca-pub-1373118680696037">
   <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
@@ -65,5 +86,28 @@
   <p>It also helps to keep the language direct. Use active verbs, short sentences, and a consistent tense throughout the document. A clear CV often feels more professional because it is easier to scan and less likely to bury the evidence that actually gets interviews.</p>
   <h2>Bottom line</h2>
   <p>A job getting resume in 2026 is specific, measurable, and easy to read. Use AuraToolkit360 to check ATS fit, tighten the wording, and keep the file format practical for real applications.</p>
-</article></div></body>
+</article></div>
+    <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
+    <script>
+        (function() {
+            let lastScrollY = window.scrollY;
+            const navbar = document.querySelector('.navbar');
+            if (!navbar) return;
+
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    navbar.classList.add('nav-hidden');
+                } else if (currentScrollY < lastScrollY) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                if (currentScrollY <= 10) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                lastScrollY = currentScrollY;
+            }, { passive: true });
+        })();
+    </script>
+
+</body>
 </html>
