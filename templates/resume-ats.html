@@ -180,7 +180,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/" class="logo">AuraToolkit360</a>
             <div class="nav-links">
@@ -207,7 +207,7 @@
                 <!-- Upload Old Resume with Two Options -->
                 <div class="upload-zone" onclick="document.getElementById('resumeUpload').click()">
                     📁 Click to select resume (PDF/DOCX/PNG/JPG/ZIP)
-                    <input type="file" id="resumeUpload" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg,.bmp,.webp,.zip" style="display:none">
+                    <input aria-label="resumeUpload" type="file" id="resumeUpload" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg,.bmp,.webp,.zip" style="display:none">
                 </div>
                 <div class="upload-buttons">
                     <button class="btn btn-primary btn-sm" onclick="uploadAndFillForm()">📝 Upload & Fill Form</button>
@@ -227,7 +227,7 @@
                 <!-- Field Selection -->
                 <div class="field-selector">
                     <label>🎯 Select Your Field</label>
-                    <select id="fieldSelect" onchange="fieldChanged()">
+                    <select aria-label="fieldSelect" id="fieldSelect" onchange="fieldChanged()">
                         <option value="">🤖 Auto-Detect</option>
                         <option value="Web Developer">💻 Web Developer</option>
                         <option value="WordPress Developer">📝 WordPress Developer</option>
@@ -243,20 +243,20 @@
 
                 <!-- Personal Info -->
                 <div class="section-title">👤 Personal Information</div>
-                <div class="form-group"><input type="text" id="name" placeholder="Full Name" oninput="updateAll()"></div>
-                <div class="form-group"><input type="email" id="email" placeholder="Email" oninput="updateAll()"></div>
-                <div class="form-group"><input type="tel" id="phone" placeholder="Phone" oninput="updateAll()"></div>
-                <div class="form-group"><input type="text" id="location" placeholder="Location" oninput="updateAll()"></div>
+                <div class="form-group"><input aria-label="name" type="text" id="name" placeholder="Full Name" oninput="updateAll()"></div>
+                <div class="form-group"><input aria-label="email" type="email" id="email" placeholder="Email" oninput="updateAll()"></div>
+                <div class="form-group"><input aria-label="phone" type="tel" id="phone" placeholder="Phone" oninput="updateAll()"></div>
+                <div class="form-group"><input aria-label="location" type="text" id="location" placeholder="Location" oninput="updateAll()"></div>
                 
                 <!-- Portfolio Links -->
                 <div class="section-title">🔗 Portfolio & Social Links</div>
-                <div class="form-group"><input type="text" id="github" placeholder="GitHub URL" oninput="updateAll()"></div>
-                <div class="form-group"><input type="text" id="linkedin" placeholder="LinkedIn URL" oninput="updateAll()"></div>
-                <div class="form-group"><input type="text" id="portfolio" placeholder="Portfolio/Website" oninput="updateAll()"></div>
+                <div class="form-group"><input aria-label="github" type="text" id="github" placeholder="GitHub URL" oninput="updateAll()"></div>
+                <div class="form-group"><input aria-label="linkedin" type="text" id="linkedin" placeholder="LinkedIn URL" oninput="updateAll()"></div>
+                <div class="form-group"><input aria-label="portfolio" type="text" id="portfolio" placeholder="Portfolio/Website" oninput="updateAll()"></div>
 
                 <!-- Job Description -->
-                <div class="section-title">📝 Job Description <span style="font-size:0.7rem; font-weight:400; color:#94a3b8;">(For ATS)</span></div>
-                <div class="form-group"><textarea id="jobDesc" rows="3" placeholder="Paste job description here..." oninput="calculateATSScore()"></textarea></div>
+                <div class="section-title">📝 Job Description <span style="font-size:0.7rem; font-weight:400; color:#475569;">(For ATS)</span></div>
+                <div class="form-group"><textarea aria-label="jobDesc" id="jobDesc" rows="3" placeholder="Paste job description here..." oninput="calculateATSScore()"></textarea></div>
                 <button class="btn btn-outline btn-sm" onclick="parseJobDescription()">🔍 Parse JD</button>
 
                 <!-- AI Summary Generator -->
@@ -264,7 +264,7 @@
                     <button class="btn btn-primary btn-sm" onclick="generateAISummary()">✨ AI Generate</button>
                     <button class="btn btn-outline btn-sm" onclick="generateCoverLetter()">📄 Cover Letter</button>
                 </div>
-                <div class="form-group"><textarea id="summary" rows="3" placeholder="Write summary..." oninput="updateAll()"></textarea></div>
+                <div class="form-group"><textarea aria-label="summary" id="summary" rows="3" placeholder="Write summary..." oninput="updateAll()"></textarea></div>
 
                 <!-- Education -->
                 <div class="section-title">🎓 Education <button class="btn btn-outline btn-sm" onclick="addEducation()">+ Add</button></div>
@@ -276,7 +276,7 @@
 
                 <!-- Skills -->
                 <div class="section-title">⚡ Skills</div>
-                <div class="form-group"><input type="text" id="skills" placeholder="Python, JavaScript, React..." oninput="updateAll(); calculateATSScore()"></div>
+                <div class="form-group"><input aria-label="skills" type="text" id="skills" placeholder="Python, JavaScript, React..." oninput="updateAll(); calculateATSScore()"></div>
                 <button class="btn btn-outline btn-sm" onclick="suggestSkills()">💡 Suggest Skills</button>
 
                 <!-- Actions -->

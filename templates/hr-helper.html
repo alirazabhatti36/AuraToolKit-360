@@ -82,7 +82,7 @@
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/" class="logo">AuraToolkit360</a>
             <div class="nav-links">
@@ -110,12 +110,12 @@
                     <div class="icon">📂</div>
                     <p>Click or Drag & Drop Multiple Resumes (up to 300 files)</p>
                     <div id="fileCount" style="margin-top:0.5rem; font-weight:700; color:#667eea;">No files selected</div>
-                    <input type="file" id="bulkFiles" accept=".pdf,.docx,.txt" multiple style="display:none;" onchange="handleFiles(this.files)">
+                    <input aria-label="bulkFiles" type="file" id="bulkFiles" accept=".pdf,.docx,.txt" multiple style="display:none;" onchange="handleFiles(this.files)">
                 </div>
             </div>
 
             <h3 style="margin-top:1.5rem;">2. Job Description</h3>
-            <textarea id="jobDesc" placeholder="Paste the target job description and required qualifications here..."></textarea>
+            <textarea aria-label="jobDesc" id="jobDesc" placeholder="Paste the target job description and required qualifications here..."></textarea>
 
             <div style="margin-top:1.2rem; text-align:center;">
                 <button class="btn btn-primary" id="startBtn" onclick="startBulkScan()">⚡ Start Bulk Screening</button>

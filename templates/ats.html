@@ -254,7 +254,7 @@
             <div class="uz-icon">📂</div>
             <p id="singleDZLabel">Click karke resume upload karo</p>
             <small>.pdf aur .docx dono accepted</small>
-            <input type="file" id="resumeFile" accept=".pdf,.docx" style="display:none" onchange="onSingleFile(this)">
+            <input aria-label="resumeFile" type="file" id="resumeFile" accept=".pdf,.docx" style="display:none" onchange="onSingleFile(this)">
           </div>
         </div>
         <div>
@@ -273,7 +273,7 @@
       </div>
 
       <label>💼 Job Description</label>
-      <textarea id="jobDesc" placeholder="Yahan job description paste karo..."></textarea>
+      <textarea aria-label="jobDesc" id="jobDesc" placeholder="Yahan job description paste karo..."></textarea>
 
       <button class="btn-primary" id="scanBtn" onclick="checkATS()">🔍 ATS Score Check Karo</button>
 
@@ -352,20 +352,20 @@
         <div class="uz-icon">📂</div>
         <p id="dropLabel">Click karo ya files yahan drag karo</p>
         <small>.pdf aur .docx dono accepted</small>
-        <input type="file" id="bulkFiles" accept=".pdf,.docx" multiple style="display:none" onchange="onBulkFilesSelected(this.files)">
+        <input aria-label="bulkFiles" type="file" id="bulkFiles" accept=".pdf,.docx" multiple style="display:none" onchange="onBulkFilesSelected(this.files)">
       </div>
       <div id="fileCount"></div>
 
       <label>💼 Job Description</label>
-      <textarea id="bulkJobDesc" placeholder="Yahan job description paste karo — sab resumes iske against check honge..."></textarea>
+      <textarea aria-label="bulkJobDesc" id="bulkJobDesc" placeholder="Yahan job description paste karo — sab resumes iske against check honge..."></textarea>
 
       <div class="filter-row">
         <label>Minimum Score:</label>
-        <input type="range" id="minScore" min="0" max="90" value="20" step="1"
+        <input aria-label="minScore" type="range" id="minScore" min="0" max="90" value="20" step="1"
                oninput="document.getElementById('minScoreVal').textContent=this.value+'%'">
         <span id="minScoreVal" class="min-score-val">20%</span>
         <label style="margin-left:10px;">Sort:</label>
-        <select class="sort-sel" id="sortOrder">
+        <select aria-label="sortOrder" class="sort-sel" id="sortOrder">
           <option value="desc">Highest First</option>
           <option value="asc">Lowest First</option>
         </select>

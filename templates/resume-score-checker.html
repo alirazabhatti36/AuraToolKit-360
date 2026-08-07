@@ -107,7 +107,7 @@
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
 </head>
 <body>
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main Navigation">
     <div class="nav-container">
       <a href="/" class="logo">AuraToolkit360</a>
       <div class="nav-links">
@@ -135,13 +135,13 @@
           <div class="drop-icon">📁</div>
           <div>Click or Drag & Drop Resume File</div>
           <div class="file-name" id="fileName">No file selected</div>
-          <input type="file" id="resumeFile" accept=".pdf,.docx,.txt" onchange="document.getElementById('fileName').textContent = this.files[0] ? this.files[0].name : 'No file selected'">
+          <input aria-label="resumeFile" type="file" id="resumeFile" accept=".pdf,.docx,.txt" onchange="document.getElementById('fileName').textContent = this.files[0] ? this.files[0].name : 'No file selected'">
         </div>
       </div>
 
       <div>
         <div class="box-title">💼 Paste Job Description</div>
-        <textarea id="jobDesc" placeholder="Paste the required job description, skills, and key qualifications here..."></textarea>
+        <textarea aria-label="jobDesc" id="jobDesc" placeholder="Paste the required job description, skills, and key qualifications here..."></textarea>
       </div>
 
       <div class="scan-btn-wrap">

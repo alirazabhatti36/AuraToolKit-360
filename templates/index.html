@@ -59,7 +59,7 @@
         .search-box:focus-within { box-shadow: 0 8px 40px rgba(0,0,0,0.2); transform: translateY(-2px); }
         .search-box .icon { padding: 0 0.6rem; font-size: 1rem; opacity: 0.5; }
         .search-box input { flex: 1; padding: 0.6rem 0.2rem; border: none; background: transparent; font-size: 0.9rem; font-family: inherit; outline: none; color: #1e293b; min-width: 80px; }
-        .search-box input::placeholder { color: #94a3b8; font-size: 0.8rem; }
+        .search-box input::placeholder { color: #475569; font-size: 0.8rem; }
         .search-box .clear-btn { background: none; border: none; padding: 0 0.6rem; font-size: 1rem; cursor: pointer; opacity: 0.4; display: none; }
         .search-box .clear-btn:hover { opacity: 0.8; }
         
@@ -73,9 +73,9 @@
         .search-result-item .icon { font-size: 1.2rem; min-width: 1.8rem; text-align: center; }
         .search-result-item .info { flex: 1; min-width: 0; }
         .search-result-item .info .name { font-weight: 600; font-size: 0.85rem; }
-        .search-result-item .info .desc { font-size: 0.65rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .search-result-item .info .desc { font-size: 0.65rem; color: #475569; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .search-result-item .badge { font-size: 0.55rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: #e0e7ff; color: #3730a3; font-weight: 600; flex-shrink: 0; }
-        .search-empty { padding: 1.2rem; text-align: center; color: #94a3b8; font-size: 0.85rem; }
+        .search-empty { padding: 1.2rem; text-align: center; color: #475569; font-size: 0.85rem; }
         .search-empty .emoji { font-size: 1.5rem; display: block; margin-bottom: 0.2rem; }
         
         /* ===== QUICK SUGGESTIONS ===== */
@@ -217,7 +217,7 @@
 </head>
 <body>
     <!-- ===== NAVBAR ===== -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/" class="logo">AuraToolkit360</a>
             <div class="nav-links">
@@ -247,8 +247,8 @@
     <div class="search-container">
         <div class="search-box">
             <span class="icon">🔍</span>
-            <input type="text" id="searchInput" placeholder="Search tools..." autocomplete="off">
-            <button class="clear-btn" id="clearBtn" onclick="clearSearch()">✕</button>
+            <input type="text" id="searchInput" aria-label="Search tools" placeholder="Search tools..." autocomplete="off">
+            <button class="clear-btn" id="clearBtn" aria-label="Clear search text" onclick="clearSearch()">✕</button>
         </div>
         <div class="search-results" id="searchResults"></div>
     </div>
