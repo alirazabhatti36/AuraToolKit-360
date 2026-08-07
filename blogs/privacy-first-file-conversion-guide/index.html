@@ -55,6 +55,39 @@
             top: 85px !important;
         }
 
+    
+        /* ===== UNIFIED PREMIUM DARK GLASSMORPHISM & NAVBAR STYLING ===== */
+        .navbar { background: rgba(15, 23, 42, 0.85) !important; backdrop-filter: blur(16px) !important; padding: 0.8rem 2rem !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 1000 !important; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .nav-links { display: flex; gap: 0.4rem; flex-wrap: nowrap; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed) !important; color: white !important; box-shadow: 0 4px 20px rgba(37,99,235,0.35) !important; }
+
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a !important; color: #f8fafc !important; min-height: 100vh; padding-top: 65px; overflow-x: clip; display: flex; flex-direction: column; }
+        .card { background: rgba(30, 41, 59, 0.75) !important; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 18px !important; color: #f8fafc !important; }
+        h1 { font-size: 2.2rem !important; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; margin-bottom: 0.5rem; }
+        .subtitle { color: #94a3b8 !important; font-size: 0.95rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.3rem !important; color: #38bdf8 !important; margin-top: 1.5rem; margin-bottom: 0.5rem; border-left: 4px solid #38bdf8 !important; padding-left: 0.75rem; }
+        p, li { color: #94a3b8 !important; line-height: 1.7; font-size: 0.95rem; }
+        .separator { border: none; border-top: 1px solid rgba(255,255,255,0.08) !important; margin: 1.25rem 0; }
+        .tool-block { background: rgba(15, 23, 42, 0.5) !important; border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 14px; padding: 1rem; margin: 0.8rem 0; color: #cbd5e1 !important; }
+
+        /* ===== FOOTER STYLING ===== */
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; color: #f8fafc; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; transition: all 0.2s; }
+        .footer-links a:hover { color: #38bdf8; }
+        .feedback-form input, .feedback-form textarea { width: 100%; padding: 0.55rem 0.8rem; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.8rem; color: #f8fafc; margin-bottom: 0.5rem; outline: none; font-family: inherit; }
+        .feedback-form input:focus, .feedback-form textarea:focus { border-color: #38bdf8; }
+        .feedback-form button { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; width: auto !important; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+
     </style>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
@@ -165,5 +198,38 @@
         })();
     </script>
 
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, and HR candidate screening.</p>
+                <p style="margin-top:0.6rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Tools</h4>
+                <div class="footer-links">
+                    <a href="/">Home Page</a>
+                    <a href="/converter/">File Converter Suite</a>
+                    <a href="/resume-cv-maker/">Resume CV Maker</a>
+                    <a href="/resume-score-checker/">ATS Score Checker</a>
+                    <a href="/hr-helper/">HR Screening Helper</a>
+                    <a href="/blogs/">Blog Articles</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Feedback & Contact</h4>
+                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'\nEmail: '+fd.get('email')+'\n\nFeedback:\n'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
+                    <input name="name" type="text" placeholder="Your Name" required aria-label="Your Name">
+                    <input name="email" type="email" placeholder="Your Email" required aria-label="Your Email">
+                    <textarea name="message" rows="3" placeholder="Share your feedback..." required aria-label="Share your feedback"></textarea>
+                    <button type="submit">Send Feedback</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing
+        </div>
+    </footer>
 </body>
 </html>
