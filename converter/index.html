@@ -85,6 +85,7 @@
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -873,7 +874,8 @@
             const file = readSingleFile(form);
             const arrayBuffer = await file.arrayBuffer();
             const res = await window.mammoth.convertToHtml({ arrayBuffer });
-            const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Converted Word Document</title></head><body>${res.value}</body></html>`;
+            const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Converted Word Document</title>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+</head><body>${res.value}</body></html>`;
             downloadBlob(new Blob([html], { type: 'text/html;charset=utf-8' }), 'converted.html');
         }
 
