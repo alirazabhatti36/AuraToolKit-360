@@ -202,6 +202,21 @@
             top: 85px !important;
         }
 
+    
+        /* ===== RICH CONTENT & FAQ SECTION FOR ADSENSE APPROVAL ===== */
+        .info-section { max-width: 1200px; margin: 3rem auto 1rem; padding: 0 1rem; }
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-bottom: 2rem; }
+        .info-card h2 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
+        .feature-box { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.2rem; }
+        .feature-box h4 { color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+        .feature-box p { color: #94a3b8; font-size: 0.88rem; margin-bottom: 0; }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1rem 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { font-weight: 700; color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+        .faq-answer { color: #94a3b8; font-size: 0.92rem; line-height: 1.6; }
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
@@ -992,6 +1007,50 @@
             updatePreview();
         })();
     </script>
+
+    
+    <!-- ===== RICH CONTENT & FAQ SECTION FOR ADSENSE APPROVAL ===== -->
+    <section class="info-section">
+        <div class="info-card">
+            <h2>Build Professional ATS-Friendly Resumes Locally</h2>
+            <p>AuraToolkit360 Resume CV Maker gives job seekers a privacy-first, professional resume building experience. Choose from 7 custom templates, upload profile photos, add certifications, awards, projects, and languages, and export high-resolution PDFs or editable Word DOCX files instantly.</p>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h4>🎨 7 Modern Templates</h4>
+                    <p>Select from Modern Blue, Classic Serif, Minimal Mono, Compact Grid, Photo Layouts, and Gradient themes.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>📌 Sticky Live Preview</h4>
+                    <p>See real-time visual updates side-by-side as you type your contact details, work experience, and skills.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>💾 Local Auto-Save & JSON Drafts</h4>
+                    <p>Your draft is auto-saved locally in browser storage. Save JSON files to back up and edit anytime.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>📄 High-Quality PDF & DOCX Export</h4>
+                    <p>Export pixel-perfect PDF documents or structured Word DOCX files ready for job application portals.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <div class="faq-question">❓ How does client-side resume building protect my personal info?</div>
+                <div class="faq-answer">Unlike typical resume builders that store your phone number, email, and work history in remote databases, AuraToolkit360 runs entirely in your browser. Your data never touches a server.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">❓ Are the resume templates ATS (Applicant Tracking System) friendly?</div>
+                <div class="faq-answer">Yes! All templates use clean typography, clear section headings, and standard text structures easily parsed by ATS screening software.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">❓ Can I save my resume draft and edit it later?</div>
+                <div class="faq-answer">Yes! Use the "Save JSON Draft" button to download your data file, and click "Load JSON Draft" anytime to restore your resume for quick edits.</div>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
     <footer>

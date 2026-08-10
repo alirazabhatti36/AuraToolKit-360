@@ -189,6 +189,21 @@
         .stat-card .val { color: #38bdf8 !important; }
         .stat-card .lbl { color: #94a3b8 !important; }
 
+    
+        /* ===== RICH CONTENT & FAQ SECTION FOR ADSENSE APPROVAL ===== */
+        .info-section { max-width: 1200px; margin: 3rem auto 1rem; padding: 0 1rem; }
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-bottom: 2rem; }
+        .info-card h2 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
+        .feature-box { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.2rem; }
+        .feature-box h4 { color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+        .feature-box p { color: #94a3b8; font-size: 0.88rem; margin-bottom: 0; }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1rem 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { font-weight: 700; color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+        .faq-answer { color: #94a3b8; font-size: 0.92rem; line-height: 1.6; }
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
@@ -718,6 +733,46 @@
             }, { passive: true });
         })();
     </script>
+
+    
+    <!-- ===== RICH CONTENT & FAQ SECTION FOR ADSENSE APPROVAL ===== -->
+    <section class="info-section">
+        <div class="info-card">
+            <h2>Bulk Resume Screening Tool for HR & Recruiters</h2>
+            <p>Screen and rank up to 300 candidate resumes locally in browser against job titles or job descriptions. Save hours of manual shortlisting while maintaining strict candidate data privacy.</p>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h4>👥 Bulk Processing (300+ CVs)</h4>
+                    <p>Upload hundreds of PDF/Word candidate CVs at once and evaluate match scores in seconds.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>📊 Export Shortlist CSV Reports</h4>
+                    <p>Download structured CSV screening reports with candidate names, scores, and status flags.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>📦 Zip Shortlisted Candidates</h4>
+                    <p>Package top-matching shortlisted candidate resumes into a single ZIP archive for hiring managers.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>🔒 100% GDPR Recruiter Compliance</h4>
+                    <p>Candidate resumes never leave recruiter devices, ensuring full privacy law compliance.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <div class="faq-question">❓ Is this tool free for recruiters and small HR teams?</div>
+                <div class="faq-answer">Yes! AuraToolkit360 HR Bulk Helper is 100% free with no candidate processing limits or fees.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">❓ How are candidate resumes ranked?</div>
+                <div class="faq-answer">Resumes are scored based on skill keyword matching, title relevance, and formatting quality against your specified job description.</div>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
     <footer>
