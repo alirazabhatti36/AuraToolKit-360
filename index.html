@@ -14,20 +14,20 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
-    <meta property="og:title" content="AuraToolkit360 | All-in-One File & Resume Smart Toolkit">
-    <meta property="og:description" content="Convert 30+ file formats, build ATS-optimized resumes with 7 templates, check ATS scores, and screen candidates 100% in your browser.">
+    <meta property="og:title" content="AuraToolkit360 | All-in-One Toolkit for Files, Resumes & HR">
+    <meta property="og:description" content="Convert files, build ATS-friendly resumes, check your resume score and screen candidates — all in your browser. No uploads. No sign-up. 100% private.">
     <meta property="og:url" content="https://auratoolkit360.com/">
     <meta property="og:locale" content="en_US">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AuraToolkit360 | Smart Online Toolkit">
+    <meta name="twitter:title" content="AuraToolkit360 | All-in-One Toolkit for Files, Resumes & HR">
     <meta name="twitter:description" content="Free file conversion, resume builder, ATS check, and HR screening. 100% private browser processing.">
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -53,88 +53,183 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { overflow-x: hidden; scroll-behavior: smooth; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: hidden; position: relative; }
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; position: relative; }
         
         /* Ambient Gradient Orbs */
-        body::before { content: ''; position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(102,126,234,0.18) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
-        body::after { content: ''; position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(118,75,162,0.18) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
+        body::before { content: ''; position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
+        body::after { content: ''; position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: rgba(15,23,42,0.8); }
-        ::-webkit-scrollbar-thumb { background: rgba(102,126,234,0.4); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(102,126,234,0.7); }
+        ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.4); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.7); }
         
         /* ===== NAVBAR ===== */
-        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 100; overflow-x: auto; }
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .navbar.nav-hidden { transform: translateY(-100%); }
+        body { padding-top: 65px; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 1rem; min-width: max-content; }
-        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
-        .logo span { font-size: 1.2rem; }
+        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
         .nav-links { display: flex; gap: 0.4rem; flex-wrap: nowrap; align-items: center; }
-        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; display: flex; align-items: center; gap: 0.3rem; }
         .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
         .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; box-shadow: 0 4px 20px rgba(37,99,235,0.35); }
+        .nav-badge { background: linear-gradient(135deg, #ec4899, #8b5cf6); color: white; font-size: 0.65rem; padding: 0.15rem 0.45rem; border-radius: 999px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-bookmark { background: rgba(255,255,255,0.08); color: #f8fafc; border: 1px solid rgba(255,255,255,0.15); padding: 0.45rem 1rem; border-radius: 10px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.4rem; }
+        .btn-bookmark:hover { background: rgba(255,255,255,0.15); border-color: #38bdf8; color: #38bdf8; }
+
+        /* ===== HERO HERO SECTION (SPLIT 2-COLUMN) ===== */
+        .hero-section { max-width: 1400px; margin: 0 auto; padding: 2.5rem 1.5rem 2rem; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 2.5rem; align-items: center; }
+        @media(max-width: 992px) { .hero-section { grid-template-columns: 1fr; text-align: center; } }
         
-        /* ===== HERO ===== */
-        .hero { text-align: center; padding: 3rem 1rem 2rem; position: relative; z-index: 1; }
-        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 0.6rem; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -1px; }
-        .hero p { font-size: 1.05rem; color: #94a3b8; max-width: 620px; margin: 0 auto 1.5rem; font-weight: 400; }
-        .sub-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 0.3rem 1.1rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2); margin-bottom: 1rem; }
+        .hero-left .pill-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(16, 185, 129, 0.12); color: #34d399; padding: 0.35rem 1.1rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25); margin-bottom: 1.2rem; }
+        .hero-left h1 { font-size: 3rem; font-weight: 900; line-height: 1.15; letter-spacing: -1px; margin-bottom: 1rem; color: #ffffff; }
+        @media(max-width: 768px) { .hero-left h1 { font-size: 2.2rem; } }
+        .txt-blue { background: linear-gradient(135deg, #38bdf8, #2563eb); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .txt-purple { background: linear-gradient(135deg, #c084fc, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .txt-indigo { background: linear-gradient(135deg, #818cf8, #4f46e5); -webkit-background-clip: text; background-clip: text; color: transparent; }
         
-        /* ===== SEARCH CONTAINER ===== */
-        .search-container { max-width: 650px; margin: 0 auto; padding: 0 1rem; position: relative; z-index: 2; }
-        .search-box { display: flex; align-items: center; background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(16px); border-radius: 16px; padding: 0.4rem 0.6rem; box-shadow: 0 12px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.12); transition: all 0.3s; }
-        .search-box:focus-within { border-color: #38bdf8; box-shadow: 0 0 25px rgba(56,189,248,0.25); transform: translateY(-2px); }
-        .search-box .icon { padding: 0 0.6rem; font-size: 1.1rem; color: #64748b; }
-        .search-box input { flex: 1; padding: 0.6rem 0.2rem; border: none; background: transparent; font-size: 0.95rem; font-family: inherit; outline: none; color: #f8fafc; }
+        .hero-left p { font-size: 1.05rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem; max-width: 600px; }
+        @media(max-width: 992px) { .hero-left p { margin-left: auto; margin-right: auto; } }
+
+        .hero-features-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.8rem; }
+        @media(max-width: 992px) { .hero-features-row { justify-content: center; } }
+        .hero-feature-pill { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: #cbd5e1; font-weight: 500; background: rgba(30, 41, 59, 0.6); padding: 0.35rem 0.85rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); }
+        
+        .hero-cta-group { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        @media(max-width: 992px) { .hero-cta-group { justify-content: center; } }
+        
+        .btn-hero-primary { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; padding: 0.85rem 1.8rem; border-radius: 14px; font-size: 0.95rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 8px 25px rgba(124,58,237,0.35); transition: all 0.3s; }
+        .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(124,58,237,0.5); }
+        
+        .btn-hero-outline { background: rgba(30, 41, 59, 0.8); color: #f8fafc; border: 1px solid rgba(255,255,255,0.15); padding: 0.85rem 1.8rem; border-radius: 14px; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s; }
+        .btn-hero-outline:hover { background: rgba(255,255,255,0.1); border-color: #38bdf8; color: #38bdf8; }
+
+        .trust-tag { font-size: 0.82rem; color: #64748b; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
+        @media(max-width: 992px) { .trust-tag { justify-content: center; } }
+
+        /* HERO RIGHT SHOWCASE MOCKUP */
+        .hero-right-showcase { position: relative; }
+        .mockup-container { background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.12); padding: 1.5rem; box-shadow: 0 25px 60px rgba(0,0,0,0.4); position: relative; overflow: hidden; }
+        .mockup-head { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.8rem; }
+        .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot-red { background: #ef4444; } .dot-yellow { background: #f59e0b; } .dot-green { background: #10b981; }
+        .mockup-title { font-size: 0.82rem; color: #94a3b8; font-weight: 600; margin-left: 0.5rem; }
+        
+        .mockup-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+        @media(max-width: 576px) { .mockup-dashboard { grid-template-columns: 1fr; } }
+        .mockup-tool-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 0.9rem; text-align: center; }
+        .mockup-tool-card .icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+        .mockup-tool-card h4 { font-size: 0.85rem; font-weight: 700; color: #f8fafc; }
+        .mockup-tool-card p { font-size: 0.72rem; color: #94a3b8; margin-bottom: 0; }
+
+        .phone-float-card { position: absolute; bottom: -15px; right: -15px; width: 190px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(56,189,248,0.3); border-radius: 20px; padding: 1rem; box-shadow: 0 15px 35px rgba(0,0,0,0.5); z-index: 5; }
+        @media(max-width: 576px) { .phone-float-card { display: none; } }
+        .phone-score-ring { width: 60px; height: 60px; border-radius: 50%; border: 4px solid #10b981; border-top-color: transparent; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-weight: 800; font-size: 0.9rem; color: #10b981; }
+
+        /* ===== SMART SEARCH BOX ===== */
+        .search-section { max-width: 800px; margin: 1rem auto 2.5rem; padding: 0 1.5rem; position: relative; z-index: 10; }
+        .search-box { display: flex; align-items: center; background: rgba(30, 41, 59, 0.85); backdrop-filter: blur(20px); border-radius: 18px; padding: 0.5rem 0.8rem; box-shadow: 0 15px 45px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s; }
+        .search-box:focus-within { border-color: #38bdf8; box-shadow: 0 0 30px rgba(56,189,248,0.3); transform: translateY(-2px); }
+        .search-box .icon { padding: 0 0.6rem; font-size: 1.2rem; color: #64748b; }
+        .search-box input { flex: 1; padding: 0.7rem 0.3rem; border: none; background: transparent; font-size: 1rem; font-family: inherit; outline: none; color: #f8fafc; }
         .search-box input::placeholder { color: #64748b; }
         .search-box .clear-btn { background: none; border: none; padding: 0 0.6rem; font-size: 1rem; cursor: pointer; color: #94a3b8; display: none; }
         .search-box .clear-btn:hover { color: #f8fafc; }
         
-        .search-results { background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(20px); border-radius: 16px; margin-top: 0.6rem; padding: 0.4rem 0; max-height: 360px; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.12); display: none; position: absolute; left: 1rem; right: 1rem; z-index: 10; }
+        .search-results { background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(20px); border-radius: 16px; margin-top: 0.6rem; padding: 0.4rem 0; max-height: 360px; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); display: none; position: absolute; left: 1.5rem; right: 1.5rem; z-index: 20; }
         .search-results.show { display: block; animation: fadeDown 0.2s ease; }
         @keyframes fadeDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-        .search-result-item { display: flex; align-items: center; padding: 0.65rem 1.1rem; cursor: pointer; transition: all 0.2s; text-decoration: none; color: #f8fafc; gap: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .search-result-item { display: flex; align-items: center; padding: 0.7rem 1.2rem; cursor: pointer; transition: all 0.2s; text-decoration: none; color: #f8fafc; gap: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .search-result-item:last-child { border-bottom: none; }
-        .search-result-item:hover { background: rgba(56, 189, 248, 0.12); }
-        .search-result-item .icon { font-size: 1.3rem; min-width: 1.8rem; text-align: center; }
-        .search-result-item .info { flex: 1; min-width: 0; }
-        .search-result-item .info .name { font-weight: 600; font-size: 0.88rem; color: #f8fafc; }
-        .search-result-item .info .desc { font-size: 0.7rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .search-result-item .badge { font-size: 0.6rem; padding: 0.15rem 0.6rem; border-radius: 999px; background: rgba(56,189,248,0.15); color: #38bdf8; font-weight: 600; border: 1px solid rgba(56,189,248,0.2); }
-        .search-empty { padding: 1.5rem; text-align: center; color: #94a3b8; font-size: 0.88rem; }
-        .search-empty .emoji { font-size: 1.8rem; display: block; margin-bottom: 0.3rem; }
-        
-        .quick-suggestions { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 0.8rem; padding: 0 1rem; }
-        .quick-suggestions .chip { background: rgba(255,255,255,0.05); backdrop-filter: blur(4px); padding: 0.25rem 0.85rem; border-radius: 999px; font-size: 0.72rem; color: #cbd5e1; cursor: pointer; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.08); font-weight: 500; }
-        .quick-suggestions .chip:hover { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: rgba(56,189,248,0.3); transform: translateY(-2px); }
-        
-        /* ===== ADSENSE CONTAINER ===== */
-        .adsense-container { max-width: 1200px; margin: 1.5rem auto; padding: 0 1rem; text-align: center; }
-        .adsense-slot { background: rgba(30, 41, 59, 0.4); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.5rem; min-height: 90px; display: flex; align-items: center; justify-content: center; }
+        .search-result-item:hover { background: rgba(56, 189, 248, 0.15); }
+        .search-result-item .icon { font-size: 1.3rem; }
+        .search-result-item .info { flex: 1; }
+        .search-result-item .name { font-weight: 700; font-size: 0.92rem; color: #f8fafc; }
+        .search-result-item .desc { font-size: 0.78rem; color: #94a3b8; }
+        .search-result-item .badge { font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 999px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-weight: 600; }
 
-        /* ===== MAIN CARDS GRID ===== */
-        .cards-container { max-width: 1250px; margin: 1.5rem auto 2.5rem; padding: 0 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
-        .card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border-radius: 20px; padding: 1.8rem 1.5rem; text-align: center; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; color: inherit; border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; }
-        .card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent); transition: left 0.6s; }
-        .card:hover::before { left: 100%; }
-        .card:hover { transform: translateY(-8px); border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.25); }
-        .card-icon { font-size: 2.8rem; margin-bottom: 0.8rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
-        .card h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #f8fafc; }
-        .card p { color: #94a3b8; line-height: 1.5; margin-bottom: 1.2rem; font-size: 0.82rem; flex: 1; }
-        .card-badge { display: inline-block; padding: 0.25rem 0.85rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; border: 1px solid transparent; }
-        .badge-blue { background: rgba(56,189,248,0.12); color: #38bdf8; border-color: rgba(56,189,248,0.25); }
-        .badge-green { background: rgba(52,211,153,0.12); color: #34d399; border-color: rgba(52,211,153,0.25); }
-        .badge-purple { background: rgba(167,139,250,0.12); color: #a78bfa; border-color: rgba(167,139,250,0.25); }
+        .quick-suggestions { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; }
+        .quick-chip { background: rgba(30, 41, 59, 0.6); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.08); padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; }
+        .quick-chip:hover { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: #38bdf8; }
+
+        /* ===== POPULAR TOOLS 4-CARD GRID ===== */
+        .section-wrap { max-width: 1400px; margin: 3rem auto; padding: 0 1.5rem; }
+        .section-head { text-align: center; margin-bottom: 2rem; }
+        .section-head h2 { font-size: 2rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
+        .section-head p { color: #94a3b8; font-size: 0.95rem; margin-top: 0.3rem; }
         
-        /* ===== STATS ===== */
-        .stats { max-width: 1000px; margin: 0 auto 3rem; padding: 1.8rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); text-align: center; }
-        .stat-item .stat-number { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .stat-item .stat-label { font-size: 0.78rem; color: #94a3b8; font-weight: 500; margin-top: 0.2rem; }
+        .popular-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        @media(max-width: 1100px) { .popular-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width: 600px) { .popular-grid { grid-template-columns: 1fr; } }
         
-        /* ===== FOOTER ===== */
-        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .pop-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); padding: 1.8rem 1.4rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .pop-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
+        
+        .pop-card .icon-badge { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 1.2rem; }
+        .bg-green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+        .bg-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+        .bg-orange { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+        .bg-blue { background: rgba(37, 99, 235, 0.15); color: #60a5fa; }
+        
+        .pop-card h3 { font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
+        .pop-card p { font-size: 0.88rem; color: #94a3b8; line-height: 1.5; margin-bottom: 1.5rem; }
+        
+        .btn-card-action { width: 100%; padding: 0.75rem 1rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-card-green { background: #10b981; color: white; } .btn-card-green:hover { background: #059669; }
+        .btn-card-purple { background: #7c3aed; color: white; } .btn-card-purple:hover { background: #6d28d9; }
+        .btn-card-orange { background: #f59e0b; color: white; } .btn-card-orange:hover { background: #d97706; }
+        .btn-card-blue { background: #2563eb; color: white; } .btn-card-blue:hover { background: #1d4ed8; }
+
+        /* ===== HOW IT WORKS SECTION ===== */
+        .how-works-box { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(12px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem 2rem; margin: 3rem auto; max-width: 1400px; }
+        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; position: relative; }
+        @media(max-width: 992px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width: 576px) { .steps-grid { grid-template-columns: 1fr; } }
+
+        .step-item { text-align: center; background: rgba(15, 23, 42, 0.5); border-radius: 18px; padding: 1.5rem 1rem; border: 1px solid rgba(255,255,255,0.06); }
+        .step-icon-num { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; margin: 0 auto 1rem; }
+        .step-item h4 { font-size: 1.05rem; font-weight: 800; color: #ffffff; margin-bottom: 0.4rem; }
+        .step-item p { font-size: 0.85rem; color: #94a3b8; line-height: 1.5; }
+
+        /* ===== WHY CHOOSE SECTION ===== */
+        .why-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; margin-top: 2rem; }
+        @media(max-width: 992px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media(max-width: 576px) { .why-grid { grid-template-columns: 1fr; } }
+        
+        .why-box { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 1.2rem 1rem; text-align: center; }
+        .why-box .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .why-box h4 { font-size: 0.95rem; font-weight: 800; color: #ffffff; margin-bottom: 0.3rem; }
+        .why-box p { font-size: 0.8rem; color: #94a3b8; line-height: 1.4; margin-bottom: 0; }
+
+        /* ===== STATS BANNER ===== */
+        .stats-banner { max-width: 1400px; margin: 3rem auto; padding: 1.5rem 2rem; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; text-align: center; }
+        @media(max-width: 768px) { .stats-banner { grid-template-columns: repeat(2, 1fr); } }
+        .stat-item .num { font-size: 2.2rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .stat-item .label { font-size: 0.8rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* ===== ROCKET CTA BANNER ===== */
+        .cta-rocket-banner { max-width: 1400px; margin: 3rem auto; padding: 2.5rem 2rem; background: linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.95)); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+        .cta-left { display: flex; align-items: center; gap: 1.5rem; }
+        .cta-rocket-icon { font-size: 3.5rem; animation: floatRocket 3s ease-in-out infinite; }
+        @keyframes floatRocket { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .cta-left h3 { font-size: 1.8rem; font-weight: 900; color: #ffffff; margin-bottom: 0.3rem; }
+        .cta-left p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem; }
+
+        /* ===== ALL TOOLS GRID ===== */
+        .category-block { margin-bottom: 2.5rem; }
+        .category-title { font-size: 1.3rem; font-weight: 800; color: #38bdf8; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.6rem; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
+        .tool-link-card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 1rem; text-decoration: none; color: #f8fafc; transition: all 0.25s; display: flex; align-items: center; gap: 0.8rem; }
+        .tool-link-card:hover { background: rgba(56, 189, 248, 0.12); border-color: #38bdf8; transform: translateY(-2px); }
+        .tool-link-card .icon { font-size: 1.4rem; }
+        .tool-link-card .name { font-weight: 600; font-size: 0.88rem; color: #f8fafc; }
+
+        /* ===== FOOTER STYLING ===== */
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; color: #f8fafc; }
         .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
         .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
         .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
@@ -143,128 +238,124 @@
         .footer-links a:hover { color: #38bdf8; }
         .feedback-form input, .feedback-form textarea { width: 100%; padding: 0.55rem 0.8rem; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.8rem; color: #f8fafc; margin-bottom: 0.5rem; outline: none; font-family: inherit; }
         .feedback-form input:focus, .feedback-form textarea:focus { border-color: #38bdf8; }
-        .feedback-form button { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-        .feedback-form button:hover { opacity: 0.9; transform: translateY(-1px); }
+        .feedback-form button { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; width: auto !important; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
-
-        @media (max-width: 900px) {
-            .stats { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-            .hero h1 { font-size: 2.2rem; }
-        }
-        @media (max-width: 600px) {
-            .navbar { padding: 0.6rem 1rem; }
-            .hero { padding: 2rem 1rem 1.5rem; }
-            .hero h1 { font-size: 1.8rem; }
-            .stats { grid-template-columns: 1fr; }
-        }
-    
-        /* ===== A-Z & Apple iOS Responsiveness Rules ===== */
-        html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
-        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        
-        /* Prevent iOS Safari auto-zoom on form inputs */
-        @media screen and (max-width: 768px) {
-            input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="file"], select, textarea {
-                font-size: 16px !important;
-            }
-        }
-        
-        /* Smooth touch momentum scrolling for iOS */
-        .preview-paper, .sticky-preview, .search-results, .navbar {
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Small screen adjustments (iPhone SE, 320px - 480px) */
-        @media (max-width: 480px) {
-            .navbar { padding: 0.5rem 0.75rem; }
-            .logo { font-size: 1.2rem; }
-            .nav-links a { font-size: 0.7rem; padding: 0.3rem 0.5rem; }
-            .hero { padding: 1.2rem 0.8rem; }
-            .card { padding: 0.9rem; }
-            .btn-row button, button { font-size: 0.78rem; padding: 0.45rem 0.7rem; }
-        }
-
-    
-        /* ===== SMART SCROLL NAVBAR ===== */
-        .navbar {
-            position: fixed !important;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
-        }
-        .navbar.nav-hidden {
-            transform: translateY(-100%);
-        }
-        body {
-            padding-top: 65px; /* Offset for fixed navbar */
-        }
-        .sticky-preview {
-            top: 85px !important;
-        }
-
     </style>
-
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
-    <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
 </head>
 <body>
 
-    <!-- ===== NAVBAR ===== -->
-    <header class="navbar">
-        <nav class="nav-container" aria-label="Main Navigation">
-            <a href="/" class="logo"><span>⚡</span> AuraToolkit360</a>
+    <!-- ===== HEADER / NAVBAR ===== -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">⚡</span> AuraToolkit360
+            </a>
             <div class="nav-links">
                 <a href="/" class="active">Home</a>
                 <a href="/converter/">Converter</a>
-                <a href="/resume-cv-maker/">Resume CV Maker</a>
+                <a href="/resume-cv-maker/">Resume Tools</a>
                 <a href="/resume-score-checker/">Score Checker</a>
-                <a href="/hr-helper/">HR Helper</a>
-                <a href="/about/">About</a>
+                <a href="/hr-helper/">HR Helper <span class="nav-badge">New</span></a>
                 <a href="/blogs/">Blogs</a>
-                <a href="/contact/">Contact</a>
-                <a href="/privacy-policy/">Privacy</a>
-                <a href="/terms/">Terms</a>
-                <a href="/disclaimer/">Disclaimer</a>
+                <a href="/about/">About Us</a>
+                <button class="btn-bookmark" onclick="alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!')">★ Bookmark Us</button>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <main>
-        <!-- ===== HERO ===== -->
-        <section class="hero">
-            <div class="sub-badge">🔒 100% Client-Side Privacy — Zero Server Uploads</div>
-            <h1>Free Online File Converter, ATS Resume Builder & HR Tools</h1>
-            <p>Convert files, create ATS-friendly resumes, check your ATS score, and screen candidates — privately in your browser.</p>
+        <!-- ===== HERO SPLIT 2-COLUMN ===== -->
+        <section class="hero-section">
+            <div class="hero-left">
+                <div class="pill-badge">🛡️ 100% Client-Side Privacy — Zero Server Uploads</div>
+                <h1>All-in-One Toolkit for <span class="txt-blue">Files</span>, <span class="txt-purple">Resumes</span> & <span class="txt-indigo">HR</span></h1>
+                <p>Convert files, build ATS-friendly resumes, check your resume score and screen candidates — all in your browser. No uploads. No sign-up. 100% private.</p>
+                
+                <div class="hero-features-row">
+                    <div class="hero-feature-pill">🔒 Your data never leaves your device</div>
+                    <div class="hero-feature-pill">⚡ Lightning fast local processing</div>
+                    <div class="hero-feature-pill">🛡️ No sign-up or installation</div>
+                </div>
+
+                <div class="hero-cta-group">
+                    <a href="/converter/" class="btn-hero-primary">Explore All Tools →</a>
+                    <a href="/hr-helper/" class="btn-hero-outline">Try HR Helper 👥</a>
+                </div>
+
+                <div class="trust-tag">
+                    🛡️ Trusted by Job Seekers, HR Managers & Recruiters Worldwide
+                </div>
+            </div>
+
+            <div class="hero-right-showcase">
+                <div class="mockup-container">
+                    <div class="mockup-head">
+                        <div class="mockup-dot dot-red"></div>
+                        <div class="mockup-dot dot-yellow"></div>
+                        <div class="mockup-dot dot-green"></div>
+                        <span class="mockup-title">Smart Tools. Better Results.</span>
+                    </div>
+
+                    <div class="mockup-dashboard">
+                        <div class="mockup-tool-card">
+                            <div class="icon">🔄</div>
+                            <h4>File Converter</h4>
+                            <p>34+ file conversion tools</p>
+                        </div>
+                        <div class="mockup-tool-card">
+                            <div class="icon">📄</div>
+                            <h4>Resume Maker</h4>
+                            <p>7 ATS-friendly templates</p>
+                        </div>
+                        <div class="mockup-tool-card">
+                            <div class="icon">🎯</div>
+                            <h4>ATS Checker</h4>
+                            <p>Score your CV instantly</p>
+                        </div>
+                        <div class="mockup-tool-card">
+                            <div class="icon">👥</div>
+                            <h4>HR Helper</h4>
+                            <p>Bulk candidate screening</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Phone Mockup Badge -->
+                <div class="phone-float-card">
+                    <div style="font-size:0.75rem; font-weight:700; color:#cbd5e1; text-align:center; margin-bottom:0.4rem;">ATS Score</div>
+                    <div class="phone-score-ring">85%</div>
+                    <div style="font-size:0.7rem; color:#10b981; text-align:center; font-weight:700;">Matched Skills:</div>
+                    <div style="font-size:0.65rem; color:#94a3b8; text-align:center; margin-top:0.2rem;">React.js • Node.js • Express</div>
+                </div>
+            </div>
         </section>
 
-        <!-- ===== SMART SEARCH ===== -->
-        <div class="search-container">
+        <!-- ===== SEARCH BAR ===== -->
+        <section class="search-section">
             <div class="search-box">
                 <span class="icon">🔍</span>
-                <input type="text" id="searchInput" aria-label="Search tools" placeholder="Search tools (e.g. Word to PDF, Image to PDF, Merge PDF...)" autocomplete="off">
+                <input type="text" id="searchInput" aria-label="Search tools" placeholder="Search any tool (e.g. PDF to Word, Image to PDF, Merge PDF...)" autocomplete="off">
                 <button class="clear-btn" id="clearBtn" aria-label="Clear search text" onclick="clearSearch()">✕</button>
             </div>
             <div class="search-results" id="searchResults"></div>
-        </div>
 
-        <!-- Quick Suggestions -->
-        <div class="quick-suggestions" id="quickSuggestions">
-            <span class="chip" onclick="searchQuick('pdf to image')">🖼️ PDF→Image</span>
-            <span class="chip" onclick="searchQuick('merge pdf')">➕ Merge PDF</span>
-            <span class="chip" onclick="searchQuick('compress pdf')">🗜️ Compress PDF</span>
-            <span class="chip" onclick="searchQuick('word to pdf')">📝 Word→PDF</span>
-            <span class="chip" onclick="searchQuick('ocr')">📄 OCR to Text</span>
-            <span class="chip" onclick="searchQuick('resume')">📄 Resume Builder</span>
-        </div>
+            <div class="quick-suggestions" id="quickSuggestions">
+                <span class="quick-chip" onclick="searchQuick('pdf to image')">🖼️ PDF→Image</span>
+                <span class="quick-chip" onclick="searchQuick('merge pdf')">➕ Merge PDF</span>
+                <span class="quick-chip" onclick="searchQuick('compress pdf')">🗜️ Compress PDF</span>
+                <span class="quick-chip" onclick="searchQuick('word to pdf')">📝 Word→PDF</span>
+                <span class="quick-chip" onclick="searchQuick('ocr')">📄 OCR to Text</span>
+                <span class="quick-chip" onclick="searchQuick('resume')">📄 Resume Builder</span>
+            </div>
+        </section>
 
-        <!-- ===== ADSENSE CONTAINER TOP ===== -->
-        <div class="adsense-container">
-            <div class="adsense-slot">
+        <!-- ===== ADSENSE SLOT ===== -->
+        <div style="max-width:1350px; margin: 1.5rem auto; padding: 0 1.5rem; text-align: center;">
+            <div style="background:rgba(30,41,59,0.5); border:1px dashed rgba(255,255,255,0.12); border-radius:14px; padding:0.5rem; min-height:90px; display:flex; align-items:center; justify-content:center;">
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-1373118680696037"
@@ -275,54 +366,234 @@
             </div>
         </div>
 
-        <!-- ===== MAIN FEATURE CARDS ===== -->
-        <section class="cards-container">
-            <a href="/converter/" class="card">
-                <div class="card-icon">🔄</div>
-                <h2>File Converter Suite</h2>
-                <p>Convert PDF, Word, Excel, PPT, Images & OCR — 34 tools with zero server uploads.</p>
-                <span class="card-badge badge-blue">34 Free Tools</span>
-            </a>
+        <!-- ===== POPULAR TOOLS 4-CARD GRID ===== -->
+        <section class="section-wrap">
+            <div class="section-head">
+                <h2>Popular Tools</h2>
+                <p>Most used tools by our amazing users worldwide</p>
+            </div>
 
-            <a href="/resume-cv-maker/" class="card">
-                <div class="card-icon">📄</div>
-                <h2>Resume CV Maker</h2>
-                <p>Build ATS-friendly CVs with 7 templates, photo upload, certs, projects & DOCX export.</p>
-                <span class="card-badge badge-green">7 Formats + Photo</span>
-            </a>
+            <div class="popular-grid">
+                <!-- Card 1: File Converter -->
+                <div class="pop-card">
+                    <div>
+                        <div class="icon-badge bg-green">⇄</div>
+                        <h3>File Converter</h3>
+                        <p>Convert PDF, Word, Excel, Images and more. 34+ tools available with zero server uploads.</p>
+                    </div>
+                    <a href="/converter/" class="btn-card-action btn-card-green">Explore Converters →</a>
+                </div>
 
-            <a href="/resume-score-checker/" class="card">
-                <div class="card-icon">🎯</div>
-                <h2>ATS Resume Score Checker</h2>
-                <p>Audit resumes, analyze keywords, and score match percentage with or without a JD.</p>
-                <span class="card-badge badge-purple">Standalone Audit</span>
-            </a>
+                <!-- Card 2: Resume Builder -->
+                <div class="pop-card">
+                    <div>
+                        <div class="icon-badge bg-purple">📝</div>
+                        <h3>Resume Builder</h3>
+                        <p>Create professional, ATS-friendly resumes in minutes with 7 templates & photo upload.</p>
+                    </div>
+                    <a href="/resume-cv-maker/" class="btn-card-action btn-card-purple">Create Resume →</a>
+                </div>
 
-            <a href="/hr-helper/" class="card">
-                <div class="card-icon">👥</div>
-                <h2>HR Screening Helper</h2>
-                <p>Bulk screen candidate resumes, filter scores, view skills tags, and download CSV/ZIP bundles.</p>
-                <span class="card-badge badge-purple">Bulk Screening</span>
-            </a>
+                <!-- Card 3: ATS Checker -->
+                <div class="pop-card">
+                    <div>
+                        <div class="icon-badge bg-orange">🎯</div>
+                        <h3>ATS Checker</h3>
+                        <p>Check your resume score against job descriptions and improve your interview chances.</p>
+                    </div>
+                    <a href="/resume-score-checker/" class="btn-card-action btn-card-orange">Check ATS Score →</a>
+                </div>
+
+                <!-- Card 4: HR Bulk Helper -->
+                <div class="pop-card">
+                    <div>
+                        <div class="icon-badge bg-blue">👥</div>
+                        <h3>HR Bulk Helper <span class="nav-badge" style="vertical-align:middle; margin-left:0.3rem;">New</span></h3>
+                        <p>Screen and rank up to 300+ candidate resumes in seconds privately in browser.</p>
+                    </div>
+                    <a href="/hr-helper/" class="btn-card-action btn-card-blue">Start Screening →</a>
+                </div>
+            </div>
         </section>
 
-        <!-- ===== STATS SECTION ===== -->
-        <section class="stats">
+        <!-- ===== HOW IT WORKS ===== -->
+        <section class="section-wrap">
+            <div class="how-works-box">
+                <div class="section-head">
+                    <h2>How It Works</h2>
+                    <p>Simple steps. Powerful results.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-icon-num bg-purple">1</div>
+                        <h4>Choose Your Tool</h4>
+                        <p>Select from file converters, resume tools, or HR bulk helper.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon-num bg-blue">2</div>
+                        <h4>Upload / Input</h4>
+                        <p>Upload your files or provide the required resume details.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon-num bg-purple">3</div>
+                        <h4>We Process Locally</h4>
+                        <p>All processing happens inside your browser. No data leaves your machine.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon-num bg-green">4</div>
+                        <h4>Get Instant Results</h4>
+                        <p>Download, copy, or export your processed results instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHY CHOOSE AURATOOLKIT360 ===== -->
+        <section class="section-wrap">
+            <div class="section-head">
+                <h2>Why Choose AuraToolkit360?</h2>
+                <p>Designed for speed, maximum privacy, and professional performance</p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-box">
+                    <div class="icon">🛡️</div>
+                    <h4>100% Private</h4>
+                    <p>All files and data stay in your browser.</p>
+                </div>
+                <div class="why-box">
+                    <div class="icon">⚡</div>
+                    <h4>Super Fast</h4>
+                    <p>Lightning fast processing without any wait.</p>
+                </div>
+                <div class="why-box">
+                    <div class="icon">💻</div>
+                    <h4>No Sign-Up</h4>
+                    <p>No registration or installation required.</p>
+                </div>
+                <div class="why-box">
+                    <div class="icon">✏️</div>
+                    <h4>Always Free</h4>
+                    <p>All core tools are completely free to use.</p>
+                </div>
+                <div class="why-box">
+                    <div class="icon">🌺</div>
+                    <h4>Works Offline</h4>
+                    <p>Most tools work even without internet connection.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== STATS BANNER ===== -->
+        <section class="stats-banner">
             <div class="stat-item">
-                <div class="stat-number">34+</div>
-                <div class="stat-label">File Tools</div>
+                <div class="num">30+</div>
+                <div class="label">File Tools</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Browser Privacy</div>
+                <div class="num">7+</div>
+                <div class="label">Resume Templates</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">7</div>
-                <div class="stat-label">CV Formats</div>
+                <div class="num">300+</div>
+                <div class="label">CVs in Bulk</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">Instant</div>
-                <div class="stat-label">No Server Delay</div>
+                <div class="num">100%</div>
+                <div class="label">Private Processing</div>
+            </div>
+            <div class="stat-item">
+                <div class="num">0</div>
+                <div class="label">Sign-Up Required</div>
+            </div>
+        </section>
+
+        <!-- ===== ROCKET CTA BANNER ===== -->
+        <section class="section-wrap">
+            <div class="cta-rocket-banner">
+                <div class="cta-left">
+                    <div class="cta-rocket-icon">🚀</div>
+                    <div>
+                        <h3>Get More Done In Less Time</h3>
+                        <p>Join thousands of users who save hours every week with AuraToolkit360.</p>
+                        <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
+                            <a href="/converter/" class="btn-hero-primary" style="padding:0.65rem 1.4rem; font-size:0.88rem;">Explore All Tools →</a>
+                            <a href="/hr-helper/" class="btn-hero-outline" style="padding:0.65rem 1.4rem; font-size:0.88rem;">Try HR Helper Now 👥</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(16,185,129,0.3); padding:1.2rem; border-radius:18px; max-width:280px;">
+                    <div style="color:#34d399; font-weight:800; font-size:0.9rem; margin-bottom:0.3rem; display:flex; align-items:center; gap:0.4rem;">
+                        🛡️ Privacy First
+                    </div>
+                    <div style="color:#94a3b8; font-size:0.8rem; line-height:1.4;">
+                        We respect your privacy. Your data is yours and stays in your browser.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ALL TOOLS CATEGORY DIRECTORY ===== -->
+        <section class="section-wrap">
+            <div class="section-head" style="text-align:left; margin-bottom:1.5rem;">
+                <h2>All Tools Directory</h2>
+                <p>Browse all 34+ free browser-based tools</p>
+            </div>
+
+            <!-- Category: Office Documents -->
+            <div class="category-block">
+                <div class="category-title">📝 Office Document Tools</div>
+                <div class="tools-grid">
+                    <a href="/converter/" class="tool-link-card"><span class="icon">📝→📕</span><span class="name">Word to PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">📕→📝</span><span class="name">PDF to Word</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">📊→📕</span><span class="name">PPT to PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">📗→📕</span><span class="name">Excel to PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">📄→📝</span><span class="name">RTF to DOCX</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">📄→📕</span><span class="name">TXT to PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">📝→📄</span><span class="name">DOCX to TXT</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">📗→📄</span><span class="name">Excel to CSV</span></a>
+                </div>
+            </div>
+
+            <!-- Category: PDF Tools -->
+            <div class="category-block">
+                <div class="category-title">📕 PDF Utility Tools</div>
+                <div class="tools-grid">
+                    <a href="/converter/" class="tool-link-card"><span class="icon">➕</span><span class="name">Merge PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">✂️</span><span class="name">Split PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">🗜️</span><span class="name">Compress PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">🔄</span><span class="name">Rotate PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">🔒</span><span class="name">Lock PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">🔓</span><span class="name">Unlock PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">💧</span><span class="name">Add Watermark</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">🗑️</span><span class="name">Delete Pages</span></a>
+                </div>
+            </div>
+
+            <!-- Category: Image & OCR Tools -->
+            <div class="category-block">
+                <div class="category-title">🖼️ Image & OCR Tools</div>
+                <div class="tools-grid">
+                    <a href="/converter/" class="tool-link-card"><span class="icon">🖼️→📕</span><span class="name">Image to PDF</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">🖼️→📝</span><span class="name">Image to Word (OCR)</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">📄</span><span class="name">OCR to Text</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">JPG→PNG</span><span class="name">JPG to PNG</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">PNG→JPG</span><span class="name">PNG to JPG</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">WEBP→PNG</span><span class="name">WEBP to PNG</span></a>
+                    <a href="/converter/" class="tool-link-card"><span class="icon">🗜️</span><span class="name">Compress Image</span></a>
+                </div>
+            </div>
+
+            <!-- Category: Resume & HR Tools -->
+            <div class="category-block">
+                <div class="category-title">💼 Resume & HR Recruiter Tools</div>
+                <div class="tools-grid">
+                    <a href="/resume-cv-maker/" class="tool-link-card"><span class="icon">📄</span><span class="name">Resume CV Maker (7 Templates)</span></a>
+                    <a href="/resume-score-checker/" class="tool-link-card"><span class="icon">🎯</span><span class="name">ATS Resume Score Checker</span></a>
+                    <a href="/hr-helper/" class="tool-link-card"><span class="icon">👥</span><span class="name">HR Bulk Candidate Screening</span></a>
+                </div>
             </div>
         </section>
     </main>
@@ -418,9 +689,8 @@
 
             if (results.length === 0) {
                 searchResults.innerHTML = `
-                    <div class="search-empty">
-                        <span class="emoji">🔍</span>
-                        No tools found for "<strong>${escapeHtml(query)}</strong>"
+                    <div class="search-result-item" style="justify-content:center; color:#94a3b8;">
+                        <span class="icon">🔍</span> No tools found for "${escapeHtml(query)}"
                     </div>
                 `;
             } else {
@@ -442,13 +712,13 @@
             return String(value || '')
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
-                .replace/>/g, '&gt;')
+                .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
         }
 
         searchInput.addEventListener('input', e => performSearch(e.target.value));
-        document.addEventListener('click', e => { if (!e.target.closest('.search-container')) searchResults.classList.remove('show'); });
+        document.addEventListener('click', e => { if (!e.target.closest('.search-section')) searchResults.classList.remove('show'); });
         function clearSearch() { searchInput.value = ''; searchResults.classList.remove('show'); clearBtn.style.display = 'none'; searchInput.focus(); }
         function searchQuick(q) { searchInput.value = q; performSearch(q); searchInput.focus(); }
         searchInput.addEventListener('keydown', e => { if (e.key === 'Escape') clearSearch(); });
@@ -475,6 +745,5 @@
             }, { passive: true });
         })();
     </script>
-
 </body>
 </html>
