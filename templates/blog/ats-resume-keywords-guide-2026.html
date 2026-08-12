@@ -215,15 +215,20 @@
     </script>
 
     <!-- ===== FOOTER ===== -->
-    <footer>
+        <footer>
         <div class="footer-grid">
             <div class="footer-col">
                 <h3>AuraToolkit360</h3>
                 <p>Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, and HR candidate screening.</p>
                 <p style="margin-top:0.6rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
+                <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem;">
+                    <a href="/privacy-policy/" style="color:#38bdf8; text-decoration:none;">Privacy Policy</a> •
+                    <a href="/terms/" style="color:#38bdf8; text-decoration:none;">Terms of Service</a> •
+                    <a href="/disclaimer/" style="color:#38bdf8; text-decoration:none;">Disclaimer</a>
+                </div>
             </div>
             <div class="footer-col">
-                <h4>Quick Tools</h4>
+                <h4>Navigation & Legal</h4>
                 <div class="footer-links">
                     <a href="/">Home Page</a>
                     <a href="/converter/">File Converter Suite</a>
@@ -231,11 +236,20 @@
                     <a href="/resume-score-checker/">ATS Score Checker</a>
                     <a href="/hr-helper/">HR Screening Helper</a>
                     <a href="/blogs/">Blog Articles</a>
+                    <a href="/about/">About Us</a>
+                    <a href="/contact/">Contact Us</a>
+                    <a href="/privacy-policy/">Privacy Policy (GDPR/CCPA)</a>
+                    <a href="/terms/">Terms of Service</a>
+                    <a href="/disclaimer/">Disclaimer Statement</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Feedback & Contact</h4>
-                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'\nEmail: '+fd.get('email')+'\n\nFeedback:\n'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
+                <h4>Feedback & Support</h4>
+                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'
+Email: '+fd.get('email')+'
+
+Feedback:
+'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
                     <input name="name" type="text" placeholder="Your Name" required aria-label="Your Name">
                     <input name="email" type="email" placeholder="Your Email" required aria-label="Your Email">
                     <textarea name="message" rows="3" placeholder="Share your feedback..." required aria-label="Share your feedback"></textarea>
@@ -244,7 +258,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing
+            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing | <a href="/privacy-policy/" style="color:#64748b; text-decoration:underline;">Privacy</a> | <a href="/terms/" style="color:#64748b; text-decoration:underline;">Terms</a>
         </div>
     </footer>
 </body>

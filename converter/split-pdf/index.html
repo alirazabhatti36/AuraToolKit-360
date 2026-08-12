@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="description" content="Split large PDF files and extract specific pages into separate PDF documents online for free. 100% private processing.">
+    <meta name="keywords" content="file converter, PDF tools, word to pdf, pdf to word, image converter, excel converter, online converter, free tools">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/converter/split-pdf/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AuraToolkit360">
+    <meta property="og:title" content="AuraToolkit360 | File Converter Suite">
+    <meta property="og:description" content="30+ online conversion tools for PDF, Office files, and images. Runs 100% inside your browser.">
+    <meta property="og:url" content="https://auratoolkit360.com/converter/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AuraToolkit360 | File Converter Suite">
+    <meta name="twitter:description" content="Convert PDF, Word, Excel, and image files quickly with AuraToolkit360.">
+    <title>Free Split PDF Online | Extract Pages from PDF Privately</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "AuraToolkit360 | File Converter Suite",
+            "url": "https://auratoolkit360.com/converter/",
+            "description": "Convert PDF, Word, Excel, PPT, and image files safely in your browser with AuraToolkit360 File Converter.",
+            "inLanguage": "en"
+        }
+    </script>
+    <style>
+
+        :root {
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.75);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-cyan: #38bdf8;
+            --accent-blue: #2563eb;
+            --accent-purple: #7c3aed;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: hidden; position: relative; -webkit-font-smoothing: antialiased; }
+        
+        /* Ambient Gradient Orbs */
+        body::before { content: ''; position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(102,126,234,0.18) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
+        body::after { content: ''; position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(118,75,162,0.18) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(15,23,42,0.8); }
+        ::-webkit-scrollbar-thumb { background: rgba(102,126,234,0.4); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(102,126,234,0.7); }
+        
+        /* ===== NAVBAR ===== */
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 100; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .nav-links { display: flex; gap: 0.4rem; flex-wrap: nowrap; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; box-shadow: 0 4px 20px rgba(37,99,235,0.35); }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1rem; }
+        .page-header { text-align: center; margin-bottom: 2rem; padding: 1rem; }
+        .page-header h1 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -1px; }
+        .page-header p { color: #94a3b8; font-size: 1rem; margin-top: 0.3rem; }
+        
+        .section-title { font-size: 1.3rem; font-weight: 700; margin: 2.2rem 0 1.2rem; padding-left: 0.8rem; border-left: 4px solid #38bdf8; color: #f8fafc; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        
+        .tool-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s; color: #f8fafc; }
+        .tool-card:hover { transform: translateY(-6px); border-color: rgba(56,189,248,0.4); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        .tool-icon { font-size: 2.2rem; margin-bottom: 0.6rem; }
+        .tool-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; color: #f8fafc; }
+        .tool-card label { display: block; font-size: 0.78rem; color: #cbd5e1; font-weight: 600; margin-bottom: 0.3rem; }
+        
+        input[type="file"], input[type="text"], input[type="number"], select, textarea {
+            width: 100%; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 0.55rem 0.75rem; font-size: 0.84rem; color: #f8fafc; font-family: inherit; outline: none; transition: border-color 0.2s;
+        }
+        input:focus, select:focus, textarea:focus { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56,189,248,0.2); }
+        
+        button, .btn-primary, .btn-outline, .btn-danger {
+            border: none; border-radius: 10px; padding: 0.55rem 0.9rem; cursor: pointer; font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; transition: all 0.25s; font-family: inherit; width: 100%;
+        }
+        button[type="submit"], .btn-primary { background: linear-gradient(135deg, #2563eb, #7c3aed); color: #ffffff; box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+        button[type="submit"]:hover, .btn-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+        
+        .result-box { margin-top: 0.8rem; padding: 0.8rem; border-radius: 12px; font-size: 0.84rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.1); }
+        .result-box.success { border-color: rgba(52,211,153,0.3); color: #34d399; }
+        .result-box.error { border-color: rgba(239,68,68,0.3); color: #fca5a5; }
+
+        /* ===== FOOTER ===== */
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; transition: all 0.2s; }
+        .footer-links a:hover { color: #38bdf8; }
+        .feedback-form input, .feedback-form textarea { width: 100%; padding: 0.55rem 0.8rem; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.8rem; color: #f8fafc; margin-bottom: 0.5rem; outline: none; font-family: inherit; }
+        .feedback-form input:focus, .feedback-form textarea:focus { border-color: #38bdf8; }
+        .feedback-form button { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+
+        @media screen and (max-width: 768px) {
+            input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="file"], select, textarea {
+                font-size: 16px !important;
+            }
+        }
+
+    
+        /* ===== STATS BANNER HORIZONTAL GRID ===== */
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0.5rem auto 2rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+        }
+        .stats-banner .stat-item { min-width: 0; }
+        .stats-banner .stat-number { font-size: 1.4rem; font-weight: 800; color: #38bdf8; }
+        .stats-banner .stat-label { font-size: 0.72rem; color: #94a3b8; font-weight: 500; margin-top: 0.2rem; }
+        @media (max-width: 768px) {
+            .stats-banner { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+        }
+
+    
+        /* ===== SMART SCROLL NAVBAR ===== */
+        .navbar {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+        }
+        .navbar.nav-hidden {
+            transform: translateY(-100%);
+        }
+        body {
+            padding-top: 65px; /* Offset for fixed navbar */
+        }
+        .sticky-preview {
+            top: 85px !important;
+        }
+
+    
+        /* ===== RICH CONTENT & FAQ SECTION FOR ADSENSE APPROVAL ===== */
+        .info-section { max-width: 1200px; margin: 3rem auto 1rem; padding: 0 1rem; }
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-bottom: 2rem; }
+        .info-card h2 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
+        .feature-box { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.2rem; }
+        .feature-box h4 { color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+        .feature-box p { color: #94a3b8; font-size: 0.88rem; margin-bottom: 0; }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1rem 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { font-weight: 700; color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+        .faq-answer { color: #94a3b8; font-size: 0.92rem; line-height: 1.6; }
+
+    </style>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+    <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="nav-container">
+            <a href="/" class="logo"><span>⚡</span> AuraToolkit360</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/converter/" class="active">Converter</a>
+                <a href="/resume-cv-maker/">Resume CV Maker</a>
+                <a href="/resume-score-checker/">Score Checker</a>
+                <a href="/hr-helper/">HR Helper</a>
+                <a href="/about/">About</a>
+                <a href="/blogs/">Blogs</a>
+                <a href="/contact/">Contact</a>
+                <a href="/privacy-policy/">Privacy</a>
+                <a href="/terms/">Terms</a>
+                <a href="/disclaimer/">Disclaimer</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- AdSense Slot Top -->
+        <div style="max-width:1200px; margin: 1rem auto; padding: 0 1rem; text-align: center;">
+            <div style="background:rgba(30,41,59,0.5); border:1px dashed rgba(255,255,255,0.12); border-radius:12px; padding:0.5rem; min-height:90px; display:flex; align-items:center; justify-content:center;">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1373118680696037"
+                     data-ad-slot="auto"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+    
+        
+    <div class="page-header">
+        <div style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(16,185,129,0.12); color:#34d399; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.8rem; font-weight:700; border:1px solid rgba(16,185,129,0.25); margin-bottom:0.8rem;">🔒 100% Private In-Browser Tool</div>
+        <h1>Free Split PDF Tool</h1>
+        <p>Split large PDF files and extract specific pages into separate PDF documents online for free. 100% private processing.</p>
+    </div>
+    
+
+        <div class="stats-banner">
+            <div class="stat-item"><div class="stat-number">30+</div><div class="stat-label">Conversion Tools</div></div>
+            <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Client-Side Private</div></div>
+            <div class="stat-item"><div class="stat-number">🔐</div><div class="stat-label">Zero Upload Security</div></div>
+            <div class="stat-item"><div class="stat-number">⚡</div><div class="stat-label">Instant Speed</div></div>
+        </div>
+
+        <!-- Office Converters -->
+        <div class="section-title">📁 Office Converters</div>
+        <div class="grid">
+            <div class="tool-card"><div class="tool-icon">📝→📕</div><h3>Word to PDF</h3>
+                <form data-action="/word-to-pdf">
+                    <input type="file" name="file" accept=".docx" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📕→📝</div><h3>PDF to Word</h3>
+                <form data-action="/pdf-to-word">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📊→📕</div><h3>PPT to PDF</h3>
+                <form data-action="/ppt-to-pdf">
+                    <input type="file" name="file" accept=".pptx" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📗→📕</div><h3>Excel to PDF</h3>
+                <form data-action="/excel-to-pdf">
+                    <input type="file" name="file" accept=".xlsx,.xls,.csv" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📄→📝</div><h3>RTF to DOCX</h3>
+                <form data-action="/rtf-to-docx">
+                    <input type="file" name="file" accept=".rtf" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📄→📕</div><h3>TXT to PDF</h3>
+                <form data-action="/txt-to-pdf">
+                    <input type="file" name="file" accept=".txt" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📝→📄</div><h3>DOCX to TXT</h3>
+                <form data-action="/docx-to-txt">
+                    <input type="file" name="file" accept=".docx" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📗→📄</div><h3>Excel to CSV</h3>
+                <form data-action="/excel-to-csv">
+                    <input type="file" name="file" accept=".xlsx,.xls,.csv" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📝→🌐</div><h3>Word to HTML</h3>
+                <form data-action="/word-to-html">
+                    <input type="file" name="file" accept=".docx" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">CSV→JSON</div><h3>CSV to JSON</h3>
+                <form data-action="/csv-to-json">
+                    <input type="file" name="file" accept=".csv" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">JSON→CSV</div><h3>JSON to CSV</h3>
+                <form data-action="/json-to-csv">
+                    <input type="file" name="file" accept=".json" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">{ }</div><h3>JSON Formatter</h3>
+                <form data-action="/json-formatter">
+                    <input type="file" name="file" accept=".json" required>
+                    <select name="mode"><option value="pretty">Pretty Print</option><option value="minify">Minify</option></select>
+                    <button class="btn btn-primary" type="submit">Format & Download</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- PDF Tools -->
+        <div class="section-title">📕 PDF Tools</div>
+        <div class="grid">
+            <div class="tool-card"><div class="tool-icon">➕</div><h3>Merge PDF</h3>
+                <form data-action="/merge-pdf">
+                    <p class="extra-text">Select multiple PDF files</p>
+                    <input type="file" name="files" accept=".pdf" multiple required>
+                    <button class="btn btn-primary" type="submit">Merge & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">✂️</div><h3>Split PDF</h3>
+                <form data-action="/split-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Split & Download ZIP</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🗜️</div><h3>Compress PDF</h3>
+                <form data-action="/compress-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Compress & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🔄</div><h3>Rotate PDF</h3>
+                <form data-action="/rotate-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <select name="degrees"><option value="90">90° Right</option><option value="180">180°</option><option value="270">270° Left</option></select>
+                    <button class="btn btn-primary" type="submit">Rotate & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🔒</div><h3>Lock PDF</h3>
+                <form data-action="/lock-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="password" placeholder="Set Password" required>
+                    <button class="btn btn-primary" type="submit">Lock & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🔓</div><h3>Unlock PDF</h3>
+                <form data-action="/unlock-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="password" placeholder="Enter Password">
+                    <button class="btn btn-primary" type="submit">Unlock & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">💧</div><h3>Add Watermark</h3>
+                <form data-action="/watermark-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="watermark" placeholder="Watermark text (e.g. DRAFT)">
+                    <button class="btn btn-primary" type="submit">Add & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🗑️</div><h3>Delete Pages</h3>
+                <form data-action="/delete-pages">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="pages" placeholder="Pages to remove (e.g. 1,3,5-7)">
+                    <button class="btn btn-primary" type="submit">Delete & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📤</div><h3>Extract Pages</h3>
+                <form data-action="/extract-pages">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="pages" placeholder="Pages to keep (e.g. 1,3,5-7)">
+                    <button class="btn btn-primary" type="submit">Extract & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🔢</div><h3>Add Page Numbers</h3>
+                <form data-action="/add-page-numbers">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Add & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🖼️</div><h3>PDF to Image</h3>
+                <form data-action="/pdf-to-image">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download ZIP</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📄</div><h3>PDF to TXT</h3>
+                <form data-action="/pdf-to-txt">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Extract Text</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Image Tools -->
+        <div class="section-title">🖼️ Image Tools</div>
+        <div class="grid">
+            <div class="tool-card"><div class="tool-icon">🖼️→📕</div><h3>Image to PDF</h3>
+                <form data-action="/image-to-pdf">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg,.webp" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🖼️→📝</div><h3>Image to Word (OCR)</h3>
+                <form data-action="/image-to-word">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg" required>
+                    <button class="btn btn-primary" type="submit">OCR & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🖼️→📊</div><h3>Image to Excel (OCR)</h3>
+                <form data-action="/image-to-excel">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">📄</div><h3>OCR to Text</h3>
+                <form data-action="/ocr-to-text">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg" required>
+                    <button class="btn btn-primary" type="submit">Extract Text</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">JPG→PNG</div><h3>JPG to PNG</h3>
+                <form data-action="/jpg-to-png">
+                    <input type="file" name="file" accept=".jpg,.jpeg" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">PNG→JPG</div><h3>PNG to JPG</h3>
+                <form data-action="/png-to-jpg">
+                    <input type="file" name="file" accept=".png" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">WEBP→PNG</div><h3>WEBP to PNG</h3>
+                <form data-action="/webp-to-png">
+                    <input type="file" name="file" accept=".webp" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">SVG→PNG</div><h3>SVG to PNG</h3>
+                <form data-action="/svg-to-png">
+                    <input type="file" name="file" accept=".svg" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">🗜️</div><h3>Compress Image</h3>
+                <form data-action="/compress-image">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg,.webp" required>
+                    <select name="quality"><option value="80">High Quality</option><option value="60" selected>Medium Quality</option><option value="30">Low Quality</option></select>
+                    <button class="btn btn-primary" type="submit">Compress & Download</button>
+                </form>
+            </div>
+            <div class="tool-card"><div class="tool-icon">↔️🖼️</div><h3>Flip Image</h3>
+                <form data-action="/flip-image">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg,.webp" required>
+                    <select name="direction"><option value="horizontal">Horizontal</option><option value="vertical">Vertical</option></select>
+                    <button class="btn btn-primary" type="submit">Flip & Download</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+        
+    <!-- ===== RICH CONTENT & FAQ SECTION FOR ADSENSE APPROVAL ===== -->
+    <section class="info-section">
+        <div class="info-card">
+            <h2>Why Choose AuraToolkit360 Client-Side File Converter?</h2>
+            <p>Traditional online file converters require uploading your sensitive files, documents, and images to external cloud servers. AuraToolkit360 changes the game by running 100% of conversion algorithms locally inside your web browser using modern WebAssembly and JavaScript technologies.</p>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h4>🔒 100% Guaranteed Privacy</h4>
+                    <p>Your files never leave your device. Zero server uploads mean zero data leaks or privacy risks.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>⚡ Instant Local Processing</h4>
+                    <p>No waiting in queue or uploading large files. Conversions execute at high speed directly on your hardware.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>📄 Multi-Format Support</h4>
+                    <p>Convert Word to PDF, PDF to Word, OCR Images to Text/DOCX, Compress Images, and format JSON seamlessly.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>💰 100% Free Without Limits</h4>
+                    <p>No hidden subscriptions, no daily conversion limits, and no registration required.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <div class="faq-question">❓ Are my uploaded files stored on any server?</div>
+                <div class="faq-answer">No! AuraToolkit360 operates with 100% client-side technology. Your files are processed entirely within your web browser's local memory and are never uploaded or stored anywhere.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">❓ Does PDF to Word conversion preserve text paragraphs?</div>
+                <div class="faq-answer">Yes! Our PDF to Word converter analyzes exact line positioning and paragraph coordinates to preserve multi-line text structures, bullet points, and headings in the generated DOCX file.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">❓ Can I extract text from scanned images using OCR?</div>
+                <div class="faq-answer">Yes, our built-in Optical Character Recognition (OCR) engine recognizes text inside PNG, JPG, and WEBP images directly in your browser and exports to TXT, Word DOCX, or Excel XLSX formats.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    
+    <!-- ===== DEDICATED TOOL SEO CONTENT & FAQ ===== -->
+    <section class="info-section" style="max-width: 1400px; margin: 3rem auto 1rem; padding: 0 1rem;">
+        <div class="info-card" style="background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-bottom: 2rem;">
+            <h2 style="font-size: 1.5rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem;">Extract Specific Pages from Multi-Page PDFs</h2>
+            <p style="color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1.2rem;">Extract single pages or specific page ranges from multi-page PDF documents without re-scanning or re-creating the file.</p>
+            
+            <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.2rem; margin-top:1rem;">
+                <h4 style="color:#f8fafc; font-size:1rem; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.5rem;">💼 Applying for Jobs? Create an ATS-Friendly CV</h4>
+                <p style="color:#94a3b8; font-size:0.88rem; margin-bottom:0.8rem;">Once your document is converted, build a modern, high-scoring ATS resume or check your ATS match score 100% privately.</p>
+                <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
+                    <a href="/resume-cv-maker/" class="btn-primary" style="width:auto; padding:0.5rem 1.2rem; font-size:0.84rem;">Build ATS Resume →</a>
+                    <a href="/resume-score-checker/" class="btn-outline" style="width:auto; padding:0.5rem 1.2rem; font-size:0.84rem;">Check ATS Match Score →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card" style="background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc;">
+            <h2 style="font-size: 1.5rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem;">Frequently Asked Questions</h2>
+            <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <div style="font-weight: 700; color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem;">❓ Can I extract page ranges like 1-3 or 5,7?</div>
+                <div style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6;">Yes! Specify exact page numbers to extract custom PDF segments.</div>
+            </div>
+            <div style="padding: 1rem 0;">
+                <div style="font-weight: 700; color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem;">❓ Is page extraction private?</div>
+                <div style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6;">100% private — operations run locally in your web browser.</div>
+            </div>
+        </div>
+    </section>
+    
+        <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, and HR candidate screening.</p>
+                <p style="margin-top:0.6rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
+                <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem;">
+                    <a href="/privacy-policy/" style="color:#38bdf8; text-decoration:none;">Privacy Policy</a> •
+                    <a href="/terms/" style="color:#38bdf8; text-decoration:none;">Terms of Service</a> •
+                    <a href="/disclaimer/" style="color:#38bdf8; text-decoration:none;">Disclaimer</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation & Legal</h4>
+                <div class="footer-links">
+                    <a href="/">Home Page</a>
+                    <a href="/converter/">File Converter Suite</a>
+                    <a href="/resume-cv-maker/">Resume CV Maker</a>
+                    <a href="/resume-score-checker/">ATS Score Checker</a>
+                    <a href="/hr-helper/">HR Screening Helper</a>
+                    <a href="/blogs/">Blog Articles</a>
+                    <a href="/about/">About Us</a>
+                    <a href="/contact/">Contact Us</a>
+                    <a href="/privacy-policy/">Privacy Policy (GDPR/CCPA)</a>
+                    <a href="/terms/">Terms of Service</a>
+                    <a href="/disclaimer/">Disclaimer Statement</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Feedback & Support</h4>
+                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'
+Email: '+fd.get('email')+'
+
+Feedback:
+'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
+                    <input name="name" type="text" placeholder="Your Name" required aria-label="Your Name">
+                    <input name="email" type="email" placeholder="Your Email" required aria-label="Your Email">
+                    <textarea name="message" rows="3" placeholder="Share your feedback..." required aria-label="Share your feedback"></textarea>
+                    <button type="submit">Send Feedback</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing | <a href="/privacy-policy/" style="color:#64748b; text-decoration:underline;">Privacy</a> | <a href="/terms/" style="color:#64748b; text-decoration:underline;">Terms</a>
+        </div>
+    </footer>
+
+    <!-- Comprehensive Client-Side Conversion Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/tesseract.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+    <script>
+        if (window.pdfjsLib) {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+        }
+
+        function downloadBlob(blob, filename) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 5000);
+        }
+
+        function readSingleFile(form, selector = 'input[type="file"]') {
+            const input = form.querySelector(selector);
+            if (!input || !input.files || !input.files[0]) {
+                throw new Error('Please select a file first.');
+            }
+            return input.files[0];
+        }
+
+        function sanitizeWinAnsiText(str) {
+            if (!str) return '';
+            return str
+                .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
+                .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+                .replace(/[\u2013\u2014\u2015]/g, '-')
+                .replace(/[\u2022\u2023\u25E6\u2043\u2219]/g, '* ')
+                .replace(/\u2026/g, '...')
+                .replace(/[^\x00-\xFF]/g, ' ');
+        }
+
+        function imageToCanvasBlob(file, format = 'image/png', quality = 0.95, extraTransform = null) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width || 800;
+                        canvas.height = img.height || 600;
+                        const ctx = canvas.getContext('2d');
+
+                        if (format === 'image/jpeg') {
+                            ctx.fillStyle = '#FFFFFF';
+                            ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        }
+
+                        if (extraTransform) {
+                            extraTransform(ctx, canvas);
+                        }
+
+                        ctx.drawImage(img, 0, 0);
+                        canvas.toBlob((blob) => {
+                            if (blob) resolve(blob);
+                            else reject(new Error('Canvas blob generation failed'));
+                        }, format, quality);
+                    };
+                    img.onerror = () => reject(new Error('Failed to load image into canvas'));
+                    img.src = e.target.result;
+                };
+                reader.onerror = () => reject(new Error('Failed to read image file'));
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function handleWordToPdf(form) {
+            if (!window.mammoth) throw new Error('mammoth.js library not loaded');
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const arrayBuffer = await file.arrayBuffer();
+            const result = await window.mammoth.extractRawText({ arrayBuffer });
+            const text = result.value || 'No text extracted from Word document';
+
+            const pdfDoc = await PDFLib.PDFDocument.create();
+            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+            const fontSize = 11;
+            const lineHeight = 16;
+            const margin = 40;
+            const pageWidth = 595;
+            const pageHeight = 842;
+            const maxChars = 90;
+
+            let page = pdfDoc.addPage([pageWidth, pageHeight]);
+            let y = pageHeight - margin;
+
+            const sanitizedText = sanitizeWinAnsiText(text);
+            const rawLines = sanitizedText.split(/\r?\n/);
+            const lines = rawLines.flatMap(line => {
+                if (!line.trim()) return [' '];
+                const wrapped = [];
+                for (let i = 0; i < line.length; i += maxChars) {
+                    wrapped.push(line.slice(i, i + maxChars));
+                }
+                return wrapped;
+            });
+
+            for (const line of lines) {
+                if (y < margin + lineHeight) {
+                    page = pdfDoc.addPage([pageWidth, pageHeight]);
+                    y = pageHeight - margin;
+                }
+                try {
+                    page.drawText(line, { x: margin, y, size: fontSize, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
+                } catch(e) {
+                    page.drawText(line.replace(/[^\x20-\x7E]/g, ' '), { x: margin, y, size: fontSize, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
+                }
+                y -= lineHeight;
+            }
+
+            const output = await pdfDoc.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'converted.pdf');
+        }
+
+        async function handlePdfToWord(form) {
+            if (!window.pdfjsLib) throw new Error('pdf.js library not loaded');
+            if (!window.docx || !window.docx.Packer) throw new Error('docx library not loaded');
+
+            const file = readSingleFile(form);
+            const data = await file.arrayBuffer();
+            const loadingTask = window.pdfjsLib.getDocument({ data: new Uint8Array(data) });
+            const pdf = await loadingTask.promise;
+            const paragraphs = [];
+
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                const page = await pdf.getPage(pageNum);
+                const content = await page.getTextContent();
+                
+                if (pdf.numPages > 1) {
+                    const headingStyle = (window.docx && window.docx.HeadingLevel) ? window.docx.HeadingLevel.HEADING_3 : undefined;
+                    paragraphs.push(new docx.Paragraph({
+                        text: `--- Page ${pageNum} ---`,
+                        heading: headingStyle
+                    }));
+                }
+
+                const lines = [];
+                let currentLine = [];
+                let lastY = null;
+
+                for (const item of content.items) {
+                    const str = item.str;
+                    if (!str && !item.hasEOL) continue;
+
+                    const y = item.transform ? item.transform[5] : null;
+                    const isNewLine = (lastY !== null && y !== null && Math.abs(lastY - y) > 3) || item.hasEOL;
+
+                    if (isNewLine && currentLine.length > 0) {
+                        lines.push(currentLine.join(' ').replace(/\s+/g, ' ').trim());
+                        currentLine = [];
+                    }
+
+                    if (str && str.trim()) {
+                        currentLine.push(str.trim());
+                    }
+
+                    if (y !== null) lastY = y;
+                }
+
+                if (currentLine.length > 0) {
+                    lines.push(currentLine.join(' ').replace(/\s+/g, ' ').trim());
+                }
+
+                if (lines.length > 0) {
+                    lines.forEach(lineText => {
+                        if (lineText) {
+                            paragraphs.push(new docx.Paragraph({
+                                text: lineText
+                            }));
+                        }
+                    });
+                } else {
+                    paragraphs.push(new docx.Paragraph({ text: '[Empty Page]' }));
+                }
+
+                paragraphs.push(new docx.Paragraph({ text: '' }));
+            }
+
+            const doc = new docx.Document({ sections: [{ children: paragraphs }] });
+            const blob = await docx.Packer.toBlob(doc);
+            downloadBlob(blob, 'converted.docx');
+        }
+
+        async function handlePptToPdf(form) {
+            if (!window.JSZip) throw new Error('JSZip library not loaded');
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+
+            const file = readSingleFile(form);
+            const zip = await JSZip.loadAsync(file);
+            const slideFiles = Object.keys(zip.files).filter(f => f.startsWith('ppt/slides/slide') && f.endsWith('.xml'));
+            slideFiles.sort((a, b) => {
+                const matchA = a.match(/slide(\d+)\.xml/);
+                const matchB = b.match(/slide(\d+)\.xml/);
+                const numA = parseInt(matchA ? matchA[1] : '0', 10);
+                const numB = parseInt(matchB ? matchB[1] : '0', 10);
+                return numA - numB;
+            });
+
+            const pdfDoc = await PDFLib.PDFDocument.create();
+            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+
+            for (let i = 0; i < slideFiles.length; i++) {
+                const xmlText = await zip.files[slideFiles[i]].async('text');
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                const textNodes = Array.from(xmlDoc.getElementsByTagName('*'))
+                    .filter(node => node.tagName.endsWith(':t') || node.tagName === 't')
+                    .map(node => sanitizeWinAnsiText(node.textContent.trim()))
+                    .filter(Boolean);
+
+                const page = pdfDoc.addPage([842, 595]);
+                page.drawText(`Slide ${i + 1}`, { x: 40, y: 550, size: 18, font, color: PDFLib.rgb(0.2, 0.3, 0.8) });
+                
+                let y = 500;
+                for (const txt of textNodes) {
+                    if (y < 40) break;
+                    page.drawText(txt.slice(0, 110), { x: 40, y, size: 12, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
+                    y -= 20;
+                }
+            }
+
+            const output = await pdfDoc.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'converted_presentation.pdf');
+        }
+
+        async function handleExcelToPdf(form) {
+            if (!window.XLSX) throw new Error('XLSX library not loaded');
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+
+            const file = readSingleFile(form);
+            const buffer = await file.arrayBuffer();
+            const workbook = XLSX.read(buffer, { type: 'array' });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            const csvText = XLSX.utils.sheet_to_csv(worksheet);
+
+            const pdfDoc = await PDFLib.PDFDocument.create();
+            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+            const page = pdfDoc.addPage([842, 595]);
+            let y = 550;
+
+            const lines = sanitizeWinAnsiText(csvText).split('\n');
+            for (const line of lines) {
+                if (y < 40) break;
+                page.drawText(line.slice(0, 120), { x: 40, y, size: 10, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
+                y -= 15;
+            }
+
+            const output = await pdfDoc.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'converted_sheet.pdf');
+        }
+
+        async function handleRtfToDocx(form) {
+            if (!window.docx || !window.docx.Packer) throw new Error('docx library not loaded');
+            const file = readSingleFile(form);
+            const text = await file.text();
+            const cleanText = text.replace(/\\'[0-9a-fA-F]{2}/g, '').replace(/\\[a-zA-Z]+\d*\s?/g, '').replace(/[{}]/g, '').trim();
+
+            const paragraphs = cleanText.split(/\r?\n+/).map(l => new docx.Paragraph({ text: l || ' ' }));
+            const doc = new docx.Document({ sections: [{ children: paragraphs }] });
+            const blob = await docx.Packer.toBlob(doc);
+            downloadBlob(blob, 'converted.docx');
+        }
+
+        async function handleImageToPdf(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const pdfDoc = await PDFLib.PDFDocument.create();
+
+            let image;
+            try {
+                const bytes = await file.arrayBuffer();
+                if (file.type === 'image/jpeg' || file.name.match(/\.(jpg|jpeg)$/i)) {
+                    image = await pdfDoc.embedJpg(bytes);
+                } else if (file.type === 'image/png' || file.name.match(/\.png$/i)) {
+                    image = await pdfDoc.embedPng(bytes);
+                } else {
+                    throw new Error('Use canvas rendering fallback');
+                }
+            } catch (e) {
+                const pngBlob = await imageToCanvasBlob(file, 'image/png');
+                const pngBytes = await pngBlob.arrayBuffer();
+                image = await pdfDoc.embedPng(pngBytes);
+            }
+
+            const page = pdfDoc.addPage([image.width, image.height]);
+            page.drawImage(image, { x: 0, y: 0, width: image.width, height: image.height });
+
+            const output = await pdfDoc.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'image_converted.pdf');
+        }
+
+        async function handleJpgToPng(form) {
+            const file = readSingleFile(form);
+            const blob = await imageToCanvasBlob(file, 'image/png');
+            downloadBlob(blob, 'converted.png');
+        }
+
+        async function handlePngToJpg(form) {
+            const file = readSingleFile(form);
+            const blob = await imageToCanvasBlob(file, 'image/jpeg', 0.95);
+            downloadBlob(blob, 'converted.jpg');
+        }
+
+        async function handleWebpToPng(form) {
+            const file = readSingleFile(form);
+            const blob = await imageToCanvasBlob(file, 'image/png');
+            downloadBlob(blob, 'converted.png');
+        }
+
+        async function handleSvgToPng(form) {
+            const file = readSingleFile(form);
+            const blob = await imageToCanvasBlob(file, 'image/png');
+            downloadBlob(blob, 'converted.png');
+        }
+
+        async function handleCompressImage(form) {
+            const file = readSingleFile(form);
+            const qualityVal = parseInt(form.querySelector('select[name="quality"]')?.value || '60', 10) / 100;
+            const blob = await imageToCanvasBlob(file, 'image/jpeg', qualityVal);
+            downloadBlob(blob, 'compressed.jpg');
+        }
+
+        async function handleMergePdf(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const filesInput = form.querySelector('input[name="files"]');
+            if (!filesInput || !filesInput.files || filesInput.files.length < 2) {
+                throw new Error('Please select at least two PDF files.');
+            }
+            const mergedPdf = await PDFLib.PDFDocument.create();
+            for (const file of filesInput.files) {
+                const bytes = await file.arrayBuffer();
+                const srcPdf = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+                const copiedPages = await mergedPdf.copyPages(srcPdf, srcPdf.getPageIndices());
+                copiedPages.forEach(page => mergedPdf.addPage(page));
+            }
+            const output = await mergedPdf.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'merged.pdf');
+        }
+
+        async function handleSplitPdf(form) {
+            if (!window.PDFLib || !window.JSZip) throw new Error('Required PDF/ZIP libraries not loaded');
+            const file = readSingleFile(form);
+            const bytes = await file.arrayBuffer();
+            const srcPdf = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+            const zip = new JSZip();
+            for (let i = 0; i < srcPdf.getPageCount(); i++) {
+                const subPdf = await PDFLib.PDFDocument.create();
+                const [p] = await subPdf.copyPages(srcPdf, [i]);
+                subPdf.addPage(p);
+                const out = await subPdf.save();
+                zip.file(`page_${i + 1}.pdf`, out);
+            }
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            downloadBlob(zipBlob, 'split_pages.zip');
+        }
+
+        async function handleCompressPdf(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const bytes = await file.arrayBuffer();
+            const pdfDoc = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+            const output = await pdfDoc.save({ useObjectStreams: true });
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'compressed.pdf');
+        }
+
+        async function handleRotatePdf(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const deg = parseInt(form.querySelector('select[name="degrees"]')?.value || '90', 10);
+            const bytes = await file.arrayBuffer();
+            const srcPdf = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+            const outPdf = await PDFLib.PDFDocument.create();
+            const pages = await outPdf.copyPages(srcPdf, srcPdf.getPageIndices());
+            pages.forEach(p => { p.setRotation(PDFLib.degrees(deg)); outPdf.addPage(p); });
+            const output = await outPdf.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'rotated.pdf');
+        }
+
+        async function handleLockPdf(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const pwd = form.querySelector('input[name="password"]')?.value || '1234';
+            const bytes = await file.arrayBuffer();
+            const pdfDoc = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+            pdfDoc.encrypt({ userPassword: pwd, ownerPassword: pwd, permissions: { printing: 'highResolution', modifying: false } });
+            const output = await pdfDoc.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'locked.pdf');
+        }
+
+        async function handleUnlockPdf(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const pwd = form.querySelector('input[name="password"]')?.value || '';
+            const bytes = await file.arrayBuffer();
+            const pdfDoc = await PDFLib.PDFDocument.load(bytes, { password: pwd, ignoreEncryption: true });
+            const output = await pdfDoc.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'unlocked.pdf');
+        }
+
+        async function handleWatermarkPdf(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const txt = sanitizeWinAnsiText(form.querySelector('input[name="watermark"]')?.value || 'WATERMARK');
+            const bytes = await file.arrayBuffer();
+            const pdfDoc = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+            pdfDoc.getPages().forEach(page => {
+                const { width, height } = page.getSize();
+                page.drawText(txt, { x: width / 4, y: height / 2, size: 40, font, color: PDFLib.rgb(0.6, 0.6, 0.6), opacity: 0.3, rotate: PDFLib.degrees(30) });
+            });
+            const output = await pdfDoc.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'watermarked.pdf');
+        }
+
+        function parsePagesStr(str, total) {
+            const set = new Set();
+            (str || '').split(',').forEach(p => {
+                if (p.includes('-')) {
+                    const [a, b] = p.split('-').map(v => parseInt(v.trim(), 10));
+                    if (!isNaN(a) && !isNaN(b)) for (let i = Math.min(a,b); i <= Math.max(a,b); i++) if (i >= 1 && i <= total) set.add(i - 1);
+                } else {
+                    const val = parseInt(p.trim(), 10);
+                    if (!isNaN(val) && val >= 1 && val <= total) set.add(val - 1);
+                }
+            });
+            return set;
+        }
+
+        async function handleDeletePages(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const bytes = await file.arrayBuffer();
+            const src = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+            const delSet = parsePagesStr(form.querySelector('input[name="pages"]')?.value, src.getPageCount());
+            const keep = src.getPageIndices().filter(i => !delSet.has(i));
+            const out = await PDFLib.PDFDocument.create();
+            const pages = await out.copyPages(src, keep);
+            pages.forEach(p => out.addPage(p));
+            const output = await out.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'deleted_pages.pdf');
+        }
+
+        async function handleExtractPages(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const bytes = await file.arrayBuffer();
+            const src = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+            const extSet = parsePagesStr(form.querySelector('input[name="pages"]')?.value, src.getPageCount());
+            const keep = src.getPageIndices().filter(i => extSet.has(i));
+            const out = await PDFLib.PDFDocument.create();
+            const pages = await out.copyPages(src, keep);
+            pages.forEach(p => out.addPage(p));
+            const output = await out.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'extracted_pages.pdf');
+        }
+
+        async function handleAddPageNumbers(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const bytes = await file.arrayBuffer();
+            const pdfDoc = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
+            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+            const pages = pdfDoc.getPages();
+            pages.forEach((page, idx) => {
+                const { width } = page.getSize();
+                page.drawText(`Page ${idx + 1} of ${pages.length}`, { x: width / 2 - 30, y: 15, size: 10, font, color: PDFLib.rgb(0.4, 0.4, 0.4) });
+            });
+            const output = await pdfDoc.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'numbered.pdf');
+        }
+
+        async function handlePdfToImage(form) {
+            if (!window.pdfjsLib || !window.JSZip) throw new Error('pdf.js or JSZip library not loaded');
+            const file = readSingleFile(form);
+            const data = await file.arrayBuffer();
+            const loadingTask = window.pdfjsLib.getDocument({ data: new Uint8Array(data) });
+            const pdf = await loadingTask.promise;
+            const zip = new JSZip();
+
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const viewport = page.getViewport({ scale: 1.5 });
+                const canvas = document.createElement('canvas');
+                canvas.width = Math.floor(viewport.width);
+                canvas.height = Math.floor(viewport.height);
+                const ctx = canvas.getContext('2d');
+                await page.render({ canvasContext: ctx, viewport }).promise;
+                const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+                zip.file(`page_${i}.png`, blob);
+            }
+
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            downloadBlob(zipBlob, 'pdf_images.zip');
+        }
+
+        async function handlePdfToTxt(form) {
+            if (!window.pdfjsLib) throw new Error('pdf.js library not loaded');
+            const file = readSingleFile(form);
+            const data = await file.arrayBuffer();
+            const loadingTask = window.pdfjsLib.getDocument({ data: new Uint8Array(data) });
+            const pdf = await loadingTask.promise;
+            const chunks = [];
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const textContent = await page.getTextContent();
+                chunks.push(textContent.items.map(item => item.str).join(' '));
+            }
+            downloadBlob(new Blob([chunks.join('\n\n')], { type: 'text/plain;charset=utf-8' }), 'extracted_pdf_text.txt');
+        }
+
+        async function handleDocxToTxt(form) {
+            if (!window.mammoth) throw new Error('mammoth.js library not loaded');
+            const file = readSingleFile(form);
+            const arrayBuffer = await file.arrayBuffer();
+            const result = await window.mammoth.extractRawText({ arrayBuffer });
+            downloadBlob(new Blob([result.value || ''], { type: 'text/plain;charset=utf-8' }), 'extracted_text.txt');
+        }
+
+        async function handleTxtToPdf(form) {
+            if (!window.PDFLib) throw new Error('pdf-lib library not loaded');
+            const file = readSingleFile(form);
+            const text = await file.text();
+            const pdfDoc = await PDFLib.PDFDocument.create();
+            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+            let page = pdfDoc.addPage([595, 842]);
+            let y = 800;
+            const sanitizedText = sanitizeWinAnsiText(text);
+            for (const line of sanitizedText.split('\n')) {
+                if (y < 40) { page = pdfDoc.addPage([595, 842]); y = 800; }
+                page.drawText(line.slice(0, 90), { x: 40, y, size: 10, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
+                y -= 14;
+            }
+            const output = await pdfDoc.save();
+            downloadBlob(new Blob([output], { type: 'application/pdf' }), 'text_converted.pdf');
+        }
+
+        async function handleExcelToCsv(form) {
+            if (!window.XLSX) throw new Error('XLSX library not loaded');
+            const file = readSingleFile(form);
+            const buffer = await file.arrayBuffer();
+            const workbook = XLSX.read(buffer, { type: 'array' });
+            const sheet = workbook.Sheets[workbook.SheetNames[0]];
+            const csv = XLSX.utils.sheet_to_csv(sheet);
+            downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), 'converted.csv');
+        }
+
+        async function handleWordToHtml(form) {
+            if (!window.mammoth) throw new Error('mammoth.js library not loaded');
+            const file = readSingleFile(form);
+            const arrayBuffer = await file.arrayBuffer();
+            const res = await window.mammoth.convertToHtml({ arrayBuffer });
+            const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Free Split PDF Online | Extract Pages from PDF Privately</title></head><body>` + result.value + `</body></html>`;
+            downloadBlob(new Blob([html], { type: 'text/html;charset=utf-8' }), 'converted.html');
+        }
+
+        async function handleCsvToJson(form) {
+            if (!window.Papa) throw new Error('PapaParse library not loaded');
+            const file = readSingleFile(form);
+            const text = await file.text();
+            const parsed = Papa.parse(text, { header: true, skipEmptyLines: true });
+            downloadBlob(new Blob([JSON.stringify(parsed.data, null, 2)], { type: 'application/json' }), 'converted.json');
+        }
+
+        async function handleJsonToCsv(form) {
+            if (!window.Papa) throw new Error('PapaParse library not loaded');
+            const file = readSingleFile(form);
+            const text = await file.text();
+            const json = JSON.parse(text);
+            const csv = Papa.unparse(Array.isArray(json) ? json : [json]);
+            downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), 'converted.csv');
+        }
+
+        async function handleJsonFormatter(form) {
+            const file = readSingleFile(form);
+            const mode = form.querySelector('select[name="mode"]')?.value || 'pretty';
+            const text = await file.text();
+            const json = JSON.parse(text);
+            const formatted = mode === 'minify' ? JSON.stringify(json) : JSON.stringify(json, null, 2);
+            downloadBlob(new Blob([formatted], { type: 'application/json' }), 'formatted.json');
+        }
+
+        async function handleFlipImage(form) {
+            const file = readSingleFile(form);
+            const dir = form.querySelector('select[name="direction"]')?.value || 'horizontal';
+            const blob = await imageToCanvasBlob(file, 'image/png', 0.95, (ctx, canvas) => {
+                if (dir === 'vertical') {
+                    ctx.translate(0, canvas.height); ctx.scale(1, -1);
+                } else {
+                    ctx.translate(canvas.width, 0); ctx.scale(-1, 1);
+                }
+            });
+            downloadBlob(blob, 'flipped.png');
+        }
+
+        async function recognizeText(file, btn) {
+            if (!window.Tesseract) throw new Error('Tesseract OCR library not loaded');
+            if (btn) btn.textContent = 'Initializing OCR Engine... ⚡';
+            const res = await window.Tesseract.recognize(file, 'eng');
+            return res?.data?.text?.trim() || '';
+        }
+
+        async function handleOcrToText(form) {
+            const btn = form.querySelector('button[type="submit"]');
+            const file = readSingleFile(form);
+            const txt = await recognizeText(file, btn);
+            downloadBlob(new Blob([txt], { type: 'text/plain;charset=utf-8' }), 'ocr_extracted.txt');
+        }
+
+        async function handleImageToWord(form) {
+            if (!window.docx || !window.docx.Packer) throw new Error('docx library not loaded');
+            const btn = form.querySelector('button[type="submit"]');
+            const file = readSingleFile(form);
+            const txt = await recognizeText(file, btn);
+            const paras = (txt || 'No text recognized').split('\n').map(t => new docx.Paragraph({ text: t || ' ' }));
+            const doc = new docx.Document({ sections: [{ children: paras }] });
+            const blob = await docx.Packer.toBlob(doc);
+            downloadBlob(blob, 'ocr_converted.docx');
+        }
+
+        async function handleImageToExcel(form) {
+            if (!window.XLSX) throw new Error('XLSX library not loaded');
+            const btn = form.querySelector('button[type="submit"]');
+            const file = readSingleFile(form);
+            const txt = await recognizeText(file, btn);
+            const rows = txt.split('\n').map(l => l.split(/\s{2,}|\t/));
+            const sheet = XLSX.utils.aoa_to_sheet(rows);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, sheet, 'OCR Data');
+            const out = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+            downloadBlob(new Blob([out], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), 'ocr_converted.xlsx');
+        }
+
+        const handlersMap = {
+            '/word-to-pdf': handleWordToPdf,
+            '/pdf-to-word': handlePdfToWord,
+            '/ppt-to-pdf': handlePptToPdf,
+            '/excel-to-pdf': handleExcelToPdf,
+            '/rtf-to-docx': handleRtfToDocx,
+            '/txt-to-pdf': handleTxtToPdf,
+            '/docx-to-txt': handleDocxToTxt,
+            '/excel-to-csv': handleExcelToCsv,
+            '/word-to-html': handleWordToHtml,
+            '/csv-to-json': handleCsvToJson,
+            '/json-to-csv': handleJsonToCsv,
+            '/json-formatter': handleJsonFormatter,
+            '/merge-pdf': handleMergePdf,
+            '/split-pdf': handleSplitPdf,
+            '/compress-pdf': handleCompressPdf,
+            '/rotate-pdf': handleRotatePdf,
+            '/lock-pdf': handleLockPdf,
+            '/unlock-pdf': handleUnlockPdf,
+            '/watermark-pdf': handleWatermarkPdf,
+            '/delete-pages': handleDeletePages,
+            '/extract-pages': handleExtractPages,
+            '/add-page-numbers': handleAddPageNumbers,
+            '/pdf-to-image': handlePdfToImage,
+            '/pdf-to-txt': handlePdfToTxt,
+            '/image-to-pdf': handleImageToPdf,
+            '/image-to-word': handleImageToWord,
+            '/image-to-excel': handleImageToExcel,
+            '/ocr-to-text': handleOcrToText,
+            '/jpg-to-png': handleJpgToPng,
+            '/png-to-jpg': handlePngToJpg,
+            '/webp-to-png': handleWebpToPng,
+            '/svg-to-png': handleSvgToPng,
+            '/compress-image': handleCompressImage,
+            '/flip-image': handleFlipImage
+        };
+
+        document.querySelectorAll('form[data-action]').forEach(form => {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const actionKey = form.getAttribute('data-action');
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn ? btn.textContent : '';
+
+                if (btn) {
+                    btn.disabled = true;
+                    btn.textContent = 'Processing... ⚡';
+                }
+
+                try {
+                    const handler = handlersMap[actionKey];
+                    if (!handler) throw new Error('Handler not found for ' + actionKey);
+                    await handler(form);
+                } catch (err) {
+                    alert('Error: ' + (err.message || 'Failed to process file.'));
+                } finally {
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.textContent = originalText;
+                    }
+                }
+            });
+        });
+    </script>
+
+    
+    
+
+
+    <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
+    <script>
+        (function() {
+            let lastScrollY = window.scrollY;
+            const navbar = document.querySelector('.navbar');
+            if (!navbar) return;
+
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    navbar.classList.add('nav-hidden');
+                } else if (currentScrollY < lastScrollY) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                if (currentScrollY <= 10) {
+                    navbar.classList.remove('nav-hidden');
+                }
+                lastScrollY = currentScrollY;
+            }, { passive: true });
+        })();
+    </script>
+</body>
+</html>
