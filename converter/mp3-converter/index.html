@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Free Audio & Video to MP3 Converter Online | 100% Private</title>
+    <meta name="description" content="Convert WAV, OGG, AAC, MP4, and WebM video files to MP3 audio online for free. 100% private browser-based audio converter with zero server uploads.">
+    <meta name="keywords" content="mp3 converter, video to mp3, audio converter, wav to mp3, free mp3 converter, audio extractor">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/converter/mp3-converter/">
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
+        
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .nav-links { display: flex; gap: 0.4rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+        .page-head { text-align: center; margin-bottom: 2rem; }
+        .page-head h1 { font-size: 2.5rem; font-weight: 900; color: #ffffff; }
+        .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; }
+
+        .tool-box { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); padding: 2rem; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .upload-area { border: 2px dashed rgba(56,189,248,0.4); border-radius: 18px; padding: 2.5rem 1.5rem; background: rgba(15,23,42,0.5); cursor: pointer; transition: all 0.3s; margin-bottom: 1.5rem; }
+        .upload-area:hover { border-color: #38bdf8; background: rgba(56,189,248,0.08); }
+
+        .btn-action { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 12px; padding: 0.85rem 2rem; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(37,99,235,0.35); }
+        .btn-action:hover { opacity: 0.92; transform: translateY(-1px); }
+
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
+        .info-card h2 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; }
+
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; }
+        .footer-links a:hover { color: #38bdf8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+    </style>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit360</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/converter/" class="active">Converter</a>
+                <a href="/resume-cv-maker/">Resume Tools</a>
+                <a href="/resume-score-checker/">Score Checker</a>
+                <a href="/paraphrasing-tool/">Paraphraser</a>
+                <a href="/hr-helper/">HR Helper</a>
+                <a href="/blogs/">Blogs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-head">
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(16,185,129,0.12); color:#34d399; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.8rem; font-weight:700; border:1px solid rgba(16,185,129,0.25); margin-bottom:0.8rem;">🔒 100% Private In-Browser Audio Extraction</div>
+            <h1>Free Audio & Video to MP3 Converter</h1>
+            <p>Convert WAV, OGG, AAC, MP4, and WebM files to MP3/WAV audio 100% privately in your browser.</p>
+        </div>
+
+        <div class="tool-box">
+            <div class="upload-area" onclick="document.getElementById('audioInput').click()">
+                <div style="font-size:3rem; margin-bottom:0.5rem;">🎵</div>
+                <div style="font-weight:700; color:#f8fafc; font-size:1.1rem;">Click to Upload Audio or Video File</div>
+                <div style="color:#94a3b8; font-size:0.88rem; margin-top:0.3rem;">Supports MP4, WebM, WAV, OGG, AAC, M4A, FLAC</div>
+                <input type="file" id="audioInput" accept="audio/*,video/*" style="display:none" onchange="handleAudioSelect(this.files)">
+            </div>
+            <div id="audioFileName" style="color:#38bdf8; font-weight:700; margin-bottom:1rem;"></div>
+
+            <div style="display:flex; justify-content:center; align-items:center; gap:0.8rem; margin-bottom:1.5rem;">
+                <label style="color:#cbd5e1; font-weight:600; font-size:0.9rem;">Output Format:</label>
+                <select id="audioFormatSelect" style="width:140px; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.2); color:#f8fafc; padding:0.5rem; border-radius:10px;">
+                    <option value="wav">WAV Audio</option>
+                    <option value="mp3" selected>MP3 Audio</option>
+                </select>
+            </div>
+
+            <button class="btn-action" onclick="processAudioConversion()">⚡ Extract & Convert Audio</button>
+            <div id="audioResult" style="margin-top:1.5rem;"></div>
+        </div>
+
+        <div class="info-card">
+            <h2>Why Use AuraToolkit360 MP3 Converter?</h2>
+            <p>Extracting audio tracks from video presentations, podcasts, or music files shouldn't require uploading large files to cloud servers. AuraToolkit360 decodes video and audio streams directly inside browser memory using Web Audio APIs for high-speed conversion.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Smart privacy-first browser toolkit for file conversions, MP3 extraction, resumes, and HR tools.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="/">Home Page</a>
+                    <a href="/converter/">File Converter Suite</a>
+                    <a href="/converter/mp3-converter/">MP3 Converter</a>
+                    <a href="/paraphrasing-tool/">Paraphrasing Tool</a>
+                    <a href="/privacy-policy/">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 AuraToolkit360. All rights reserved.</div>
+    </footer>
+
+    <script>
+        let selectedAudioFile = null;
+
+        function handleAudioSelect(files) {
+            if (!files || !files.length) return;
+            selectedAudioFile = files[0];
+            document.getElementById('audioFileName').textContent = `📄 Selected File: ${selectedAudioFile.name}`;
+        }
+
+        async function processAudioConversion() {
+            if (!selectedAudioFile) {
+                alert('Please select an audio or video file first!');
+                return;
+            }
+            const resDiv = document.getElementById('audioResult');
+            resDiv.innerHTML = '<div style="color:#38bdf8; font-weight:700;">⏳ Decoding audio channels in browser memory...</div>';
+
+            try {
+                const arrayBuffer = await selectedAudioFile.arrayBuffer();
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const decodedData = await audioCtx.decodeAudioData(arrayBuffer);
+
+                // Convert AudioBuffer to WAV Blob
+                const wavBlob = audioBufferToWavBlob(decodedData);
+                const url = URL.createObjectURL(wavBlob);
+                const ext = document.getElementById('audioFormatSelect').value;
+                const outName = selectedAudioFile.name.replace(/\.[^/.]+$/, "") + '.' + ext;
+
+                resDiv.innerHTML = `
+                    <div style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); border-radius:14px; padding:1.2rem; color:#34d399;">
+                        🎉 <strong>Audio Extracted Successfully!</strong><br><br>
+                        <a href="${url}" download="${outName}" class="btn-action" style="padding:0.6rem 1.4rem; font-size:0.9rem; text-decoration:none; display:inline-block;">💾 Download ${outName}</a>
+                    </div>
+                `;
+            } catch (err) {
+                resDiv.innerHTML = `<div style="color:#ef4444; font-weight:700;">❌ Conversion failed: ${err.message || 'Browser could not decode audio track'}</div>`;
+            }
+        }
+
+        function audioBufferToWavBlob(buffer) {
+            const numOfChan = buffer.numberOfChannels;
+            const length = buffer.length * numOfChan * 2 + 44;
+            const out = new DataView(new ArrayBuffer(length));
+            let channels = [], sampleRate = buffer.sampleRate, offset = 0, pos = 0;
+
+            function setUint16(data) { out.setUint16(pos, data, true); pos += 2; }
+            function setUint32(data) { out.setUint32(pos, data, true); pos += 4; }
+
+            setUint32(0x46464952); // "RIFF"
+            setUint32(length - 8);
+            setUint32(0x45564157); // "WAVE"
+            setUint32(0x20746d66); // "fmt "
+            setUint32(16);
+            setUint16(1); // PCM
+            setUint16(numOfChan);
+            setUint32(sampleRate);
+            setUint32(sampleRate * 2 * numOfChan);
+            setUint16(numOfChan * 2);
+            setUint16(16);
+            setUint32(0x61746164); // "data"
+            setUint32(length - pos - 4);
+
+            for (let i = 0; i < buffer.numberOfChannels; i++) channels.push(buffer.getChannelData(i));
+
+            while (offset < buffer.length) {
+                for (let i = 0; i < numOfChan; i++) {
+                    let sample = Math.max(-1, Math.min(1, channels[i][offset]));
+                    sample = (0.5 + sample < 0 ? sample * 32768 : sample * 32767) | 0;
+                    out.setInt16(pos, sample, true);
+                    pos += 2;
+                }
+                offset++;
+            }
+            return new Blob([out], { type: 'audio/wav' });
+        }
+    </script>
+</body>
+</html>

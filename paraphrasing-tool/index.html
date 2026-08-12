@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Free Paraphrasing Tool & Text Rewriter Online | 100% Private</title>
+    <meta name="description" content="Free online paraphrasing tool and text rewriter. Rewrite sentences, resumes, essays, and articles in Formal, Standard, or Fluency modes 100% privately in your browser.">
+    <meta name="keywords" content="paraphrasing tool, text rewriter, sentence rewriter, resume paraphraser, free paraphraser, online article rewriter">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/paraphrasing-tool/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AuraToolkit360">
+    <meta property="og:title" content="Free Paraphrasing Tool & Text Rewriter | AuraToolkit360">
+    <meta property="og:description" content="Rewrite text, resumes, cover letters, and articles online for free with zero data logs.">
+    <meta property="og:url" content="https://auratoolkit360.com/paraphrasing-tool/">
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; position: relative; padding-top: 65px; }
+        
+        /* Navbar */
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; transition: transform 0.35s ease; overflow-x: auto; }
+        .navbar.nav-hidden { transform: translateY(-100%); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .nav-links { display: flex; gap: 0.4rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
+
+        .container { max-width: 1350px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .page-head { text-align: center; margin-bottom: 2rem; }
+        .page-head h1 { font-size: 2.5rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
+        .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; }
+        
+        /* PARAPHRASER WORKSPACE */
+        .para-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .mode-bar { display: flex; gap: 0.6rem; margin-bottom: 1.2rem; flex-wrap: wrap; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1rem; }
+        .mode-btn { background: rgba(15, 23, 42, 0.6); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 1.1rem; border-radius: 12px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.25s; }
+        .mode-btn:hover { color: #38bdf8; border-color: rgba(56,189,248,0.4); }
+        .mode-btn.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border-color: transparent; box-shadow: 0 4px 15px rgba(37,99,235,0.35); }
+
+        .editors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        @media(max-width: 850px) { .editors-grid { grid-template-columns: 1fr; } }
+        
+        .editor-box { display: flex; flex-direction: column; height: 350px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 1rem; position: relative; }
+        .editor-box textarea { flex: 1; width: 100%; background: transparent; border: none; outline: none; color: #f8fafc; font-size: 0.95rem; font-family: inherit; resize: none; line-height: 1.6; }
+        .editor-box textarea::placeholder { color: #64748b; }
+        
+        .editor-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #64748b; }
+        .btn-para-action { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 12px; padding: 0.75rem 1.8rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
+        .btn-para-action:hover { opacity: 0.92; transform: translateY(-1px); }
+        
+        .btn-copy { background: rgba(255,255,255,0.1); color: #f8fafc; border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 0.9rem; border-radius: 10px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-copy:hover { background: rgba(56,189,248,0.2); color: #38bdf8; border-color: #38bdf8; }
+
+        /* SEO Content & FAQ */
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
+        .info-card h2 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; }
+
+        /* Footer */
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; }
+        .footer-links a:hover { color: #38bdf8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+    </style>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit360</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/converter/">Converter</a>
+                <a href="/resume-cv-maker/">Resume Tools</a>
+                <a href="/resume-score-checker/">Score Checker</a>
+                <a href="/paraphrasing-tool/" class="active">Paraphraser</a>
+                <a href="/hr-helper/">HR Helper</a>
+                <a href="/blogs/">Blogs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-head">
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(16,185,129,0.12); color:#34d399; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.8rem; font-weight:700; border:1px solid rgba(16,185,129,0.25); margin-bottom:0.8rem;">🔒 100% Private Client-Side Text Processing</div>
+            <h1>Free Online Paraphrasing Tool</h1>
+            <p>Rewrite sentences, essays, resumes, and articles instantly with zero data logging.</p>
+        </div>
+
+        <div class="para-card">
+            <div class="mode-bar">
+                <span style="font-weight:700; font-size:0.88rem; color:#f8fafc; margin-right:0.4rem;">Select Mode:</span>
+                <button class="mode-btn active" onclick="setMode('standard', this)">✨ Standard</button>
+                <button class="mode-btn" onclick="setMode('formal', this)">💼 Professional / Formal</button>
+                <button class="mode-btn" onclick="setMode('fluency', this)">🌊 Fluency & Flow</button>
+                <button class="mode-btn" onclick="setMode('shorten', this)">✂️ Concise / Shorten</button>
+            </div>
+
+            <div class="editors-grid">
+                <div class="editor-box">
+                    <textarea id="inputText" placeholder="Type or paste your text here (e.g. resume bullet points, job descriptions, articles)..." oninput="updateCounts()"></textarea>
+                    <div class="editor-foot">
+                        <span id="inputCount">0 Words | 0 Chars</span>
+                        <button class="btn-copy" onclick="document.getElementById('inputText').value=''; updateCounts();">Clear</button>
+                    </div>
+                </div>
+
+                <div class="editor-box" style="background:rgba(15,23,42,0.85); border-color:rgba(56,189,248,0.3);">
+                    <textarea id="outputText" readonly placeholder="Paraphrased text will appear here..."></textarea>
+                    <div class="editor-foot">
+                        <span id="outputCount">0 Words</span>
+                        <button class="btn-copy" onclick="copyOutput()">📋 Copy Text</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:1.5rem;">
+                <button class="btn-para-action" onclick="paraphraseText()">⚡ Paraphrase Text Now</button>
+            </div>
+        </div>
+
+        <!-- SEO Content & FAQ -->
+        <div class="info-card">
+            <h2>Why Use AuraToolkit360 Paraphrasing Tool?</h2>
+            <p>Whether you are polishing bullet points on your ATS resume, drafting corporate emails, or rewriting article summaries, our client-side paraphraser rewrites sentences naturally without transmitting your private drafts to external servers.</p>
+            
+            <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.2rem; margin-top:1.2rem;">
+                <h4 style="color:#f8fafc; font-size:1rem; margin-bottom:0.4rem;">💼 Enhance Your Job Resume Bullets</h4>
+                <p style="color:#94a3b8; font-size:0.88rem; margin-bottom:0.8rem;">Use <strong>Professional / Formal Mode</strong> to convert informal experience descriptions into high-impact action verbs for ATS resume screeners.</p>
+                <a href="/resume-cv-maker/" class="btn-para-action" style="padding:0.45rem 1rem; font-size:0.82rem; text-decoration:none; display:inline-block;">Build ATS Resume Now →</a>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div style="border-bottom:1px solid rgba(255,255,255,0.08); padding:1rem 0;">
+                <div style="font-weight:700; color:#f8fafc; font-size:1.05rem; margin-bottom:0.4rem;">❓ Is my text stored on any remote server?</div>
+                <div style="color:#94a3b8; font-size:0.92rem; line-height:1.6;">No! Paraphrasing runs 100% in your browser memory using local synonym substitution and text restructuring algorithms.</div>
+            </div>
+            <div style="padding:1rem 0;">
+                <div style="font-weight:700; color:#f8fafc; font-size:1.05rem; margin-bottom:0.4rem;">❓ Is this paraphrasing tool completely free?</div>
+                <div style="color:#94a3b8; font-size:0.92rem; line-height:1.6;">Yes! Unlimited text paraphrasing with zero character caps or daily limits.</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, paraphrasing, and HR candidate screening.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="/">Home Page</a>
+                    <a href="/converter/">File Converter Suite</a>
+                    <a href="/resume-cv-maker/">Resume CV Maker</a>
+                    <a href="/resume-score-checker/">ATS Score Checker</a>
+                    <a href="/paraphrasing-tool/">Paraphrasing Tool</a>
+                    <a href="/hr-helper/">HR Screening Helper</a>
+                    <a href="/privacy-policy/">Privacy Policy</a>
+                    <a href="/terms/">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing
+        </div>
+    </footer>
+
+    <!-- PARAPHRASER LOGIC -->
+    <script>
+        let currentMode = 'standard';
+        
+        const SYNONYMS = {
+            "managed": ["spearheaded", "directed", "orchestrated", "supervised", "administered"],
+            "developed": ["engineered", "architected", "constructed", "created", "formulated"],
+            "improved": ["enhanced", "boosted", "optimized", "elevated", "amplified"],
+            "built": ["constructed", "designed", "established", "implemented", "scaled"],
+            "responsible for": ["tasked with", "in charge of", "leading the execution of", "overseeing"],
+            "helped": ["assisted", "facilitated", "supported", "collaborated to", "contributed to"],
+            "fast": ["rapid", "lightning-fast", "expedited", "swift", "high-speed"],
+            "good": ["exceptional", "proficient", "stellar", "high-caliber", "superb"],
+            "big": ["substantial", "extensive", "massive", "significant", "considerable"],
+            "used": ["utilized", "leveraged", "employed", "harnessed", "deployed"],
+            "make": ["generate", "produce", "synthesize", "create", "fabricate"],
+            "change": ["transform", "modify", "adapt", "refine", "restructure"],
+            "work": ["execute tasks", "operate", "perform", "function", "collaborate"]
+        };
+
+        function setMode(mode, btn) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if (document.getElementById('inputText').value.trim() !== '') {
+                paraphraseText();
+            }
+        }
+
+        function updateCounts() {
+            const txt = document.getElementById('inputText').value;
+            const words = txt.trim() ? txt.trim().split(/\s+/).length : 0;
+            document.getElementById('inputCount').textContent = `${words} Words | ${txt.length} Chars`;
+        }
+
+        function paraphraseText() {
+            const input = document.getElementById('inputText').value;
+            if (!input.trim()) {
+                document.getElementById('outputText').value = '';
+                document.getElementById('outputCount').textContent = '0 Words';
+                return;
+            }
+
+            let text = input;
+            
+            // Apply synonym replacement based on mode
+            for (let word in SYNONYMS) {
+                const synList = SYNONYMS[word];
+                const regex = new RegExp('\\b' + word + '\\b', 'gi');
+                text = text.replace(regex, (match) => {
+                    let chosen = synList[Math.floor(Math.random() * synList.length)];
+                    if (currentMode === 'formal') chosen = synList[0];
+                    if (currentMode === 'fluency') chosen = synList[1] || synList[0];
+                    if (match[0] === match[0].toUpperCase()) {
+                        chosen = chosen.charAt(0).toUpperCase() + chosen.slice(1);
+                    }
+                    return chosen;
+                });
+            }
+
+            if (currentMode === 'shorten') {
+                text = text.replace(/\b(in order to|due to the fact that|at this point in time)\b/gi, 'to');
+            }
+
+            document.getElementById('outputText').value = text;
+            const outWords = text.trim() ? text.trim().split(/\s+/).length : 0;
+            document.getElementById('outputCount').textContent = `${outWords} Words`;
+        }
+
+        function copyOutput() {
+            const out = document.getElementById('outputText');
+            if (!out.value) return;
+            out.select();
+            navigator.clipboard.writeText(out.value);
+            alert('Copied paraphrased text to clipboard!');
+        }
+
+        // Smart scroll navbar
+        (function() {
+            let lastScrollY = window.scrollY;
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) { navbar.classList.add('nav-hidden'); }
+                else if (currentScrollY < lastScrollY) { navbar.classList.remove('nav-hidden'); }
+                lastScrollY = currentScrollY;
+            });
+        })();
+    </script>
+</body>
+</html>
