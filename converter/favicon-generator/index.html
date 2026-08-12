@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Favicon & ICO Generator Online | Free & 100% Private - AuraToolkit360</title>
+    <meta name="description" content="Convert PNG and JPG images into ICO favicons (16x16, 32x32, 48x48) for websites and web apps.">
+    <meta name="keywords" content="favicon & ico generator, passport photo, signature resizer, image crop, image resize, target kb compress, favicon generator, free online tool">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/converter/favicon-generator/">
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
+        
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .nav-links { display: flex; gap: 0.4rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+        .page-head { text-align: center; margin-bottom: 2rem; }
+        .page-head h1 { font-size: 2.3rem; font-weight: 900; color: #ffffff; }
+        .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; }
+
+        .tool-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); padding: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); text-align: center; }
+        .upload-zone { border: 2px dashed rgba(56,189,248,0.4); border-radius: 18px; padding: 2.5rem 1.5rem; background: rgba(15,23,42,0.5); cursor: pointer; transition: all 0.3s; margin-bottom: 1.5rem; }
+        .upload-zone:hover { border-color: #38bdf8; background: rgba(56,189,248,0.08); }
+
+        .controls-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; align-items: center; }
+        .controls-row label { font-size: 0.88rem; font-weight: 600; color: #cbd5e1; }
+        .controls-row input, .controls-row select { background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 0.5rem 0.8rem; color: #f8fafc; font-size: 0.88rem; outline: none; }
+
+        .btn-action { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 12px; padding: 0.8rem 2rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(37,99,235,0.35); }
+        .btn-action:hover { opacity: 0.92; transform: translateY(-1px); }
+
+        .preview-canvas { max-width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,0.15); background: #ffffff; margin-top: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
+        .info-card h2 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; }
+
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; }
+        .footer-links a:hover { color: #38bdf8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+    </style>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit360</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/converter/" class="active">Converter</a>
+                <a href="/resume-cv-maker/">Resume Tools</a>
+                <a href="/resume-score-checker/">Score Checker</a>
+                <a href="/paraphrasing-tool/">Paraphraser</a>
+                <a href="/hr-helper/">HR Helper</a>
+                <a href="/blogs/">Blogs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-head">
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(16,185,129,0.12); color:#34d399; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.8rem; font-weight:700; border:1px solid rgba(16,185,129,0.25); margin-bottom:0.8rem;">🔒 100% Private Client-Side Canvas Tool</div>
+            <h1>Free Favicon & ICO Generator</h1>
+            <p>Convert PNG and JPG images into ICO favicons (16x16, 32x32, 48x48) for websites and web apps.</p>
+        </div>
+
+        <div class="tool-card">
+            <div class="upload-zone" onclick="document.getElementById('imgFileInp').click()">
+                <div style="font-size:3rem; margin-bottom:0.5rem;">🌟</div>
+                <div style="font-weight:700; color:#f8fafc; font-size:1.1rem;">Click to Upload Image File</div>
+                <div style="color:#94a3b8; font-size:0.88rem; margin-top:0.3rem;">Supports JPG, PNG, WEBP, GIF, SVG</div>
+                <input type="file" id="imgFileInp" accept="image/*" style="display:none" onchange="loadToolImage(this.files)">
+            </div>
+            <div id="selectedImgName" style="color:#38bdf8; font-weight:700; margin-bottom:1rem;"></div>
+
+            <!-- CONTROLS BASED ON TOOL TYPE -->
+            
+        <div class="controls-row">
+            <label>Favicon Dimensions:</label>
+            <select id="favSizeSelect">
+                <option value="32">32 x 32 px (Standard Favicon)</option>
+                <option value="16">16 x 16 px (Browser Tab)</option>
+                <option value="48">48 x 48 px (Desktop App Icon)</option>
+                <option value="64">64 x 64 px (High Res Icon)</option>
+            </select>
+        </div>
+
+            <button class="btn-action" onclick="executeToolProcess('favicon')">⚡ Process & Download</button>
+
+            <div id="outputArea" style="margin-top:1.5rem; display:none;">
+                <canvas id="outputCanvas" class="preview-canvas"></canvas>
+                <div style="margin-top:1rem;">
+                    <a id="downloadLink" download="auratoolkit_favicon-generator.jpg" class="btn-action" style="padding:0.6rem 1.5rem; text-decoration:none; display:inline-block; background:linear-gradient(135deg,#10b981,#059669);">💾 Download File</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Why Use Favicon & ICO Generator?</h2>
+            <p>Convert PNG and JPG images into ICO favicons (16x16, 32x32, 48x48) for websites and web apps. 100% in-browser processing guarantees complete privacy for your sensitive document photos and signatures.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Smart privacy-first browser toolkit for file conversions, passport photos, signatures, resumes, and HR tools.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="/">Home Page</a>
+                    <a href="/converter/">File Converter Suite</a>
+                    <a href="/converter/passport-photo-maker/">Passport Photo Maker</a>
+                    <a href="/converter/resize-signature/">Resize Signature</a>
+                    <a href="/privacy-policy/">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 AuraToolkit360. All rights reserved.</div>
+    </footer>
+
+    <script>
+        let loadedImg = null;
+
+        function loadToolImage(files) {
+            if (!files || !files.length) return;
+            const file = files[0];
+            document.getElementById('selectedImgName').textContent = `📄 Selected Image: ${file.name}`;
+            const reader = new FileReader();
+            reader.onload = e => {
+                loadedImg = new Image();
+                loadedImg.onload = () => {
+                    alert('Image loaded successfully! Adjust controls and click Process.');
+                };
+                loadedImg.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function executeToolProcess(type) {
+            if (!loadedImg) {
+                alert('Please select an image file first!');
+                return;
+            }
+            const canvas = document.getElementById('outputCanvas');
+            const ctx = canvas.getContext('2d');
+            const outputArea = document.getElementById('outputArea');
+            const dl = document.getElementById('downloadLink');
+
+            if (type === 'passport') {
+                const size = document.getElementById('passSizeSelect').value;
+                const bg = document.getElementById('passBgSelect').value;
+                
+                let w = 350, h = 450;
+                if (size === '2x2') { w = 600; h = 600; }
+                canvas.width = w; canvas.height = h;
+
+                // Background
+                if (bg === 'white') ctx.fillStyle = '#ffffff';
+                else if (bg === 'red') ctx.fillStyle = '#dc2626';
+                else if (bg === 'blue') ctx.fillStyle = '#2563eb';
+                else ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, w, h);
+
+                // Draw Image centered
+                const aspect = loadedImg.width / loadedImg.height;
+                let drawW = w, drawH = w / aspect;
+                if (drawH < h) { drawH = h; drawW = h * aspect; }
+                ctx.drawImage(loadedImg, (w - drawW)/2, (h - drawH)/2, drawW, drawH);
+
+            } else if (type === 'signature') {
+                const size = document.getElementById('sigSizeSelect').value;
+                let w = 600, h = 200; // 6cm x 2cm @ 300DPI
+                if (size === '50x20') { w = 500; h = 200; }
+                canvas.width = w; canvas.height = h;
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, w, h);
+                ctx.drawImage(loadedImg, 0, 0, w, h);
+
+            } else if (type === 'crop_rotate') {
+                const angle = parseInt(document.getElementById('rotateSelect').value || '0');
+                if (angle === 90 || angle === 270) {
+                    canvas.width = loadedImg.height; canvas.height = loadedImg.width;
+                } else {
+                    canvas.width = loadedImg.width; canvas.height = loadedImg.height;
+                }
+                ctx.translate(canvas.width/2, canvas.height/2);
+                ctx.rotate(angle * Math.PI / 180);
+                ctx.drawImage(loadedImg, -loadedImg.width/2, -loadedImg.height/2);
+
+            } else if (type === 'resize_dim') {
+                const w = parseInt(document.getElementById('reqWidth').value || loadedImg.width);
+                const h = parseInt(document.getElementById('reqHeight').value || loadedImg.height);
+                canvas.width = w; canvas.height = h;
+                ctx.drawImage(loadedImg, 0, 0, w, h);
+
+            } else if (type === 'target_kb') {
+                canvas.width = loadedImg.width; canvas.height = loadedImg.height;
+                ctx.drawImage(loadedImg, 0, 0);
+
+            } else if (type === 'favicon') {
+                const sz = parseInt(document.getElementById('favSizeSelect').value || '32');
+                canvas.width = sz; canvas.height = sz;
+                ctx.drawImage(loadedImg, 0, 0, sz, sz);
+
+            } else {
+                canvas.width = loadedImg.width; canvas.height = loadedImg.height;
+                ctx.drawImage(loadedImg, 0, 0);
+            }
+
+            outputArea.style.display = 'block';
+            dl.href = canvas.toDataURL('image/jpeg', 0.9);
+        }
+
+        (function() {
+            let lastScrollY = window.scrollY;
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) { navbar.classList.add('nav-hidden'); }
+                else if (currentScrollY < lastScrollY) { navbar.classList.remove('nav-hidden'); }
+                lastScrollY = currentScrollY;
+            });
+        })();
+    </script>
+</body>
+</html>

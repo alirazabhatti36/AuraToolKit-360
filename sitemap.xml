@@ -186,4 +186,46 @@
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://auratoolkit360.com/converter/passport-photo-maker/</loc>
+        <lastmod>2026-08-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/converter/resize-signature/</loc>
+        <lastmod>2026-08-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/converter/merge-photo-signature/</loc>
+        <lastmod>2026-08-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/converter/crop-rotate-image/</loc>
+        <lastmod>2026-08-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/converter/resize-image/</loc>
+        <lastmod>2026-08-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/converter/compress-image-target/</loc>
+        <lastmod>2026-08-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/converter/favicon-generator/</loc>
+        <lastmod>2026-08-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
 </urlset>
