@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Word & Character Counter Online | Free & 100% Private - AuraToolkit360</title>
+    <meta name="description" content="Count words, characters, sentences, paragraphs, and reading time in real-time 100% privately in your browser.">
+    <meta name="keywords" content="word & character counter, word counter, case converter, password generator, compress video, image watermark, free online tools">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/converter/word-counter/">
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
+        
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .nav-links { display: flex; gap: 0.4rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
+
+        .container { max-width: 1050px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+        .page-head { text-align: center; margin-bottom: 2rem; }
+        .page-head h1 { font-size: 2.3rem; font-weight: 900; color: #ffffff; }
+        .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; }
+
+        .tool-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); padding: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); text-align: center; }
+        
+        .btn-action { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 12px; padding: 0.75rem 1.8rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(37,99,235,0.35); margin: 0.3rem; }
+        .btn-action:hover { opacity: 0.92; transform: translateY(-1px); }
+
+        .stat-badge-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        @media(max-width: 600px) { .stat-badge-grid { grid-template-columns: repeat(2, 1fr); } }
+        .stat-badge-box { background: rgba(15,23,42,0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 1rem; text-align: center; }
+        .stat-badge-box .val { font-size: 1.8rem; font-weight: 800; color: #38bdf8; }
+        .stat-badge-box .lbl { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; font-weight: 600; }
+
+        textarea, input[type="text"] { width: 100%; background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 1rem; color: #f8fafc; font-size: 0.95rem; font-family: inherit; outline: none; }
+        textarea:focus, input[type="text"]:focus { border-color: #38bdf8; }
+
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
+        .info-card h2 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; }
+
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; }
+        .footer-links a:hover { color: #38bdf8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+    </style>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit360</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/converter/" class="active">Converter</a>
+                <a href="/resume-cv-maker/">Resume Tools</a>
+                <a href="/resume-score-checker/">Score Checker</a>
+                <a href="/paraphrasing-tool/">Paraphraser</a>
+                <a href="/hr-helper/">HR Helper</a>
+                <a href="/blogs/">Blogs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-head">
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(16,185,129,0.12); color:#34d399; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.8rem; font-weight:700; border:1px solid rgba(16,185,129,0.25); margin-bottom:0.8rem;">🔒 100% Private Client-Side Browser Utility</div>
+            <h1>Free Online Word & Character Counter</h1>
+            <p>Count words, characters, sentences, paragraphs, and reading time in real-time 100% privately in your browser.</p>
+        </div>
+
+        <div class="tool-card">
+            
+        <textarea id="wcInput" rows="8" placeholder="Type or paste your text here to count words, characters, sentences & reading time..." oninput="doWordCount()"></textarea>
+        <div class="stat-badge-grid">
+            <div class="stat-badge-box"><div class="val" id="cntWords">0</div><div class="lbl">Words</div></div>
+            <div class="stat-badge-box"><div class="val" id="cntChars">0</div><div class="lbl">Characters</div></div>
+            <div class="stat-badge-box"><div class="val" id="cntSentences">0</div><div class="lbl">Sentences</div></div>
+            <div class="stat-badge-box"><div class="val" id="cntReadTime">0s</div><div class="lbl">Reading Time</div></div>
+        </div>
+        <script>
+            function doWordCount() {
+                const txt = document.getElementById('wcInput').value;
+                const words = txt.trim() ? txt.trim().split(/\s+/).length : 0;
+                const sentences = txt.trim() ? (txt.match(/[.!?]+/g) || []).length : 0;
+                const readSecs = Math.ceil((words / 200) * 60);
+                document.getElementById('cntWords').textContent = words;
+                document.getElementById('cntChars').textContent = txt.length;
+                document.getElementById('cntSentences').textContent = sentences;
+                document.getElementById('cntReadTime').textContent = readSecs + 's';
+            }
+        </script>
+        </div>
+
+        <div class="info-card">
+            <h2>Why Use Word & Character Counter?</h2>
+            <p>Count words, characters, sentences, paragraphs, and reading time in real-time 100% privately in your browser. No data is stored or logged on any external server.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Smart privacy-first browser toolkit for file conversions, text utilities, resumes, and HR tools.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="/">Home Page</a>
+                    <a href="/converter/">File Converter Suite</a>
+                    <a href="/converter/word-counter/">Word Counter</a>
+                    <a href="/converter/password-generator/">Password Generator</a>
+                    <a href="/privacy-policy/">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 AuraToolkit360. All rights reserved.</div>
+    </footer>
+
+    <script>
+        (function() {
+            let lastScrollY = window.scrollY;
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) { navbar.classList.add('nav-hidden'); }
+                else if (currentScrollY < lastScrollY) { navbar.classList.remove('nav-hidden'); }
+                lastScrollY = currentScrollY;
+            });
+        })();
+    </script>
+</body>
+</html>
