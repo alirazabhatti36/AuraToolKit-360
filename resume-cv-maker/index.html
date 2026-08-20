@@ -290,7 +290,13 @@
                 <div class="field"><label for="location">Location</label><input type="text" id="location" aria-label="location" placeholder="New York, USA" oninput="updatePreview()"></div>
                 <div class="field"><label for="links">LinkedIn / Portfolio Links</label><input type="text" id="links" aria-label="links" placeholder="linkedin.com/in/johndoe | github.com/johndoe" oninput="updatePreview()"></div>
                 <div class="field"><label for="summary">Professional Summary</label><textarea id="summary" aria-label="summary" placeholder="Experienced engineer specializing in web application design..." oninput="updatePreview()"></textarea></div>
-                <div class="field"><label for="skills">Skills & Tools (Comma separated)</label><input type="text" id="skills" aria-label="skills" placeholder="JavaScript, Python, React, SQL, Project Management" oninput="updatePreview()"></div>
+                <div class="field">
+                    <label for="skills">Skills & Expertise (Use colons for Category Headings)</label>
+                    <textarea id="skills" aria-label="skills" rows="4" placeholder="Core Languages: HTML5, CSS3, JavaScript, Python&#10;Frameworks & Web: React.js, Node.js, Express&#10;AI Productivity Tools: ChatGPT, Claude, DeepSeek&#10;Soft Skills: Technical Leadership, Team Collaboration" oninput="updatePreview()"></textarea>
+                    <div style="font-size:0.75rem; color:#64748b; margin-top:0.3rem; line-height:1.4;">
+                        💡 <strong>Pro Tip:</strong> Type a category name with a colon (e.g. <code>Core Languages:</code> or <code>Soft Skills:</code>) to automatically group your skills under bold category headings!
+                    </div>
+                </div>
 
                 <div class="section">
                     <div class="section-head">
@@ -542,15 +548,113 @@
             };
         }
 
+        
+        function parseSkillsInput(input) {
+            if (!input || !input.trim()) return [];
+            const lines = input.split('\n');
+            let categories = [];
+            let currentCategory = '';
+            let currentSkills = [];
+
+            function pushCategory() {
+                if (currentSkills.length > 0 || currentCategory) {
+                    categories.push({ category: currentCategory, skills: currentSkills });
+                    currentSkills = [];
+                }
+            }
+
+            lines.forEach(line => {
+                const trimmed = line.trim();
+                if (!trimmed) return;
+
+                const tokens = trimmed.split(',').map(s => s.trim()).filter(Boolean);
+                tokens.forEach(token => {
+                    if (token.endsWith(':')) {
+                        pushCategory();
+                        currentCategory = token.slice(0, -1).trim();
+                    } else if (token.includes(':') && !token.startsWith('http')) {
+                        const cIdx = token.indexOf(':');
+                        const catName = token.substring(0, cIdx).trim();
+                        const restName = token.substring(cIdx + 1).trim();
+                        pushCategory();
+                        currentCategory = catName;
+                        if (restName) currentSkills.push(restName);
+                    } else {
+                        currentSkills.push(token);
+                    }
+                });
+            });
+
+            pushCategory();
+            return categories.filter(c => c.category || c.skills.length);
+        }
+
+        function renderSkillsSection(categories, selectedTemplate, titleColor) {
+            if (!categories || !categories.length) return '';
+            const isCreative = selectedTemplate === 'creative-grad';
+            const pillBg = isCreative ? '#f3e8ff' : '#eff6ff';
+            const pillFg = isCreative ? '#6b21a8' : '#1e40af';
+
+            let html = `
+                <div style="margin-bottom:1rem;">
+                    <h3 style="font-size:0.95rem; color:${isCreative ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.6rem;">Skills & Expertise</h3>
+            `;
+
+            categories.forEach((cat, idx) => {
+                html += `<div style="${idx < categories.length - 1 ? 'margin-bottom:0.5rem;' : ''}">`;
+                if (cat.category) {
+                    html += `<strong style="font-size:0.8rem; color:#1e293b; display:block; margin-bottom:0.25rem; font-weight:700;">${escapeHtml(cat.category)}:</strong>`;
+                }
+                if (cat.skills && cat.skills.length) {
+                    html += `
+                        <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                            ${cat.skills.map(s => `<span style="background:${pillBg}; color:${pillFg}; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; font-weight:600; display:inline-block;">${escapeHtml(s)}</span>`).join('')}
+                        </div>
+                    `;
+                }
+                html += `</div>`;
+            });
+
+            html += `</div>`;
+            return html;
+        }
+
+        function renderSidebarSkillsSection(categories) {
+            if (!categories || !categories.length) return '';
+
+            let html = `
+                <div style="margin-bottom:1.2rem;">
+                    <h4 style="color:#38bdf8; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.6rem;">SKILLS</h4>
+            `;
+
+            categories.forEach(cat => {
+                html += `<div style="margin-bottom:0.6rem;">`;
+                if (cat.category) {
+                    html += `<div style="font-size:0.72rem; color:#38bdf8; font-weight:700; text-transform:uppercase; margin-bottom:0.25rem; letter-spacing:0.5px;">${escapeHtml(cat.category)}:</div>`;
+                }
+                if (cat.skills && cat.skills.length) {
+                    html += `
+                        <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
+                            ${cat.skills.map(s => `<span style="background:#1e293b; color:#cbd5e1; font-size:0.7rem; padding:0.15rem 0.4rem; border-radius:4px; font-weight:600; border:1px solid rgba(255,255,255,0.08);">${escapeHtml(s)}</span>`).join('')}
+                        </div>
+                    `;
+                }
+                html += `</div>`;
+            });
+
+            html += `</div>`;
+            return html;
+        }
+
         function updatePreview() {
             const data = getFormData();
             localStorage.setItem('resumeCvMakerDraft', JSON.stringify(data));
 
             const preview = document.getElementById('preview');
-            const skillsList = (data.skills || '').split(',').map(s => s.trim()).filter(Boolean);
+            const skillsCategories = parseSkillsInput(data.skills || '');
 
             if (selectedTemplate === 'photo-sidebar') {
-                renderSidebarTemplate(preview, data, skillsList);
+                renderSidebarTemplate(preview, data, skillsCategories);
                 return;
             }
 
@@ -599,14 +703,7 @@
                     </div>
                 ` : ''}
 
-                ${skillsList.length ? `
-                    <div style="margin-bottom:1rem;">
-                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem;">Skills & Expertise</h3>
-                        <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
-                            ${skillsList.map(s => `<span style="background:${selectedTemplate === 'creative-grad' ? '#f3e8ff' : '#eff6ff'}; color:${selectedTemplate === 'creative-grad' ? '#6b21a8' : '#1e40af'}; font-size:0.75rem; padding:0.2rem 0.5rem; border-radius:6px; font-weight:600;">${escapeHtml(s)}</span>`).join('')}
-                        </div>
-                    </div>
-                ` : ''}
+                ${renderSkillsSection(skillsCategories, selectedTemplate, titleColor)}
 
                 ${data.experience.length ? `
                     <div style="margin-bottom:1rem;">
@@ -689,7 +786,7 @@
             `;
         }
 
-        function renderSidebarTemplate(container, data, skillsList) {
+        function renderSidebarTemplate(container, data, skillsCategories) {
             container.innerHTML = `
                 <div style="display:grid; grid-template-columns: 32% 68%; min-height: 580px; font-size:0.8rem;">
                     <div style="background:#0f172a; color:#f8fafc; padding:1.2rem; border-top-left-radius:8px; border-bottom-left-radius:8px;">
@@ -705,14 +802,7 @@
                             ${data.links ? `<div style="word-break:break-all;">🔗 ${escapeHtml(data.links)}</div>` : ''}
                         </div>
 
-                        ${skillsList.length ? `
-                            <div style="margin-bottom:1.2rem;">
-                                <h4 style="color:#38bdf8; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">SKILLS</h4>
-                                <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
-                                    ${skillsList.map(s => `<span style="background:#1e293b; color:#38bdf8; font-size:0.7rem; padding:0.15rem 0.4rem; border-radius:4px; font-weight:600;">${escapeHtml(s)}</span>`).join('')}
-                                </div>
-                            </div>
-                        ` : ''}
+                        ${renderSidebarSkillsSection(skillsCategories)}
 
                         ${data.languages.length ? `
                             <div style="margin-bottom:1.2rem;">
@@ -843,7 +933,15 @@
 
             if (data.skills) {
                 children.push(new docx.Paragraph({ text: 'Skills & Expertise', heading: docx.HeadingLevel.HEADING_2 }));
-                children.push(new docx.Paragraph({ text: data.skills }));
+                const parsedCats = parseSkillsInput(data.skills);
+                parsedCats.forEach(cat => {
+                    if (cat.category) {
+                        children.push(new docx.Paragraph({ text: cat.category + ':', heading: docx.HeadingLevel.HEADING_3 }));
+                    }
+                    if (cat.skills && cat.skills.length) {
+                        children.push(new docx.Paragraph({ text: cat.skills.join(', ') }));
+                    }
+                });
                 children.push(new docx.Paragraph({ text: '' }));
             }
 
