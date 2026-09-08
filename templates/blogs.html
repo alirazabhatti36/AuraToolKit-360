@@ -2,316 +2,1136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Read latest blogs, guides, and tips on file conversion, resume building, ATS optimization, and hiring workflows.">
-    <meta name="keywords" content="AuraToolkit blog, resume tips, ATS tips, file conversion tips, HR hiring guides">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="description" content="Explore insightful guides, ATS optimization tips, recruiter screening workflows, and private file conversion tutorials on the AuraToolkit360 Blog.">
+    <meta name="keywords" content="AuraToolkit blog, resume tips, ATS tips, file conversion tips, HR hiring guides, career advice">
     <meta name="author" content="AuraToolkit360">
     <meta name="robots" content="index,follow,max-image-preview:large">
-    <link rel="canonical" href="https://auratoolkit360.com/blogs">
+    <link rel="canonical" href="https://auratoolkit360.com/blogs/">
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
-    <meta property="og:title" content="Blogs - AuraToolkit 360">
-    <meta property="og:description" content="Explore helpful articles and insights from AuraToolkit360.">
-    <meta property="og:url" content="https://auratoolkit360.com/blogs">
+    <meta property="og:title" content="Blogs & Guides - AuraToolkit360">
+    <meta property="og:description" content="Explore expert articles on ATS resume optimization, recruiter screening, and client-side conversion security.">
+    <meta property="og:url" content="https://auratoolkit360.com/blogs/">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AuraToolkit360 Blogs">
+    <meta name="twitter:title" content="AuraToolkit360 Blogs & Guides">
     <meta name="twitter:description" content="Guides and practical tips for converters, resumes, and HR tools.">
-    <title>Blogs - AuraToolKit 360</title>
+    
+    <title>Blogs & Guides - AuraToolKit 360</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Blogs - AuraToolKit 360",
-            "url": "https://auratoolkit360.com/blogs",
-            "description": "Read latest blogs, guides, and tips on file conversion, resume building, ATS optimization, and hiring workflows.",
-            "inLanguage": "en"
-        }
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "AuraToolkit360 Blogs & Guides",
+        "url": "https://auratoolkit360.com/blogs/",
+        "description": "Read latest guides on ATS resume optimization, client-side file conversion, and recruiter candidate screening.",
+        "inLanguage": "en"
+    }
     </script>
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f5f7fb; color: #1a1a2e; line-height: 1.6; overflow-x: hidden; }
-        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 0.8rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(102,126,234,0.1); }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: #4a5568; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { background: #f0f4ff; color: #667eea; }
-        .nav-links a.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-        .card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        h1 { font-size: 2rem; color: #1e293b; margin-bottom: 0.5rem; }
-        .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .blog-card { background: #f8fafc; border-radius: 16px; padding: 1.5rem; transition: all 0.3s; border: 1px solid #e2e8f0; display: block; text-decoration: none; color: inherit; }
-        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .blog-card h3 { font-size: 1.1rem; color: #1e293b; margin: 0.5rem 0; }
-        .blog-card p { color: #64748b; font-size: 0.85rem; line-height: 1.5; }
-        .blog-card .tag { display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.65rem; margin-top: 0.5rem; }
-        .separator { border: none; border-top: 1px solid #e2e8f0; margin: 1.5rem 0; }
-        h2 { font-size: 1.25rem; color: #334155; margin: 0.3rem 0 0.8rem; border-left: 4px solid #667eea; padding-left: 0.75rem; }
-        ul { margin: 0.5rem 0 0.7rem 1.2rem; color: #475569; }
-        li { margin-bottom: 0.35rem; }
-        .subscribe-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem; margin-top: 0.8rem; }
-        .subscribe-form { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.6rem; }
-        .subscribe-form input { flex: 1; min-width: 220px; padding: 0.7rem 0.9rem; border: 1px solid #dbe3ef; border-radius: 10px; font-size: 0.9rem; }
-        .subscribe-form button { padding: 0.7rem 1rem; border: none; border-radius: 10px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; font-weight: 600; cursor: pointer; }
-        .subscribe-form button:hover { opacity: 0.95; }
-        .closing-note { margin-top: 0.3rem; color: #475569; }
-        .footer { background: white; padding: 1.5rem; text-align: center; color: #475569; font-size: 0.8rem; border-top: 1px solid #e2e8f0; margin-top: 2rem; }
-        @media (max-width: 768px) {
-            .navbar { padding: 0.8rem 1rem; }
-            .nav-container { flex-direction: column; align-items: stretch; }
-            .logo { font-size: 1.25rem; text-align: center; }
-            .nav-links { justify-content: center; gap: 0.85rem; }
-            .container { padding: 1rem; }
-            .card { padding: 1.4rem; }
-            h1 { font-size: 1.6rem; }
-            .blog-grid { grid-template-columns: 1fr; }
-            .subscribe-form input, .subscribe-form button { width: 100%; }
+        :root {
+            --bg-base: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 36, 56, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.35);
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
         }
 
-        @media (max-width: 480px) {
-            .nav-links a { font-size: 0.8rem; }
-            .blog-card { padding: 1.1rem; }
-            .subtitle, .blog-card p { font-size: 0.85rem; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            overflow-x: clip;
+            position: relative;
+            padding-top: 76px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-    
-        /* ===== SMART SCROLL NAVBAR ===== */
+        
+        /* Ambient Aurora Glow Background Effects */
+        .ambient-glow-top-left {
+            position: fixed;
+            top: -150px;
+            left: -150px;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+        .ambient-glow-top-right {
+            position: fixed;
+            top: -100px;
+            right: -100px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.14) 0%, rgba(217, 70, 239, 0.06) 50%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(50px);
+        }
+        .ambient-glow-mid {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 850px;
+            height: 850px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 65%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
+
+        /* ===== NAVBAR ===== */
         .navbar {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.85rem 2rem;
+            border-bottom: 1px solid var(--border-card);
             position: fixed !important;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             width: 100%;
             z-index: 1000;
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
         }
-        .navbar.nav-hidden {
-            transform: translateY(-100%);
+        .navbar.nav-hidden { transform: translateY(-100%); }
+        .nav-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
         }
-        body {
-            padding-top: 65px; /* Offset for fixed navbar */
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
         }
-        .sticky-preview {
-            top: 85px !important;
+        .logo-symbol {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+        }
+        .logo-text span {
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-center {
+            display: flex;
+            gap: 0.35rem;
+            align-items: center;
+        }
+        @media (max-width: 1080px) {
+            .nav-center { display: none; }
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-link.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .nav-badge-pill {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: #ffffff;
+            font-size: 0.62rem;
+            padding: 0.12rem 0.42rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .btn-try-hr {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .btn-try-hr:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
+        }
+        .btn-bookmark-nav {
+            background: transparent;
+            border: 1px solid var(--border-card);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.48rem 0.9rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-bookmark-nav:hover {
+            color: var(--accent-cyan);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.06);
         }
 
-    
-        /* ===== UNIFIED PREMIUM DARK GLASSMORPHISM & NAVBAR STYLING ===== */
-        .navbar { background: rgba(15, 23, 42, 0.85) !important; backdrop-filter: blur(16px) !important; padding: 0.8rem 2rem !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 1000 !important; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 1rem; min-width: max-content; }
-        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
-        .nav-links { display: flex; gap: 0.4rem; flex-wrap: nowrap; align-items: center; }
-        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
-        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed) !important; color: white !important; box-shadow: 0 4px 20px rgba(37,99,235,0.35) !important; }
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 1.2rem 4rem;
+            width: 100%;
+        }
 
-        html { overflow-x: clip; scroll-behavior: smooth; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a !important; color: #f8fafc !important; min-height: 100vh; padding-top: 65px; overflow-x: clip; display: flex; flex-direction: column; }
-        .card { background: rgba(30, 41, 59, 0.75) !important; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 18px !important; color: #f8fafc !important; }
-        h1 { font-size: 2.2rem !important; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; margin-bottom: 0.5rem; }
-        .subtitle { color: #94a3b8 !important; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        h2 { font-size: 1.3rem !important; color: #38bdf8 !important; margin-top: 1.5rem; margin-bottom: 0.5rem; border-left: 4px solid #38bdf8 !important; padding-left: 0.75rem; }
-        p, li { color: #94a3b8 !important; line-height: 1.7; font-size: 0.95rem; }
-        .separator { border: none; border-top: 1px solid rgba(255,255,255,0.08) !important; margin: 1.25rem 0; }
-        .tool-block { background: rgba(15, 23, 42, 0.5) !important; border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 14px; padding: 1rem; margin: 0.8rem 0; color: #cbd5e1 !important; }
+        /* PAGE HERO HEADER */
+        .page-header {
+            text-align: center;
+            max-width: 860px;
+            margin: 1.2rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+        .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--accent-cyan);
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 0.35rem 0.95rem;
+            border-radius: 999px;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 0.85rem;
+            color: #ffffff;
+        }
+        .page-header h1 span {
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .page-header p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+        }
 
-        /* ===== FOOTER STYLING ===== */
-        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; color: #f8fafc; }
-        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
-        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
-        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: all 0.2s; }
-        .footer-links a:hover { color: #38bdf8; }
-        .feedback-form input, .feedback-form textarea { width: 100%; padding: 0.55rem 0.8rem; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.8rem; color: #f8fafc; margin-bottom: 0.5rem; outline: none; font-family: inherit; }
-        .feedback-form input:focus, .feedback-form textarea:focus { border-color: #38bdf8; }
-        .feedback-form button { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; width: auto !important; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+        /* Search & Filter Bar */
+        .blog-filter-bar {
+            max-width: 840px;
+            margin: 0 auto 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            align-items: center;
+        }
+        .blog-search-box {
+            width: 100%;
+            position: relative;
+        }
+        .blog-search-box input {
+            width: 100%;
+            background: rgba(11, 15, 25, 0.75);
+            border: 1px solid var(--border-card);
+            border-radius: 999px;
+            padding: 0.85rem 1.4rem 0.85rem 3rem;
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.25s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .blog-search-box input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+            background: rgba(11, 15, 25, 0.95);
+        }
+        .blog-search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+        .blog-chips-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .blog-chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .blog-chip:hover {
+            color: #ffffff;
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.08);
+        }
+        .blog-chip.active {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+        }
 
+        /* FEATURED EDITORIAL CARD */
+        .featured-editorial-card {
+            background: linear-gradient(135deg, rgba(14, 21, 37, 0.85), rgba(30, 27, 75, 0.7));
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            border-radius: 24px;
+            padding: 2.2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        @media (max-width: 860px) {
+            .featured-editorial-card { grid-template-columns: 1fr; padding: 1.6rem; }
+        }
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .badge-editorial {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-readtime {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .featured-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 0.85rem;
+            text-decoration: none;
+            display: block;
+            transition: color 0.2s;
+        }
+        .featured-title:hover {
+            color: var(--accent-cyan);
+        }
+        .featured-excerpt {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.4rem;
+        }
+        .btn-featured {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding: 0.75rem 1.6rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(2, 132, 199, 0.4);
+            transition: all 0.25s;
+        }
+        .btn-featured:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.6);
+        }
+        .featured-visual-box {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 1.6rem;
+            text-align: left;
+        }
+        .visual-stat-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.55rem 0;
+            font-size: 0.82rem;
+        }
+        .visual-stat-row:last-child { border-bottom: none; }
+        .visual-stat-row .lbl { color: var(--text-muted); }
+        .visual-stat-row .val { color: var(--accent-cyan); font-weight: 700; }
+
+        /* ARTICLES GRID */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+        @media (max-width: 480px) {
+            .blog-grid { grid-template-columns: 1fr; }
+        }
+        .blog-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.35);
+            background: var(--bg-card-hover);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+        }
+        .card-top-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.85rem;
+        }
+        .cat-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.22rem 0.6rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cat-resume { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+        .cat-converter { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+        .cat-hr { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .cat-privacy { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+        .card-read-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .blog-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.4;
+            margin-bottom: 0.6rem;
+            transition: color 0.2s;
+        }
+        .blog-card:hover h3 {
+            color: var(--accent-cyan);
+        }
+        .blog-card p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+        .card-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 0.85rem;
+            margin-top: auto;
+        }
+        .blog-tags {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+        .tag-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #cbd5e1;
+            font-size: 0.68rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .read-link {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: transform 0.2s;
+        }
+        .blog-card:hover .read-link {
+            transform: translateX(3px);
+        }
+
+        /* RECOMMENDATION CTA BOX */
+        .blog-cta-box {
+            background: linear-gradient(135deg, rgba(14, 21, 37, 0.8), rgba(28, 36, 56, 0.7));
+            border: 1px solid var(--border-highlight);
+            border-radius: 20px;
+            padding: 2.2rem;
+            text-align: center;
+            margin-top: 1rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+        .blog-cta-box h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .blog-cta-box p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 1.4rem;
+            line-height: 1.5;
+        }
+        .cta-tools-grid {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .btn-cta-tool {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .btn-cta-tool:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #070a12;
+            border-top: 1px solid var(--border-card);
+            padding: 3.5rem 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            margin-top: auto;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 992px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 576px) {
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+        .footer-col h5 {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 1.1rem;
+        }
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+        .footer-links-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: color 0.2s;
+        }
+        .footer-links-list a:hover {
+            color: var(--accent-cyan);
+        }
+        .footer-bottom-bar {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* iOS Input Zoom Prevention */
+        @media screen and (max-width: 768px) {
+            input[type="text"], input[type="search"] {
+                font-size: 16px !important;
+            }
+        }
     </style>
+    
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
-    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
 </head>
 <body>
-        <nav class="navbar" aria-label="Main Navigation">
+
+    <!-- Ambient Neon Aurora Glows -->
+    <div class="ambient-glow-top-left"></div>
+    <div class="ambient-glow-top-right"></div>
+    <div class="ambient-glow-mid"></div>
+
+    <!-- ===== TOP NAVIGATION ===== -->
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
-            <a href="/" class="logo">AuraToolkit360</a>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/converter/">Converter</a>
-                <a href="/resume-cv-maker/">Resume CV Maker</a>
-                <a href="/resume-score-checker/">Score Checker</a>
-                <a href="/hr-helper/">HR Helper</a>
-                <a href="/about/">About</a>
-                <a href="/blogs/" class="active">Blogs</a>
-                <a href="/contact/">Contact</a>
-                <a href="/privacy-policy/">Privacy</a>
-                <a href="/terms/">Terms</a>
-                <a href="/disclaimer/">Disclaimer</a>
+            <a href="/" class="logo">
+                <div class="logo-symbol">A</div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
+            </a>
+            
+            <div class="nav-center">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/converter/" class="nav-link">Converter</a>
+                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
+                <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="nav-link active">Blogs</a>
+                <a href="/about/" class="nav-link">About</a>
+            </div>
+
+            <div class="nav-right-actions">
+                <a href="/hr-helper/" class="btn-try-hr">Try HR Helper →</a>
+                <button class="btn-bookmark-nav" onclick="alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!')">★ Bookmark</button>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="card">
-            <h1>Blogs & Articles</h1>
-            <p class="subtitle">Insights, tips, and guides to help you succeed</p>
+    <!-- ===== MAIN CONTENT CONTAINER ===== -->
+    <main class="container">
 
-            <hr class="separator">
+        <!-- Hero Header -->
+        <div class="page-header">
+            <div class="pill-badge">📚 Career &amp; Tech Publication • Free Expert Insights</div>
+            <h1>Guides, Strategies &amp; <span>Tech Articles</span></h1>
+            <p>Practical guides, ATS optimization tips, recruiter workflows, and client-side conversion tutorials written by tools specialists.</p>
+        </div>
 
-            <h2>Latest Articles</h2>
+        <!-- Search & Filter Controls -->
+        <div class="blog-filter-bar">
+            <div class="blog-search-box">
+                <span class="blog-search-icon">🔍</span>
+                <input type="search" id="blogSearchInput" placeholder="Search guides (e.g. ATS keywords, PDF to Word, fresher summary...)" oninput="filterArticles()" aria-label="Search blog articles">
+            </div>
 
-            <div class="blog-grid">
-                <a class="blog-card" href="/blogs/best-converter-tool-for-all-files-2026/">
+            <div class="blog-chips-row">
+                <button class="blog-chip active" data-filter="all" onclick="setCategoryFilter('all', this)">All Articles (11)</button>
+                <button class="blog-chip" data-filter="resume" onclick="setCategoryFilter('resume', this)">📄 Resume &amp; ATS (6)</button>
+                <button class="blog-chip" data-filter="converter" onclick="setCategoryFilter('converter', this)">⇄ File Converter (2)</button>
+                <button class="blog-chip" data-filter="hr" onclick="setCategoryFilter('hr', this)">👥 HR &amp; Recruitment (2)</button>
+                <button class="blog-chip" data-filter="privacy" onclick="setCategoryFilter('privacy', this)">🔒 Privacy &amp; Security (1)</button>
+            </div>
+        </div>
+
+        <!-- Featured Spotlight Post -->
+        <div class="featured-editorial-card" id="featuredPost">
+            <div>
+                <div class="featured-meta">
+                    <span class="badge-editorial">⭐ Featured Guide</span>
+                    <span class="badge-readtime">⏱️ 7 min read • July 2026</span>
+                </div>
+                <a href="/blogs/ats-resume-keywords-guide-2026/" class="featured-title">
+                    ATS Resume Keywords Guide 2026: Practical Method That Actually Works
+                </a>
+                <p class="featured-excerpt">
+                    Most candidates either ignore keywords or overuse them. In 2026, ATS algorithms evaluate context and placement. Learn the 60-40 rule to pass automated screening without awkward keyword stuffing.
+                </p>
+                <a href="/blogs/ats-resume-keywords-guide-2026/" class="btn-featured">
+                    Read Complete Guide →
+                </a>
+            </div>
+            <div class="featured-visual-box">
+                <div style="font-weight:800; font-size:0.95rem; color:#ffffff; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.4rem;">
+                    <span>📊</span> Editorial Highlights
+                </div>
+                <div class="visual-stat-row">
+                    <span class="lbl">Target Audience:</span>
+                    <span class="val">Job Seekers &amp; Career Changers</span>
+                </div>
+                <div class="visual-stat-row">
+                    <span class="lbl">ATS Compliance:</span>
+                    <span class="val">Workday, Taleo, Greenhouse Tested</span>
+                </div>
+                <div class="visual-stat-row">
+                    <span class="lbl">Key Takeaway:</span>
+                    <span class="val">60% Match / 40% Phrasing Rule</span>
+                </div>
+                <div class="visual-stat-row">
+                    <span class="lbl">Author:</span>
+                    <span class="val">Ali Raza Bhatti (Lead Dev)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Blog Cards Grid -->
+        <div class="blog-grid" id="blogGrid">
+            
+            <!-- 1. Best Converter Tool for All Files -->
+            <a class="blog-card" href="/blogs/best-converter-tool-for-all-files-2026/" data-category="converter">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-converter">⇄ File Converter</span>
+                        <span class="card-readtime">⏱️ 5 min read</span>
+                    </div>
                     <h3>Best Converter Tool for All Files in 2026</h3>
-                    <p>Why one privacy-first tool can cover PDFs, docs, images, and basic workflow conversions.</p>
-                    <div><span class="tag">Converter</span><span class="tag" style="margin-left:0.25rem;">Tools</span></div>
-                </a>
+                    <p>Why one privacy-first tool can cover PDFs, docs, images, and basic workflow conversions with zero server uploads.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">Converter</span>
+                        <span class="tag-pill">Tools</span>
+                        <span class="tag-pill">PDF</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/best-resume-cv-maker-tool-ats-friendly-2026/">
+            <!-- 2. Best Resume CV Maker Tool ATS Friendly -->
+            <a class="blog-card" href="/blogs/best-resume-cv-maker-tool-ats-friendly-2026/" data-category="resume">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-resume">📝 Resume Builder</span>
+                        <span class="card-readtime">⏱️ 6 min read</span>
+                    </div>
                     <h3>Best Resume CV Maker Tool ATS Friendly</h3>
-                    <p>Choose a builder that helps both ATS systems and recruiters understand your experience.</p>
-                    <div><span class="tag">Resume</span><span class="tag" style="margin-left:0.25rem;">ATS</span></div>
-                </a>
+                    <p>Choose a builder that helps both automated ATS software and human recruiters understand your career trajectory.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">Resume</span>
+                        <span class="tag-pill">ATS</span>
+                        <span class="tag-pill">Templates</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/how-to-make-job-getting-resume-cv-2026/">
-                    <h3>How to Make a Job Getting Resume CV</h3>
-                    <p>A practical step-by-step resume workflow for 2026 job seekers.</p>
-                    <div><span class="tag">Resume</span><span class="tag" style="margin-left:0.25rem;">Career</span></div>
-                </a>
+            <!-- 3. How to Make a Job Getting Resume CV -->
+            <a class="blog-card" href="/blogs/how-to-make-job-getting-resume-cv-2026/" data-category="resume">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-resume">💼 Career Guide</span>
+                        <span class="card-readtime">⏱️ 8 min read</span>
+                    </div>
+                    <h3>How to Make a Job Getting Resume CV in 2026</h3>
+                    <p>A practical step-by-step resume workflow for modern job seekers to maximize recruiter callback rates.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">Career</span>
+                        <span class="tag-pill">Resume</span>
+                        <span class="tag-pill">Advice</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/free-hr-screening-helper-2026/">
-                    <h3>Free HR Screening Helper</h3>
-                    <p>Use a simple free helper to shortlist candidates faster and more fairly.</p>
-                    <div><span class="tag">HR</span><span class="tag" style="margin-left:0.25rem;">Recruitment</span></div>
-                </a>
+            <!-- 4. Free HR Screening Helper -->
+            <a class="blog-card" href="/blogs/free-hr-screening-helper-2026/" data-category="hr">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-hr">👥 HR Screener</span>
+                        <span class="card-readtime">⏱️ 6 min read</span>
+                    </div>
+                    <h3>Free HR Screening Helper for Recruiters</h3>
+                    <p>Use a simple in-browser tool to shortlist hundreds of applicant resumes faster and more fairly with zero fees.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">HR</span>
+                        <span class="tag-pill">Recruiting</span>
+                        <span class="tag-pill">Bulk Scan</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/best-resume-score-checker-2026/">
+            <!-- 5. Best Resume Score Checker in 2026 -->
+            <a class="blog-card" href="/blogs/best-resume-score-checker-2026/" data-category="resume">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-resume">🎯 ATS Audit</span>
+                        <span class="card-readtime">⏱️ 5 min read</span>
+                    </div>
                     <h3>Best Resume Score Checker in 2026</h3>
-                    <p>Score your resume against a real job description and fix what matters most.</p>
-                    <div><span class="tag">ATS</span><span class="tag" style="margin-left:0.25rem;">Score Checker</span></div>
-                </a>
+                    <p>Score your resume against a real job description to spot keyword gaps, formatting bugs, and layout errors.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">ATS</span>
+                        <span class="tag-pill">Score Checker</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/ats-resume-keywords-guide-2026/">
+            <!-- 6. ATS Resume Keywords Guide 2026 -->
+            <a class="blog-card" href="/blogs/ats-resume-keywords-guide-2026/" data-category="resume">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-resume">🎯 ATS Keywords</span>
+                        <span class="card-readtime">⏱️ 7 min read</span>
+                    </div>
                     <h3>ATS Resume Keywords Guide 2026</h3>
-                    <p>A practical method to find, place, and validate job-specific keywords without stuffing.</p>
-                    <div><span class="tag">ATS</span><span class="tag" style="margin-left:0.25rem;">Resume Tips</span></div>
-                </a>
+                    <p>A practical method to find, place, and validate job-specific skills without triggering keyword stuffing penalties.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">ATS</span>
+                        <span class="tag-pill">Keywords</span>
+                        <span class="tag-pill">Job Search</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/resume-summary-examples-for-freshers/">
-                    <h3>Resume Summary Examples for Freshers</h3>
-                    <p>Weak vs strong examples with a simple formula to write better summaries quickly.</p>
-                    <div><span class="tag">Resume</span><span class="tag" style="margin-left:0.25rem;">Career</span></div>
-                </a>
+            <!-- 7. PDF to Word Formatting Fixes -->
+            <a class="blog-card" href="/blogs/pdf-to-word-formatting-fixes/" data-category="converter">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-converter">📕 PDF Tutorial</span>
+                        <span class="card-readtime">⏱️ 6 min read</span>
+                    </div>
+                    <h3>PDF to Word Formatting Issues &amp; How to Fix Fast</h3>
+                    <p>Practical guide to fixing layout shifts, broken tables, font substitutions, and jagged paragraph alignments.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">Converter</span>
+                        <span class="tag-pill">PDF Tips</span>
+                        <span class="tag-pill">Word</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/linkedin-headline-formula-with-examples/">
-                    <h3>LinkedIn Headline Formula With Examples</h3>
-                    <p>Build recruiter-friendly headlines using a clear role-skill-value structure.</p>
-                    <div><span class="tag">LinkedIn</span><span class="tag" style="margin-left:0.25rem;">Personal Branding</span></div>
-                </a>
+            <!-- 8. Privacy-First File Conversion Guide -->
+            <a class="blog-card" href="/blogs/privacy-first-file-conversion-guide/" data-category="privacy">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-privacy">🔒 Security &amp; Privacy</span>
+                        <span class="card-readtime">⏱️ 5 min read</span>
+                    </div>
+                    <h3>Privacy-First File Conversion: Cloud vs Local Guide</h3>
+                    <p>Understand the security differences between client-side browser processing and external cloud conversion servers.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">Privacy</span>
+                        <span class="tag-pill">Security</span>
+                        <span class="tag-pill">WebAssembly</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/pdf-to-word-formatting-fixes/">
-                    <h3>PDF to Word Formatting Fixes</h3>
-                    <p>Why formatting breaks after conversion and how to fix spacing, bullets, and tables fast.</p>
-                    <div><span class="tag">Converter</span><span class="tag" style="margin-left:0.25rem;">Productivity</span></div>
-                </a>
+            <!-- 9. Resume Summary Examples for Freshers -->
+            <a class="blog-card" href="/blogs/resume-summary-examples-for-freshers/" data-category="resume">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-resume">🎓 Entry Level</span>
+                        <span class="card-readtime">⏱️ 6 min read</span>
+                    </div>
+                    <h3>Resume Summary Examples for Freshers (With Formulas)</h3>
+                    <p>High-impact summary formulas and real-world examples to catch recruiters' attention even with zero prior experience.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">Resume</span>
+                        <span class="tag-pill">Freshers</span>
+                        <span class="tag-pill">Formulas</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/hr-shortlisting-checklist-small-teams/">
-                    <h3>HR Shortlisting Checklist for Small Teams</h3>
-                    <p>A practical screening checklist to reduce hiring delays and improve candidate quality.</p>
-                    <div><span class="tag">HR</span><span class="tag" style="margin-left:0.25rem;">Recruitment</span></div>
-                </a>
+            <!-- 10. LinkedIn Headline Formula with Examples -->
+            <a class="blog-card" href="/blogs/linkedin-headline-formula-with-examples/" data-category="resume">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-resume">🔗 Personal Brand</span>
+                        <span class="card-readtime">⏱️ 5 min read</span>
+                    </div>
+                    <h3>LinkedIn Headline Formula with Real Examples</h3>
+                    <p>Optimize your professional LinkedIn headline for recruiter search visibility, algorithm ranking, and inbound leads.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">Career</span>
+                        <span class="tag-pill">LinkedIn</span>
+                        <span class="tag-pill">Branding</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-                <a class="blog-card" href="/blogs/privacy-first-file-conversion-guide/">
-                    <h3>Privacy-First File Conversion Guide</h3>
-                    <p>What users should check before uploading files: retention, backups, and secure processing.</p>
-                    <div><span class="tag">Privacy</span><span class="tag" style="margin-left:0.25rem;">Security</span></div>
-                </a>
-            </div>
+            <!-- 11. HR Shortlisting Checklist for Small Teams -->
+            <a class="blog-card" href="/blogs/hr-shortlisting-checklist-small-teams/" data-category="hr">
+                <div>
+                    <div class="card-top-meta">
+                        <span class="cat-badge cat-hr">📋 Hiring Workflow</span>
+                        <span class="card-readtime">⏱️ 7 min read</span>
+                    </div>
+                    <h3>HR Shortlisting Checklist for Small Hiring Teams</h3>
+                    <p>A structured, fair hiring checklist to screen and rank applicants efficiently without enterprise recruiting bloat.</p>
+                </div>
+                <div class="card-bottom-row">
+                    <div class="blog-tags">
+                        <span class="tag-pill">HR</span>
+                        <span class="tag-pill">Hiring</span>
+                        <span class="tag-pill">Checklist</span>
+                    </div>
+                    <span class="read-link">Read →</span>
+                </div>
+            </a>
 
-            <hr class="separator">
-
-            <h2>Coming Soon</h2>
-            <p>We're constantly adding new content. Stay tuned for:</p>
-            <ul>
-                <li>Interview Tips and Strategies</li>
-                <li>Career Change Guides</li>
-                <li>Industry-Specific Resume Tips</li>
-                <li>HR Best Practices</li>
-                <li>Productivity Hacks</li>
-            </ul>
-
-            <hr class="separator">
-
-            <h2>Subscribe to Our Blog</h2>
-            <p>Get the latest articles delivered to your inbox.</p>
-            <div class="subscribe-box">
-                <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-                    <input type="email" placeholder="Email Address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-
-            <hr class="separator">
-
-            <h2>Have a topic suggestion?</h2>
-            <p class="closing-note">We'd love to hear what you want to learn about!</p>
-            <p class="closing-note">Email us: <a href="mailto:info@auratoolkit360.com">info@auratoolkit360.com</a></p>
         </div>
-    </div>
 
-        <!-- ===== FOOTER ===== -->
-        <footer>
-        <div class="footer-grid">
+        <!-- Action Box / Free Tools Recommendations -->
+        <div class="blog-cta-box">
+            <h3>Put These Strategies Into Action Today</h3>
+            <p>Our entire browser toolkit is 100% free, private, and requires zero logins or installations.</p>
+            <div class="cta-tools-grid">
+                <a href="/resume-score-checker/" class="btn-cta-tool">🎯 Check ATS Score</a>
+                <a href="/resume-cv-maker/" class="btn-cta-tool">📝 Build ATS Resume</a>
+                <a href="/converter/" class="btn-cta-tool">⇄ File Converter</a>
+                <a href="/hr-helper/" class="btn-cta-tool">👥 HR Bulk Screener</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-inner">
+            <!-- Col 1: Brand Info -->
             <div class="footer-col">
-                <h3>AuraToolkit360</h3>
-                <p>Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, and HR candidate screening.</p>
-                <p style="margin-top:0.6rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
-                <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem;">
-                    <a href="/privacy-policy/" style="color:#38bdf8; text-decoration:none;">Privacy Policy</a> •
-                    <a href="/terms/" style="color:#38bdf8; text-decoration:none;">Terms of Service</a> •
-                    <a href="/disclaimer/" style="color:#38bdf8; text-decoration:none;">Disclaimer</a>
+                <a href="/" class="logo" style="margin-bottom:1rem;">
+                    <div class="logo-symbol">A</div>
+                    <div class="logo-text">AuraToolkit<span>360</span></div>
+                </a>
+                <p style="font-size:0.85rem; line-height:1.6; margin-bottom:1.2rem;">
+                    Your privacy is our highest priority. All conversions, resume building, and candidate screening run 100% inside your web browser.
+                </p>
+                <div style="font-size:0.82rem; color:var(--text-muted);">
+                    Contact: <a href="mailto:info@auratoolkit360.com" style="color:var(--accent-cyan); text-decoration:none;">info@auratoolkit360.com</a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Navigation & Legal</h4>
-                <div class="footer-links">
-                    <a href="/">Home Page</a>
-                    <a href="/converter/">File Converter Suite</a>
-                    <a href="/resume-cv-maker/">Resume CV Maker</a>
-                    <a href="/resume-score-checker/">ATS Score Checker</a>
-                    <a href="/hr-helper/">HR Screening Helper</a>
-                    <a href="/blogs/">Blog Articles</a>
-                    <a href="/about/">About Us</a>
-                    <a href="/contact/">Contact Us</a>
-                    <a href="/privacy-policy/">Privacy Policy (GDPR/CCPA)</a>
-                    <a href="/terms/">Terms of Service</a>
-                    <a href="/disclaimer/">Disclaimer Statement</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Feedback & Support</h4>
-                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'
-Email: '+fd.get('email')+'
 
-Feedback:
-'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
-                    <input name="name" type="text" placeholder="Your Name" required aria-label="Your Name">
-                    <input name="email" type="email" placeholder="Your Email" required aria-label="Your Email">
-                    <textarea name="message" rows="3" placeholder="Share your feedback..." required aria-label="Share your feedback"></textarea>
-                    <button type="submit">Send Feedback</button>
-                </form>
+            <!-- Col 2: Product Suite -->
+            <div class="footer-col">
+                <h5>Products</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/converter/">File Converter Suite</a></li>
+                    <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
+                    <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
+                    <li><a href="/hr-helper/">HR Bulk Screener</a></li>
+                    <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Company & Articles -->
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/about/">About AuraToolkit360</a></li>
+                    <li><a href="/blogs/">Career &amp; Tech Guides</a></li>
+                    <li><a href="/contact/">Help &amp; Contact Support</a></li>
+                    <li><a href="/converter/word-counter/">Text Utilities</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Legal & Security -->
+            <div class="footer-col">
+                <h5>Legal &amp; Security</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/privacy-policy/">Privacy Policy (GDPR / CCPA)</a></li>
+                    <li><a href="/terms/">Terms of Service</a></li>
+                    <li><a href="/disclaimer/">Disclaimer Statement</a></li>
+                    <li><span style="font-size:0.75rem; color:#10b981;">● System Status: All Systems Operational</span></li>
+                </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing | <a href="/privacy-policy/" style="color:#64748b; text-decoration:underline;">Privacy</a> | <a href="/terms/" style="color:#64748b; text-decoration:underline;">Terms</a>
+
+        <div class="footer-bottom-bar">
+            <div>© 2026 AuraToolkit360. All rights reserved. 100% Client-Side Privacy Guaranteed.</div>
+            <div>
+                <a href="/privacy-policy/" style="color:var(--text-muted); text-decoration:none; margin-right:1rem;">Privacy</a>
+                <a href="/terms/" style="color:var(--text-muted); text-decoration:none;">Terms</a>
+            </div>
         </div>
     </footer>
+
+    <!-- Interactive Search & Filter JS -->
+    <script>
+        let currentFilter = 'all';
+
+        function setCategoryFilter(category, element) {
+            currentFilter = category;
+            document.querySelectorAll('.blog-chip').forEach(chip => chip.classList.remove('active'));
+            if (element) element.classList.add('active');
+            filterArticles();
+        }
+
+        function filterArticles() {
+            const query = (document.getElementById('blogSearchInput').value || '').toLowerCase().trim();
+            const cards = document.querySelectorAll('.blog-grid .blog-card');
+            const featuredCard = document.getElementById('featuredPost');
+
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const text = card.textContent.toLowerCase();
+
+                const matchesCategory = (currentFilter === 'all' || category === currentFilter);
+                const matchesQuery = !query || text.includes(query);
+
+                if (matchesCategory && matchesQuery) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // If user searches or filters by specific non-resume category, toggle featured post visibility
+            if (featuredCard) {
+                if (currentFilter === 'all' || currentFilter === 'resume') {
+                    const featText = featuredCard.textContent.toLowerCase();
+                    featuredCard.style.display = (!query || featText.includes(query)) ? 'grid' : 'none';
+                } else {
+                    featuredCard.style.display = 'none';
+                }
+            }
+        }
+    </script>
 
     <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
     <script>
@@ -334,6 +1154,5 @@ Feedback:
             }, { passive: true });
         })();
     </script>
-
 </body>
 </html>
