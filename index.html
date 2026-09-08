@@ -7,7 +7,7 @@
     <meta name="description" content="Free online file converter, ATS resume builder, ATS score checker, and bulk HR candidate screening. Convert files, create ATS resumes, and screen candidates privately in your browser.">
     <meta name="keywords" content="AuraToolkit360, file converter, PDF to Word, Word to PDF, merge PDF, compress PDF, resume builder, photo resume, ATS score checker, HR screening helper, free online tools">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#0b0f19">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/">
     
@@ -27,7 +27,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -52,195 +52,1267 @@
     </script>
     
     <style>
+        :root {
+            --bg-base: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 36, 56, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.35);
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-magenta: #d946ef;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-orange: #f59e0b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { overflow-x: clip; scroll-behavior: smooth; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; position: relative; }
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: clip;
+            position: relative;
+            padding-top: 76px;
+        }
         
-        /* Ambient Gradient Orbs */
-        body::before { content: ''; position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
-        body::after { content: ''; position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
+        /* Ambient Aurora Glow Background Effects */
+        .ambient-glow-top-left {
+            position: fixed;
+            top: -150px;
+            left: -150px;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+        .ambient-glow-top-right {
+            position: fixed;
+            top: -100px;
+            right: -100px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.14) 0%, rgba(217, 70, 239, 0.06) 50%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(50px);
+        }
+        .ambient-glow-mid {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 850px;
+            height: 850px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 65%);
+            z-index: -1;
+            pointer-events: none;
+        }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(15,23,42,0.8); }
-        ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.4); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.7); }
-        
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
+
         /* ===== NAVBAR ===== */
-        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .navbar {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.85rem 2rem;
+            border-bottom: 1px solid var(--border-card);
+            position: fixed !important;
+            top: 0; left: 0; right: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+        }
         .navbar.nav-hidden { transform: translateY(-100%); }
-        body { padding-top: 65px; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 1rem; min-width: max-content; }
-        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
-        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
-        .nav-links { display: flex; gap: 0.4rem; flex-wrap: nowrap; align-items: center; }
-        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; display: flex; align-items: center; gap: 0.3rem; }
-        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
-        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; box-shadow: 0 4px 20px rgba(37,99,235,0.35); }
-        .nav-badge { background: linear-gradient(135deg, #ec4899, #8b5cf6); color: white; font-size: 0.65rem; padding: 0.15rem 0.45rem; border-radius: 999px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        .btn-bookmark { background: rgba(255,255,255,0.08); color: #f8fafc; border: 1px solid rgba(255,255,255,0.15); padding: 0.45rem 1rem; border-radius: 10px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.4rem; }
-        .btn-bookmark:hover { background: rgba(255,255,255,0.15); border-color: #38bdf8; color: #38bdf8; }
+        .nav-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .logo-symbol {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+        }
+        .logo-text span {
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-center {
+            display: flex;
+            gap: 0.35rem;
+            align-items: center;
+        }
+        @media (max-width: 1080px) {
+            .nav-center { display: none; }
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-link.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .nav-badge-pill {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: #ffffff;
+            font-size: 0.62rem;
+            padding: 0.12rem 0.42rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .nav-search-trigger {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            color: var(--text-secondary);
+            padding: 0.45rem 0.75rem;
+            border-radius: 9px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s;
+        }
+        .nav-search-trigger:hover {
+            border-color: var(--accent-cyan);
+            color: #ffffff;
+        }
+        .btn-try-hr {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .btn-try-hr:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
+        }
+        .btn-bookmark-nav {
+            background: transparent;
+            border: 1px solid var(--border-card);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.48rem 0.9rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-bookmark-nav:hover {
+            color: var(--accent-cyan);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.06);
+        }
 
-        /* ===== HERO HERO SECTION (SPLIT 2-COLUMN) ===== */
-        .hero-section { max-width: 1400px; margin: 0 auto; padding: 2.5rem 1.5rem 2rem; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 2.5rem; align-items: center; }
-        @media(max-width: 992px) { .hero-section { grid-template-columns: 1fr; text-align: center; } }
-        
-        .hero-left .pill-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(16, 185, 129, 0.12); color: #34d399; padding: 0.35rem 1.1rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25); margin-bottom: 1.2rem; }
-        .hero-left h1 { font-size: 3rem; font-weight: 900; line-height: 1.15; letter-spacing: -1px; margin-bottom: 1rem; color: #ffffff; }
-        @media(max-width: 768px) { .hero-left h1 { font-size: 2.2rem; } }
-        .txt-blue { background: linear-gradient(135deg, #38bdf8, #2563eb); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .txt-purple { background: linear-gradient(135deg, #c084fc, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .txt-indigo { background: linear-gradient(135deg, #818cf8, #4f46e5); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        
-        .hero-left p { font-size: 1.05rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem; max-width: 600px; }
-        @media(max-width: 992px) { .hero-left p { margin-left: auto; margin-right: auto; } }
+        /* MAIN CONTAINER */
+        .site-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 4rem;
+        }
 
-        .hero-features-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.8rem; }
-        @media(max-width: 992px) { .hero-features-row { justify-content: center; } }
-        .hero-feature-pill { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: #cbd5e1; font-weight: 500; background: rgba(30, 41, 59, 0.6); padding: 0.35rem 0.85rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); }
-        
-        .hero-cta-group { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        @media(max-width: 992px) { .hero-cta-group { justify-content: center; } }
-        
-        .btn-hero-primary { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; padding: 0.85rem 1.8rem; border-radius: 14px; font-size: 0.95rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 8px 25px rgba(124,58,237,0.35); transition: all 0.3s; }
-        .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(124,58,237,0.5); }
-        
-        .btn-hero-outline { background: rgba(30, 41, 59, 0.8); color: #f8fafc; border: 1px solid rgba(255,255,255,0.15); padding: 0.85rem 1.8rem; border-radius: 14px; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s; }
-        .btn-hero-outline:hover { background: rgba(255,255,255,0.1); border-color: #38bdf8; color: #38bdf8; }
+        /* ===== SECTION 1: FEATURED CAROUSEL ===== */
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.9rem;
+        }
+        .featured-header h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .featured-carousel-wrapper {
+            position: relative;
+            background: linear-gradient(135deg, rgba(20, 27, 45, 0.7), rgba(15, 23, 42, 0.85));
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            backdrop-filter: blur(16px);
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            margin-bottom: 2.8rem;
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+            width: 100%;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            padding: 2.2rem 2.5rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        @media (max-width: 900px) {
+            .carousel-slide {
+                grid-template-columns: 1fr;
+                padding: 1.8rem 1.5rem;
+                gap: 1.5rem;
+            }
+        }
+        .slide-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+        .tag-resume { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+        .tag-hr { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .tag-ats { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
 
-        .trust-tag { font-size: 0.82rem; color: #64748b; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
-        @media(max-width: 992px) { .trust-tag { justify-content: center; } }
+        .slide-content h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.5px;
+        }
+        .slide-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.4rem;
+            line-height: 1.5;
+            max-width: 540px;
+        }
+        .slide-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+            transition: all 0.25s;
+        }
+        .slide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(99, 102, 241, 0.6);
+        }
+        .slide-btn-emerald {
+            background: linear-gradient(135deg, #059669, #10b981);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+        }
+        .slide-btn-emerald:hover {
+            box-shadow: 0 10px 28px rgba(16, 185, 129, 0.55);
+        }
 
-        /* HERO RIGHT SHOWCASE MOCKUP */
-        .hero-right-showcase { position: relative; }
-        .mockup-container { background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.12); padding: 1.5rem; box-shadow: 0 25px 60px rgba(0,0,0,0.4); position: relative; overflow: hidden; }
-        .mockup-head { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.8rem; }
-        .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+        /* Mockup Previews inside Carousel */
+        .slide-visual-preview {
+            background: rgba(11, 15, 25, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+            position: relative;
+        }
+        .preview-resume-card {
+            background: #ffffff;
+            color: #1e293b;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            font-size: 0.78rem;
+        }
+        .preview-resume-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.6rem;
+            margin-bottom: 0.6rem;
+        }
+        .preview-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .preview-resume-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 0.4rem;
+        }
+        .preview-resume-bar.w-75 { width: 75%; }
+        .preview-resume-bar.w-50 { width: 50%; }
+        .preview-badge-ats {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: #ecfdf5;
+            color: #059669;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            margin-top: 0.4rem;
+        }
+
+        /* Carousel Navigation Controls */
+        .carousel-nav-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding-bottom: 1rem;
+        }
+        .carousel-dot {
+            width: 24px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .carousel-dot.active {
+            background: var(--accent-cyan);
+            width: 38px;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(18, 24, 38, 0.85);
+            border: 1px solid var(--border-card);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+        .carousel-btn:hover {
+            background: var(--accent-cyan);
+            color: #0b0f19;
+        }
+        .carousel-prev { left: 1rem; }
+        .carousel-next { right: 1rem; }
+
+        /* ===== SECTION 2: HERO BRANDING & 4 CORE PILLARS ===== */
+        .hero-banner {
+            text-align: center;
+            max-width: 860px;
+            margin: 0 auto 2.2rem;
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+        @media (max-width: 768px) {
+            .hero-title { font-size: 1.85rem; }
+        }
+        .hero-desc {
+            font-size: 1.02rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        /* 4 Core Category Cards */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 1024px) {
+            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 580px) {
+            .pillars-grid { grid-template-columns: 1fr; }
+        }
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 1.4rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.28s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+        }
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        .pillar-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.85rem;
+        }
+        .icon-box-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+        .icon-box-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+        .icon-box-cyan { background: rgba(20, 184, 166, 0.15); color: #2dd4bf; }
+        .icon-box-green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+        .pillar-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+        .pillar-card .pillar-sub {
+            font-size: 0.76rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.55rem;
+        }
+        .pillar-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            margin-bottom: 1.2rem;
+        }
+        .btn-pillar-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.55rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.25s;
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .pillar-card:hover .btn-pillar-pill {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+        }
+
+        /* ===== SEARCH BAR ===== */
+        .search-container {
+            max-width: 760px;
+            margin: 0 auto 3.2rem;
+            position: relative;
+        }
+        .search-bar-wrap {
+            display: flex;
+            align-items: center;
+            background: rgba(18, 24, 38, 0.85);
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            padding: 0.55rem 0.85rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            transition: all 0.25s;
+        }
+        .search-bar-wrap:focus-within {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+        }
+        .search-bar-wrap .icon {
+            font-size: 1.15rem;
+            padding: 0 0.5rem;
+            color: var(--text-muted);
+        }
+        .search-bar-wrap input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-family: inherit;
+        }
+        .search-bar-wrap input::placeholder {
+            color: var(--text-muted);
+        }
+        .search-clear-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0 0.5rem;
+            display: none;
+        }
+        .search-results-box {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background: rgba(15, 21, 35, 0.96);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            max-height: 380px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+        }
+        .search-results-box.show {
+            display: block;
+        }
+        .search-res-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.75rem 1.1rem;
+            text-decoration: none;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.2s;
+        }
+        .search-res-item:hover {
+            background: rgba(56, 189, 248, 0.12);
+        }
+        .search-res-item .tool-cat-pill {
+            font-size: 0.7rem;
+            padding: 0.18rem 0.55rem;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            margin-left: auto;
+        }
+        .quick-chips-row {
+            display: flex;
+            justify-content: center;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+        .chip-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            color: var(--text-secondary);
+            font-size: 0.76rem;
+            padding: 0.28rem 0.75rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .chip-btn:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.08);
+        }
+
+        /* ===== SECTION 3: TRENDING TOOLS GRID ===== */
+        .section-headline-wrap {
+            margin-bottom: 1.4rem;
+        }
+        .section-headline-wrap h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-bottom: 3.2rem;
+        }
+        @media (max-width: 1100px) {
+            .trending-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 720px) {
+            .trending-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 440px) {
+            .trending-grid { grid-template-columns: 1fr; }
+        }
+        .trending-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.25s;
+            position: relative;
+        }
+        .trending-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: var(--bg-card-hover);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+        .trending-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+        .icon-pdf-red { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+        .icon-word-blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+        .icon-img-green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+        .icon-compress-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+        .icon-target-orange { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+        .trending-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.85rem;
+        }
+        .btn-use-tool {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem 1rem;
+            background: rgba(2, 132, 199, 0.2);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            font-size: 0.76rem;
+            font-weight: 700;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.2s;
+            width: 85%;
+        }
+        .trending-card:hover .btn-use-tool {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+        }
+
+        /* ===== SECTION 4: SPLIT WIDGETS (RECENT ACTIVITY + RECENTLY ADDED) ===== */
+        .split-widgets-row {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+        @media (max-width: 900px) {
+            .split-widgets-row { grid-template-columns: 1fr; }
+        }
+        .widget-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 18px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(14px);
+        }
+        .widget-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .widget-head h4 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        .widget-head-badge {
+            font-size: 0.68rem;
+            color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.12);
+            padding: 0.2rem 0.55rem;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        /* Recent Activity List Styling */
+        .activity-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex: 1;
+        }
+        .activity-row {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            background: rgba(11, 15, 25, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 0.65rem 0.85rem;
+            transition: all 0.2s;
+        }
+        .activity-row:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        .activity-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: rgba(99, 102, 241, 0.15);
+            color: #818cf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .activity-info {
+            flex: 1;
+        }
+        .activity-title {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .activity-time {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        .activity-action-btn {
+            font-size: 0.74rem;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            background: rgba(56, 189, 248, 0.1);
+        }
+        .activity-empty-state {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        /* Recently Added Cards (3 cards horizontal inside widget) */
+        .recently-added-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.85rem;
+        }
+        @media (max-width: 600px) {
+            .recently-added-grid { grid-template-columns: 1fr; }
+        }
+        .mini-tool-card {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 1rem 0.8rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        .mini-tool-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateY(-2px);
+        }
+        .mini-icon {
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+        }
+        .mini-title {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.3rem;
+        }
+        .mini-desc {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            line-height: 1.35;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ===== SECTION 5: FEATURE SPOTLIGHT (ATS CHECKER) ===== */
+        .spotlight-banner {
+            background: linear-gradient(135deg, rgba(29, 36, 60, 0.9), rgba(18, 22, 38, 0.95));
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 3.5rem;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 2.5rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        }
+        @media (max-width: 900px) {
+            .spotlight-banner { grid-template-columns: 1fr; padding: 1.8rem; }
+        }
+        .spotlight-visual-container {
+            background: rgba(11, 15, 25, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(99, 102, 241, 0.1);
+        }
+        .spotlight-terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 1rem;
+        }
+        .dot { width: 9px; height: 9px; border-radius: 50%; }
         .dot-red { background: #ef4444; } .dot-yellow { background: #f59e0b; } .dot-green { background: #10b981; }
-        .mockup-title { font-size: 0.82rem; color: #94a3b8; font-weight: 600; margin-left: 0.5rem; }
-        
-        .mockup-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-        @media(max-width: 576px) { .mockup-dashboard { grid-template-columns: 1fr; } }
-        .mockup-tool-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 0.9rem; text-align: center; }
-        .mockup-tool-card .icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
-        .mockup-tool-card h4 { font-size: 0.85rem; font-weight: 700; color: #f8fafc; }
-        .mockup-tool-card p { font-size: 0.72rem; color: #94a3b8; margin-bottom: 0; }
+        .spotlight-code-snippet {
+            font-family: monospace;
+            font-size: 0.78rem;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+        .code-highlight { color: var(--accent-cyan); font-weight: 700; }
+        .score-pill-floating {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: 14px;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .score-num {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #34d399;
+        }
+        .spotlight-content h3 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.25;
+            margin-bottom: 0.8rem;
+        }
+        .spotlight-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 1.4rem;
+        }
+        .spotlight-checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1.8rem;
+        }
+        .spotlight-checklist li {
+            font-size: 0.88rem;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .check-icon {
+            color: var(--accent-cyan);
+            font-weight: 900;
+        }
+        .btn-spotlight-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #0284c7, #8b5cf6);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.8rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.45);
+            transition: all 0.25s;
+        }
+        .btn-spotlight-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.65);
+        }
 
-        .phone-float-card { position: absolute; bottom: -15px; right: -15px; width: 190px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(56,189,248,0.3); border-radius: 20px; padding: 1rem; box-shadow: 0 15px 35px rgba(0,0,0,0.5); z-index: 5; }
-        @media(max-width: 576px) { .phone-float-card { display: none; } }
-        .phone-score-ring { width: 60px; height: 60px; border-radius: 50%; border: 4px solid #10b981; border-top-color: transparent; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-weight: 800; font-size: 0.9rem; color: #10b981; }
+        /* ===== SECTION 6: BEST PRACTICES & GUIDES ===== */
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+            margin-bottom: 3.5rem;
+        }
+        @media (max-width: 900px) {
+            .guides-grid { grid-template-columns: 1fr; }
+        }
+        .guide-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s;
+        }
+        .guide-card:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+        .guide-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+        .guide-card h4 {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+        .guide-checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+        .guide-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        .btn-guide-link {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: gap 0.2s;
+        }
+        .btn-guide-link:hover {
+            gap: 0.55rem;
+        }
 
-        /* ===== SMART SEARCH BOX ===== */
-        .search-section { max-width: 800px; margin: 1rem auto 2.5rem; padding: 0 1.5rem; position: relative; z-index: 10; }
-        .search-box { display: flex; align-items: center; background: rgba(30, 41, 59, 0.85); backdrop-filter: blur(20px); border-radius: 18px; padding: 0.5rem 0.8rem; box-shadow: 0 15px 45px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s; }
-        .search-box:focus-within { border-color: #38bdf8; box-shadow: 0 0 30px rgba(56,189,248,0.3); transform: translateY(-2px); }
-        .search-box .icon { padding: 0 0.6rem; font-size: 1.2rem; color: #64748b; }
-        .search-box input { flex: 1; padding: 0.7rem 0.3rem; border: none; background: transparent; font-size: 1rem; font-family: inherit; outline: none; color: #f8fafc; }
-        .search-box input::placeholder { color: #64748b; }
-        .search-box .clear-btn { background: none; border: none; padding: 0 0.6rem; font-size: 1rem; cursor: pointer; color: #94a3b8; display: none; }
-        .search-box .clear-btn:hover { color: #f8fafc; }
-        
-        .search-results { background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(20px); border-radius: 16px; margin-top: 0.6rem; padding: 0.4rem 0; max-height: 360px; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); display: none; position: absolute; left: 1.5rem; right: 1.5rem; z-index: 20; }
-        .search-results.show { display: block; animation: fadeDown 0.2s ease; }
-        @keyframes fadeDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-        .search-result-item { display: flex; align-items: center; padding: 0.7rem 1.2rem; cursor: pointer; transition: all 0.2s; text-decoration: none; color: #f8fafc; gap: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .search-result-item:last-child { border-bottom: none; }
-        .search-result-item:hover { background: rgba(56, 189, 248, 0.15); }
-        .search-result-item .icon { font-size: 1.3rem; }
-        .search-result-item .info { flex: 1; }
-        .search-result-item .name { font-weight: 700; font-size: 0.92rem; color: #f8fafc; }
-        .search-result-item .desc { font-size: 0.78rem; color: #94a3b8; }
-        .search-result-item .badge { font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 999px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-weight: 600; }
+        /* ===== SECTION 7: USER STORIES & FEEDBACK ===== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 3.5rem;
+        }
+        @media (max-width: 1024px) {
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s;
+            position: relative;
+        }
+        .testimonial-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-3px);
+        }
+        .quote-icon {
+            font-size: 1.6rem;
+            color: rgba(99, 102, 241, 0.4);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+        }
+        .testimonial-text {
+            font-size: 0.84rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            font-style: italic;
+        }
+        .testimonial-user {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 0.8rem;
+        }
+        .user-avatar-initials {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #ffffff;
+        }
+        .avatar-blue { background: linear-gradient(135deg, #0284c7, #3b82f6); }
+        .avatar-purple { background: linear-gradient(135deg, #7c3aed, #c084fc); }
+        .avatar-green { background: linear-gradient(135deg, #059669, #10b981); }
+        .avatar-orange { background: linear-gradient(135deg, #d97706, #fbbf24); }
 
-        .quick-suggestions { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; }
-        .quick-chip { background: rgba(30, 41, 59, 0.6); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.08); padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; }
-        .quick-chip:hover { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: #38bdf8; }
+        .user-meta-name {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .user-meta-role {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
 
-        /* ===== POPULAR TOOLS 4-CARD GRID ===== */
-        .section-wrap { max-width: 1400px; margin: 3rem auto; padding: 0 1.5rem; }
-        .section-head { text-align: center; margin-bottom: 2rem; }
-        .section-head h2 { font-size: 2rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
-        .section-head p { color: #94a3b8; font-size: 0.95rem; margin-top: 0.3rem; }
-        
-        .popular-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-        @media(max-width: 1100px) { .popular-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media(max-width: 600px) { .popular-grid { grid-template-columns: 1fr; } }
-        
-        .pop-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); padding: 1.8rem 1.4rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .pop-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
-        
-        .pop-card .icon-badge { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 1.2rem; }
-        .bg-green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
-        .bg-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
-        .bg-orange { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
-        .bg-blue { background: rgba(37, 99, 235, 0.15); color: #60a5fa; }
-        
-        .pop-card h3 { font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
-        .pop-card p { font-size: 0.88rem; color: #94a3b8; line-height: 1.5; margin-bottom: 1.5rem; }
-        
-        .btn-card-action { width: 100%; padding: 0.75rem 1rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; transition: all 0.3s; border: none; cursor: pointer; }
-        .btn-card-green { background: #10b981; color: white; } .btn-card-green:hover { background: #059669; }
-        .btn-card-purple { background: #7c3aed; color: white; } .btn-card-purple:hover { background: #6d28d9; }
-        .btn-card-orange { background: #f59e0b; color: white; } .btn-card-orange:hover { background: #d97706; }
-        .btn-card-blue { background: #2563eb; color: white; } .btn-card-blue:hover { background: #1d4ed8; }
+        /* ===== SECTION 8: ALL TOOLS DIRECTORY (EXPANDED FOR MAXIMUM DISCOVERABILITY) ===== */
+        .directory-wrap {
+            margin-bottom: 3.5rem;
+        }
+        .directory-category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 1.4rem;
+            margin-bottom: 1.4rem;
+        }
+        .directory-cat-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 0.6rem;
+        }
+        .directory-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 0.8rem;
+        }
+        .dir-link {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 0.65rem 0.9rem;
+            text-decoration: none;
+            color: #e2e8f0;
+            font-size: 0.84rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.2s;
+        }
+        .dir-link:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            color: var(--accent-cyan);
+            transform: translateX(2px);
+        }
 
-        /* ===== HOW IT WORKS SECTION ===== */
-        .how-works-box { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(12px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem 2rem; margin: 3rem auto; max-width: 1400px; }
-        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; position: relative; }
-        @media(max-width: 992px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media(max-width: 576px) { .steps-grid { grid-template-columns: 1fr; } }
-
-        .step-item { text-align: center; background: rgba(15, 23, 42, 0.5); border-radius: 18px; padding: 1.5rem 1rem; border: 1px solid rgba(255,255,255,0.06); }
-        .step-icon-num { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; margin: 0 auto 1rem; }
-        .step-item h4 { font-size: 1.05rem; font-weight: 800; color: #ffffff; margin-bottom: 0.4rem; }
-        .step-item p { font-size: 0.85rem; color: #94a3b8; line-height: 1.5; }
-
-        /* ===== WHY CHOOSE SECTION ===== */
-        .why-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; margin-top: 2rem; }
-        @media(max-width: 992px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media(max-width: 576px) { .why-grid { grid-template-columns: 1fr; } }
-        
-        .why-box { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 1.2rem 1rem; text-align: center; }
-        .why-box .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
-        .why-box h4 { font-size: 0.95rem; font-weight: 800; color: #ffffff; margin-bottom: 0.3rem; }
-        .why-box p { font-size: 0.8rem; color: #94a3b8; line-height: 1.4; margin-bottom: 0; }
-
-        /* ===== STATS BANNER ===== */
-        .stats-banner { max-width: 1400px; margin: 3rem auto; padding: 1.5rem 2rem; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; text-align: center; }
-        @media(max-width: 768px) { .stats-banner { grid-template-columns: repeat(2, 1fr); } }
-        .stat-item .num { font-size: 2.2rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .stat-item .label { font-size: 0.8rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-
-        /* ===== ROCKET CTA BANNER ===== */
-        .cta-rocket-banner { max-width: 1400px; margin: 3rem auto; padding: 2.5rem 2rem; background: linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.95)); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-        .cta-left { display: flex; align-items: center; gap: 1.5rem; }
-        .cta-rocket-icon { font-size: 3.5rem; animation: floatRocket 3s ease-in-out infinite; }
-        @keyframes floatRocket { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        .cta-left h3 { font-size: 1.8rem; font-weight: 900; color: #ffffff; margin-bottom: 0.3rem; }
-        .cta-left p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem; }
-
-        /* ===== ALL TOOLS GRID ===== */
-        .category-block { margin-bottom: 2.5rem; }
-        .category-title { font-size: 1.3rem; font-weight: 800; color: #38bdf8; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.6rem; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
-        .tool-link-card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 1rem; text-decoration: none; color: #f8fafc; transition: all 0.25s; display: flex; align-items: center; gap: 0.8rem; }
-        .tool-link-card:hover { background: rgba(56, 189, 248, 0.12); border-color: #38bdf8; transform: translateY(-2px); }
-        .tool-link-card .icon { font-size: 1.4rem; }
-        .tool-link-card .name { font-weight: 600; font-size: 0.88rem; color: #f8fafc; }
-
-        /* ===== FOOTER STYLING ===== */
-        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; color: #f8fafc; }
-        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
-        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
-        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: all 0.2s; }
-        .footer-links a:hover { color: #38bdf8; }
-        .feedback-form input, .feedback-form textarea { width: 100%; padding: 0.55rem 0.8rem; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.8rem; color: #f8fafc; margin-bottom: 0.5rem; outline: none; font-family: inherit; }
-        .feedback-form input:focus, .feedback-form textarea:focus { border-color: #38bdf8; }
-        .feedback-form button { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; width: auto !important; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+        /* ===== FOOTER ===== */
+        footer {
+            background: #070a12;
+            border-top: 1px solid var(--border-card);
+            padding: 3.5rem 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 992px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 576px) {
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+        .footer-col h5 {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 1.1rem;
+        }
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+        .footer-links-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: color 0.2s;
+        }
+        .footer-links-list a:hover {
+            color: var(--accent-cyan);
+        }
+        .footer-bottom-bar {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
     </style>
+    
+    <!-- AdSense & Analytics Scripts (Preserved) -->
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
@@ -248,529 +1320,802 @@
 </head>
 <body>
 
-    <!-- ===== HEADER / NAVBAR ===== -->
+    <!-- Ambient Neon Aurora Glows -->
+    <div class="ambient-glow-top-left"></div>
+    <div class="ambient-glow-top-right"></div>
+    <div class="ambient-glow-mid"></div>
+
+    <!-- ===== TOP NAVIGATION ===== -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/" class="logo">
-                <span class="logo-icon">⚡</span> AuraToolkit360
+                <div class="logo-symbol">A</div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
             </a>
-            <div class="nav-links">
-                <a href="/" class="active">Home</a>
-                <a href="/converter/">Converter</a>
-                <a href="/resume-cv-maker/">Resume Tools</a>
-                <a href="/resume-score-checker/">Score Checker</a>
-                <a href="/hr-helper/">HR Helper <span class="nav-badge">New</span></a>
-                <a href="/blogs/">Blogs</a>
-                <a href="/about/">About Us</a>
-                <button class="btn-bookmark" onclick="alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!')">★ Bookmark Us</button>
+            
+            <div class="nav-center">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/converter/" class="nav-link">Converter</a>
+                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
+                <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="nav-link">Blogs</a>
+                <a href="/about/" class="nav-link">About</a>
+            </div>
+
+            <div class="nav-right-actions">
+                <button class="nav-search-trigger" onclick="focusSearch()" aria-label="Search tools">
+                    <span>🔍</span> Search
+                </button>
+                <a href="/hr-helper/" class="btn-try-hr">Try HR Helper →</a>
+                <button class="btn-bookmark-nav" onclick="bookmarkSite()">★ Bookmark</button>
             </div>
         </div>
     </nav>
 
-    <main>
-        <!-- ===== HERO SPLIT 2-COLUMN ===== -->
-        <section class="hero-section">
-            <div class="hero-left">
-                <div class="pill-badge">🛡️ 100% Client-Side Privacy — Zero Server Uploads</div>
-                <h1>All-in-One Toolkit for <span class="txt-blue">Files</span>, <span class="txt-purple">Resumes</span> & <span class="txt-indigo">HR</span></h1>
-                <p>Convert files, build ATS-friendly resumes, check your resume score and screen candidates — all in your browser. No uploads. No sign-up. 100% private.</p>
-                
-                <div class="hero-features-row">
-                    <div class="hero-feature-pill">🔒 Your data never leaves your device</div>
-                    <div class="hero-feature-pill">⚡ Lightning fast local processing</div>
-                    <div class="hero-feature-pill">🛡️ No sign-up or installation</div>
-                </div>
+    <!-- ===== MAIN CONTENT CONTAINER ===== -->
+    <main class="site-container">
 
-                <div class="hero-cta-group">
-                    <a href="/converter/" class="btn-hero-primary">Explore All Tools →</a>
-                    <a href="/hr-helper/" class="btn-hero-outline">Try HR Helper 👥</a>
-                </div>
+        <!-- ===== SECTION 1: FEATURED CAROUSEL ===== -->
+        <div class="featured-header">
+            <h3>Featured Highlights</h3>
+        </div>
 
-                <div class="trust-tag">
-                    🛡️ Trusted by Job Seekers, HR Managers & Recruiters Worldwide
-                </div>
-            </div>
+        <div class="featured-carousel-wrapper" id="carouselWrapper">
+            <button class="carousel-btn carousel-prev" onclick="prevSlide()" aria-label="Previous Slide">‹</button>
+            <button class="carousel-btn carousel-next" onclick="nextSlide()" aria-label="Next Slide">›</button>
 
-            <div class="hero-right-showcase">
-                <div class="mockup-container">
-                    <div class="mockup-head">
-                        <div class="mockup-dot dot-red"></div>
-                        <div class="mockup-dot dot-yellow"></div>
-                        <div class="mockup-dot dot-green"></div>
-                        <span class="mockup-title">Smart Tools. Better Results.</span>
+            <div class="carousel-slides" id="carouselSlides">
+                <!-- Slide 1: Resume Builder -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <span class="slide-tag tag-resume">AI-Powered Templates</span>
+                        <h2>RESUME BUILDER</h2>
+                        <p>Build ATS-optimized resumes in minutes. Pass automated recruiter screening with 7 proven layout designs and instant PDF export.</p>
+                        <a href="/resume-cv-maker/" class="slide-btn">Start Creating &gt;</a>
                     </div>
-
-                    <div class="mockup-dashboard">
-                        <div class="mockup-tool-card">
-                            <div class="icon">🔄</div>
-                            <h4>File Converter</h4>
-                            <p>34+ file conversion tools</p>
-                        </div>
-                        <div class="mockup-tool-card">
-                            <div class="icon">📄</div>
-                            <h4>Resume Maker</h4>
-                            <p>7 ATS-friendly templates</p>
-                        </div>
-                        <div class="mockup-tool-card">
-                            <div class="icon">🎯</div>
-                            <h4>ATS Checker</h4>
-                            <p>Score your CV instantly</p>
-                        </div>
-                        <div class="mockup-tool-card">
-                            <div class="icon">👥</div>
-                            <h4>HR Helper</h4>
-                            <p>Bulk candidate screening</p>
+                    <div class="slide-visual-preview">
+                        <div class="preview-resume-card">
+                            <div class="preview-resume-header">
+                                <div class="preview-avatar">JD</div>
+                                <div>
+                                    <strong style="font-size:0.85rem;">John Doe</strong><br>
+                                    <span style="font-size:0.7rem; color:#64748b;">Senior Full-Stack Engineer</span>
+                                </div>
+                            </div>
+                            <div class="preview-resume-bar w-75"></div>
+                            <div class="preview-resume-bar w-50"></div>
+                            <div class="preview-badge-ats">✓ ATS Tested: 92/100 Score</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Floating Phone Mockup Badge -->
-                <div class="phone-float-card">
-                    <div style="font-size:0.75rem; font-weight:700; color:#cbd5e1; text-align:center; margin-bottom:0.4rem;">ATS Score</div>
-                    <div class="phone-score-ring">85%</div>
-                    <div style="font-size:0.7rem; color:#10b981; text-align:center; font-weight:700;">Matched Skills:</div>
-                    <div style="font-size:0.65rem; color:#94a3b8; text-align:center; margin-top:0.2rem;">React.js • Node.js • Express</div>
+                <!-- Slide 2: HR Helper -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <span class="slide-tag tag-hr">Bulk Candidate Screening</span>
+                        <h2>HR HELPER</h2>
+                        <p>Screen, score, and rank up to 300+ candidate CVs simultaneously in your browser. Save 15+ hours per recruitment cycle with complete client-side confidentiality.</p>
+                        <a href="/hr-helper/" class="slide-btn slide-btn-emerald">Screen Candidates &gt;</a>
+                    </div>
+                    <div class="slide-visual-preview">
+                        <div style="font-size:0.8rem; color:#ffffff; margin-bottom:0.6rem; font-weight:700;">Recruiter Batch Processor</div>
+                        <div style="background:rgba(255,255,255,0.05); padding:0.6rem; border-radius:8px; margin-bottom:0.4rem; display:flex; justify-content:space-between;">
+                            <span>📁 150 Resumes Uploaded</span>
+                            <span style="color:#10b981; font-weight:700;">100% Parsed</span>
+                        </div>
+                        <div style="font-size:0.72rem; color:#94a3b8;">Top Candidates Ranked by Job Match %</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: ATS Score Checker -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <span class="slide-tag tag-ats">Live Match Analyzer</span>
+                        <h2>ATS SCORE CHECKER</h2>
+                        <p>Upload your resume and paste a job description. Detect missing keywords, formatting errors, and get instant recommendations to boost your interview callbacks.</p>
+                        <a href="/resume-score-checker/" class="slide-btn">Score Your CV &gt;</a>
+                    </div>
+                    <div class="slide-visual-preview" style="text-align:center;">
+                        <div style="font-size:2.2rem; font-weight:900; color:#38bdf8; margin-bottom:0.2rem;">88%</div>
+                        <div style="font-size:0.8rem; color:#cbd5e1; font-weight:700;">High Interview Match Probability</div>
+                        <div style="font-size:0.72rem; color:#94a3b8; margin-top:0.4rem;">Keywords Identified: React, TypeScript, GraphQL</div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- ===== SEARCH BAR ===== -->
-        <section class="search-section">
-            <div class="search-box">
+            <!-- Dots Indicator -->
+            <div class="carousel-nav-dots" id="carouselDots">
+                <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                <div class="carousel-dot" onclick="goToSlide(2)"></div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 2: BRAND TAGLINE & 4 PILLARS ===== -->
+        <div class="hero-banner">
+            <span class="hero-eyebrow">AURATOOLKIT360 | Free Online File Converter &amp; HR Tools</span>
+            <h1 class="hero-title">Your All-in-One Digital Toolkit</h1>
+            <p class="hero-desc">Convert Files, Build ATS Resumes &amp; Automate HR Tasks. Faster, Private, and 100% Free with zero cloud uploads.</p>
+        </div>
+
+        <!-- 4 Core Pillars Grid -->
+        <div class="pillars-grid">
+            <!-- Pillar 1: File Converter -->
+            <div class="pillar-card">
+                <div>
+                    <div class="pillar-icon-box icon-box-blue">⇄</div>
+                    <h4>File Converter</h4>
+                    <div class="pillar-sub">30+ Formats</div>
+                    <p>Convert PDF, Word, Excel, Images &amp; Audio files directly in your web browser.</p>
+                </div>
+                <a href="/converter/" class="btn-pillar-pill">Explore Converter &gt;</a>
+            </div>
+
+            <!-- Pillar 2: Resume Builder -->
+            <div class="pillar-card">
+                <div>
+                    <div class="pillar-icon-box icon-box-purple">📝</div>
+                    <h4>Resume Builder</h4>
+                    <div class="pillar-sub">ATS Templates</div>
+                    <p>Craft job-winning resumes with pre-formatted ATS designs and live preview.</p>
+                </div>
+                <a href="/resume-cv-maker/" class="btn-pillar-pill">Create Resume &gt;</a>
+            </div>
+
+            <!-- Pillar 3: ATS Checker -->
+            <div class="pillar-card">
+                <div>
+                    <div class="pillar-icon-box icon-box-cyan">🎯</div>
+                    <h4>ATS Checker</h4>
+                    <div class="pillar-sub">Check CV Online</div>
+                    <p>Audit your resume against job descriptions to spot missing keywords and flaws.</p>
+                </div>
+                <a href="/resume-score-checker/" class="btn-pillar-pill">Check ATS Score &gt;</a>
+            </div>
+
+            <!-- Pillar 4: HR Helper -->
+            <div class="pillar-card">
+                <div>
+                    <div class="pillar-icon-box icon-box-green">👥</div>
+                    <h4>HR Helper</h4>
+                    <div class="pillar-sub">Bulk Screening</div>
+                    <p>Screen hundreds of applicants in bulk and export ranked shortlists in seconds.</p>
+                </div>
+                <a href="/hr-helper/" class="btn-pillar-pill">Try HR Helper &gt;</a>
+            </div>
+        </div>
+
+        <!-- ===== SEARCH BOX ===== -->
+        <div class="search-container">
+            <div class="search-bar-wrap">
                 <span class="icon">🔍</span>
-                <input type="text" id="searchInput" aria-label="Search tools" placeholder="Search any tool (e.g. PDF to Word, Image to PDF, Merge PDF...)" autocomplete="off">
-                <button class="clear-btn" id="clearBtn" aria-label="Clear search text" onclick="clearSearch()">✕</button>
+                <input type="text" id="searchInput" placeholder="Search any tool (e.g. PDF to Word, Merge PDF, Resume Maker...)" autocomplete="off">
+                <button class="search-clear-btn" id="searchClearBtn" onclick="clearSearch()" aria-label="Clear Search">✕</button>
             </div>
-            <div class="search-results" id="searchResults"></div>
+            <div class="search-results-box" id="searchResultsBox"></div>
 
-            <div class="quick-suggestions" id="quickSuggestions">
-                <span class="quick-chip" onclick="searchQuick('pdf to image')">🖼️ PDF→Image</span>
-                <span class="quick-chip" onclick="searchQuick('merge pdf')">➕ Merge PDF</span>
-                <span class="quick-chip" onclick="searchQuick('compress pdf')">🗜️ Compress PDF</span>
-                <span class="quick-chip" onclick="searchQuick('word to pdf')">📝 Word→PDF</span>
-                <span class="quick-chip" onclick="searchQuick('ocr')">📄 OCR to Text</span>
-                <span class="quick-chip" onclick="searchQuick('resume')">📄 Resume Builder</span>
+            <div class="quick-chips-row">
+                <button class="chip-btn" onclick="quickFilter('PDF to Word')">📕 PDF to Word</button>
+                <button class="chip-btn" onclick="quickFilter('Merge PDF')">➕ Merge PDF</button>
+                <button class="chip-btn" onclick="quickFilter('Compress PDF')">🗜️ Compress PDF</button>
+                <button class="chip-btn" onclick="quickFilter('JPG to PNG')">🖼️ JPG to PNG</button>
+                <button class="chip-btn" onclick="quickFilter('Resume')">📄 Resume Builder</button>
+                <button class="chip-btn" onclick="quickFilter('ATS')">🎯 ATS Checker</button>
             </div>
-        </section>
+        </div>
 
-        <!-- ===== ADSENSE SLOT ===== -->
-        <!-- ===== POPULAR TOOLS 4-CARD GRID ===== -->
-        <section class="section-wrap">
-            <div class="section-head">
-                <h2>Popular Tools</h2>
-                <p>Most used tools by our amazing users worldwide</p>
+        <!-- ===== SECTION 3: TRENDING TOOLS GRID ===== -->
+        <div class="section-headline-wrap">
+            <h3>🔥 Trending Tools</h3>
+        </div>
+
+        <div class="trending-grid">
+            <!-- 1. PDF to Word -->
+            <div class="trending-card">
+                <div class="trending-icon icon-pdf-red">📕</div>
+                <div class="trending-name">PDF to Word</div>
+                <a href="/converter/pdf-to-word/" class="btn-use-tool">Use Tool &gt;</a>
             </div>
 
-            <div class="popular-grid">
-                <!-- Card 1: File Converter -->
-                <div class="pop-card">
+            <!-- 2. JPG to PNG -->
+            <div class="trending-card">
+                <div class="trending-icon icon-img-green">🖼️</div>
+                <div class="trending-name">JPG to PNG</div>
+                <a href="/converter/#image" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 3. Merge PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-pdf-red">➕</div>
+                <div class="trending-name">Merge PDF</div>
+                <a href="/converter/merge-pdf/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 4. Word to PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-word-blue">📝</div>
+                <div class="trending-name">Word to PDF</div>
+                <a href="/converter/word-to-pdf/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 5. Compress PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-compress-purple">🗜️</div>
+                <div class="trending-name">Compress PDF</div>
+                <a href="/converter/compress-pdf/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 6. JPG to PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-img-green">🖼️</div>
+                <div class="trending-name">JPG to PDF</div>
+                <a href="/converter/jpg-to-pdf/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 7. Split PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-pdf-red">✂️</div>
+                <div class="trending-name">Split PDF</div>
+                <a href="/converter/split-pdf/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 8. OCR to Text -->
+            <div class="trending-card">
+                <div class="trending-icon icon-word-blue">📄</div>
+                <div class="trending-name">OCR to Text</div>
+                <a href="/converter/ocr-to-text/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 9. Compress Image -->
+            <div class="trending-card">
+                <div class="trending-icon icon-compress-purple">🗜️</div>
+                <div class="trending-name">Compress Image</div>
+                <a href="/converter/compress-image/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 10. Resume Score -->
+            <div class="trending-card">
+                <div class="trending-icon icon-target-orange">🎯</div>
+                <div class="trending-name">Resume Score</div>
+                <a href="/resume-score-checker/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 4: RECENT ACTIVITY & RECENTLY ADDED WIDGETS ===== -->
+        <div class="split-widgets-row">
+            <!-- Left: Smart Recent Activity (Client-Side LocalStorage) -->
+            <div class="widget-box">
+                <div class="widget-head">
+                    <h4>🕒 Recent Activity</h4>
+                    <span class="widget-head-badge">🔒 100% Private to You</span>
+                </div>
+                <div class="activity-items-list" id="recentActivityList">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- Right: Recently Added Tools -->
+            <div class="widget-box">
+                <div class="widget-head">
+                    <h4>✨ Recently Added</h4>
+                    <a href="/converter/" style="font-size:0.75rem; color:var(--accent-cyan); text-decoration:none; font-weight:700;">View All &gt;</a>
+                </div>
+                <div class="recently-added-grid">
+                    <!-- Card 1 -->
+                    <div class="mini-tool-card">
+                        <div class="mini-icon">📑</div>
+                        <div class="mini-title">JSON to CSV</div>
+                        <div class="mini-desc">Convert and parse structured JSON data into clean CSV sheets.</div>
+                        <a href="/converter/#office" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="mini-tool-card">
+                        <div class="mini-icon">📏</div>
+                        <div class="mini-title">Image Resizer</div>
+                        <div class="mini-desc">Resize photos by custom pixel, cm, or inch specs with zero quality loss.</div>
+                        <a href="/converter/resize-image/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="mini-tool-card">
+                        <div class="mini-icon">&lt;/&gt;</div>
+                        <div class="mini-title">Code Minifier</div>
+                        <div class="mini-desc">Minify and compress HTML, CSS &amp; JavaScript code locally.</div>
+                        <a href="/converter/case-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 5: FEATURE SPOTLIGHT: ATS CHECKER ===== -->
+        <div class="section-headline-wrap">
+            <h3>✨ Feature Spotlight</h3>
+        </div>
+
+        <div class="spotlight-banner">
+            <div class="spotlight-visual-container">
+                <div class="spotlight-terminal-header">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                    <span style="font-size:0.72rem; color:#64748b; font-family:monospace; margin-left:0.5rem;">ats-parser-v2.0.exe</span>
+                </div>
+                <div class="spotlight-code-snippet">
+                    &gt; Reading resume structure... <span class="code-highlight">DONE</span><br>
+                    &gt; Scanning job description keywords... <span class="code-highlight">MATCHED</span><br>
+                    &gt; Checking formatting &amp; table compatibility... <span class="code-highlight">PASS</span><br>
+                    &gt; Computing candidate suitability rating...
+                </div>
+                <div class="score-pill-floating">
+                    <span class="score-num">89%</span>
+                    <span style="font-size:0.74rem; font-weight:700; color:#cbd5e1;">Interview<br>Ready</span>
+                </div>
+            </div>
+
+            <div class="spotlight-content">
+                <h3>Check Your ATS Resume Score</h3>
+                <p>The ATS checker validates your resume against real recruiter algorithms, highlighting missing skills, formatting issues, and keyword gaps.</p>
+                <ul class="spotlight-checklist">
+                    <li><span class="check-icon">✓</span> Check CV Score and receive actionable optimization advice</li>
+                    <li><span class="check-icon">✓</span> Detect missing keywords, hard skills, and certification matches</li>
+                    <li><span class="check-icon">✓</span> Eliminate parsing errors that cause automated job rejections</li>
+                </ul>
+                <a href="/resume-score-checker/" class="btn-spotlight-cta">Check Your Resume →</a>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 6: BEST PRACTICES & GUIDES ===== -->
+        <div class="section-headline-wrap">
+            <h3>📚 Best Practices &amp; Guides</h3>
+        </div>
+
+        <div class="guides-grid">
+            <!-- Guide 1 -->
+            <div class="guide-card">
+                <div>
+                    <span class="guide-tag">Career Advice</span>
+                    <h4>Writing a Winning Resume</h4>
+                    <ul class="guide-checklist">
+                        <li>• Use standard ATS-friendly headers and clean typography</li>
+                        <li>• Tailor skill keywords specifically to each job description</li>
+                        <li>• Highlight measurable impact with numbers and metrics</li>
+                    </ul>
+                </div>
+                <a href="/blogs/" class="btn-guide-link">Learn Solutions &gt;</a>
+            </div>
+
+            <!-- Guide 2 -->
+            <div class="guide-card">
+                <div>
+                    <span class="guide-tag">Data Security</span>
+                    <h4>Improving Your File Security</h4>
+                    <ul class="guide-checklist">
+                        <li>• Why in-browser client-side file conversions are safer</li>
+                        <li>• Protecting private business documents from third-party servers</li>
+                        <li>• Best practices for password protecting confidential PDFs</li>
+                    </ul>
+                </div>
+                <a href="/blogs/" class="btn-guide-link">Learn Solutions &gt;</a>
+            </div>
+
+            <!-- Guide 3 -->
+            <div class="guide-card">
+                <div>
+                    <span class="guide-tag">Recruitment Workflow</span>
+                    <h4>Using the HR Bulk Screener</h4>
+                    <ul class="guide-checklist">
+                        <li>• How to screen 300+ applicant CVs in under 2 minutes</li>
+                        <li>• Weighting required vs nice-to-have job skills effectively</li>
+                        <li>• Exporting clean shortlist spreadsheets for hiring managers</li>
+                    </ul>
+                </div>
+                <a href="/hr-helper/" class="btn-guide-link">Learn Solutions &gt;</a>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 7: USER STORIES & FEEDBACK ===== -->
+        <div class="section-headline-wrap">
+            <h3>💬 User Stories &amp; Feedback</h3>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div>
+                    <div class="quote-icon">“</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The ATS Checker showed me 4 critical skills missing from my resume. After updating, I got 3 interview calls within 2 weeks!"</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="user-avatar-initials avatar-blue">JD</div>
                     <div>
-                        <div class="icon-badge bg-green">⇄</div>
-                        <h3>File Converter</h3>
-                        <p>Convert PDF, Word, Excel, Images and more. 34+ tools available with zero server uploads.</p>
+                        <div class="user-meta-name">John D.</div>
+                        <div class="user-meta-role">Full-Stack Developer</div>
                     </div>
-                    <a href="/converter/" class="btn-card-action btn-card-green">Explore Converters →</a>
                 </div>
+            </div>
 
-                <!-- Card 2: Resume Builder -->
-                <div class="pop-card">
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div>
+                    <div class="quote-icon">“</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Saved our recruitment team over 10 hours screening 250 candidate resumes. The private browser processing is incredible."</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="user-avatar-initials avatar-purple">SL</div>
                     <div>
-                        <div class="icon-badge bg-purple">📝</div>
-                        <h3>Resume Builder</h3>
-                        <p>Create professional, ATS-friendly resumes in minutes with 7 templates & photo upload.</p>
+                        <div class="user-meta-name">Sarah L.</div>
+                        <div class="user-meta-role">Talent Acquisition Lead</div>
                     </div>
-                    <a href="/resume-cv-maker/" class="btn-card-action btn-card-purple">Create Resume →</a>
                 </div>
+            </div>
 
-                <!-- Card 3: ATS Checker -->
-                <div class="pop-card">
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div>
+                    <div class="quote-icon">“</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Zero wait times, no annoying subscription popups, and totally private client-side conversions. My daily go-to toolkit."</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="user-avatar-initials avatar-green">AR</div>
                     <div>
-                        <div class="icon-badge bg-orange">🎯</div>
-                        <h3>ATS Checker</h3>
-                        <p>Check your resume score against job descriptions and improve your interview chances.</p>
+                        <div class="user-meta-name">Ahmad R.</div>
+                        <div class="user-meta-role">Product Designer</div>
                     </div>
-                    <a href="/resume-score-checker/" class="btn-card-action btn-card-orange">Check ATS Score →</a>
                 </div>
+            </div>
 
-                <!-- Card 4: HR Bulk Helper -->
-                <div class="pop-card">
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card">
+                <div>
+                    <div class="quote-icon">“</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Creating my CV took less than 10 minutes. The formatting looks super sharp and clean on mobile as well as PDF export."</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="user-avatar-initials avatar-orange">EM</div>
                     <div>
-                        <div class="icon-badge bg-blue">👥</div>
-                        <h3>HR Bulk Helper <span class="nav-badge" style="vertical-align:middle; margin-left:0.3rem;">New</span></h3>
-                        <p>Screen and rank up to 300+ candidate resumes in seconds privately in browser.</p>
-                    </div>
-                    <a href="/hr-helper/" class="btn-card-action btn-card-blue">Start Screening →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== HOW IT WORKS ===== -->
-        <section class="section-wrap">
-            <div class="how-works-box">
-                <div class="section-head">
-                    <h2>How It Works</h2>
-                    <p>Simple steps. Powerful results.</p>
-                </div>
-
-                <div class="steps-grid">
-                    <div class="step-item">
-                        <div class="step-icon-num bg-purple">1</div>
-                        <h4>Choose Your Tool</h4>
-                        <p>Select from file converters, resume tools, or HR bulk helper.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-icon-num bg-blue">2</div>
-                        <h4>Upload / Input</h4>
-                        <p>Upload your files or provide the required resume details.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-icon-num bg-purple">3</div>
-                        <h4>We Process Locally</h4>
-                        <p>All processing happens inside your browser. No data leaves your machine.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-icon-num bg-green">4</div>
-                        <h4>Get Instant Results</h4>
-                        <p>Download, copy, or export your processed results instantly.</p>
+                        <div class="user-meta-name">Elena M.</div>
+                        <div class="user-meta-role">Marketing Specialist</div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ===== WHY CHOOSE AURATOOLKIT360 ===== -->
-        <section class="section-wrap">
-            <div class="section-head">
-                <h2>Why Choose AuraToolkit360?</h2>
-                <p>Designed for speed, maximum privacy, and professional performance</p>
-            </div>
-
-            <div class="why-grid">
-                <div class="why-box">
-                    <div class="icon">🛡️</div>
-                    <h4>100% Private</h4>
-                    <p>All files and data stay in your browser.</p>
-                </div>
-                <div class="why-box">
-                    <div class="icon">⚡</div>
-                    <h4>Super Fast</h4>
-                    <p>Lightning fast processing without any wait.</p>
-                </div>
-                <div class="why-box">
-                    <div class="icon">💻</div>
-                    <h4>No Sign-Up</h4>
-                    <p>No registration or installation required.</p>
-                </div>
-                <div class="why-box">
-                    <div class="icon">✏️</div>
-                    <h4>Always Free</h4>
-                    <p>All core tools are completely free to use.</p>
-                </div>
-                <div class="why-box">
-                    <div class="icon">🌺</div>
-                    <h4>Works Offline</h4>
-                    <p>Most tools work even without internet connection.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== STATS BANNER ===== -->
-        <section class="stats-banner">
-            <div class="stat-item">
-                <div class="num">30+</div>
-                <div class="label">File Tools</div>
-            </div>
-            <div class="stat-item">
-                <div class="num">7+</div>
-                <div class="label">Resume Templates</div>
-            </div>
-            <div class="stat-item">
-                <div class="num">300+</div>
-                <div class="label">CVs in Bulk</div>
-            </div>
-            <div class="stat-item">
-                <div class="num">100%</div>
-                <div class="label">Private Processing</div>
-            </div>
-            <div class="stat-item">
-                <div class="num">0</div>
-                <div class="label">Sign-Up Required</div>
-            </div>
-        </section>
-
-        <!-- ===== ROCKET CTA BANNER ===== -->
-        <section class="section-wrap">
-            <div class="cta-rocket-banner">
-                <div class="cta-left">
-                    <div class="cta-rocket-icon">🚀</div>
-                    <div>
-                        <h3>Get More Done In Less Time</h3>
-                        <p>Join thousands of users who save hours every week with AuraToolkit360.</p>
-                        <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
-                            <a href="/converter/" class="btn-hero-primary" style="padding:0.65rem 1.4rem; font-size:0.88rem;">Explore All Tools →</a>
-                            <a href="/hr-helper/" class="btn-hero-outline" style="padding:0.65rem 1.4rem; font-size:0.88rem;">Try HR Helper Now 👥</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(16,185,129,0.3); padding:1.2rem; border-radius:18px; max-width:280px;">
-                    <div style="color:#34d399; font-weight:800; font-size:0.9rem; margin-bottom:0.3rem; display:flex; align-items:center; gap:0.4rem;">
-                        🛡️ Privacy First
-                    </div>
-                    <div style="color:#94a3b8; font-size:0.8rem; line-height:1.4;">
-                        We respect your privacy. Your data is yours and stays in your browser.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== ALL TOOLS CATEGORY DIRECTORY ===== -->
-        <section class="section-wrap">
-            <div class="section-head" style="text-align:left; margin-bottom:1.5rem;">
-                <h2>All Tools Directory</h2>
-                <p>Browse all 34+ free browser-based tools</p>
+        <!-- ===== SECTION 8: ALL TOOLS DIRECTORY (EXPANDED FOR MAXIMUM DISCOVERABILITY) ===== -->
+        <div class="directory-wrap">
+            <div class="section-headline-wrap">
+                <h3>🗂️ Complete Tool Suite Directory</h3>
             </div>
 
-            <!-- Category: Office Documents -->
-            <div class="category-block">
-                <div class="category-title">📝 Office Document Tools</div>
-                <div class="tools-grid">
-                    <a href="/converter/word-to-pdf/" class="tool-link-card"><span class="icon">📝→📕</span><span class="name">Word to PDF</span></a>
-                    <a href="/converter/pdf-to-word/" class="tool-link-card"><span class="icon">📕→📝</span><span class="name">PDF to Word</span></a>
-                    <a href="/converter/ppt-to-pdf/" class="tool-link-card"><span class="icon">📊→📕</span><span class="name">PPT to PDF</span></a>
-                    <a href="/converter/excel-to-pdf/" class="tool-link-card"><span class="icon">📗→📕</span><span class="name">Excel to PDF</span></a>
-                    <a href="/converter/#office" class="tool-link-card"><span class="icon">📄→📝</span><span class="name">RTF to DOCX</span></a>
-                    <a href="/converter/#office" class="tool-link-card"><span class="icon">📄→📕</span><span class="name">TXT to PDF</span></a>
-                    <a href="/converter/#office" class="tool-link-card"><span class="icon">📝→📄</span><span class="name">DOCX to TXT</span></a>
-                    <a href="/converter/#office" class="tool-link-card"><span class="icon">📗→📄</span><span class="name">Excel to CSV</span></a>
+            <!-- Category: Office & PDF -->
+            <div class="directory-category-card">
+                <div class="directory-cat-title">📕 PDF &amp; Office Document Tools</div>
+                <div class="directory-links-grid">
+                    <a href="/converter/pdf-to-word/" class="dir-link">📕→📝 PDF to Word</a>
+                    <a href="/converter/word-to-pdf/" class="dir-link">📝→📕 Word to PDF</a>
+                    <a href="/converter/merge-pdf/" class="dir-link">➕ Merge PDF</a>
+                    <a href="/converter/split-pdf/" class="dir-link">✂️ Split PDF</a>
+                    <a href="/converter/compress-pdf/" class="dir-link">🗜️ Compress PDF</a>
+                    <a href="/converter/excel-to-pdf/" class="dir-link">📗→📕 Excel to PDF</a>
+                    <a href="/converter/ppt-to-pdf/" class="dir-link">📊→📕 PPT to PDF</a>
+                    <a href="/converter/#office" class="dir-link">🔄 Rotate &amp; Lock PDF</a>
                 </div>
             </div>
 
-            <!-- Category: PDF Tools -->
-            <div class="category-block">
-                <div class="category-title">📕 PDF Utility Tools</div>
-                <div class="tools-grid">
-                    <a href="/converter/merge-pdf/" class="tool-link-card"><span class="icon">➕</span><span class="name">Merge PDF</span></a>
-                    <a href="/converter/split-pdf/" class="tool-link-card"><span class="icon">✂️</span><span class="name">Split PDF</span></a>
-                    <a href="/converter/compress-pdf/" class="tool-link-card"><span class="icon">🗜️</span><span class="name">Compress PDF</span></a>
-                    <a href="/converter/#pdf" class="tool-link-card"><span class="icon">🔄</span><span class="name">Rotate PDF</span></a>
-                    <a href="/converter/#pdf" class="tool-link-card"><span class="icon">🔒</span><span class="name">Lock PDF</span></a>
-                    <a href="/converter/#pdf" class="tool-link-card"><span class="icon">🔓</span><span class="name">Unlock PDF</span></a>
-                    <a href="/converter/#pdf" class="tool-link-card"><span class="icon">💧</span><span class="name">Add Watermark</span></a>
-                    <a href="/converter/#pdf" class="tool-link-card"><span class="icon">🗑️</span><span class="name">Delete Pages</span></a>
+            <!-- Category: Photo & Image -->
+            <div class="directory-category-card">
+                <div class="directory-cat-title">🖼️ Image, Photo &amp; Signature Tools</div>
+                <div class="directory-links-grid">
+                    <a href="/converter/jpg-to-pdf/" class="dir-link">🖼️→📕 Image to PDF</a>
+                    <a href="/converter/ocr-to-text/" class="dir-link">📄 OCR Image to Text</a>
+                    <a href="/converter/passport-photo-maker/" class="dir-link">🛂 Passport Photo Maker</a>
+                    <a href="/converter/resize-signature/" class="dir-link">✍️ Resize Signature Tool</a>
+                    <a href="/converter/resize-image/" class="dir-link">📏 Resize Image (Pixels/CM)</a>
+                    <a href="/converter/compress-image/" class="dir-link">🗜️ Compress Image Size</a>
+                    <a href="/converter/crop-rotate-image/" class="dir-link">✂️ Crop &amp; Rotate Image</a>
+                    <a href="/converter/favicon-generator/" class="dir-link">🌟 Favicon Generator</a>
                 </div>
             </div>
 
-                                    <!-- Category: Text Utilities & Security (RabbitTools Suite) -->
-            <div class="category-block">
-                <div class="category-title">🛠️ Text Utilities & Security</div>
-                <div class="tools-grid">
-                    <a href="/converter/word-counter/" class="tool-link-card"><span class="icon">📊</span><span class="name">Word & Character Counter</span></a>
-                    <a href="/converter/case-converter/" class="tool-link-card"><span class="icon">🔤</span><span class="name">Text Case Converter</span></a>
-                    <a href="/converter/password-generator/" class="tool-link-card"><span class="icon">🔑</span><span class="name">Secure Password Generator</span></a>
-                    <a href="/converter/compress-video/" class="tool-link-card"><span class="icon">🎥</span><span class="name">Compress Video Tool</span></a>
-                    <a href="/converter/watermark-image/" class="tool-link-card"><span class="icon">💧</span><span class="name">Image Watermark Tool</span></a>
+            <!-- Category: Career & Recruiter -->
+            <div class="directory-category-card">
+                <div class="directory-cat-title">💼 Career, Resume &amp; Recruiter Automation</div>
+                <div class="directory-links-grid">
+                    <a href="/resume-cv-maker/" class="dir-link">📝 Resume Builder (7 Templates)</a>
+                    <a href="/resume-score-checker/" class="dir-link">🎯 ATS Resume Score Checker</a>
+                    <a href="/hr-helper/" class="dir-link">👥 HR Bulk Candidate Screener</a>
+                    <a href="/converter/word-counter/" class="dir-link">📊 Word &amp; Character Counter</a>
+                    <a href="/converter/case-converter/" class="dir-link">🔤 Text Case Converter</a>
+                    <a href="/converter/password-generator/" class="dir-link">🔑 Secure Password Tool</a>
+                    <a href="/paraphrasing-tool/" class="dir-link">✨ Paraphrasing &amp; Rewrite</a>
                 </div>
             </div>
+        </div>
 
-<!-- Category: Passport, Signature & Photo Tools (PI7 Suite) -->
-            <div class="category-block">
-                <div class="category-title">📸 Passport, Signature & Photo Tools</div>
-                <div class="tools-grid">
-                    <a href="/converter/passport-photo-maker/" class="tool-link-card"><span class="icon">🖼️</span><span class="name">Passport Photo Maker</span></a>
-                    <a href="/converter/resize-signature/" class="tool-link-card"><span class="icon">✍️</span><span class="name">Resize Signature Tool</span></a>
-                    <a href="/converter/crop-rotate-image/" class="tool-link-card"><span class="icon">✂️</span><span class="name">Crop & Rotate Image</span></a>
-                    <a href="/converter/resize-image/" class="tool-link-card"><span class="icon">📏</span><span class="name">Resize Image (Pixels/CM)</span></a>
-                    <a href="/converter/compress-image-target/" class="tool-link-card"><span class="icon">🗜️</span><span class="name">Compress Image to KB</span></a>
-                    <a href="/converter/favicon-generator/" class="tool-link-card"><span class="icon">🌟</span><span class="name">Favicon & ICO Generator</span></a>
-                </div>
-            </div>
-
-<!-- Category: Image & OCR Tools -->
-            <div class="category-block">
-                <div class="category-title">🖼️ Image & OCR Tools</div>
-                <div class="tools-grid">
-                    <a href="/converter/jpg-to-pdf/" class="tool-link-card"><span class="icon">🖼️→📕</span><span class="name">Image to PDF</span></a>
-                    <a href="/converter/ocr-to-text/" class="tool-link-card"><span class="icon">🖼️→📝</span><span class="name">Image to Word (OCR)</span></a>
-                    <a href="/converter/ocr-to-text/" class="tool-link-card"><span class="icon">📄</span><span class="name">OCR to Text</span></a>
-                    <a href="/converter/#image" class="tool-link-card"><span class="icon">JPG→PNG</span><span class="name">JPG to PNG</span></a>
-                    <a href="/converter/#image" class="tool-link-card"><span class="icon">PNG→JPG</span><span class="name">PNG to JPG</span></a>
-                    <a href="/converter/#image" class="tool-link-card"><span class="icon">WEBP→PNG</span><span class="name">WEBP to PNG</span></a>
-                    <a href="/converter/compress-image/" class="tool-link-card"><span class="icon">🗜️</span><span class="name">Compress Image</span></a>
-                </div>
-            </div>
-
-            <!-- Category: Resume & HR Tools -->
-            <div class="category-block">
-                <div class="category-title">💼 Resume & HR Recruiter Tools</div>
-                <div class="tools-grid">
-                    <a href="/resume-cv-maker/" class="tool-link-card"><span class="icon">📄</span><span class="name">Resume CV Maker (7 Templates)</span></a>
-                    <a href="/resume-score-checker/" class="tool-link-card"><span class="icon">🎯</span><span class="name">ATS Resume Score Checker</span></a>
-                    <a href="/hr-helper/" class="tool-link-card"><span class="icon">👥</span><span class="name">HR Bulk Candidate Screening</span></a>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- ===== FOOTER ===== -->
-        <footer>
-        <div class="footer-grid">
+    <footer>
+        <div class="footer-inner">
+            <!-- Col 1: Brand Info -->
             <div class="footer-col">
-                <h3>AuraToolkit360</h3>
-                <p>Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, and HR candidate screening.</p>
-                <p style="margin-top:0.6rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
-                <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem;">
-                    <a href="/privacy-policy/" style="color:#38bdf8; text-decoration:none;">Privacy Policy</a> •
-                    <a href="/terms/" style="color:#38bdf8; text-decoration:none;">Terms of Service</a> •
-                    <a href="/disclaimer/" style="color:#38bdf8; text-decoration:none;">Disclaimer</a>
+                <a href="/" class="logo" style="margin-bottom:1rem;">
+                    <div class="logo-symbol">A</div>
+                    <div class="logo-text">AuraToolkit<span>360</span></div>
+                </a>
+                <p style="font-size:0.85rem; line-height:1.6; margin-bottom:1.2rem;">
+                    Your privacy is our highest priority. All conversions, resume building, and candidate screening run 100% inside your web browser.
+                </p>
+                <div style="font-size:0.82rem; color:var(--text-muted);">
+                    Contact: <a href="mailto:info@auratoolkit360.com" style="color:var(--accent-cyan); text-decoration:none;">info@auratoolkit360.com</a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Navigation & Legal</h4>
-                <div class="footer-links">
-                    <a href="/">Home Page</a>
-                    <a href="/converter/">File Converter Suite</a>
-                    <a href="/resume-cv-maker/">Resume CV Maker</a>
-                    <a href="/resume-score-checker/">ATS Score Checker</a>
-                    <a href="/hr-helper/">HR Screening Helper</a>
-                    <a href="/blogs/">Blog Articles</a>
-                    <a href="/about/">About Us</a>
-                    <a href="/contact/">Contact Us</a>
-                    <a href="/privacy-policy/">Privacy Policy (GDPR/CCPA)</a>
-                    <a href="/terms/">Terms of Service</a>
-                    <a href="/disclaimer/">Disclaimer Statement</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Feedback & Support</h4>
-                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'
-Email: '+fd.get('email')+'
 
-Feedback:
-'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
-                    <input name="name" type="text" placeholder="Your Name" required aria-label="Your Name">
-                    <input name="email" type="email" placeholder="Your Email" required aria-label="Your Email">
-                    <textarea name="message" rows="3" placeholder="Share your feedback..." required aria-label="Share your feedback"></textarea>
-                    <button type="submit">Send Feedback</button>
-                </form>
+            <!-- Col 2: Product Suite -->
+            <div class="footer-col">
+                <h5>Products</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/converter/">File Converter Suite</a></li>
+                    <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
+                    <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
+                    <li><a href="/hr-helper/">HR Bulk Screener</a></li>
+                    <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Company & Articles -->
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/about/">About AuraToolkit360</a></li>
+                    <li><a href="/blogs/">Career &amp; Tech Guides</a></li>
+                    <li><a href="/contact/">Help &amp; Contact Support</a></li>
+                    <li><a href="/converter/word-counter/">Text Utilities</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Legal & Security -->
+            <div class="footer-col">
+                <h5>Legal &amp; Security</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/privacy-policy/">Privacy Policy (GDPR / CCPA)</a></li>
+                    <li><a href="/terms/">Terms of Service</a></li>
+                    <li><a href="/disclaimer/">Disclaimer Statement</a></li>
+                    <li><span style="font-size:0.75rem; color:#10b981;">● System Status: All Systems Operational</span></li>
+                </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing | <a href="/privacy-policy/" style="color:#64748b; text-decoration:underline;">Privacy</a> | <a href="/terms/" style="color:#64748b; text-decoration:underline;">Terms</a>
+
+        <div class="footer-bottom-bar">
+            <div>© 2026 AuraToolkit360. All rights reserved. 100% Client-Side Privacy Guaranteed.</div>
+            <div>
+                <a href="/privacy-policy/" style="color:var(--text-muted); text-decoration:none; margin-right:1rem;">Privacy</a>
+                <a href="/terms/" style="color:var(--text-muted); text-decoration:none;">Terms</a>
+            </div>
         </div>
     </footer>
 
-    <!-- ===== SEARCH ENGINE LOGIC ===== -->
+    <!-- ===== SCRIPT: CAROUSEL, SEARCH & SMART RECENT ACTIVITY ===== -->
     <script>
+        // --- 1. FEATURED CAROUSEL LOGIC ---
+        let currentSlideIndex = 0;
+        const totalSlides = 3;
+        const slidesContainer = document.getElementById('carouselSlides');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let autoSlideTimer = null;
+
+        function updateSlideUI() {
+            slidesContainer.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlideIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            updateSlideUI();
+            resetAutoSlide();
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+            updateSlideUI();
+            resetAutoSlide();
+        }
+
+        function goToSlide(idx) {
+            currentSlideIndex = idx;
+            updateSlideUI();
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            autoSlideTimer = setInterval(() => {
+                nextSlide();
+            }, 6500);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideTimer);
+            startAutoSlide();
+        }
+
+        startAutoSlide();
+
+        // Pause carousel on hover
+        const carouselWrapper = document.getElementById('carouselWrapper');
+        if (carouselWrapper) {
+            carouselWrapper.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+            carouselWrapper.addEventListener('mouseleave', () => startAutoSlide());
+        }
+
+        // --- 2. SEARCH DATABASE & FILTER ENGINE ---
         const toolsDatabase = [
-            { name: "Word & Character Counter", icon: "📊", url: "/converter/word-counter/", category: "Utilities", keywords: ["word & character counter", "counter", "case", "password", "video", "watermark"] },
-            { name: "Text Case Converter", icon: "🔤", url: "/converter/case-converter/", category: "Utilities", keywords: ["text case converter", "counter", "case", "password", "video", "watermark"] },
-            { name: "Secure Password Generator", icon: "🔑", url: "/converter/password-generator/", category: "Utilities", keywords: ["secure password generator", "counter", "case", "password", "video", "watermark"] },
-            { name: "Compress Video Online", icon: "🎥", url: "/converter/compress-video/", category: "Utilities", keywords: ["compress video online", "counter", "case", "password", "video", "watermark"] },
-            { name: "Image Watermark Tool", icon: "💧", url: "/converter/watermark-image/", category: "Utilities", keywords: ["image watermark tool", "counter", "case", "password", "video", "watermark"] },
-            { name: "Passport Photo Maker", icon: "🖼️", url: "/converter/passport-photo-maker/", category: "Photo & Image", keywords: ["passport photo maker", "photo", "image", "passport", "signature", "resize", "crop", "compress"] },
-            { name: "Resize Signature Tool", icon: "✍️", url: "/converter/resize-signature/", category: "Photo & Image", keywords: ["resize signature tool", "photo", "image", "passport", "signature", "resize", "crop", "compress"] },
-            { name: "Merge Photo & Signature", icon: "🖼️+✍️", url: "/converter/merge-photo-signature/", category: "Photo & Image", keywords: ["merge photo & signature", "photo", "image", "passport", "signature", "resize", "crop", "compress"] },
-            { name: "Crop & Rotate Image", icon: "✂️", url: "/converter/crop-rotate-image/", category: "Photo & Image", keywords: ["crop & rotate image", "photo", "image", "passport", "signature", "resize", "crop", "compress"] },
-            { name: "Resize Image (Pixels, CM, Inches)", icon: "📏", url: "/converter/resize-image/", category: "Photo & Image", keywords: ["resize image (pixels, cm, inches)", "photo", "image", "passport", "signature", "resize", "crop", "compress"] },
-            { name: "Compress Image to Target KB", icon: "🗜️", url: "/converter/compress-image-target/", category: "Photo & Image", keywords: ["compress image to target kb", "photo", "image", "passport", "signature", "resize", "crop", "compress"] },
-            { name: "Favicon & ICO Generator", icon: "🌟", url: "/converter/favicon-generator/", category: "Photo & Image", keywords: ["favicon & ico generator", "photo", "image", "passport", "signature", "resize", "crop", "compress"] },
-            { name: "MP3 Audio Converter", icon: "🎵", url: "/converter/mp3-converter/", category: "Audio", keywords: ["mp3", "audio", "wav", "convert", "video to mp3", "extract"] },
-            { name: "Paraphrasing Tool", icon: "✨", url: "/paraphrasing-tool/", category: "Writing", keywords: ["paraphrasing", "rewrite", "text", "essay", "resume", "sentence"] },
-            { name: "PDF to Word", icon: "📕→📝", url: "/converter/pdf-to-word/", category: "Office", keywords: ["pdf", "word", "docx", "convert", "document"] },
-            { name: "Word to PDF", icon: "📝→📕", url: "/converter/word-to-pdf/", category: "Office", keywords: ["word", "docx", "pdf", "convert", "document"] },
-            { name: "PDF to JPG", icon: "🖼️", url: "/converter/pdf-to-jpg/", category: "PDF", keywords: ["pdf", "jpg", "png", "image", "convert"] },
-            { name: "JPG to PDF", icon: "🖼️→📕", url: "/converter/jpg-to-pdf/", category: "Image", keywords: ["jpg", "pdf", "image", "convert"] },
-            { name: "PNG to PDF", icon: "🖼️→📕", url: "/converter/png-to-pdf/", category: "Image", keywords: ["png", "pdf", "image", "convert"] },
-            { name: "Compress PDF", icon: "🗜️", url: "/converter/compress-pdf/", category: "PDF", keywords: ["compress", "reduce", "size", "pdf"] },
-            { name: "Merge PDF", icon: "➕", url: "/converter/merge-pdf/", category: "PDF", keywords: ["merge", "combine", "join", "pdf"] },
-            { name: "Split PDF", icon: "✂️", url: "/converter/split-pdf/", category: "PDF", keywords: ["split", "divide", "pages", "pdf"] },
-            { name: "OCR Image to Text", icon: "📄", url: "/converter/ocr-to-text/", category: "Image", keywords: ["ocr", "image", "text", "extract", "scan"] },
-            { name: "Excel to PDF", icon: "📗→📕", url: "/converter/excel-to-pdf/", category: "Office", keywords: ["excel", "xlsx", "pdf", "convert"] },
-            { name: "PPT to PDF", icon: "📊→📕", url: "/converter/ppt-to-pdf/", category: "Office", keywords: ["ppt", "powerpoint", "pdf", "convert"] },
-            { name: "Compress Image", icon: "🗜️", url: "/converter/compress-image/", category: "Image", keywords: ["compress", "reduce", "image", "photo"] },
-            { name: "Resume CV Maker", icon: "📄", url: "/resume-cv-maker/", category: "Resume", keywords: ["resume", "cv", "builder", "create", "photo", "templates"] },
-            { name: "ATS Resume Score Checker", icon: "🎯", url: "/resume-score-checker/", category: "Resume", keywords: ["ats", "score", "checker", "resume", "job description"] },
-            { name: "Bulk Resume Screening", icon: "👥", url: "/hr-helper/", category: "HR", keywords: ["hr", "bulk", "screening", "resume", "recruitment"] },
-            { name: "Privacy Policy", icon: "🔒", url: "/privacy-policy/", category: "Legal", keywords: ["privacy", "policy", "gdpr", "ccpa", "cookies", "data", "terms"] },
-            { name: "Terms of Service", icon: "📜", url: "/terms/", category: "Legal", keywords: ["terms", "service", "conditions", "legal", "rules"] },
-            { name: "Disclaimer Statement", icon: "⚖️", url: "/disclaimer/", category: "Legal", keywords: ["disclaimer", "legal", "liability"] },
-            { name: "About Us", icon: "ℹ️", url: "/about/", category: "Company", keywords: ["about", "mission", "founder", "hr"] },
-            { name: "Contact Support", icon: "📧", url: "/contact/", category: "Support", keywords: ["contact", "email", "support", "feedback"] }
+            { name: "PDF to Word", icon: "📕", url: "/converter/pdf-to-word/", category: "Office", keywords: ["pdf to word", "convert", "docx"] },
+            { name: "Word to PDF", icon: "📝", url: "/converter/word-to-pdf/", category: "Office", keywords: ["word to pdf", "docx to pdf"] },
+            { name: "Merge PDF", icon: "➕", url: "/converter/merge-pdf/", category: "PDF", keywords: ["merge pdf", "combine", "join"] },
+            { name: "Split PDF", icon: "✂️", url: "/converter/split-pdf/", category: "PDF", keywords: ["split pdf", "extract pages"] },
+            { name: "Compress PDF", icon: "🗜️", url: "/converter/compress-pdf/", category: "PDF", keywords: ["compress pdf", "reduce size"] },
+            { name: "JPG to PDF", icon: "🖼️", url: "/converter/jpg-to-pdf/", category: "Image", keywords: ["jpg to pdf", "image to pdf"] },
+            { name: "OCR Image to Text", icon: "📄", url: "/converter/ocr-to-text/", category: "Image", keywords: ["ocr", "scan", "extract text"] },
+            { name: "Resume CV Maker", icon: "📝", url: "/resume-cv-maker/", category: "Career", keywords: ["resume", "cv builder", "maker", "templates"] },
+            { name: "ATS Resume Score Checker", icon: "🎯", url: "/resume-score-checker/", category: "Career", keywords: ["ats", "score checker", "cv test"] },
+            { name: "HR Bulk Candidate Screener", icon: "👥", url: "/hr-helper/", category: "HR", keywords: ["hr helper", "bulk screening", "recruiting"] },
+            { name: "Resize Image (Pixels/CM)", icon: "📏", url: "/converter/resize-image/", category: "Image", keywords: ["resize image", "dimensions", "dpi"] },
+            { name: "Compress Image", icon: "🗜️", url: "/converter/compress-image/", category: "Image", keywords: ["compress image", "reduce kb"] },
+            { name: "Passport Photo Maker", icon: "🛂", url: "/converter/passport-photo-maker/", category: "Photo", keywords: ["passport photo", "visa"] },
+            { name: "Resize Signature Tool", icon: "✍️", url: "/converter/resize-signature/", category: "Photo", keywords: ["signature", "resize signature"] },
+            { name: "Word & Character Counter", icon: "📊", url: "/converter/word-counter/", category: "Writing", keywords: ["word counter", "character count"] },
+            { name: "Secure Password Generator", icon: "🔑", url: "/converter/password-generator/", category: "Utilities", keywords: ["password generator", "security"] }
         ];
 
         const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('searchResults');
-        const clearBtn = document.getElementById('clearBtn');
+        const searchResultsBox = document.getElementById('searchResultsBox');
+        const searchClearBtn = document.getElementById('searchClearBtn');
 
         function performSearch(query) {
-            const trimmed = query.trim().toLowerCase();
-            if (trimmed === '') {
-                searchResults.classList.remove('show');
-                clearBtn.style.display = 'none';
+            const q = query.trim().toLowerCase();
+            if (!q) {
+                searchResultsBox.classList.remove('show');
+                searchClearBtn.style.display = 'none';
                 return;
             }
-            clearBtn.style.display = 'block';
+            searchClearBtn.style.display = 'block';
 
-            const results = toolsDatabase.filter(tool => {
-                const searchStr = tool.name.toLowerCase() + ' ' + tool.category.toLowerCase() + ' ' + tool.keywords.join(' ');
-                return searchStr.includes(trimmed);
+            const filtered = toolsDatabase.filter(t => {
+                const combined = (t.name + ' ' + t.category + ' ' + t.keywords.join(' ')).toLowerCase();
+                return combined.includes(q);
             });
 
-            if (results.length === 0) {
-                searchResults.innerHTML = `
-                    <div class="search-result-item" style="justify-content:center; color:#94a3b8;">
-                        <span class="icon">🔍</span> No tools found for "${escapeHtml(query)}"
+            if (filtered.length === 0) {
+                searchResultsBox.innerHTML = `
+                    <div style="padding:1rem; text-align:center; color:#94a3b8; font-size:0.85rem;">
+                        No tools found matching "<strong>${escapeHtml(query)}</strong>"
                     </div>
                 `;
             } else {
-                searchResults.innerHTML = results.map(tool => `
-                    <a href="${tool.url}" class="search-result-item">
-                        <span class="icon">${tool.icon}</span>
-                        <div class="info">
-                            <div class="name">${escapeHtml(tool.name)}</div>
-                            <div class="desc">${escapeHtml(tool.category)} Tool</div>
+                searchResultsBox.innerHTML = filtered.map(item => `
+                    <a href="${item.url}" class="search-res-item">
+                        <span style="font-size:1.2rem;">${item.icon}</span>
+                        <div>
+                            <div style="font-weight:700; font-size:0.88rem;">${escapeHtml(item.name)}</div>
+                            <div style="font-size:0.72rem; color:#94a3b8;">${escapeHtml(item.category)} Tool</div>
                         </div>
-                        <span class="badge">${escapeHtml(tool.category)}</span>
+                        <span class="tool-cat-pill">${escapeHtml(item.category)}</span>
                     </a>
                 `).join('');
             }
-            searchResults.classList.add('show');
+            searchResultsBox.classList.add('show');
         }
 
-        function escapeHtml(value) {
-            return String(value || '')
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#039;');
+        function clearSearch() {
+            searchInput.value = '';
+            searchResultsBox.classList.remove('show');
+            searchClearBtn.style.display = 'none';
+            searchInput.focus();
+        }
+
+        function quickFilter(term) {
+            searchInput.value = term;
+            performSearch(term);
+            searchInput.focus();
+        }
+
+        function focusSearch() {
+            searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            searchInput.focus();
+        }
+
+        function escapeHtml(str) {
+            return String(str || '').replace(/[&<>"']/g, m => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[m]);
         }
 
         searchInput.addEventListener('input', e => performSearch(e.target.value));
-        document.addEventListener('click', e => { if (!e.target.closest('.search-section')) searchResults.classList.remove('show'); });
-        function clearSearch() { searchInput.value = ''; searchResults.classList.remove('show'); clearBtn.style.display = 'none'; searchInput.focus(); }
-        function searchQuick(q) { searchInput.value = q; performSearch(q); searchInput.focus(); }
-        searchInput.addEventListener('keydown', e => { if (e.key === 'Escape') clearSearch(); });
-    </script>
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.search-container')) {
+                searchResultsBox.classList.remove('show');
+            }
+        });
 
-    <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
-    <script>
+        // --- 3. SMART CLIENT-SIDE RECENT ACTIVITY ---
+        function loadRecentActivity() {
+            const container = document.getElementById('recentActivityList');
+            if (!container) return;
+
+            let activities = [];
+            try {
+                const stored = localStorage.getItem('atk_recent_activity');
+                if (stored) activities = JSON.parse(stored);
+            } catch (err) {
+                activities = [];
+            }
+
+            if (!activities || activities.length === 0) {
+                // Helpful starter state for new users
+                container.innerHTML = `
+                    <div class="activity-empty-state">
+                        <div style="font-size:1.3rem; margin-bottom:0.3rem;">✨ Ready for your first task!</div>
+                        <p style="margin-bottom:0.8rem;">Your recent file conversions and resume drafts will appear here for quick access.</p>
+                        <div style="display:flex; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
+                            <a href="/converter/pdf-to-word/" class="activity-action-btn">Convert a File</a>
+                            <a href="/resume-cv-maker/" class="activity-action-btn">Build Resume</a>
+                            <a href="/resume-score-checker/" class="activity-action-btn">Check ATS</a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = activities.slice(0, 4).map(act => `
+                    <div class="activity-row">
+                        <div class="activity-icon">${act.icon || '⚡'}</div>
+                        <div class="activity-info">
+                            <div class="activity-title">${escapeHtml(act.title)}</div>
+                            <div class="activity-time">${escapeHtml(act.time || 'Recently')}</div>
+                        </div>
+                        <a href="${act.url || '/'}" class="activity-action-btn">Open →</a>
+                    </div>
+                `).join('') + `
+                    <div style="text-align:right; margin-top:0.4rem;">
+                        <button onclick="clearActivityHistory()" style="background:none; border:none; color:#64748b; font-size:0.72rem; cursor:pointer; text-decoration:underline;">Clear History</button>
+                    </div>
+                `;
+            }
+        }
+
+        function clearActivityHistory() {
+            try {
+                localStorage.removeItem('atk_recent_activity');
+                loadRecentActivity();
+            } catch(e) {}
+        }
+
+        // Initialize activity list on load
+        loadRecentActivity();
+
+        // Helper for bookmarking
+        function bookmarkSite() {
+            alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!');
+        }
+
+        // --- 4. SMART NAVBAR SCROLL VISIBILITY ---
         (function() {
-            let lastScrollY = window.scrollY;
-            const navbar = document.querySelector('.navbar');
-            if (!navbar) return;
+            let lastY = window.scrollY;
+            const nav = document.querySelector('.navbar');
+            if (!nav) return;
 
-            window.addEventListener('scroll', function() {
-                const currentScrollY = window.scrollY;
-                if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    navbar.classList.add('nav-hidden');
-                } else if (currentScrollY < lastScrollY) {
-                    navbar.classList.remove('nav-hidden');
+            window.addEventListener('scroll', () => {
+                const currentY = window.scrollY;
+                if (currentY > lastY && currentY > 120) {
+                    nav.classList.add('nav-hidden');
+                } else if (currentY < lastY) {
+                    nav.classList.remove('nav-hidden');
                 }
-                if (currentScrollY <= 10) {
-                    navbar.classList.remove('nav-hidden');
-                }
-                lastScrollY = currentScrollY;
+                if (currentY <= 10) nav.classList.remove('nav-hidden');
+                lastY = currentY;
             }, { passive: true });
         })();
     </script>
