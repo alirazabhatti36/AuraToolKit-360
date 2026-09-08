@@ -134,10 +134,34 @@
         </div>
 
         <div class="info-card">
-            <h2>Why Use Secure Password Generator?</h2>
-            <p>Generate strong, uncrackable random passwords with custom length, numbers, and symbols 100% locally in browser memory. No data is stored or logged on any external server.</p>
-        </div>
-    </main>
+            <h2>Cryptographically Secure Password Generator & Security Standards</h2>
+            <p>Creating robust, unpredictable passwords is the single most effective defense against brute-force attacks, credential stuffing, and dictionary-based unauthorized account access. AuraToolkit360 utilizes browser-native cryptographic entropy to generate high-strength passphrases without transmitting keys across the network.</p>
+
+            <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">Key Characteristics of an Uncrackable Password</h3>
+            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
+                <li><strong>Length is Supreme:</strong> A 16-character password combining letters, numbers, and symbols provides over 95 bits of cryptographic entropy, requiring billions of years for modern supercomputers to crack via brute-force.</li>
+                <li><strong>Mixed Character Sets:</strong> Ensure a combination of uppercase letters (A-Z), lowercase letters (a-z), numeric digits (0-9), and special punctuation marks (!@#$%^&*).</li>
+                <li><strong>Avoid Predictable Patterns:</strong> Never include personal names, birthdays, consecutive numbers (1234), or common dictionary substitutes (P@ssw0rd).</li>
+                <li><strong>Unique Per Account:</strong> Never reuse the same master password across banking, email, cloud storage, and social media platforms. Use a dedicated password manager to store generated keys securely.</li>
+            </ul>
+
+            <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">How Client-Side Entropy Guarantees Absolute Privacy</h3>
+            <p>Standard online generators often generate keys on cloud servers, introducing transmission vulnerabilities. In contrast, AuraToolkit360 generates randomness directly in your local hardware memory using the browser's <code>window.crypto</code> API. The generated password exists solely in your browser tab until you copy it, eliminating server logging or MITM interception risks.</p>
+
+            <h3 style="color:#38bdf8; margin: 1.5rem 0 0.5rem; font-size:1.15rem;">Frequently Asked Questions (FAQ)</h3>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Is it safe to generate passwords online?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">With AuraToolkit360, yes! Because our generator operates entirely client-side without internet requests, our servers never see or log the generated string.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ What is the recommended password length for everyday accounts?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Cybersecurity standards recommend a minimum of 14 to 16 characters for critical accounts like email, financial portals, and administrator logins.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ How should I store my generated passwords?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Store your credentials in an encrypted password manager such as Bitwarden, 1Password, or your operating system's built-in secure keychain.</p>
+            </div>
+        </div></main>
 
     <footer>
         <div class="footer-grid">

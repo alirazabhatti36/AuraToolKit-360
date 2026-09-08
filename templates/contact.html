@@ -174,7 +174,7 @@
             <h2>Send us a Message</h2>
             <p class="subtitle">Fill out the form below and we'll get back to you as soon as possible.</p>
 
-            <form>
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input aria-label="name" type="text" id="name" placeholder="Enter your full name" required>
@@ -191,8 +191,28 @@
                     <label for="message">Message</label>
                     <textarea aria-label="message" id="message" placeholder="Tell us how we can help..." required></textarea>
                 </div>
-                <button type="button" class="btn" onclick="alert('Thank you for your message! We\'ll get back to you soon.')">Send Message</button>
+                <button type="submit" class="btn">Send Message</button>
             </form>
+
+            <div id="contactFeedback" style="display:none; margin-top:1.5rem; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); border-radius:14px; padding:1.2rem; color:#34d399;">
+                <h4 style="margin-bottom:0.4rem; color:#34d399;">Message Prepared Successfully!</h4>
+                <p style="color:#cbd5e1; font-size:0.9rem; margin-bottom:0.4rem;">Your message has been formatted for <strong>info@auratoolkit360.com</strong>. Your email client will now open automatically.</p>
+                <p style="color:#94a3b8; font-size:0.82rem;">If your email program did not open, please email us directly at: <a href="mailto:info@auratoolkit360.com" style="color:#38bdf8;">info@auratoolkit360.com</a></p>
+            </div>
+
+            <script>
+                function handleContactSubmit(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const subject = document.getElementById('subject').value.trim() || 'AuraToolkit360 Inquiry';
+                    const message = document.getElementById('message').value.trim();
+                    const body = `Sender Name: ${name}\nSender Email: ${email}\n\nMessage Details:\n${message}\n\nSent via AuraToolkit360 Contact Portal`;
+                    const mailtoUrl = `mailto:info@auratoolkit360.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    document.getElementById('contactFeedback').style.display = 'block';
+                    window.location.href = mailtoUrl;
+                }
+            </script>
 
             <hr class="separator">
 

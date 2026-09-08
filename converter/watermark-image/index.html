@@ -101,7 +101,10 @@
             <input type="text" id="wmText" placeholder="Enter Watermark Text (e.g. AuraToolkit360)" style="max-width:300px;">
             <button class="btn-action" onclick="applyWatermark()">⚡ Apply Watermark</button>
         </div>
-        <canvas id="wmCanvas" style="max-width:100%; border-radius:14px; display:none; margin:0 auto; border:1px solid rgba(255,255,255,0.15);"></canvas>
+        <canvas id="wmCanvas" style="max-width:100%; border-radius:14px; display:none; margin:1rem auto; border:1px solid rgba(255,255,255,0.15);"></canvas>
+        <div id="wmDownloadWrap" style="display:none; margin-top:1rem;">
+            <button class="btn-action" style="background:linear-gradient(135deg, #10b981, #059669);" onclick="downloadWatermarked()">💾 Download Watermarked Image</button>
+        </div>
         <script>
             let wmImg = null;
             function loadWmImg(files) {
@@ -109,32 +112,51 @@
                 const reader = new FileReader();
                 reader.onload = e => {
                     wmImg = new Image();
-                    wmImg.onload = () => alert('Image loaded!');
                     wmImg.src = e.target.result;
                 };
                 reader.readAsDataURL(files[0]);
             }
             function applyWatermark() {
-                if(!wmImg) return alert('Select image first');
+                if(!wmImg) return alert('Please select an image first.');
                 const canvas = document.getElementById('wmCanvas');
                 const ctx = canvas.getContext('2d');
                 canvas.width = wmImg.width; canvas.height = wmImg.height;
                 ctx.drawImage(wmImg, 0, 0);
                 const txt = document.getElementById('wmText').value || 'AuraToolkit360';
                 ctx.font = 'bold ' + (canvas.height/15) + 'px Inter, sans-serif';
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
                 ctx.textAlign = 'center';
                 ctx.fillText(txt, canvas.width/2, canvas.height/2);
                 canvas.style.display = 'block';
+                document.getElementById('wmDownloadWrap').style.display = 'block';
+            }
+            function downloadWatermarked() {
+                const canvas = document.getElementById('wmCanvas');
+                const a = document.createElement('a');
+                a.href = canvas.toDataURL('image/png');
+                a.download = 'watermarked_image.png';
+                a.click();
             }
         </script>
         </div>
 
         <div class="info-card">
-            <h2>Why Use Image Watermark Tool?</h2>
-            <p>Add custom text or logo watermarks to your photos and images 100% privately inside your browser. No data is stored or logged on any external server.</p>
-        </div>
-    </main>
+            <h2>Image Watermarking Guide: Protecting Copyright & Brand Attribution</h2>
+            <p>Adding watermark signatures, brand logos, or copyright notices protects your photography, digital artwork, and confidential project mockups from unauthorized reuse. AuraToolkit360 stamps custom text watermarks with opacity control directly in browser memory.</p>
+
+            <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">Watermarking Best Practices</h3>
+            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
+                <li><strong>Subtle Opacity (30% to 50%):</strong> Ensures the watermark is clearly legible without obstructing the primary visual subject.</li>
+                <li><strong>Strategic Placement:</strong> Place watermarks across high-contrast focal points rather than plain corners to deter automated AI removal.</li>
+                <li><strong>Preserve High Resolution:</strong> In-browser canvas rendering applies text overlays without reducing the underlying photo's pixel dimensions.</li>
+            </ul>
+
+            <h3 style="color:#38bdf8; margin: 1.5rem 0 0.5rem; font-size:1.15rem;">Frequently Asked Questions (FAQ)</h3>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Can watermarked images be downloaded instantly?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Yes, click the download button as soon as your watermark text is applied to save the final file.</p>
+            </div>
+        </div></main>
 
     <footer>
         <div class="footer-grid">

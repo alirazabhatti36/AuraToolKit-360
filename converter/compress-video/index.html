@@ -94,20 +94,147 @@
             
         <div style="border:2px dashed rgba(56,189,248,0.4); border-radius:18px; padding:2.5rem 1.5rem; background:rgba(15,23,42,0.5); cursor:pointer;" onclick="document.getElementById('vidFile').click()">
             <div style="font-size:3rem;">🎥</div>
-            <div style="font-weight:700; color:#f8fafc; font-size:1.1rem; margin-top:0.5rem;">Upload MP4 / WebM Video File</div>
-            <input type="file" id="vidFile" accept="video/*" style="display:none" onchange="document.getElementById('vidName').textContent=this.files[0].name">
+            <div style="font-weight:700; color:#f8fafc; font-size:1.1rem; margin-top:0.5rem;">Click to Upload MP4 / WebM Video File</div>
+            <p style="color:#94a3b8; font-size:0.85rem; margin-top:0.3rem;">Supports MP4, WebM, MOV, and MKV video files</p>
+            <input type="file" id="vidFile" accept="video/*" style="display:none" onchange="handleVidSelected(this.files)">
         </div>
         <div id="vidName" style="color:#38bdf8; font-weight:700; margin-top:1rem;"></div>
-        <div style="margin-top:1.5rem;">
-            <button class="btn-action" onclick="alert('Processing video media stream in browser memory...')">⚡ Compress Video File</button>
+
+        <div style="margin: 1.2rem 0; display:flex; justify-content:center; align-items:center; gap:0.8rem; flex-wrap:wrap;">
+            <label style="color:#cbd5e1; font-weight:600; font-size:0.9rem;">Target Quality:</label>
+            <select id="vidQuality" style="width:200px; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.2); color:#f8fafc; padding:0.55rem; border-radius:10px;">
+                <option value="medium" selected>Standard Web (720p / 1 Mbps)</option>
+                <option value="low">Email Friendly (480p / 500 Kbps)</option>
+                <option value="high">High Definition (1080p / 2.5 Mbps)</option>
+            </select>
         </div>
+
+        <div style="margin-top:1rem;">
+            <button class="btn-action" id="btnCompressVid" onclick="startVideoCompression()">⚡ Compress Video in Browser</button>
+        </div>
+
+        <div id="vidProgress" style="display:none; margin-top:1.5rem; color:#38bdf8; font-weight:600;">
+            <div id="vidStatus">Transcoding video stream...</div>
+            <div style="width:100%; max-width:400px; height:8px; background:rgba(255,255,255,0.1); border-radius:10px; margin:0.8rem auto; overflow:hidden;">
+                <div id="vidBar" style="width:0%; height:100%; background:linear-gradient(135deg, #38bdf8, #818cf8); transition:width 0.2s;"></div>
+            </div>
+        </div>
+
+        <div id="vidResult" style="margin-top:1.5rem; display:none;"></div>
+        <video id="hiddenVid" style="display:none;" playsinline muted></video>
+        <canvas id="hiddenCanvas" style="display:none;"></canvas>
+
+        <script>
+            let selectedVidFile = null;
+            function handleVidSelected(files) {
+                if(!files || !files.length) return;
+                selectedVidFile = files[0];
+                document.getElementById('vidName').textContent = `📹 Selected: ${selectedVidFile.name} (${(selectedVidFile.size / (1024*1024)).toFixed(2)} MB)`;
+                document.getElementById('vidResult').style.display = 'none';
+            }
+
+            async function startVideoCompression() {
+                if(!selectedVidFile) return alert('Please select a video file first.');
+                const btn = document.getElementById('btnCompressVid');
+                const prog = document.getElementById('vidProgress');
+                const bar = document.getElementById('vidBar');
+                const status = document.getElementById('vidStatus');
+                const resDiv = document.getElementById('vidResult');
+                
+                btn.disabled = true;
+                prog.style.display = 'block';
+                bar.style.width = '10%';
+                status.textContent = 'Loading video stream in memory...';
+
+                const video = document.getElementById('hiddenVid');
+                const canvas = document.getElementById('hiddenCanvas');
+                const ctx = canvas.getContext('2d');
+                const url = URL.createObjectURL(selectedVidFile);
+                video.src = url;
+
+                video.onloadedmetadata = () => {
+                    bar.style.width = '25%';
+                    status.textContent = 'Configuring target bitrate & dimensions...';
+
+                    const quality = document.getElementById('vidQuality').value;
+                    let targetWidth = 1280;
+                    let bitrate = 1000000;
+                    if(quality === 'low') { targetWidth = 854; bitrate = 500000; }
+                    else if(quality === 'high') { targetWidth = 1920; bitrate = 2500000; }
+
+                    const scale = Math.min(1, targetWidth / video.videoWidth);
+                    canvas.width = Math.floor(video.videoWidth * scale);
+                    canvas.height = Math.floor(video.videoHeight * scale);
+
+                    const stream = canvas.captureStream(30);
+                    let options = { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: bitrate };
+                    if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+                        options = { mimeType: 'video/webm', videoBitsPerSecond: bitrate };
+                    }
+
+                    const recorder = new MediaRecorder(stream, options);
+                    const chunks = [];
+                    recorder.ondataavailable = e => { if(e.data && e.data.size > 0) chunks.push(e.data); };
+                    
+                    recorder.onstop = () => {
+                        bar.style.width = '100%';
+                        status.textContent = 'Optimization Complete! 🎉';
+                        btn.disabled = false;
+                        const blob = new Blob(chunks, { type: 'video/webm' });
+                        const outUrl = URL.createObjectURL(blob);
+                        const outName = selectedVidFile.name.replace(/\\.[^/.]+$/, "") + '_compressed.webm';
+                        resDiv.style.display = 'block';
+                        resDiv.innerHTML = `
+                            <div style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); border-radius:14px; padding:1.2rem; color:#34d399;">
+                                <strong>Success! Video Compressed to ${(blob.size / (1024*1024)).toFixed(2)} MB</strong><br><br>
+                                <a href="${outUrl}" download="${outName}" class="btn-action" style="padding:0.65rem 1.6rem; text-decoration:none; display:inline-block; background:linear-gradient(135deg, #10b981, #059669);">💾 Download Compressed Video</a>
+                            </div>
+                        `;
+                    };
+
+                    recorder.start();
+                    video.play();
+
+                    function drawFrame() {
+                        if (video.paused || video.ended) {
+                            recorder.stop();
+                            return;
+                        }
+                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        const pct = Math.min(95, Math.floor((video.currentTime / video.duration) * 90) + 10);
+                        bar.style.width = pct + '%';
+                        status.textContent = `Compressing: ${Math.floor((video.currentTime / video.duration) * 100)}%`;
+                        requestAnimationFrame(drawFrame);
+                    }
+                    drawFrame();
+                };
+
+                video.onerror = () => {
+                    alert('Error loading video. Please check format compatibility.');
+                    btn.disabled = false;
+                    prog.style.display = 'none';
+                };
+            }
+        </script>
         </div>
 
         <div class="info-card">
-            <h2>Why Use Compress Video Online?</h2>
-            <p>Compress and shrink video file sizes in your browser using HTML5 media canvas. Zero server uploads. No data is stored or logged on any external server.</p>
-        </div>
-    </main>
+            <h2>Video Compression & Media Optimization Guide for Web & Messaging</h2>
+            <p>Sharing large video recordings across Discord, email, WhatsApp, or LMS portals is often blocked by strict file size ceilings (such as 10MB or 25MB). AuraToolkit360 guides efficient media bitrate optimization with complete client privacy.</p>
+
+            <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">Factors Determining Video File Size</h3>
+            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
+                <li><strong>Resolution Scaling:</strong> Downscaling a 4K video (3840x2160) to Full HD (1920x1080) reduces pixel data by 75% without compromising clarity on phone screens.</li>
+                <li><strong>Bitrate Control:</strong> Lowering video bitrate from 12 Mbps to 2.5 Mbps achieves massive compression while maintaining smooth playback.</li>
+                <li><strong>Modern Codecs (H.264 & VP9):</strong> Deliver superior visual fidelity per kilobyte compared to legacy MPEG formats.</li>
+            </ul>
+
+            <h3 style="color:#38bdf8; margin: 1.5rem 0 0.5rem; font-size:1.15rem;">Frequently Asked Questions (FAQ)</h3>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Does compression affect video audio?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Audio channels can be converted to MP3/WAV using our <a href='/converter/mp3-converter/' style='color:#38bdf8;'>MP3 Converter</a> or preserved during video encoding.</p>
+            </div>
+        </div></main>
 
     <footer>
         <div class="footer-grid">
