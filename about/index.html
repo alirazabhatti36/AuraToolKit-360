@@ -2,147 +2,688 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about AuraToolKit 360 and our privacy-first 100% browser-based tools.">
-    <meta name="keywords" content="about AuraToolkit360, online productivity tools, file tools, resume tools, HR tools">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="description" content="Learn about AuraToolkit360, our privacy-first client-side web utilities, zero-knowledge architecture, and founder Ali Raza Bhatti.">
+    <meta name="keywords" content="about AuraToolkit360, online productivity tools, file tools, resume tools, HR tools, Ali Raza Bhatti, client-side tools">
     <meta name="author" content="AuraToolkit360">
-    <meta name="robots" content="index,follow">
+    <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/about/">
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
-    <meta property="og:title" content="About AuraToolkit360 - Free Online Tools">
-    <meta property="og:description" content="Know more about AuraToolkit360, our mission, and our privacy-first approach.">
+    <meta property="og:title" content="About AuraToolkit360 - Privacy-First Browser Tools">
+    <meta property="og:description" content="Discover our zero-knowledge mission, client-side architecture, and the team behind AuraToolkit360.">
     <meta property="og:url" content="https://auratoolkit360.com/about/">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About AuraToolkit360">
-    <meta name="twitter:description" content="Learn about the team and mission behind AuraToolkit360.">
-    <title>About AuraToolKit 360 - Free Online Tools</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f5f7fb; color: #1a1a2e; line-height: 1.6; overflow-x: hidden; }
-        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 0.8rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(102,126,234,0.1); }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: #4a5568; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { background: #f0f4ff; color: #667eea; }
-        .nav-links a.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-        .card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        h1 { font-size: 2rem; color: #1e293b; margin-bottom: 0.5rem; }
-        .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        h2 { font-size: 1.3rem; color: #334155; margin-top: 1.5rem; margin-bottom: 0.5rem; border-left: 4px solid #667eea; padding-left: 0.75rem; }
-        p { color: #475569; line-height: 1.7; font-size: 0.95rem; }
-        .separator { border: none; border-top: 1px solid #e2e8f0; margin: 1.25rem 0; }
-        ul { margin: 0.6rem 0 0.8rem 1.2rem; color: #475569; }
-        li { margin-bottom: 0.35rem; }
-        .tool-block { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem; margin: 0.8rem 0; }
-        .footer { background: white; padding: 1.5rem; text-align: center; color: #475569; font-size: 0.8rem; border-top: 1px solid #e2e8f0; margin-top: 2rem; }
+    <meta name="twitter:description" content="Learn about our zero-knowledge mission and browser-based client-side tools.">
     
-        /* ===== SMART SCROLL NAVBAR ===== */
+    <title>About AuraToolKit 360 - Privacy-First Browser Tools</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About AuraToolkit360",
+        "url": "https://auratoolkit360.com/about/",
+        "description": "Learn about AuraToolkit360, our mission, privacy-first zero-knowledge architecture, and founder Ali Raza Bhatti.",
+        "inLanguage": "en"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --bg-base: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 36, 56, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.35);
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.7;
+            overflow-x: clip;
+            position: relative;
+            padding-top: 76px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Ambient Aurora Glow Background Effects */
+        .ambient-glow-top-left {
+            position: fixed;
+            top: -150px;
+            left: -150px;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+        .ambient-glow-top-right {
+            position: fixed;
+            top: -100px;
+            right: -100px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.14) 0%, rgba(217, 70, 239, 0.06) 50%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(50px);
+        }
+        .ambient-glow-mid {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 850px;
+            height: 850px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 65%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
+
+        /* ===== NAVBAR ===== */
         .navbar {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.85rem 2rem;
+            border-bottom: 1px solid var(--border-card);
             position: fixed !important;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             width: 100%;
             z-index: 1000;
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
         }
-        .navbar.nav-hidden {
-            transform: translateY(-100%);
+        .navbar.nav-hidden { transform: translateY(-100%); }
+        .nav-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
         }
-        body {
-            padding-top: 65px; /* Offset for fixed navbar */
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
         }
-        .sticky-preview {
-            top: 85px !important;
+        .logo-symbol {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+        }
+        .logo-text span {
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-center {
+            display: flex;
+            gap: 0.35rem;
+            align-items: center;
+        }
+        @media (max-width: 1080px) {
+            .nav-center { display: none; }
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-link.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .nav-badge-pill {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: #ffffff;
+            font-size: 0.62rem;
+            padding: 0.12rem 0.42rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .btn-try-hr {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .btn-try-hr:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
+        }
+        .btn-bookmark-nav {
+            background: transparent;
+            border: 1px solid var(--border-card);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.48rem 0.9rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-bookmark-nav:hover {
+            color: var(--accent-cyan);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.06);
         }
 
-    
-        /* ===== UNIFIED PREMIUM DARK GLASSMORPHISM & NAVBAR STYLING ===== */
-        .navbar { background: rgba(15, 23, 42, 0.85) !important; backdrop-filter: blur(16px) !important; padding: 0.8rem 2rem !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 1000 !important; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 1rem; min-width: max-content; }
-        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
-        .nav-links { display: flex; gap: 0.4rem; flex-wrap: nowrap; align-items: center; }
-        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
-        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed) !important; color: white !important; box-shadow: 0 4px 20px rgba(37,99,235,0.35) !important; }
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 1.2rem 4rem;
+            width: 100%;
+        }
 
-        html { overflow-x: clip; scroll-behavior: smooth; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a !important; color: #f8fafc !important; min-height: 100vh; padding-top: 65px; overflow-x: clip; display: flex; flex-direction: column; }
-        .card { background: rgba(30, 41, 59, 0.75) !important; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 18px !important; color: #f8fafc !important; }
-        h1 { font-size: 2.2rem !important; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; margin-bottom: 0.5rem; }
-        .subtitle { color: #94a3b8 !important; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        h2 { font-size: 1.3rem !important; color: #38bdf8 !important; margin-top: 1.5rem; margin-bottom: 0.5rem; border-left: 4px solid #38bdf8 !important; padding-left: 0.75rem; }
-        p, li { color: #94a3b8 !important; line-height: 1.7; font-size: 0.95rem; }
-        .separator { border: none; border-top: 1px solid rgba(255,255,255,0.08) !important; margin: 1.25rem 0; }
-        .tool-block { background: rgba(15, 23, 42, 0.5) !important; border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 14px; padding: 1rem; margin: 0.8rem 0; color: #cbd5e1 !important; }
+        /* PAGE HERO HEADER */
+        .page-header {
+            text-align: center;
+            max-width: 860px;
+            margin: 1.2rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+        .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--accent-cyan);
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 0.35rem 0.95rem;
+            border-radius: 999px;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 0.85rem;
+            color: #ffffff;
+        }
+        .page-header h1 span {
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .page-header p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 720px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+        }
+        .hero-trust-row {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .trust-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            padding: 0.35rem 0.85rem;
+            font-size: 0.78rem;
+            color: #cbd5e1;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
 
-        /* ===== FOOTER STYLING ===== */
-        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; color: #f8fafc; }
-        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
-        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
-        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: all 0.2s; }
-        .footer-links a:hover { color: #38bdf8; }
-        .feedback-form input, .feedback-form textarea { width: 100%; padding: 0.55rem 0.8rem; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.8rem; color: #f8fafc; margin-bottom: 0.5rem; outline: none; font-family: inherit; }
-        .feedback-form input:focus, .feedback-form textarea:focus { border-color: #38bdf8; }
-        .feedback-form button { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; width: auto !important; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+        /* MAIN CARD */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 2.5rem 2.2rem;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+        @media (max-width: 600px) {
+            .card { padding: 1.6rem 1.2rem; }
+        }
 
+        h2 {
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+            margin-top: 2rem;
+            margin-bottom: 0.85rem;
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 0.8rem;
+            font-weight: 800;
+        }
+        p {
+            color: #cbd5e1;
+            line-height: 1.75;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .separator {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            margin: 2rem 0;
+        }
+
+        /* FOUNDER CARD */
+        .founder-card {
+            background: linear-gradient(135deg, rgba(14, 21, 37, 0.85), rgba(30, 27, 75, 0.7));
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            border-radius: 18px;
+            padding: 1.8rem;
+            margin: 1.4rem 0;
+            display: flex;
+            gap: 1.4rem;
+            align-items: flex-start;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+        }
+        @media (max-width: 680px) {
+            .founder-card { flex-direction: column; align-items: center; text-align: center; }
+        }
+        .founder-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0284c7, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+        }
+        .founder-info h3 {
+            color: #ffffff;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+        .founder-role {
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+        }
+        .founder-skills-row {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            padding: 0.2rem 0.65rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        /* TECH ARCHITECTURE GRID */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        .tech-box {
+            background: rgba(11, 15, 25, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            padding: 1.4rem;
+            transition: transform 0.2s;
+        }
+        .tech-box:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .tech-box-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+        }
+        .tech-box h4 {
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.45rem;
+        }
+        .tech-box p {
+            color: var(--text-secondary);
+            font-size: 0.86rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* ECOSYSTEM TOOL BLOCKS */
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.3rem;
+            margin: 1.5rem 0;
+        }
+        .ecosystem-card {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid var(--border-card);
+            border-radius: 18px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .ecosystem-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .ecosystem-card ul {
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 0.86rem;
+            line-height: 1.6;
+        }
+        .ecosystem-card li {
+            margin-bottom: 0.35rem;
+        }
+        .btn-tool-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-top: auto;
+        }
+        .btn-tool-link:hover {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            border-color: transparent;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* CONTACT HIGHLIGHT BOX */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(14, 21, 37, 0.8), rgba(28, 36, 56, 0.7));
+            border: 1px solid var(--border-highlight);
+            border-radius: 18px;
+            padding: 1.6rem 2rem;
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+        }
+        .contact-box a {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+        .btn-contact-page {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 0.65rem 1.4rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .btn-contact-page:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.55);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #070a12;
+            border-top: 1px solid var(--border-card);
+            padding: 3.5rem 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            margin-top: auto;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 992px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 576px) {
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+        .footer-col h5 {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 1.1rem;
+        }
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+        .footer-links-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: color 0.2s;
+        }
+        .footer-links-list a:hover {
+            color: var(--accent-cyan);
+        }
+        .footer-bottom-bar {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
     </style>
+    
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
-    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
 </head>
 <body>
-        <nav class="navbar" aria-label="Main Navigation">
+
+    <!-- Ambient Neon Aurora Glows -->
+    <div class="ambient-glow-top-left"></div>
+    <div class="ambient-glow-top-right"></div>
+    <div class="ambient-glow-mid"></div>
+
+    <!-- ===== TOP NAVIGATION ===== -->
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
-            <a href="/" class="logo">AuraToolkit360</a>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/converter/">Converter</a>
-                <a href="/resume-cv-maker/">Resume CV Maker</a>
-                <a href="/resume-score-checker/">Score Checker</a>
-                <a href="/hr-helper/">HR Helper</a>
-                <a href="/about/" class="active">About</a>
-                <a href="/blogs/">Blogs</a>
-                <a href="/contact/">Contact</a>
-                <a href="/privacy-policy/">Privacy</a>
-                <a href="/terms/">Terms</a>
-                <a href="/disclaimer/">Disclaimer</a>
+            <a href="/" class="logo">
+                <div class="logo-symbol">A</div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
+            </a>
+            
+            <div class="nav-center">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/converter/" class="nav-link">Converter</a>
+                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
+                <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="nav-link">Blogs</a>
+                <a href="/about/" class="nav-link active">About</a>
+            </div>
+
+            <div class="nav-right-actions">
+                <a href="/hr-helper/" class="btn-try-hr">Try HR Helper →</a>
+                <button class="btn-bookmark-nav" onclick="alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!')">★ Bookmark</button>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <!-- ===== MAIN CONTENT CONTAINER ===== -->
+    <main class="container">
+
+        <!-- Hero Header -->
+        <div class="page-header">
+            <div class="pill-badge">🛡️ 100% Client-Side Privacy • Zero-Knowledge Architecture</div>
+            <h1>Engineering Behind <span>AuraToolkit 360</span></h1>
+            <p>Empowering job seekers, recruiters, students, and professionals with privacy-first browser utilities that execute entirely on your device with zero cloud uploads.</p>
+            
+            <div class="hero-trust-row">
+                <span class="trust-pill">🔒 100% In-Browser Processing</span>
+                <span class="trust-pill">⚡ Zero Wait Times &amp; Free</span>
+                <span class="trust-pill">🛡️ GDPR &amp; CCPA Compliant</span>
+                <span class="trust-pill">🚫 Zero Account Required</span>
+            </div>
+        </div>
+
+        <!-- Main Card -->
         <div class="card">
-            <h1>About AuraToolKit 360</h1>
-            <p class="subtitle">Empowering individuals, students, and professionals with privacy-first client-side web utilities.</p>
-
-            <p>Welcome to <strong>AuraToolKit 360</strong>, a comprehensive digital workspace engineered to handle everyday document conversions, image processing, ATS resume optimization, and recruitment screening without compromising your privacy or charging subscription fees.</p>
-
-            <hr class="separator">
-
-            <h2>Our Mission & Philosophy</h2>
-            <p>Most commercial utility websites force users into restrictive paywalls, require intrusive account creation, or upload sensitive documents to remote cloud servers where retention policies remain opaque. AuraToolKit 360 was built on a different philosophy: <strong>Zero-Knowledge, Client-Side First</strong>.</p>
-            <p style="margin-top:0.6rem;">We believe fundamental digital utilities—such as merging confidential legal contracts, converting sensitive financial spreadsheets, or crafting career resumes—should execute entirely on your device whenever technologically possible. By executing heavy computation in modern browser runtimes, your private files never travel over the network to third-party databases.</p>
+            
+            <p style="font-size:1.02rem; line-height:1.75; color:#f1f5f9;">
+                Welcome to <strong>AuraToolKit 360</strong>, a comprehensive digital workspace engineered to handle everyday document conversions, image processing, ATS resume optimization, and recruitment screening without compromising your privacy or charging subscription fees.
+            </p>
 
             <hr class="separator">
 
-            <h2>Meet the Founder & Lead Engineer</h2>
-            <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:1.4rem; margin:1rem 0; display:flex; gap:1.25rem; align-items:flex-start;">
-                <div style="font-size:3rem; line-height:1; flex-shrink:0;">👨‍💻</div>
-                <div>
-                    <h3 style="color:#38bdf8; margin:0 0 0.25rem; font-size:1.2rem; font-weight:700;">Ali Raza Bhatti</h3>
-                    <p style="color:#94a3b8; font-size:0.85rem; font-weight:600; margin-bottom:0.6rem;">Founder, Full-Stack Software Engineer & Web Tools Specialist</p>
-                    <p style="color:#cbd5e1; font-size:0.92rem; line-height:1.6; margin:0;">Ali Raza Bhatti founded AuraToolKit 360 to bridge the gap between high-performance desktop utility software and the instant convenience of the web. With a deep background in modern web engineering, JavaScript runtime performance, and document automation architectures, Ali designed AuraToolKit 360 from the ground up using client-side WebAssembly, Canvas rendering, and Web Worker multithreading.</p>
-                    <p style="color:#cbd5e1; font-size:0.92rem; line-height:1.6; margin-top:0.6rem;">Ali actively oversees platform architecture, writes in-depth technical guides for job seekers and developers, and audits tool performance to ensure every converter complies with modern web accessibility and privacy benchmarks.</p>
+            <h2>Our Mission &amp; Philosophy</h2>
+            <p>
+                Most commercial utility websites force users into restrictive paywalls, require intrusive account creation, or upload sensitive documents to remote cloud servers where data retention policies remain opaque. AuraToolKit 360 was built on a different philosophy: <strong>Zero-Knowledge, Client-Side First</strong>.
+            </p>
+            <p>
+                We believe fundamental digital utilities—such as merging confidential legal contracts, converting sensitive financial spreadsheets, or crafting career resumes—should execute entirely on your device whenever technologically possible. By running heavy computation in modern browser runtimes, your private files never travel over the network to third-party databases.
+            </p>
+
+            <hr class="separator">
+
+            <h2>Meet the Founder &amp; Lead Engineer</h2>
+            <div class="founder-card">
+                <div class="founder-avatar">👨‍💻</div>
+                <div class="founder-info">
+                    <h3>Ali Raza Bhatti</h3>
+                    <div class="founder-role">Founder, Full-Stack Software Engineer &amp; Web Tools Specialist</div>
+                    <p style="margin-bottom:0.75rem;">
+                        Ali Raza Bhatti founded AuraToolKit 360 to bridge the gap between high-performance desktop utility software and the instant convenience of the web. With a deep background in modern web engineering, JavaScript runtime performance, and document automation architectures, Ali designed AuraToolKit 360 from the ground up using client-side WebAssembly, Canvas rendering, and Web Worker multithreading.
+                    </p>
+                    <p style="margin:0;">
+                        Ali actively oversees platform architecture, writes in-depth technical guides for job seekers and developers, and audits tool performance to ensure every converter complies with modern web accessibility and privacy benchmarks.
+                    </p>
+                    <div class="founder-skills-row">
+                        <span class="skill-pill">WebAssembly (WASM)</span>
+                        <span class="skill-pill">Web Workers Multithreading</span>
+                        <span class="skill-pill">Canvas &amp; Media APIs</span>
+                        <span class="skill-pill">ATS Algorithm Auditing</span>
+                        <span class="skill-pill">Zero-Knowledge Security</span>
+                    </div>
                 </div>
             </div>
 
@@ -150,57 +691,177 @@
 
             <h2>Our Core Engineering Architecture</h2>
             <p>Behind the clean dark glassmorphism interface of AuraToolKit 360 is a robust client-side tech stack designed for speed, resilience, and privacy:</p>
-            <ul>
-                <li><strong>WebAssembly & Web Workers:</strong> Intensive PDF manipulation (merging, splitting, encryption, compression) and optical character recognition (OCR) leverage isolated background threads so your browser UI stays smooth and responsive.</li>
-                <li><strong>HTML5 Canvas & MediaRecorder API:</strong> Image processing (cropping, signature resizing, passport photo generation) and video compression execute directly against hardware-accelerated browser APIs without server transmission.</li>
-                <li><strong>Dynamic Local Storage:</strong> Resume drafts and screening sessions are saved securely in your browser's sandboxed local storage, ensuring your job applications remain strictly private to you.</li>
-                <li><strong>Zero File Retention:</strong> Because operations are handled client-side in RAM, files are permanently cleared from memory the moment you close or refresh your browser tab.</li>
-            </ul>
+            
+            <div class="tech-grid">
+                <div class="tech-box">
+                    <div class="tech-box-icon">⚡</div>
+                    <h4>WebAssembly &amp; Web Workers</h4>
+                    <p>Intensive PDF manipulation (merging, splitting, encryption, compression) and OCR leverage isolated background threads so your browser UI stays smooth.</p>
+                </div>
+
+                <div class="tech-box">
+                    <div class="tech-box-icon">🖼️</div>
+                    <h4>Canvas &amp; MediaRecorder API</h4>
+                    <p>Image processing (cropping, signature resizing, passport photo maker) and video compression execute directly against hardware-accelerated browser APIs.</p>
+                </div>
+
+                <div class="tech-box">
+                    <div class="tech-box-icon">💾</div>
+                    <h4>Sandboxed Local Storage</h4>
+                    <p>Resume drafts and screening sessions are saved securely in your browser's sandboxed local storage, keeping your job applications strictly private to you.</p>
+                </div>
+
+                <div class="tech-box">
+                    <div class="tech-box-icon">🧹</div>
+                    <h4>Ephemeral Memory &amp; Zero Retention</h4>
+                    <p>Because operations execute in client RAM, files are permanently cleared from memory the instant you close or refresh your browser tab.</p>
+                </div>
+            </div>
 
             <hr class="separator">
 
             <h2>Platform Ecosystem</h2>
-            <div class="tool-block">
-                <p><strong>🔄 Document & File Converter Suite (30+ Tools)</strong></p>
-                <ul>
-                    <li>PDF Utilities: PDF to Word, Word to PDF, Merge, Split, Compress, Lock, Unlock, Watermark, and Page Numbering.</li>
-                    <li>Office Workflows: PowerPoint to PDF, Excel to PDF, CSV to JSON formatters.</li>
-                    <li>Visual & Graphic Tools: JPG to PDF, PNG to PDF, Passport Photo Maker, Signature Resizer, WebP Converter, Favicon Generator, and Canvas Video Compressor.</li>
-                    <li>OCR Suite: Image to Text extraction powered by client-side machine learning models.</li>
-                </ul>
-            </div>
+            <div class="ecosystem-grid">
+                <!-- 1. Converter -->
+                <div class="ecosystem-card">
+                    <div>
+                        <h4><span>⇄</span> File Converter Suite (30+ Tools)</h4>
+                        <ul>
+                            <li>PDF Utilities: PDF to Word, Word to PDF, Merge, Split, Compress, Lock, Unlock, and Watermark.</li>
+                            <li>Office Workflows: PowerPoint to PDF, Excel to PDF, CSV to JSON formatters.</li>
+                            <li>Image &amp; Photo: JPG to PDF, PNG to PDF, Passport Photo Maker, Signature Resizer, Favicon Generator.</li>
+                            <li>OCR Suite: Image to Text extraction powered by client-side ML models.</li>
+                        </ul>
+                    </div>
+                    <a href="/converter/" class="btn-tool-link">Explore Converter Suite →</a>
+                </div>
 
-            <div class="tool-block">
-                <p><strong>📄 Professional Resume Builder & ATS Scanner</strong></p>
-                <ul>
-                    <li>Dynamic visual resume builder with instant PDF and Word DOCX generation.</li>
-                    <li>Real-time ATS (Applicant Tracking System) keyword scanner comparing CVs against real job descriptions.</li>
-                    <li>100+ action verb and professional phrasing suggestions tailored for job seekers.</li>
-                </ul>
-            </div>
+                <!-- 2. Resume Maker -->
+                <div class="ecosystem-card">
+                    <div>
+                        <h4><span>📝</span> Resume CV Maker (7 Templates)</h4>
+                        <ul>
+                            <li>Dynamic visual resume builder with instant PDF and Word DOCX generation.</li>
+                            <li>Pre-formatted ATS designs tested across Workday, Taleo, and Greenhouse.</li>
+                            <li>Multi-category skill tagging with auto-formatting.</li>
+                        </ul>
+                    </div>
+                    <a href="/resume-cv-maker/" class="btn-tool-link">Build Resume Online →</a>
+                </div>
 
-            <div class="tool-block">
-                <p><strong>👥 HR Screening Helper (Bulk Evaluation)</strong></p>
-                <ul>
-                    <li>Process and screen up to 300 resumes simultaneously directly inside client memory.</li>
-                    <li>Automated keyword weighting, ranking, scoring, candidate shortlisting, and CSV export.</li>
-                </ul>
+                <!-- 3. ATS Score Checker -->
+                <div class="ecosystem-card">
+                    <div>
+                        <h4><span>🎯</span> ATS Resume Score Checker</h4>
+                        <ul>
+                            <li>Real-time keyword matching comparing candidate CVs against target job posts.</li>
+                            <li>Identifies missing terms, keyword density, and formatting anomalies.</li>
+                            <li>Action verb detection and improvement recommendations.</li>
+                        </ul>
+                    </div>
+                    <a href="/resume-score-checker/" class="btn-tool-link">Check ATS Score →</a>
+                </div>
+
+                <!-- 4. HR Bulk Screener -->
+                <div class="ecosystem-card">
+                    <div>
+                        <h4><span>👥</span> HR Bulk Screening Helper</h4>
+                        <ul>
+                            <li>Screen and rank up to 300 resumes simultaneously directly in client memory.</li>
+                            <li>Automated keyword weighting, ranking, scoring, candidate shortlisting.</li>
+                            <li>Export candidate shortlists in clean CSV reports and single ZIP packages.</li>
+                        </ul>
+                    </div>
+                    <a href="/hr-helper/" class="btn-tool-link">Try HR Bulk Screener →</a>
+                </div>
             </div>
 
             <hr class="separator">
 
-            <h2>Editorial Standards & Fact-Checking</h2>
-            <p>Every tutorial, career guide, and technical article published on AuraToolKit 360 is written and verified by technology professionals. We test every conversion formula, ATS algorithm recommendation, and file formatting tip against current 2026 industry standards—ensuring our readers receive actionable, trustworthy, and battle-tested advice.</p>
+            <h2>Editorial Standards &amp; Fact-Checking</h2>
+            <p>
+                Every tutorial, career guide, and technical article published on AuraToolKit 360 is written and verified by technology professionals. We test every conversion formula, ATS algorithm recommendation, and file formatting tip against current 2026 industry standards—ensuring our readers receive actionable, trustworthy, and battle-tested advice.
+            </p>
 
             <hr class="separator">
 
-            <h2>Direct Contact & Support</h2>
+            <h2>Direct Contact &amp; Support</h2>
             <p>Have questions, feature requests, bug reports, or partnership inquiries? We value direct communication with our community.</p>
-            <p style="margin-top:0.5rem;"><strong>General Inquiries:</strong> <a href="mailto:info@auratoolkit360.com" style="color:#38bdf8;">info@auratoolkit360.com</a><br>
-            <strong>Support Turnaround:</strong> Our engineering team reviews all incoming inquiries within 24 to 48 business hours.<br>
-            <strong>Official Contact Page:</strong> Visit our dedicated <a href="/contact/" style="color:#38bdf8;">Contact Form</a> for direct message submission.</p>
+            
+            <div class="contact-box">
+                <div>
+                    <div style="font-weight:700; color:#ffffff; font-size:0.95rem; margin-bottom:0.25rem;">Support &amp; General Inquiries:</div>
+                    <div style="font-size:0.88rem; color:var(--text-secondary);">
+                        Email: <a href="mailto:info@auratoolkit360.com">info@auratoolkit360.com</a> (24 to 48 hour turnaround)
+                    </div>
+                </div>
+                <a href="/contact/" class="btn-contact-page">Visit Contact Page →</a>
+            </div>
+
         </div>
-    </div>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-inner">
+            <!-- Col 1: Brand Info -->
+            <div class="footer-col">
+                <a href="/" class="logo" style="margin-bottom:1rem;">
+                    <div class="logo-symbol">A</div>
+                    <div class="logo-text">AuraToolkit<span>360</span></div>
+                </a>
+                <p style="font-size:0.85rem; line-height:1.6; margin-bottom:1.2rem;">
+                    Your privacy is our highest priority. All conversions, resume building, and candidate screening run 100% inside your web browser.
+                </p>
+                <div style="font-size:0.82rem; color:var(--text-muted);">
+                    Contact: <a href="mailto:info@auratoolkit360.com" style="color:var(--accent-cyan); text-decoration:none;">info@auratoolkit360.com</a>
+                </div>
+            </div>
+
+            <!-- Col 2: Product Suite -->
+            <div class="footer-col">
+                <h5>Products</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/converter/">File Converter Suite</a></li>
+                    <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
+                    <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
+                    <li><a href="/hr-helper/">HR Bulk Screener</a></li>
+                    <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Company & Articles -->
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/about/">About AuraToolkit360</a></li>
+                    <li><a href="/blogs/">Career &amp; Tech Guides</a></li>
+                    <li><a href="/contact/">Help &amp; Contact Support</a></li>
+                    <li><a href="/converter/word-counter/">Text Utilities</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Legal & Security -->
+            <div class="footer-col">
+                <h5>Legal &amp; Security</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/privacy-policy/">Privacy Policy (GDPR / CCPA)</a></li>
+                    <li><a href="/terms/">Terms of Service</a></li>
+                    <li><a href="/disclaimer/">Disclaimer Statement</a></li>
+                    <li><span style="font-size:0.75rem; color:#10b981;">● System Status: All Systems Operational</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <div>© 2026 AuraToolkit360. All rights reserved. 100% Client-Side Privacy Guaranteed.</div>
+            <div>
+                <a href="/privacy-policy/" style="color:var(--text-muted); text-decoration:none; margin-right:1rem;">Privacy</a>
+                <a href="/terms/" style="color:var(--text-muted); text-decoration:none;">Terms</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
     <script>
@@ -223,53 +884,5 @@
             }, { passive: true });
         })();
     </script>
-
-    <!-- ===== FOOTER ===== -->
-        <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>AuraToolkit360</h3>
-                <p>Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, and HR candidate screening.</p>
-                <p style="margin-top:0.6rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
-                <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem;">
-                    <a href="/privacy-policy/" style="color:#38bdf8; text-decoration:none;">Privacy Policy</a> •
-                    <a href="/terms/" style="color:#38bdf8; text-decoration:none;">Terms of Service</a> •
-                    <a href="/disclaimer/" style="color:#38bdf8; text-decoration:none;">Disclaimer</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Navigation & Legal</h4>
-                <div class="footer-links">
-                    <a href="/">Home Page</a>
-                    <a href="/converter/">File Converter Suite</a>
-                    <a href="/resume-cv-maker/">Resume CV Maker</a>
-                    <a href="/resume-score-checker/">ATS Score Checker</a>
-                    <a href="/hr-helper/">HR Screening Helper</a>
-                    <a href="/blogs/">Blog Articles</a>
-                    <a href="/about/">About Us</a>
-                    <a href="/contact/">Contact Us</a>
-                    <a href="/privacy-policy/">Privacy Policy (GDPR/CCPA)</a>
-                    <a href="/terms/">Terms of Service</a>
-                    <a href="/disclaimer/">Disclaimer Statement</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Feedback & Support</h4>
-                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'
-Email: '+fd.get('email')+'
-
-Feedback:
-'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
-                    <input name="name" type="text" placeholder="Your Name" required aria-label="Your Name">
-                    <input name="email" type="email" placeholder="Your Email" required aria-label="Your Email">
-                    <textarea name="message" rows="3" placeholder="Share your feedback..." required aria-label="Share your feedback"></textarea>
-                    <button type="submit">Send Feedback</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing | <a href="/privacy-policy/" style="color:#64748b; text-decoration:underline;">Privacy</a> | <a href="/terms/" style="color:#64748b; text-decoration:underline;">Terms</a>
-        </div>
-    </footer>
 </body>
 </html>
