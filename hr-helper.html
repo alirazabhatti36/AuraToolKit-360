@@ -859,6 +859,101 @@
                 font-size: 16px !important;
             }
         }
+    
+        /* ===== MOBILE RESPONSIVE HAMBURGER & DRAWER ===== */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card, rgba(255, 255, 255, 0.12));
+            border-radius: 9px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            transition: all 0.25s ease;
+        }
+        .nav-hamburger:hover {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: rgba(56, 189, 248, 0.35);
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-primary, #f8fafc);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-hamburger.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+        }
+        .nav-hamburger.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        .mobile-nav-drawer {
+            display: none;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-card, rgba(255, 255, 255, 0.08));
+            padding: 1rem 1.25rem 1.4rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+        }
+        .mobile-nav-drawer.open {
+            display: block;
+            animation: mobileDrawerFade 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes mobileDrawerFade {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .mobile-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .mobile-nav-item:hover, .mobile-nav-item.active {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.25);
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 1080px) {
+            .nav-center { display: none !important; }
+            .nav-hamburger { display: flex; }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0.75rem 1rem !important; }
+            .btn-bookmark-nav { display: none !important; }
+            .btn-try-hr { display: none !important; }
+            .nav-search-trigger { padding: 0.45rem 0.75rem !important; font-size: 0.82rem !important; }
+            .nav-search-trigger .search-text { display: none; }
+        }
+
     </style>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
@@ -897,6 +992,24 @@
             <div class="nav-right-actions">
                 <a href="/converter/" class="btn-try-hr">⚡ Quick Convert</a>
                 <button class="btn-bookmark-nav" onclick="alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!')">★ Bookmark</button>
+                            <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <div class="mobile-nav-links">
+                <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
+                <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
+                <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
+                <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
+                <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
+                <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
+                <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
             </div>
         </div>
     </nav>
@@ -1560,5 +1673,34 @@
             }, { passive: true });
         })();
     </script>
+<script>
+        function toggleMobileMenu() {
+            const btn = document.getElementById('navHamburger');
+            const drawer = document.getElementById('mobileNavDrawer');
+            if (!btn || !drawer) return;
+            const isOpen = drawer.classList.contains('open');
+            if (isOpen) {
+                drawer.classList.remove('open');
+                btn.classList.remove('active');
+                btn.setAttribute('aria-expanded', 'false');
+            } else {
+                drawer.classList.add('open');
+                btn.classList.add('active');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        }
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('.navbar');
+            const drawer = document.getElementById('mobileNavDrawer');
+            const btn = document.getElementById('navHamburger');
+            if (drawer && drawer.classList.contains('open') && nav && !nav.contains(e.target)) {
+                drawer.classList.remove('open');
+                if (btn) {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+</script>
 </body>
 </html>
