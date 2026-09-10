@@ -8,276 +8,1097 @@
     <meta name="author" content="AuraToolkit360">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/hr-helper/">
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
-    <meta property="og:title" content="AuraToolkit360 | HR Bulk Resume Helper">
-    <meta property="og:description" content="Screen up to 300 resumes locally in your browser. Rank candidates with custom Job Titles & Descriptions.">
+    <meta property="og:title" content="AuraToolkit360 | HR Bulk Resume Screener">
+    <meta property="og:description" content="Screen up to 300 resumes locally in your browser. Rank candidates with custom Job Titles & Descriptions. 100% private.">
     <meta property="og:url" content="https://auratoolkit360.com/hr-helper/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://auratoolkit360.com/assets/og-image.png">
+    <meta property="og:image:secure_url" content="https://auratoolkit360.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="AuraToolkit360 | HR Bulk Resume Screener">
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AuraToolkit360 | HR Bulk Resume Helper">
+    <meta name="twitter:title" content="AuraToolkit360 | HR Bulk Resume Screener">
     <meta name="twitter:description" content="Bulk screen candidate CVs with optional Job Titles and export CSV reports locally.">
-    <title>AuraToolkit360 | HR Bulk Resume Helper</title>
+    <meta name="twitter:image" content="https://auratoolkit360.com/assets/og-image.png">
+    <meta name="twitter:image:alt" content="AuraToolkit360 | HR Bulk Resume Screener">
+    
+    <title>AuraToolkit360 | HR Bulk Resume Screener</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f8fafc; color: #1e293b; min-height: 100vh; }
-        .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 0.8rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(102,126,234,0.1); }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: #4a5568; font-weight: 500; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; }
-        .nav-links a:hover { background: #f0f4ff; color: #667eea; }
-        .nav-links a.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; }
-        .page-header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 16px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(102,126,234,0.2); }
-        .page-header h1 { font-size: 1.8rem; margin-bottom: 0.4rem; }
-        .page-header p { opacity: 0.9; font-size: 0.95rem; }
-        .card { background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; margin-bottom: 1.5rem; }
-        .card h3 { color: #1e293b; font-size: 1.1rem; margin-bottom: 0.5rem; }
-        .upload-zone { border: 2px dashed #cbd5e1; border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s; background: #f8fafc; }
-        .upload-zone:hover { border-color: #667eea; background: #f0f4ff; }
-        .upload-zone .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .input-field { width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.7rem 0.9rem; font-size: 0.9rem; font-family: inherit; margin-top: 0.3rem; outline: none; transition: all 0.2s; }
-        .input-field:focus { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.15); }
-        textarea.input-field { min-height: 100px; resize: vertical; }
-        .btn { padding: 0.7rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; border: none; font-size: 0.9rem; transition: all 0.3s; }
-        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
-        .btn-outline { background: white; color: #667eea; border: 1px solid #667eea; }
-        .btn-outline:hover { background: #f0f4ff; }
-        .btn-sm { padding: 0.3rem 0.55rem; font-size: 0.75rem; border-radius: 6px; }
-        .btn-success { background: #10b981; color: white; }
-        .btn-warning { background: #f59e0b; color: white; }
-        .btn-danger { background: #ef4444; color: white; }
-        .btn-info { background: #3b82f6; color: white; }
-        .progress-bar-container { background: #e2e8f0; border-radius: 10px; height: 10px; overflow: hidden; margin-top: 1rem; display: none; }
-        .progress-fill { background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; width: 0%; transition: width 0.3s; }
-        
-        /* Stats Cards */
-        .stats-summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-bottom: 1.2rem; }
-        @media(max-width: 600px) { .stats-summary-grid { grid-template-columns: repeat(2, 1fr); } }
-        .stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.8rem; text-align: center; }
-        .stat-card .stat-num { font-size: 1.4rem; font-weight: 800; color: #1e293b; }
-        .stat-card .stat-label { font-size: 0.72rem; color: #64748b; font-weight: 600; margin-top: 0.2rem; }
-        .stat-card.stat-shortlisted { background: #ecfdf5; border-color: #a7f3d0; }
-        .stat-card.stat-shortlisted .stat-num { color: #047857; }
-        .stat-card.stat-pending { background: #fffbeb; border-color: #fde68a; }
-        .stat-card.stat-pending .stat-num { color: #b45309; }
-        .stat-card.stat-rejected { background: #fef2f2; border-color: #fecaca; }
-        .stat-card.stat-rejected .stat-num { color: #b91c1c; }
-
-        /* Filter Toolbar */
-        .filter-toolbar { background: #f1f5f9; border-radius: 12px; padding: 0.9rem; margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; border: 1px solid #e2e8f0; }
-        .status-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-        .status-chips .chip { background: white; border: 1px solid #cbd5e1; border-radius: 999px; padding: 0.3rem 0.8rem; font-size: 0.75rem; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.2s; }
-        .status-chips .chip:hover { border-color: #667eea; color: #667eea; }
-        .status-chips .chip.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-color: transparent; }
-
-        .table-responsive { overflow-x: auto; margin-top: 1rem; }
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
-        th { background: #f1f5f9; padding: 0.75rem; color: #475569; font-weight: 600; border-bottom: 2px solid #e2e8f0; }
-        td { padding: 0.75rem; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
-        th:last-child, td:last-child { min-width: 175px; white-space: nowrap; }
-        tr:hover { background: #f8fafc; }
-        .score-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 700; font-size: 0.75rem; }
-        .score-excellent { background: #d1fae5; color: #065f46; }
-        .score-good { background: #dbeafe; color: #1e40af; }
-        .score-low { background: #fee2e2; color: #991b1b; }
-        .status-badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 600; text-transform: uppercase; }
-        .status-shortlisted { background: #d1fae5; color: #065f46; }
-        .status-rejected { background: #fee2e2; color: #991b1b; }
-        .status-pending { background: #fef3c7; color: #92400e; }
-
-        /* Modal Backdrop */
-        .modal-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(4px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
-        .modal-card { background: white; border-radius: 18px; max-width: 800px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 1.5rem; box-shadow: 0 25px 60px rgba(0,0,0,0.3); border: 1px solid #cbd5e1; position: relative; }
-        .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.6rem; }
-        .modal-head h3 { font-size: 1.1rem; color: #1e293b; }
-        .btn-close { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #64748b; padding: 0 0.4rem; }
-        .btn-close:hover { color: #0f172a; }
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/social-share.css">
+    <script defer src="/assets/social-share.js"></script>
     
-        /* ===== A-Z & Apple iOS Responsiveness Rules ===== */
-        html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
-        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "AuraToolkit360 | HR Bulk Resume Screener",
+        "url": "https://auratoolkit360.com/hr-helper/",
+        "description": "Free browser-based bulk resume screener for recruiters and HR managers. Screen, rank, and export shortlisted CVs 100% locally.",
+        "inLanguage": "en"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --bg-base: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 36, 56, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.35);
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            overflow-x: clip;
+            position: relative;
+            padding-top: 76px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
         
-        /* Prevent iOS Safari auto-zoom on form inputs */
+        /* Ambient Aurora Glow Background Effects */
+        .ambient-glow-top-left {
+            position: fixed;
+            top: -150px;
+            left: -150px;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+        .ambient-glow-top-right {
+            position: fixed;
+            top: -100px;
+            right: -100px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.14) 0%, rgba(217, 70, 239, 0.06) 50%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(50px);
+        }
+        .ambient-glow-mid {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 850px;
+            height: 850px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 65%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.85rem 2rem;
+            border-bottom: 1px solid var(--border-card);
+            position: fixed !important;
+            top: 0; left: 0; right: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+        }
+        .navbar.nav-hidden { transform: translateY(-100%); }
+        .nav-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .logo-symbol {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+        }
+        .logo-text span {
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-center {
+            display: flex;
+            gap: 0.35rem;
+            align-items: center;
+        }
+        @media (max-width: 1080px) {
+            .nav-center { display: none; }
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-link.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .nav-badge-pill {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: #ffffff;
+            font-size: 0.62rem;
+            padding: 0.12rem 0.42rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .btn-try-hr {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .btn-try-hr:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
+        }
+        .btn-bookmark-nav {
+            background: transparent;
+            border: 1px solid var(--border-card);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.48rem 0.9rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-bookmark-nav:hover {
+            color: var(--accent-cyan);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.06);
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 1.2rem 4rem;
+            width: 100%;
+        }
+
+        /* PAGE HERO HEADER */
+        .page-header {
+            text-align: center;
+            max-width: 860px;
+            margin: 1.2rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+        .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: #34d399;
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 0.35rem 0.95rem;
+            border-radius: 999px;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 0.85rem;
+            color: #ffffff;
+        }
+        .page-header h1 span {
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .page-header p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+        }
+        .hero-features-row {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .hero-feature-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            padding: 0.35rem 0.85rem;
+            font-size: 0.78rem;
+            color: #cbd5e1;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 2.2rem;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin-bottom: 0.75rem;
+        }
+        .step-badge {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.2rem 0.6rem;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+        }
+        .step-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .step-optional {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .input-field {
+            width: 100%;
+            background: rgba(11, 15, 25, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            font-size: 0.92rem;
+            color: #ffffff;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .input-field:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
+            background: rgba(11, 15, 25, 0.95);
+        }
+        textarea.input-field {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+        .upload-zone {
+            border: 2px dashed rgba(56, 189, 248, 0.35);
+            border-radius: 16px;
+            padding: 2.2rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.28s;
+            background: rgba(11, 15, 25, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .upload-zone:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.08);
+            transform: translateY(-2px);
+        }
+        .upload-zone .icon {
+            font-size: 2.6rem;
+            margin-bottom: 0.5rem;
+        }
+        .upload-zone p {
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+        .file-counter-pill {
+            margin-top: 0.6rem;
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.12);
+            padding: 0.3rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            display: inline-block;
+        }
+
+        /* BUTTONS */
+        .btn {
+            padding: 0.75rem 1.6rem;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            font-size: 0.92rem;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: white;
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(2, 132, 199, 0.6);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
+        .btn-sm {
+            padding: 0.38rem 0.68rem;
+            font-size: 0.76rem;
+            border-radius: 8px;
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+        }
+        .btn-success:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
+        }
+        .btn-warning {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            color: white;
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            color: white;
+        }
+        .btn-info {
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            color: white;
+        }
+        .progress-bar-container {
+            background: rgba(11, 15, 25, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            height: 12px;
+            overflow: hidden;
+            margin-top: 1.2rem;
+            display: none;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #a855f7);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+        }
+
+        /* STATS SUMMARY CARDS */
+        .stats-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        @media(max-width: 680px) {
+            .stats-summary-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .stat-card {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 1.1rem;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .stat-card:hover { transform: translateY(-2px); }
+        .stat-card .stat-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+        .stat-card .stat-label {
+            font-size: 0.76rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .stat-card.stat-shortlisted {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .stat-card.stat-shortlisted .stat-num { color: #34d399; }
+        .stat-card.stat-pending {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        .stat-card.stat-pending .stat-num { color: #fbbf24; }
+        .stat-card.stat-rejected {
+            background: rgba(239, 68, 68, 0.08);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        .stat-card.stat-rejected .stat-num { color: #f87171; }
+
+        /* FILTER TOOLBAR */
+        .filter-toolbar {
+            background: rgba(11, 15, 25, 0.6);
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border: 1px solid var(--border-card);
+        }
+        .status-chips {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .status-chips .chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            padding: 0.38rem 0.95rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .status-chips .chip:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.08);
+        }
+        .status-chips .chip.active {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+        }
+
+        /* CANDIDATES TABLE */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 1rem;
+            border-radius: 14px;
+            border: 1px solid var(--border-card);
+            background: rgba(11, 15, 25, 0.5);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.86rem;
+            color: #e2e8f0;
+        }
+        th {
+            background: rgba(14, 19, 31, 0.9);
+            padding: 0.9rem 1rem;
+            color: var(--text-secondary);
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-card);
+            white-space: nowrap;
+        }
+        td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            vertical-align: middle;
+        }
+        th:last-child, td:last-child { min-width: 185px; white-space: nowrap; }
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .score-badge {
+            display: inline-block;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 0.78rem;
+        }
+        .score-excellent {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+        .score-good {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+        }
+        .score-low {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+        .status-badge {
+            font-size: 0.72rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+        .status-shortlisted {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .status-rejected {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .status-pending {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        /* MODAL PREVIEW */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 9, 14, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem;
+        }
+        .modal-card {
+            background: #0f1523;
+            border-radius: 20px;
+            max-width: 840px;
+            width: 100%;
+            max-height: 88vh;
+            overflow-y: auto;
+            padding: 1.8rem;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border-highlight);
+            position: relative;
+            color: #f8fafc;
+        }
+        .modal-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 0.8rem;
+        }
+        .modal-head h3 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .btn-close {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+        .btn-close:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* GUIDELINES & FAQ SECTION */
+        .info-section { max-width: 1240px; margin: 3.5rem auto 1rem; padding: 0 1.2rem; }
+        .info-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+        .info-card h2 {
+            font-size: 1.45rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 0.8rem;
+            font-weight: 800;
+        }
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.94rem;
+            margin-bottom: 1.2rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        .feature-box {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 1.3rem;
+        }
+        .feature-box h4 {
+            color: #ffffff;
+            font-size: 1.02rem;
+            margin-bottom: 0.45rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+        }
+        .feature-box p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 1.1rem 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.05rem;
+            margin-bottom: 0.45rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #070a12;
+            border-top: 1px solid var(--border-card);
+            padding: 3.5rem 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            margin-top: auto;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 992px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 576px) {
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+        .footer-col h5 {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 1.1rem;
+        }
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+        .footer-links-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: color 0.2s;
+        }
+        .footer-links-list a:hover {
+            color: var(--accent-cyan);
+        }
+        .footer-bottom-bar {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Prevent iOS Safari auto-zoom on inputs */
         @media screen and (max-width: 768px) {
             input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="file"], select, textarea {
                 font-size: 16px !important;
             }
         }
-        
-        /* Smooth touch momentum scrolling for iOS */
-        .preview-paper, .sticky-preview, .search-results, .navbar {
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Small screen adjustments (iPhone SE, 320px - 480px) */
-        @media (max-width: 480px) {
-            .navbar { padding: 0.5rem 0.75rem; }
-            .logo { font-size: 1.2rem; }
-            .nav-links a { font-size: 0.7rem; padding: 0.3rem 0.5rem; }
-            .hero { padding: 1.2rem 0.8rem; }
-            .card { padding: 0.9rem; }
-            .btn-row button, button { font-size: 0.78rem; padding: 0.45rem 0.7rem; }
-        }
-
     
-        /* ===== FOOTER STYLING ===== */
-        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; color: #f8fafc; }
-        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
-        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
-        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: all 0.2s; }
-        .footer-links a:hover { color: #38bdf8; }
-        .feedback-form input, .feedback-form textarea { width: 100%; padding: 0.55rem 0.8rem; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.8rem; color: #f8fafc; margin-bottom: 0.5rem; outline: none; font-family: inherit; }
-        .feedback-form input:focus, .feedback-form textarea:focus { border-color: #38bdf8; }
-        .feedback-form button { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s; width: auto !important; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
-
-    
-        /* ===== SMART SCROLL NAVBAR ===== */
-        .navbar {
-            position: fixed !important;
-            top: 0;
-            left: 0;
-            right: 0;
+        /* ===== MOBILE RESPONSIVE HAMBURGER & DRAWER ===== */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card, rgba(255, 255, 255, 0.12));
+            border-radius: 9px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            transition: all 0.25s ease;
+        }
+        .nav-hamburger:hover {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: rgba(56, 189, 248, 0.35);
+        }
+        .nav-hamburger span {
+            display: block;
             width: 100%;
-            z-index: 1000;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+            height: 2px;
+            background-color: var(--text-primary, #f8fafc);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
-        .navbar.nav-hidden {
-            transform: translateY(-100%);
+        .nav-hamburger.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
         }
-        body {
-            padding-top: 65px; /* Offset for fixed navbar */
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
         }
-        .sticky-preview {
-            top: 85px !important;
+        .nav-hamburger.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
         }
 
-    
-        /* ===== UNIFIED PREMIUM DARK NAVBAR STYLING ===== */
-        .navbar { background: rgba(15, 23, 42, 0.85) !important; backdrop-filter: blur(16px) !important; padding: 0.8rem 2rem !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 1000 !important; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 1rem; min-width: max-content; }
-        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
-        .nav-links { display: flex; gap: 0.4rem; flex-wrap: nowrap; align-items: center; }
-        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
-        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed) !important; color: white !important; box-shadow: 0 4px 20px rgba(37,99,235,0.35) !important; }
+        .mobile-nav-drawer {
+            display: none;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-card, rgba(255, 255, 255, 0.08));
+            padding: 1rem 1.25rem 1.4rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+        }
+        .mobile-nav-drawer.open {
+            display: block;
+            animation: mobileDrawerFade 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes mobileDrawerFade {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .mobile-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .mobile-nav-item:hover, .mobile-nav-item.active {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.25);
+            transform: translateX(4px);
+        }
 
-        /* Dark Glassmorphism Rules for HR Helper */
-        html { overflow-x: clip; scroll-behavior: smooth; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a !important; color: #f8fafc !important; min-height: 100vh; padding-top: 65px; overflow-x: clip; }
-        .card { background: rgba(30, 41, 59, 0.75) !important; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 18px !important; color: #f8fafc !important; }
-        .card h3 { color: #38bdf8 !important; }
-        .upload-zone { background: rgba(15, 23, 42, 0.5) !important; border: 2px dashed rgba(255,255,255,0.15) !important; color: #cbd5e1 !important; }
-        .upload-zone:hover { border-color: #38bdf8 !important; background: rgba(56,189,248,0.08) !important; }
-        .input-field { background: rgba(15, 23, 42, 0.8) !important; border: 1px solid rgba(255,255,255,0.12) !important; color: #f8fafc !important; }
-        .input-field:focus { border-color: #38bdf8 !important; box-shadow: 0 0 15px rgba(56,189,248,0.2) !important; }
-        .page-header { background: rgba(30, 41, 59, 0.6) !important; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 18px !important; }
-        .page-header h1 { background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
-        table { color: #f8fafc !important; }
-        th { background: rgba(15, 23, 42, 0.8) !important; color: #94a3b8 !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
-        td { border-bottom: 1px solid rgba(255,255,255,0.06) !important; color: #e2e8f0 !important; }
-        tr:hover { background: rgba(255,255,255,0.03) !important; }
-        .stat-card { background: rgba(15, 23, 42, 0.5) !important; border: 1px solid rgba(255,255,255,0.08) !important; }
-        .stat-card .val { color: #38bdf8 !important; }
-        .stat-card .lbl { color: #94a3b8 !important; }
-
-    
-        /* ===== DETAILED GUIDELINES & FAQ SECTION ===== */
-        .info-section { max-width: 1200px; margin: 3rem auto 1rem; padding: 0 1rem; }
-        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-bottom: 2rem; }
-        .info-card h2 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
-        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
-        .feature-box { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.2rem; }
-        .feature-box h4 { color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
-        .feature-box p { color: #94a3b8; font-size: 0.88rem; margin-bottom: 0; }
-        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1rem 0; }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-question { font-weight: 700; color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
-        .faq-answer { color: #94a3b8; font-size: 0.92rem; line-height: 1.6; }
+        @media (max-width: 1080px) {
+            .nav-center { display: none !important; }
+            .nav-hamburger { display: flex; }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0.75rem 1rem !important; }
+            .btn-bookmark-nav { display: none !important; }
+            .btn-try-hr { display: none !important; }
+            .nav-search-trigger { padding: 0.45rem 0.75rem !important; font-size: 0.82rem !important; }
+            .nav-search-trigger .search-text { display: none; }
+        }
 
     </style>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
 </head>
 <body>
-        <nav class="navbar" aria-label="Main Navigation">
+
+    <!-- Ambient Neon Aurora Glows -->
+    <div class="ambient-glow-top-left"></div>
+    <div class="ambient-glow-top-right"></div>
+    <div class="ambient-glow-mid"></div>
+
+    <!-- ===== TOP NAVIGATION ===== -->
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
-            <a href="/" class="logo">AuraToolkit360</a>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/converter/">Converter</a>
-                <a href="/resume-cv-maker/">Resume CV Maker</a>
-                <a href="/resume-score-checker/">Score Checker</a>
-                <a href="/hr-helper/" class="active">HR Helper</a>
-                <a href="/about/">About</a>
-                <a href="/blogs/">Blogs</a>
-                <a href="/contact/">Contact</a>
-                <a href="/privacy-policy/">Privacy</a>
-                <a href="/terms/">Terms</a>
-                <a href="/disclaimer/">Disclaimer</a>
+            <a href="/" class="logo">
+                <div class="logo-symbol">A</div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
+            </a>
+            
+            <div class="nav-center">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/converter/" class="nav-link">Converter</a>
+                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
+                <a href="/hr-helper/" class="nav-link active">HR Bulk <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="nav-link">Blogs</a>
+                <a href="/about/" class="nav-link">About</a>
+            </div>
+
+            <div class="nav-right-actions">
+                <a href="/converter/" class="btn-try-hr">⚡ Quick Convert</a>
+                <button class="btn-bookmark-nav" onclick="alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!')">★ Bookmark</button>
+                            <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <div class="mobile-nav-links">
+                <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
+                <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
+                <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
+                <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
+                <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
+                <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
+                <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <!-- ===== MAIN CONTENT CONTAINER ===== -->
+    <main class="container">
+        
+        <!-- Hero Header -->
         <div class="page-header">
-            <h1>👥 HR Bulk Resume Screening</h1>
-            <p>100% Client-Side Privacy: Screen hundreds of resumes locally in your browser with zero server uploads.</p>
+            <div class="pill-badge">🛡️ 100% Client-Side Privacy — Zero Server Uploads</div>
+            <h1>HR Bulk <span>Candidate Screener</span></h1>
+            <p>Screen, rank, and shortlist up to 300+ candidate CVs locally in your browser with automated keyword matching & instant CSV/ZIP exports.</p>
+            
+            <div class="hero-features-row">
+                <span class="hero-feature-pill">⚡ Instant Batch Parsing</span>
+                <span class="hero-feature-pill">🎯 Custom Job Description Matching</span>
+                <span class="hero-feature-pill">📊 Export Shortlisted CSV &amp; ZIP</span>
+                <span class="hero-feature-pill">🔒 100% GDPR Compliant</span>
+            </div>
         </div>
 
+        <!-- Screening Setup Card -->
         <div class="card">
-            <div style="margin-bottom: 1.4rem;">
-                <h3>1. Job Title / Role (Optional)</h3>
-                <input type="text" id="jobTitle" aria-label="jobTitle" class="input-field" placeholder="e.g. Senior Frontend Engineer, HR Manager, Sales Specialist...">
+            <!-- Step 1 -->
+            <div style="margin-bottom: 1.6rem;">
+                <div class="step-header">
+                    <span class="step-badge">STEP 1</span>
+                    <span class="step-title">Job Title / Target Role</span>
+                    <span class="step-optional">(Optional)</span>
+                </div>
+                <input type="text" id="jobTitle" aria-label="jobTitle" class="input-field" placeholder="e.g. Senior Frontend Engineer, HR Operations Lead, Full-Stack Developer...">
             </div>
 
-            <div style="margin-bottom: 1.4rem;">
-                <h3>2. Upload Candidate Resumes (PDF / DOCX / TXT)</h3>
-                <div style="margin-top:0.6rem;">
-                    <div class="upload-zone" onclick="document.getElementById('bulkFiles').click()">
-                        <div class="icon">📂</div>
-                        <p>Click or Drag & Drop Multiple Resumes (up to 300 files)</p>
-                        <div id="fileCount" style="margin-top:0.5rem; font-weight:700; color:#667eea;">No files selected</div>
-                        <input aria-label="bulkFiles" type="file" id="bulkFiles" accept=".pdf,.docx,.txt" multiple style="display:none;" onchange="handleFiles(this.files)">
-                    </div>
+            <!-- Step 2 -->
+            <div style="margin-bottom: 1.6rem;">
+                <div class="step-header">
+                    <span class="step-badge">STEP 2</span>
+                    <span class="step-title">Upload Candidate Resumes</span>
+                    <span class="step-optional">(PDF, DOCX, TXT — up to 300 files)</span>
+                </div>
+                <div class="upload-zone" onclick="document.getElementById('bulkFiles').click()">
+                    <div class="icon">📁</div>
+                    <p>Click or Drag &amp; Drop Candidate Resumes</p>
+                    <div id="fileCount" class="file-counter-pill">No files selected</div>
+                    <input aria-label="bulkFiles" type="file" id="bulkFiles" accept=".pdf,.docx,.txt" multiple style="display:none;" onchange="handleFiles(this.files)">
                 </div>
             </div>
 
-            <div style="margin-bottom: 1rem;">
-                <h3>3. Job Description & Requirements (Optional)</h3>
-                <textarea id="jobDesc" aria-label="jobDesc" class="input-field" placeholder="Paste full job description or key required skills here (or leave blank to run general quality screening)..."></textarea>
+            <!-- Step 3 -->
+            <div style="margin-bottom: 1.6rem;">
+                <div class="step-header">
+                    <span class="step-badge">STEP 3</span>
+                    <span class="step-title">Job Description &amp; Requirements</span>
+                    <span class="step-optional">(Optional — leave blank for general CV audit)</span>
+                </div>
+                <textarea id="jobDesc" aria-label="jobDesc" class="input-field" placeholder="Paste full job description or key required skills here (e.g. React, TypeScript, Python, REST APIs, Team Leadership)..."></textarea>
             </div>
 
-            <div style="margin-top:1.4rem; text-align:center;">
-                <button class="btn btn-primary" id="startBtn" onclick="startBulkScan()">⚡ Start Bulk Screening</button>
+            <!-- Action Button & Progress -->
+            <div style="text-align:center; margin-top: 1.8rem;">
+                <button class="btn btn-primary" id="startBtn" onclick="startBulkScan()" style="font-size:1.02rem; padding: 0.85rem 2.5rem;">
+                    ⚡ Start Bulk Screening
+                </button>
             </div>
 
             <div class="progress-bar-container" id="progressBar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div id="processingInfo" style="text-align:center; font-size:0.8rem; color:#475569; margin-top:0.4rem; display:none;"></div>
+            <div id="processingInfo" style="text-align:center; font-size:0.84rem; color:var(--text-secondary); margin-top:0.6rem; display:none;"></div>
         </div>
 
+        <!-- Results Card -->
         <div class="card" id="resultsDiv" style="display:none;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; margin-bottom:1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; margin-bottom:1.5rem;">
                 <div>
-                    <h3 id="resultsTitle">Candidate Screening Results</h3>
-                    <div id="screeningMeta" style="font-size:0.8rem; color:#475569; margin-top:0.2rem;"></div>
+                    <h3 id="resultsTitle" style="font-size:1.35rem; font-weight:800; color:#ffffff;">Candidate Screening Results</h3>
+                    <div id="screeningMeta" style="font-size:0.84rem; color:var(--text-secondary); margin-top:0.25rem;"></div>
                 </div>
-                <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
                     <button class="btn btn-success btn-sm" onclick="exportShortlistedCSV()">⭐ Export Shortlisted CSV</button>
                     <button class="btn btn-primary btn-sm" onclick="downloadShortlistedZIP()">📦 Download Shortlisted (ZIP)</button>
                     <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇️ Export Full CSV Report</button>
@@ -307,11 +1128,11 @@
             <!-- Score Slider & Status Filter Bar -->
             <div class="filter-toolbar">
                 <div>
-                    <label for="scoreFilter" style="font-size:0.85rem; font-weight:700; color:#334155; display:flex; justify-content:space-between; align-items:center;">
+                    <label for="scoreFilter" style="font-size:0.86rem; font-weight:700; color:#cbd5e1; display:flex; justify-content:space-between; align-items:center;">
                         <span>🎯 Min Match Score Filter:</span>
-                        <span id="scoreFilterVal" style="color:#2563eb; font-weight:800;">Show All (≥ 0%)</span>
+                        <span id="scoreFilterVal" style="color:var(--accent-cyan); font-weight:800;">Show All (≥ 0%)</span>
                     </label>
-                    <input type="range" id="scoreFilter" aria-label="Min Match Score Filter" min="0" max="100" value="0" style="width:100%; margin-top:0.4rem; cursor:pointer;" oninput="applyFilters()">
+                    <input type="range" id="scoreFilter" aria-label="Min Match Score Filter" min="0" max="100" value="0" style="width:100%; margin-top:0.5rem; cursor:pointer;" oninput="applyFilters()">
                 </div>
 
                 <div class="status-chips">
@@ -329,17 +1150,18 @@
                             <th>#</th>
                             <th>Candidate File</th>
                             <th>ATS Match Score</th>
-                            <th>Key Matched / Found Skills</th>
+                            <th>Key Matched Skills</th>
                             <th>Missing Terms</th>
                             <th>Status</th>
-                            <th style="min-width:175px;">Actions</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody"></tbody>
                 </table>
             </div>
         </div>
-    </div>
+
+    </main>
 
     <!-- Candidate Resume & Skills Preview Modal -->
     <div id="viewModal" class="modal-backdrop" style="display:none;" onclick="if(event.target===this)closeViewModal()">
@@ -349,21 +1171,129 @@
                 <button class="btn-close" aria-label="Close Preview Modal" onclick="closeViewModal()">✕</button>
             </div>
             <div class="modal-body">
-                <div id="modalMeta" style="margin-bottom:1rem;"></div>
+                <div id="modalMeta" style="margin-bottom:1.2rem;"></div>
                 
                 <!-- Detailed Skills Breakdown Box -->
-                <div id="modalSkillsBox" style="background:#f1f5f9; border-radius:12px; padding:1rem; margin-bottom:1.2rem; border:1px solid #cbd5e1;"></div>
+                <div id="modalSkillsBox" style="background:rgba(11, 15, 25, 0.6); border-radius:14px; padding:1.1rem; margin-bottom:1.2rem; border:1px solid rgba(255,255,255,0.08);"></div>
 
-                <div style="font-weight:700; font-size:0.85rem; color:#475569; margin-bottom:0.4rem;">Extracted Resume Content:</div>
-                <pre id="modalText" style="white-space:pre-wrap; font-family:inherit; font-size:0.82rem; color:#334155; background:#f8fafc; padding:1rem; border-radius:10px; max-height:350px; overflow-y:auto; border:1px solid #cbd5e1;"></pre>
+                <div style="font-weight:700; font-size:0.86rem; color:var(--text-secondary); margin-bottom:0.5rem;">Extracted Resume Content:</div>
+                <pre id="modalText" style="white-space:pre-wrap; font-family:inherit; font-size:0.84rem; color:#cbd5e1; background:rgba(11, 15, 25, 0.7); padding:1rem; border-radius:12px; max-height:350px; overflow-y:auto; border:1px solid rgba(255,255,255,0.08);"></pre>
             </div>
-            <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center; margin-top:1.2rem; padding-top:0.8rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:0.5rem;">
+            <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center; margin-top:1.4rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.08); flex-wrap:wrap; gap:0.6rem;">
                 <div id="modalActions" style="display:flex; gap:0.4rem;"></div>
                 <button class="btn btn-outline btn-sm" onclick="closeViewModal()">Close</button>
             </div>
         </div>
     </div>
 
+    <!-- ===== DETAILED GUIDELINES & FAQ SECTION ===== -->
+    <section class="info-section">
+        <div class="info-card">
+            <h2>Bulk Resume Screening Tool for HR &amp; Recruiters</h2>
+            <p>Screen and rank up to 300 candidate resumes locally in your browser against job titles or job descriptions. Save hours of manual shortlisting while maintaining strict candidate data privacy.</p>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h4>👥 Bulk Processing (300+ CVs)</h4>
+                    <p>Upload hundreds of PDF/Word candidate CVs at once and evaluate match scores in seconds.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>📊 Export Shortlist CSV Reports</h4>
+                    <p>Download structured CSV screening reports with candidate names, scores, and status flags.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>📦 Zip Shortlisted Candidates</h4>
+                    <p>Package top-matching shortlisted candidate resumes into a single ZIP archive for hiring managers.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>🔒 100% GDPR Recruiter Compliance</h4>
+                    <p>Candidate resumes never leave recruiter devices, ensuring full privacy law compliance.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <div class="faq-question">❓ Is this tool free for recruiters and small HR teams?</div>
+                <div class="faq-answer">Yes! AuraToolkit360 HR Bulk Helper is 100% free with no candidate processing limits or fees.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">❓ How are candidate resumes ranked?</div>
+                <div class="faq-answer">Resumes are scored based on skill keyword matching, title relevance, and formatting quality against your specified job description.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">❓ Are candidate resumes stored on your servers?</div>
+                <div class="faq-answer">No. All file extraction and keyword matching runs 100% locally in your web browser via WebAssembly and JavaScript. Zero resumes are uploaded or saved.</div>
+            </div>
+        </div>
+
+        <!-- 1-Click Viral Social Sharing Container -->
+        <div class="aura-share-container" data-title="AuraToolkit360 Free HR Bulk Candidate Screener" data-subtitle="Know recruiters, founders, or HR hiring managers? Share this free, private candidate screening tool!"></div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-inner">
+            <!-- Col 1: Brand Info -->
+            <div class="footer-col">
+                <a href="/" class="logo" style="margin-bottom:1rem;">
+                    <div class="logo-symbol">A</div>
+                    <div class="logo-text">AuraToolkit<span>360</span></div>
+                </a>
+                <p style="font-size:0.85rem; line-height:1.6; margin-bottom:1.2rem;">
+                    Your privacy is our highest priority. All conversions, resume building, and candidate screening run 100% inside your web browser.
+                </p>
+                <div style="font-size:0.82rem; color:var(--text-muted);">
+                    Contact: <a href="mailto:info@auratoolkit360.com" style="color:var(--accent-cyan); text-decoration:none;">info@auratoolkit360.com</a>
+                </div>
+            </div>
+
+            <!-- Col 2: Product Suite -->
+            <div class="footer-col">
+                <h5>Products</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/converter/">File Converter Suite</a></li>
+                    <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
+                    <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
+                    <li><a href="/hr-helper/">HR Bulk Screener</a></li>
+                    <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Company & Articles -->
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/about/">About AuraToolkit360</a></li>
+                    <li><a href="/blogs/">Career &amp; Tech Guides</a></li>
+                    <li><a href="/contact/">Help &amp; Contact Support</a></li>
+                    <li><a href="/converter/word-counter/">Text Utilities</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Legal & Security -->
+            <div class="footer-col">
+                <h5>Legal &amp; Security</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/privacy-policy/">Privacy Policy (GDPR / CCPA)</a></li>
+                    <li><a href="/terms/">Terms of Service</a></li>
+                    <li><a href="/disclaimer/">Disclaimer Statement</a></li>
+                    <li><span style="font-size:0.75rem; color:#10b981;">● System Status: All Systems Operational</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <div>© 2026 AuraToolkit360. All rights reserved. 100% Client-Side Privacy Guaranteed.</div>
+            <div>
+                <a href="/privacy-policy/" style="color:var(--text-muted); text-decoration:none; margin-right:1rem;">Privacy</a>
+                <a href="/terms/" style="color:var(--text-muted); text-decoration:none;">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPT: CORE EXTRACTION & SCREENING LOGIC ===== -->
     <script>
         if (window.pdfjsLib) {
             window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
@@ -376,7 +1306,16 @@
 
         function handleFiles(files) {
             selectedFiles = Array.from(files);
-            document.getElementById('fileCount').textContent = `✅ ${selectedFiles.length} resume(s) selected`;
+            const countEl = document.getElementById('fileCount');
+            if (selectedFiles.length > 0) {
+                countEl.textContent = `✅ ${selectedFiles.length} resume(s) selected`;
+                countEl.style.color = '#34d399';
+                countEl.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+                countEl.style.background = 'rgba(16, 185, 129, 0.15)';
+            } else {
+                countEl.textContent = 'No files selected';
+                countEl.style.color = 'var(--accent-cyan)';
+            }
         }
 
         const STOP_WORDS = new Set([
@@ -510,8 +1449,22 @@
             pInfo.style.display = 'none';
 
             bulkResults.sort((a, b) => b.score - a.score);
-            document.getElementById('screeningMeta').textContent = `Screened ${bulkResults.length} candidates for: ${activeJobTitle}`;
+            document.getElementById('screeningMeta').textContent = `Screened ${bulkResults.length} candidates for: "${activeJobTitle}"`;
             document.getElementById('resultsDiv').style.display = 'block';
+
+            // Auto-log to Recent Activity (LocalStorage)
+            try {
+                let acts = JSON.parse(localStorage.getItem('atk_recent_activity') || '[]');
+                const shortlistedCount = bulkResults.filter(r => r.status === 'shortlisted').length;
+                acts.unshift({
+                    title: `HR Screener: ${bulkResults.length} CVs (${shortlistedCount} Shortlisted)`,
+                    time: 'Just now',
+                    url: '/hr-helper/',
+                    icon: '👥'
+                });
+                if (acts.length > 8) acts = acts.slice(0, 8);
+                localStorage.setItem('atk_recent_activity', JSON.stringify(acts));
+            } catch(e) {}
 
             document.getElementById('scoreFilter').value = 0;
             activeStatusFilter = 'all';
@@ -557,7 +1510,7 @@
             const tbody = document.getElementById('tableBody');
 
             if (!list.length) {
-                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.5rem; color:#64748b;">No candidate resumes match the selected score slider or status filter.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:2rem; color:var(--text-muted);">No candidate resumes match the selected score slider or status filter.</td></tr>`;
                 return;
             }
 
@@ -568,20 +1521,20 @@
 
                 return `
                     <tr>
-                        <td>${index + 1}</td>
-                        <td><strong>📄 ${escapeHtml(r.name)}</strong></td>
+                        <td style="color:var(--text-muted); font-weight:700;">${index + 1}</td>
+                        <td><strong style="color:#ffffff;">📄 ${escapeHtml(r.name)}</strong></td>
                         <td><span class="score-badge ${sClass}">${r.score}%</span></td>
                         <td>
-                            <div style="font-weight:600; color:#10b981; font-size:0.8rem;">${r.matched.length} Matched</div>
-                            <div style="font-size:0.75rem; color:#475569; max-width:180px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;" title="${r.matched.join(', ')}">
-                                ${r.matched.slice(0, 3).join(', ')}${r.matched.length > 3 ? '...' : ''}
+                            <div style="font-weight:700; color:#34d399; font-size:0.8rem; margin-bottom:0.15rem;">${r.matched.length} Matched</div>
+                            <div style="font-size:0.75rem; color:var(--text-secondary); max-width:200px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;" title="${escapeHtml(r.matched.join(', '))}">
+                                ${escapeHtml(r.matched.slice(0, 3).join(', '))}${r.matched.length > 3 ? '...' : ''}
                             </div>
-                            <button class="btn btn-outline btn-sm" style="padding:0.15rem 0.4rem; font-size:0.7rem; margin-top:0.2rem;" onclick="showResumeModal(${r.id})">🔍 View Skills</button>
+                            <button class="btn btn-outline btn-sm" style="padding:0.18rem 0.5rem; font-size:0.7rem; margin-top:0.35rem;" onclick="showResumeModal(${r.id})">🔍 View Skills</button>
                         </td>
-                        <td><span style="color:#ef4444; font-weight:600;">${r.missing.length} terms</span></td>
+                        <td><span style="color:#f87171; font-weight:700;">${r.missing.length} terms</span></td>
                         <td><span class="status-badge ${stClass}">${stText}</span></td>
                         <td style="white-space:nowrap;">
-                            <div style="display:inline-flex; gap:0.25rem; align-items:center; flex-wrap:nowrap;">
+                            <div style="display:inline-flex; gap:0.35rem; align-items:center; flex-wrap:nowrap;">
                                 <button class="btn btn-info btn-sm" aria-label="View Candidate Resume" onclick="showResumeModal(${r.id})" title="View Resume & Skills">👁️ View</button>
                                 <button class="btn btn-success btn-sm" aria-label="Shortlist Candidate" onclick="updateStatus(${r.id}, 'shortlisted')" title="Shortlist Candidate">⭐</button>
                                 <button class="btn btn-warning btn-sm" aria-label="Pending Candidate" onclick="updateStatus(${r.id}, 'pending')" title="Mark Pending">⏳</button>
@@ -607,24 +1560,24 @@
 
             document.getElementById('modalTitle').textContent = `📄 ${r.name}`;
             document.getElementById('modalMeta').innerHTML = `
-                <div style="display:flex; gap:0.6rem; align-items:center; flex-wrap:wrap;">
+                <div style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
                     <span class="score-badge ${r.score >= 80 ? 'score-excellent' : r.score >= 60 ? 'score-good' : 'score-low'}">ATS Match Score: ${r.score}%</span>
-                    <span style="font-size:0.8rem; font-weight:700; color:#475569;">Status: ${r.status.toUpperCase()}</span>
+                    <span class="status-badge ${r.status === 'shortlisted' ? 'status-shortlisted' : r.status === 'rejected' ? 'status-rejected' : 'status-pending'}">Status: ${r.status.toUpperCase()}</span>
                 </div>
             `;
 
             // Render matched and missing skills pill tags inside modal
-            const matchedTags = r.matched.length ? r.matched.map(m => `<span style="background:#d1fae5; color:#065f46; border:1px solid #a7f3d0; padding:0.15rem 0.5rem; border-radius:999px; font-size:0.75rem; font-weight:600;">${m}</span>`).join('') : '<span style="color:#64748b; font-size:0.8rem;">No matched keywords</span>';
-            const missingTags = r.missing.length ? r.missing.map(m => `<span style="background:#fee2e2; color:#991b1b; border:1px solid #fecaca; padding:0.15rem 0.5rem; border-radius:999px; font-size:0.75rem; font-weight:600;">${m}</span>`).join('') : '<span style="color:#64748b; font-size:0.8rem;">None missing</span>';
+            const matchedTags = r.matched.length ? r.matched.map(m => `<span style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.3); padding:0.2rem 0.6rem; border-radius:999px; font-size:0.75rem; font-weight:600;">${escapeHtml(m)}</span>`).join('') : '<span style="color:var(--text-muted); font-size:0.8rem;">No matched keywords</span>';
+            const missingTags = r.missing.length ? r.missing.map(m => `<span style="background:rgba(239,68,68,0.15); color:#f87171; border:1px solid rgba(239,68,68,0.3); padding:0.2rem 0.6rem; border-radius:999px; font-size:0.75rem; font-weight:600;">${escapeHtml(m)}</span>`).join('') : '<span style="color:#34d399; font-size:0.8rem;">None missing</span>';
 
             document.getElementById('modalSkillsBox').innerHTML = `
-                <div style="margin-bottom:0.8rem;">
-                    <div style="font-weight:700; font-size:0.85rem; color:#065f46; margin-bottom:0.3rem;">✅ Matched Skills & Keywords (${r.matched.length}):</div>
-                    <div style="display:flex; flex-wrap:wrap; gap:0.35rem;">${matchedTags}</div>
+                <div style="margin-bottom:0.9rem;">
+                    <div style="font-weight:700; font-size:0.85rem; color:#34d399; margin-bottom:0.4rem;">✅ Matched Skills &amp; Keywords (${r.matched.length}):</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">${matchedTags}</div>
                 </div>
                 <div>
-                    <div style="font-weight:700; font-size:0.85rem; color:#991b1b; margin-bottom:0.3rem;">❌ Missing Skills & Keywords (${r.missing.length}):</div>
-                    <div style="display:flex; flex-wrap:wrap; gap:0.35rem;">${missingTags}</div>
+                    <div style="font-weight:700; font-size:0.85rem; color:#f87171; margin-bottom:0.4rem;">❌ Missing Skills &amp; Keywords (${r.missing.length}):</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">${missingTags}</div>
                 </div>
             `;
 
@@ -652,9 +1605,9 @@
             let csv = `Shortlisted Candidates Report - Job Role: "${activeJobTitle}"\n`;
             csv += "Rank,Filename,Match Score,Matched Skills Count,Missing Terms Count\n";
             shortlisted.forEach((r, idx) => {
-                csv += `${idx + 1},"${r.name}",${r.score}%,${r.matched.length},${r.missing.length}\n`;
+                csv += `${idx + 1},"${r.name.replace(/"/g, '""')}",${r.score}%,${r.matched.length},${r.missing.length}\n`;
             });
-            const blob = new Blob([csv], { type: 'text/csv' });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = `shortlisted_candidates_${activeJobTitle.replace(/\s+/g, '_').toLowerCase()}.csv`;
@@ -693,9 +1646,9 @@
             let csv = `Candidate Screening Report - Job Role: "${activeJobTitle}"\n`;
             csv += "Rank,Filename,Match Score,Matched Skills Count,Missing Terms Count,Status\n";
             bulkResults.forEach((r, idx) => {
-                csv += `${idx + 1},"${r.name}",${r.score}%,${r.matched.length},${r.missing.length},"${r.status}"\n`;
+                csv += `${idx + 1},"${r.name.replace(/"/g, '""')}",${r.score}%,${r.matched.length},${r.missing.length},"${r.status}"\n`;
             });
-            const blob = new Blob([csv], { type: 'text/csv' });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = `screening_report_${activeJobTitle.replace(/\s+/g, '_').toLowerCase()}.csv`;
@@ -733,93 +1686,34 @@
             }, { passive: true });
         })();
     </script>
-
-    
-    <!-- ===== DETAILED GUIDELINES & FAQ SECTION ===== -->
-    <section class="info-section">
-        <div class="info-card">
-            <h2>Bulk Resume Screening Tool for HR & Recruiters</h2>
-            <p>Screen and rank up to 300 candidate resumes locally in browser against job titles or job descriptions. Save hours of manual shortlisting while maintaining strict candidate data privacy.</p>
-
-            <div class="features-grid">
-                <div class="feature-box">
-                    <h4>👥 Bulk Processing (300+ CVs)</h4>
-                    <p>Upload hundreds of PDF/Word candidate CVs at once and evaluate match scores in seconds.</p>
-                </div>
-                <div class="feature-box">
-                    <h4>📊 Export Shortlist CSV Reports</h4>
-                    <p>Download structured CSV screening reports with candidate names, scores, and status flags.</p>
-                </div>
-                <div class="feature-box">
-                    <h4>📦 Zip Shortlisted Candidates</h4>
-                    <p>Package top-matching shortlisted candidate resumes into a single ZIP archive for hiring managers.</p>
-                </div>
-                <div class="feature-box">
-                    <h4>🔒 100% GDPR Recruiter Compliance</h4>
-                    <p>Candidate resumes never leave recruiter devices, ensuring full privacy law compliance.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-card">
-            <h2>Frequently Asked Questions (FAQ)</h2>
-            <div class="faq-item">
-                <div class="faq-question">❓ Is this tool free for recruiters and small HR teams?</div>
-                <div class="faq-answer">Yes! AuraToolkit360 HR Bulk Helper is 100% free with no candidate processing limits or fees.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">❓ How are candidate resumes ranked?</div>
-                <div class="faq-answer">Resumes are scored based on skill keyword matching, title relevance, and formatting quality against your specified job description.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-        <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>AuraToolkit360</h3>
-                <p>Smart privacy-first browser toolkit for file conversions, ATS-ready resumes, and HR candidate screening.</p>
-                <p style="margin-top:0.6rem;"><strong>Email:</strong> info@auratoolkit360.com</p>
-                <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem;">
-                    <a href="/privacy-policy/" style="color:#38bdf8; text-decoration:none;">Privacy Policy</a> •
-                    <a href="/terms/" style="color:#38bdf8; text-decoration:none;">Terms of Service</a> •
-                    <a href="/disclaimer/" style="color:#38bdf8; text-decoration:none;">Disclaimer</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Navigation & Legal</h4>
-                <div class="footer-links">
-                    <a href="/">Home Page</a>
-                    <a href="/converter/">File Converter Suite</a>
-                    <a href="/resume-cv-maker/">Resume CV Maker</a>
-                    <a href="/resume-score-checker/">ATS Score Checker</a>
-                    <a href="/hr-helper/">HR Screening Helper</a>
-                    <a href="/blogs/">Blog Articles</a>
-                    <a href="/about/">About Us</a>
-                    <a href="/contact/">Contact Us</a>
-                    <a href="/privacy-policy/">Privacy Policy (GDPR/CCPA)</a>
-                    <a href="/terms/">Terms of Service</a>
-                    <a href="/disclaimer/">Disclaimer Statement</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Feedback & Support</h4>
-                <form class="feedback-form" onsubmit="event.preventDefault(); const fd=new FormData(this); const body='Name: '+fd.get('name')+'
-Email: '+fd.get('email')+'
-
-Feedback:
-'+fd.get('message'); window.location.href='mailto:info@auratoolkit360.com?subject='+encodeURIComponent('AuraToolkit360 Feedback')+'&body='+encodeURIComponent(body); this.reset(); alert('Thanks! Your email client is opening.');">
-                    <input name="name" type="text" placeholder="Your Name" required aria-label="Your Name">
-                    <input name="email" type="email" placeholder="Your Email" required aria-label="Your Email">
-                    <textarea name="message" rows="3" placeholder="Share your feedback..." required aria-label="Share your feedback"></textarea>
-                    <button type="submit">Send Feedback</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing | <a href="/privacy-policy/" style="color:#64748b; text-decoration:underline;">Privacy</a> | <a href="/terms/" style="color:#64748b; text-decoration:underline;">Terms</a>
-        </div>
-    </footer>
+<script>
+        function toggleMobileMenu() {
+            const btn = document.getElementById('navHamburger');
+            const drawer = document.getElementById('mobileNavDrawer');
+            if (!btn || !drawer) return;
+            const isOpen = drawer.classList.contains('open');
+            if (isOpen) {
+                drawer.classList.remove('open');
+                btn.classList.remove('active');
+                btn.setAttribute('aria-expanded', 'false');
+            } else {
+                drawer.classList.add('open');
+                btn.classList.add('active');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        }
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('.navbar');
+            const drawer = document.getElementById('mobileNavDrawer');
+            const btn = document.getElementById('navHamburger');
+            if (drawer && drawer.classList.contains('open') && nav && !nav.contains(e.target)) {
+                drawer.classList.remove('open');
+                if (btn) {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+</script>
 </body>
 </html>

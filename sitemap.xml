@@ -38,9 +38,21 @@
     </url>
     <url>
         <loc>https://auratoolkit360.com/blogs/</loc>
-        <lastmod>2026-09-08</lastmod>
+        <lastmod>2026-09-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/blogs/canva-vs-ats-resume-builder-guide/</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/blogs/high-impact-resume-action-verbs-2026/</loc>
+        <lastmod>2026-09-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
     </url>
     <url>
         <loc>https://auratoolkit360.com/blogs/best-converter-tool-for-all-files-2026/</loc>
