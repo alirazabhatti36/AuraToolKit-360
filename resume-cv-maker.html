@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <title>AuraToolkit360 | ATS Resume CV Maker — 7 Modern Templates</title>
-    <meta name="description" content="Create a professional, ATS-friendly resume with AuraToolkit360 Resume CV Maker. 7 modern templates, candidate photo support, Certifications, Awards, Projects, Languages, live preview, JSON import/export, PDF export, and DOCX export. 100% client side.">
+    <title>AuraToolkit360 | ATS Resume CV Maker — 12 Modern Templates & Styling Customizer</title>
+    <meta name="description" content="Create a professional, ATS-friendly resume with AuraToolkit360 Resume CV Maker. 12 modern templates, custom accent color, ATS fonts, 1-page fit spacing controls, candidate photo support, Certifications, Awards, Projects, Languages, live preview, JSON import/export, PDF export, and DOCX export. 100% client side.">
     <meta name="keywords" content="resume cv maker, cv builder, resume creator, professional cv, photo resume, resume templates, ATS resume, AuraToolkit360">
     <meta name="author" content="AuraToolkit360">
     <meta name="theme-color" content="#0b0f19">
@@ -15,7 +15,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
     <meta property="og:title" content="AuraToolkit360 | ATS Resume CV Maker">
-    <meta property="og:description" content="Build a clean, professional CV with live preview, photo support, 7 templates, and one-click PDF/DOCX exports. 100% private in your browser.">
+    <meta property="og:description" content="Build a clean, professional CV with live preview, photo support, 12 templates, custom styling, and one-click PDF/DOCX exports. 100% private in your browser.">
     <meta property="og:url" content="https://auratoolkit360.com/resume-cv-maker/">
     <meta property="og:locale" content="en_US">
     
@@ -27,7 +27,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -480,19 +480,19 @@
             color: var(--text-muted);
         }
 
-        /* Template Selector */
+        /* Template Selector & Customizer Bar */
         .template-top-card {
             background: var(--bg-card);
             backdrop-filter: blur(14px);
             border: 1px solid var(--border-card);
             border-radius: 20px;
-            padding: 1.25rem 1.5rem;
+            padding: 1.35rem 1.6rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
         .template-grid {
             display: grid;
-            grid-template-columns: repeat(7, minmax(0, 1fr));
+            grid-template-columns: repeat(6, minmax(0, 1fr));
             gap: 0.65rem;
             margin-top: 0.6rem;
         }
@@ -500,21 +500,22 @@
             .template-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
         }
         @media (max-width: 768px) {
-            .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .template-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         }
-        @media (max-width: 440px) {
-            .template-grid { grid-template-columns: 1fr; }
+        @media (max-width: 520px) {
+            .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         .template-chip {
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(11, 15, 25, 0.6);
             border-radius: 12px;
-            padding: 0.65rem;
+            padding: 0.6rem;
             text-align: left;
             color: #cbd5e1;
-            min-height: 92px;
+            min-height: 88px;
             cursor: pointer;
-            transition: all 0.25s;
+            transition: all 0.22s;
+            position: relative;
         }
         .template-chip:hover {
             border-color: rgba(56, 189, 248, 0.4);
@@ -524,32 +525,165 @@
             border-color: var(--accent-cyan);
             background: rgba(56, 189, 248, 0.12);
             color: #ffffff;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
         }
         .template-thumb {
             display: block;
-            height: 44px;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
+            height: 38px;
+            border-radius: 6px;
+            margin-bottom: 0.4rem;
             border: 1px solid rgba(255, 255, 255, 0.15);
             background: #ffffff;
             overflow: hidden;
             position: relative;
         }
-        .thumb-modern { background: linear-gradient(180deg, #eff6ff 0 32%, #ffffff 32% 100%); }
-        .thumb-modern::before { content: ''; position: absolute; inset: 6px 8px auto; height: 6px; background: #2563eb; border-radius: 999px; }
+        .thumb-modern { background: linear-gradient(180deg, #eff6ff 0 35%, #ffffff 35% 100%); }
+        .thumb-modern::before { content: ''; position: absolute; inset: 5px 6px auto; height: 5px; background: #2563eb; border-radius: 999px; }
         .thumb-classic { background: #ffffff; }
-        .thumb-classic::before { content: ''; position: absolute; left: 8px; right: 8px; top: 6px; height: 3px; background: #475569; }
+        .thumb-classic::before { content: ''; position: absolute; left: 6px; right: 6px; top: 6px; height: 3px; background: #475569; }
         .thumb-minimal { background: #ffffff; }
-        .thumb-minimal::before { content: ''; position: absolute; left: 6px; top: 6px; width: 4px; bottom: 6px; background: #0f172a; }
+        .thumb-minimal::before { content: ''; position: absolute; left: 5px; top: 5px; width: 4px; bottom: 5px; background: #0f172a; }
         .thumb-compact { background: linear-gradient(90deg, #eff6ff 0 28%, #ffffff 28% 100%); }
-        .thumb-compact::before { content: ''; position: absolute; left: 4px; top: 6px; width: 14px; bottom: 6px; background: #dbeafe; }
+        .thumb-compact::before { content: ''; position: absolute; left: 4px; top: 5px; width: 10px; bottom: 5px; background: #dbeafe; }
         .thumb-photo-exec { background: #ffffff; }
-        .thumb-photo-exec::before { content: ''; position: absolute; left: 6px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #2563eb; }
+        .thumb-photo-exec::before { content: ''; position: absolute; left: 5px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: #2563eb; }
         .thumb-sidebar { background: linear-gradient(90deg, #0f172a 0 32%, #ffffff 32% 100%); }
-        .thumb-sidebar::before { content: ''; position: absolute; left: 4px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: #38bdf8; }
+        .thumb-sidebar::before { content: ''; position: absolute; left: 3px; top: 4px; width: 8px; height: 8px; border-radius: 50%; background: #38bdf8; }
         .thumb-gradient { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .thumb-gradient::before { content: ''; position: absolute; left: 6px; top: 8px; width: 40%; height: 5px; background: #ffffff; border-radius: 999px; }
+        .thumb-gradient::before { content: ''; position: absolute; left: 5px; top: 6px; width: 40%; height: 4px; background: #ffffff; border-radius: 999px; }
+        .thumb-tech { background: #0d1117; }
+        .thumb-tech::before { content: '>'; position: absolute; left: 5px; top: 4px; font-size: 7px; color: #38bdf8; font-family: monospace; }
+        .thumb-tech::after { content: ''; position: absolute; left: 14px; right: 5px; top: 7px; height: 2px; background: #238636; }
+        .thumb-europass { background: linear-gradient(90deg, #e2e8f0 0 32%, #ffffff 32% 100%); }
+        .thumb-europass::before { content: ''; position: absolute; left: 4px; top: 5px; width: 10px; height: 3px; background: #1d4ed8; }
+        .thumb-nordic { background: #ffffff; }
+        .thumb-nordic::before { content: ''; position: absolute; left: 6px; right: 6px; top: 10px; height: 1px; background: #cbd5e1; }
+        .thumb-nordic::after { content: ''; position: absolute; left: 6px; top: 5px; width: 22px; height: 3px; background: #0f172a; }
+        .thumb-split { background: linear-gradient(90deg, #f1f5f9 0 50%, #ffffff 50% 100%); }
+        .thumb-split::before { content: ''; position: absolute; left: 4px; top: 5px; width: 14px; height: 3px; background: #6366f1; }
+        .thumb-fresher { background: #ffffff; }
+        .thumb-fresher::before { content: ''; position: absolute; left: 6px; right: 6px; top: 5px; height: 4px; background: #0284c7; border-radius: 2px; }
+
+        /* Customizer Controls Bar */
+        .customizer-toolbar {
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: grid;
+            grid-template-columns: 1.3fr 1.1fr 1fr 1.2fr;
+            gap: 1.2rem;
+            align-items: start;
+        }
+        @media (max-width: 1100px) {
+            .customizer-toolbar { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 650px) {
+            .customizer-toolbar { grid-template-columns: 1fr; }
+        }
+        .customizer-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .customizer-label {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .color-palette {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+        }
+        .color-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .color-dot:hover {
+            transform: scale(1.18);
+        }
+        .color-dot.active {
+            border-color: #ffffff;
+            box-shadow: 0 0 10px rgba(255,255,255,0.7);
+            transform: scale(1.18);
+        }
+        .custom-color-btn {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px dashed rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.06);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.75rem;
+        }
+        .custom-color-btn input[type="color"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .customizer-select {
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #f8fafc;
+            padding: 0.45rem 0.75rem;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            width: 100%;
+        }
+        .customizer-select:focus {
+            border-color: var(--accent-cyan);
+        }
+        .segmented-control {
+            display: inline-flex;
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            padding: 2px;
+            gap: 2px;
+            width: fit-content;
+        }
+        .seg-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            padding: 0.35rem 0.65rem;
+            border-radius: 8px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .seg-btn:hover {
+            color: #f8fafc;
+        }
+        .seg-btn.active {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+        }
 
         /* Sticky Preview Pane */
         .sticky-preview {
@@ -771,10 +905,10 @@
         <div class="page-header">
             <div class="pill-badge">🛡️ 100% Client-Side Privacy — Zero Server Uploads</div>
             <h1>ATS Resume CV Maker</h1>
-            <p>Build, style, and customize professional ATS-friendly resumes in real-time. Choose from 7 templates, add photos, certifications, and export pixel-perfect PDF or editable DOCX.</p>
+            <p>Build, style, and customize professional ATS-friendly resumes in real-time. Choose from 12 templates, customize accent colors, fonts, and spacing, add photos, certifications, and export pixel-perfect PDF or editable DOCX.</p>
             
             <div class="resume-feature-pills">
-                <span class="res-pill">🎨 7 Modern Templates</span>
+                <span class="res-pill">🎨 12 Modern Templates & Styling Customizer</span>
                 <span class="res-pill">📸 Photo Upload Support</span>
                 <span class="res-pill">📌 Real-Time Live Preview</span>
                 <span class="res-pill">💾 Auto-Save Drafts</span>
@@ -782,21 +916,64 @@
             </div>
         </div>
 
-        <!-- ===== STEP 1: CHOOSE TEMPLATE (SHOWN FIRST) ===== -->
+        <!-- ===== STEP 1: CHOOSE TEMPLATE & CUSTOMIZE (SHOWN FIRST) ===== -->
         <div class="template-top-card">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; margin-bottom:0.75rem;">
                 <div style="display:flex; align-items:center; gap:0.65rem;">
                     <span style="font-size:1.4rem;">🎨</span>
                     <div>
-                        <h2 style="font-size:1.15rem; font-weight:800; color:#f8fafc; margin:0; line-height:1.3;">Step 1: Choose Resume Template</h2>
-                        <p style="font-size:0.82rem; color:#94a3b8; margin:0;">Select an ATS-ready style. Your content automatically switches formats in the live preview.</p>
+                        <h2 style="font-size:1.15rem; font-weight:800; color:#f8fafc; margin:0; line-height:1.3;">Step 1: Choose Resume Template &amp; Styling</h2>
+                        <p style="font-size:0.82rem; color:#94a3b8; margin:0;">Select from 12 ATS formats, customize accent colors, typography, and 1-page fit spacing in real-time.</p>
                     </div>
                 </div>
                 <div style="display:flex; align-items:center; gap:0.5rem;">
-                    <span class="pill-badge" style="margin:0; font-size:0.74rem; padding:0.25rem 0.75rem;">7 Pro Formats</span>
+                    <span class="pill-badge" style="margin:0; font-size:0.74rem; padding:0.25rem 0.75rem;">12 Pro Formats</span>
                 </div>
             </div>
+
+            <!-- Templates Grid (12 Formats) -->
             <div class="template-grid" id="templateGrid"></div>
+
+            <!-- Customizer Controls Bar -->
+            <div class="customizer-toolbar">
+                <!-- Color Theme -->
+                <div class="customizer-group">
+                    <label class="customizer-label"><span>🎨</span> Theme Accent Color:</label>
+                    <div class="color-palette" id="colorPalette"></div>
+                </div>
+
+                <!-- Font Family -->
+                <div class="customizer-group">
+                    <label class="customizer-label" for="fontFamilySelect"><span>🔤</span> Font Style:</label>
+                    <select id="fontFamilySelect" class="customizer-select" onchange="changeFontFamily(this.value)">
+                        <option value="'Inter', sans-serif">Inter (Clean / Tech)</option>
+                        <option value="'Roboto', sans-serif">Roboto (Corporate ATS)</option>
+                        <option value="'Merriweather', serif">Merriweather (Executive Serif)</option>
+                        <option value="'Poppins', sans-serif">Poppins (Modern Creative)</option>
+                        <option value="'JetBrains Mono', monospace">JetBrains Mono (Developer)</option>
+                    </select>
+                </div>
+
+                <!-- Font Size -->
+                <div class="customizer-group">
+                    <label class="customizer-label"><span>🔠</span> Text Size:</label>
+                    <div class="segmented-control" id="fontSizeControl">
+                        <button type="button" class="seg-btn" data-val="compact" onclick="changeFontSize('compact')">Small</button>
+                        <button type="button" class="seg-btn active" data-val="normal" onclick="changeFontSize('normal')">Medium</button>
+                        <button type="button" class="seg-btn" data-val="large" onclick="changeFontSize('large')">Large</button>
+                    </div>
+                </div>
+
+                <!-- Spacing / 1-Page Fit -->
+                <div class="customizer-group">
+                    <label class="customizer-label"><span>📏</span> Page Fit Spacing:</label>
+                    <div class="segmented-control" id="spacingControl">
+                        <button type="button" class="seg-btn" data-val="tight" onclick="changeSpacing('tight')">Tight (1-Page)</button>
+                        <button type="button" class="seg-btn active" data-val="normal" onclick="changeSpacing('normal')">Normal</button>
+                        <button type="button" class="seg-btn" data-val="relaxed" onclick="changeSpacing('relaxed')">Relaxed</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="layout">
@@ -936,7 +1113,7 @@
             
             <div class="features-grid">
                 <div class="feature-box">
-                    <h4>🎨 7 Modern Templates</h4>
+                    <h4>🎨 12 Modern Templates & Styling Customizer</h4>
                     <p>Select from Modern Blue, Classic Serif, Minimal Mono, Compact Grid, Photo Layouts, and Gradient themes.</p>
                 </div>
                 <div class="feature-box">
@@ -1059,17 +1236,79 @@
         let projectItems = [];
         let langItems = [];
         let photoData = '';
-        let selectedTemplate = 'modern';
+                let selectedTemplate = 'modern';
+        let currentAccentColor = '#2563eb';
+        let currentFontFamily = "'Inter', sans-serif";
+        let currentFontSize = 'normal';
+        let currentSpacing = 'normal';
+
+        const colorPresets = [
+            { name: 'Executive Navy', hex: '#2563eb' },
+            { name: 'Emerald Green', hex: '#059669' },
+            { name: 'Crimson Burgundy', hex: '#be123c' },
+            { name: 'Slate Charcoal', hex: '#1e293b' },
+            { name: 'Royal Violet', hex: '#7c3aed' },
+            { name: 'Ocean Teal', hex: '#0891b2' },
+            { name: 'Sunset Amber', hex: '#d97706' }
+        ];
 
         const templates = [
-            { id: 'modern', name: 'Modern Blue', desc: 'Clean layout with accent bar', thumbClass: 'thumb-modern' },
-            { id: 'classic', name: 'Classic Serif', desc: 'Traditional formal layout', thumbClass: 'thumb-classic' },
-            { id: 'minimal', name: 'Minimal Mono', desc: 'Sleek dark accent style', thumbClass: 'thumb-minimal' },
-            { id: 'compact', name: 'Compact Grid', desc: 'Maximized space for text', thumbClass: 'thumb-compact' },
-            { id: 'photo-exec', name: 'Executive Photo', desc: 'Photo header & badge title', thumbClass: 'thumb-photo-exec' },
+            { id: 'modern', name: 'Modern Blue', desc: 'Accent bar header & top ATS score', thumbClass: 'thumb-modern' },
+            { id: 'classic', name: 'Classic Serif', desc: 'Traditional formal centered layout', thumbClass: 'thumb-classic' },
+            { id: 'minimal', name: 'Minimal Mono', desc: 'Sleek left border & clean layout', thumbClass: 'thumb-minimal' },
+            { id: 'compact', name: 'Compact Grid', desc: 'Dense layout maximizing space', thumbClass: 'thumb-compact' },
+            { id: 'photo-exec', name: 'Executive Photo', desc: 'Corporate header & photo badge', thumbClass: 'thumb-photo-exec' },
             { id: 'photo-sidebar', name: 'Modern Sidebar', desc: '2-column dark sidebar format', thumbClass: 'thumb-sidebar' },
-            { id: 'creative-grad', name: 'Creative Gradient', desc: 'Vibrant indigo header style', thumbClass: 'thumb-gradient' }
+            { id: 'creative-grad', name: 'Creative Gradient', desc: 'Vibrant indigo header banner', thumbClass: 'thumb-gradient' },
+            { id: 'tech-dev', name: 'Tech Matrix', desc: 'Developer style & terminal tags', thumbClass: 'thumb-tech' },
+            { id: 'europass', name: 'Europass EU', desc: 'European standard 2-column grid', thumbClass: 'thumb-europass' },
+            { id: 'nordic', name: 'Nordic Swiss', desc: 'Swiss typography & hairline rules', thumbClass: 'thumb-nordic' },
+            { id: 'dual-split', name: '50/50 Dual Split', desc: 'Equal split dual-column layout', thumbClass: 'thumb-split' },
+            { id: 'fresher-1page', name: '1-Page Student', desc: 'Tight vertical 1-page fit', thumbClass: 'thumb-fresher' }
         ];
+
+        function renderColorPalette() {
+            const pal = document.getElementById('colorPalette');
+            if (!pal) return;
+            pal.innerHTML = colorPresets.map(c => `
+                <div class="color-dot ${c.hex.toLowerCase() === currentAccentColor.toLowerCase() ? 'active' : ''}" 
+                     style="background: ${c.hex};" 
+                     title="${c.name}" 
+                     onclick="changeAccentColor('${c.hex}')"></div>
+            `).join('') + `
+                <label class="custom-color-btn" title="Choose Custom Hex Color">
+                    <input type="color" value="${currentAccentColor}" onchange="changeAccentColor(this.value)">
+                    <span>🎨</span>
+                </label>
+            `;
+        }
+
+        function changeAccentColor(color) {
+            currentAccentColor = color;
+            renderColorPalette();
+            updatePreview();
+        }
+
+        function changeFontFamily(font) {
+            currentFontFamily = font;
+            updatePreview();
+        }
+
+        function changeFontSize(size) {
+            currentFontSize = size;
+            document.querySelectorAll('#fontSizeControl .seg-btn').forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-val') === size);
+            });
+            updatePreview();
+        }
+
+        function changeSpacing(space) {
+            currentSpacing = space;
+            document.querySelectorAll('#spacingControl .seg-btn').forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-val') === space);
+            });
+            updatePreview();
+        }
 
         function renderTemplateSelector() {
             const grid = document.getElementById('templateGrid');
@@ -1081,7 +1320,7 @@
                         ${t.name}
                         ${t.id === selectedTemplate ? '<span style="color:#38bdf8; font-size:0.75rem;">✓</span>' : ''}
                     </div>
-                    <div style="font-size:0.65rem;opacity:0.8;margin-top:2px;">${t.desc}</div>
+                    <div style="font-size:0.65rem;opacity:0.8;margin-top:2px; line-height:1.2;">${t.desc}</div>
                 </div>
             `).join('');
         }
@@ -1150,8 +1389,8 @@
                 <div class="entry">
                     <div class="entry-head"><strong>Education #${idx + 1}</strong><button type="button" class="btn-danger" style="padding:0.2rem 0.5rem;font-size:0.7rem;" onclick="removeEducation(${idx})">Remove</button></div>
                     <div class="field"><label>Degree / Certificate</label><input type="text" value="${escapeHtml(item.degree)}" oninput="educationItems[${idx}].degree = this.value; updatePreview();"></div>
-                    <div class="field"><label>School / University</label><input type="text" value="${escapeHtml(item.school)}" oninput="educationItems[${idx}].school = this.value; updatePreview();"></div>
-                    <div class="field"><label>Graduation Year</label><input type="text" value="${escapeHtml(item.years)}" oninput="educationItems[${idx}].years = this.value; updatePreview();"></div>
+                    <div class="field"><label>School / University / College</label><input type="text" value="${escapeHtml(item.school)}" oninput="educationItems[${idx}].school = this.value; updatePreview();"></div>
+                    <div class="field"><label>Graduation Year / Duration</label><input type="text" value="${escapeHtml(item.years)}" oninput="educationItems[${idx}].years = this.value; updatePreview();"></div>
                 </div>
             `).join('');
         }
@@ -1162,40 +1401,40 @@
             document.getElementById('certList').innerHTML = certItems.map((item, idx) => `
                 <div class="entry">
                     <div class="entry-head"><strong>Certification #${idx + 1}</strong><button type="button" class="btn-danger" style="padding:0.2rem 0.5rem;font-size:0.7rem;" onclick="removeCert(${idx})">Remove</button></div>
-                    <div class="field"><label>Certification Title</label><input type="text" value="${escapeHtml(item.title)}" oninput="certItems[${idx}].title = this.value; updatePreview();"></div>
+                    <div class="field"><label>Certificate Name</label><input type="text" value="${escapeHtml(item.title)}" oninput="certItems[${idx}].title = this.value; updatePreview();"></div>
                     <div class="field"><label>Issuing Organization</label><input type="text" value="${escapeHtml(item.issuer)}" oninput="certItems[${idx}].issuer = this.value; updatePreview();"></div>
-                    <div class="field"><label>Year Obtained</label><input type="text" value="${escapeHtml(item.year)}" oninput="certItems[${idx}].year = this.value; updatePreview();"></div>
+                    <div class="field"><label>Year</label><input type="text" value="${escapeHtml(item.year)}" oninput="certItems[${idx}].year = this.value; updatePreview();"></div>
                 </div>
             `).join('');
         }
 
-        function addAward() { awardItems.push({ title: '', issuer: '', year: '', summary: '' }); renderAward(); updatePreview(); }
+        function addAward() { awardItems.push({ title: '', issuer: '', year: '' }); renderAward(); updatePreview(); }
         function removeAward(idx) { awardItems.splice(idx, 1); renderAward(); updatePreview(); }
         function renderAward() {
             document.getElementById('awardList').innerHTML = awardItems.map((item, idx) => `
                 <div class="entry">
                     <div class="entry-head"><strong>Award #${idx + 1}</strong><button type="button" class="btn-danger" style="padding:0.2rem 0.5rem;font-size:0.7rem;" onclick="removeAward(${idx})">Remove</button></div>
-                    <div class="field"><label>Award / Honor Title</label><input type="text" value="${escapeHtml(item.title)}" oninput="awardItems[${idx}].title = this.value; updatePreview();"></div>
-                    <div class="field"><label>Awarding Body / Organization</label><input type="text" value="${escapeHtml(item.issuer)}" oninput="awardItems[${idx}].issuer = this.value; updatePreview();"></div>
-                    <div class="field"><label>Year Received</label><input type="text" value="${escapeHtml(item.year)}" oninput="awardItems[${idx}].year = this.value; updatePreview();"></div>
+                    <div class="field"><label>Award Title</label><input type="text" value="${escapeHtml(item.title)}" oninput="awardItems[${idx}].title = this.value; updatePreview();"></div>
+                    <div class="field"><label>Grantor / Organization</label><input type="text" value="${escapeHtml(item.issuer)}" oninput="awardItems[${idx}].issuer = this.value; updatePreview();"></div>
+                    <div class="field"><label>Year</label><input type="text" value="${escapeHtml(item.year)}" oninput="awardItems[${idx}].year = this.value; updatePreview();"></div>
                 </div>
             `).join('');
         }
 
-        function addProject() { projectItems.push({ name: '', tech: '', description: '' }); renderProject(); updatePreview(); }
+        function addProject() { projectItems.push({ name: '', link: '', desc: '' }); renderProject(); updatePreview(); }
         function removeProject(idx) { projectItems.splice(idx, 1); renderProject(); updatePreview(); }
         function renderProject() {
             document.getElementById('projectList').innerHTML = projectItems.map((item, idx) => `
                 <div class="entry">
                     <div class="entry-head"><strong>Project #${idx + 1}</strong><button type="button" class="btn-danger" style="padding:0.2rem 0.5rem;font-size:0.7rem;" onclick="removeProject(${idx})">Remove</button></div>
                     <div class="field"><label>Project Name</label><input type="text" value="${escapeHtml(item.name)}" oninput="projectItems[${idx}].name = this.value; updatePreview();"></div>
-                    <div class="field"><label>Technologies Used</label><input type="text" value="${escapeHtml(item.tech)}" oninput="projectItems[${idx}].tech = this.value; updatePreview();"></div>
-                    <div class="field"><label>Project Summary & Link</label><textarea oninput="projectItems[${idx}].description = this.value; updatePreview();">${escapeHtml(item.description)}</textarea></div>
+                    <div class="field"><label>Project Link / Tech Stack</label><input type="text" value="${escapeHtml(item.link || '')}" oninput="projectItems[${idx}].link = this.value; updatePreview();"></div>
+                    <div class="field"><label>Project Overview & Impact</label><textarea oninput="projectItems[${idx}].desc = this.value; updatePreview();">${escapeHtml(item.desc || '')}</textarea></div>
                 </div>
             `).join('');
         }
 
-        function addLang() { langItems.push({ name: '', level: 'Native / Bilingual' }); renderLang(); updatePreview(); }
+        function addLang() { langItems.push({ name: '', level: 'Full Professional' }); renderLang(); updatePreview(); }
         function removeLang(idx) { langItems.splice(idx, 1); renderLang(); updatePreview(); }
         function renderLang() {
             document.getElementById('langList').innerHTML = langItems.map((item, idx) => `
@@ -1231,6 +1470,10 @@
                 skills: getVal('skills'),
                 photoData: photoData,
                 template: selectedTemplate,
+                accentColor: currentAccentColor,
+                fontFamily: currentFontFamily,
+                fontSize: currentFontSize,
+                spacing: currentSpacing,
                 experience: experienceItems,
                 education: educationItems,
                 certifications: certItems,
@@ -1240,7 +1483,24 @@
             };
         }
 
-        
+        function applyStylingSettings(data) {
+            currentAccentColor = data.accentColor || '#2563eb';
+            currentFontFamily = data.fontFamily || "'Inter', sans-serif";
+            currentFontSize = data.fontSize || 'normal';
+            currentSpacing = data.spacing || 'normal';
+
+            const fontSelect = document.getElementById('fontFamilySelect');
+            if (fontSelect) fontSelect.value = currentFontFamily;
+
+            document.querySelectorAll('#fontSizeControl .seg-btn').forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-val') === currentFontSize);
+            });
+            document.querySelectorAll('#spacingControl .seg-btn').forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-val') === currentSpacing);
+            });
+            renderColorPalette();
+        }
+
         function parseSkillsInput(input) {
             if (!input || !input.trim()) return [];
             const lines = input.split('\n');
@@ -1281,26 +1541,25 @@
             return categories.filter(c => c.category || c.skills.length);
         }
 
-        function renderSkillsSection(categories, selectedTemplate, titleColor) {
+        function renderSkillsSection(categories, selectedTemplate, titleColor, customPillBg, customPillFg) {
             if (!categories || !categories.length) return '';
-            const isCreative = selectedTemplate === 'creative-grad';
-            const pillBg = isCreative ? '#f3e8ff' : '#eff6ff';
-            const pillFg = isCreative ? '#6b21a8' : '#1e40af';
+            const pillBg = customPillBg || '#eff6ff';
+            const pillFg = customPillFg || titleColor;
 
             let html = `
                 <div style="margin-bottom:1rem;">
-                    <h3 style="font-size:0.95rem; color:${isCreative ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.6rem;">Skills & Expertise</h3>
+                    <h3 style="font-size:0.95rem; color:${titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem; font-weight:700;">Skills &amp; Expertise</h3>
             `;
 
             categories.forEach((cat, idx) => {
-                html += `<div style="${idx < categories.length - 1 ? 'margin-bottom:0.5rem;' : ''}">`;
+                html += `<div style="${idx < categories.length - 1 ? 'margin-bottom:0.45rem;' : ''}">`;
                 if (cat.category) {
-                    html += `<strong style="font-size:0.8rem; color:#1e293b; display:block; margin-bottom:0.25rem; font-weight:700;">${escapeHtml(cat.category)}:</strong>`;
+                    html += `<strong style="font-size:0.8rem; color:#1e293b; display:block; margin-bottom:0.2rem; font-weight:700;">${escapeHtml(cat.category)}:</strong>`;
                 }
                 if (cat.skills && cat.skills.length) {
                     html += `
-                        <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
-                            ${cat.skills.map(s => `<span style="background:${pillBg}; color:${pillFg}; font-size:0.75rem; padding:0.2rem 0.55rem; border-radius:6px; font-weight:600; display:inline-block;">${escapeHtml(s)}</span>`).join('')}
+                        <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
+                            ${cat.skills.map(s => `<span style="background:${pillBg}; color:${pillFg}; font-size:0.75rem; padding:0.18rem 0.5rem; border-radius:6px; font-weight:600; display:inline-block;">${escapeHtml(s)}</span>`).join('')}
                         </div>
                     `;
                 }
@@ -1311,23 +1570,24 @@
             return html;
         }
 
-        function renderSidebarSkillsSection(categories) {
+        function renderSidebarSkillsSection(categories, accent) {
             if (!categories || !categories.length) return '';
+            const acc = accent || currentAccentColor || '#38bdf8';
 
             let html = `
                 <div style="margin-bottom:1.2rem;">
-                    <h4 style="color:#38bdf8; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.6rem;">SKILLS</h4>
+                    <h4 style="color:${acc}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.6rem;">SKILLS</h4>
             `;
 
             categories.forEach(cat => {
                 html += `<div style="margin-bottom:0.6rem;">`;
                 if (cat.category) {
-                    html += `<div style="font-size:0.72rem; color:#38bdf8; font-weight:700; text-transform:uppercase; margin-bottom:0.25rem; letter-spacing:0.5px;">${escapeHtml(cat.category)}:</div>`;
+                    html += `<div style="font-size:0.72rem; color:${acc}; font-weight:700; text-transform:uppercase; margin-bottom:0.25rem; letter-spacing:0.5px;">${escapeHtml(cat.category)}:</div>`;
                 }
                 if (cat.skills && cat.skills.length) {
                     html += `
-                        <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
-                            ${cat.skills.map(s => `<span style="background:#1e293b; color:#cbd5e1; font-size:0.7rem; padding:0.15rem 0.4rem; border-radius:4px; font-weight:600; border:1px solid rgba(255,255,255,0.08);">${escapeHtml(s)}</span>`).join('')}
+                        <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
+                            ${cat.skills.map(s => `<span style="background:#1e293b; color:#e2e8f0; font-size:0.72rem; padding:0.18rem 0.45rem; border-radius:4px; font-weight:500;">${escapeHtml(s)}</span>`).join('')}
                         </div>
                     `;
                 }
@@ -1338,174 +1598,495 @@
             return html;
         }
 
-        function updatePreview() {
-            const data = getFormData();
-            localStorage.setItem('resumeCvMakerDraft', JSON.stringify(data));
+        // ================= TEMPLATE RENDERERS =================
 
-            const preview = document.getElementById('preview');
-            const skillsCategories = parseSkillsInput(data.skills || '');
-
-            if (selectedTemplate === 'photo-sidebar') {
-                renderSidebarTemplate(preview, data, skillsCategories);
-                return;
-            }
-
-            let headerStyle = 'border-bottom: 2px solid #2563eb; padding-bottom: 0.8rem; margin-bottom: 1rem;';
-            let titleColor = '#1d4ed8';
-
-            if (selectedTemplate === 'classic') {
-                headerStyle = 'border-bottom: 1px solid #475569; padding-bottom: 0.8rem; margin-bottom: 1rem; text-align: center;';
-                titleColor = '#0f172a';
-            } else if (selectedTemplate === 'minimal') {
-                headerStyle = 'margin-bottom: 1rem; border-left: 3px solid #000; padding-left: 0.8rem;';
-                titleColor = '#000000';
-            } else if (selectedTemplate === 'creative-grad') {
-                headerStyle = 'background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1.2rem; border-radius: 10px; margin-bottom: 1.2rem;';
-                titleColor = '#ffffff';
-            } else if (selectedTemplate === 'photo-exec') {
-                headerStyle = 'background: #0f172a; color: white; padding: 1.2rem; border-radius: 10px; margin-bottom: 1.2rem; display: flex; gap: 1.2rem; align-items: center;';
-                titleColor = '#38bdf8';
-            }
-
-            let photoHtml = '';
-            if (data.photoData) {
-                photoHtml = `<img src="${data.photoData}" style="width:75px; height:75px; border-radius:50%; object-fit:cover; border:2px solid ${selectedTemplate === 'creative-grad' ? '#ffffff' : '#2563eb'}; flex-shrink:0;">`;
-            }
-
-            preview.innerHTML = `
-                <div style="${headerStyle}">
-                    ${(selectedTemplate === 'photo-exec' || selectedTemplate === 'creative-grad') && photoHtml ? photoHtml : ''}
+        // 1. Tech Matrix (Developer)
+        function renderTechDevTemplate(container, data, skillsCategories, accent) {
+            container.innerHTML = `
+                <div style="background:#0d1117; color:#f0f6fc; padding:1.2rem; border-radius:8px; margin-bottom:1rem; border-left:4px solid ${accent}; display:flex; gap:1rem; align-items:center;">
+                    ${data.photoData ? `<img src="${data.photoData}" style="width:72px; height:72px; border-radius:8px; object-fit:cover; border:2px solid ${accent};">` : ''}
                     <div style="flex:1;">
-                        <h1 style="font-size:1.6rem; color:${titleColor}; font-weight:800; margin-bottom:0.2rem;">${escapeHtml(data.name || 'Your Full Name')}</h1>
-                        <div style="font-size:0.9rem; color:${selectedTemplate === 'creative-grad' ? '#e2e8f0' : (selectedTemplate === 'photo-exec' ? '#94a3b8' : '#475569')}; font-weight:600;">${escapeHtml(data.targetRole || 'Target Role / Title')}</div>
-                        <div style="font-size:0.78rem; opacity:0.9; margin-top:0.4rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+                        <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:${accent}; margin-bottom:0.15rem;">~/developer/profile$ whoami</div>
+                        <h1 style="font-size:1.55rem; color:#ffffff; font-weight:800; margin:0 0 0.2rem; font-family:'JetBrains Mono',monospace;">${escapeHtml(data.name || 'Your Full Name')}</h1>
+                        <div style="font-size:0.88rem; color:#7ee787; font-weight:600; font-family:'JetBrains Mono',monospace;">[${escapeHtml(data.targetRole || 'Software Engineer')}]</div>
+                        <div style="font-size:0.75rem; color:#8b949e; margin-top:0.35rem; display:flex; gap:0.6rem; flex-wrap:wrap; font-family:'JetBrains Mono',monospace;">
                             ${data.email ? `<span>✉️ ${escapeHtml(data.email)}</span>` : ''}
                             ${data.phone ? `<span>📞 ${escapeHtml(data.phone)}</span>` : ''}
                             ${data.location ? `<span>📍 ${escapeHtml(data.location)}</span>` : ''}
                             ${data.links ? `<span>🔗 ${escapeHtml(data.links)}</span>` : ''}
                         </div>
                     </div>
-                    ${(selectedTemplate !== 'photo-exec' && selectedTemplate !== 'creative-grad') && photoHtml ? `<div style="margin-left:auto;">${photoHtml}</div>` : ''}
                 </div>
 
                 ${data.summary ? `
-                    <div style="margin-bottom:1rem;">
-                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem;">Professional Summary</h3>
+                    <div style="margin-bottom:0.9rem;">
+                        <h3 style="font-size:0.92rem; color:${accent}; font-weight:700; border-bottom:1px dashed #cbd5e1; padding-bottom:0.2rem; margin-bottom:0.4rem; font-family:'JetBrains Mono',monospace;">// Summary</h3>
                         <p style="font-size:0.82rem; color:#334155; line-height:1.5;">${escapeHtml(data.summary)}</p>
                     </div>
                 ` : ''}
 
-                ${renderSkillsSection(skillsCategories, selectedTemplate, titleColor)}
+                ${skillsCategories && skillsCategories.length ? `
+                    <div style="margin-bottom:0.9rem;">
+                        <h3 style="font-size:0.92rem; color:${accent}; font-weight:700; border-bottom:1px dashed #cbd5e1; padding-bottom:0.2rem; margin-bottom:0.4rem; font-family:'JetBrains Mono',monospace;">// Tech Stack &amp; Skills</h3>
+                        ${skillsCategories.map(cat => `
+                            <div style="margin-bottom:0.4rem;">
+                                ${cat.category ? `<span style="font-size:0.78rem; font-weight:700; color:#1e293b; font-family:'JetBrains Mono',monospace;">${escapeHtml(cat.category)}: </span>` : ''}
+                                <div style="display:flex; gap:0.3rem; flex-wrap:wrap; margin-top:0.2rem;">
+                                    ${cat.skills.map(s => `<span style="background:#0f172a; color:#38bdf8; font-size:0.72rem; padding:0.15rem 0.45rem; border-radius:4px; font-family:'JetBrains Mono',monospace; border:1px solid #1e293b;">${escapeHtml(s)}</span>`).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
 
                 ${data.experience.length ? `
-                    <div style="margin-bottom:1rem;">
-                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">Work Experience</h3>
+                    <div style="margin-bottom:0.9rem;">
+                        <h3 style="font-size:0.92rem; color:${accent}; font-weight:700; border-bottom:1px dashed #cbd5e1; padding-bottom:0.2rem; margin-bottom:0.4rem; font-family:'JetBrains Mono',monospace;">// Work Experience</h3>
                         ${data.experience.map(exp => `
-                            <div style="margin-bottom:0.8rem;">
+                            <div style="margin-bottom:0.75rem;">
                                 <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
-                                    <strong style="font-size:0.85rem; color:#1e293b;">${escapeHtml(exp.title || 'Role Title')}</strong>
-                                    <span style="font-size:0.75rem; color:#475569;">${escapeHtml(exp.years || '')}</span>
+                                    <strong style="font-size:0.85rem; color:#0f172a; font-family:'JetBrains Mono',monospace;">${escapeHtml(exp.title || 'Role')}</strong>
+                                    <span style="font-size:0.74rem; color:#64748b; font-family:'JetBrains Mono',monospace;">${escapeHtml(exp.years || '')}</span>
                                 </div>
-                                <div style="font-size:0.78rem; color:#2563eb; font-weight:600;">${escapeHtml(exp.company || '')}</div>
+                                <div style="font-size:0.78rem; color:${accent}; font-weight:600;">@ ${escapeHtml(exp.company || '')}</div>
                                 <p style="font-size:0.8rem; color:#334155; margin-top:0.2rem; white-space:pre-line;">${escapeHtml(exp.bullets || '')}</p>
                             </div>
                         `).join('')}
                     </div>
                 ` : ''}
 
-                ${data.education.length ? `
-                    <div style="margin-bottom:1rem;">
-                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">Education & Qualifications</h3>
-                        ${data.education.map(edu => `
-                            <div style="margin-bottom:0.5rem;">
-                                <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
-                                    <strong style="font-size:0.83rem; color:#1e293b;">${escapeHtml(edu.degree || 'Degree')}</strong>
-                                    <span style="font-size:0.75rem; color:#475569;">${escapeHtml(edu.years || '')}</span>
-                                </div>
-                                <div style="font-size:0.78rem; color:#475569;">${escapeHtml(edu.school || '')}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                ` : ''}
-
                 ${data.projects.length ? `
-                    <div style="margin-bottom:1rem;">
-                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">🚀 Projects & Portfolio</h3>
-                        ${data.projects.map(proj => `
-                            <div style="margin-bottom:0.6rem;">
+                    <div style="margin-bottom:0.9rem;">
+                        <h3 style="font-size:0.92rem; color:${accent}; font-weight:700; border-bottom:1px dashed #cbd5e1; padding-bottom:0.2rem; margin-bottom:0.4rem; font-family:'JetBrains Mono',monospace;">// Key Projects &amp; Repositories</h3>
+                        ${data.projects.map(p => `
+                            <div style="margin-bottom:0.5rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:0.6rem;">
                                 <div style="display:flex; justify-content:space-between; align-items:baseline;">
-                                    <strong style="font-size:0.83rem; color:#1e293b;">${escapeHtml(proj.name || 'Project Name')}</strong>
-                                    <span style="font-size:0.72rem; color:#64748b;">${escapeHtml(proj.tech || '')}</span>
+                                    <strong style="font-size:0.82rem; color:#0f172a; font-family:'JetBrains Mono',monospace;">📦 ${escapeHtml(p.name)}</strong>
+                                    <span style="font-size:0.72rem; color:${accent}; font-family:'JetBrains Mono',monospace;">${escapeHtml(p.link || '')}</span>
                                 </div>
-                                <p style="font-size:0.78rem; color:#334155; margin-top:0.2rem; white-space:pre-line;">${escapeHtml(proj.description || '')}</p>
+                                <p style="font-size:0.78rem; color:#475569; margin:0.2rem 0 0;">${escapeHtml(p.desc)}</p>
                             </div>
                         `).join('')}
                     </div>
                 ` : ''}
 
-                ${data.certifications.length ? `
-                    <div style="margin-bottom:1rem;">
-                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">📜 Certifications & Licenses</h3>
-                        ${data.certifications.map(c => `
+                ${data.education.length ? `
+                    <div style="margin-bottom:0.9rem;">
+                        <h3 style="font-size:0.92rem; color:${accent}; font-weight:700; border-bottom:1px dashed #cbd5e1; padding-bottom:0.2rem; margin-bottom:0.4rem; font-family:'JetBrains Mono',monospace;">// Education</h3>
+                        ${data.education.map(edu => `
                             <div style="margin-bottom:0.4rem; display:flex; justify-content:space-between; align-items:baseline;">
-                                <div><strong style="font-size:0.8rem; color:#1e293b;">${escapeHtml(c.title || 'Certification')}</strong> <span style="font-size:0.75rem; color:#475569;">- ${escapeHtml(c.issuer || '')}</span></div>
-                                <span style="font-size:0.72rem; color:#64748b;">${escapeHtml(c.year || '')}</span>
+                                <div><strong style="font-size:0.82rem; color:#0f172a;">${escapeHtml(edu.degree)}</strong>, <span style="font-size:0.78rem; color:#475569;">${escapeHtml(edu.school)}</span></div>
+                                <span style="font-size:0.74rem; color:#64748b; font-family:'JetBrains Mono',monospace;">${escapeHtml(edu.years)}</span>
                             </div>
                         `).join('')}
                     </div>
                 ` : ''}
 
-                ${data.awards.length ? `
-                    <div style="margin-bottom:1rem;">
-                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">🏆 Awards & Honors</h3>
-                        ${data.awards.map(a => `
-                            <div style="margin-bottom:0.4rem; display:flex; justify-content:space-between; align-items:baseline;">
-                                <div><strong style="font-size:0.8rem; color:#1e293b;">${escapeHtml(a.title || 'Award')}</strong> <span style="font-size:0.75rem; color:#475569;">(${escapeHtml(a.issuer || '')})</span></div>
-                                <span style="font-size:0.72rem; color:#64748b;">${escapeHtml(a.year || '')}</span>
+                ${(data.certifications.length || data.awards.length || data.languages.length) ? `
+                    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:0.8rem; margin-top:0.6rem; border-top:1px dashed #cbd5e1; padding-top:0.6rem;">
+                        ${data.certifications.length ? `
+                            <div>
+                                <h4 style="font-size:0.82rem; color:${accent}; margin-bottom:0.3rem; font-family:'JetBrains Mono',monospace;">// Certifications</h4>
+                                ${data.certifications.map(c => `<div style="font-size:0.75rem; color:#334155;">• <strong>${escapeHtml(c.title)}</strong> (${escapeHtml(c.issuer)})</div>`).join('')}
                             </div>
-                        `).join('')}
-                    </div>
-                ` : ''}
-
-                ${data.languages.length ? `
-                    <div>
-                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? '#667eea' : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem;">🌐 Languages</h3>
-                        <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
-                            ${data.languages.map(l => `<span style="font-size:0.78rem; color:#334155;"><strong>${escapeHtml(l.name)}</strong>: ${escapeHtml(l.level)}</span>`).join(' • ')}
-                        </div>
+                        ` : ''}
+                        ${data.languages.length ? `
+                            <div>
+                                <h4 style="font-size:0.82rem; color:${accent}; margin-bottom:0.3rem; font-family:'JetBrains Mono',monospace;">// Languages</h4>
+                                ${data.languages.map(l => `<div style="font-size:0.75rem; color:#334155;">• ${escapeHtml(l.name)}: <em>${escapeHtml(l.level)}</em></div>`).join('')}
+                            </div>
+                        ` : ''}
                     </div>
                 ` : ''}
             `;
         }
 
-        function renderSidebarTemplate(container, data, skillsCategories) {
+        // 2. Europass EU Standard
+        function renderEuropassTemplate(container, data, skillsCategories, accent) {
             container.innerHTML = `
-                <div style="display:grid; grid-template-columns: 32% 68%; min-height: 580px; font-size:0.8rem;">
-                    <div style="background:#0f172a; color:#f8fafc; padding:1.2rem; border-top-left-radius:8px; border-bottom-left-radius:8px;">
-                        ${data.photoData ? `<img src="${data.photoData}" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid #38bdf8; margin:0 auto 1rem; display:block;">` : ''}
-                        <h2 style="font-size:1.2rem; color:#38bdf8; font-weight:800; margin-bottom:0.2rem;">${escapeHtml(data.name || 'Your Full Name')}</h2>
-                        <div style="font-size:0.8rem; color:#94a3b8; font-weight:600; margin-bottom:1.2rem;">${escapeHtml(data.targetRole || 'Target Role')}</div>
-                        
-                        <div style="margin-bottom:1.2rem; font-size:0.75rem; line-height:1.6; color:#cbd5e1;">
-                            <h4 style="color:#38bdf8; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">CONTACT</h4>
+                <div style="border-bottom:2px solid ${accent}; padding-bottom:0.8rem; margin-bottom:1.2rem; display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <div style="font-size:0.7rem; letter-spacing:1px; text-transform:uppercase; color:#64748b; font-weight:700;">Curriculum Vitae (Europass)</div>
+                        <h1 style="font-size:1.6rem; color:#0f172a; font-weight:800; margin:0.15rem 0 0.2rem;">${escapeHtml(data.name || 'Your Full Name')}</h1>
+                        <div style="font-size:0.9rem; color:${accent}; font-weight:600;">${escapeHtml(data.targetRole || 'Target Role')}</div>
+                    </div>
+                    ${data.photoData ? `<img src="${data.photoData}" style="width:75px; height:88px; object-fit:cover; border:1px solid #cbd5e1; border-radius:4px;">` : ''}
+                </div>
+
+                <div style="display:grid; grid-template-columns: 28% 72%; gap:1.2rem; font-size:0.82rem;">
+                    <!-- Left Meta Column -->
+                    <div style="border-right:1px solid #e2e8f0; padding-right:1rem;">
+                        <h4 style="font-size:0.8rem; color:${accent}; text-transform:uppercase; font-weight:700; margin-bottom:0.4rem;">Contact</h4>
+                        <div style="font-size:0.75rem; line-height:1.6; color:#475569; margin-bottom:1.2rem;">
                             ${data.email ? `<div>✉️ ${escapeHtml(data.email)}</div>` : ''}
                             ${data.phone ? `<div>📞 ${escapeHtml(data.phone)}</div>` : ''}
                             ${data.location ? `<div>📍 ${escapeHtml(data.location)}</div>` : ''}
                             ${data.links ? `<div style="word-break:break-all;">🔗 ${escapeHtml(data.links)}</div>` : ''}
                         </div>
 
-                        ${renderSidebarSkillsSection(skillsCategories)}
+                        ${skillsCategories.length ? `
+                            <div style="margin-bottom:1.2rem;">
+                                <h4 style="font-size:0.8rem; color:${accent}; text-transform:uppercase; font-weight:700; margin-bottom:0.4rem;">Competences</h4>
+                                ${skillsCategories.map(c => `
+                                    <div style="margin-bottom:0.5rem;">
+                                        ${c.category ? `<div style="font-weight:700; font-size:0.74rem; color:#1e293b;">${escapeHtml(c.category)}</div>` : ''}
+                                        <div style="font-size:0.72rem; color:#475569;">${c.skills.map(s => escapeHtml(s)).join(', ')}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
 
                         ${data.languages.length ? `
                             <div style="margin-bottom:1.2rem;">
-                                <h4 style="color:#38bdf8; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">LANGUAGES</h4>
+                                <h4 style="font-size:0.8rem; color:${accent}; text-transform:uppercase; font-weight:700; margin-bottom:0.4rem;">Mother Tongue &amp; Languages</h4>
+                                ${data.languages.map(l => `<div style="font-size:0.74rem; margin-bottom:0.2rem;"><strong>${escapeHtml(l.name)}</strong>: ${escapeHtml(l.level)}</div>`).join('')}
+                            </div>
+                        ` : ''}
+
+                        ${data.certifications.length ? `
+                            <div>
+                                <h4 style="font-size:0.8rem; color:${accent}; text-transform:uppercase; font-weight:700; margin-bottom:0.4rem;">Certifications</h4>
+                                ${data.certifications.map(c => `<div style="font-size:0.74rem; margin-bottom:0.25rem;">• ${escapeHtml(c.title)}</div>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <!-- Right Main Content -->
+                    <div>
+                        ${data.summary ? `
+                            <div style="margin-bottom:1.2rem;">
+                                <h4 style="font-size:0.85rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem;">Work Profile</h4>
+                                <p style="font-size:0.8rem; color:#334155; line-height:1.5;">${escapeHtml(data.summary)}</p>
+                            </div>
+                        ` : ''}
+
+                        ${data.experience.length ? `
+                            <div style="margin-bottom:1.2rem;">
+                                <h4 style="font-size:0.85rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.6rem;">Work Experience</h4>
+                                ${data.experience.map(exp => `
+                                    <div style="margin-bottom:0.9rem;">
+                                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                                            <strong style="font-size:0.85rem; color:#0f172a;">${escapeHtml(exp.title)}</strong>
+                                            <span style="font-size:0.74rem; color:${accent}; font-weight:600;">${escapeHtml(exp.years)}</span>
+                                        </div>
+                                        <div style="font-size:0.78rem; color:#475569; font-weight:600;">${escapeHtml(exp.company)}</div>
+                                        <p style="font-size:0.78rem; color:#334155; margin-top:0.25rem; white-space:pre-line;">${escapeHtml(exp.bullets)}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+
+                        ${data.education.length ? `
+                            <div style="margin-bottom:1.2rem;">
+                                <h4 style="font-size:0.85rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">Education and Training</h4>
+                                ${data.education.map(edu => `
+                                    <div style="margin-bottom:0.5rem; display:flex; justify-content:space-between;">
+                                        <div><strong style="font-size:0.82rem; color:#0f172a;">${escapeHtml(edu.degree)}</strong> — ${escapeHtml(edu.school)}</div>
+                                        <span style="font-size:0.74rem; color:#64748b;">${escapeHtml(edu.years)}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+
+                        ${data.projects.length ? `
+                            <div>
+                                <h4 style="font-size:0.85rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem;">Projects</h4>
+                                ${data.projects.map(p => `
+                                    <div style="margin-bottom:0.4rem; font-size:0.78rem;">
+                                        <strong>${escapeHtml(p.name)}</strong>: <span style="color:#475569;">${escapeHtml(p.desc)}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 3. Nordic Swiss Minimal
+        function renderNordicTemplate(container, data, skillsCategories, accent) {
+            container.innerHTML = `
+                <div style="margin-bottom:1.4rem;">
+                    <div style="font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:#94a3b8; font-weight:600;">PORTFOLIO &amp; RESUME</div>
+                    <h1 style="font-size:2.1rem; color:#0f172a; font-weight:900; letter-spacing:-0.5px; margin:0.2rem 0;">${escapeHtml(data.name || 'Your Full Name')}</h1>
+                    <div style="font-size:0.95rem; color:${accent}; font-weight:500; margin-bottom:0.6rem;">${escapeHtml(data.targetRole || 'Professional Role')}</div>
+                    
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap; font-size:0.75rem; color:#64748b; border-top:1px solid #0f172a; border-bottom:1px solid #e2e8f0; padding:0.4rem 0;">
+                        ${data.email ? `<span>${escapeHtml(data.email)}</span>` : ''}
+                        ${data.phone ? `<span>/</span><span>${escapeHtml(data.phone)}</span>` : ''}
+                        ${data.location ? `<span>/</span><span>${escapeHtml(data.location)}</span>` : ''}
+                        ${data.links ? `<span>/</span><span>${escapeHtml(data.links)}</span>` : ''}
+                    </div>
+                </div>
+
+                ${data.summary ? `
+                    <div style="margin-bottom:1.4rem;">
+                        <p style="font-size:0.86rem; color:#334155; line-height:1.6; max-width:90%;">${escapeHtml(data.summary)}</p>
+                    </div>
+                ` : ''}
+
+                ${skillsCategories.length ? `
+                    <div style="margin-bottom:1.4rem; display:grid; grid-template-columns: 22% 78%; gap:0.5rem; align-items:baseline;">
+                        <div style="font-size:0.74rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#0f172a;">Expertise</div>
+                        <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                            ${skillsCategories.flatMap(c => c.skills).map(s => `<span style="border-bottom:1px solid ${accent}; font-size:0.75rem; color:#1e293b; padding-bottom:1px;">${escapeHtml(s)}</span>`).join(' • ')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                ${data.experience.length ? `
+                    <div style="margin-bottom:1.4rem;">
+                        <div style="font-size:0.74rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#0f172a; margin-bottom:0.6rem;">Experience</div>
+                        ${data.experience.map(exp => `
+                            <div style="display:grid; grid-template-columns: 22% 78%; gap:0.5rem; margin-bottom:1rem;">
+                                <div style="font-size:0.74rem; color:#64748b; line-height:1.4;">${escapeHtml(exp.years)}</div>
+                                <div>
+                                    <strong style="font-size:0.85rem; color:#0f172a;">${escapeHtml(exp.title)}</strong>, <span style="font-size:0.8rem; color:${accent};">${escapeHtml(exp.company)}</span>
+                                    <p style="font-size:0.78rem; color:#475569; margin-top:0.25rem; line-height:1.5; white-space:pre-line;">${escapeHtml(exp.bullets)}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                ${data.education.length ? `
+                    <div style="margin-bottom:1.4rem;">
+                        <div style="font-size:0.74rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#0f172a; margin-bottom:0.6rem;">Education</div>
+                        ${data.education.map(edu => `
+                            <div style="display:grid; grid-template-columns: 22% 78%; gap:0.5rem; margin-bottom:0.5rem;">
+                                <div style="font-size:0.74rem; color:#64748b;">${escapeHtml(edu.years)}</div>
+                                <div style="font-size:0.8rem; color:#0f172a;"><strong>${escapeHtml(edu.degree)}</strong> — ${escapeHtml(edu.school)}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                ${(data.projects.length || data.certifications.length) ? `
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; border-top:1px solid #e2e8f0; padding-top:0.8rem;">
+                        ${data.projects.length ? `
+                            <div>
+                                <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#0f172a; margin-bottom:0.4rem;">Projects</div>
+                                ${data.projects.map(p => `<div style="font-size:0.75rem; margin-bottom:0.3rem;"><strong>${escapeHtml(p.name)}</strong>: <span style="color:#64748b;">${escapeHtml(p.desc)}</span></div>`).join('')}
+                            </div>
+                        ` : ''}
+                        ${data.certifications.length ? `
+                            <div>
+                                <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#0f172a; margin-bottom:0.4rem;">Certificates</div>
+                                ${data.certifications.map(c => `<div style="font-size:0.75rem; margin-bottom:0.25rem;">• ${escapeHtml(c.title)} (${escapeHtml(c.issuer)})</div>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                ` : ''}
+            `;
+        }
+
+        // 4. 50/50 Dual Split
+        function renderDualSplitTemplate(container, data, skillsCategories, accent) {
+            container.innerHTML = `
+                <div style="background:${accent}; color:#ffffff; padding:1.2rem 1.4rem; border-radius:10px; margin-bottom:1.2rem; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h1 style="font-size:1.65rem; color:#ffffff; font-weight:800; margin:0 0 0.2rem;">${escapeHtml(data.name || 'Your Full Name')}</h1>
+                        <div style="font-size:0.92rem; color:#e0e7ff; font-weight:600;">${escapeHtml(data.targetRole || 'Target Role')}</div>
+                    </div>
+                    ${data.photoData ? `<img src="${data.photoData}" style="width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid #ffffff;">` : ''}
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.4rem; font-size:0.8rem;">
+                    <!-- Column 1: Experience & Overview -->
+                    <div>
+                        ${data.summary ? `
+                            <div style="margin-bottom:1.1rem; background:#f8fafc; border-left:3px solid ${accent}; padding:0.6rem 0.8rem; border-radius:0 6px 6px 0;">
+                                <strong style="font-size:0.82rem; color:#0f172a; display:block; margin-bottom:0.2rem;">About Me</strong>
+                                <p style="font-size:0.78rem; color:#475569; line-height:1.5; margin:0;">${escapeHtml(data.summary)}</p>
+                            </div>
+                        ` : ''}
+
+                        ${data.experience.length ? `
+                            <div style="margin-bottom:1.1rem;">
+                                <h3 style="font-size:0.9rem; color:${accent}; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.6rem;">Work Experience</h3>
+                                ${data.experience.map(exp => `
+                                    <div style="margin-bottom:0.8rem;">
+                                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                                            <strong style="font-size:0.84rem; color:#0f172a;">${escapeHtml(exp.title)}</strong>
+                                            <span style="font-size:0.72rem; color:#64748b;">${escapeHtml(exp.years)}</span>
+                                        </div>
+                                        <div style="font-size:0.78rem; color:${accent}; font-weight:600;">${escapeHtml(exp.company)}</div>
+                                        <p style="font-size:0.76rem; color:#475569; margin:0.2rem 0 0; white-space:pre-line;">${escapeHtml(exp.bullets)}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+
+                        ${data.projects.length ? `
+                            <div>
+                                <h3 style="font-size:0.9rem; color:${accent}; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">Key Projects</h3>
+                                ${data.projects.map(p => `
+                                    <div style="margin-bottom:0.5rem;">
+                                        <strong style="font-size:0.8rem; color:#0f172a;">${escapeHtml(p.name)}</strong>
+                                        <p style="font-size:0.76rem; color:#475569; margin:0.15rem 0 0;">${escapeHtml(p.desc)}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <!-- Column 2: Meta, Skills, Education -->
+                    <div>
+                        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:0.8rem; margin-bottom:1.1rem;">
+                            <strong style="font-size:0.82rem; color:#0f172a; display:block; margin-bottom:0.4rem;">Contact Information</strong>
+                            <div style="font-size:0.75rem; line-height:1.6; color:#475569;">
+                                ${data.email ? `<div>✉️ ${escapeHtml(data.email)}</div>` : ''}
+                                ${data.phone ? `<div>📞 ${escapeHtml(data.phone)}</div>` : ''}
+                                ${data.location ? `<div>📍 ${escapeHtml(data.location)}</div>` : ''}
+                                ${data.links ? `<div style="word-break:break-all;">🔗 ${escapeHtml(data.links)}</div>` : ''}
+                            </div>
+                        </div>
+
+                        ${skillsCategories.length ? `
+                            <div style="margin-bottom:1.1rem;">
+                                <h3 style="font-size:0.9rem; color:${accent}; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">Skills &amp; Capabilities</h3>
+                                ${skillsCategories.map(c => `
+                                    <div style="margin-bottom:0.4rem;">
+                                        ${c.category ? `<span style="font-size:0.75rem; font-weight:700; color:#1e293b;">${escapeHtml(c.category)}: </span>` : ''}
+                                        <div style="display:flex; gap:0.25rem; flex-wrap:wrap; margin-top:0.15rem;">
+                                            ${c.skills.map(s => `<span style="background:#eff6ff; color:${accent}; font-size:0.7rem; padding:0.12rem 0.4rem; border-radius:4px; font-weight:600;">${escapeHtml(s)}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+
+                        ${data.education.length ? `
+                            <div style="margin-bottom:1.1rem;">
+                                <h3 style="font-size:0.9rem; color:${accent}; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem;">Education</h3>
+                                ${data.education.map(edu => `
+                                    <div style="margin-bottom:0.35rem;">
+                                        <strong style="font-size:0.8rem; color:#0f172a;">${escapeHtml(edu.degree)}</strong>
+                                        <div style="font-size:0.74rem; color:#64748b;">${escapeHtml(edu.school)} (${escapeHtml(edu.years)})</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+
+                        ${(data.certifications.length || data.languages.length) ? `
+                            <div>
+                                <h3 style="font-size:0.9rem; color:${accent}; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem;">Credentials &amp; Languages</h3>
+                                ${data.certifications.map(c => `<div style="font-size:0.74rem; margin-bottom:0.2rem;">🏅 ${escapeHtml(c.title)}</div>`).join('')}
+                                ${data.languages.map(l => `<div style="font-size:0.74rem; margin-bottom:0.2rem;">🌐 ${escapeHtml(l.name)} (${escapeHtml(l.level)})</div>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 5. 1-Page Student / Fresher (Ultra Compact Fit)
+        function renderFresherTemplate(container, data, skillsCategories, accent) {
+            container.innerHTML = `
+                <div style="text-align:center; border-bottom:2px solid ${accent}; padding-bottom:0.5rem; margin-bottom:0.75rem;">
+                    <h1 style="font-size:1.55rem; color:#0f172a; font-weight:800; margin:0 0 0.15rem;">${escapeHtml(data.name || 'Your Full Name')}</h1>
+                    <div style="font-size:0.86rem; color:${accent}; font-weight:700; margin-bottom:0.25rem;">${escapeHtml(data.targetRole || 'Target Role / Title')}</div>
+                    <div style="font-size:0.74rem; color:#475569; display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap;">
+                        ${data.email ? `<span>✉️ ${escapeHtml(data.email)}</span>` : ''}
+                        ${data.phone ? `<span>📞 ${escapeHtml(data.phone)}</span>` : ''}
+                        ${data.location ? `<span>📍 ${escapeHtml(data.location)}</span>` : ''}
+                        ${data.links ? `<span>🔗 ${escapeHtml(data.links)}</span>` : ''}
+                    </div>
+                </div>
+
+                ${data.summary ? `
+                    <div style="margin-bottom:0.65rem;">
+                        <h3 style="font-size:0.88rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.1rem; margin-bottom:0.25rem;">Career Objective</h3>
+                        <p style="font-size:0.78rem; color:#334155; line-height:1.45; margin:0;">${escapeHtml(data.summary)}</p>
+                    </div>
+                ` : ''}
+
+                ${data.education.length ? `
+                    <div style="margin-bottom:0.65rem;">
+                        <h3 style="font-size:0.88rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.1rem; margin-bottom:0.3rem;">Education</h3>
+                        ${data.education.map(edu => `
+                            <div style="margin-bottom:0.3rem; display:flex; justify-content:space-between; font-size:0.78rem;">
+                                <div><strong style="color:#0f172a;">${escapeHtml(edu.degree)}</strong> — ${escapeHtml(edu.school)}</div>
+                                <span style="color:${accent}; font-weight:600;">${escapeHtml(edu.years)}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                ${skillsCategories.length ? `
+                    <div style="margin-bottom:0.65rem;">
+                        <h3 style="font-size:0.88rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.1rem; margin-bottom:0.3rem;">Technical &amp; Soft Skills</h3>
+                        <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
+                            ${skillsCategories.flatMap(c => c.skills).map(s => `<span style="background:#eff6ff; color:${accent}; font-size:0.72rem; padding:0.12rem 0.45rem; border-radius:4px; font-weight:600;">${escapeHtml(s)}</span>`).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                ${data.projects.length ? `
+                    <div style="margin-bottom:0.65rem;">
+                        <h3 style="font-size:0.88rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.1rem; margin-bottom:0.3rem;">Academic &amp; Personal Projects</h3>
+                        ${data.projects.map(p => `
+                            <div style="margin-bottom:0.35rem; font-size:0.76rem;">
+                                <strong style="color:#0f172a;">${escapeHtml(p.name)}</strong>: <span style="color:#475569;">${escapeHtml(p.desc)}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                ${data.experience.length ? `
+                    <div style="margin-bottom:0.65rem;">
+                        <h3 style="font-size:0.88rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.1rem; margin-bottom:0.3rem;">Internships &amp; Experience</h3>
+                        ${data.experience.map(exp => `
+                            <div style="margin-bottom:0.45rem;">
+                                <div style="display:flex; justify-content:space-between; align-items:baseline; font-size:0.78rem;">
+                                    <strong style="color:#0f172a;">${escapeHtml(exp.title)}</strong> @ <em>${escapeHtml(exp.company)}</em>
+                                    <span style="color:#64748b; font-size:0.72rem;">${escapeHtml(exp.years)}</span>
+                                </div>
+                                <p style="font-size:0.76rem; color:#475569; margin:0.15rem 0 0; white-space:pre-line;">${escapeHtml(exp.bullets)}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                ${(data.certifications.length || data.languages.length) ? `
+                    <div style="display:flex; justify-content:space-between; gap:1rem; border-top:1px solid #e2e8f0; padding-top:0.4rem; font-size:0.74rem; color:#475569;">
+                        ${data.certifications.length ? `<div><strong>Certificates:</strong> ${data.certifications.map(c => escapeHtml(c.title)).join(', ')}</div>` : ''}
+                        ${data.languages.length ? `<div><strong>Languages:</strong> ${data.languages.map(l => escapeHtml(l.name)).join(', ')}</div>` : ''}
+                    </div>
+                ` : ''}
+            `;
+        }
+
+        // 6. Photo Sidebar (Enhanced with Custom Accent)
+        function renderSidebarTemplate(container, data, skillsCategories) {
+            const accent = currentAccentColor;
+            container.innerHTML = `
+                <div style="display:grid; grid-template-columns: 32% 68%; min-height: 580px; font-size:0.8rem;">
+                    <div style="background:#0f172a; color:#f8fafc; padding:1.2rem; border-top-left-radius:8px; border-bottom-left-radius:8px;">
+                        ${data.photoData ? `<img src="${data.photoData}" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid ${accent}; margin:0 auto 1rem; display:block;">` : ''}
+                        <h2 style="font-size:1.2rem; color:${accent}; font-weight:800; margin-bottom:0.2rem;">${escapeHtml(data.name || 'Your Full Name')}</h2>
+                        <div style="font-size:0.8rem; color:#94a3b8; font-weight:600; margin-bottom:1.2rem;">${escapeHtml(data.targetRole || 'Target Role')}</div>
+                        
+                        <div style="margin-bottom:1.2rem; font-size:0.75rem; line-height:1.6; color:#cbd5e1;">
+                            <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">CONTACT</h4>
+                            ${data.email ? `<div>✉️ ${escapeHtml(data.email)}</div>` : ''}
+                            ${data.phone ? `<div>📞 ${escapeHtml(data.phone)}</div>` : ''}
+                            ${data.location ? `<div>📍 ${escapeHtml(data.location)}</div>` : ''}
+                            ${data.links ? `<div style="word-break:break-all;">🔗 ${escapeHtml(data.links)}</div>` : ''}
+                        </div>
+
+                        ${renderSidebarSkillsSection(skillsCategories, accent)}
+
+                        ${data.languages.length ? `
+                            <div style="margin-bottom:1.2rem;">
+                                <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">LANGUAGES</h4>
                                 ${data.languages.map(l => `<div style="font-size:0.72rem; margin-bottom:0.2rem;"><strong>${escapeHtml(l.name)}</strong><br><span style="color:#94a3b8;">${escapeHtml(l.level)}</span></div>`).join('')}
                             </div>
                         ` : ''}
 
                         ${data.certifications.length ? `
                             <div>
-                                <h4 style="color:#38bdf8; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">CERTS</h4>
+                                <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">CERTS</h4>
                                 ${data.certifications.map(c => `<div style="font-size:0.72rem; margin-bottom:0.3rem;"><strong>${escapeHtml(c.title)}</strong><br><span style="color:#94a3b8;">${escapeHtml(c.issuer)} (${escapeHtml(c.year)})</span></div>`).join('')}
                             </div>
                         ` : ''}
@@ -1528,7 +2109,7 @@
                                             <strong style="font-size:0.85rem; color:#0f172a;">${escapeHtml(exp.title || 'Role Title')}</strong>
                                             <span style="font-size:0.72rem; color:#64748b;">${escapeHtml(exp.years || '')}</span>
                                         </div>
-                                        <div style="font-size:0.78rem; color:#0284c7; font-weight:600;">${escapeHtml(exp.company || '')}</div>
+                                        <div style="font-size:0.78rem; color:${accent}; font-weight:600;">${escapeHtml(exp.company || '')}</div>
                                         <p style="font-size:0.78rem; color:#334155; margin-top:0.2rem; white-space:pre-line;">${escapeHtml(exp.bullets || '')}</p>
                                     </div>
                                 `).join('')}
@@ -1552,8 +2133,8 @@
                                 <h3 style="font-size:0.95rem; color:#0f172a; border-bottom:2px solid #0f172a; padding-bottom:0.2rem; margin-bottom:0.5rem;">PROJECTS</h3>
                                 ${data.projects.map(p => `
                                     <div style="margin-bottom:0.5rem;">
-                                        <strong style="font-size:0.82rem; color:#0f172a;">${escapeHtml(p.name)}</strong> <span style="font-size:0.72rem; color:#64748b;">[${escapeHtml(p.tech)}]</span>
-                                        <p style="font-size:0.75rem; color:#334155; margin-top:0.1rem;">${escapeHtml(p.description)}</p>
+                                        <strong style="font-size:0.82rem; color:#0f172a;">${escapeHtml(p.name)}</strong>
+                                        <p style="font-size:0.75rem; color:#334155; margin-top:0.1rem;">${escapeHtml(p.desc)}</p>
                                     </div>
                                 `).join('')}
                             </div>
@@ -1569,6 +2150,167 @@
                 </div>
             `;
         }
+
+        function updatePreview() {
+            const data = getFormData();
+            localStorage.setItem('resumeCvMakerDraft', JSON.stringify(data));
+
+            const preview = document.getElementById('preview');
+            if (!preview) return;
+
+            // Apply Typography & 1-Page Spacing Styles to Preview
+            preview.style.fontFamily = currentFontFamily;
+            let fontSizePx = '13.5px';
+            let lineHeightVal = '1.55';
+
+            if (currentFontSize === 'compact') fontSizePx = '12px';
+            else if (currentFontSize === 'large') fontSizePx = '15px';
+
+            if (currentSpacing === 'tight') lineHeightVal = '1.35';
+            else if (currentSpacing === 'relaxed') lineHeightVal = '1.75';
+
+            preview.style.fontSize = fontSizePx;
+            preview.style.lineHeight = lineHeightVal;
+
+            const skillsCategories = parseSkillsInput(data.skills || '');
+            const accent = currentAccentColor;
+
+            // Template Dispatcher
+            if (selectedTemplate === 'tech-dev') {
+                renderTechDevTemplate(preview, data, skillsCategories, accent);
+                return;
+            } else if (selectedTemplate === 'europass') {
+                renderEuropassTemplate(preview, data, skillsCategories, accent);
+                return;
+            } else if (selectedTemplate === 'nordic') {
+                renderNordicTemplate(preview, data, skillsCategories, accent);
+                return;
+            } else if (selectedTemplate === 'dual-split') {
+                renderDualSplitTemplate(preview, data, skillsCategories, accent);
+                return;
+            } else if (selectedTemplate === 'fresher-1page') {
+                renderFresherTemplate(preview, data, skillsCategories, accent);
+                return;
+            } else if (selectedTemplate === 'photo-sidebar') {
+                renderSidebarTemplate(preview, data, skillsCategories);
+                return;
+            }
+
+            // Standard Templates (modern, classic, minimal, compact, photo-exec, creative-grad)
+            let headerStyle = `border-bottom: 2px solid ${accent}; padding-bottom: 0.8rem; margin-bottom: 1rem;`;
+            let titleColor = accent;
+
+            if (selectedTemplate === 'classic') {
+                headerStyle = `border-bottom: 1px solid #475569; padding-bottom: 0.8rem; margin-bottom: 1rem; text-align: center;`;
+                titleColor = '#0f172a';
+            } else if (selectedTemplate === 'minimal') {
+                headerStyle = `margin-bottom: 1rem; border-left: 3px solid ${accent}; padding-left: 0.8rem;`;
+                titleColor = '#0f172a';
+            } else if (selectedTemplate === 'creative-grad') {
+                headerStyle = `background: linear-gradient(135deg, ${accent}, #1e1b4b); color: white; padding: 1.2rem; border-radius: 10px; margin-bottom: 1.2rem;`;
+                titleColor = '#ffffff';
+            } else if (selectedTemplate === 'photo-exec') {
+                headerStyle = `background: #0f172a; color: white; padding: 1.2rem; border-radius: 10px; margin-bottom: 1.2rem; display: flex; gap: 1.2rem; align-items: center; border-left: 4px solid ${accent};`;
+                titleColor = accent;
+            }
+
+            preview.innerHTML = `
+                <div style="${headerStyle}">
+                    ${selectedTemplate === 'photo-exec' && data.photoData ? `<img src="${data.photoData}" style="width:75px; height:75px; border-radius:50%; object-fit:cover; border:2px solid ${accent};">` : ''}
+                    <div style="flex:1;">
+                        <h1 style="font-size:1.6rem; color:${selectedTemplate === 'photo-exec' || selectedTemplate === 'creative-grad' ? '#ffffff' : '#0f172a'}; margin:0 0 0.2rem; font-weight:800; letter-spacing:-0.5px;">${escapeHtml(data.name || 'Your Full Name')}</h1>
+                        <div style="font-size:0.95rem; color:${selectedTemplate === 'photo-exec' ? '#94a3b8' : (selectedTemplate === 'creative-grad' ? '#e0e7ff' : accent)}; font-weight:600;">${escapeHtml(data.targetRole || 'Target Job Title')}</div>
+                        
+                        <div style="font-size:0.75rem; color:${selectedTemplate === 'photo-exec' ? '#cbd5e1' : (selectedTemplate === 'creative-grad' ? '#f1f5f9' : '#475569')}; margin-top:0.4rem; display:flex; gap:0.8rem; flex-wrap:wrap; ${selectedTemplate === 'classic' ? 'justify-content:center;' : ''}">
+                            ${data.email ? `<span>✉️ ${escapeHtml(data.email)}</span>` : ''}
+                            ${data.phone ? `<span>📞 ${escapeHtml(data.phone)}</span>` : ''}
+                            ${data.location ? `<span>📍 ${escapeHtml(data.location)}</span>` : ''}
+                            ${data.links ? `<span>🔗 ${escapeHtml(data.links)}</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+
+                ${data.summary ? `
+                    <div style="margin-bottom:1rem;">
+                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? accent : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem; font-weight:700;">Professional Summary</h3>
+                        <p style="font-size:0.82rem; color:#334155; line-height:1.5;">${escapeHtml(data.summary)}</p>
+                    </div>
+                ` : ''}
+
+                ${renderSkillsSection(skillsCategories, selectedTemplate, selectedTemplate === 'creative-grad' ? accent : titleColor, selectedTemplate === 'compact' ? '#f1f5f9' : '#eff6ff', selectedTemplate === 'compact' ? '#1e293b' : accent)}
+
+                ${data.experience.length ? `
+                    <div style="margin-bottom:1rem;">
+                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? accent : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.6rem; font-weight:700;">Work Experience</h3>
+                        ${data.experience.map(exp => `
+                            <div style="margin-bottom:0.8rem;">
+                                <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                                    <strong style="font-size:0.85rem; color:#0f172a;">${escapeHtml(exp.title || 'Job Title')}</strong>
+                                    <span style="font-size:0.75rem; color:#64748b;">${escapeHtml(exp.years || '')}</span>
+                                </div>
+                                <div style="font-size:0.8rem; color:${accent}; font-weight:600;">${escapeHtml(exp.company || '')}</div>
+                                <p style="font-size:0.8rem; color:#334155; margin-top:0.25rem; white-space:pre-line; line-height:1.45;">${escapeHtml(exp.bullets || '')}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                ${data.education.length ? `
+                    <div style="margin-bottom:1rem;">
+                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? accent : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem; font-weight:700;">Education</h3>
+                        ${data.education.map(edu => `
+                            <div style="margin-bottom:0.4rem; display:flex; justify-content:space-between; align-items:baseline;">
+                                <div><strong style="font-size:0.82rem; color:#0f172a;">${escapeHtml(edu.degree)}</strong> — <span style="font-size:0.78rem; color:#475569;">${escapeHtml(edu.school)}</span></div>
+                                <span style="font-size:0.75rem; color:#64748b;">${escapeHtml(edu.years)}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                ${data.projects.length ? `
+                    <div style="margin-bottom:1rem;">
+                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? accent : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem; font-weight:700;">Projects &amp; Portfolio</h3>
+                        ${data.projects.map(p => `
+                            <div style="margin-bottom:0.45rem;">
+                                <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                                    <strong style="font-size:0.82rem; color:#0f172a;">${escapeHtml(p.name)}</strong>
+                                    ${p.link ? `<span style="font-size:0.72rem; color:${accent};">${escapeHtml(p.link)}</span>` : ''}
+                                </div>
+                                <p style="font-size:0.78rem; color:#475569; margin-top:0.15rem;">${escapeHtml(p.desc)}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                ${data.certifications.length ? `
+                    <div style="margin-bottom:1rem;">
+                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? accent : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem; font-weight:700;">Certifications</h3>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.4rem;">
+                            ${data.certifications.map(c => `<div style="font-size:0.78rem; color:#334155;">🏅 <strong>${escapeHtml(c.title)}</strong> (${escapeHtml(c.issuer)}, ${escapeHtml(c.year)})</div>`).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                ${data.awards.length ? `
+                    <div style="margin-bottom:1rem;">
+                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? accent : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem; font-weight:700;">Honors &amp; Awards</h3>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.4rem;">
+                            ${data.awards.map(a => `<div style="font-size:0.78rem; color:#334155;">🏆 <strong>${escapeHtml(a.title)}</strong> - ${escapeHtml(a.issuer)} (${escapeHtml(a.year)})</div>`).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+
+                ${data.languages.length ? `
+                    <div>
+                        <h3 style="font-size:0.95rem; color:${selectedTemplate === 'creative-grad' ? accent : titleColor}; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem; font-weight:700;">🌐 Languages</h3>
+                        <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
+                            ${data.languages.map(l => `<span style="font-size:0.78rem; color:#334155;"><strong>${escapeHtml(l.name)}</strong>: ${escapeHtml(l.level)}</span>`).join(' • ')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+        }
+
 
         function downloadPDF() {
             logResumeActivity('Exported PDF Resume');
@@ -1738,6 +2480,8 @@
                     langItems = Array.isArray(data.languages) ? data.languages : [];
                     
                     displayPhotoPreview();
+                    applyStylingSettings(data);
+                    renderTemplateSelector();
                     renderExperience();
                     renderEducation();
                     renderCert();
@@ -1785,6 +2529,10 @@
                 summary: "Results-driven Senior Software Engineer with 6+ years of experience architecting high-performance web applications, scaling cloud microservices, and leading agile engineering teams. Proven track record of improving system uptime to 99.99% and reducing latency.",
                 skills: "Technical Skills: JavaScript (ES6+), TypeScript, React.js, Node.js, Next.js, Python\nDatabases & Cloud: PostgreSQL, MongoDB, Redis, Docker, Kubernetes, AWS\nMethodologies: REST APIs, GraphQL, Microservices, CI/CD, Agile/Scrum",
                 template: "modern",
+                accentColor: "#2563eb",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "normal",
+                spacing: "normal",
                 experience: [
                     {
                         title: "Lead Full-Stack Developer",
@@ -1862,6 +2610,7 @@
             langItems = Array.isArray(data.languages) && data.languages.length ? data.languages : (data === sampleData ? sampleData.languages : []);
 
             displayPhotoPreview();
+            applyStylingSettings(data);
             renderTemplateSelector();
             renderExperience();
             renderEducation();
