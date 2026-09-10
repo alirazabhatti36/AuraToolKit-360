@@ -481,31 +481,38 @@
         }
 
         /* Template Selector */
-        .template-toolbar {
-            margin-top: 1.2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        .template-top-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
         .template-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 0.75rem;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 0.65rem;
             margin-top: 0.6rem;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 1200px) {
+            .template-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        @media (max-width: 768px) {
             .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 440px) {
             .template-grid { grid-template-columns: 1fr; }
         }
         .template-chip {
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(11, 15, 25, 0.6);
-            border-radius: 14px;
-            padding: 0.75rem;
+            border-radius: 12px;
+            padding: 0.65rem;
             text-align: left;
             color: #cbd5e1;
-            min-height: 96px;
+            min-height: 92px;
             cursor: pointer;
             transition: all 0.25s;
         }
@@ -775,10 +782,27 @@
             </div>
         </div>
 
+        <!-- ===== STEP 1: CHOOSE TEMPLATE (SHOWN FIRST) ===== -->
+        <div class="template-top-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; margin-bottom:0.75rem;">
+                <div style="display:flex; align-items:center; gap:0.65rem;">
+                    <span style="font-size:1.4rem;">🎨</span>
+                    <div>
+                        <h2 style="font-size:1.15rem; font-weight:800; color:#f8fafc; margin:0; line-height:1.3;">Step 1: Choose Resume Template</h2>
+                        <p style="font-size:0.82rem; color:#94a3b8; margin:0;">Select an ATS-ready style. Your content automatically switches formats in the live preview.</p>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                    <span class="pill-badge" style="margin:0; font-size:0.74rem; padding:0.25rem 0.75rem;">7 Pro Formats</span>
+                </div>
+            </div>
+            <div class="template-grid" id="templateGrid"></div>
+        </div>
+
         <div class="layout">
             <div class="card">
                 <div class="section-head">
-                    <h3>Personal Information</h3>
+                    <h3><span>📝</span> Step 2: Fill Your Information</h3>
                     <div class="small">Draft auto-saved</div>
                 </div>
 
@@ -798,14 +822,17 @@
                 <div class="field"><label for="targetRole">Target Role / Title</label><input type="text" id="targetRole" aria-label="targetRole" placeholder="Senior Software Engineer" oninput="updatePreview()"></div>
                 <div class="field"><label for="email">Email</label><input type="email" id="email" aria-label="email" placeholder="john@example.com" oninput="updatePreview()"></div>
                 <div class="field"><label for="phone">Phone</label><input type="text" id="phone" aria-label="phone" placeholder="+1 555-0199" oninput="updatePreview()"></div>
-                <div class="field"><label for="location">Location</label><input type="text" id="location" aria-label="location" placeholder="New York, USA" oninput="updatePreview()"></div>
-                <div class="field"><label for="links">LinkedIn / Portfolio Links</label><input type="text" id="links" aria-label="links" placeholder="linkedin.com/in/johndoe | github.com/johndoe" oninput="updatePreview()"></div>
-                <div class="field"><label for="summary">Professional Summary</label><textarea id="summary" aria-label="summary" placeholder="Experienced engineer specializing in web application design..." oninput="updatePreview()"></textarea></div>
-                <div class="field">
-                    <label for="skills">Skills & Expertise (Use colons for Category Headings)</label>
-                    <textarea id="skills" aria-label="skills" rows="4" placeholder="Core Languages: HTML5, CSS3, JavaScript, Python&#10;Frameworks & Web: React.js, Node.js, Express&#10;AI Productivity Tools: ChatGPT, Claude, DeepSeek&#10;Soft Skills: Technical Leadership, Team Collaboration" oninput="updatePreview()"></textarea>
-                    <div style="font-size:0.75rem; color:#64748b; margin-top:0.3rem; line-height:1.4;">
-                        💡 <strong>Pro Tip:</strong> Type a category name with a colon (e.g. <code>Core Languages:</code> or <code>Soft Skills:</code>) to automatically group your skills under bold category headings!
+                <div class="field"><label for="location">Location</label><input type="text" id="location" aria-label="location" placeholder="San Francisco, CA" oninput="updatePreview()"></div>
+                <div class="field"><label for="linkedin">LinkedIn Profile URL</label><input type="text" id="linkedin" aria-label="linkedin" placeholder="linkedin.com/in/johndoe" oninput="updatePreview()"></div>
+                <div class="field"><label for="github">Portfolio / GitHub / Website</label><input type="text" id="github" aria-label="github" placeholder="github.com/johndoe" oninput="updatePreview()"></div>
+
+                <div class="section">
+                    <div class="section-head">
+                        <h3>Professional Summary</h3>
+                        <button type="button" class="btn-outline" aria-label="AI Polish" onclick="suggestSummary()">✨ AI Polish</button>
+                    </div>
+                    <div class="field">
+                        <textarea id="summary" aria-label="summary" placeholder="Experienced professional with strong background in..." oninput="updatePreview()"></textarea>
                     </div>
                 </div>
 
@@ -819,7 +846,7 @@
 
                 <div class="section">
                     <div class="section-head">
-                        <h3>Education & Qualifications</h3>
+                        <h3>Education &amp; Qualifications</h3>
                         <button type="button" class="btn-outline" aria-label="Add Education" onclick="addEducation()">+ Add Education</button>
                     </div>
                     <div id="educationList"></div>
@@ -827,15 +854,25 @@
 
                 <div class="section">
                     <div class="section-head">
-                        <h3>📜 Certifications & Licenses</h3>
-                        <button type="button" class="btn-outline" aria-label="Add Certification" onclick="addCert()">+ Add Cert</button>
+                        <h3>Skills &amp; Expertise</h3>
+                        <span class="small">Supports Category Headings (e.g. Technical Skills: Python, React)</span>
+                    </div>
+                    <div class="field">
+                        <textarea id="skills" aria-label="skills" placeholder="Technical Skills: JavaScript, Python, React, Node.js&#10;Management: Agile, Scrum, Product Roadmapping&#10;Core Strengths: Problem Solving, Team Leadership" oninput="updatePreview()" style="min-height:95px; line-height:1.5;"></textarea>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-head">
+                        <h3>📜 Certifications &amp; Licenses</h3>
+                        <button type="button" class="btn-outline" aria-label="Add Certification" onclick="addCert()">+ Add Certification</button>
                     </div>
                     <div id="certList"></div>
                 </div>
 
                 <div class="section">
                     <div class="section-head">
-                        <h3>🏆 Awards & Honors</h3>
+                        <h3>🏆 Awards &amp; Honors</h3>
                         <button type="button" class="btn-outline" aria-label="Add Award" onclick="addAward()">+ Add Award</button>
                     </div>
                     <div id="awardList"></div>
@@ -843,7 +880,7 @@
 
                 <div class="section">
                     <div class="section-head">
-                        <h3>🚀 Key Projects & Portfolio</h3>
+                        <h3>🚀 Key Projects &amp; Portfolio</h3>
                         <button type="button" class="btn-outline" aria-label="Add Project" onclick="addProject()">+ Add Project</button>
                     </div>
                     <div id="projectList"></div>
@@ -851,15 +888,20 @@
 
                 <div class="section">
                     <div class="section-head">
-                        <h3>🌐 Languages & Proficiency</h3>
+                        <h3>🌐 Languages &amp; Proficiency</h3>
                         <button type="button" class="btn-outline" aria-label="Add Language" onclick="addLang()">+ Add Language</button>
                     </div>
                     <div id="langList"></div>
                 </div>
 
-                <div class="template-toolbar">
-                    <label style="font-size:0.85rem; font-weight:700; color:#1e293b;">Select Template Format:</label>
-                    <div class="template-grid" id="templateGrid"></div>
+                <!-- Export & Action Toolbar -->
+                <div class="action-toolbar" style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
+                        <h3 style="font-size:1.02rem; color:#ffffff; font-weight:700; margin:0; display:flex; align-items:center; gap:0.45rem;">
+                            <span>💾</span> Step 3: Export &amp; Save Resume
+                        </h3>
+                        <span class="small">100% In-Browser · No Signup</span>
+                    </div>
                     <div class="btn-row">
                         <button class="btn-primary" aria-label="Download PDF" onclick="downloadPDF()">📄 Download PDF</button>
                         <button class="btn-outline" aria-label="Download DOCX" onclick="downloadDOCX()">📝 Download DOCX</button>
@@ -872,11 +914,20 @@
             </div>
 
             <div class="card sticky-preview">
-                <div style="display:flex; justify-space-between; align-items:center; margin-bottom:0.6rem;"><h3 style="margin:0;">Live Preview</h3><span style="font-size:0.7rem; background:#dbeafe; color:#1d4ed8; padding:0.15rem 0.5rem; border-radius:999px; font-weight:600;">📌 Pinned View</span></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.4rem;">
+                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                        <h3 style="margin:0; font-size:1.02rem; color:#ffffff;">Live Preview</h3>
+                        <span style="font-size:0.7rem; background:rgba(56, 189, 248, 0.15); color:#38bdf8; padding:0.15rem 0.5rem; border-radius:999px; font-weight:600; border:1px solid rgba(56, 189, 248, 0.3);">📌 Real-Time</span>
+                    </div>
+                    <div style="display:flex; gap:0.4rem;">
+                        <button class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadPDF()">📄 PDF</button>
+                        <button class="btn-outline" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadDOCX()">📝 Word</button>
+                    </div>
+                </div>
                 <div id="preview" class="preview-paper"></div>
             </div>
         </div>
-    </div>
+    </main>
 
         <!-- ===== DETAILED GUIDELINES & FAQ SECTION ===== -->
     <section class="info-section">
@@ -1023,10 +1074,14 @@
 
         function renderTemplateSelector() {
             const grid = document.getElementById('templateGrid');
+            if (!grid) return;
             grid.innerHTML = templates.map(t => `
                 <div class="template-chip ${t.id === selectedTemplate ? 'active' : ''}" onclick="selectTemplate('${t.id}')">
                     <span class="template-thumb ${t.thumbClass}"></span>
-                    <div style="font-weight:700;font-size:0.78rem;">${t.name}</div>
+                    <div style="font-weight:700;font-size:0.78rem; display:flex; justify-content:space-between; align-items:center;">
+                        ${t.name}
+                        ${t.id === selectedTemplate ? '<span style="color:#38bdf8; font-size:0.75rem;">✓</span>' : ''}
+                    </div>
                     <div style="font-size:0.65rem;opacity:0.8;margin-top:2px;">${t.desc}</div>
                 </div>
             `).join('');
