@@ -203,6 +203,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: #ffffff;
@@ -270,6 +271,7 @@
             border-radius: 999px;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
         .btn-bookmark-nav:hover {
             color: var(--accent-cyan);
@@ -1452,12 +1454,9 @@
             </div>
 
             <div class="nav-right-actions">
-                <button class="nav-search-trigger" onclick="focusSearch()" aria-label="Search tools">
-                    <span>🔍</span> <span class="search-text">Search</span>
-                </button>
                 <a href="/hr-helper/" class="btn-try-hr">Try HR Helper →</a>
                 <button class="btn-bookmark-nav" onclick="bookmarkSite()">★ Bookmark</button>
-                            <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
+                <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>

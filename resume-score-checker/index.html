@@ -195,6 +195,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: #ffffff;
@@ -245,6 +246,7 @@
             border-radius: 999px;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
         .btn-bookmark-nav:hover {
             color: var(--accent-cyan);
@@ -813,7 +815,9 @@
         }
         @media (max-width: 768px) {
             .navbar { padding: 0.75rem 1rem !important; }
-            .btn-bookmark-nav { display: none !important; }
+            .btn-bookmark-nav { display: none !important;
+            white-space: nowrap;
+        }
             .btn-try-hr { display: none !important; }
             .nav-search-trigger { padding: 0.45rem 0.75rem !important; font-size: 0.82rem !important; }
             .nav-search-trigger .search-text { display: none; }
