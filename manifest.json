@@ -1,0 +1,53 @@
+{
+  "name": "AuraToolkit360 — Free ATS Resume Builder & File Utilities",
+  "short_name": "AuraToolkit360",
+  "description": "100% in-browser client-side ATS resume maker, file converter, and career tools. Zero server uploads.",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "ATS Resume CV Maker",
+      "short_name": "Resume Maker",
+      "description": "Build ATS-friendly resumes with 12 templates",
+      "url": "/resume-cv-maker/?source=pwa",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "ATS Resume Score Checker",
+      "short_name": "ATS Checker",
+      "description": "Score resume against job descriptions",
+      "url": "/resume-score-checker/?source=pwa",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "30+ File Converter Suite",
+      "short_name": "Converter",
+      "description": "Convert PDF, Word, Images in-browser",
+      "url": "/converter/?source=pwa",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "categories": ["productivity", "utilities", "business"]
+}

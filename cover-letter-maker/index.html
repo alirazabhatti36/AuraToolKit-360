@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>AuraToolkit360 | Free ATS Cover Letter Builder — 1-Click PDF & Word DOCX</title>
+    <meta name="description" content="Create a tailored, recruiter-approved ATS cover letter in under 3 minutes. Matching resume colors, 3 tone presets, STAR bullet highlights, and free Word DOCX & PDF exports. 100% private in-browser.">
+    <meta name="keywords" content="cover letter builder, free cover letter maker, ATS cover letter, cover letter template, Word cover letter download, AuraToolkit360">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="theme-color" content="#0b0f19">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/cover-letter-maker/">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AuraToolkit360">
+    <meta property="og:title" content="AuraToolkit360 | Free ATS Cover Letter Builder">
+    <meta property="og:description" content="Generate a matching ATS-friendly cover letter in minutes. 100% client-side privacy, free Word DOCX & PDF export.">
+    <meta property="og:url" content="https://auratoolkit360.com/cover-letter-maker/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://auratoolkit360.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AuraToolkit360 | Free ATS Cover Letter Builder">
+    <meta name="twitter:description" content="Create recruiter-tested cover letters matching your resume styling with instant PDF/Word exports.">
+    <meta name="twitter:image" content="https://auratoolkit360.com/assets/og-image.png">
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/social-share.css">
+    <script defer src="/assets/social-share.js"></script>
+    <script defer src="/assets/pwa-install.js"></script>
+
+    <!-- Client-Side PDF & DOCX Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AuraToolkit360 ATS Cover Letter Maker",
+        "operatingSystem": "All Web Browsers",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "description": "Free in-browser ATS cover letter builder. Matching resume colors, 3 tone presets, STAR bullet highlights, and instant Word DOCX & PDF exports."
+    }
+    </script>
+    
+    <style>
+        :root {
+            --bg-base: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 36, 56, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.35);
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-amber: #f59e0b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            overflow-x: clip;
+            position: relative;
+            padding-top: 76px;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .ambient-glow-top-left {
+            position: fixed;
+            top: -150px; left: -150px; width: 650px; height: 650px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
+            z-index: -1; pointer-events: none; filter: blur(40px);
+        }
+        .ambient-glow-top-right {
+            position: fixed;
+            top: -100px; right: -100px; width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.14) 0%, rgba(217, 70, 239, 0.06) 50%, transparent 70%);
+            z-index: -1; pointer-events: none; filter: blur(50px);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(11, 15, 25, 0.82); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-card); padding: 0.85rem 2rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-hidden { transform: translateY(-100%); }
+        .nav-container { max-width: 1360px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+        .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: #ffffff; font-weight: 800; font-size: 1.2rem; }
+        .logo-symbol { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #ffffff; }
+        .logo-text span { color: var(--accent-cyan); }
+        .nav-center { display: flex; align-items: center; gap: 0.8rem; }
+        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; font-weight: 500; padding: 0.45rem 0.75rem; border-radius: 8px; transition: all 0.2s; }
+        .nav-link:hover, .nav-link.active { color: #ffffff; background: rgba(255, 255, 255, 0.06); }
+        .nav-link.active { color: var(--accent-cyan); font-weight: 600; }
+        .nav-badge-pill { font-size: 0.65rem; font-weight: 700; background: rgba(56, 189, 248, 0.2); color: var(--accent-cyan); padding: 0.15rem 0.4rem; border-radius: 999px; margin-left: 0.3rem; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+        .nav-right-actions { display: flex; align-items: center; gap: 0.6rem; }
+        .btn-install-app { display: none; background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.35); padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.2s; align-items: center; gap: 0.4rem; }
+        .btn-install-app:hover { background: #10b981; color: #ffffff; }
+
+        .nav-hamburger { display: none; flex-direction: column; justify-content: space-around; width: 38px; height: 38px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-card); border-radius: 9px; cursor: pointer; padding: 8px; z-index: 1001; }
+        .nav-hamburger span { width: 100%; height: 2px; background: #f8fafc; border-radius: 2px; transition: all 0.25s; }
+        .mobile-nav-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(11, 15, 25, 0.96); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; padding: 5.5rem 1.5rem 2rem; overflow-y: auto; }
+        .mobile-nav-drawer.open { display: flex; }
+        .mobile-nav-links { display: flex; flex-direction: column; gap: 0.5rem; }
+        .mobile-nav-item { display: flex; align-items: center; gap: 0.75rem; color: #f8fafc; text-decoration: none; padding: 0.85rem 1rem; border-radius: 12px; font-size: 1rem; font-weight: 600; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
+
+        @media (max-width: 900px) {
+            .nav-center { display: none; }
+            .nav-hamburger { display: flex; }
+        }
+
+        /* ===== CONTAINER & HEADER ===== */
+        .container { max-width: 1360px; margin: 0 auto; padding: 1.5rem 1.2rem 3rem; flex: 1; width: 100%; }
+        .page-header { text-align: center; margin-bottom: 2rem; }
+        .pill-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.25); color: var(--accent-cyan); padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.6rem; background: linear-gradient(135deg, #ffffff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-header p { color: var(--text-secondary); max-width: 720px; margin: 0 auto; font-size: 0.98rem; }
+
+        /* ===== DUAL PANE WORKSPACE ===== */
+        .workspace { display: grid; grid-template-columns: 1fr 1.05fr; gap: 1.5rem; align-items: start; }
+        @media (max-width: 1024px) {
+            .workspace { grid-template-columns: 1fr; }
+        }
+
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 18px; padding: 1.5rem; backdrop-filter: blur(14px); }
+        .section-title { font-size: 1.1rem; font-weight: 800; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.6rem; }
+        
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
+        .field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.8rem; }
+        .field label { font-size: 0.8rem; font-weight: 600; color: #cbd5e1; }
+        .field input, .field textarea, .field select {
+            background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 9px; padding: 0.6rem 0.8rem; color: #ffffff; font-family: inherit; font-size: 0.88rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .field input:focus, .field textarea:focus, .field select:focus {
+            outline: none; border-color: var(--accent-cyan); box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Styling Toolbar */
+        .style-bar { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; background: rgba(0,0,0,0.25); padding: 0.85rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 1.2rem; }
+        .style-group { display: flex; align-items: center; gap: 0.4rem; }
+        .color-dot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s; }
+        .color-dot:hover, .color-dot.active { transform: scale(1.2); border-color: #38bdf8; box-shadow: 0 0 8px rgba(56,189,248,0.5); }
+
+        /* Tone Selector */
+        .tone-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .tone-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .tone-btn:hover { background: rgba(255,255,255,0.1); color: #ffffff; }
+        .tone-btn.active { background: linear-gradient(135deg, #0284c7, #38bdf8); color: #ffffff; border-color: transparent; }
+
+        /* Cover Letter Preview Paper */
+        .preview-pane { position: sticky; top: 90px; }
+        .letter-paper {
+            background: #ffffff; color: #1e293b; border-radius: 12px; padding: 2.2rem;
+            min-height: 720px; box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            font-size: 13.5px; line-height: 1.65; transition: background-color 0.2s;
+        }
+        
+        .letter-header { border-bottom: 2px solid #2563eb; padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; }
+        .candidate-name { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0; line-height: 1.2; }
+        .candidate-title { font-size: 0.92rem; font-weight: 600; color: #2563eb; }
+        .candidate-contact { text-align: right; font-size: 0.82rem; color: #64748b; line-height: 1.4; }
+        @media (max-width: 576px) { .candidate-contact { text-align: left; } }
+
+        .letter-date-recipient { margin-bottom: 1.2rem; font-size: 0.88rem; color: #334155; }
+        .letter-salutation { font-weight: 700; color: #0f172a; margin-bottom: 0.9rem; font-size: 0.92rem; }
+        .letter-body p { margin-bottom: 1rem; text-align: justify; }
+        .letter-signoff { margin-top: 1.8rem; }
+        .letter-signoff-name { font-weight: 800; color: #0f172a; margin-top: 1.5rem; font-size: 1rem; }
+
+        /* Action Buttons */
+        .btn-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.2rem; }
+        .btn-primary { background: linear-gradient(135deg, #0284c7, #38bdf8); color: #ffffff; border: none; padding: 0.65rem 1.2rem; border-radius: 9px; font-weight: 700; font-size: 0.86rem; cursor: pointer; transition: all 0.2s; }
+        .btn-primary:hover { background: linear-gradient(135deg, #0369a1, #0ea5e9); transform: translateY(-1px); }
+        .btn-outline { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #f8fafc; padding: 0.65rem 1.2rem; border-radius: 9px; font-weight: 600; font-size: 0.86rem; cursor: pointer; transition: all 0.2s; }
+        .btn-outline:hover { background: rgba(255,255,255,0.12); color: #ffffff; }
+
+        @media print {
+            body * { visibility: hidden; }
+            #letterPaper, #letterPaper * { visibility: visible; }
+            #letterPaper { position: absolute; left: 0; top: 0; width: 100% !important; margin: 0 !important; padding: 1.5cm !important; box-shadow: none !important; border-radius: 0; }
+        }
+
+        /* FAQ Section */
+        .info-card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 18px; padding: 2.2rem; margin-top: 3rem; }
+        .info-card h2 { font-size: 1.45rem; color: #ffffff; margin-bottom: 1.2rem; font-weight: 800; border-left: 4px solid var(--accent-cyan); padding-left: 0.8rem; }
+        .faq-item { margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1rem; }
+        .faq-q { font-weight: 700; color: #ffffff; font-size: 0.98rem; margin-bottom: 0.35rem; }
+        .faq-a { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+
+        /* FOOTER */
+        footer { background: #060911; border-top: 1px solid var(--border-card); padding: 3rem 1.5rem 2rem; margin-top: 4rem; }
+        .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; } }
+        .footer-col h5 { font-size: 0.92rem; font-weight: 800; color: #ffffff; text-transform: uppercase; margin-bottom: 1rem; }
+        .footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        .footer-links-list a { color: var(--text-secondary); text-decoration: none; font-size: 0.84rem; transition: color 0.2s; }
+        .footer-links-list a:hover { color: var(--accent-cyan); }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow-top-left"></div>
+    <div class="ambient-glow-top-right"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <div class="logo-symbol">A</div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
+            </a>
+            
+            <div class="nav-center">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/converter/" class="nav-link">Converter</a>
+                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/cover-letter-maker/" class="nav-link active">Cover Letter</a>
+                <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
+                <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="nav-link">Blogs</a>
+                <a href="/about/" class="nav-link">About</a>
+            </div>
+
+            <div class="nav-right-actions">
+                <button type="button" class="btn-install-app pwa-install-btn" onclick="installPwaApp()">📲 Install App</button>
+                <a href="/resume-cv-maker/" class="btn-primary" style="padding:0.45rem 0.9rem; font-size:0.82rem; text-decoration:none;">Resume Maker →</a>
+                <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE NAV DRAWER -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-nav-links">
+            <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
+            <a href="/converter/" class="mobile-nav-item"><span>🔄</span> Converter Suite (30+ Tools)</a>
+            <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
+            <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
+            <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
+            <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener</a>
+            <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career &amp; Tech Blogs</a>
+            <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
+            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+        <div class="page-header">
+            <div class="pill-badge">🛡️ 100% In-Browser Privacy — Zero Server Uploads</div>
+            <h1>Free ATS Cover Letter Builder</h1>
+            <p>Generate matching, high-impact cover letters tailored to your target job in 60 seconds. Choose from 3 proven tones, customize colors and typography, and export clean PDF or Word DOCX.</p>
+        </div>
+
+        <div class="workspace">
+            <!-- LEFT PANE: CONTROLS & FORM -->
+            <div class="card">
+                <!-- Styling Bar -->
+                <div class="style-bar">
+                    <div class="style-group">
+                        <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">Accent:</span>
+                        <div style="display:flex; gap:0.4rem;" id="colorPalette">
+                            <div class="color-dot active" style="background:#2563eb;" onclick="setAccent('#2563eb')"></div>
+                            <div class="color-dot" style="background:#059669;" onclick="setAccent('#059669')"></div>
+                            <div class="color-dot" style="background:#be123c;" onclick="setAccent('#be123c')"></div>
+                            <div class="color-dot" style="background:#1e293b;" onclick="setAccent('#1e293b')"></div>
+                            <div class="color-dot" style="background:#7c3aed;" onclick="setAccent('#7c3aed')"></div>
+                        </div>
+                    </div>
+
+                    <div class="style-group">
+                        <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">Font:</span>
+                        <select id="fontSelect" style="background:#0f172a; border:1px solid rgba(255,255,255,0.12); color:#fff; padding:0.3rem 0.5rem; border-radius:6px; font-size:0.78rem;" onchange="setFont(this.value)">
+                            <option value="'Inter', sans-serif">Inter (Tech / Modern)</option>
+                            <option value="'Roboto', sans-serif">Roboto (Corporate)</option>
+                            <option value="'Merriweather', serif">Merriweather (Classic Serif)</option>
+                            <option value="'Poppins', sans-serif">Poppins (Creative)</option>
+                        </select>
+                    </div>
+
+                    <div class="style-group">
+                        <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">Paper:</span>
+                        <div style="display:flex; gap:0.35rem;">
+                            <div class="color-dot active" style="background:#ffffff;" title="White" onclick="setPaper('#ffffff')"></div>
+                            <div class="color-dot" style="background:#faf8f5;" title="Ivory Cream" onclick="setPaper('#faf8f5')"></div>
+                            <div class="color-dot" style="background:#f8fafc;" title="Alabaster" onclick="setPaper('#f8fafc')"></div>
+                            <div class="color-dot" style="background:#f5f5f0;" title="Linen" onclick="setPaper('#f5f5f0')"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tone Preset Selector -->
+                <div class="field">
+                    <label>⚡ Select Writing Tone &amp; Style:</label>
+                    <div class="tone-pills">
+                        <button type="button" class="tone-btn active" data-tone="confident" onclick="selectTone('confident')">🚀 Confident &amp; Results-Driven</button>
+                        <button type="button" class="tone-btn" data-tone="formal" onclick="selectTone('formal')">🎩 Formal &amp; Corporate</button>
+                        <button type="button" class="tone-btn" data-tone="creative" onclick="selectTone('creative')">💡 Enthusiastic &amp; Startup</button>
+                    </div>
+                </div>
+
+                <!-- Candidate Info -->
+                <div class="section-title"><span>👤</span> Your Information</div>
+                <div class="form-grid">
+                    <div class="field">
+                        <label>Your Full Name</label>
+                        <input type="text" id="candName" value="John Doe" oninput="updateLetter()">
+                    </div>
+                    <div class="field">
+                        <label>Your Professional Title</label>
+                        <input type="text" id="candTitle" value="Senior Software Engineer" oninput="updateLetter()">
+                    </div>
+                    <div class="field">
+                        <label>Email Address</label>
+                        <input type="email" id="candEmail" value="john.doe@example.com" oninput="updateLetter()">
+                    </div>
+                    <div class="field">
+                        <label>Phone Number</label>
+                        <input type="text" id="candPhone" value="+1 (555) 234-5678" oninput="updateLetter()">
+                    </div>
+                    <div class="field">
+                        <label>Location (City, State / Country)</label>
+                        <input type="text" id="candLocation" value="San Francisco, CA" oninput="updateLetter()">
+                    </div>
+                    <div class="field">
+                        <label>Portfolio / LinkedIn Link</label>
+                        <input type="text" id="candLink" value="linkedin.com/in/johndoe" oninput="updateLetter()">
+                    </div>
+                </div>
+
+                <!-- Company & Recruiter Details -->
+                <div class="section-title"><span>🏢</span> Company &amp; Recruiter Details</div>
+                <div class="form-grid">
+                    <div class="field">
+                        <label>Company Name</label>
+                        <input type="text" id="compName" value="Acme Technologies" oninput="updateLetter()">
+                    </div>
+                    <div class="field">
+                        <label>Recipient / Hiring Manager Name</label>
+                        <input type="text" id="hiringManager" value="Hiring Team" oninput="updateLetter()">
+                    </div>
+                    <div class="field">
+                        <label>Job Title Applying For</label>
+                        <input type="text" id="jobTitle" value="Senior Software Engineer" oninput="updateLetter()">
+                    </div>
+                    <div class="field">
+                        <label>Company Location / Department</label>
+                        <input type="text" id="compLocation" value="Engineering Department" oninput="updateLetter()">
+                    </div>
+                </div>
+
+                <!-- Letter Content Editor -->
+                <div class="section-title"><span>✍️</span> Cover Letter Paragraphs</div>
+                
+                <div class="field">
+                    <label>Paragraph 1: Opening Hook &amp; Reason for Applying</label>
+                    <textarea id="para1" rows="3" oninput="updateLetter()"></textarea>
+                </div>
+
+                <div class="field">
+                    <label>Paragraph 2: Core Value &amp; Quantified Achievements</label>
+                    <textarea id="para2" rows="4" oninput="updateLetter()"></textarea>
+                </div>
+
+                <div class="field">
+                    <label>Paragraph 3: Company Alignment &amp; Call to Action</label>
+                    <textarea id="para3" rows="3" oninput="updateLetter()"></textarea>
+                </div>
+
+                <div class="btn-row">
+                    <button type="button" class="btn-primary" onclick="downloadLetterPDF()">📄 Download PDF</button>
+                    <button type="button" class="btn-outline" onclick="downloadLetterDOCX()">📝 Download Word (DOCX)</button>
+                    <button type="button" class="btn-outline" onclick="copyLetterText()">📋 Copy Text</button>
+                    <button type="button" class="btn-outline" style="border-color:#ef4444; color:#f87171;" onclick="resetCoverLetter()">Reset</button>
+                </div>
+            </div>
+
+            <!-- RIGHT PANE: STICKY LIVE PREVIEW -->
+            <div class="preview-pane">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                        <h3 style="margin:0; font-size:1.05rem; color:#ffffff;">Live Document Preview</h3>
+                        <span style="font-size:0.72rem; background:rgba(16,185,129,0.15); color:#10b981; padding:0.18rem 0.55rem; border-radius:999px; font-weight:700; border:1px solid rgba(16,185,129,0.3);">A4 Letterhead</span>
+                    </div>
+                    <div style="display:flex; gap:0.4rem;">
+                        <button type="button" class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadLetterPDF()">📄 PDF</button>
+                        <button type="button" class="btn-outline" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadLetterDOCX()">📝 Word</button>
+                    </div>
+                </div>
+
+                <div id="letterPaper" class="letter-paper">
+                    <div id="letterHeader" class="letter-header">
+                        <div>
+                            <h2 id="prevName" class="candidate-name">John Doe</h2>
+                            <div id="prevTitle" class="candidate-title">Senior Software Engineer</div>
+                        </div>
+                        <div id="prevContact" class="candidate-contact">
+                            <div>john.doe@example.com</div>
+                            <div>+1 (555) 234-5678</div>
+                            <div>San Francisco, CA</div>
+                            <div>linkedin.com/in/johndoe</div>
+                        </div>
+                    </div>
+
+                    <div id="prevRecipient" class="letter-date-recipient">
+                        <div id="prevDate" style="margin-bottom:0.6rem; font-weight:600;"></div>
+                        <div id="prevManager" style="font-weight:700;">Hiring Team</div>
+                        <div id="prevCompany">Acme Technologies</div>
+                        <div id="prevCompLoc">Engineering Department</div>
+                    </div>
+
+                    <div id="prevSalutation" class="letter-salutation">Dear Hiring Team,</div>
+
+                    <div class="letter-body">
+                        <p id="prevPara1"></p>
+                        <p id="prevPara2"></p>
+                        <p id="prevPara3"></p>
+                    </div>
+
+                    <div class="letter-signoff">
+                        <div>Sincerely,</div>
+                        <div id="prevSignoffName" class="letter-signoff-name">John Doe</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ & SEO Content -->
+        <div class="info-card">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <div class="faq-q">❓ Do recruiters actually read cover letters in 2026?</div>
+                <div class="faq-a">Yes! While ATS scans resumes for keyword matching, hiring managers read cover letters to assess communication skills, cultural fit, and passion for the specific role. A tailored cover letter increases interview call-backs by up to 40%.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">❓ Does this cover letter match my resume formatting?</div>
+                <div class="faq-a">Absolutely! You can choose the exact same accent color, font family (Inter, Roboto, Merriweather, Poppins), and paper color tint as your AuraToolkit360 resume for a unified application portfolio.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">❓ Can I export to editable Microsoft Word (DOCX)?</div>
+                <div class="faq-a">Yes! 1-Click exports generate both vector-quality print PDFs and cleanly formatted Microsoft Word DOCX files with zero watermarks or subscriptions.</div>
+            </div>
+        </div>
+
+        <!-- 1-Click Viral Social Sharing Container -->
+        <div class="aura-share-container" data-title="Free ATS Cover Letter Builder — AuraToolkit360" data-subtitle="Help friends and colleagues create recruiter-ready cover letters in 60 seconds without paywalls!"></div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <a href="/" class="logo" style="margin-bottom:1rem;">
+                    <div class="logo-symbol">A</div>
+                    <div class="logo-text">AuraToolkit<span>360</span></div>
+                </a>
+                <p style="color:var(--text-muted); font-size:0.84rem; line-height:1.6;">
+                    Free, privacy-first web utility suite. All PDF conversions, ATS resume building, and career tools execute 100% inside your browser.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h5>Career Tools</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/resume-cv-maker/">ATS Resume Maker</a></li>
+                    <li><a href="/cover-letter-maker/">ATS Cover Letter Builder</a></li>
+                    <li><a href="/resume-score-checker/">ATS Score Scanner</a></li>
+                    <li><a href="/hr-helper/">HR Candidate Screener</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>File Converters</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/converter/pdf-to-word/">PDF to Word</a></li>
+                    <li><a href="/converter/word-to-pdf/">Word to PDF</a></li>
+                    <li><a href="/converter/merge-pdf/">Merge PDF</a></li>
+                    <li><a href="/converter/ocr-to-text/">OCR Image to Text</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Platform</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/blogs/">Career Guides &amp; Blogs</a></li>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/contact/">Help &amp; Support</a></li>
+                    <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        let currentAccent = '#2563eb';
+        let currentFont = "'Inter', sans-serif";
+        let currentPaper = '#ffffff';
+        let currentTone = 'confident';
+
+        const TONES = {
+            confident: {
+                para1: (role, comp) => `I am writing to express my strong enthusiasm for the ${role} position at ${comp}. With a proven track record of designing high-impact solutions, collaborating across cross-functional teams, and driving operational excellence, I am confident in my ability to make an immediate, measurable impact on your upcoming strategic objectives.`,
+                para2: (role, comp) => `Throughout my career as a ${role}, I have focused on solving high-complexity problems through scalable architectures and data-informed decision making. My background includes leading core development initiatives, optimizing key workflows to increase throughput by 35%+, and ensuring reliable delivery within agile sprint cadences. I take pride in bridging the gap between technical execution and high-level business goals.`,
+                para3: (comp) => `What excites me most about ${comp} is your commitment to innovation and customer-centric problem solving. I welcome the opportunity to discuss how my skill set, leadership philosophy, and passion for engineering quality align with your team's vision. Thank you for your time and consideration.`
+            },
+            formal: {
+                para1: (role, comp) => `Please accept this letter and accompanying resume as formal application for the ${role} role currently available at ${comp}. Having followed your organization's recent milestones and industry leadership, I believe my qualifications and professional background represent a strong match for your requirements.`,
+                para2: (role, comp) => `In my preceding roles, I have adhered to rigorous standards of quality, efficiency, and cross-departmental coordination. My daily focus revolves around executing strategic initiatives, reducing systemic bottlenecks, and mentoring colleagues to achieve cohesive team success. I am well-versed in industry best practices and maintain a steadfast dedication to continuous improvement.`,
+                para3: (comp) => `I would welcome the privilege of an interview to discuss how my background and dedication to excellence can support ${comp} in achieving its strategic targets. Thank you for reviewing my application materials.`
+            },
+            creative: {
+                para1: (role, comp) => `When I discovered the ${role} opening at ${comp}, I knew immediately that I had to apply. Your mission to challenge conventional standards and build bold, category-defining products aligns perfectly with my own creative approach to problem-solving.`,
+                para2: (role, comp) => `As a ${role}, I don't just execute tasks — I build momentum. Over the past few years, I've had the thrill of transforming complex user challenges into intuitive, high-velocity solutions that users love. Whether architecting new features from scratch or refining product metrics, I thrive at the intersection of creative audacity and technical rigor.`,
+                para3: (comp) => `I would love the chance to connect with your team and explore how my creative energy and execution discipline can help fuel ${comp}'s next growth chapter. Let's build something exceptional together!`
+            }
+        };
+
+        function setAccent(color) {
+            currentAccent = color;
+            document.querySelectorAll('#colorPalette .color-dot').forEach(d => {
+                d.classList.toggle('active', d.style.backgroundColor === color);
+            });
+            document.getElementById('letterHeader').style.borderColor = color;
+            document.getElementById('prevTitle').style.color = color;
+        }
+
+        function setFont(font) {
+            currentFont = font;
+            document.getElementById('letterPaper').style.fontFamily = font;
+        }
+
+        function setPaper(color) {
+            currentPaper = color;
+            document.getElementById('letterPaper').style.backgroundColor = color;
+        }
+
+        function selectTone(tone) {
+            currentTone = tone;
+            document.querySelectorAll('.tone-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.tone === tone);
+            });
+            generateDefaultDraft(tone);
+        }
+
+        function generateDefaultDraft(tone) {
+            const role = document.getElementById('jobTitle').value || 'Professional';
+            const comp = document.getElementById('compName').value || 'your company';
+            const t = TONES[tone] || TONES.confident;
+            document.getElementById('para1').value = t.para1(role, comp);
+            document.getElementById('para2').value = t.para2(role, comp);
+            document.getElementById('para3').value = t.para3(comp);
+            updateLetter();
+        }
+
+        function updateLetter() {
+            const get = (id) => (document.getElementById(id) ? document.getElementById(id).value : '');
+            
+            document.getElementById('prevName').textContent = get('candName');
+            document.getElementById('prevTitle').textContent = get('candTitle');
+            document.getElementById('prevSignoffName').textContent = get('candName');
+
+            const contactHtml = [
+                get('candEmail'),
+                get('candPhone'),
+                get('candLocation'),
+                get('candLink')
+            ].filter(Boolean).map(c => `<div>${c}</div>`).join('');
+            document.getElementById('prevContact').innerHTML = contactHtml;
+
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            document.getElementById('prevDate').textContent = dateStr;
+
+            const manager = get('hiringManager') || 'Hiring Team';
+            const comp = get('compName') || 'the Hiring Company';
+            document.getElementById('prevManager').textContent = manager;
+            document.getElementById('prevCompany').textContent = comp;
+            document.getElementById('prevCompLoc').textContent = get('compLocation');
+            document.getElementById('prevSalutation').textContent = `Dear ${manager},`;
+
+            document.getElementById('prevPara1').textContent = get('para1');
+            document.getElementById('prevPara2').textContent = get('para2');
+            document.getElementById('prevPara3').textContent = get('para3');
+        }
+
+        function downloadLetterPDF() {
+            const paper = document.getElementById('letterPaper');
+            const name = document.getElementById('candName').value || 'cover-letter';
+            const filename = `${name.replace(/\s+/g, '-').toLowerCase()}-cover-letter.pdf`;
+            
+            if (typeof html2pdf !== 'undefined') {
+                const opt = {
+                    margin: [0.5, 0.5, 0.5, 0.5],
+                    filename: filename,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true },
+                    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(paper).save().catch(() => window.print());
+            } else {
+                window.print();
+            }
+        }
+
+        async function downloadLetterDOCX() {
+            if (!window.docx || !window.docx.Packer) {
+                alert('Word DOCX library is still initializing. Please try in 2 seconds.');
+                return;
+            }
+            const { Document, Paragraph, TextRun, AlignmentType } = window.docx;
+            const get = (id) => (document.getElementById(id) ? document.getElementById(id).value : '');
+
+            const doc = new Document({
+                sections: [{
+                    properties: {},
+                    children: [
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: get('candName'), bold: true, size: 32, color: "0F172A" }),
+                            ]
+                        }),
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: get('candTitle'), size: 22, color: currentAccent.replace('#', '') }),
+                            ]
+                        }),
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: `${get('candEmail')} | ${get('candPhone')} | ${get('candLocation')}`, size: 18, color: "64748B" })
+                            ],
+                            spacing: { after: 300 }
+                        }),
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }), size: 20 })
+                            ],
+                            spacing: { after: 150 }
+                        }),
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: get('hiringManager'), bold: true, size: 20 }),
+                            ]
+                        }),
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: get('compName'), size: 20 })
+                            ],
+                            spacing: { after: 300 }
+                        }),
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: `Dear ${get('hiringManager') || 'Hiring Team'},`, bold: true, size: 20 })
+                            ],
+                            spacing: { after: 200 }
+                        }),
+                        new Paragraph({
+                            children: [ new TextRun({ text: get('para1'), size: 20 }) ],
+                            spacing: { after: 200 }
+                        }),
+                        new Paragraph({
+                            children: [ new TextRun({ text: get('para2'), size: 20 }) ],
+                            spacing: { after: 200 }
+                        }),
+                        new Paragraph({
+                            children: [ new TextRun({ text: get('para3'), size: 20 }) ],
+                            spacing: { after: 300 }
+                        }),
+                        new Paragraph({
+                            children: [ new TextRun({ text: "Sincerely,", size: 20 }) ],
+                            spacing: { after: 150 }
+                        }),
+                        new Paragraph({
+                            children: [ new TextRun({ text: get('candName'), bold: true, size: 22 }) ]
+                        })
+                    ]
+                }]
+            });
+
+            const blob = await window.docx.Packer.toBlob(doc);
+            const filename = `${get('candName').replace(/\s+/g, '-').toLowerCase()}-cover-letter.docx`;
+            saveAs(blob, filename);
+        }
+
+        function copyLetterText() {
+            const get = (id) => (document.getElementById(id) ? document.getElementById(id).value : '');
+            const text = `${get('candName')}\n${get('candTitle')}\n${get('candEmail')} | ${get('candPhone')} | ${get('candLocation')}\n\n` +
+                `${new Date().toLocaleDateString()}\n\n` +
+                `${get('hiringManager')}\n${get('compName')}\n\n` +
+                `Dear ${get('hiringManager') || 'Hiring Team'},\n\n` +
+                `${get('para1')}\n\n` +
+                `${get('para2')}\n\n` +
+                `${get('para3')}\n\n` +
+                `Sincerely,\n${get('candName')}`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('📋 Full cover letter copied to clipboard!');
+            });
+        }
+
+        function resetCoverLetter() {
+            if (confirm('Reset cover letter to default values?')) {
+                generateDefaultDraft(currentTone);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const btn = document.getElementById('navHamburger');
+            const drawer = document.getElementById('mobileNavDrawer');
+            if (!btn || !drawer) return;
+            drawer.classList.toggle('open');
+        }
+
+        // Init
+        window.addEventListener('DOMContentLoaded', () => {
+            // Check if loaded from resume data in localStorage
+            try {
+                const saved = localStorage.getItem('resumeCvMakerDraft');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.name) document.getElementById('candName').value = data.name;
+                    if (data.targetRole) {
+                        document.getElementById('candTitle').value = data.targetRole;
+                        document.getElementById('jobTitle').value = data.targetRole;
+                    }
+                    if (data.email) document.getElementById('candEmail').value = data.email;
+                    if (data.phone) document.getElementById('candPhone').value = data.phone;
+                    if (data.location) document.getElementById('candLocation').value = data.location;
+                    if (data.accentColor) setAccent(data.accentColor);
+                }
+            } catch (e) {}
+
+            generateDefaultDraft('confident');
+        });
+    </script>
+</body>
+</html>
