@@ -823,8 +823,7 @@
                 <div class="field"><label for="email">Email</label><input type="email" id="email" aria-label="email" placeholder="john@example.com" oninput="updatePreview()"></div>
                 <div class="field"><label for="phone">Phone</label><input type="text" id="phone" aria-label="phone" placeholder="+1 555-0199" oninput="updatePreview()"></div>
                 <div class="field"><label for="location">Location</label><input type="text" id="location" aria-label="location" placeholder="San Francisco, CA" oninput="updatePreview()"></div>
-                <div class="field"><label for="linkedin">LinkedIn Profile URL</label><input type="text" id="linkedin" aria-label="linkedin" placeholder="linkedin.com/in/johndoe" oninput="updatePreview()"></div>
-                <div class="field"><label for="github">Portfolio / GitHub / Website</label><input type="text" id="github" aria-label="github" placeholder="github.com/johndoe" oninput="updatePreview()"></div>
+                <div class="field"><label for="links">LinkedIn / Portfolio / Website Links</label><input type="text" id="links" aria-label="links" placeholder="linkedin.com/in/johndoe | github.com/johndoe" oninput="updatePreview()"></div>
 
                 <div class="section">
                     <div class="section-head">
@@ -1217,15 +1216,19 @@
         }
 
         function getFormData() {
+            const getVal = (id) => {
+                const el = document.getElementById(id);
+                return el ? el.value : '';
+            };
             return {
-                name: document.getElementById('name').value,
-                targetRole: document.getElementById('targetRole').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                location: document.getElementById('location').value,
-                links: document.getElementById('links').value,
-                summary: document.getElementById('summary').value,
-                skills: document.getElementById('skills').value,
+                name: getVal('name'),
+                targetRole: getVal('targetRole'),
+                email: getVal('email'),
+                phone: getVal('phone'),
+                location: getVal('location'),
+                links: getVal('links'),
+                summary: getVal('summary'),
+                skills: getVal('skills'),
                 photoData: photoData,
                 template: selectedTemplate,
                 experience: experienceItems,
@@ -1713,14 +1716,18 @@
             reader.onload = (e) => {
                 try {
                     const data = JSON.parse(e.target.result);
-                    document.getElementById('name').value = data.name || '';
-                    document.getElementById('targetRole').value = data.targetRole || '';
-                    document.getElementById('email').value = data.email || '';
-                    document.getElementById('phone').value = data.phone || '';
-                    document.getElementById('location').value = data.location || '';
-                    document.getElementById('links').value = data.links || '';
-                    document.getElementById('summary').value = data.summary || '';
-                    document.getElementById('skills').value = data.skills || '';
+                    const setVal = (id, val) => {
+                        const el = document.getElementById(id);
+                        if (el) el.value = val !== undefined && val !== null ? val : '';
+                    };
+                    setVal('name', data.name);
+                    setVal('targetRole', data.targetRole);
+                    setVal('email', data.email);
+                    setVal('phone', data.phone);
+                    setVal('location', data.location);
+                    setVal('links', data.links);
+                    setVal('summary', data.summary);
+                    setVal('skills', data.skills);
                     photoData = data.photoData || '';
                     selectedTemplate = data.template || 'modern';
                     experienceItems = Array.isArray(data.experience) ? data.experience : [];
@@ -1747,7 +1754,7 @@
         }
 
         function resetForm() {
-            if (confirm('Clear all resume fields and draft?')) {
+            if (confirm('Clear all resume fields and reset to default sample?')) {
                 localStorage.removeItem('resumeCvMakerDraft');
                 location.reload();
             }
@@ -1763,36 +1770,105 @@
         }
 
         (function init() {
+            const setVal = (id, val) => {
+                const el = document.getElementById(id);
+                if (el) el.value = val !== undefined && val !== null ? val : '';
+            };
+
+            const sampleData = {
+                name: "John Doe",
+                targetRole: "Senior Software Engineer",
+                email: "john.doe@example.com",
+                phone: "+1 (555) 234-5678",
+                location: "San Francisco, CA",
+                links: "linkedin.com/in/johndoe | github.com/johndoe",
+                summary: "Results-driven Senior Software Engineer with 6+ years of experience architecting high-performance web applications, scaling cloud microservices, and leading agile engineering teams. Proven track record of improving system uptime to 99.99% and reducing latency.",
+                skills: "Technical Skills: JavaScript (ES6+), TypeScript, React.js, Node.js, Next.js, Python\nDatabases & Cloud: PostgreSQL, MongoDB, Redis, Docker, Kubernetes, AWS\nMethodologies: REST APIs, GraphQL, Microservices, CI/CD, Agile/Scrum",
+                template: "modern",
+                experience: [
+                    {
+                        title: "Lead Full-Stack Developer",
+                        company: "Apex Tech Innovations",
+                        years: "2022 - Present",
+                        bullets: "• Led a team of 8 engineers delivering enterprise cloud applications serving 250,000+ active users.\n• Redesigned microservices architecture using Node.js and Redis, cutting API response times by 40%.\n• Instituted automated testing and CI/CD pipelines, increasing deployment frequency from weekly to daily."
+                    },
+                    {
+                        title: "Software Engineer",
+                        company: "NextGen Software Labs",
+                        years: "2019 - 2022",
+                        bullets: "• Developed responsive front-end interfaces using React and modern CSS, improving user conversion by 18%.\n• Optimized SQL database queries and indexing strategies, eliminating bottlenecks during peak traffic."
+                    }
+                ],
+                education: [
+                    {
+                        degree: "B.S. in Computer Science & Engineering",
+                        school: "University of California, Berkeley",
+                        years: "2015 - 2019"
+                    }
+                ],
+                projects: [
+                    {
+                        name: "Cloud E-Commerce Platform",
+                        link: "github.com/johndoe/cloud-ecommerce",
+                        desc: "Full-stack scalable shopping platform with real-time inventory management and Stripe integration."
+                    }
+                ],
+                certifications: [
+                    {
+                        title: "AWS Certified Solutions Architect – Associate",
+                        issuer: "Amazon Web Services",
+                        year: "2023"
+                    }
+                ],
+                awards: [
+                    {
+                        title: "Excellence in Engineering Award",
+                        issuer: "Apex Tech Innovations",
+                        year: "2024"
+                    }
+                ],
+                languages: [
+                    { name: "English", level: "Native / Bilingual" },
+                    { name: "Spanish", level: "Professional Working" }
+                ]
+            };
+
             const draft = localStorage.getItem('resumeCvMakerDraft');
+            let data = sampleData;
             if (draft) {
                 try {
-                    const data = JSON.parse(draft);
-                    document.getElementById('name').value = data.name || '';
-                    document.getElementById('targetRole').value = data.targetRole || '';
-                    document.getElementById('email').value = data.email || '';
-                    document.getElementById('phone').value = data.phone || '';
-                    document.getElementById('location').value = data.location || '';
-                    document.getElementById('links').value = data.links || '';
-                    document.getElementById('summary').value = data.summary || '';
-                    document.getElementById('skills').value = data.skills || '';
-                    photoData = data.photoData || '';
-                    selectedTemplate = data.template || 'modern';
-                    experienceItems = Array.isArray(data.experience) ? data.experience : [];
-                    educationItems = Array.isArray(data.education) ? data.education : [];
-                    certItems = Array.isArray(data.certifications) ? data.certifications : [];
-                    awardItems = Array.isArray(data.awards) ? data.awards : [];
-                    projectItems = Array.isArray(data.projects) ? data.projects : [];
-                    langItems = Array.isArray(data.languages) ? data.languages : [];
+                    const parsed = JSON.parse(draft);
+                    if (parsed && typeof parsed === 'object') {
+                        data = parsed;
+                    }
                 } catch (_e) {}
             }
+
+            setVal('name', data.name);
+            setVal('targetRole', data.targetRole);
+            setVal('email', data.email);
+            setVal('phone', data.phone);
+            setVal('location', data.location);
+            setVal('links', data.links);
+            setVal('summary', data.summary);
+            setVal('skills', data.skills);
+            photoData = data.photoData || '';
+            selectedTemplate = data.template || 'modern';
+            experienceItems = Array.isArray(data.experience) && data.experience.length ? data.experience : (data === sampleData ? sampleData.experience : []);
+            educationItems = Array.isArray(data.education) && data.education.length ? data.education : (data === sampleData ? sampleData.education : []);
+            certItems = Array.isArray(data.certifications) && data.certifications.length ? data.certifications : (data === sampleData ? sampleData.certifications : []);
+            awardItems = Array.isArray(data.awards) && data.awards.length ? data.awards : (data === sampleData ? sampleData.awards : []);
+            projectItems = Array.isArray(data.projects) && data.projects.length ? data.projects : (data === sampleData ? sampleData.projects : []);
+            langItems = Array.isArray(data.languages) && data.languages.length ? data.languages : (data === sampleData ? sampleData.languages : []);
+
             displayPhotoPreview();
             renderTemplateSelector();
-            if (!experienceItems.length) addExperience(); else renderExperience();
-            if (!educationItems.length) addEducation(); else renderEducation();
-            if (!certItems.length) addCert(); else renderCert();
-            if (!awardItems.length) addAward(); else renderAward();
-            if (!projectItems.length) addProject(); else renderProject();
-            if (!langItems.length) addLang(); else renderLang();
+            renderExperience();
+            renderEducation();
+            renderCert();
+            renderAward();
+            renderProject();
+            renderLang();
             updatePreview();
         })();
     </script>
