@@ -968,6 +968,210 @@
             .nav-search-trigger .search-text { display: none; }
         }
 
+    
+        /* ===== PAGE SETUP & PAPER CONTROLS ===== */
+        .page-setup-toolbar {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .paper-palette {
+            display: flex;
+            gap: 0.45rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .paper-circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+        .paper-circle:hover, .paper-circle.active {
+            transform: scale(1.22);
+            border-color: #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+        .btn-autofit {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #ffffff;
+            border: none;
+            border-radius: 7px;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.76rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .btn-autofit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Visual Page Break Marker */
+        .preview-paper {
+            position: relative !important;
+            transition: background-color 0.25s ease, max-width 0.25s ease;
+        }
+        .page-break-marker {
+            position: absolute;
+            left: -1px;
+            right: -1px;
+            border-top: 2px dashed #f59e0b;
+            z-index: 25;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            transform: translateY(-50%);
+        }
+        .page-break-tag {
+            background: #78350f;
+            color: #fef3c7;
+            border: 1px solid #f59e0b;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.2rem 0.65rem;
+            border-radius: 999px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+            white-space: nowrap;
+        }
+        @media print {
+            .page-break-marker { display: none !important; }
+            #templateModal { display: none !important; }
+        }
+
+        /* 12 Templates Showcase Gallery */
+        .templates-showcase-section {
+            max-width: 1360px;
+            margin: 3.5rem auto 1.5rem;
+            padding: 0;
+        }
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .showcase-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .showcase-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+        }
+        .showcase-thumb-wrap {
+            position: relative;
+            background: #0f172a;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .showcase-thumb-wrap img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+        }
+        .showcase-thumb-wrap:hover img {
+            transform: scale(1.03);
+        }
+        .showcase-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .showcase-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .showcase-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+        }
+        .showcase-score {
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+        }
+        .showcase-desc {
+            font-size: 0.83rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            margin-bottom: 1.1rem;
+            flex: 1;
+        }
+        .showcase-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .showcase-btn-use {
+            flex: 2;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .showcase-btn-use:hover {
+            background: linear-gradient(135deg, #0369a1, #0ea5e9);
+            transform: translateY(-1px);
+        }
+        .showcase-btn-preview {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .showcase-btn-preview:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+
     </style>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -976,6 +1180,29 @@
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "12 Free ATS Resume Templates - AuraToolkit360",
+      "description": "Recruiter-approved ATS-friendly resume templates with 1-click Word DOCX and PDF export.",
+      "image": [
+        "https://auratoolkit360.com/assets/templates/modern-blue-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/classic-serif-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/minimal-mono-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/compact-grid-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/executive-photo-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/modern-sidebar-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/creative-gradient-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/tech-matrix-developer-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/europass-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/nordic-swiss-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/dual-split-ats-resume-template.png",
+        "https://auratoolkit360.com/assets/templates/fresher-student-ats-resume-template.png"
+      ]
+    }
+    </script>
+
 </head>
 <body>
 
@@ -1102,6 +1329,34 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Page Setup Toolbar (Format, Orientation & Paper Color) -->
+            <div class="page-setup-toolbar">
+                <!-- Page Format -->
+                <div class="customizer-group">
+                    <label class="customizer-label" for="pageSizeSelect"><span>📐</span> Page Size:</label>
+                    <select id="pageSizeSelect" class="customizer-select" onchange="changePageSize(this.value)">
+                        <option value="a4" selected>A4 Standard (210 × 297 mm)</option>
+                        <option value="letter">US Letter (8.5 × 11 in)</option>
+                    </select>
+                </div>
+
+                <!-- Orientation -->
+                <div class="customizer-group">
+                    <label class="customizer-label"><span>🔄</span> Orientation:</label>
+                    <div class="segmented-control" id="orientationControl">
+                        <button type="button" class="seg-btn active" data-orient="portrait" onclick="changeOrientation('portrait')">Portrait</button>
+                        <button type="button" class="seg-btn" data-orient="landscape" onclick="changeOrientation('landscape')">Landscape</button>
+                    </div>
+                </div>
+
+                <!-- Paper Color Tint -->
+                <div class="customizer-group">
+                    <label class="customizer-label"><span>📜</span> Paper Color Tint:</label>
+                    <div class="paper-palette" id="paperPalette"></div>
+                </div>
+            </div>
+
         </div>
 
         <div class="layout">
@@ -1145,6 +1400,27 @@
                         <h3>Work Experience</h3>
                         <button type="button" class="btn-outline" aria-label="Add Experience" onclick="addExperience()">+ Add Experience</button>
                     </div>
+
+                    <!-- ATS STAR Bullet Helper -->
+                    <div style="background:rgba(56, 189, 248, 0.07); border:1px solid rgba(56, 189, 248, 0.22); border-radius:10px; padding:0.65rem 0.9rem; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+                        <div style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="font-size:1.1rem;">⚡</span>
+                            <div>
+                                <strong style="font-size:0.82rem; color:#f8fafc;">Pre-Written ATS Bullet Inspo (STAR Method):</strong>
+                                <span style="font-size:0.75rem; color:#94a3b8; display:block;">Select your role to insert quantified, high-impact achievements</span>
+                            </div>
+                        </div>
+                        <select id="roleInspoSelect" class="customizer-select" style="padding:0.35rem 0.7rem; font-size:0.78rem; max-width:240px;" onchange="insertRoleBullets(this.value)">
+                            <option value="">-- Choose Role &amp; Insert --</option>
+                            <option value="software">💻 Software / Web Engineer</option>
+                            <option value="marketing">📈 Digital Marketing &amp; SEO</option>
+                            <option value="sales">💼 Sales &amp; Business Dev</option>
+                            <option value="data">📊 Data Analyst / Scientist</option>
+                            <option value="pm">📋 Project Manager / Scrum</option>
+                            <option value="fresher">🎓 Student / Fresh Graduate</option>
+                        </select>
+                    </div>
+
                     <div id="experienceList"></div>
                 </div>
 
@@ -1217,15 +1493,32 @@
                 </div>
             </div>
 
-            <div class="card sticky-preview">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.4rem;">
-                    <div style="display:flex; align-items:center; gap:0.5rem;">
-                        <h3 style="margin:0; font-size:1.02rem; color:#ffffff;">Live Preview</h3>
-                        <span style="font-size:0.7rem; background:rgba(56, 189, 248, 0.15); color:#38bdf8; padding:0.15rem 0.5rem; border-radius:999px; font-weight:600; border:1px solid rgba(56, 189, 248, 0.3);">📌 Real-Time</span>
+<div class="card sticky-preview">
+                <!-- Target Job Matcher Collapsible Bar -->
+                <div style="background:rgba(18, 24, 38, 0.9); border:1px solid rgba(255, 255, 255, 0.1); border-radius:10px; padding:0.65rem 0.85rem; margin-bottom:0.75rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="toggleJobMatcher()">
+                        <div style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="font-size:0.95rem;">🎯</span>
+                            <span style="font-size:0.82rem; font-weight:700; color:#f8fafc;">Target Job Description Matcher</span>
+                            <span id="matchScoreBadge" style="font-size:0.7rem; background:rgba(56, 189, 248, 0.15); color:#38bdf8; padding:0.12rem 0.5rem; border-radius:6px; font-weight:600;">Optional</span>
+                        </div>
+                        <span id="matcherToggleIcon" style="color:#94a3b8; font-size:0.78rem;">▼ Click to expand</span>
                     </div>
-                    <div style="display:flex; gap:0.4rem;">
-                        <button class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadPDF()">📄 PDF</button>
-                        <button class="btn-outline" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadDOCX()">📝 Word</button>
+                    <div id="jobMatcherBody" style="display:none; margin-top:0.65rem;">
+                        <textarea id="targetJobDescInput" placeholder="Paste the job requirements or target job description here to check live keyword matches in real time..." rows="3" style="width:100%; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.12); border-radius:8px; color:#f8fafc; padding:0.55rem; font-size:0.78rem; resize:vertical; font-family:inherit;" oninput="runLiveJobMatch()"></textarea>
+                        <div id="jobKeywordChips" style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.5rem;"></div>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.4rem;">
+                    <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                        <h3 style="margin:0; font-size:1.02rem; color:#ffffff;">Live Preview</h3>
+                        <span id="pageCountBadge" style="font-size:0.72rem; background:rgba(16, 185, 129, 0.15); color:#10b981; padding:0.18rem 0.55rem; border-radius:999px; font-weight:700; border:1px solid rgba(16, 185, 129, 0.3);">📄 1 Page (Clean Fit ✅)</span>
+                    </div>
+                    <div style="display:flex; gap:0.4rem; align-items:center; flex-wrap:wrap;">
+                        <button type="button" class="btn-autofit" onclick="autoFitToOnePage()" title="Automatically adjusts spacing and typography to fit content onto exactly 1 page">✨ Auto-Fit 1 Page</button>
+                        <button type="button" class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadPDF()">📄 PDF</button>
+                        <button type="button" class="btn-outline" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadDOCX()">📝 Word</button>
                     </div>
                 </div>
                 <div id="preview" class="preview-paper"></div>
@@ -1320,6 +1613,231 @@
             </p>
         </div>
 
+
+        <!-- ===== 12 ATS RESUME TEMPLATES SHOWCASE GALLERY (GOOGLE IMAGES SEO) ===== -->
+        <div class="info-card" id="templatesGallerySection" style="margin-top:2.5rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.2rem;">
+                <div>
+                    <h2 style="margin:0; font-size:1.4rem;">🎨 Explore All 12 ATS-Friendly Resume Templates</h2>
+                    <p style="margin:0.35rem 0 0; color:var(--text-secondary); font-size:0.92rem;">
+                        Browse recruiter-approved templates engineered for 95%+ ATS pass rates. Click any template to load it instantly in the editor.
+                    </p>
+                </div>
+                <a href="#templateGrid" class="showcase-btn-use" style="padding:0.55rem 1.1rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.4rem; text-decoration:none;">⬆️ Jump to Editor</a>
+            </div>
+
+            <div class="showcase-grid">
+                
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/modern-blue-ats-resume-template.png', 'Modern Blue ATS Resume Template', 'modern')">
+                    <img src="/assets/templates/modern-blue-ats-resume-template.png" alt="Modern Blue ATS Resume Template - Free Word DOCX and PDF download" title="Modern Blue ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Modern Blue</h4>
+                        <span class="showcase-score">99% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Clean top accent bar with structured 2-column header. High recruiter score for software engineers, product managers, and corporate roles.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('modern')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/modern-blue-ats-resume-template.png', 'Modern Blue ATS Resume Template', 'modern')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/classic-serif-ats-resume-template.png', 'Classic Serif ATS Resume Template', 'classic')">
+                    <img src="/assets/templates/classic-serif-ats-resume-template.png" alt="Classic Serif ATS Resume Template - Free Word DOCX and PDF download" title="Classic Serif ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Classic Serif</h4>
+                        <span class="showcase-score">98% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Timeless formal centered layout with serif typography. Standard for legal, banking, finance, academia, and executive leadership.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('classic')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/classic-serif-ats-resume-template.png', 'Classic Serif ATS Resume Template', 'classic')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/minimal-mono-ats-resume-template.png', 'Minimal Mono ATS Resume Template', 'minimal')">
+                    <img src="/assets/templates/minimal-mono-ats-resume-template.png" alt="Minimal Mono ATS Resume Template - Free Word DOCX and PDF download" title="Minimal Mono ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Minimal Mono</h4>
+                        <span class="showcase-score">99% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Ultra-clean left vertical border with monospace accents. Maximum whitespace and zero ATS parsing friction.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('minimal')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/minimal-mono-ats-resume-template.png', 'Minimal Mono ATS Resume Template', 'minimal')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/compact-grid-ats-resume-template.png', 'Compact Grid ATS Resume Template', 'compact')">
+                    <img src="/assets/templates/compact-grid-ats-resume-template.png" alt="Compact Grid ATS Resume Template - Free Word DOCX and PDF download" title="Compact Grid ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Compact Grid</h4>
+                        <span class="showcase-score">97% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">High-density multi-column grid layout designed to pack 5+ years of extensive experience onto exactly 1 page.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('compact')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/compact-grid-ats-resume-template.png', 'Compact Grid ATS Resume Template', 'compact')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/executive-photo-ats-resume-template.png', 'Executive Photo ATS Resume Template', 'photo-exec')">
+                    <img src="/assets/templates/executive-photo-ats-resume-template.png" alt="Executive Photo ATS Resume Template - Free Word DOCX and PDF download" title="Executive Photo ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Executive Photo</h4>
+                        <span class="showcase-score">95% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Sophisticated corporate header with professional photo badge. Popular for consulting, real estate, and multinational applications.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('photo-exec')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/executive-photo-ats-resume-template.png', 'Executive Photo ATS Resume Template', 'photo-exec')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/modern-sidebar-ats-resume-template.png', 'Modern Sidebar ATS Resume Template', 'photo-sidebar')">
+                    <img src="/assets/templates/modern-sidebar-ats-resume-template.png" alt="Modern Sidebar ATS Resume Template - Free Word DOCX and PDF download" title="Modern Sidebar ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Modern Sidebar</h4>
+                        <span class="showcase-score">96% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">2-column format with dedicated dark sidebar for contact info, skills, and languages. Balances aesthetics with machine readability.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('photo-sidebar')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/modern-sidebar-ats-resume-template.png', 'Modern Sidebar ATS Resume Template', 'photo-sidebar')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/creative-gradient-ats-resume-template.png', 'Creative Gradient ATS Resume Template', 'creative-grad')">
+                    <img src="/assets/templates/creative-gradient-ats-resume-template.png" alt="Creative Gradient ATS Resume Template - Free Word DOCX and PDF download" title="Creative Gradient ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Creative Gradient</h4>
+                        <span class="showcase-score">96% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Vibrant indigo-to-purple header gradient banner. Gives modern visual punch for UI/UX designers, marketing leads, and founders.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('creative-grad')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/creative-gradient-ats-resume-template.png', 'Creative Gradient ATS Resume Template', 'creative-grad')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/tech-matrix-developer-resume-template.png', 'Tech Matrix Developer ATS Resume Template', 'tech-dev')">
+                    <img src="/assets/templates/tech-matrix-developer-resume-template.png" alt="Tech Matrix Developer ATS Resume Template - Free Word DOCX and PDF download" title="Tech Matrix Developer ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Tech Matrix Developer</h4>
+                        <span class="showcase-score">99% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Developer terminal-style tagging with JetBrains Mono font support, live GitHub/portfolio links, and project tech stacks.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('tech-dev')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/tech-matrix-developer-resume-template.png', 'Tech Matrix Developer ATS Resume Template', 'tech-dev')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/europass-ats-resume-template.png', 'Europass Standard EU ATS Resume Template', 'europass')">
+                    <img src="/assets/templates/europass-ats-resume-template.png" alt="Europass Standard EU ATS Resume Template - Free Word DOCX and PDF download" title="Europass Standard EU ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Europass Standard EU</h4>
+                        <span class="showcase-score">97% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Official European Commission standard layout with dual-column alignment, CEFR language grids, and clean blue headings.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('europass')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/europass-ats-resume-template.png', 'Europass Standard EU ATS Resume Template', 'europass')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/nordic-swiss-ats-resume-template.png', 'Nordic Swiss ATS Resume Template', 'nordic')">
+                    <img src="/assets/templates/nordic-swiss-ats-resume-template.png" alt="Nordic Swiss ATS Resume Template - Free Word DOCX and PDF download" title="Nordic Swiss ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">Nordic Swiss</h4>
+                        <span class="showcase-score">99% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Inspired by Swiss graphic design with hairline section dividers, asymmetric whitespace, and high-legibility typography.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('nordic')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/nordic-swiss-ats-resume-template.png', 'Nordic Swiss ATS Resume Template', 'nordic')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/dual-split-ats-resume-template.png', '50/50 Dual Split ATS Resume Template', 'dual-split')">
+                    <img src="/assets/templates/dual-split-ats-resume-template.png" alt="50/50 Dual Split ATS Resume Template - Free Word DOCX and PDF download" title="50/50 Dual Split ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">50/50 Dual Split</h4>
+                        <span class="showcase-score">97% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Balanced two-column split giving equal prominence to technical competencies, certifications, and career trajectory.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('dual-split')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/dual-split-ats-resume-template.png', '50/50 Dual Split ATS Resume Template', 'dual-split')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-thumb-wrap" onclick="openTemplateModal('/assets/templates/fresher-student-ats-resume-template.png', '1-Page Student / Fresher ATS Resume Template', 'fresher-1page')">
+                    <img src="/assets/templates/fresher-student-ats-resume-template.png" alt="1-Page Student / Fresher ATS Resume Template - Free Word DOCX and PDF download" title="1-Page Student / Fresher ATS Resume Template - AuraToolkit360" loading="lazy" width="380" height="490">
+                </div>
+                <div class="showcase-body">
+                    <div class="showcase-header-row">
+                        <h4 class="showcase-title">1-Page Student / Fresher</h4>
+                        <span class="showcase-score">100% ATS Pass Rate</span>
+                    </div>
+                    <p class="showcase-desc">Tightly optimized vertical flow emphasizing education, academic projects, leadership, and internships for fresh college graduates.</p>
+                    <div class="showcase-actions">
+                        <button type="button" class="showcase-btn-use" onclick="applyTemplateFromGallery('fresher-1page')">🚀 Use Template</button>
+                        <button type="button" class="showcase-btn-preview" onclick="openTemplateModal('/assets/templates/fresher-student-ats-resume-template.png', '1-Page Student / Fresher ATS Resume Template', 'fresher-1page')">🔍 Preview</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Fullscreen Preview Modal -->
+        <div id="templateModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:1.5rem;" onclick="closeTemplateModal()">
+            <div style="position:relative; max-width:750px; max-height:92vh; display:flex; flex-direction:column; background:#1e293b; border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:1.2rem; box-shadow:0 25px 60px rgba(0,0,0,0.7);" onclick="event.stopPropagation()">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+                    <h3 id="modalTemplateName" style="color:#ffffff; font-weight:800; font-size:1.15rem; margin:0;"></h3>
+                    <button style="background:rgba(255,255,255,0.1); border:none; color:#ffffff; font-size:1.1rem; cursor:pointer; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center;" onclick="closeTemplateModal()">✕</button>
+                </div>
+                <img id="modalTemplateImg" src="" alt="Template Preview" style="max-width:100%; max-height:74vh; border-radius:8px; object-fit:contain; background:#ffffff;">
+                <div style="margin-top:1rem; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:0.85rem; color:#94a3b8;">100% Free • PDF &amp; Word DOCX Exports • Zero Watermarks</span>
+                    <button id="modalUseBtn" class="showcase-btn-use" style="padding:0.6rem 1.4rem;" onclick="useModalTemplate()">Use This Template 🚀</button>
+                </div>
+            </div>
+        </div>
+    
         <div class="info-card">
             <h2>Frequently Asked Questions (FAQ)</h2>
             <div class="faq-item">
@@ -2364,8 +2882,21 @@
             preview.style.fontSize = fontSizePx;
             preview.style.lineHeight = lineHeightVal;
 
+            // Apply Paper Color & Dimensions
+            preview.style.backgroundColor = currentPaperColor;
+            if (currentOrientation === 'landscape') {
+                preview.style.maxWidth = '1050px';
+                preview.style.minHeight = currentPageFormat === 'a4' ? '740px' : '810px';
+            } else {
+                preview.style.maxWidth = '800px';
+                preview.style.minHeight = currentPageFormat === 'a4' ? '1050px' : '980px';
+            }
+
             const skillsCategories = parseSkillsInput(data.skills || '');
             const accent = currentAccentColor;
+
+            setTimeout(updatePageBreakIndicator, 20);
+            if (document.getElementById('targetJobDescInput') && document.getElementById('targetJobDescInput').value.trim()) runLiveJobMatch();
 
             // Template Dispatcher
             if (selectedTemplate === 'tech-dev') {
@@ -2526,7 +3057,7 @@
                         scrollY: 0,
                         scrollX: 0
                     },
-                    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+                    jsPDF: { unit: 'in', format: currentPageFormat, orientation: currentOrientation },
                     pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
                 };
 
@@ -2705,7 +3236,281 @@
                 .replace(/'/g, '&#039;');
         }
 
-        (function init() {
+        /* ===== PAGE SETUP & RESUME PRO SUITE LOGIC ===== */
+        let currentPageFormat = 'a4'; // 'a4' or 'letter'
+        let currentOrientation = 'portrait'; // 'portrait' or 'landscape'
+        let currentPaperColor = '#ffffff'; // Paper tint
+
+        const paperPresets = [
+            { name: 'Pure White', hex: '#ffffff' },
+            { name: 'Classic Ivory', hex: '#faf8f5' },
+            { name: 'Alabaster Off-White', hex: '#f8fafc' },
+            { name: 'Warm Linen', hex: '#f5f5f0' },
+            { name: 'Corporate Slate', hex: '#f1f5f9' }
+        ];
+
+        function renderPaperPalette() {
+            const cont = document.getElementById('paperPalette');
+            if (!cont) return;
+            cont.innerHTML = paperPresets.map(p => `
+                <div class="paper-circle ${currentPaperColor === p.hex ? 'active' : ''}" 
+                     style="background:${p.hex};" 
+                     title="${p.name}" 
+                     onclick="changePaperColor('${p.hex}')"></div>
+            `).join('');
+        }
+
+        function changePaperColor(hex) {
+            currentPaperColor = hex;
+            renderPaperPalette();
+            updatePreview();
+        }
+
+        function changePageSize(val) {
+            currentPageFormat = val;
+            updatePreview();
+        }
+
+        function changeOrientation(val) {
+            currentOrientation = val;
+            document.querySelectorAll('#orientationControl .seg-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.orient === val);
+            });
+            updatePreview();
+        }
+
+        function calculatePageHeight() {
+            const preview = document.getElementById('preview');
+            if (!preview) return 1050;
+            const w = preview.clientWidth || 720;
+            if (currentOrientation === 'landscape') {
+                return currentPageFormat === 'a4' ? Math.round(w / 1.4142) : Math.round(w / 1.2941);
+            } else {
+                return currentPageFormat === 'a4' ? Math.round(w * 1.4142) : Math.round(w * 1.2941);
+            }
+        }
+
+        function updatePageBreakIndicator() {
+            const preview = document.getElementById('preview');
+            if (!preview) return;
+
+            // Remove existing marker
+            const oldMarker = preview.querySelector('.page-break-marker');
+            if (oldMarker) oldMarker.remove();
+
+            const pageH = calculatePageHeight();
+            const contentH = preview.scrollHeight;
+            const pageBadge = document.getElementById('pageCountBadge');
+
+            if (contentH > pageH + 35) {
+                const pages = Math.ceil(contentH / pageH);
+                const p2Percent = Math.min(100, Math.round(((contentH - pageH) / pageH) * 100));
+                if (pageBadge) {
+                    pageBadge.innerHTML = `⚠️ ${pages} Pages (P2: ~${p2Percent}% filled)`;
+                    pageBadge.style.background = 'rgba(245, 158, 11, 0.15)';
+                    pageBadge.style.color = '#f59e0b';
+                    pageBadge.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+                }
+
+                // Add visual dashed line
+                const marker = document.createElement('div');
+                marker.className = 'page-break-marker';
+                marker.style.top = `${pageH}px`;
+                marker.innerHTML = `<span class="page-break-tag">✂️ Page 1 End (${currentPageFormat.toUpperCase()}) • Page 2 Starts Below</span>`;
+                preview.appendChild(marker);
+            } else {
+                if (pageBadge) {
+                    pageBadge.innerHTML = `📄 1 Page (${currentPageFormat.toUpperCase()} Fit ✅)`;
+                    pageBadge.style.background = 'rgba(16, 185, 129, 0.15)';
+                    pageBadge.style.color = '#10b981';
+                    pageBadge.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+                }
+            }
+        }
+
+        function autoFitToOnePage() {
+            const preview = document.getElementById('preview');
+            if (!preview) return;
+            
+            changeSpacing('tight');
+            setTimeout(() => {
+                const pageH = calculatePageHeight();
+                if (preview.scrollHeight > pageH + 20) {
+                    changeFontSize('compact');
+                }
+                setTimeout(() => {
+                    updatePageBreakIndicator();
+                    const newH = calculatePageHeight();
+                    if (preview.scrollHeight <= newH + 35) {
+                        alert('✨ Success! Your resume has been automatically adjusted to fit on 1 Page.');
+                    } else {
+                        alert('💡 Compact layout applied! For a perfect 1-page fit, consider shortening your summary or trimming 1-2 bullet points.');
+                    }
+                }, 60);
+            }, 60);
+        }
+
+        /* ===== STAR METHOD PRE-WRITTEN BULLET INSPIRATION ===== */
+        const ROLE_BULLETS = {
+            software: [
+                "Architected scalable web applications using TypeScript and React, decreasing initial page latency by 38% across 120,000+ monthly users.",
+                "Engineered RESTful & GraphQL microservices in Node.js/Python, achieving 99.98% production uptime and zero data leakage.",
+                "Refactored legacy codebase and automated CI/CD testing pipelines with Docker, cutting release cycle time from 2 weeks to 2 days."
+            ],
+            marketing: [
+                "Executed comprehensive technical SEO & content marketing campaigns, growing organic monthly search traffic by 185% in 6 months.",
+                "Managed $25,000 monthly Google Ads & Meta campaigns, optimizing conversion funnels and lowering CAC by 34%.",
+                "Orchestrated cross-channel email automation workflows generating $45,000 in direct pipeline revenue."
+            ],
+            sales: [
+                "Exceeded annual revenue target by 142%, generating $680,000 in new enterprise B2B software contracts.",
+                "Built and maintained relationships with 45+ key client accounts, achieving a 96% annual retention and renewal rate.",
+                "Streamlined CRM pipeline management in HubSpot/Salesforce, cutting deal closing cycle time from 60 to 35 days."
+            ],
+            data: [
+                "Constructed predictive machine learning models in Python/SQL, enhancing inventory forecast precision by 26%.",
+                "Built executive interactive Tableau and PowerBI dashboards tracking $4M+ in regional quarterly sales metrics.",
+                "Audited data pipelines and automated ETL queries in BigQuery, saving engineering team 15+ hours of weekly manual reporting."
+            ],
+            pm: [
+                "Led cross-functional team of 14 software engineers and UI designers using Agile/Scrum, delivering 6 major product releases on schedule.",
+                "Spearheaded product roadmap and feature backlog prioritization, improving sprint velocity by 28%.",
+                "Conducted 40+ user feedback sessions, translating business requirements into high-impact user stories and acceptance criteria."
+            ],
+            fresher: [
+                "Developed full-stack web application capstone project utilizing React, Node.js, and MongoDB, featured on department showcase.",
+                "Collaborated in 4-person agile student team to deliver automated inventory tool, achieving grade A and Dean's Commendation.",
+                "Organized university tech summit for 350+ attendees, coordinating schedules, sponsor outreach, and student workshops."
+            ]
+        };
+
+        function insertRoleBullets(role) {
+            if (!role || !ROLE_BULLETS[role]) return;
+            const bullets = ROLE_BULLETS[role];
+            if (experienceItems.length === 0) {
+                addExperience();
+            }
+            const targetIdx = experienceItems.length - 1;
+            const current = experienceItems[targetIdx].bullets || '';
+            const newText = current ? (current.trim() + '\n' + bullets.join('\n')) : bullets.join('\n');
+            experienceItems[targetIdx].bullets = newText;
+            renderExperience();
+            updatePreview();
+            document.getElementById('roleInspoSelect').value = '';
+            alert('⚡ ATS Bullet points successfully added to your latest job entry!');
+        }
+
+        /* ===== LIVE TARGET JOB MATCHER ===== */
+        function toggleJobMatcher() {
+            const body = document.getElementById('jobMatcherBody');
+            const icon = document.getElementById('matcherToggleIcon');
+            if (!body) return;
+            const isHidden = body.style.display === 'none';
+            body.style.display = isHidden ? 'block' : 'none';
+            icon.textContent = isHidden ? '▲ Click to collapse' : '▼ Click to expand';
+        }
+
+        function runLiveJobMatch() {
+            const input = document.getElementById('targetJobDescInput');
+            const chipsContainer = document.getElementById('jobKeywordChips');
+            const badge = document.getElementById('matchScoreBadge');
+            if (!input || !chipsContainer) return;
+            
+            const jobText = input.value.toLowerCase().trim();
+            if (!jobText) {
+                chipsContainer.innerHTML = '';
+                if (badge) badge.textContent = 'Optional';
+                return;
+            }
+
+            const dictionary = [
+                'react', 'python', 'javascript', 'typescript', 'node', 'sql', 'docker', 'aws', 'cloud', 
+                'kubernetes', 'git', 'ci/cd', 'agile', 'scrum', 'api', 'graphql', 'html', 'css', 'ui', 'ux',
+                'seo', 'analytics', 'marketing', 'sales', 'crm', 'management', 'leadership', 'communication',
+                'problem-solving', 'tableau', 'excel', 'powerbi', 'testing', 'devops', 'linux', 'rest'
+            ];
+
+            const foundInJob = dictionary.filter(kw => {
+                const regex = new RegExp('\\b' + kw.replace('/', '\\/') + '\\b', 'i');
+                return regex.test(jobText);
+            });
+
+            if (foundInJob.length === 0) {
+                chipsContainer.innerHTML = '<span style="font-size:0.75rem; color:#94a3b8;">Enter more job details to extract keywords...</span>';
+                if (badge) badge.textContent = 'Scanning...';
+                return;
+            }
+
+            const resumeData = getFormData();
+            const resumeFullText = (
+                (resumeData.summary || '') + ' ' + 
+                (resumeData.skills || '') + ' ' + 
+                (experienceItems || []).map(e => (e.title || '') + ' ' + (e.company || '') + ' ' + (e.bullets || '')).join(' ') + ' ' +
+                (projectItems || []).map(p => (p.name || '') + ' ' + (p.desc || '')).join(' ')
+            ).toLowerCase();
+
+            let matchedCount = 0;
+            const chipsHtml = foundInJob.map(kw => {
+                const regex = new RegExp('\\b' + kw.replace('/', '\\/') + '\\b', 'i');
+                const isMatched = regex.test(resumeFullText);
+                if (isMatched) matchedCount++;
+                return `
+                    <span style="font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:6px; font-weight:600; ${
+                        isMatched 
+                        ? 'background:rgba(16, 185, 129, 0.2); color:#10b981; border:1px solid rgba(16, 185, 129, 0.4);' 
+                        : 'background:rgba(239, 68, 68, 0.15); color:#f87171; border:1px solid rgba(239, 68, 68, 0.3);'
+                    }">
+                        ${kw} ${isMatched ? '✓' : '✗'}
+                    </span>
+                `;
+            }).join('');
+
+            chipsContainer.innerHTML = chipsHtml;
+            const pct = Math.round((matchedCount / foundInJob.length) * 100);
+            if (badge) {
+                badge.innerHTML = `Match: ${pct}% (${matchedCount}/${foundInJob.length})`;
+                badge.style.background = pct >= 70 ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)';
+                badge.style.color = pct >= 70 ? '#10b981' : '#f59e0b';
+            }
+        }
+
+        /* ===== TEMPLATES SHOWCASE GALLERY MODAL & SELECTION ===== */
+        let currentModalTemplate = '';
+
+        function applyTemplateFromGallery(id) {
+            selectTemplate(id);
+            const topCard = document.querySelector('.template-top-card') || document.querySelector('.page-header');
+            if (topCard) {
+                topCard.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function openTemplateModal(imgSrc, title, id) {
+            const modal = document.getElementById('templateModal');
+            const img = document.getElementById('modalTemplateImg');
+            const nameEl = document.getElementById('modalTemplateName');
+            currentModalTemplate = id;
+            if (modal && img && nameEl) {
+                img.src = imgSrc;
+                img.alt = title;
+                nameEl.textContent = title;
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeTemplateModal() {
+            const modal = document.getElementById('templateModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function useModalTemplate() {
+            if (currentModalTemplate) {
+                applyTemplateFromGallery(currentModalTemplate);
+                closeTemplateModal();
+            }
+        }
+
+        (function() {
             const setVal = (id, val) => {
                 const el = document.getElementById(id);
                 if (el) el.value = val !== undefined && val !== null ? val : '';
@@ -2804,6 +3609,7 @@
             displayPhotoPreview();
             applyStylingSettings(data);
             renderTemplateSelector();
+            renderPaperPalette();
             renderExperience();
             renderEducation();
             renderCert();
@@ -2811,6 +3617,7 @@
             renderProject();
             renderLang();
             updatePreview();
+            setTimeout(updatePageBreakIndicator, 200);
         })();
     </script>
 

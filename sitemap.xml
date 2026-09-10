@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://auratoolkit360.com/</loc>
         <lastmod>2026-09-08</lastmod>
@@ -14,9 +14,69 @@
     </url>
     <url>
         <loc>https://auratoolkit360.com/resume-cv-maker/</loc>
-        <lastmod>2026-09-08</lastmod>
+        <lastmod>2026-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/modern-blue-ats-resume-template.png</image:loc>
+            <image:title>Modern Blue ATS Resume Template</image:title>
+            <image:caption>Free in-browser ATS-friendly modern resume template with Word DOCX and PDF export</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/classic-serif-ats-resume-template.png</image:loc>
+            <image:title>Classic Serif Executive Resume Template</image:title>
+            <image:caption>Traditional formal centered resume template for executive, finance, and legal careers</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/minimal-mono-ats-resume-template.png</image:loc>
+            <image:title>Minimal Mono Clean Resume Template</image:title>
+            <image:caption>Clean minimalist resume template with left border and high ATS readability</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/compact-grid-ats-resume-template.png</image:loc>
+            <image:title>Compact Grid Space-Saving Resume Template</image:title>
+            <image:caption>Dense layout resume template maximizing page space for experienced professionals</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/executive-photo-ats-resume-template.png</image:loc>
+            <image:title>Executive Photo Professional CV Template</image:title>
+            <image:caption>Corporate header resume with professional candidate photo badge</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/modern-sidebar-ats-resume-template.png</image:loc>
+            <image:title>Modern Sidebar 2-Column CV Template</image:title>
+            <image:caption>Modern 2-column sidebar resume layout with skills and contact panels</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/creative-gradient-ats-resume-template.png</image:loc>
+            <image:title>Creative Gradient Modern Resume Template</image:title>
+            <image:caption>Vibrant indigo header gradient resume template for creative and marketing roles</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/tech-matrix-developer-resume-template.png</image:loc>
+            <image:title>Tech Matrix Developer Software Engineer Resume Template</image:title>
+            <image:caption>Developer terminal style resume template with skills tags and project links</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/europass-ats-resume-template.png</image:loc>
+            <image:title>Europass Standard EU CV Template</image:title>
+            <image:caption>European standard Europass format 2-column resume template with language grids</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/nordic-swiss-ats-resume-template.png</image:loc>
+            <image:title>Nordic Swiss Clean Typography Resume Template</image:title>
+            <image:caption>Swiss typography style resume template with crisp hairline rules and high ATS score</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/dual-split-ats-resume-template.png</image:loc>
+            <image:title>50-50 Dual Split Column Resume Template</image:title>
+            <image:caption>Equal split dual column resume layout balancing technical skills and experience</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://auratoolkit360.com/assets/templates/fresher-student-ats-resume-template.png</image:loc>
+            <image:title>1-Page Student Entry Level Resume Template</image:title>
+            <image:caption>Compact vertical 1-page fit resume template for college students and fresh graduates</image:caption>
+        </image:image>
     </url>
     <url>
         <loc>https://auratoolkit360.com/resume-score-checker/</loc>
