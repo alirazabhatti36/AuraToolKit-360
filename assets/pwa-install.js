@@ -11,9 +11,18 @@ window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     document.querySelectorAll('.pwa-install-btn').forEach(btn => {
-        btn.style.display = 'inline-flex';
+        if (btn.classList.contains('mobile-nav-item')) {
+            btn.style.display = 'flex';
+        } else {
+            btn.style.display = 'inline-block';
+        }
     });
 });
+
+// Hide install options if app is already running in standalone PWA mode
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+    document.querySelectorAll('.pwa-install-btn').forEach(btn => btn.style.display = 'none');
+}
 
 window.installPwaApp = async function() {
     if (!deferredPrompt) {

@@ -1452,7 +1452,6 @@
             </div>
 
             <div class="nav-right-actions">
-                <button type="button" class="btn-install-app pwa-install-btn" style="display:none;" onclick="installPwaApp()">📲 Install App</button>
                 <button class="nav-search-trigger" onclick="focusSearch()" aria-label="Search tools">
                     <span>🔍</span> <span class="search-text">Search</span>
                 </button>
@@ -1477,7 +1476,8 @@
                 <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
                 <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
                 <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
-            </div>
+            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+        </div>
         </div>
     </nav>
 
@@ -1994,6 +1994,8 @@
                     <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
                     <li><a href="/hr-helper/">HR Bulk Screener</a></li>
                     <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                    <li><a href="/cover-letter-maker/">ATS Cover Letter Builder</a></li>
+                    <li><a href="javascript:void(0)" onclick="installPwaApp()">📲 Install App (Offline)</a></li>
                 </ul>
             </div>
 

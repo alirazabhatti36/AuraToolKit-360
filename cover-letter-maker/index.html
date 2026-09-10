@@ -123,8 +123,6 @@
         .nav-badge-pill { font-size: 0.65rem; font-weight: 700; background: rgba(56, 189, 248, 0.2); color: var(--accent-cyan); padding: 0.15rem 0.4rem; border-radius: 999px; margin-left: 0.3rem; border: 1px solid rgba(56, 189, 248, 0.3); }
 
         .nav-right-actions { display: flex; align-items: center; gap: 0.6rem; }
-        .btn-install-app { display: none; background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.35); padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.2s; align-items: center; gap: 0.4rem; }
-        .btn-install-app:hover { background: #10b981; color: #ffffff; }
 
         .nav-hamburger { display: none; flex-direction: column; justify-content: space-around; width: 38px; height: 38px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-card); border-radius: 9px; cursor: pointer; padding: 8px; z-index: 1001; }
         .nav-hamburger span { width: 100%; height: 2px; background: #f8fafc; border-radius: 2px; transition: all 0.25s; }
@@ -253,7 +251,6 @@
             </div>
 
             <div class="nav-right-actions">
-                <button type="button" class="btn-install-app pwa-install-btn" onclick="installPwaApp()">📲 Install App</button>
                 <a href="/resume-cv-maker/" class="btn-primary" style="padding:0.45rem 0.9rem; font-size:0.82rem; text-decoration:none;">Resume Maker →</a>
                 <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
@@ -273,8 +270,8 @@
             <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener</a>
             <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career &amp; Tech Blogs</a>
             <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
-            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
-        </div>
+            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+    </div>
     </div>
 
     <!-- MAIN CONTENT -->
@@ -516,6 +513,7 @@
                     <li><a href="/about/">About Us</a></li>
                     <li><a href="/contact/">Help &amp; Support</a></li>
                     <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    <li><a href="javascript:void(0)" onclick="installPwaApp()">📲 Install App (Offline)</a></li>
                 </ul>
             </div>
         </div>

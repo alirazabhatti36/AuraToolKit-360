@@ -1003,7 +1003,6 @@
             </div>
 
             <div class="nav-right-actions">
-                <button type="button" class="btn-install-app pwa-install-btn" style="display:none;" onclick="installPwaApp()">📲 Install App</button>
                 <a href="/converter/" class="btn-try-hr">⚡ Quick Convert</a>
                 <button class="btn-bookmark-nav" onclick="alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!')">★ Bookmark</button>
                             <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
@@ -1025,7 +1024,8 @@
                 <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
                 <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
                 <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
-            </div>
+            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+        </div>
         </div>
     </nav>
 
@@ -1263,6 +1263,8 @@
                     <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
                     <li><a href="/hr-helper/">HR Bulk Screener</a></li>
                     <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                    <li><a href="/cover-letter-maker/">ATS Cover Letter Builder</a></li>
+                    <li><a href="javascript:void(0)" onclick="installPwaApp()">📲 Install App (Offline)</a></li>
                 </ul>
             </div>
 
