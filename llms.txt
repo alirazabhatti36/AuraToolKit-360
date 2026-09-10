@@ -1,0 +1,21 @@
+# AuraToolkit360
+
+> AuraToolkit360 is a 100% free, privacy-first online toolkit featuring 30+ client-side file converters, 12 ATS-compliant resume builder templates, an ATS score checker, and bulk HR screening tools. All document parsing, image processing, and PDF generation execute locally in the user's web browser with zero server uploads, zero subscriptions, and zero watermarks.
+
+## Core Free Tools
+- [ATS Resume CV Maker](https://auratoolkit360.com/resume-cv-maker/): Build professional, ATS-friendly resumes with 12 modern templates (Modern Blue, Classic Serif, Minimal Mono, Compact Grid, Executive Photo, Modern Sidebar, Creative Gradient, Tech Developer, Europass, Nordic Swiss, Dual Split, 1-Page Student), customizable accent colors, ATS typefaces (Inter, JetBrains Mono, Roboto, Poppins, Merriweather), 1-page fit spacing controls, local auto-save, JSON import/export, and instant 1-click downloads for high-resolution PDF and editable Word DOCX. 100% free forever without credit card requirements or watermarks.
+- [ATS Resume Score Checker](https://auratoolkit360.com/resume-score-checker/): Scan and compare resume files (PDF, DOCX, TXT) against target job descriptions to analyze keyword match scores, detect missing technical and soft skills, check section structures, and identify formatting errors before applying.
+- [File Converter Suite](https://auratoolkit360.com/converter/): 30+ client-side document and media conversion tools running via WebAssembly and JavaScript, including PDF to Word (DOCX), Word to PDF, Image to PDF, Merge PDF, Split PDF, Compress PDF, Excel to PDF, PowerPoint to PDF, OCR Image to Text, JPG to PNG, WEBP to PNG, Image Compression, and Passport Photo Maker.
+- [HR Bulk Screener](https://auratoolkit360.com/hr-helper/): Lightweight in-browser candidate screening tool designed for startups, recruiters, and small HR teams to batch-parse applicant resumes, match against job postings, rank candidates, and export shortlisted candidate ZIP packages with zero server data retention.
+
+## Key Educational Guides
+- [Why Canva Resumes Fail ATS Scans (And 7 Free ATS Fixes for 2026)](https://auratoolkit360.com/blogs/canva-vs-ats-resume-builder-guide/): In-depth guide explaining how ATS parsing engines process text streams, why graphic design tools fail automated screening, and how to create compliant resumes.
+- [250+ High-Impact Resume Action Verbs & Power Words for 2026](https://auratoolkit360.com/blogs/high-impact-resume-action-verbs-2026/): Categorized master list of strong resume verbs for software engineers, leaders, marketers, and analysts with before/after bullet point formulas.
+- [ATS Resume Keywords Guide 2026](https://auratoolkit360.com/blogs/ats-resume-keywords-guide-2026/): Strategic approach to extracting keywords from job descriptions and balancing direct matches with natural phrasing.
+- [Best Resume CV Maker Tool ATS Friendly 2026](https://auratoolkit360.com/blogs/best-resume-cv-maker-tool-ats-friendly-2026/): Analysis of what makes an ATS-safe resume builder versus predatory subscription builders.
+
+## Privacy & Security Architecture
+- Architecture: 100% Client-Side WebAssembly & JavaScript execution.
+- Data Collection: Zero document, resume, or image files are uploaded, logged, or stored on remote servers.
+- Privacy Compliance: Adheres to GDPR and CCPA privacy-by-design standards.
+- Cost: Free forever. No subscriptions, no credit cards, no download paywalls, no watermarks.

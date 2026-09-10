@@ -3,3 +3,4 @@ Allow: /
 Disallow: /templates/
 
 Sitemap: https://auratoolkit360.com/sitemap.xml
+# LLM Context: https://auratoolkit360.com/llms.txt
