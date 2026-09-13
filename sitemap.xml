@@ -224,9 +224,9 @@
     </url>
     <url>
         <loc>https://auratoolkit360.com/converter/pdf-to-word/</loc>
-        <lastmod>2026-09-08</lastmod>
+        <lastmod>2026-09-14</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.85</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://auratoolkit360.com/converter/word-to-pdf/</loc>
@@ -254,15 +254,15 @@
     </url>
     <url>
         <loc>https://auratoolkit360.com/converter/compress-pdf/</loc>
-        <lastmod>2026-09-08</lastmod>
+        <lastmod>2026-09-14</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.85</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://auratoolkit360.com/converter/merge-pdf/</loc>
-        <lastmod>2026-09-08</lastmod>
+        <lastmod>2026-09-14</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.85</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://auratoolkit360.com/converter/split-pdf/</loc>
