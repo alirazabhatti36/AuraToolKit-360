@@ -86,7 +86,19 @@
     </url>
     <url>
         <loc>https://auratoolkit360.com/resume-score-checker/</loc>
-        <lastmod>2026-09-08</lastmod>
+        <lastmod>2026-09-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/ilovepdf-alternative/</loc>
+        <lastmod>2026-09-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://auratoolkit360.com/canva-resume-alternative/</loc>
+        <lastmod>2026-09-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -302,9 +314,9 @@
     </url>
     <url>
         <loc>https://auratoolkit360.com/converter/resize-signature/</loc>
-        <lastmod>2026-09-08</lastmod>
+        <lastmod>2026-09-14</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.85</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://auratoolkit360.com/converter/merge-photo-signature/</loc>

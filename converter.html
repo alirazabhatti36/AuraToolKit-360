@@ -194,6 +194,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: #ffffff;
@@ -244,6 +245,7 @@
             border-radius: 999px;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
         .btn-bookmark-nav:hover {
             color: var(--accent-cyan);
@@ -724,7 +726,9 @@
         }
         @media (max-width: 768px) {
             .navbar { padding: 0.75rem 1rem !important; }
-            .btn-bookmark-nav { display: none !important; }
+            .btn-bookmark-nav { display: none !important;
+            white-space: nowrap;
+        }
             .btn-try-hr { display: none !important; }
             .nav-search-trigger { padding: 0.45rem 0.75rem !important; font-size: 0.82rem !important; }
             .nav-search-trigger .search-text { display: none; }
@@ -736,6 +740,8 @@
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+    <link rel="manifest" href="/manifest.json">
+    <script defer src="/assets/pwa-install.js"></script>
 </head>
 <body>
 
@@ -756,6 +762,7 @@
                 <a href="/" class="nav-link">Home</a>
                 <a href="/converter/" class="nav-link active">Converter</a>
                 <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/cover-letter-maker/" class="nav-link">Cover Letter</a>
                 <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
                 <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
                 <a href="/blogs/" class="nav-link">Blogs</a>
@@ -778,12 +785,14 @@
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
+            <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
                 <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
                 <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
                 <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
                 <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
                 <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
-            </div>
+            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+        </div>
         </div>
     </nav>
 
@@ -1110,10 +1119,15 @@
                 <h5>Products</h5>
                 <ul class="footer-links-list">
                     <li><a href="/converter/">File Converter Suite</a></li>
+                    <li><a href="/ilovepdf-alternative/">iLovePDF Alternative</a></li>
+                    <li><a href="/canva-resume-alternative/">Canva ATS Alternative</a></li>
                     <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
                     <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
                     <li><a href="/hr-helper/">HR Bulk Screener</a></li>
+                    <li><a href="/converter/resize-signature/">Resize Signature to 20KB</a></li>
                     <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                    <li><a href="/cover-letter-maker/">ATS Cover Letter Builder</a></li>
+                    <li><a href="javascript:void(0)" onclick="installPwaApp()">📲 Install App (Offline)</a></li>
                 </ul>
             </div>
 
@@ -1714,7 +1728,10 @@
             const file = readSingleFile(form);
             const arrayBuffer = await file.arrayBuffer();
             const res = await window.mammoth.convertToHtml({ arrayBuffer });
-            const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Converted Document</title></head><body>` + result.value + `
+            const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Converted Document</title></head><body>` + (res.value || '') + `</body></html>`;
+            downloadBlob(new Blob([html], { type: 'text/html;charset=utf-8' }), 'converted.html');
+        }
+    </script>
 
     <!-- Smart Hide-on-Scroll-Down / Reveal-on-Scroll-Up Navbar JS -->
     <script>

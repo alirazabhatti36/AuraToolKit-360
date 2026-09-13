@@ -195,6 +195,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: #ffffff;
@@ -245,6 +246,7 @@
             border-radius: 999px;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
         .btn-bookmark-nav:hover {
             color: var(--accent-cyan);
@@ -813,7 +815,9 @@
         }
         @media (max-width: 768px) {
             .navbar { padding: 0.75rem 1rem !important; }
-            .btn-bookmark-nav { display: none !important; }
+            .btn-bookmark-nav { display: none !important;
+            white-space: nowrap;
+        }
             .btn-try-hr { display: none !important; }
             .nav-search-trigger { padding: 0.45rem 0.75rem !important; font-size: 0.82rem !important; }
             .nav-search-trigger .search-text { display: none; }
@@ -825,6 +829,8 @@
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <link rel="manifest" href="/manifest.json">
+    <script defer src="/assets/pwa-install.js"></script>
 </head>
 <body>
 
@@ -845,6 +851,7 @@
                 <a href="/" class="nav-link">Home</a>
                 <a href="/converter/" class="nav-link">Converter</a>
                 <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/cover-letter-maker/" class="nav-link">Cover Letter</a>
                 <a href="/resume-score-checker/" class="nav-link active">Score Checker</a>
                 <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
                 <a href="/blogs/" class="nav-link">Blogs</a>
@@ -867,12 +874,14 @@
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
+            <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
                 <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
                 <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
                 <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
                 <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
                 <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
-            </div>
+            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+        </div>
         </div>
     </nav>
 
@@ -949,6 +958,37 @@
 
       <div class="suggestion-box" id="suggestionBox"></div>
 
+      <!-- Official Verified ATS Scorecard Badge & Viral Loop -->
+      <div class="scorecard-share-card" id="scorecardSection" style="margin-top:2rem; background:linear-gradient(145deg, rgba(15,23,42,0.95), rgba(30,41,59,0.85)); border:1px solid rgba(56,189,248,0.35); border-radius:20px; padding:1.8rem; text-align:center; box-shadow:0 15px 40px rgba(0,0,0,0.5);">
+        <div style="display:flex; align-items:center; justify-content:center; gap:0.5rem; margin-bottom:0.6rem;">
+          <span style="background:rgba(56,189,248,0.15); color:#38bdf8; font-size:0.8rem; font-weight:800; padding:0.3rem 0.9rem; border-radius:999px; border:1px solid rgba(56,189,248,0.35); text-transform:uppercase; letter-spacing:0.05em;">🏅 Official ATS Scorecard Badge</span>
+        </div>
+        <h3 style="font-size:1.35rem; font-weight:800; color:#f8fafc; margin-bottom:0.4rem;">Share Your Verified ATS Score &amp; Stand Out</h3>
+        <p style="color:#94a3b8; font-size:0.9rem; max-width:620px; margin:0 auto 1.4rem;">Download your official high-resolution ATS verification badge (1200×630 PNG) or share directly to LinkedIn and WhatsApp to prove your resume is recruiter-ready.</p>
+        
+        <!-- Scorecard Canvas Preview -->
+        <div style="max-width:580px; margin:0 auto 1.4rem; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); box-shadow:0 16px 40px rgba(0,0,0,0.6); background:#0b0f19;">
+          <canvas id="scorecardCanvas" width="1200" height="630" style="width:100%; height:auto; display:block;"></canvas>
+        </div>
+
+        <!-- 1-Click Viral Buttons -->
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem; align-items:center;">
+          <button id="downloadScorecardBtn" onclick="downloadScorecard()" style="background:linear-gradient(135deg, #0284c7, #2563eb); color:#ffffff; border:none; padding:0.75rem 1.4rem; border-radius:12px; font-weight:700; font-size:0.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; box-shadow:0 4px 14px rgba(2,132,199,0.35); transition:all 0.2s;">
+            📥 Download Badge (PNG)
+          </button>
+          <button id="shareLinkedInBtn" onclick="shareOnLinkedIn()" style="background:#0a66c2; color:#ffffff; border:none; padding:0.75rem 1.4rem; border-radius:12px; font-weight:700; font-size:0.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; box-shadow:0 4px 14px rgba(10,102,194,0.35); transition:all 0.2s;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.2a1.66 1.66 0 0 0-1.66 1.66c0 .92.74 1.66 1.66 1.66.92 0 1.66-.74 1.66-1.66 0-.92-.74-1.66-1.66-1.66Z"/></svg> Share on LinkedIn
+          </button>
+          <button id="shareWhatsAppBtn" onclick="shareOnWhatsApp()" style="background:#25d366; color:#0f172a; border:none; padding:0.75rem 1.4rem; border-radius:12px; font-weight:800; font-size:0.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; box-shadow:0 4px 14px rgba(37,211,102,0.35); transition:all 0.2s;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.54 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.02 2.6c.13.16 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg> WhatsApp
+          </button>
+          <button id="copyBadgeLinkBtn" onclick="copyScoreLink()" style="background:rgba(255,255,255,0.08); color:#f8fafc; border:1px solid rgba(255,255,255,0.15); padding:0.75rem 1.3rem; border-radius:12px; font-weight:600; font-size:0.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; transition:all 0.2s;">
+            🔗 Copy Share Text
+          </button>
+        </div>
+        <div id="copyFeedback" style="display:none; color:#34d399; font-size:0.85rem; font-weight:700; margin-top:0.75rem;">✅ Copied to clipboard! Ready to paste into your social post.</div>
+      </div>
+
       <!-- AuraToolkit360 Resume CV Maker Recommendation Banner -->
       <div class="cta-recommend-box">
         <h3>🚀 Want a 100% ATS-Compliant Professional Resume?</h3>
@@ -1024,10 +1064,15 @@
                 <h5>Products</h5>
                 <ul class="footer-links-list">
                     <li><a href="/converter/">File Converter Suite</a></li>
+                    <li><a href="/ilovepdf-alternative/">iLovePDF Alternative</a></li>
+                    <li><a href="/canva-resume-alternative/">Canva ATS Alternative</a></li>
                     <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
                     <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
                     <li><a href="/hr-helper/">HR Bulk Screener</a></li>
+                    <li><a href="/converter/resize-signature/">Resize Signature to 20KB</a></li>
                     <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                    <li><a href="/cover-letter-maker/">ATS Cover Letter Builder</a></li>
+                    <li><a href="javascript:void(0)" onclick="installPwaApp()">📲 Install App (Offline)</a></li>
                 </ul>
             </div>
 
@@ -1335,6 +1380,283 @@
       const card = document.getElementById('resultCard');
       card.style.display = 'block';
       card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Generate Official ATS Scorecard Badge on Client Canvas
+      renderScorecardCanvas(data);
+    }
+
+    let currentScorecardData = null;
+
+    function renderScorecardCanvas(data) {
+      currentScorecardData = data;
+      const canvas = document.getElementById('scorecardCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const W = 1200;
+      const H = 630;
+      canvas.width = W;
+      canvas.height = H;
+
+      // Dark futuristic gradient background
+      const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+      bgGrad.addColorStop(0, '#090d16');
+      bgGrad.addColorStop(0.5, '#0d1527');
+      bgGrad.addColorStop(1, '#070a10');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, W, H);
+
+      // Ambient radial aurora glow accents
+      const radial1 = ctx.createRadialGradient(220, 160, 20, 220, 160, 480);
+      radial1.addColorStop(0, 'rgba(56, 189, 248, 0.22)');
+      radial1.addColorStop(0.45, 'rgba(99, 102, 241, 0.09)');
+      radial1.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = radial1;
+      ctx.fillRect(0, 0, W, H);
+
+      const radial2 = ctx.createRadialGradient(1000, 480, 20, 1000, 480, 420);
+      radial2.addColorStop(0, 'rgba(139, 92, 246, 0.18)');
+      radial2.addColorStop(0.5, 'rgba(16, 185, 129, 0.08)');
+      radial2.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = radial2;
+      ctx.fillRect(0, 0, W, H);
+
+      // Main Outer Glassmorphism Card Frame
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+      ctx.lineWidth = 2;
+      roundRect(ctx, 40, 40, W - 80, H - 80, 24);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(18, 24, 38, 0.72)';
+      roundRect(ctx, 40, 40, W - 80, H - 80, 24);
+      ctx.fill();
+      ctx.restore();
+
+      // Top Tag: Official Verification Pill
+      ctx.save();
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+      ctx.lineWidth = 1.5;
+      roundRect(ctx, 75, 75, 300, 38, 19);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 15px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillText('⚡ OFFICIAL ATS VERIFICATION', 95, 99);
+      ctx.restore();
+
+      // Brand Title Top Right
+      ctx.save();
+      ctx.textAlign = 'right';
+      ctx.font = 'bold 24px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillText('AuraToolkit', W - 120, 100);
+      ctx.fillStyle = '#38bdf8';
+      ctx.fillText('360', W - 75, 100);
+      ctx.restore();
+
+      // Left Column: Prominent Circular Score Display
+      const cx = 260;
+      const cy = 335;
+      const r = 135;
+      const score = data.score || 0;
+
+      // Background Track
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 18;
+      ctx.stroke();
+
+      // Progress Arc
+      const scoreAngle = (score / 100) * 2 * Math.PI;
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, -0.5 * Math.PI, -0.5 * Math.PI + scoreAngle);
+      let strokeColor = '#10b981';
+      if (score < 50) strokeColor = '#ef4444';
+      else if (score < 70) strokeColor = '#f59e0b';
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = 18;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      // Large Score Percentage
+      ctx.textAlign = 'center';
+      ctx.font = '800 68px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(score + '%', cx, cy + 15);
+
+      // Grade text under score
+      ctx.font = '700 18px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = strokeColor;
+      ctx.fillText('GRADE ' + (data.grade || 'A'), cx, cy + 50);
+      ctx.restore();
+
+      // Verdict Pill below ring
+      const verdictText = score >= 70 ? 'RECRUITER READY (PASS)' : score >= 50 ? 'GOOD ATS STRUCTURE' : 'NEEDS REVISION';
+      ctx.save();
+      ctx.fillStyle = score >= 70 ? 'rgba(16, 185, 129, 0.18)' : score >= 50 ? 'rgba(59, 130, 246, 0.18)' : 'rgba(239, 68, 68, 0.18)';
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = 1.5;
+      roundRect(ctx, cx - 120, cy + 160, 240, 36, 18);
+      ctx.fill();
+      ctx.stroke();
+      ctx.textAlign = 'center';
+      ctx.font = 'bold 14px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = strokeColor;
+      ctx.fillText(verdictText, cx, cy + 183);
+      ctx.restore();
+
+      // Right Column: Candidate Info & Metrics Breakdown
+      const rightX = 475;
+
+      ctx.save();
+      ctx.textAlign = 'left';
+      ctx.font = '600 16px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText('CANDIDATE AUDIT REPORT', rightX, 175);
+
+      let displayFilename = data.filename || 'Resume_Document.pdf';
+      if (displayFilename.length > 34) displayFilename = displayFilename.slice(0, 32) + '...';
+      ctx.font = '800 30px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillText(displayFilename, rightX, 215);
+
+      // 3 High-Impact Metric Cards
+      const cardW = 190;
+      const cardH = 92;
+      const gap = 18;
+
+      const metrics = [
+        { label: data.isStandalone ? 'Found Sections' : 'Matched Terms', val: (data.matched || []).length, color: '#38bdf8' },
+        { label: data.isStandalone ? 'Missing Items' : 'Missing Terms', val: (data.missing || []).length, color: (data.missing || []).length === 0 ? '#10b981' : '#f59e0b' },
+        { label: 'Keyword Density', val: (data.density || 0) + '%', color: '#a78bfa' }
+      ];
+
+      metrics.forEach((m, idx) => {
+        const mx = rightX + (cardW + gap) * idx;
+        const my = 250;
+        ctx.save();
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+        ctx.lineWidth = 1.5;
+        roundRect(ctx, mx, my, cardW, cardH, 16);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.textAlign = 'left';
+        ctx.font = '800 28px "Plus Jakarta Sans", system-ui, sans-serif';
+        ctx.fillStyle = m.color;
+        ctx.fillText(String(m.val), mx + 18, my + 44);
+
+        ctx.font = '600 13px "Plus Jakarta Sans", system-ui, sans-serif';
+        ctx.fillStyle = '#94a3b8';
+        ctx.fillText(m.label, mx + 18, my + 72);
+        ctx.restore();
+      });
+
+      // Local In-Browser Privacy Guarantee Box
+      ctx.save();
+      const stampY = 368;
+      const stampW = 615;
+      const stampH = 92;
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.07)';
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.28)';
+      ctx.lineWidth = 1.5;
+      roundRect(ctx, rightX, stampY, stampW, stampH, 16);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = 'bold 15px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = '#34d399';
+      ctx.fillText('🔒 100% In-Browser Privacy Verified', rightX + 22, stampY + 36);
+
+      ctx.font = '500 13.5px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText('Parsed locally with zero cloud server uploads. Tested against ATS semantic parsers.', rightX + 22, stampY + 63);
+      ctx.restore();
+
+      // Bottom Footer Rule & Credentials
+      const footerY = 530;
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(rightX, footerY - 20);
+      ctx.lineTo(W - 75, footerY - 20);
+      ctx.stroke();
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      ctx.font = '500 13px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = '#64748b';
+      ctx.fillText('Verified: ' + dateStr + ' • Ref: ATK-VERIFIED', rightX, footerY + 6);
+
+      ctx.textAlign = 'right';
+      ctx.font = '600 14px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.fillStyle = '#38bdf8';
+      ctx.fillText('auratoolkit360.com/resume-score-checker/', W - 75, footerY + 6);
+      ctx.restore();
+    }
+
+    function roundRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    function downloadScorecard() {
+      const canvas = document.getElementById('scorecardCanvas');
+      if (!canvas) return;
+      const link = document.createElement('a');
+      const score = currentScorecardData ? currentScorecardData.score : 85;
+      link.download = `AuraToolkit360-ATS-Scorecard-${score}pct.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    function shareOnLinkedIn() {
+      const score = currentScorecardData ? currentScorecardData.score : 85;
+      const grade = currentScorecardData ? currentScorecardData.grade : 'A';
+      const text = `🎯 My resume scored ${score}% (Grade ${grade}) on AuraToolkit360's free ATS Resume Scanner!\n\nIt tests keyword density, missing qualifications, and structural formatting 100% privately directly inside your browser.\n\nTest your resume for free here: https://auratoolkit360.com/resume-score-checker/ #ATS #JobSearch #ResumeReview #Career`;
+      
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).catch(()=>{});
+      }
+      const url = 'https://auratoolkit360.com/resume-score-checker/';
+      const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+      window.open(linkedInUrl, '_blank', 'width=650,height=650');
+    }
+
+    function shareOnWhatsApp() {
+      const score = currentScorecardData ? currentScorecardData.score : 85;
+      const text = `🎯 My resume just scored ${score}% on AuraToolkit360's free ATS Scanner! Test your CV keywords and structure 100% privately in-browser: https://auratoolkit360.com/resume-score-checker/`;
+      const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    function copyScoreLink() {
+      const score = currentScorecardData ? currentScorecardData.score : 85;
+      const text = `🎯 My resume scored ${score}% on AuraToolkit360's ATS Scanner. Check your ATS score 100% privately: https://auratoolkit360.com/resume-score-checker/`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          const fb = document.getElementById('copyFeedback');
+          if (fb) {
+            fb.style.display = 'block';
+            setTimeout(() => { fb.style.display = 'none'; }, 3500);
+          }
+        });
+      }
     }
   </script>
 
