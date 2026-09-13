@@ -995,6 +995,33 @@
         <p>Fix formatting errors instantly! Create, customize, and export a perfectly structured, ATS-friendly resume with our free <strong>AuraToolkit360 Resume CV Maker</strong> in under 2 minutes.</p>
         <a href="/resume-cv-maker/" class="btn-cta">✨ Build ATS Resume Now</a>
       </div>
+
+      <!-- Embed ATS Checker Widget on Your Site (Viral Backlink Loop) -->
+      <div class="embed-widget-box" style="margin-top:2rem; background:rgba(30,41,59,0.75); border:1px solid rgba(56,189,248,0.3); border-radius:20px; padding:1.8rem; backdrop-filter:blur(12px); box-shadow:0 15px 35px rgba(0,0,0,0.3);">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.8rem; margin-bottom:0.8rem;">
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <span style="font-size:1.3rem;">🌐</span>
+            <h3 style="font-size:1.2rem; font-weight:800; color:#ffffff; margin:0;">Embed This Free ATS Tool on Your Website</h3>
+          </div>
+          <span style="background:rgba(56,189,248,0.15); color:#38bdf8; font-size:0.75rem; font-weight:700; padding:0.25rem 0.75rem; border-radius:999px; border:1px solid rgba(56,189,248,0.3);">100% Free • No API Key Needed</span>
+        </div>
+        <p style="font-size:0.88rem; color:#94a3b8; line-height:1.5; margin-bottom:1.2rem;">
+          Career counselors, universities, and job bloggers: Add our privacy-first ATS resume scanner directly to your site or blog. Copy the clean iframe snippet below:
+        </p>
+        <div style="position:relative;">
+          <textarea id="widgetEmbedCode" readonly style="width:100%; height:95px; background:rgba(11,15,25,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:12px; color:#e2e8f0; font-family:monospace; font-size:0.82rem; padding:0.8rem; resize:none; line-height:1.4;">&lt;iframe src="https://auratoolkit360.com/resume-score-checker/widget/" width="100%" height="620" style="border:none; border-radius:16px; box-shadow:0 12px 35px rgba(0,0,0,0.25);" title="Free ATS Resume Score Checker - AuraToolkit360"&gt;&lt;/iframe&gt;
+&lt;p style="font-size:12px; text-align:center; margin-top:8px; color:#64748b;"&gt;Free ATS resume test powered by &lt;a href="https://auratoolkit360.com/resume-score-checker/?ref=embed-widget" target="_blank" rel="noopener" style="color:#0284c7; text-decoration:none; font-weight:600;"&gt;AuraToolKit 360&lt;/a&gt;&lt;/p&gt;</textarea>
+          <div style="margin-top:0.8rem; display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center;">
+            <button id="copyEmbedBtn" onclick="copyWidgetEmbedCode()" style="background:linear-gradient(135deg, #0284c7, #6366f1); color:#ffffff; border:none; padding:0.6rem 1.3rem; border-radius:10px; font-weight:700; font-size:0.85rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 4px 12px rgba(2,132,199,0.35);">
+              📋 Copy Embed Snippet
+            </button>
+            <a href="/resume-score-checker/widget/" target="_blank" style="color:#38bdf8; font-size:0.85rem; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:0.3rem;">
+              ↗ Preview Standalone Widget
+            </a>
+            <span id="embedCopyFeedback" style="display:none; color:#34d399; font-size:0.82rem; font-weight:700;">✅ Copied snippet to clipboard!</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1656,6 +1683,35 @@
             setTimeout(() => { fb.style.display = 'none'; }, 3500);
           }
         });
+      }
+    }
+
+    function copyWidgetEmbedCode() {
+      const el = document.getElementById('widgetEmbedCode');
+      if (!el) return;
+      el.select();
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(el.value).then(() => {
+          const fb = document.getElementById('embedCopyFeedback');
+          if (fb) {
+            fb.style.display = 'inline';
+            setTimeout(() => { fb.style.display = 'none'; }, 3500);
+          }
+        }).catch(() => {
+          document.execCommand('copy');
+          const fb = document.getElementById('embedCopyFeedback');
+          if (fb) {
+            fb.style.display = 'inline';
+            setTimeout(() => { fb.style.display = 'none'; }, 3500);
+          }
+        });
+      } else {
+        document.execCommand('copy');
+        const fb = document.getElementById('embedCopyFeedback');
+        if (fb) {
+          fb.style.display = 'inline';
+          setTimeout(() => { fb.style.display = 'none'; }, 3500);
+        }
       }
     }
   </script>
