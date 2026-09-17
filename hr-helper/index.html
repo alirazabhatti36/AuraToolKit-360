@@ -600,9 +600,12 @@
             border-radius: 14px;
             border: 1px solid var(--border-card);
             background: rgba(11, 15, 25, 0.5);
+            -webkit-overflow-scrolling: touch;
         }
         table {
             width: 100%;
+            min-width: 900px;
+            table-layout: fixed;
             border-collapse: collapse;
             text-align: left;
             font-size: 0.86rem;
@@ -610,21 +613,27 @@
         }
         th {
             background: rgba(14, 19, 31, 0.9);
-            padding: 0.9rem 1rem;
+            padding: 0.85rem 0.75rem;
             color: var(--text-secondary);
             font-weight: 700;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             border-bottom: 1px solid var(--border-card);
             white-space: nowrap;
         }
         td {
-            padding: 0.9rem 1rem;
+            padding: 0.8rem 0.75rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             vertical-align: middle;
         }
-        th:last-child, td:last-child { min-width: 185px; white-space: nowrap; }
+        .col-num { width: 44px; text-align: center; }
+        .col-candidate { width: 25%; min-width: 170px; text-align: left; }
+        .col-score { width: 140px; text-align: center; }
+        .col-skills { width: 24%; min-width: 170px; text-align: left; }
+        .col-missing { width: 110px; text-align: center; }
+        .col-status { width: 120px; text-align: center; }
+        .col-actions { width: 180px; text-align: center; white-space: nowrap; }
         tr:hover td {
             background: rgba(255, 255, 255, 0.02);
         }
@@ -1156,13 +1165,13 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Candidate File</th>
-                            <th>ATS Match Score</th>
-                            <th>Key Matched Skills</th>
-                            <th>Missing Terms</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th class="col-num">#</th>
+                            <th class="col-candidate">Candidate File</th>
+                            <th class="col-score">ATS Match Score</th>
+                            <th class="col-skills">Key Matched Skills</th>
+                            <th class="col-missing">Missing Terms</th>
+                            <th class="col-status">Status</th>
+                            <th class="col-actions">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody"></tbody>
@@ -1532,24 +1541,31 @@
 
                 return `
                     <tr>
-                        <td style="color:var(--text-muted); font-weight:700;">${index + 1}</td>
-                        <td><strong style="color:#ffffff;">📄 ${escapeHtml(r.name)}</strong></td>
-                        <td><span class="score-badge ${sClass}">${r.score}%</span></td>
-                        <td>
-                            <div style="font-weight:700; color:#34d399; font-size:0.8rem; margin-bottom:0.15rem;">${r.matched.length} Matched</div>
-                            <div style="font-size:0.75rem; color:var(--text-secondary); max-width:200px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;" title="${escapeHtml(r.matched.join(', '))}">
+                        <td class="col-num" style="color:var(--text-muted); font-weight:700;">${index + 1}</td>
+                        <td class="col-candidate">
+                            <div style="display:flex; align-items:center; gap:0.45rem; min-width:0;" title="${escapeHtml(r.name)}">
+                                <span style="flex-shrink:0;">📄</span>
+                                <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:700; color:#ffffff;">${escapeHtml(r.name)}</span>
+                            </div>
+                        </td>
+                        <td class="col-score"><span class="score-badge ${sClass}">${r.score}%</span></td>
+                        <td class="col-skills">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                                <span style="font-weight:700; color:#34d399; font-size:0.8rem;">${r.matched.length} Matched</span>
+                                <button class="btn btn-outline btn-sm" style="padding:0.15rem 0.45rem; font-size:0.68rem;" onclick="showResumeModal(${r.id})">🔍 Skills</button>
+                            </div>
+                            <div style="font-size:0.75rem; color:var(--text-secondary); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escapeHtml(r.matched.join(', '))}">
                                 ${escapeHtml(r.matched.slice(0, 3).join(', '))}${r.matched.length > 3 ? '...' : ''}
                             </div>
-                            <button class="btn btn-outline btn-sm" style="padding:0.18rem 0.5rem; font-size:0.7rem; margin-top:0.35rem;" onclick="showResumeModal(${r.id})">🔍 View Skills</button>
                         </td>
-                        <td><span style="color:#f87171; font-weight:700;">${r.missing.length} terms</span></td>
-                        <td><span class="status-badge ${stClass}">${stText}</span></td>
-                        <td style="white-space:nowrap;">
-                            <div style="display:inline-flex; gap:0.35rem; align-items:center; flex-wrap:nowrap;">
-                                <button class="btn btn-info btn-sm" aria-label="View Candidate Resume" onclick="showResumeModal(${r.id})" title="View Resume & Skills">👁️ View</button>
-                                <button class="btn btn-success btn-sm" aria-label="Shortlist Candidate" onclick="updateStatus(${r.id}, 'shortlisted')" title="Shortlist Candidate">⭐</button>
-                                <button class="btn btn-warning btn-sm" aria-label="Pending Candidate" onclick="updateStatus(${r.id}, 'pending')" title="Mark Pending">⏳</button>
-                                <button class="btn btn-danger btn-sm" aria-label="Reject Candidate" onclick="updateStatus(${r.id}, 'rejected')" title="Reject Candidate">❌</button>
+                        <td class="col-missing"><span style="color:#f87171; font-weight:700;">${r.missing.length} terms</span></td>
+                        <td class="col-status"><span class="status-badge ${stClass}">${stText}</span></td>
+                        <td class="col-actions" style="white-space:nowrap;">
+                            <div style="display:inline-flex; gap:0.3rem; align-items:center; justify-content:center; flex-wrap:nowrap;">
+                                <button class="btn btn-info btn-sm" style="padding:0.3rem 0.52rem; font-size:0.73rem;" aria-label="View Candidate Resume" onclick="showResumeModal(${r.id})" title="View Resume & Skills">👁️ View</button>
+                                <button class="btn btn-success btn-sm" style="padding:0.3rem 0.48rem; font-size:0.73rem;" aria-label="Shortlist Candidate" onclick="updateStatus(${r.id}, 'shortlisted')" title="Shortlist Candidate">⭐</button>
+                                <button class="btn btn-warning btn-sm" style="padding:0.3rem 0.48rem; font-size:0.73rem;" aria-label="Pending Candidate" onclick="updateStatus(${r.id}, 'pending')" title="Mark Pending">⏳</button>
+                                <button class="btn btn-danger btn-sm" style="padding:0.3rem 0.48rem; font-size:0.73rem;" aria-label="Reject Candidate" onclick="updateStatus(${r.id}, 'rejected')" title="Reject Candidate">❌</button>
                             </div>
                         </td>
                     </tr>
