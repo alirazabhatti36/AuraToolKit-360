@@ -1,0 +1,232 @@
+[
+  {
+    "code": "es",
+    "name": "Español",
+    "flag": "🇪🇸",
+    "dir": "ltr",
+    "nav": {
+      "home": "Inicio",
+      "converter": "Convertidor",
+      "resume": "Currículum CV",
+      "cover_letter": "Carta Presentación",
+      "score_checker": "Verificador ATS",
+      "hr_helper": "Selección RRHH",
+      "blogs": "Blog",
+      "about": "Acerca de",
+      "contact": "Contacto",
+      "try_hr": "Probar Selección RRHH →",
+      "bookmark": "★ Guardar"
+    },
+    "seo": {
+      "home": {
+        "title": "Convertidor de Archivos Gratis y Creador de CV ATS Online | AuraToolkit360",
+        "desc": "Herramientas gratuitas para convertir PDF a Word, Word a PDF, crear currículums compatibles con ATS, escanear CVs y filtrar candidatos 100% privado en el navegador.",
+        "keywords": "convertir pdf a word gratis, convertidor de archivos online, creador de curriculum vitae ats, verificador de cv ats gratis, unir pdf online, comprimir pdf, filtro de candidatos rh, AuraToolkit360"
+      },
+      "converter": {
+        "title": "Convertidor de Archivos Online Gratis (30+ Herramientas PDF y Office) | AuraToolkit360",
+        "desc": "Convierte, une, comprime y edita archivos PDF, Word, Excel, imágenes y audio directamente en tu navegador. Rápido, seguro y 100% privado.",
+        "keywords": "convertidor de archivos gratis, convertir pdf a word sin registro, unir pdf online gratis, comprimir pdf, word a pdf, jpg a pdf"
+      },
+      "resume": {
+        "title": "Creador de Currículum Vitae ATS Gratis (Sin Registro) | AuraToolkit360",
+        "desc": "Crea currículums profesionales 100% optimizados para sistemas ATS. 7 plantillas ejecutivas, exportación a PDF y Word DOCX, procesamiento local.",
+        "keywords": "creador de curriculum vitae ats gratis, hacer cv online gratis, plantilla curriculum ats, formato curriculum vitae profesional, descargar cv en pdf y word"
+      },
+      "score_checker": {
+        "title": "Verificador de Score de Currículum ATS Gratis | AuraToolkit360",
+        "desc": "Escanea tu currículum contra la descripción del puesto. Obtén tu puntaje ATS instantáneo, palabras clave faltantes y recomendaciones 100% privado.",
+        "keywords": "verificador de cv ats gratis, escanear curriculum vitae ats, puntuacion ats curriculum, palabras clave para curriculum"
+      },
+      "hr_helper": {
+        "title": "Filtro Masivo de Currículums para Recursos Humanos Gratis | AuraToolkit360",
+        "desc": "Examina y clasifica hasta 300 currículums de candidatos localmente en tu navegador. Emparejamiento por palabras clave, ranking ATS y exportación privada.",
+        "keywords": "filtro de curriculums masivo gratis, software seleccion de personal gratis, tamizaje de candidatos reclutadores, escaner masivo de cv"
+      }
+    }
+  },
+  {
+    "code": "fr",
+    "name": "Français",
+    "flag": "🇫🇷",
+    "dir": "ltr",
+    "nav": {
+      "home": "Accueil",
+      "converter": "Convertisseur",
+      "resume": "Créateur de CV",
+      "cover_letter": "Lettre de Motivation",
+      "score_checker": "Vérificateur ATS",
+      "hr_helper": "Recrutement RH",
+      "blogs": "Blog",
+      "about": "À propos",
+      "contact": "Contact",
+      "try_hr": "Essayer Outil RH →",
+      "bookmark": "★ Favori"
+    },
+    "seo": {
+      "home": {
+        "title": "Convertisseur de Fichiers Gratuit & Créateur de CV ATS | AuraToolkit360",
+        "desc": "Convertir PDF en Word, Word en PDF, créer des CV compatibles ATS et trier des candidatures localement dans votre navigateur sans téléversement.",
+        "keywords": "convertir pdf en word gratuit, convertisseur de fichier en ligne, créateur de cv ats gratuit, vérificateur de score cv ats, fusionner pdf gratuit, tri de cv rh, AuraToolkit360"
+      },
+      "converter": {
+        "title": "Convertisseur de Fichiers en Ligne Gratuit (30+ Outils PDF & Office) | AuraToolkit360",
+        "desc": "Convertir, fusionner, compresser et éditer des fichiers PDF, Word, Excel, images et audio directement dans votre navigateur. Rapide et privé.",
+        "keywords": "convertisseur de fichiers gratuit, convertir pdf en word sans inscription, fusionner pdf en ligne gratuit, compresser pdf, word en pdf"
+      },
+      "resume": {
+        "title": "Créateur de CV ATS Gratuit en Ligne (Sans Inscription) | AuraToolkit360",
+        "desc": "Créez des CV professionnels 100% optimisés pour les logiciels ATS. 7 modèles exécutifs, export PDF et Word DOCX, traitement local dans le navigateur.",
+        "keywords": "créateur de cv ats gratuit, faire un cv en ligne gratuit, modèle cv ats, format cv professionnel, télécharger cv pdf et word"
+      },
+      "score_checker": {
+        "title": "Vérificateur de Score de CV ATS Gratuit | AuraToolkit360",
+        "desc": "Analysez votre CV par rapport à une offre demploi. Obtenez instantanément votre score de compatibilité ATS, les mots-clés manquants et des conseils.",
+        "keywords": "vérificateur de cv ats gratuit, scanner cv ats, score compatibilité cv, mots clés pour cv"
+      },
+      "hr_helper": {
+        "title": "Tri Massif de CV pour Recruteurs et RH Gratuit | AuraToolkit360",
+        "desc": "Analysez et classez jusquà 300 CVs localement dans votre navigateur. Analyse automatique de mots-clés, scoring ATS et export CSV/ZIP 100% privé.",
+        "keywords": "tri de cv en masse gratuit, outil présélection candidats rh, logiciel recrutement gratuit, scanner cv massif"
+      }
+    }
+  },
+  {
+    "code": "de",
+    "name": "Deutsch",
+    "flag": "🇩🇪",
+    "dir": "ltr",
+    "nav": {
+      "home": "Startseite",
+      "converter": "Konverter",
+      "resume": "Lebenslauf-Editor",
+      "cover_letter": "Anschreiben-Generator",
+      "score_checker": "ATS-Checker",
+      "hr_helper": "HR-Bewerber-Tool",
+      "blogs": "Blog",
+      "about": "Über uns",
+      "contact": "Kontakt",
+      "try_hr": "HR-Tool testen →",
+      "bookmark": "★ Merken"
+    },
+    "seo": {
+      "home": {
+        "title": "Kostenloser Datei-Konverter & ATS Lebenslauf-Ersteller | AuraToolkit360",
+        "desc": "PDF in Word umwandeln, Word in PDF, ATS-optimierte Lebensläufe erstellen und Bewerber lokal im Browser filtern. 100% DSGVO-konform und datensicher.",
+        "keywords": "pdf in word umwandeln kostenlos, datei konverter online, lebenslauf ersteller ats kostenlos, ats score checker, pdf zusammenfügen, bewerber screening, AuraToolkit360"
+      },
+      "converter": {
+        "title": "Kostenloser Online-Dateikonverter (30+ PDF & Office Tools) | AuraToolkit360",
+        "desc": "Konvertieren, zusammenfügen, komprimieren und bearbeiten Sie PDF, Word, Excel, Bilder und Audio direkt im Browser. Schnell und privat.",
+        "keywords": "datei konverter kostenlos, pdf in word ohne anmeldung, pdf zusammenfügen kostenlos, pdf komprimieren, word in pdf, jpg in pdf"
+      },
+      "resume": {
+        "title": "Kostenloser ATS Lebenslauf-Generator (Ohne Anmeldung) | AuraToolkit360",
+        "desc": "Erstellen Sie professionelle, ATS-geprüfte Lebensläufe. 7 Vorlagen, PDF- und Word-DOCX-Export, 100% lokale Bearbeitung im Browser.",
+        "keywords": "lebenslauf erstellen kostenlos, ats lebenslauf vorlage, lebenslauf generator ohne anmeldung, tabellarischer lebenslauf pdf download"
+      },
+      "score_checker": {
+        "title": "Kostenloser ATS Lebenslauf Score Checker & Scanner | AuraToolkit360",
+        "desc": "Scannen Sie Ihren Lebenslauf gegen Stellenbeschreibungen. Erhalten Sie sofort Ihren ATS-Kompatibilitäts-Score und fehlende Schlüsselbegriffe.",
+        "keywords": "ats lebenslauf scanner, lebenslauf score prüfen, ats check kostenlos, lebenslauf optimieren für bewerbung"
+      },
+      "hr_helper": {
+        "title": "Kostenloses HR Bulk-Bewerber-Screening-Tool | AuraToolkit360",
+        "desc": "Bis zu 300 Bewerber-Lebensläufe lokal im Browser screenen und ranken. Automatischer Keyword-Abgleich, ATS-Score und CSV/ZIP-Export.",
+        "keywords": "bewerber screening tool kostenlos, lebenslauf vorauswahl software, hr bulk screener, kandidaten vorsortieren, recruiting tool"
+      }
+    }
+  },
+  {
+    "code": "pt",
+    "name": "Português",
+    "flag": "🇧🇷",
+    "dir": "ltr",
+    "nav": {
+      "home": "Início",
+      "converter": "Conversor",
+      "resume": "Gerador de Currículo",
+      "cover_letter": "Carta de Apresentação",
+      "score_checker": "Verificador ATS",
+      "hr_helper": "Triagem RH",
+      "blogs": "Blog",
+      "about": "Sobre",
+      "contact": "Contato",
+      "try_hr": "Testar Triagem RH →",
+      "bookmark": "★ Salvar"
+    },
+    "seo": {
+      "home": {
+        "title": "Conversor de Arquivos Grátis & Criador de Currículo ATS | AuraToolkit360",
+        "desc": "Converta PDF para Word, Word para PDF, crie currículos otimizados para ATS e faça triagem de candidatos no navegador sem upload.",
+        "keywords": "converter pdf para word gratis, conversor de arquivos online, criador de curriculo ats gratis, verificador de curriculo ats, juntar pdf, triagem rh, AuraToolkit360"
+      },
+      "converter": {
+        "title": "Conversor de Arquivos Online Grátis (30+ Ferramentas PDF) | AuraToolkit360",
+        "desc": "Converta, junte, comprima e edite arquivos PDF, Word, Excel, imagens e áudio diretamente no seu navegador. Rápido, seguro e privado.",
+        "keywords": "conversor de arquivos gratis, converter pdf para word sem cadastro, juntar pdf online, comprimir pdf, word para pdf, jpg para pdf"
+      },
+      "resume": {
+        "title": "Criador de Currículo ATS Grátis Online (Sem Cadastro) | AuraToolkit360",
+        "desc": "Crie currículos profissionais 100% compatíveis com sistemas ATS. 7 modelos executivos, exportação em PDF e Word DOCX, processamento local.",
+        "keywords": "criador de curriculo ats gratis, fazer curriculo online gratis, modelo curriculo ats, formato curriculo profissional, baixar curriculo pdf e word"
+      },
+      "score_checker": {
+        "title": "Verificador de Pontuação de Currículo ATS Grátis | AuraToolkit360",
+        "desc": "Compare seu currículo com a descrição da vaga. Obtenha pontuação ATS instantânea, palavras-chave faltantes e dicas de otimização.",
+        "keywords": "verificador de curriculo ats gratis, escanear curriculo ats, pontuacao ats curriculo, palavras chave curriculo, otimizar curriculo"
+      },
+      "hr_helper": {
+        "title": "Ferramenta de Triagem em Massa de Currículos Grátis | AuraToolkit360",
+        "desc": "Analise e classifique até 300 currículos de candidatos no seu navegador. Cruzamento de palavras-chave, ranking ATS e exportação CSV/ZIP.",
+        "keywords": "triagem de curriculos em massa gratis, software recrutamento e selecao gratis, filtro de candidatos rh, scanner massivo cv"
+      }
+    }
+  },
+  {
+    "code": "ar",
+    "name": "العربية",
+    "flag": "🇸🇦",
+    "dir": "rtl",
+    "nav": {
+      "home": "الرئيسية",
+      "converter": "محول الملفات",
+      "resume": "صانع السيرة الذاتية",
+      "cover_letter": "خطاب التقديم",
+      "score_checker": "فاحص ATS",
+      "hr_helper": "فرز التوظيف RH",
+      "blogs": "المدونة",
+      "about": "من نحن",
+      "contact": "اتصل بنا",
+      "try_hr": "تجربة أداة التوظيف →",
+      "bookmark": "★ حفظ"
+    },
+    "seo": {
+      "home": {
+        "title": "محول ملفات مجاني وصانع سيرة ذاتية ATS أونلاين | AuraToolkit360",
+        "desc": "تحويل PDF إلى Word و Word إلى PDF وإنشاء سيرة ذاتية متوافقة مع أنظمة ATS وفرز مئات المرشحين للتوظيف محلياً في المتصفح بخصوصية تامة 100%.",
+        "keywords": "تحويل pdf الى word مجانا, محول ملفات اون لاين, صانع سيرة ذاتية ats مجاني, فحص السيرة الذاتية ats, دمج ملفات pdf, فرز المرشحين للتوظيف, AuraToolkit360"
+      },
+      "converter": {
+        "title": "محول ملفات أونلاين مجاني (أكثر من 30 أداة PDF وأوفيس) | AuraToolkit360",
+        "desc": "تحويل ودمج وضغط وتحرير ملفات PDF و Word و Excel والصور والصوت مباشرة في متصفحك بسرعة وخصوصية تامة.",
+        "keywords": "محول ملفات مجاني, تحويل pdf الى word بدون تسجيل, دمج ملفات pdf مجانا, ضغط pdf, تحويل word الى pdf, تحويل jpg الى pdf"
+      },
+      "resume": {
+        "title": "صانع سيرة ذاتية ATS مجاني أونلاين (بدون تسجيل) | AuraToolkit360",
+        "desc": "أنشئ سيرة ذاتية احترافية متوافقة 100% مع أنظمة ATS. 7 قوالب تنفيذية، تصدير إلى PDF و Word DOCX، معالجة محلية بالكامل في متصفحك.",
+        "keywords": "صانع سيرة ذاتية ats مجاني, انشاء سيرة ذاتية احترافية, نموذج سيرة ذاتية ats, تحميل سيرة ذاتية pdf و word بدون تسجيل"
+      },
+      "score_checker": {
+        "title": "فاحص توافق السيرة الذاتية مع أنظمة ATS مجاناً | AuraToolkit360",
+        "desc": "افحص سيرتك الذاتية مقابل الوصف الوظيفي. احصل على نسبة التوافق الفورية والكلمات المفتاحية المفقودة وتوصيات التحسين بخصوصية تامة.",
+        "keywords": "فحص سيرة ذاتية ats مجانا, تقييم سيرة ذاتية ats, نسبة توافق cv, كلمات مفتاحية للسيرة الذاتية, تحسين السيرة الذاتية للوظائف"
+      },
+      "hr_helper": {
+        "title": "أداة فرز السير الذاتية الجماعية لمسؤولي التوظيف مجاناً | AuraToolkit360",
+        "desc": "فرز وتصنيف حتى 300 سيرة ذاتية للمرشحين محلياً في المتصفح. مطابقة الكلمات المفتاحية وترتيب ATS وتصدير تقارير CSV و ZIP بخصوصية تامة.",
+        "keywords": "فرز سير ذاتية جماعي مجاني, برنامج تصفية المرشحين للتوظيف, فرز المتقدمين للوظائف, ماسح cv جماعي, hr bulk screener"
+      }
+    }
+  }
+]
