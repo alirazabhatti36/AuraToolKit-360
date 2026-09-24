@@ -7,7 +7,7 @@
     <meta name="description" content="Analysez votre CV par rapport à une offre demploi. Obtenez instantanément votre score de compatibilité ATS, les mots-clés manquants et des conseils.">
     <meta name="keywords" content="vérificateur de cv ats gratuit, scanner cv ats, score compatibilité cv, mots clés pour cv">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#FAFBFD">
+    <meta name="theme-color" content="#0b0f19">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/fr/resume-score-checker/">
     <link rel="alternate" hreflang="x-default" href="https://auratoolkit360.com/resume-score-checker/">
@@ -60,20 +60,20 @@
     
     <style>
         :root {
-            --bg-base: #FAFBFD;
-            --bg-card: #FFFFFF;
-            --bg-card-hover: #F8FAFC;
-            --border-card: #E2E8F0;
-            --border-highlight: #8B5CF6;
+            --bg-base: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 36, 56, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.35);
             --accent-cyan: #38bdf8;
             --accent-purple: #8b5cf6;
             --accent-green: #10b981;
             --accent-blue: #3b82f6;
             --accent-amber: #f59e0b;
             --accent-red: #ef4444;
-            --text-primary: #0F172A;
-            --text-secondary: #475569;
-            --text-muted: #64748B;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -129,13 +129,13 @@
 
         /* Modern Scrollbar */
         ::-webkit-scrollbar { width: 7px; height: 7px; }
-        ::-webkit-scrollbar-track { background: #FAFBFD; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
         ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
 
         /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(11, 15, 25, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 0.85rem 2rem;
@@ -839,7 +839,6 @@
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <link rel="manifest" href="/manifest.json">
     <script defer src="/assets/pwa-install.js"></script>
-    <link rel="stylesheet" href="/assets/saas-ui.css">
     <link rel="stylesheet" href="/assets/lang-switcher.css">
     <script defer src="/assets/lang-switcher.js"></script>
 </head>
@@ -1001,8 +1000,8 @@
         <div style="display:flex; align-items:center; justify-content:center; gap:0.5rem; margin-bottom:0.6rem;">
           <span style="background:rgba(56,189,248,0.15); color:#38bdf8; font-size:0.8rem; font-weight:800; padding:0.3rem 0.9rem; border-radius:999px; border:1px solid rgba(56,189,248,0.35); text-transform:uppercase; letter-spacing:0.05em;">🏅 Official ATS Scorecard Badge</span>
         </div>
-        <h3 style="font-size:1.35rem; font-weight:800; color:#0F172A; margin-bottom:0.4rem;">Share Your Verified ATS Score &amp; Stand Out</h3>
-        <p style="color:#475569; font-size:0.9rem; max-width:620px; margin:0 auto 1.4rem;">Download your official high-resolution ATS verification badge (1200×630 PNG) or share directly to LinkedIn and WhatsApp to prove your resume is recruiter-ready.</p>
+        <h3 style="font-size:1.35rem; font-weight:800; color:#f8fafc; margin-bottom:0.4rem;">Share Your Verified ATS Score &amp; Stand Out</h3>
+        <p style="color:#94a3b8; font-size:0.9rem; max-width:620px; margin:0 auto 1.4rem;">Download your official high-resolution ATS verification badge (1200×630 PNG) or share directly to LinkedIn and WhatsApp to prove your resume is recruiter-ready.</p>
         
         <!-- Scorecard Canvas Preview -->
         <div style="max-width:580px; margin:0 auto 1.4rem; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); box-shadow:0 16px 40px rgba(0,0,0,0.6); background:#0b0f19;">
@@ -1020,7 +1019,7 @@
           <button id="shareWhatsAppBtn" onclick="shareOnWhatsApp()" style="background:#25d366; color:#0f172a; border:none; padding:0.75rem 1.4rem; border-radius:12px; font-weight:800; font-size:0.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; box-shadow:0 4px 14px rgba(37,211,102,0.35); transition:all 0.2s;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.54 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.02 2.6c.13.16 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29Z"/></svg> WhatsApp
           </button>
-          <button id="copyBadgeLinkBtn" onclick="copyScoreLink()" style="background:rgba(255,255,255,0.08); color:#0F172A; border:1px solid rgba(255,255,255,0.15); padding:0.75rem 1.3rem; border-radius:12px; font-weight:600; font-size:0.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; transition:all 0.2s;">
+          <button id="copyBadgeLinkBtn" onclick="copyScoreLink()" style="background:rgba(255,255,255,0.08); color:#f8fafc; border:1px solid rgba(255,255,255,0.15); padding:0.75rem 1.3rem; border-radius:12px; font-weight:600; font-size:0.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; transition:all 0.2s;">
             🔗 Copy Share Text
           </button>
         </div>
@@ -1043,11 +1042,11 @@
           </div>
           <span style="background:rgba(56,189,248,0.15); color:#38bdf8; font-size:0.75rem; font-weight:700; padding:0.25rem 0.75rem; border-radius:999px; border:1px solid rgba(56,189,248,0.3);">100% Free • No API Key Needed</span>
         </div>
-        <p style="font-size:0.88rem; color:#475569; line-height:1.5; margin-bottom:1.2rem;">
+        <p style="font-size:0.88rem; color:#94a3b8; line-height:1.5; margin-bottom:1.2rem;">
           Career counselors, universities, and job bloggers: Add our privacy-first ATS resume scanner directly to your site or blog. Copy the clean iframe snippet below:
         </p>
         <div style="position:relative;">
-          <textarea id="widgetEmbedCode" readonly style="width:100%; height:95px; background:rgba(11,15,25,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:12px; color:#1E293B; font-family:monospace; font-size:0.82rem; padding:0.8rem; resize:none; line-height:1.4;">&lt;iframe src="https://auratoolkit360.com/resume-score-checker/widget/" width="100%" height="620" style="border:none; border-radius:16px; box-shadow:0 12px 35px rgba(0,0,0,0.25);" title="Free ATS Resume Score Checker - AuraToolkit360"&gt;&lt;/iframe&gt;
+          <textarea id="widgetEmbedCode" readonly style="width:100%; height:95px; background:rgba(11,15,25,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:12px; color:#e2e8f0; font-family:monospace; font-size:0.82rem; padding:0.8rem; resize:none; line-height:1.4;">&lt;iframe src="https://auratoolkit360.com/resume-score-checker/widget/" width="100%" height="620" style="border:none; border-radius:16px; box-shadow:0 12px 35px rgba(0,0,0,0.25);" title="Free ATS Resume Score Checker - AuraToolkit360"&gt;&lt;/iframe&gt;
 &lt;p style="font-size:12px; text-align:center; margin-top:8px; color:#64748b;"&gt;Free ATS resume test powered by &lt;a href="https://auratoolkit360.com/resume-score-checker/?ref=embed-widget" target="_blank" rel="noopener" style="color:#0284c7; text-decoration:none; font-weight:600;"&gt;AuraToolKit 360&lt;/a&gt;&lt;/p&gt;</textarea>
           <div style="margin-top:0.8rem; display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center;">
             <button id="copyEmbedBtn" onclick="copyWidgetEmbedCode()" style="background:linear-gradient(135deg, #0284c7, #6366f1); color:#ffffff; border:none; padding:0.6rem 1.3rem; border-radius:10px; font-weight:700; font-size:0.85rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 4px 12px rgba(2,132,199,0.35);">

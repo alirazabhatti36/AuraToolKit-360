@@ -7,7 +7,7 @@
     <meta name="description" content="Generate strong, uncrackable random passwords with custom length, numbers, and symbols 100% locally in browser memory.">
     <meta name="keywords" content="secure password generator, word counter, case converter, password generator, compress video, image watermark, free online tools">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#FAFBFD">
+    <meta name="theme-color" content="#0f172a">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/converter/password-generator/">
     <!-- Open Graph / Facebook -->
@@ -42,7 +42,7 @@
         html { overflow-x: clip; scroll-behavior: smooth; }
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
         
-        .navbar { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
         .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
         .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
@@ -86,7 +86,6 @@
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -117,12 +116,12 @@
         <div style="max-width:500px; margin:0 auto; text-align:center;">
             <div style="font-size:1.6rem; font-weight:800; color:#38bdf8; background:rgba(15,23,42,0.8); padding:1rem; border-radius:14px; border:1px solid rgba(255,255,255,0.15); margin-bottom:1.5rem; letter-spacing:2px;" id="passOut">Click Generate</div>
             
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; color:#334155; font-size:0.9rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; color:#cbd5e1; font-size:0.9rem;">
                 <label>Password Length: <span id="lenVal" style="color:#38bdf8; font-weight:700;">16</span></label>
                 <input type="range" id="passLen" min="8" max="64" value="16" oninput="document.getElementById('lenVal').textContent=this.value; genPass();">
             </div>
 
-            <div style="display:flex; gap:1rem; justify-content:center; margin-bottom:1.5rem; font-size:0.88rem; color:#334155;">
+            <div style="display:flex; gap:1rem; justify-content:center; margin-bottom:1.5rem; font-size:0.88rem; color:#cbd5e1;">
                 <label><input type="checkbox" id="chkSym" checked onchange="genPass()"> Symbols (!@#$)</label>
                 <label><input type="checkbox" id="chkNum" checked onchange="genPass()"> Numbers (0-9)</label>
             </div>
@@ -160,7 +159,7 @@
             <p>Creating robust, unpredictable passwords is the single most effective defense against brute-force attacks, credential stuffing, and dictionary-based unauthorized account access. AuraToolkit360 utilizes browser-native cryptographic entropy to generate high-strength passphrases without transmitting keys across the network.</p>
 
             <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">Key Characteristics of an Uncrackable Password</h3>
-            <ul style="color:#475569; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
+            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
                 <li><strong>Length is Supreme:</strong> A 16-character password combining letters, numbers, and symbols provides over 95 bits of cryptographic entropy, requiring billions of years for modern supercomputers to crack via brute-force.</li>
                 <li><strong>Mixed Character Sets:</strong> Ensure a combination of uppercase letters (A-Z), lowercase letters (a-z), numeric digits (0-9), and special punctuation marks (!@#$%^&*).</li>
                 <li><strong>Avoid Predictable Patterns:</strong> Never include personal names, birthdays, consecutive numbers (1234), or common dictionary substitutes (P@ssw0rd).</li>
@@ -172,16 +171,16 @@
 
             <h3 style="color:#38bdf8; margin: 1.5rem 0 0.5rem; font-size:1.15rem;">Frequently Asked Questions (FAQ)</h3>
             <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
-                <h4 style="color:#0F172A; margin-bottom:0.3rem;">❓ Is it safe to generate passwords online?</h4>
-                <p style="color:#475569; font-size:0.9rem;">With AuraToolkit360, yes! Because our generator operates entirely client-side without internet requests, our servers never see or log the generated string.</p>
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Is it safe to generate passwords online?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">With AuraToolkit360, yes! Because our generator operates entirely client-side without internet requests, our servers never see or log the generated string.</p>
             </div>
             <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
-                <h4 style="color:#0F172A; margin-bottom:0.3rem;">❓ What is the recommended password length for everyday accounts?</h4>
-                <p style="color:#475569; font-size:0.9rem;">Cybersecurity standards recommend a minimum of 14 to 16 characters for critical accounts like email, financial portals, and administrator logins.</p>
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ What is the recommended password length for everyday accounts?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Cybersecurity standards recommend a minimum of 14 to 16 characters for critical accounts like email, financial portals, and administrator logins.</p>
             </div>
             <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
-                <h4 style="color:#0F172A; margin-bottom:0.3rem;">❓ How should I store my generated passwords?</h4>
-                <p style="color:#475569; font-size:0.9rem;">Store your credentials in an encrypted password manager such as Bitwarden, 1Password, or your operating system's built-in secure keychain.</p>
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ How should I store my generated passwords?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Store your credentials in an encrypted password manager such as Bitwarden, 1Password, or your operating system's built-in secure keychain.</p>
             </div>
         </div></main>
 

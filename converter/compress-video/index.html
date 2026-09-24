@@ -7,7 +7,7 @@
     <meta name="description" content="Compress and shrink video file sizes in your browser using HTML5 media canvas. Zero server uploads.">
     <meta name="keywords" content="compress video online, word counter, case converter, password generator, compress video, image watermark, free online tools">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#FAFBFD">
+    <meta name="theme-color" content="#0f172a">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/converter/compress-video/">
     <!-- Open Graph / Facebook -->
@@ -42,7 +42,7 @@
         html { overflow-x: clip; scroll-behavior: smooth; }
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
         
-        .navbar { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
         .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
         .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
@@ -86,7 +86,6 @@
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -114,17 +113,17 @@
 
         <div class="tool-card">
             
-        <div style="border:2px dashed rgba(56,189,248,0.4); border-radius:18px; padding:2.5rem 1.5rem; background:#F8FAFC; cursor:pointer;" onclick="document.getElementById('vidFile').click()">
+        <div style="border:2px dashed rgba(56,189,248,0.4); border-radius:18px; padding:2.5rem 1.5rem; background:rgba(15,23,42,0.5); cursor:pointer;" onclick="document.getElementById('vidFile').click()">
             <div style="font-size:3rem;">🎥</div>
-            <div style="font-weight:700; color:#0F172A; font-size:1.1rem; margin-top:0.5rem;">Click to Upload MP4 / WebM Video File</div>
-            <p style="color:#475569; font-size:0.85rem; margin-top:0.3rem;">Supports MP4, WebM, MOV, and MKV video files</p>
+            <div style="font-weight:700; color:#f8fafc; font-size:1.1rem; margin-top:0.5rem;">Click to Upload MP4 / WebM Video File</div>
+            <p style="color:#94a3b8; font-size:0.85rem; margin-top:0.3rem;">Supports MP4, WebM, MOV, and MKV video files</p>
             <input type="file" id="vidFile" accept="video/*" style="display:none" onchange="handleVidSelected(this.files)">
         </div>
         <div id="vidName" style="color:#38bdf8; font-weight:700; margin-top:1rem;"></div>
 
         <div style="margin: 1.2rem 0; display:flex; justify-content:center; align-items:center; gap:0.8rem; flex-wrap:wrap;">
-            <label style="color:#334155; font-weight:600; font-size:0.9rem;">Target Quality:</label>
-            <select id="vidQuality" style="width:200px; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.2); color:#0F172A; padding:0.55rem; border-radius:10px;">
+            <label style="color:#cbd5e1; font-weight:600; font-size:0.9rem;">Target Quality:</label>
+            <select id="vidQuality" style="width:200px; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.2); color:#f8fafc; padding:0.55rem; border-radius:10px;">
                 <option value="medium" selected>Standard Web (720p / 1 Mbps)</option>
                 <option value="low">Email Friendly (480p / 500 Kbps)</option>
                 <option value="high">High Definition (1080p / 2.5 Mbps)</option>
@@ -245,7 +244,7 @@
             <p>Sharing large video recordings across Discord, email, WhatsApp, or LMS portals is often blocked by strict file size ceilings (such as 10MB or 25MB). AuraToolkit360 guides efficient media bitrate optimization with complete client privacy.</p>
 
             <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">Factors Determining Video File Size</h3>
-            <ul style="color:#475569; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
+            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
                 <li><strong>Resolution Scaling:</strong> Downscaling a 4K video (3840x2160) to Full HD (1920x1080) reduces pixel data by 75% without compromising clarity on phone screens.</li>
                 <li><strong>Bitrate Control:</strong> Lowering video bitrate from 12 Mbps to 2.5 Mbps achieves massive compression while maintaining smooth playback.</li>
                 <li><strong>Modern Codecs (H.264 & VP9):</strong> Deliver superior visual fidelity per kilobyte compared to legacy MPEG formats.</li>
@@ -253,8 +252,8 @@
 
             <h3 style="color:#38bdf8; margin: 1.5rem 0 0.5rem; font-size:1.15rem;">Frequently Asked Questions (FAQ)</h3>
             <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
-                <h4 style="color:#0F172A; margin-bottom:0.3rem;">❓ Does compression affect video audio?</h4>
-                <p style="color:#475569; font-size:0.9rem;">Audio channels can be converted to MP3/WAV using our <a href='/converter/mp3-converter/' style='color:#38bdf8;'>MP3 Converter</a> or preserved during video encoding.</p>
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Does compression affect video audio?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Audio channels can be converted to MP3/WAV using our <a href='/converter/mp3-converter/' style='color:#38bdf8;'>MP3 Converter</a> or preserved during video encoding.</p>
             </div>
         </div></main>
 

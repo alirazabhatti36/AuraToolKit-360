@@ -7,7 +7,7 @@
     <meta name="description" content="Erstellen Sie professionelle, ATS-geprüfte Lebensläufe. 7 Vorlagen, PDF- und Word-DOCX-Export, 100% lokale Bearbeitung im Browser.">
     <meta name="keywords" content="lebenslauf erstellen kostenlos, ats lebenslauf vorlage, lebenslauf generator ohne anmeldung, tabellarischer lebenslauf pdf download">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#FAFBFD">
+    <meta name="theme-color" content="#0b0f19">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/de/resume-cv-maker/">
     <link rel="alternate" hreflang="x-default" href="https://auratoolkit360.com/resume-cv-maker/">
@@ -49,19 +49,19 @@
     
     <style>
         :root {
-            --bg-base: #FAFBFD;
-            --bg-card: #FFFFFF;
-            --bg-card-hover: #F8FAFC;
-            --border-card: #E2E8F0;
-            --border-highlight: #8B5CF6;
+            --bg-base: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 36, 56, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.35);
             --accent-cyan: #38bdf8;
             --accent-purple: #8b5cf6;
             --accent-green: #10b981;
             --accent-blue: #3b82f6;
             --accent-orange: #f59e0b;
-            --text-primary: #0F172A;
-            --text-secondary: #475569;
-            --text-muted: #64748B;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -117,13 +117,13 @@
 
         /* Modern Scrollbar */
         ::-webkit-scrollbar { width: 7px; height: 7px; }
-        ::-webkit-scrollbar-track { background: #FAFBFD; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
         ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
 
         /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(11, 15, 25, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 0.85rem 2rem;
@@ -1217,7 +1217,6 @@
 
     <link rel="manifest" href="/manifest.json">
     <script defer src="/assets/pwa-install.js"></script>
-    <link rel="stylesheet" href="/assets/saas-ui.css">
     <link rel="stylesheet" href="/assets/lang-switcher.css">
     <script defer src="/assets/lang-switcher.js"></script>
 </head>
@@ -1324,8 +1323,8 @@
                 <div style="display:flex; align-items:center; gap:0.65rem;">
                     <span style="font-size:1.4rem;">🎨</span>
                     <div>
-                        <h2 style="font-size:1.15rem; font-weight:800; color:#0F172A; margin:0; line-height:1.3;">Step 1: Choose Resume Template &amp; Styling</h2>
-                        <p style="font-size:0.82rem; color:#475569; margin:0;">Select from 12 ATS formats, customize accent colors, typography, and 1-page fit spacing in real-time.</p>
+                        <h2 style="font-size:1.15rem; font-weight:800; color:#f8fafc; margin:0; line-height:1.3;">Step 1: Choose Resume Template &amp; Styling</h2>
+                        <p style="font-size:0.82rem; color:#94a3b8; margin:0;">Select from 12 ATS formats, customize accent colors, typography, and 1-page fit spacing in real-time.</p>
                     </div>
                 </div>
                 <div style="display:flex; align-items:center; gap:0.5rem;">
@@ -1453,8 +1452,8 @@
                         <div style="display:flex; align-items:center; gap:0.45rem;">
                             <span style="font-size:1.1rem;">⚡</span>
                             <div>
-                                <strong style="font-size:0.82rem; color:#0F172A;">Pre-Written ATS Bullet Inspo (STAR Method):</strong>
-                                <span style="font-size:0.75rem; color:#475569; display:block;">Select your role to insert quantified, high-impact achievements</span>
+                                <strong style="font-size:0.82rem; color:#f8fafc;">Pre-Written ATS Bullet Inspo (STAR Method):</strong>
+                                <span style="font-size:0.75rem; color:#94a3b8; display:block;">Select your role to insert quantified, high-impact achievements</span>
                             </div>
                         </div>
                         <select id="roleInspoSelect" class="customizer-select" style="padding:0.35rem 0.7rem; font-size:0.78rem; max-width:240px;" onchange="insertRoleBullets(this.value)">
@@ -1550,13 +1549,13 @@
                     <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="toggleJobMatcher()">
                         <div style="display:flex; align-items:center; gap:0.45rem;">
                             <span style="font-size:0.95rem;">🎯</span>
-                            <span style="font-size:0.82rem; font-weight:700; color:#0F172A;">Target Job Description Matcher</span>
+                            <span style="font-size:0.82rem; font-weight:700; color:#f8fafc;">Target Job Description Matcher</span>
                             <span id="matchScoreBadge" style="font-size:0.7rem; background:rgba(56, 189, 248, 0.15); color:#38bdf8; padding:0.12rem 0.5rem; border-radius:6px; font-weight:600;">Optional</span>
                         </div>
-                        <span id="matcherToggleIcon" style="color:#475569; font-size:0.78rem;">▼ Click to expand</span>
+                        <span id="matcherToggleIcon" style="color:#94a3b8; font-size:0.78rem;">▼ Click to expand</span>
                     </div>
                     <div id="jobMatcherBody" style="display:none; margin-top:0.65rem;">
-                        <textarea id="targetJobDescInput" placeholder="Paste the job requirements or target job description here to check live keyword matches in real time..." rows="3" style="width:100%; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.12); border-radius:8px; color:#0F172A; padding:0.55rem; font-size:0.78rem; resize:vertical; font-family:inherit;" oninput="runLiveJobMatch()"></textarea>
+                        <textarea id="targetJobDescInput" placeholder="Paste the job requirements or target job description here to check live keyword matches in real time..." rows="3" style="width:100%; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.12); border-radius:8px; color:#f8fafc; padding:0.55rem; font-size:0.78rem; resize:vertical; font-family:inherit;" oninput="runLiveJobMatch()"></textarea>
                         <div id="jobKeywordChips" style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.5rem;"></div>
                     </div>
                 </div>
@@ -1584,7 +1583,7 @@
                     <h3 style="color:#ffffff; font-weight:800; font-size:1.3rem; margin:0; display:flex; align-items:center; gap:0.5rem;">
                         <span>💼</span> 1-Click LinkedIn Profile Optimizer
                     </h3>
-                    <p style="color:#475569; font-size:0.85rem; margin:0.3rem 0 0;">
+                    <p style="color:#94a3b8; font-size:0.85rem; margin:0.3rem 0 0;">
                         Auto-generated high-ranking headlines &amp; engaging "About" stories based on your resume data.
                     </p>
                 </div>
@@ -1647,43 +1646,43 @@
                         <tr style="background:rgba(30,41,59,0.9); color:#ffffff;">
                             <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1);">Feature / Capability</th>
                             <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#38bdf8;">AuraToolkit360</th>
-                            <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#475569;">Canva (Free/Pro)</th>
-                            <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#475569;">Zety / Novoresume</th>
+                            <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#94a3b8;">Canva (Free/Pro)</th>
+                            <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#94a3b8;">Zety / Novoresume</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">Pricing &amp; Subscriptions</td>
+                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">Pricing &amp; Subscriptions</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">100% Free Forever (No Card)</td>
                             <td style="padding:0.85rem 1rem; color:#f59e0b;">Free tier limited / $13/mo Pro</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">$15 - $30/month subscription trap</td>
                         </tr>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">ATS Parsing Accuracy</td>
+                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">ATS Parsing Accuracy</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">100% Structured ATS-Safe</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">Fails (Floating boxes, vector layers)</td>
                             <td style="padding:0.85rem 1rem; color:#10b981;">Good (Standard text layouts)</td>
                         </tr>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">User Privacy &amp; Data Security</td>
+                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">User Privacy &amp; Data Security</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">100% Private (Runs in Browser)</td>
-                            <td style="padding:0.85rem 1rem; color:#475569;">Stored on Canva cloud servers</td>
-                            <td style="padding:0.85rem 1rem; color:#475569;">Stored in recruiter databases</td>
+                            <td style="padding:0.85rem 1rem; color:#94a3b8;">Stored on Canva cloud servers</td>
+                            <td style="padding:0.85rem 1rem; color:#94a3b8;">Stored in recruiter databases</td>
                         </tr>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">Word DOCX &amp; PDF Exports</td>
+                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">Word DOCX &amp; PDF Exports</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">Both Free (1-Click Instant)</td>
                             <td style="padding:0.85rem 1rem; color:#f59e0b;">PDF only (No DOCX)</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">Locked behind paywall</td>
                         </tr>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">Watermarks &amp; Restrictions</td>
+                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">Watermarks &amp; Restrictions</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">Zero Watermarks Ever</td>
                             <td style="padding:0.85rem 1rem; color:#10b981;">No watermark on free assets</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">Watermarked until purchased</td>
                         </tr>
                         <tr>
-                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">Sign-Up / Account Creation</td>
+                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">Sign-Up / Account Creation</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">Zero Sign-up Required</td>
                             <td style="padding:0.85rem 1rem; color:#f59e0b;">Account required</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">Account &amp; Email mandatory</td>
@@ -1910,14 +1909,14 @@
 
         <!-- Fullscreen Preview Modal -->
         <div id="templateModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:1.5rem;" onclick="closeTemplateModal()">
-            <div style="position:relative; max-width:750px; max-height:92vh; display:flex; flex-direction:column; background:#FFFFFF; border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:1.2rem; box-shadow:0 25px 60px rgba(0,0,0,0.7);" onclick="event.stopPropagation()">
+            <div style="position:relative; max-width:750px; max-height:92vh; display:flex; flex-direction:column; background:#1e293b; border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:1.2rem; box-shadow:0 25px 60px rgba(0,0,0,0.7);" onclick="event.stopPropagation()">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
                     <h3 id="modalTemplateName" style="color:#ffffff; font-weight:800; font-size:1.15rem; margin:0;"></h3>
                     <button style="background:rgba(255,255,255,0.1); border:none; color:#ffffff; font-size:1.1rem; cursor:pointer; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center;" onclick="closeTemplateModal()">✕</button>
                 </div>
                 <img id="modalTemplateImg" src="" alt="Template Preview" style="max-width:100%; max-height:74vh; border-radius:8px; object-fit:contain; background:#ffffff;">
                 <div style="margin-top:1rem; display:flex; justify-content:space-between; align-items:center;">
-                    <span style="font-size:0.85rem; color:#475569;">100% Free • PDF &amp; Word DOCX Exports • Zero Watermarks</span>
+                    <span style="font-size:0.85rem; color:#94a3b8;">100% Free • PDF &amp; Word DOCX Exports • Zero Watermarks</span>
                     <button id="modalUseBtn" class="showcase-btn-use" style="padding:0.6rem 1.4rem;" onclick="useModalTemplate()">Use This Template 🚀</button>
                 </div>
             </div>
@@ -2387,7 +2386,7 @@
                 if (cat.skills && cat.skills.length) {
                     html += `
                         <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
-                            ${cat.skills.map(s => `<span style="background:#FFFFFF; color:#1E293B; font-size:0.72rem; padding:0.18rem 0.45rem; border-radius:4px; font-weight:500;">${escapeHtml(s)}</span>`).join('')}
+                            ${cat.skills.map(s => `<span style="background:#1e293b; color:#e2e8f0; font-size:0.72rem; padding:0.18rem 0.45rem; border-radius:4px; font-weight:500;">${escapeHtml(s)}</span>`).join('')}
                         </div>
                     `;
                 }
@@ -2432,7 +2431,7 @@
                             <div style="margin-bottom:0.4rem;">
                                 ${cat.category ? `<span style="font-size:0.78rem; font-weight:700; color:#1e293b; font-family:'JetBrains Mono',monospace;">${escapeHtml(cat.category)}: </span>` : ''}
                                 <div style="display:flex; gap:0.3rem; flex-wrap:wrap; margin-top:0.2rem;">
-                                    ${cat.skills.map(s => `<span style="background:#F8FAFC; color:#38bdf8; font-size:0.72rem; padding:0.15rem 0.45rem; border-radius:4px; font-family:'JetBrains Mono',monospace; border:1px solid #1e293b;">${escapeHtml(s)}</span>`).join('')}
+                                    ${cat.skills.map(s => `<span style="background:#0f172a; color:#38bdf8; font-size:0.72rem; padding:0.15rem 0.45rem; border-radius:4px; font-family:'JetBrains Mono',monospace; border:1px solid #1e293b;">${escapeHtml(s)}</span>`).join('')}
                                 </div>
                             </div>
                         `).join('')}
@@ -2607,7 +2606,7 @@
         function renderNordicTemplate(container, data, skillsCategories, accent) {
             container.innerHTML = `
                 <div style="margin-bottom:1.4rem;">
-                    <div style="font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:#475569; font-weight:600;">PORTFOLIO &amp; RESUME</div>
+                    <div style="font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:#94a3b8; font-weight:600;">PORTFOLIO &amp; RESUME</div>
                     <h1 style="font-size:2.1rem; color:#0f172a; font-weight:900; letter-spacing:-0.5px; margin:0.2rem 0;">${escapeHtml(data.name || 'Your Full Name')}</h1>
                     <div style="font-size:0.95rem; color:${accent}; font-weight:500; margin-bottom:0.6rem;">${escapeHtml(data.targetRole || 'Professional Role')}</div>
                     
@@ -2862,12 +2861,12 @@
             const accent = currentAccentColor;
             container.innerHTML = `
                 <div style="display:grid; grid-template-columns: 32% 68%; min-height: 580px; font-size:0.8rem;">
-                    <div style="background:#F8FAFC; color:#0F172A; padding:1.2rem; border-top-left-radius:8px; border-bottom-left-radius:8px;">
+                    <div style="background:#0f172a; color:#f8fafc; padding:1.2rem; border-top-left-radius:8px; border-bottom-left-radius:8px;">
                         ${data.photoData ? `<img src="${data.photoData}" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid ${accent}; margin:0 auto 1rem; display:block;">` : ''}
                         <h2 style="font-size:1.2rem; color:${accent}; font-weight:800; margin-bottom:0.2rem;">${escapeHtml(data.name || 'Your Full Name')}</h2>
-                        <div style="font-size:0.8rem; color:#475569; font-weight:600; margin-bottom:1.2rem;">${escapeHtml(data.targetRole || 'Target Role')}</div>
+                        <div style="font-size:0.8rem; color:#94a3b8; font-weight:600; margin-bottom:1.2rem;">${escapeHtml(data.targetRole || 'Target Role')}</div>
                         
-                        <div style="margin-bottom:1.2rem; font-size:0.75rem; line-height:1.6; color:#334155;">
+                        <div style="margin-bottom:1.2rem; font-size:0.75rem; line-height:1.6; color:#cbd5e1;">
                             <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">CONTACT</h4>
                             ${data.email ? `<div>✉️ ${escapeHtml(data.email)}</div>` : ''}
                             ${data.phone ? `<div>📞 ${escapeHtml(data.phone)}</div>` : ''}
@@ -2880,14 +2879,14 @@
                         ${data.languages.length ? `
                             <div style="margin-bottom:1.2rem;">
                                 <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">LANGUAGES</h4>
-                                ${data.languages.map(l => `<div style="font-size:0.72rem; margin-bottom:0.2rem;"><strong>${escapeHtml(l.name)}</strong><br><span style="color:#475569;">${escapeHtml(l.level)}</span></div>`).join('')}
+                                ${data.languages.map(l => `<div style="font-size:0.72rem; margin-bottom:0.2rem;"><strong>${escapeHtml(l.name)}</strong><br><span style="color:#94a3b8;">${escapeHtml(l.level)}</span></div>`).join('')}
                             </div>
                         ` : ''}
 
                         ${data.certifications.length ? `
                             <div>
                                 <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">CERTS</h4>
-                                ${data.certifications.map(c => `<div style="font-size:0.72rem; margin-bottom:0.3rem;"><strong>${escapeHtml(c.title)}</strong><br><span style="color:#475569;">${escapeHtml(c.issuer)} (${escapeHtml(c.year)})</span></div>`).join('')}
+                                ${data.certifications.map(c => `<div style="font-size:0.72rem; margin-bottom:0.3rem;"><strong>${escapeHtml(c.title)}</strong><br><span style="color:#94a3b8;">${escapeHtml(c.issuer)} (${escapeHtml(c.year)})</span></div>`).join('')}
                             </div>
                         ` : ''}
                     </div>
@@ -3526,7 +3525,7 @@
             });
 
             if (foundInJob.length === 0) {
-                chipsContainer.innerHTML = '<span style="font-size:0.75rem; color:#475569;">Enter more job details to extract keywords...</span>';
+                chipsContainer.innerHTML = '<span style="font-size:0.75rem; color:#94a3b8;">Enter more job details to extract keywords...</span>';
                 if (badge) badge.textContent = 'Scanning...';
                 return;
             }
@@ -3620,7 +3619,7 @@
             if (headlinesContainer) {
                 headlinesContainer.innerHTML = headlines.map((h, i) => `
                     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:0.85rem 1rem; display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                        <span style="font-size:0.88rem; color:#0F172A; font-weight:500;">${escapeHtml(h)}</span>
+                        <span style="font-size:0.88rem; color:#f8fafc; font-weight:500;">${escapeHtml(h)}</span>
                         <button type="button" class="btn-primary" style="padding:0.4rem 0.8rem; font-size:0.75rem; white-space:nowrap;" onclick="copyOptimizerText(this, '${escapeJs(h)}')">📋 Copy</button>
                     </div>
                 `).join('');
@@ -3642,7 +3641,7 @@
                             <strong style="color:#ffffff; font-size:0.86rem;">${item.title}</strong>
                             <button type="button" class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.74rem;" onclick="copyOptimizerText(this, '${escapeJs(item.text)}')">📋 Copy</button>
                         </div>
-                        <div style="font-size:0.82rem; color:#334155; line-height:1.55; white-space:pre-line; background:rgba(0,0,0,0.3); padding:0.75rem; border-radius:8px;">${escapeHtml(item.text)}</div>
+                        <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.55; white-space:pre-line; background:rgba(0,0,0,0.3); padding:0.75rem; border-radius:8px;">${escapeHtml(item.text)}</div>
                     </div>
                 `).join('');
             }

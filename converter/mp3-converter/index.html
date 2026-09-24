@@ -7,7 +7,7 @@
     <meta name="description" content="Convert WAV, OGG, AAC, MP4, and WebM video files to MP3 audio online for free. 100% private browser-based audio converter with zero server uploads.">
     <meta name="keywords" content="mp3 converter, video to mp3, audio converter, wav to mp3, free mp3 converter, audio extractor">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#FAFBFD">
+    <meta name="theme-color" content="#0f172a">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/converter/mp3-converter/">
     <!-- Open Graph / Facebook -->
@@ -42,7 +42,7 @@
         html { overflow-x: clip; scroll-behavior: smooth; }
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
         
-        .navbar { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
         .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
         .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
@@ -79,7 +79,6 @@
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -108,15 +107,15 @@
         <div class="tool-box">
             <div class="upload-area" onclick="document.getElementById('audioInput').click()">
                 <div style="font-size:3rem; margin-bottom:0.5rem;">🎵</div>
-                <div style="font-weight:700; color:#0F172A; font-size:1.1rem;">Click to Upload Audio or Video File</div>
-                <div style="color:#475569; font-size:0.88rem; margin-top:0.3rem;">Supports MP4, WebM, WAV, OGG, AAC, M4A, FLAC</div>
+                <div style="font-weight:700; color:#f8fafc; font-size:1.1rem;">Click to Upload Audio or Video File</div>
+                <div style="color:#94a3b8; font-size:0.88rem; margin-top:0.3rem;">Supports MP4, WebM, WAV, OGG, AAC, M4A, FLAC</div>
                 <input type="file" id="audioInput" accept="audio/*,video/*" style="display:none" onchange="handleAudioSelect(this.files)">
             </div>
             <div id="audioFileName" style="color:#38bdf8; font-weight:700; margin-bottom:1rem;"></div>
 
             <div style="display:flex; justify-content:center; align-items:center; gap:0.8rem; margin-bottom:1.5rem;">
-                <label style="color:#334155; font-weight:600; font-size:0.9rem;">Output Format:</label>
-                <select id="audioFormatSelect" style="width:140px; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.2); color:#0F172A; padding:0.5rem; border-radius:10px;">
+                <label style="color:#cbd5e1; font-weight:600; font-size:0.9rem;">Output Format:</label>
+                <select id="audioFormatSelect" style="width:140px; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.2); color:#f8fafc; padding:0.5rem; border-radius:10px;">
                     <option value="wav">WAV Audio</option>
                     <option value="mp3" selected>MP3 Audio</option>
                 </select>
@@ -131,7 +130,7 @@
             <p>Extracting audio streams from video presentations, podcast recordings, voice memos, or lectures is a frequent necessity for content creators, students, and professionals. AuraToolkit360 decodes input multimedia files directly in browser memory using HTML5 Web Audio and WebAssembly APIs.</p>
 
             <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">Supported Media Formats & Audio Fidelity</h3>
-            <ul style="color:#475569; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
+            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
                 <li><strong>Input Video Formats:</strong> MP4, WebM, MKV, MOV, and AVI containers.</li>
                 <li><strong>Input Audio Formats:</strong> WAV, OGG, AAC, FLAC, M4A, and MP3 files.</li>
                 <li><strong>Lossless PCM Audio Extraction:</strong> The audio buffer decodes channels directly into uncompressed high-fidelity PCM WAV audio, preserving original acoustic dynamics and frequency spectrum without lossy compression artifacts.</li>
@@ -142,12 +141,12 @@
 
             <h3 style="color:#38bdf8; margin: 1.5rem 0 0.5rem; font-size:1.15rem;">Frequently Asked Questions (FAQ)</h3>
             <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
-                <h4 style="color:#0F172A; margin-bottom:0.3rem;">❓ Why does extraction run so fast?</h4>
-                <p style="color:#475569; font-size:0.9rem;">Because your video file does not need to upload to an external cloud server. The browser's native hardware decoder processes audio streams locally at maximum device speed.</p>
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Why does extraction run so fast?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Because your video file does not need to upload to an external cloud server. The browser's native hardware decoder processes audio streams locally at maximum device speed.</p>
             </div>
             <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
-                <h4 style="color:#0F172A; margin-bottom:0.3rem;">❓ Is there any video file size limitation?</h4>
-                <p style="color:#475569; font-size:0.9rem;">The only limit is your device's available RAM. Modern desktop and mobile browsers easily handle files up to several gigabytes.</p>
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Is there any video file size limitation?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">The only limit is your device's available RAM. Modern desktop and mobile browsers easily handle files up to several gigabytes.</p>
             </div>
         </div></main>
 

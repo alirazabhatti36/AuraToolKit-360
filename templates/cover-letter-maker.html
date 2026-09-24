@@ -7,7 +7,7 @@
     <meta name="description" content="Create a tailored, recruiter-approved ATS cover letter in under 3 minutes. Matching resume colors, 3 tone presets, STAR bullet highlights, and free Word DOCX & PDF exports. 100% private in-browser.">
     <meta name="keywords" content="cover letter builder, free cover letter maker, ATS cover letter, cover letter template, Word cover letter download, AuraToolkit360">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#FAFBFD">
+    <meta name="theme-color" content="#0b0f19">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/cover-letter-maker/">
     <link rel="manifest" href="/manifest.json">
@@ -60,19 +60,19 @@
     
     <style>
         :root {
-            --bg-base: #FAFBFD;
-            --bg-card: #FFFFFF;
-            --bg-card-hover: #F8FAFC;
-            --border-card: #E2E8F0;
-            --border-highlight: #8B5CF6;
+            --bg-base: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 36, 56, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.35);
             --accent-cyan: #38bdf8;
             --accent-purple: #8b5cf6;
             --accent-green: #10b981;
             --accent-blue: #3b82f6;
             --accent-amber: #f59e0b;
-            --text-primary: #0F172A;
-            --text-secondary: #475569;
-            --text-muted: #64748B;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -227,7 +227,6 @@
         .footer-links-list a { color: var(--text-secondary); text-decoration: none; font-size: 0.84rem; transition: color 0.2s; }
         .footer-links-list a:hover { color: var(--accent-cyan); }
     </style>
-    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -291,19 +290,19 @@
                 <!-- Styling Bar -->
                 <div class="style-bar">
                     <div class="style-group">
-                        <span style="font-size:0.8rem; color:#475569; font-weight:600;">Accent:</span>
+                        <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">Accent:</span>
                         <div style="display:flex; gap:0.4rem;" id="colorPalette">
                             <div class="color-dot active" style="background:#2563eb;" onclick="setAccent('#2563eb')"></div>
                             <div class="color-dot" style="background:#059669;" onclick="setAccent('#059669')"></div>
                             <div class="color-dot" style="background:#be123c;" onclick="setAccent('#be123c')"></div>
-                            <div class="color-dot" style="background:#FFFFFF;" onclick="setAccent('#1e293b')"></div>
+                            <div class="color-dot" style="background:#1e293b;" onclick="setAccent('#1e293b')"></div>
                             <div class="color-dot" style="background:#7c3aed;" onclick="setAccent('#7c3aed')"></div>
                         </div>
                     </div>
 
                     <div class="style-group">
-                        <span style="font-size:0.8rem; color:#475569; font-weight:600;">Font:</span>
-                        <select id="fontSelect" style="background:#F8FAFC; border:1px solid rgba(255,255,255,0.12); color:#fff; padding:0.3rem 0.5rem; border-radius:6px; font-size:0.78rem;" onchange="setFont(this.value)">
+                        <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">Font:</span>
+                        <select id="fontSelect" style="background:#0f172a; border:1px solid rgba(255,255,255,0.12); color:#fff; padding:0.3rem 0.5rem; border-radius:6px; font-size:0.78rem;" onchange="setFont(this.value)">
                             <option value="'Inter', sans-serif">Inter (Tech / Modern)</option>
                             <option value="'Roboto', sans-serif">Roboto (Corporate)</option>
                             <option value="'Merriweather', serif">Merriweather (Classic Serif)</option>
@@ -312,7 +311,7 @@
                     </div>
 
                     <div class="style-group">
-                        <span style="font-size:0.8rem; color:#475569; font-weight:600;">Paper:</span>
+                        <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">Paper:</span>
                         <div style="display:flex; gap:0.35rem;">
                             <div class="color-dot active" style="background:#ffffff;" title="White" onclick="setPaper('#ffffff')"></div>
                             <div class="color-dot" style="background:#faf8f5;" title="Ivory Cream" onclick="setPaper('#faf8f5')"></div>

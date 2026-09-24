@@ -7,7 +7,7 @@
     <meta name="description" content="Converta PDF para Word, Word para PDF, crie currículos otimizados para ATS e faça triagem de candidatos no navegador sem upload.">
     <meta name="keywords" content="converter pdf para word gratis, conversor de arquivos online, criador de curriculo ats gratis, verificador de curriculo ats, juntar pdf, triagem rh, AuraToolkit360">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#FAFBFD">
+    <meta name="theme-color" content="#0b0f19">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/pt/">
     <link rel="alternate" hreflang="x-default" href="https://auratoolkit360.com/">
@@ -71,20 +71,20 @@
     
     <style>
         :root {
-            --bg-base: #FAFBFD;
-            --bg-card: #FFFFFF;
-            --bg-card-hover: #F8FAFC;
-            --border-card: #E2E8F0;
-            --border-highlight: #8B5CF6;
+            --bg-base: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 36, 56, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.35);
             --accent-cyan: #38bdf8;
             --accent-purple: #8b5cf6;
             --accent-magenta: #d946ef;
             --accent-green: #10b981;
             --accent-blue: #3b82f6;
             --accent-orange: #f59e0b;
-            --text-primary: #0F172A;
-            --text-secondary: #475569;
-            --text-muted: #64748B;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -137,13 +137,13 @@
 
         /* Modern Scrollbar */
         ::-webkit-scrollbar { width: 7px; height: 7px; }
-        ::-webkit-scrollbar-track { background: #FAFBFD; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
         ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
 
         /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(11, 15, 25, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 0.85rem 2rem;
@@ -1436,7 +1436,6 @@
     <script defer src="/assets/pwa-install.js"></script>
     <link rel="stylesheet" href="/assets/lang-switcher.css">
     <script defer src="/assets/lang-switcher.js"></script>
-    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -1569,7 +1568,7 @@
                             <span>📁 150 Resumes Uploaded</span>
                             <span style="color:#10b981; font-weight:700;">100% Parsed</span>
                         </div>
-                        <div style="font-size:0.72rem; color:#475569;">Top Candidates Ranked by Job Match %</div>
+                        <div style="font-size:0.72rem; color:#94a3b8;">Top Candidates Ranked by Job Match %</div>
                     </div>
                 </div>
 
@@ -1583,8 +1582,8 @@
                     </div>
                     <div class="slide-visual-preview" style="text-align:center;">
                         <div style="font-size:2.2rem; font-weight:900; color:#38bdf8; margin-bottom:0.2rem;">88%</div>
-                        <div style="font-size:0.8rem; color:#334155; font-weight:700;">High Interview Match Probability</div>
-                        <div style="font-size:0.72rem; color:#475569; margin-top:0.4rem;">Keywords Identified: React, TypeScript, GraphQL</div>
+                        <div style="font-size:0.8rem; color:#cbd5e1; font-weight:700;">High Interview Match Probability</div>
+                        <div style="font-size:0.72rem; color:#94a3b8; margin-top:0.4rem;">Keywords Identified: React, TypeScript, GraphQL</div>
                     </div>
                 </div>
             </div>
@@ -1813,7 +1812,7 @@
                 </div>
                 <div class="score-pill-floating">
                     <span class="score-num">89%</span>
-                    <span style="font-size:0.74rem; font-weight:700; color:#334155;">Interview<br>Ready</span>
+                    <span style="font-size:0.74rem; font-weight:700; color:#cbd5e1;">Interview<br>Ready</span>
                 </div>
             </div>
 
@@ -2165,7 +2164,7 @@
 
             if (filtered.length === 0) {
                 searchResultsBox.innerHTML = `
-                    <div style="padding:1rem; text-align:center; color:#475569; font-size:0.85rem;">
+                    <div style="padding:1rem; text-align:center; color:#94a3b8; font-size:0.85rem;">
                         No tools found matching "<strong>${escapeHtml(query)}</strong>"
                     </div>
                 `;
@@ -2175,7 +2174,7 @@
                         <span style="font-size:1.2rem;">${item.icon}</span>
                         <div>
                             <div style="font-weight:700; font-size:0.88rem;">${escapeHtml(item.name)}</div>
-                            <div style="font-size:0.72rem; color:#475569;">${escapeHtml(item.category)} Tool</div>
+                            <div style="font-size:0.72rem; color:#94a3b8;">${escapeHtml(item.category)} Tool</div>
                         </div>
                         <span class="tool-cat-pill">${escapeHtml(item.category)}</span>
                     </a>

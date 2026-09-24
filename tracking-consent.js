@@ -103,46 +103,25 @@
     window.__atk360GaConfigured = true;
   }
 
-  function triggerAdsLoad() {
+  function enableAds() {
     if (window.__atk360AdsLoaded) {
       return;
     }
-    window.__atk360AdsLoaded = true;
-
-    var events = ['scroll', 'touchstart', 'click'];
-    events.forEach(function (evt) {
-      window.removeEventListener(evt, triggerAdsLoad, { passive: true });
-    });
 
     loadScriptOnce(
       'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(adsenseClient),
       { crossorigin: 'anonymous' }
     );
+    window.__atk360AdsLoaded = true;
   }
 
-  function enableAds(immediate) {
-    if (window.__atk360AdsLoaded) {
-      return;
-    }
-
-    if (immediate) {
-      triggerAdsLoad();
-      return;
-    }
-
-    var events = ['scroll', 'touchstart', 'click'];
-    events.forEach(function (evt) {
-      window.addEventListener(evt, triggerAdsLoad, { passive: true, once: true });
-    });
-  }
-
-  function applyPreferences(prefs, immediate) {
+  function applyPreferences(prefs) {
     applyConsentMode(prefs);
     if (prefs.analytics) {
       enableAnalytics();
     }
     if (prefs.ads) {
-      enableAds(immediate);
+      enableAds();
     }
   }
 
@@ -214,7 +193,7 @@
     var normalized = savePrefs(prefs);
     removeBanner();
     removeModal();
-    applyPreferences(normalized, true);
+    applyPreferences(normalized);
   }
 
   function openPreferencesModal(initialPrefs) {
