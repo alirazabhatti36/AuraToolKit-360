@@ -42,11 +42,8 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional"></noscript>
-    <link rel="stylesheet" href="/assets/social-share.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/social-share.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/social-share.css">
     <script defer src="/assets/social-share.js"></script>
     
     <script type="application/ld+json">
@@ -66,11 +63,11 @@
             --bg-card: #FFFFFF;
             --bg-card-hover: #F8FAFC;
             --border-card: #E2E8F0;
-            --border-highlight: #DDD6FE;
-            --accent-cyan: #7C3AED;
-            --accent-purple: #6D28D9;
-            --accent-green: #059669;
-            --accent-blue: #4F46E5;
+            --border-highlight: #8B5CF6;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
             --accent-amber: #f59e0b;
             --accent-red: #ef4444;
             --text-primary: #0F172A;
@@ -132,13 +129,13 @@
 
         /* Modern Scrollbar */
         ::-webkit-scrollbar { width: 7px; height: 7px; }
-        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-track { background: #FAFBFD; }
         ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
 
         /* ===== NAVBAR ===== */
         .navbar {
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 0.85rem 2rem;
@@ -210,7 +207,7 @@
         }
         .nav-link:hover {
             color: #ffffff;
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.05);
         }
         .nav-link.active {
             color: #ffffff;
@@ -324,12 +321,12 @@
             margin-top: 1rem;
         }
         .hero-feature-pill {
-            background:#F8FAFC;
-            border: 1px solid #E2E8F0;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 999px;
             padding: 0.35rem 0.85rem;
             font-size: 0.78rem;
-            color:#334155;
+            color: #cbd5e1;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
@@ -344,7 +341,7 @@
             border: 1px solid var(--border-card);
             border-radius: 20px;
             padding: 2.2rem;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
             margin-bottom: 2rem;
             position: relative;
         }
@@ -375,8 +372,8 @@
         }
         .input-field {
             width: 100%;
-            background: #FFFFFF;
-            border: 1px solid #CBD5E1;
+            background: rgba(11, 15, 25, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 12px;
             padding: 0.85rem 1rem;
             font-size: 0.92rem;
@@ -388,7 +385,7 @@
         .input-field:focus {
             border-color: var(--accent-cyan);
             box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.95);
         }
         textarea.input-field {
             min-height: 120px;
@@ -402,7 +399,7 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.28s;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -419,7 +416,7 @@
         }
         .upload-zone p {
             font-size: 0.92rem;
-            color:#334155;
+            color: #cbd5e1;
             font-weight: 600;
         }
         .file-counter-pill {
@@ -464,9 +461,9 @@
             transform: none;
         }
         .btn-outline {
-            background:#F8FAFC;
-            color:#1E293B;
-            border: 1px solid #CBD5E1;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         .btn-outline:hover {
             background: rgba(255, 255, 255, 0.1);
@@ -500,8 +497,8 @@
             color: white;
         }
         .progress-bar-container {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            background: rgba(11, 15, 25, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 999px;
             height: 12px;
             overflow: hidden;
@@ -527,7 +524,7 @@
             .stats-summary-grid { grid-template-columns: repeat(2, 1fr); }
         }
         .stat-card {
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.6);
             border: 1px solid var(--border-card);
             border-radius: 16px;
             padding: 1.1rem;
@@ -567,7 +564,7 @@
 
         /* FILTER TOOLBAR */
         .filter-toolbar {
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.6);
             border-radius: 16px;
             padding: 1.2rem;
             margin-bottom: 1.5rem;
@@ -582,13 +579,13 @@
             flex-wrap: wrap;
         }
         .status-chips .chip {
-            background:#F8FAFC;
-            border: 1px solid #CBD5E1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 999px;
             padding: 0.38rem 0.95rem;
             font-size: 0.8rem;
             font-weight: 600;
-            color:#334155;
+            color: #cbd5e1;
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -610,7 +607,7 @@
             margin-top: 1rem;
             border-radius: 14px;
             border: 1px solid var(--border-card);
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.5);
             -webkit-overflow-scrolling: touch;
         }
         table {
@@ -620,7 +617,7 @@
             border-collapse: collapse;
             text-align: left;
             font-size: 0.86rem;
-            color:#1E293B;
+            color: #e2e8f0;
         }
         th {
             background: rgba(14, 19, 31, 0.9);
@@ -635,7 +632,7 @@
         }
         td {
             padding: 0.8rem 0.75rem;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             vertical-align: middle;
         }
         .col-num { width: 44px; text-align: center; }
@@ -646,7 +643,7 @@
         .col-status { width: 120px; text-align: center; }
         .col-actions { width: 180px; text-align: center; white-space: nowrap; }
         tr:hover td {
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.02);
         }
         .score-badge {
             display: inline-block;
@@ -726,7 +723,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.2rem;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 0.8rem;
         }
         .modal-head h3 {
@@ -735,8 +732,8 @@
             font-weight: 700;
         }
         .btn-close {
-            background:#F8FAFC;
-            border: 1px solid #CBD5E1;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             width: 32px;
             height: 32px;
@@ -786,8 +783,8 @@
             margin: 1.5rem 0;
         }
         .feature-box {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 14px;
             padding: 1.3rem;
         }
@@ -807,7 +804,7 @@
             line-height: 1.5;
         }
         .faq-item {
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             padding: 1.1rem 0;
         }
         .faq-item:last-child { border-bottom: none; }
@@ -875,7 +872,7 @@
             max-width: 1280px;
             margin: 0 auto;
             padding-top: 1.5rem;
-            border-top: 1px solid #E2E8F0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -899,7 +896,7 @@
             justify-content: space-around;
             width: 38px;
             height: 38px;
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-card, rgba(255, 255, 255, 0.12));
             border-radius: 9px;
             cursor: pointer;
@@ -933,12 +930,12 @@
         .mobile-nav-drawer {
             display: none;
             width: 100%;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.98);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid var(--border-card, rgba(255, 255, 255, 0.08));
             padding: 1rem 1.25rem 1.4rem;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
         }
         .mobile-nav-drawer.open {
             display: block;
@@ -959,11 +956,11 @@
             gap: 0.75rem;
             padding: 0.75rem 1rem;
             border-radius: 10px;
-            color:#334155;
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.92rem;
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid transparent;
             transition: all 0.2s ease;
         }
@@ -988,46 +985,22 @@
             .nav-search-trigger .search-text { display: none; }
         }
 
-    
-        @media (max-width: 768px) {
-            .ambient-glow-top-left, .ambient-glow-top-right, .ambient-glow-mid {
-                display: none !important;
-            }
-        }
     </style>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <link rel="manifest" href="/manifest.json">
     <script defer src="/assets/pwa-install.js"></script>
-    <link rel="stylesheet" href="/assets/lang-switcher.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/lang-switcher.css"></noscript>
-    <script defer src="/assets/lang-switcher.js"></script>
     <link rel="stylesheet" href="/assets/saas-ui.css">
+    <link rel="stylesheet" href="/assets/lang-switcher.css">
+    <script defer src="/assets/lang-switcher.js"></script>
 </head>
 <body>
-    <!-- ===== TOP TRUST BAR ===== -->
-    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
-        <div class="top-trust-inner">
-            <div class="trust-left">
-                <span class="pulse-dot-wrap">
-                    <span class="pulse-dot-ping"></span>
-                    <span class="pulse-dot-core"></span>
-                </span>
-                <strong style="color:#1E293B; font-weight:600;">100% Private Client-Side Sandbox:</strong>
-                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
-            </div>
-            <div class="trust-right">
-                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
-                <span>•</span>
-                <span>Zero Telemetry</span>
-                <span>•</span>
-                <span style="color:#334155; font-family:monospace;">auratoolkit360.com</span>
-            </div>
-        </div>
-    </aside>
-
 
     <!-- Ambient Neon Aurora Glows -->
     <div class="ambient-glow-top-left"></div>
@@ -1039,7 +1012,7 @@
         <div class="nav-container">
             <a href="/" class="logo">
                 <div class="logo-symbol">A</div>
-                <div class="logo-text">AuraToolkit<span>360</span><span class="logo-pro-badge">Pro</span></div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
             </a>
             
             <div class="nav-center">
@@ -1257,10 +1230,10 @@
                 <div id="modalMeta" style="margin-bottom:1.2rem;"></div>
                 
                 <!-- Detailed Skills Breakdown Box -->
-                <div id="modalSkillsBox" style="background:#F8FAFC; border-radius:14px; padding:1.1rem; margin-bottom:1.2rem; border:1px solid #E2E8F0;"></div>
+                <div id="modalSkillsBox" style="background:rgba(11, 15, 25, 0.6); border-radius:14px; padding:1.1rem; margin-bottom:1.2rem; border:1px solid rgba(255,255,255,0.08);"></div>
 
                 <div style="font-weight:700; font-size:0.86rem; color:var(--text-secondary); margin-bottom:0.5rem;">Extracted Resume Content:</div>
-                <pre id="modalText" style="white-space:pre-wrap; font-family:inherit; font-size:0.84rem; color:#334155; background:#F8FAFC; padding:1rem; border-radius:12px; max-height:350px; overflow-y:auto; border:1px solid #E2E8F0;"></pre>
+                <pre id="modalText" style="white-space:pre-wrap; font-family:inherit; font-size:0.84rem; color:#334155; background:rgba(11, 15, 25, 0.7); padding:1rem; border-radius:12px; max-height:350px; overflow-y:auto; border:1px solid rgba(255,255,255,0.08);"></pre>
             </div>
             <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center; margin-top:1.4rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.08); flex-wrap:wrap; gap:0.6rem;">
                 <div id="modalActions" style="display:flex; gap:0.4rem;"></div>
@@ -1380,36 +1353,9 @@
 
     <!-- ===== SCRIPT: CORE EXTRACTION & SCREENING LOGIC ===== -->
     <script>
-        let hrLibsLoaded = false;
-        let hrLibsPromise = null;
-        function loadHrLibraries() {
-            if (hrLibsPromise) return hrLibsPromise;
-            function loadScript(src) {
-                return new Promise((resolve, reject) => {
-                    const s = document.createElement('script');
-                    s.src = src;
-                    s.onload = resolve;
-                    s.onerror = reject;
-                    document.head.appendChild(s);
-                });
-            }
-            hrLibsPromise = Promise.all([
-                loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js'),
-                loadScript('https://unpkg.com/mammoth/mammoth.browser.min.js'),
-                loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js')
-            ]).then(() => {
-                if (window.pdfjsLib) {
-                    window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-                }
-                hrLibsLoaded = true;
-            });
-            return hrLibsPromise;
+        if (window.pdfjsLib) {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
         }
-
-        // Preload on first user interaction
-        ['touchstart', 'scroll', 'pointerdown', 'focusin', 'dragover'].forEach(evt => {
-            window.addEventListener(evt, () => loadHrLibraries(), { once: true, passive: true });
-        });
 
         let selectedFiles = [];
         let bulkResults = [];
@@ -1417,7 +1363,6 @@
         let activeStatusFilter = 'all';
 
         function handleFiles(files) {
-            loadHrLibraries();
             selectedFiles = Array.from(files);
             const countEl = document.getElementById('fileCount');
             if (selectedFiles.length > 0) {
@@ -1471,8 +1416,6 @@
 
         async function startBulkScan() {
             if (!selectedFiles.length) { alert('Please select candidate resumes first!'); return; }
-
-            await loadHrLibraries();
 
             const jobTitle = document.getElementById('jobTitle').value.trim();
             const jobDesc = document.getElementById('jobDesc').value.trim();
@@ -1742,9 +1685,8 @@
                 alert('No candidates shortlisted yet! Click ⭐ on candidates to shortlist them first.');
                 return;
             }
-            await loadHrLibraries();
             if (!window.JSZip) {
-                alert('ZIP generator module is loading... Please try again.');
+                alert('ZIP generator module is loading...');
                 return;
             }
 

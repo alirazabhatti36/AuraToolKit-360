@@ -35,22 +35,20 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional"></noscript>>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { overflow-x: clip; scroll-behavior: smooth; }
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
         
-        .navbar { background: #FFFFFF; backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid #E2E8F0; position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .navbar { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
         .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
         .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
         .nav-links { display: flex; gap: 0.4rem; align-items: center; }
         .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
-        .nav-links a:hover { background:#F8FAFC; color: #38bdf8; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
         .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
@@ -58,58 +56,38 @@
         .page-head h1 { font-size: 2.3rem; font-weight: 900; color: #ffffff; }
         .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; }
 
-        .tool-card { background: #FFFFFF; backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid #CBD5E1; padding: 2rem; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03); text-align: center; }
-        .upload-zone { border: 2px dashed rgba(56,189,248,0.4); border-radius: 18px; padding: 2.5rem 1.5rem; background: #FFFFFF; cursor: pointer; transition: all 0.3s; margin-bottom: 1.5rem; }
+        .tool-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); padding: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); text-align: center; }
+        .upload-zone { border: 2px dashed rgba(56,189,248,0.4); border-radius: 18px; padding: 2.5rem 1.5rem; background: rgba(15,23,42,0.5); cursor: pointer; transition: all 0.3s; margin-bottom: 1.5rem; }
         .upload-zone:hover { border-color: #38bdf8; background: rgba(56,189,248,0.08); }
 
         .controls-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; align-items: center; }
-        .controls-row label { font-size: 0.88rem; font-weight: 600; color:#334155; }
-        .controls-row input, .controls-row select { background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 10px; padding: 0.5rem 0.8rem; color: #f8fafc; font-size: 0.88rem; outline: none; }
+        .controls-row label { font-size: 0.88rem; font-weight: 600; color: #cbd5e1; }
+        .controls-row input, .controls-row select { background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 0.5rem 0.8rem; color: #f8fafc; font-size: 0.88rem; outline: none; }
 
         .btn-action { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; border-radius: 12px; padding: 0.8rem 2rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(37,99,235,0.35); }
         .btn-action:hover { opacity: 0.92; transform: translateY(-1px); }
 
-        .preview-canvas { max-width: 100%; border-radius: 14px; border: 1px solid #CBD5E1; background: #ffffff; margin-top: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .preview-canvas { max-width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,0.15); background: #ffffff; margin-top: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
 
-        .info-card { background: #FFFFFF; backdrop-filter: blur(12px); border: 1px solid #E2E8F0; border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
         .info-card h2 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
         .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; }
 
-        footer { margin-top: auto; background: #FFFFFF; border-top: 1px solid #E2E8F0; padding-top: 2rem; }
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
         .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
         .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
         .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
         .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
         .footer-links a { color: #94a3b8; text-decoration: none; }
         .footer-links a:hover { color: #38bdf8; }
-        .footer-bottom { border-top: 1px solid #E2E8F0; text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
     </style>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
-    <!-- ===== TOP TRUST BAR ===== -->
-    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
-        <div class="top-trust-inner">
-            <div class="trust-left">
-                <span class="pulse-dot-wrap">
-                    <span class="pulse-dot-ping"></span>
-                    <span class="pulse-dot-core"></span>
-                </span>
-                <strong style="color:#1E293B; font-weight:600;">100% Private Client-Side Sandbox:</strong>
-                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
-            </div>
-            <div class="trust-right">
-                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
-                <span>•</span>
-                <span>Zero Telemetry</span>
-                <span>•</span>
-                <span style="color:#334155; font-family:monospace;">auratoolkit360.com</span>
-            </div>
-        </div>
-    </aside>
-
 
     <nav class="navbar">
         <div class="nav-container">
@@ -136,8 +114,8 @@
         <div class="tool-card">
             <div class="upload-zone" onclick="document.getElementById('imgFileInp').click()">
                 <div style="font-size:3rem; margin-bottom:0.5rem;">🌟</div>
-                <div style="font-weight:700; color:#f8fafc; font-size:1.1rem;">Click to Upload Image File</div>
-                <div style="color:#94a3b8; font-size:0.88rem; margin-top:0.3rem;">Supports JPG, PNG, WEBP, GIF, SVG</div>
+                <div style="font-weight:700; color:#0F172A; font-size:1.1rem;">Click to Upload Image File</div>
+                <div style="color:#475569; font-size:0.88rem; margin-top:0.3rem;">Supports JPG, PNG, WEBP, GIF, SVG</div>
                 <input type="file" id="imgFileInp" accept="image/*" style="display:none" onchange="loadToolImage(this.files)">
             </div>
             <div id="selectedImgName" style="color:#38bdf8; font-weight:700; margin-bottom:1rem;"></div>
@@ -169,7 +147,7 @@
             <p>A favicon is your website's primary visual identity in browser tabs, bookmark bars, history lists, and mobile home screen shortcuts. AuraToolkit360 converts your brand logo into standard multi-resolution ICO and PNG icon sets.</p>
 
             <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">Essential Favicon Resolutions</h3>
-            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
+            <ul style="color:#475569; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
                 <li><strong>16x16 px & 32x32 px:</strong> Standard browser tab and bookmark icons.</li>
                 <li><strong>48x48 px:</strong> Windows desktop shortcuts and taskbar thumbnails.</li>
                 <li><strong>180x180 px:</strong> Apple Touch Icon for iOS Safari home screen bookmarks.</li>
@@ -178,8 +156,8 @@
 
             <h3 style="color:#38bdf8; margin: 1.5rem 0 0.5rem; font-size:1.15rem;">Frequently Asked Questions (FAQ)</h3>
             <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
-                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Should I use PNG or ICO for my favicon?</h4>
-                <p style="color:#94a3b8; font-size:0.9rem;">Modern websites use both: a <code>favicon.ico</code> for legacy browser support and <code>favicon.svg</code> or PNG for crisp high-DPI displays.</p>
+                <h4 style="color:#0F172A; margin-bottom:0.3rem;">❓ Should I use PNG or ICO for my favicon?</h4>
+                <p style="color:#475569; font-size:0.9rem;">Modern websites use both: a <code>favicon.ico</code> for legacy browser support and <code>favicon.svg</code> or PNG for crisp high-DPI displays.</p>
             </div>
         </div></main>
 

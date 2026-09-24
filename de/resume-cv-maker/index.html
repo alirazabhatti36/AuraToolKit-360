@@ -43,12 +43,8 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional"></noscript>
-    <link rel="stylesheet" href="/assets/social-share.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/social-share.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/social-share.css"></noscript></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/social-share.css">
     <script defer src="/assets/social-share.js"></script>
     
     <style>
@@ -57,11 +53,11 @@
             --bg-card: #FFFFFF;
             --bg-card-hover: #F8FAFC;
             --border-card: #E2E8F0;
-            --border-highlight: #DDD6FE;
-            --accent-cyan: #7C3AED;
-            --accent-purple: #6D28D9;
-            --accent-green: #059669;
-            --accent-blue: #4F46E5;
+            --border-highlight: #8B5CF6;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
             --accent-orange: #f59e0b;
             --text-primary: #0F172A;
             --text-secondary: #475569;
@@ -69,7 +65,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { overflow-x: hidden; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; width: 100%; max-width: 100vw; }
+        html { overflow-x: clip; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
         body {
             font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-base);
@@ -78,9 +74,7 @@
             display: flex;
             flex-direction: column;
             line-height: 1.6;
-            overflow-x: hidden;
-            width: 100%;
-            max-width: 100vw;
+            overflow-x: clip;
             position: relative;
             padding-top: 76px;
             -webkit-font-smoothing: antialiased;
@@ -123,13 +117,13 @@
 
         /* Modern Scrollbar */
         ::-webkit-scrollbar { width: 7px; height: 7px; }
-        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-track { background: #FAFBFD; }
         ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
 
         /* ===== NAVBAR ===== */
         .navbar {
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 0.85rem 2rem;
@@ -201,7 +195,7 @@
         }
         .nav-link:hover {
             color: #ffffff;
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.05);
         }
         .nav-link.active {
             color: #ffffff;
@@ -258,12 +252,9 @@
 
         /* MAIN CONTAINER */
         .container {
-            width: 100%;
             max-width: 1360px;
             margin: 0 auto;
             padding: 1.8rem 1.2rem 4rem;
-            min-width: 0;
-            box-sizing: border-box;
         }
 
         /* PAGE HERO HEADER */
@@ -297,10 +288,7 @@
             margin-bottom: 0.5rem;
         }
         @media (max-width: 768px) {
-            .page-header { margin-bottom: 1rem; }
-            .page-header h1 { font-size: 1.8rem; }
-            .page-header p { font-size: 0.88rem; line-height: 1.45; }
-            .resume-feature-pills { display: none; }
+            .page-header h1 { font-size: 1.9rem; }
         }
         .page-header p {
             color: var(--text-secondary);
@@ -319,7 +307,7 @@
             margin-top: 1rem;
         }
         .res-pill {
-            background: #FFFFFF;
+            background: rgba(18, 24, 38, 0.6);
             border: 1px solid var(--border-card);
             color: var(--text-secondary);
             font-size: 0.78rem;
@@ -327,108 +315,6 @@
             padding: 0.3rem 0.85rem;
             border-radius: 999px;
         }
-
-        /* ===== MOBILE BUILDER TABS & FLOATING BAR ===== */
-        .mobile-builder-tabs {
-            display: none;
-            background: #FFFFFF;
-            border: 1px solid var(--border-card);
-            border-radius: 14px;
-            padding: 4px;
-            margin-bottom: 1.2rem;
-            position: sticky;
-            top: 70px;
-            z-index: 50;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-        }
-        .mobile-tab-btn {
-            flex: 1;
-            padding: 0.65rem 0.8rem;
-            border-radius: 10px;
-            font-size: 0.86rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            transition: all 0.2s ease;
-        }
-        .mobile-tab-btn.active {
-            background: linear-gradient(135deg, #0284c7, #6366f1);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
-        }
-        .mobile-tab-btn .tab-badge {
-            font-size: 0.68rem;
-            background: rgba(16, 185, 129, 0.2);
-            color: #34d399;
-            padding: 0.12rem 0.45rem;
-            border-radius: 999px;
-            font-weight: 800;
-        }
-
-        .preview-scroll-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 0.5rem;
-        }
-
-        .mobile-floating-bar {
-            display: none;
-            position: fixed;
-            bottom: 12px;
-            left: 12px;
-            right: 12px;
-            z-index: 999;
-            background: #FFFFFF;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 16px;
-            padding: 0.55rem 0.75rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            gap: 0.5rem;
-            align-items: center;
-        }
-        .mobile-float-btn {
-            border: none;
-            border-radius: 10px;
-            padding: 0.55rem 0.75rem;
-            font-size: 0.82rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.35rem;
-            font-family: inherit;
-        }
-        .mobile-float-btn.secondary {
-            flex: 2;
-            background: rgba(56, 189, 248, 0.15);
-            color: var(--accent-cyan);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-        }
-        .mobile-float-btn.primary {
-            flex: 1.2;
-            background: linear-gradient(135deg, #0284c7, #38bdf8);
-            color: #ffffff;
-        }
-        .mobile-float-btn.outline {
-            flex: 1.2;
-            background: rgba(255, 255, 255, 0.08);
-            color: #ffffff;
-            border: 1px solid #CBD5E1;
-        }
-
-
 
         /* RESUME BUILDER 2-COLUMN LAYOUT */
         .layout {
@@ -454,7 +340,7 @@
             border-radius: 20px;
             padding: 1.6rem;
             color: var(--text-primary);
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .section { margin-top: 1.4rem; }
@@ -466,7 +352,7 @@
             flex-wrap: wrap;
             margin-bottom: 0.6rem;
             padding-bottom: 0.4rem;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .section-head h3 {
             font-size: 1.02rem;
@@ -494,8 +380,8 @@
         }
         .field input, .field textarea, .field select {
             width: 100%;
-            background: #FFFFFF;
-            border: 1px solid #CBD5E1;
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 10px;
             padding: 0.6rem 0.8rem;
             font-size: 0.86rem;
@@ -560,11 +446,11 @@
         }
 
         .entry {
-            border: 1px solid #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
             padding: 0.85rem;
             margin-bottom: 0.75rem;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.5);
             transition: border-color 0.2s;
         }
         .entry:hover {
@@ -590,7 +476,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.5);
             border: 1px dashed rgba(255, 255, 255, 0.15);
             border-radius: 14px;
             padding: 0.85rem;
@@ -602,7 +488,7 @@
             border-radius: 50%;
             border: 2px solid var(--accent-cyan);
             overflow: hidden;
-            background: #FFFFFF;
+            background: rgba(30, 41, 59, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -627,14 +513,13 @@
             border-radius: 20px;
             padding: 1.35rem 1.6rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
         .template-grid {
             display: grid;
             grid-template-columns: repeat(6, minmax(0, 1fr));
             gap: 0.65rem;
             margin-top: 0.6rem;
-            min-height: 88px;
         }
         @media (max-width: 1200px) {
             .template-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -646,12 +531,12 @@
             .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         .template-chip {
-            border: 1px solid #CBD5E1;
-            background: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(11, 15, 25, 0.6);
             border-radius: 12px;
             padding: 0.6rem;
             text-align: left;
-            color:#334155;
+            color: #cbd5e1;
             min-height: 88px;
             cursor: pointer;
             transition: all 0.22s;
@@ -672,7 +557,7 @@
             height: 38px;
             border-radius: 6px;
             margin-bottom: 0.4rem;
-            border: 1px solid #CBD5E1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             background: #ffffff;
             overflow: hidden;
             position: relative;
@@ -708,7 +593,7 @@
         .customizer-toolbar {
             margin-top: 1.2rem;
             padding-top: 1rem;
-            border-top: 1px solid #E2E8F0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             display: grid;
             grid-template-columns: 1.3fr 1.1fr 1fr 1.2fr;
             gap: 1.2rem;
@@ -740,7 +625,6 @@
             align-items: center;
             gap: 0.45rem;
             flex-wrap: wrap;
-            min-height: 26px;
         }
         .color-dot {
             width: 24px;
@@ -764,7 +648,7 @@
             height: 26px;
             border-radius: 50%;
             border: 1px dashed rgba(255,255,255,0.4);
-            background:#F8FAFC;
+            background: rgba(255,255,255,0.06);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -781,8 +665,8 @@
             cursor: pointer;
         }
         .customizer-select {
-            background: #FFFFFF;
-            border: 1px solid #CBD5E1;
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             color: #f8fafc;
             padding: 0.45rem 0.75rem;
             border-radius: 10px;
@@ -798,8 +682,8 @@
         }
         .segmented-control {
             display: inline-flex;
-            background: #FFFFFF;
-            border: 1px solid #CBD5E1;
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 10px;
             padding: 2px;
             gap: 2px;
@@ -834,8 +718,8 @@
             z-index: 40;
             max-height: calc(100vh - 110px);
             overflow-y: auto;
-            border: 1px solid #CBD5E1;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
         }
         .preview-paper {
             background: #ffffff;
@@ -895,8 +779,8 @@
             margin: 1.5rem 0;
         }
         .feature-box {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 14px;
             padding: 1.3rem;
         }
@@ -916,7 +800,7 @@
             line-height: 1.5;
         }
         .faq-item {
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             padding: 1.1rem 0;
         }
         .faq-item:last-child { border-bottom: none; }
@@ -984,7 +868,7 @@
             max-width: 1280px;
             margin: 0 auto;
             padding-top: 1.5rem;
-            border-top: 1px solid #E2E8F0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1007,7 +891,7 @@
             justify-content: space-around;
             width: 38px;
             height: 38px;
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-card, rgba(255, 255, 255, 0.12));
             border-radius: 9px;
             cursor: pointer;
@@ -1041,12 +925,12 @@
         .mobile-nav-drawer {
             display: none;
             width: 100%;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.98);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid var(--border-card, rgba(255, 255, 255, 0.08));
             padding: 1rem 1.25rem 1.4rem;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
         }
         .mobile-nav-drawer.open {
             display: block;
@@ -1067,11 +951,11 @@
             gap: 0.75rem;
             padding: 0.75rem 1rem;
             border-radius: 10px;
-            color:#334155;
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.92rem;
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid transparent;
             transition: all 0.2s ease;
         }
@@ -1105,14 +989,13 @@
             flex-wrap: wrap;
             margin-top: 1rem;
             padding-top: 1rem;
-            border-top: 1px solid #E2E8F0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
         .paper-palette {
             display: flex;
             gap: 0.45rem;
             align-items: center;
             flex-wrap: wrap;
-            min-height: 26px;
         }
         .paper-circle {
             width: 24px;
@@ -1213,7 +1096,7 @@
             justify-content: center;
             cursor: pointer;
             overflow: hidden;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
         .showcase-thumb-wrap img {
             width: 100%;
@@ -1286,8 +1169,8 @@
         .showcase-btn-preview {
             flex: 1;
             background: rgba(255, 255, 255, 0.08);
-            color:#334155;
-            border: 1px solid #CBD5E1;
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 8px;
             padding: 0.6rem 0.8rem;
             font-size: 0.82rem;
@@ -1301,203 +1184,13 @@
             color: #ffffff;
         }
 
-        /* ===== COMPREHENSIVE RESPONSIVE MOBILE STYLING ===== */
-        @media (max-width: 960px) {
-            .ambient-glow-top-left, .ambient-glow-top-right, .ambient-glow-mid {
-                display: none !important;
-            }
-            .mobile-builder-tabs {
-                display: flex !important;
-            }
-            .mobile-floating-bar {
-                display: flex !important;
-            }
-            .form-column.mobile-hidden,
-            .preview-column.mobile-hidden {
-                display: none !important;
-            }
-            .container {
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                padding: 1rem 0.8rem 5.5rem !important;
-                box-sizing: border-box !important;
-            }
-            .card {
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                padding: 1.1rem 0.9rem !important;
-                border-radius: 16px !important;
-                box-sizing: border-box !important;
-            }
-            .template-top-card {
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                padding: 1.1rem 0.9rem !important;
-                border-radius: 16px !important;
-                box-sizing: border-box !important;
-            }
-            .template-grid {
-                display: flex !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch;
-                scroll-snap-type: x mandatory;
-                gap: 0.65rem !important;
-                padding-bottom: 0.6rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                box-sizing: border-box !important;
-            }
-            .template-chip {
-                min-width: 130px !important;
-                max-width: 130px !important;
-                flex: 0 0 130px !important;
-                scroll-snap-align: start;
-                padding: 0.55rem !important;
-                min-height: 84px !important;
-                box-sizing: border-box !important;
-            }
-            .customizer-toolbar {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 0.85rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                box-sizing: border-box !important;
-            }
-            .customizer-group {
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            .segmented-control {
-                width: 100% !important;
-                display: flex !important;
-                box-sizing: border-box !important;
-            }
-            .seg-btn {
-                flex: 1 !important;
-                text-align: center !important;
-                padding: 0.45rem 0.2rem !important;
-                font-size: 0.76rem !important;
-            }
-            .page-setup-toolbar {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: stretch !important;
-                gap: 0.85rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                box-sizing: border-box !important;
-            }
-            .layout {
-                display: block !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                box-sizing: border-box !important;
-            }
-            .section-head, .entry-head {
-                width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            .field input, .field textarea, .field select {
-                width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            .photo-picker {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 0.75rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            .photo-picker > div:last-child {
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                box-sizing: border-box !important;
-            }
-            #photoInput {
-                max-width: 100% !important;
-                width: 100% !important;
-                overflow: hidden !important;
-                box-sizing: border-box !important;
-            }
-            .table-responsive-wrapper {
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch;
-                box-sizing: border-box !important;
-                display: block !important;
-            }
-            .info-section, .info-card, .features-grid, .footer-inner {
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                box-sizing: border-box !important;
-            }
-            .features-grid {
-                grid-template-columns: 1fr !important;
-            }
-            .footer-inner {
-                grid-template-columns: 1fr !important;
-                padding: 2rem 1rem !important;
-            }
-            .preview-paper {
-                padding: 0.85rem 0.75rem !important;
-                font-size: 11.5px !important;
-                line-height: 1.45 !important;
-                min-height: auto !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-                border-radius: 8px !important;
-            }
-            .preview-paper h1 { font-size: 1.35rem !important; }
-            .preview-paper h2 { font-size: 1.15rem !important; }
-            .preview-paper h3 { font-size: 0.95rem !important; }
-            .preview-paper [style*="grid-template-columns: 32% 68%"],
-            .preview-paper [style*="grid-template-columns: 28% 72%"],
-            .preview-paper [style*="grid-template-columns: 50% 50%"],
-            .preview-paper [style*="grid-template-columns: 1fr 1fr"] {
-                grid-template-columns: 1fr !important;
-            }
-            .page-break-marker {
-                display: none !important;
-            }
-            #atk360-cookie-settings-btn {
-                bottom: 72px !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0.65rem 0.85rem !important;
-                width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            .nav-container {
-                width: 100% !important;
-                gap: 0.5rem !important;
-                box-sizing: border-box !important;
-            }
-            .nav-right-actions {
-                gap: 0.4rem !important;
-            }
-        }
-
     </style>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script type="application/ld+json">
     {
@@ -1524,34 +1217,11 @@
 
     <link rel="manifest" href="/manifest.json">
     <script defer src="/assets/pwa-install.js"></script>
-    <link rel="stylesheet" href="/assets/lang-switcher.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/lang-switcher.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/lang-switcher.css"></noscript></noscript>
-    <script defer src="/assets/lang-switcher.js"></script>
     <link rel="stylesheet" href="/assets/saas-ui.css">
+    <link rel="stylesheet" href="/assets/lang-switcher.css">
+    <script defer src="/assets/lang-switcher.js"></script>
 </head>
 <body>
-    <!-- ===== TOP TRUST BAR ===== -->
-    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
-        <div class="top-trust-inner">
-            <div class="trust-left">
-                <span class="pulse-dot-wrap">
-                    <span class="pulse-dot-ping"></span>
-                    <span class="pulse-dot-core"></span>
-                </span>
-                <strong style="color:#1E293B; font-weight:600;">100% Private Client-Side Sandbox:</strong>
-                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
-            </div>
-            <div class="trust-right">
-                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
-                <span>•</span>
-                <span>Zero Telemetry</span>
-                <span>•</span>
-                <span style="color:#334155; font-family:monospace;">auratoolkit360.com</span>
-            </div>
-        </div>
-    </aside>
-
 
     <!-- Ambient Neon Aurora Glows -->
     <div class="ambient-glow-top-left"></div>
@@ -1563,7 +1233,7 @@
         <div class="nav-container">
             <a href="/de/" class="logo">
                 <div class="logo-symbol">A</div>
-                <div class="logo-text">AuraToolkit<span>360</span><span class="logo-pro-badge">Pro</span></div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
             </a>
             
             <div class="nav-center">
@@ -1654,8 +1324,8 @@
                 <div style="display:flex; align-items:center; gap:0.65rem;">
                     <span style="font-size:1.4rem;">🎨</span>
                     <div>
-                        <h2 style="font-size:1.15rem; font-weight:800; color:#f8fafc; margin:0; line-height:1.3;">Step 1: Choose Resume Template &amp; Styling</h2>
-                        <p style="font-size:0.82rem; color:#94a3b8; margin:0;">Select from 12 ATS formats, customize accent colors, typography, and 1-page fit spacing in real-time.</p>
+                        <h2 style="font-size:1.15rem; font-weight:800; color:#0F172A; margin:0; line-height:1.3;">Step 1: Choose Resume Template &amp; Styling</h2>
+                        <p style="font-size:0.82rem; color:#475569; margin:0;">Select from 12 ATS formats, customize accent colors, typography, and 1-page fit spacing in real-time.</p>
                     </div>
                 </div>
                 <div style="display:flex; align-items:center; gap:0.5rem;">
@@ -1736,18 +1406,8 @@
 
         </div>
 
-        <!-- Mobile View Switcher Tabs (Visible on mobile/tablet) -->
-        <div class="mobile-builder-tabs" id="mobileBuilderTabs">
-            <button type="button" class="mobile-tab-btn active" id="tabBtnForm" onclick="switchMobileView('form')">
-                <span>📝</span> Edit Resume
-            </button>
-            <button type="button" class="mobile-tab-btn" id="tabBtnPreview" onclick="switchMobileView('preview')">
-                <span>👁️</span> Live Preview <span class="tab-badge" id="mobilePageBadge">1 Page ✅</span>
-            </button>
-        </div>
-
         <div class="layout">
-            <div class="card form-column" id="resumeFormCol">
+            <div class="card">
                 <div class="section-head">
                     <h3><span>📝</span> Step 2: Fill Your Information</h3>
                     <div class="small">Draft auto-saved</div>
@@ -1793,8 +1453,8 @@
                         <div style="display:flex; align-items:center; gap:0.45rem;">
                             <span style="font-size:1.1rem;">⚡</span>
                             <div>
-                                <strong style="font-size:0.82rem; color:#f8fafc;">Pre-Written ATS Bullet Inspo (STAR Method):</strong>
-                                <span style="font-size:0.75rem; color:#94a3b8; display:block;">Select your role to insert quantified, high-impact achievements</span>
+                                <strong style="font-size:0.82rem; color:#0F172A;">Pre-Written ATS Bullet Inspo (STAR Method):</strong>
+                                <span style="font-size:0.75rem; color:#475569; display:block;">Select your role to insert quantified, high-impact achievements</span>
                             </div>
                         </div>
                         <select id="roleInspoSelect" class="customizer-select" style="padding:0.35rem 0.7rem; font-size:0.78rem; max-width:240px;" onchange="insertRoleBullets(this.value)">
@@ -1884,19 +1544,19 @@
                 </div>
             </div>
 
-<div class="card sticky-preview preview-column mobile-hidden" id="resumePreviewCol">
+<div class="card sticky-preview">
                 <!-- Target Job Matcher Collapsible Bar -->
-                <div style="background:#F8FAFC; border:1px solid rgba(255, 255, 255, 0.1); border-radius:10px; padding:0.65rem 0.85rem; margin-bottom:0.75rem;">
+                <div style="background:rgba(18, 24, 38, 0.9); border:1px solid rgba(255, 255, 255, 0.1); border-radius:10px; padding:0.65rem 0.85rem; margin-bottom:0.75rem;">
                     <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="toggleJobMatcher()">
                         <div style="display:flex; align-items:center; gap:0.45rem;">
                             <span style="font-size:0.95rem;">🎯</span>
-                            <span style="font-size:0.82rem; font-weight:700; color:#f8fafc;">Target Job Description Matcher</span>
+                            <span style="font-size:0.82rem; font-weight:700; color:#0F172A;">Target Job Description Matcher</span>
                             <span id="matchScoreBadge" style="font-size:0.7rem; background:rgba(56, 189, 248, 0.15); color:#38bdf8; padding:0.12rem 0.5rem; border-radius:6px; font-weight:600;">Optional</span>
                         </div>
-                        <span id="matcherToggleIcon" style="color:#94a3b8; font-size:0.78rem;">▼ Click to expand</span>
+                        <span id="matcherToggleIcon" style="color:#475569; font-size:0.78rem;">▼ Click to expand</span>
                     </div>
                     <div id="jobMatcherBody" style="display:none; margin-top:0.65rem;">
-                        <textarea id="targetJobDescInput" placeholder="Paste the job requirements or target job description here to check live keyword matches in real time..." rows="3" style="width:100%; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.12); border-radius:8px; color:#f8fafc; padding:0.55rem; font-size:0.78rem; resize:vertical; font-family:inherit;" oninput="runLiveJobMatch()"></textarea>
+                        <textarea id="targetJobDescInput" placeholder="Paste the job requirements or target job description here to check live keyword matches in real time..." rows="3" style="width:100%; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.12); border-radius:8px; color:#0F172A; padding:0.55rem; font-size:0.78rem; resize:vertical; font-family:inherit;" oninput="runLiveJobMatch()"></textarea>
                         <div id="jobKeywordChips" style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.5rem;"></div>
                     </div>
                 </div>
@@ -1912,9 +1572,7 @@
                         <button type="button" class="btn-outline" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadDOCX()">📝 Word</button>
                     </div>
                 </div>
-                <div class="preview-scroll-wrapper">
-                    <div id="preview" class="preview-paper"></div>
-                </div>
+                <div id="preview" class="preview-paper"></div>
             </div>
         </div>
     
@@ -1926,7 +1584,7 @@
                     <h3 style="color:#ffffff; font-weight:800; font-size:1.3rem; margin:0; display:flex; align-items:center; gap:0.5rem;">
                         <span>💼</span> 1-Click LinkedIn Profile Optimizer
                     </h3>
-                    <p style="color:#94a3b8; font-size:0.85rem; margin:0.3rem 0 0;">
+                    <p style="color:#475569; font-size:0.85rem; margin:0.3rem 0 0;">
                         Auto-generated high-ranking headlines &amp; engaging "About" stories based on your resume data.
                     </p>
                 </div>
@@ -1951,18 +1609,6 @@
         </div>
     </div>
 
-        <!-- Mobile Floating Action Bar -->
-        <div class="mobile-floating-bar" id="mobileFloatingBar">
-            <button type="button" class="mobile-float-btn secondary" id="floatToggleBtn" onclick="toggleMobileViewFromFloat()">
-                <span id="floatToggleIcon">👁️</span> <span id="floatToggleText">View Preview</span>
-            </button>
-            <button type="button" class="mobile-float-btn primary" onclick="downloadPDF()">
-                <span>📄</span> PDF
-            </button>
-            <button type="button" class="mobile-float-btn outline" onclick="downloadDOCX()">
-                <span>📝</span> Word
-            </button>
-        </div>
     </main>
 
         <!-- ===== DETAILED GUIDELINES & FAQ SECTION ===== -->
@@ -1995,49 +1641,49 @@
             <h2>Why AuraToolkit360 Beats Canva &amp; Paid Resume Builders</h2>
             <p>Most online resume builders trap users with bait-and-switch subscriptions: you spend hours writing a CV, only to find exports locked behind a recurring $20/month paywall. Graphic tools like Canva create unparseable PDFs that get filtered out by corporate ATS screenings. Here is how AuraToolkit360 compares:</p>
             
-            <div class="table-responsive-wrapper" style="overflow-x:auto; margin:1.5rem 0; border-radius:12px; border:1px solid rgba(255,255,255,0.1);">
+            <div style="overflow-x:auto; margin:1.5rem 0; border-radius:12px; border:1px solid rgba(255,255,255,0.1);">
                 <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.88rem;">
                     <thead>
                         <tr style="background:rgba(30,41,59,0.9); color:#ffffff;">
                             <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1);">Feature / Capability</th>
                             <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#38bdf8;">AuraToolkit360</th>
-                            <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#94a3b8;">Canva (Free/Pro)</th>
-                            <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#94a3b8;">Zety / Novoresume</th>
+                            <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#475569;">Canva (Free/Pro)</th>
+                            <th style="padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); color:#475569;">Zety / Novoresume</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">Pricing &amp; Subscriptions</td>
+                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">Pricing &amp; Subscriptions</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">100% Free Forever (No Card)</td>
                             <td style="padding:0.85rem 1rem; color:#f59e0b;">Free tier limited / $13/mo Pro</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">$15 - $30/month subscription trap</td>
                         </tr>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">ATS Parsing Accuracy</td>
+                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">ATS Parsing Accuracy</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">100% Structured ATS-Safe</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">Fails (Floating boxes, vector layers)</td>
                             <td style="padding:0.85rem 1rem; color:#10b981;">Good (Standard text layouts)</td>
                         </tr>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">User Privacy &amp; Data Security</td>
+                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">User Privacy &amp; Data Security</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">100% Private (Runs in Browser)</td>
-                            <td style="padding:0.85rem 1rem; color:#94a3b8;">Stored on Canva cloud servers</td>
-                            <td style="padding:0.85rem 1rem; color:#94a3b8;">Stored in recruiter databases</td>
+                            <td style="padding:0.85rem 1rem; color:#475569;">Stored on Canva cloud servers</td>
+                            <td style="padding:0.85rem 1rem; color:#475569;">Stored in recruiter databases</td>
                         </tr>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">Word DOCX &amp; PDF Exports</td>
+                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">Word DOCX &amp; PDF Exports</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">Both Free (1-Click Instant)</td>
                             <td style="padding:0.85rem 1rem; color:#f59e0b;">PDF only (No DOCX)</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">Locked behind paywall</td>
                         </tr>
                         <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">Watermarks &amp; Restrictions</td>
+                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">Watermarks &amp; Restrictions</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">Zero Watermarks Ever</td>
                             <td style="padding:0.85rem 1rem; color:#10b981;">No watermark on free assets</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">Watermarked until purchased</td>
                         </tr>
                         <tr>
-                            <td style="padding:0.85rem 1rem; color:#f8fafc; font-weight:600;">Sign-Up / Account Creation</td>
+                            <td style="padding:0.85rem 1rem; color:#0F172A; font-weight:600;">Sign-Up / Account Creation</td>
                             <td style="padding:0.85rem 1rem; color:#10b981; font-weight:700;">Zero Sign-up Required</td>
                             <td style="padding:0.85rem 1rem; color:#f59e0b;">Account required</td>
                             <td style="padding:0.85rem 1rem; color:#ef4444;">Account &amp; Email mandatory</td>
@@ -2264,14 +1910,14 @@
 
         <!-- Fullscreen Preview Modal -->
         <div id="templateModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:1.5rem;" onclick="closeTemplateModal()">
-            <div style="position:relative; max-width:750px; max-height:92vh; display:flex; flex-direction:column; background:#1e293b; border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:1.2rem; box-shadow:0 25px 60px rgba(0,0,0,0.7);" onclick="event.stopPropagation()">
+            <div style="position:relative; max-width:750px; max-height:92vh; display:flex; flex-direction:column; background:#FFFFFF; border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:1.2rem; box-shadow:0 25px 60px rgba(0,0,0,0.7);" onclick="event.stopPropagation()">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
                     <h3 id="modalTemplateName" style="color:#ffffff; font-weight:800; font-size:1.15rem; margin:0;"></h3>
                     <button style="background:rgba(255,255,255,0.1); border:none; color:#ffffff; font-size:1.1rem; cursor:pointer; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center;" onclick="closeTemplateModal()">✕</button>
                 </div>
                 <img id="modalTemplateImg" src="" alt="Template Preview" style="max-width:100%; max-height:74vh; border-radius:8px; object-fit:contain; background:#ffffff;">
                 <div style="margin-top:1rem; display:flex; justify-content:space-between; align-items:center;">
-                    <span style="font-size:0.85rem; color:#94a3b8;">100% Free • PDF &amp; Word DOCX Exports • Zero Watermarks</span>
+                    <span style="font-size:0.85rem; color:#475569;">100% Free • PDF &amp; Word DOCX Exports • Zero Watermarks</span>
                     <button id="modalUseBtn" class="showcase-btn-use" style="padding:0.6rem 1.4rem;" onclick="useModalTemplate()">Use This Template 🚀</button>
                 </div>
             </div>
@@ -2366,53 +2012,6 @@
     </footer>
 
     <script>
-        // ==========================================
-        // MOBILE TAB SWITCHER LOGIC
-        // ==========================================
-        let currentMobileTab = 'form';
-        function switchMobileView(view) {
-            currentMobileTab = view;
-            const formCol = document.getElementById('resumeFormCol');
-            const previewCol = document.getElementById('resumePreviewCol');
-            const tabForm = document.getElementById('tabBtnForm');
-            const tabPreview = document.getElementById('tabBtnPreview');
-            const floatIcon = document.getElementById('floatToggleIcon');
-            const floatText = document.getElementById('floatToggleText');
-
-            if (view === 'preview') {
-                if (formCol) formCol.classList.add('mobile-hidden');
-                if (previewCol) previewCol.classList.remove('mobile-hidden');
-                if (tabForm) tabForm.classList.remove('active');
-                if (tabPreview) tabPreview.classList.add('active');
-                if (floatIcon) floatIcon.textContent = '✏️';
-                if (floatText) floatText.textContent = 'Edit Resume';
-                if (typeof updatePreview === 'function') updatePreview();
-                const tabs = document.getElementById('mobileBuilderTabs');
-                if (tabs) {
-                    window.scrollTo({ top: tabs.offsetTop - 10, behavior: 'smooth' });
-                }
-            } else {
-                if (formCol) formCol.classList.remove('mobile-hidden');
-                if (previewCol) previewCol.classList.add('mobile-hidden');
-                if (tabForm) tabForm.classList.add('active');
-                if (tabPreview) tabPreview.classList.remove('active');
-                if (floatIcon) floatIcon.textContent = '👁️';
-                if (floatText) floatText.textContent = 'View Preview';
-                const tabs = document.getElementById('mobileBuilderTabs');
-                if (tabs) {
-                    window.scrollTo({ top: tabs.offsetTop - 10, behavior: 'smooth' });
-                }
-            }
-        }
-
-        function toggleMobileViewFromFloat() {
-            if (currentMobileTab === 'form') {
-                switchMobileView('preview');
-            } else {
-                switchMobileView('form');
-            }
-        }
-
         let experienceItems = [];
 
         // Auto-log to Homepage Recent Activity Widget
@@ -2788,7 +2387,7 @@
                 if (cat.skills && cat.skills.length) {
                     html += `
                         <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
-                            ${cat.skills.map(s => `<span style="background:#1e293b; color:#1E293B; font-size:0.72rem; padding:0.18rem 0.45rem; border-radius:4px; font-weight:500;">${escapeHtml(s)}</span>`).join('')}
+                            ${cat.skills.map(s => `<span style="background:#FFFFFF; color:#1E293B; font-size:0.72rem; padding:0.18rem 0.45rem; border-radius:4px; font-weight:500;">${escapeHtml(s)}</span>`).join('')}
                         </div>
                     `;
                 }
@@ -2833,7 +2432,7 @@
                             <div style="margin-bottom:0.4rem;">
                                 ${cat.category ? `<span style="font-size:0.78rem; font-weight:700; color:#1e293b; font-family:'JetBrains Mono',monospace;">${escapeHtml(cat.category)}: </span>` : ''}
                                 <div style="display:flex; gap:0.3rem; flex-wrap:wrap; margin-top:0.2rem;">
-                                    ${cat.skills.map(s => `<span style="background:#0f172a; color:#38bdf8; font-size:0.72rem; padding:0.15rem 0.45rem; border-radius:4px; font-family:'JetBrains Mono',monospace; border:1px solid #1e293b;">${escapeHtml(s)}</span>`).join('')}
+                                    ${cat.skills.map(s => `<span style="background:#F8FAFC; color:#38bdf8; font-size:0.72rem; padding:0.15rem 0.45rem; border-radius:4px; font-family:'JetBrains Mono',monospace; border:1px solid #1e293b;">${escapeHtml(s)}</span>`).join('')}
                                 </div>
                             </div>
                         `).join('')}
@@ -3008,7 +2607,7 @@
         function renderNordicTemplate(container, data, skillsCategories, accent) {
             container.innerHTML = `
                 <div style="margin-bottom:1.4rem;">
-                    <div style="font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:#94a3b8; font-weight:600;">PORTFOLIO &amp; RESUME</div>
+                    <div style="font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:#475569; font-weight:600;">PORTFOLIO &amp; RESUME</div>
                     <h1 style="font-size:2.1rem; color:#0f172a; font-weight:900; letter-spacing:-0.5px; margin:0.2rem 0;">${escapeHtml(data.name || 'Your Full Name')}</h1>
                     <div style="font-size:0.95rem; color:${accent}; font-weight:500; margin-bottom:0.6rem;">${escapeHtml(data.targetRole || 'Professional Role')}</div>
                     
@@ -3263,10 +2862,10 @@
             const accent = currentAccentColor;
             container.innerHTML = `
                 <div style="display:grid; grid-template-columns: 32% 68%; min-height: 580px; font-size:0.8rem;">
-                    <div style="background:#0f172a; color:#f8fafc; padding:1.2rem; border-top-left-radius:8px; border-bottom-left-radius:8px;">
+                    <div style="background:#F8FAFC; color:#0F172A; padding:1.2rem; border-top-left-radius:8px; border-bottom-left-radius:8px;">
                         ${data.photoData ? `<img src="${data.photoData}" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid ${accent}; margin:0 auto 1rem; display:block;">` : ''}
                         <h2 style="font-size:1.2rem; color:${accent}; font-weight:800; margin-bottom:0.2rem;">${escapeHtml(data.name || 'Your Full Name')}</h2>
-                        <div style="font-size:0.8rem; color:#94a3b8; font-weight:600; margin-bottom:1.2rem;">${escapeHtml(data.targetRole || 'Target Role')}</div>
+                        <div style="font-size:0.8rem; color:#475569; font-weight:600; margin-bottom:1.2rem;">${escapeHtml(data.targetRole || 'Target Role')}</div>
                         
                         <div style="margin-bottom:1.2rem; font-size:0.75rem; line-height:1.6; color:#334155;">
                             <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">CONTACT</h4>
@@ -3281,14 +2880,14 @@
                         ${data.languages.length ? `
                             <div style="margin-bottom:1.2rem;">
                                 <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">LANGUAGES</h4>
-                                ${data.languages.map(l => `<div style="font-size:0.72rem; margin-bottom:0.2rem;"><strong>${escapeHtml(l.name)}</strong><br><span style="color:#94a3b8;">${escapeHtml(l.level)}</span></div>`).join('')}
+                                ${data.languages.map(l => `<div style="font-size:0.72rem; margin-bottom:0.2rem;"><strong>${escapeHtml(l.name)}</strong><br><span style="color:#475569;">${escapeHtml(l.level)}</span></div>`).join('')}
                             </div>
                         ` : ''}
 
                         ${data.certifications.length ? `
                             <div>
                                 <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">CERTS</h4>
-                                ${data.certifications.map(c => `<div style="font-size:0.72rem; margin-bottom:0.3rem;"><strong>${escapeHtml(c.title)}</strong><br><span style="color:#94a3b8;">${escapeHtml(c.issuer)} (${escapeHtml(c.year)})</span></div>`).join('')}
+                                ${data.certifications.map(c => `<div style="font-size:0.72rem; margin-bottom:0.3rem;"><strong>${escapeHtml(c.title)}</strong><br><span style="color:#475569;">${escapeHtml(c.issuer)} (${escapeHtml(c.year)})</span></div>`).join('')}
                             </div>
                         ` : ''}
                     </div>
@@ -3526,48 +3125,12 @@
         }
 
 
-        function loadScriptAsync(src) {
-            return new Promise((resolve, reject) => {
-                if (document.querySelector(`script[src="${src}"]`)) return resolve();
-                const s = document.createElement('script');
-                s.src = src;
-                s.async = true;
-                s.onload = resolve;
-                s.onerror = reject;
-                document.head.appendChild(s);
-            });
-        }
-
-        // Prefetch heavy export libraries on user interaction
-        let _exportPrefetchTriggered = false;
-        function prefetchExportLibraries() {
-            if (_exportPrefetchTriggered) return;
-            _exportPrefetchTriggered = true;
-            loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js');
-            loadScriptAsync('https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js');
-        }
-
-        // Trigger on first user interaction (touch, tap, click, typing focus)
-        ['pointerdown', 'touchstart', 'focusin'].forEach(evt => {
-            window.addEventListener(evt, prefetchExportLibraries, { once: true, passive: true });
-        });
-
-        async function downloadPDF() {
+        function downloadPDF() {
             logResumeActivity('Exported PDF Resume');
             const preview = document.getElementById('preview');
             if (!preview || !preview.innerHTML.trim()) {
                 alert('Please enter your resume details first.');
                 return;
-            }
-
-            if (typeof html2pdf === 'undefined') {
-                const btn = (typeof event !== 'undefined' && event && event.target) ? event.target.closest('button') : null;
-                const origText = btn ? btn.innerHTML : '';
-                if (btn) btn.innerHTML = '⏳ Loading PDF engine...';
-                try {
-                    await loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js');
-                } catch (_e) {}
-                if (btn) btn.innerHTML = origText;
             }
 
             const name = document.getElementById('name').value || 'resume';
@@ -3599,17 +3162,7 @@
         async function downloadDOCX() {
             logResumeActivity('Exported DOCX Resume');
             if (!window.docx || !window.docx.Packer) {
-                const btn = (typeof event !== 'undefined' && event && event.target) ? event.target.closest('button') : null;
-                const origText = btn ? btn.innerHTML : '';
-                if (btn) btn.innerHTML = '⏳ Loading Word module...';
-                try {
-                    await loadScriptAsync('https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js');
-                } catch (_e) {}
-                if (btn) btn.innerHTML = origText;
-            }
-
-            if (!window.docx || !window.docx.Packer) {
-                alert('DOCX module is loading, please try again in a few seconds.');
+                alert('DOCX module is loading...');
                 return;
             }
             const data = getFormData();
@@ -3844,8 +3397,6 @@
                 const p2Percent = Math.min(100, Math.round(((contentH - pageH) / pageH) * 100));
                 if (pageBadge) {
                     pageBadge.innerHTML = `⚠️ ${pages} Pages (P2: ~${p2Percent}% filled)`;
-                const mBadgeMulti = document.getElementById('mobilePageBadge');
-                if (mBadgeMulti) mBadgeMulti.textContent = `${pages} Pages`;
                     pageBadge.style.background = 'rgba(245, 158, 11, 0.15)';
                     pageBadge.style.color = '#f59e0b';
                     pageBadge.style.borderColor = 'rgba(245, 158, 11, 0.3)';
@@ -3860,8 +3411,6 @@
             } else {
                 if (pageBadge) {
                     pageBadge.innerHTML = `📄 1 Page (${currentPageFormat.toUpperCase()} Fit ✅)`;
-                const mBadgeSingle = document.getElementById('mobilePageBadge');
-                if (mBadgeSingle) mBadgeSingle.textContent = '1 Page ✅';
                     pageBadge.style.background = 'rgba(16, 185, 129, 0.15)';
                     pageBadge.style.color = '#10b981';
                     pageBadge.style.borderColor = 'rgba(16, 185, 129, 0.3)';
@@ -3977,7 +3526,7 @@
             });
 
             if (foundInJob.length === 0) {
-                chipsContainer.innerHTML = '<span style="font-size:0.75rem; color:#94a3b8;">Enter more job details to extract keywords...</span>';
+                chipsContainer.innerHTML = '<span style="font-size:0.75rem; color:#475569;">Enter more job details to extract keywords...</span>';
                 if (badge) badge.textContent = 'Scanning...';
                 return;
             }
@@ -4070,8 +3619,8 @@
             const headlinesContainer = document.getElementById('linkedInHeadlinesList');
             if (headlinesContainer) {
                 headlinesContainer.innerHTML = headlines.map((h, i) => `
-                    <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:0.85rem 1rem; display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                        <span style="font-size:0.88rem; color:#f8fafc; font-weight:500;">${escapeHtml(h)}</span>
+                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:0.85rem 1rem; display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+                        <span style="font-size:0.88rem; color:#0F172A; font-weight:500;">${escapeHtml(h)}</span>
                         <button type="button" class="btn-primary" style="padding:0.4rem 0.8rem; font-size:0.75rem; white-space:nowrap;" onclick="copyOptimizerText(this, '${escapeJs(h)}')">📋 Copy</button>
                     </div>
                 `).join('');
@@ -4088,7 +3637,7 @@
                     { title: "Story 1: First-Person Conversational Narrative", text: about1 },
                     { title: "Story 2: Bullet-Pointed Executive Pitch", text: about2 }
                 ].map((item) => `
-                    <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:1rem;">
+                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:1rem;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
                             <strong style="color:#ffffff; font-size:0.86rem;">${item.title}</strong>
                             <button type="button" class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.74rem;" onclick="copyOptimizerText(this, '${escapeJs(item.text)}')">📋 Copy</button>
@@ -4223,23 +3772,14 @@
             applyStylingSettings(data);
             renderTemplateSelector();
             renderPaperPalette();
-
-            const initRest = () => {
-                renderExperience();
-                renderEducation();
-                renderCert();
-                renderAward();
-                renderProject();
-                renderLang();
-                updatePreview();
-                setTimeout(updatePageBreakIndicator, 150);
-            };
-
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(initRest, { timeout: 100 });
-            } else {
-                setTimeout(initRest, 10);
-            }
+            renderExperience();
+            renderEducation();
+            renderCert();
+            renderAward();
+            renderProject();
+            renderLang();
+            updatePreview();
+            setTimeout(updatePageBreakIndicator, 200);
         })();
     </script>
 

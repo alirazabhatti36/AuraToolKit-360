@@ -27,9 +27,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional"></noscript>>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,14 +35,14 @@
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; position: relative; padding-top: 65px; }
         
         /* Navbar */
-        .navbar { background: #FFFFFF; backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid #E2E8F0; position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; transition: transform 0.35s ease; overflow-x: auto; }
+        .navbar { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; transition: transform 0.35s ease; overflow-x: auto; }
         .navbar.nav-hidden { transform: translateY(-100%); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
         .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
         .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
         .nav-links { display: flex; gap: 0.4rem; align-items: center; }
         .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
-        .nav-links a:hover { background:#F8FAFC; color: #38bdf8; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
         .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
 
         .container { max-width: 1350px; margin: 0 auto; padding: 2rem 1.5rem; }
@@ -53,67 +51,47 @@
         .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; }
         
         /* PARAPHRASER WORKSPACE */
-        .para-card { background: #FFFFFF; backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid #CBD5E1; padding: 1.5rem; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03); }
-        .mode-bar { display: flex; gap: 0.6rem; margin-bottom: 1.2rem; flex-wrap: wrap; align-items: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 1rem; }
-        .mode-btn { background: #FFFFFF; color: #94a3b8; border: 1px solid #CBD5E1; padding: 0.5rem 1.1rem; border-radius: 12px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.25s; }
+        .para-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .mode-bar { display: flex; gap: 0.6rem; margin-bottom: 1.2rem; flex-wrap: wrap; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1rem; }
+        .mode-btn { background: #F8FAFC; color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 1.1rem; border-radius: 12px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.25s; }
         .mode-btn:hover { color: #38bdf8; border-color: rgba(56,189,248,0.4); }
         .mode-btn.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border-color: transparent; box-shadow: 0 4px 15px rgba(37,99,235,0.35); }
 
         .editors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         @media(max-width: 850px) { .editors-grid { grid-template-columns: 1fr; } }
         
-        .editor-box { display: flex; flex-direction: column; height: 350px; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 16px; padding: 1rem; position: relative; }
+        .editor-box { display: flex; flex-direction: column; height: 350px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 1rem; position: relative; }
         .editor-box textarea { flex: 1; width: 100%; background: transparent; border: none; outline: none; color: #f8fafc; font-size: 0.95rem; font-family: inherit; resize: none; line-height: 1.6; }
         .editor-box textarea::placeholder { color: #64748b; }
         
-        .editor-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid #E2E8F0; font-size: 0.8rem; color: #64748b; }
+        .editor-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #64748b; }
         .btn-para-action { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 12px; padding: 0.75rem 1.8rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
         .btn-para-action:hover { opacity: 0.92; transform: translateY(-1px); }
         
-        .btn-copy { background: rgba(255,255,255,0.1); color: #f8fafc; border: 1px solid #CBD5E1; padding: 0.4rem 0.9rem; border-radius: 10px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-copy { background: rgba(255,255,255,0.1); color: #f8fafc; border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 0.9rem; border-radius: 10px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
         .btn-copy:hover { background: rgba(56,189,248,0.2); color: #38bdf8; border-color: #38bdf8; }
 
         /* SEO Content & FAQ */
-        .info-card { background: #FFFFFF; backdrop-filter: blur(12px); border: 1px solid #E2E8F0; border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
         .info-card h2 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
         .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; }
 
         /* Footer */
-        footer { margin-top: auto; background: #FFFFFF; border-top: 1px solid #E2E8F0; padding-top: 2rem; }
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
         .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
         .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
         .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
         .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
         .footer-links a { color: #94a3b8; text-decoration: none; }
         .footer-links a:hover { color: #38bdf8; }
-        .footer-bottom { border-top: 1px solid #E2E8F0; text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
     </style>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
-    <!-- ===== TOP TRUST BAR ===== -->
-    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
-        <div class="top-trust-inner">
-            <div class="trust-left">
-                <span class="pulse-dot-wrap">
-                    <span class="pulse-dot-ping"></span>
-                    <span class="pulse-dot-core"></span>
-                </span>
-                <strong style="color:#1E293B; font-weight:600;">100% Private Client-Side Sandbox:</strong>
-                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
-            </div>
-            <div class="trust-right">
-                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
-                <span>•</span>
-                <span>Zero Telemetry</span>
-                <span>•</span>
-                <span style="color:#334155; font-family:monospace;">auratoolkit360.com</span>
-            </div>
-        </div>
-    </aside>
-
 
     <nav class="navbar">
         <div class="nav-container">
@@ -139,7 +117,7 @@
 
         <div class="para-card">
             <div class="mode-bar">
-                <span style="font-weight:700; font-size:0.88rem; color:#f8fafc; margin-right:0.4rem;">Select Mode:</span>
+                <span style="font-weight:700; font-size:0.88rem; color:#0F172A; margin-right:0.4rem;">Select Mode:</span>
                 <button class="mode-btn active" onclick="setMode('standard', this)">✨ Standard</button>
                 <button class="mode-btn" onclick="setMode('formal', this)">💼 Professional / Formal</button>
                 <button class="mode-btn" onclick="setMode('fluency', this)">🌊 Fluency & Flow</button>
@@ -155,7 +133,7 @@
                     </div>
                 </div>
 
-                <div class="editor-box" style="background:#F8FAFC; border-color:rgba(56,189,248,0.3);">
+                <div class="editor-box" style="background:rgba(15,23,42,0.85); border-color:rgba(56,189,248,0.3);">
                     <textarea id="outputText" readonly placeholder="Paraphrased text will appear here..."></textarea>
                     <div class="editor-foot">
                         <span id="outputCount">0 Words</span>
@@ -174,9 +152,9 @@
             <h2>Why Use AuraToolkit360 Paraphrasing Tool?</h2>
             <p>Whether you are polishing bullet points on your ATS resume, drafting corporate emails, or rewriting article summaries, our client-side paraphraser rewrites sentences naturally without transmitting your private drafts to external servers.</p>
             
-            <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:1.2rem; margin-top:1.2rem;">
-                <h4 style="color:#f8fafc; font-size:1rem; margin-bottom:0.4rem;">💼 Enhance Your Job Resume Bullets</h4>
-                <p style="color:#94a3b8; font-size:0.88rem; margin-bottom:0.8rem;">Use <strong>Professional / Formal Mode</strong> to convert informal experience descriptions into high-impact action verbs for ATS resume screeners.</p>
+            <div style="background:#F8FAFC; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.2rem; margin-top:1.2rem;">
+                <h4 style="color:#0F172A; font-size:1rem; margin-bottom:0.4rem;">💼 Enhance Your Job Resume Bullets</h4>
+                <p style="color:#475569; font-size:0.88rem; margin-bottom:0.8rem;">Use <strong>Professional / Formal Mode</strong> to convert informal experience descriptions into high-impact action verbs for ATS resume screeners.</p>
                 <a href="/resume-cv-maker/" class="btn-para-action" style="padding:0.45rem 1rem; font-size:0.82rem; text-decoration:none; display:inline-block;">Build ATS Resume Now →</a>
             </div>
         </div>
@@ -184,12 +162,12 @@
         <div class="info-card">
             <h2>Frequently Asked Questions (FAQ)</h2>
             <div style="border-bottom:1px solid rgba(255,255,255,0.08); padding:1rem 0;">
-                <div style="font-weight:700; color:#f8fafc; font-size:1.05rem; margin-bottom:0.4rem;">❓ Is my text stored on any remote server?</div>
-                <div style="color:#94a3b8; font-size:0.92rem; line-height:1.6;">No! Paraphrasing runs 100% in your browser memory using local synonym substitution and text restructuring algorithms.</div>
+                <div style="font-weight:700; color:#0F172A; font-size:1.05rem; margin-bottom:0.4rem;">❓ Is my text stored on any remote server?</div>
+                <div style="color:#475569; font-size:0.92rem; line-height:1.6;">No! Paraphrasing runs 100% in your browser memory using local synonym substitution and text restructuring algorithms.</div>
             </div>
             <div style="padding:1rem 0;">
-                <div style="font-weight:700; color:#f8fafc; font-size:1.05rem; margin-bottom:0.4rem;">❓ Is this paraphrasing tool completely free?</div>
-                <div style="color:#94a3b8; font-size:0.92rem; line-height:1.6;">Yes! Unlimited text paraphrasing with zero character caps or daily limits.</div>
+                <div style="font-weight:700; color:#0F172A; font-size:1.05rem; margin-bottom:0.4rem;">❓ Is this paraphrasing tool completely free?</div>
+                <div style="color:#475569; font-size:0.92rem; line-height:1.6;">Yes! Unlimited text paraphrasing with zero character caps or daily limits.</div>
             </div>
         </div>
     </main>

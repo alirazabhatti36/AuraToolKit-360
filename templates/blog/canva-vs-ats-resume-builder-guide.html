@@ -97,28 +97,26 @@
     
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="stylesheet" href="/assets/social-share.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/social-share.css"></noscript>
+    <link rel="stylesheet" href="/assets/social-share.css">
     <script defer src="/assets/social-share.js"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional"></noscript>>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-base: #FAFBFD;
             --bg-card: #FFFFFF;
             --bg-card-hover: #F8FAFC;
             --border-card: #E2E8F0;
-            --border-highlight: #DDD6FE;
-            --accent-cyan: #7C3AED;
-            --accent-purple: #6D28D9;
-            --accent-green: #059669;
-            --accent-blue: #4F46E5;
+            --border-highlight: #8B5CF6;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
             --accent-amber: #f59e0b;
             --accent-red: #ef4444;
             --text-primary: #0F172A;
@@ -172,7 +170,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.82);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-card);
@@ -227,7 +225,7 @@
         }
         .nav-link:hover, .nav-link.active {
             color: #ffffff;
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.05);
         }
         .nav-link.active { color: var(--accent-cyan); font-weight: 600; }
         .nav-badge-pill {
@@ -258,7 +256,7 @@
         }
         .btn-try-hr:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5); }
         .btn-bookmark-nav {
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border-card);
             color: var(--text-secondary);
             padding: 0.5rem 0.85rem;
@@ -276,7 +274,7 @@
             align-items: center;
             width: 38px;
             height: 38px;
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-card);
             border-radius: 8px;
             cursor: pointer;
@@ -302,11 +300,11 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.98);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-card);
             padding: 1.25rem 1.5rem;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
         .mobile-nav-drawer.open { display: block; }
         .mobile-nav-links { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -320,7 +318,7 @@
             border-radius: 10px;
             font-weight: 600;
             font-size: 0.92rem;
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid transparent;
             transition: all 0.2s ease;
         }
@@ -366,7 +364,7 @@
             border: 1px solid var(--border-card);
             border-radius: 20px;
             padding: 2.75rem;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(12px);
         }
         @media (max-width: 768px) {
@@ -413,7 +411,7 @@
         }
 
         p {
-            color:#334155;
+            color: #cbd5e1;
             font-size: 1.02rem;
             margin-bottom: 1.35rem;
             line-height: 1.8;
@@ -427,7 +425,7 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 0.5rem;
         }
         h3 {
@@ -438,7 +436,7 @@
         }
 
         ul, ol {
-            color:#334155;
+            color: #cbd5e1;
             margin-left: 1.5rem;
             margin-bottom: 1.5rem;
             font-size: 1rem;
@@ -448,7 +446,7 @@
 
         /* Comparison Callout Box */
         .comparison-callout {
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.92);
             border: 1px solid rgba(239, 68, 68, 0.35);
             border-left: 4px solid var(--accent-red);
             border-radius: 12px;
@@ -476,8 +474,8 @@
             .tech-box-grid { grid-template-columns: 1fr; }
         }
         .tech-box {
-            background: #FFFFFF;
-            border: 1px solid #CBD5E1;
+            background: rgba(11, 15, 25, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 1.25rem;
         }
@@ -521,19 +519,19 @@
             text-align: left;
         }
         .styled-table th {
-            background: #FFFFFF;
+            background: rgba(30, 41, 59, 0.9);
             color: #f8fafc;
             padding: 0.85rem 1rem;
             font-weight: 700;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         .styled-table td {
             padding: 0.85rem 1rem;
-            border-bottom: 1px solid #E2E8F0;
-            color:#334155;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
         }
         .styled-table tr:hover td {
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.02);
         }
         .styled-table .win { color: #34d399; font-weight: 600; }
         .styled-table .loss { color: #f87171; font-weight: 600; }
@@ -554,7 +552,7 @@
         }
         .cta-banner p {
             font-size: 0.95rem;
-            color:#334155;
+            color: #cbd5e1;
             max-width: 600px;
             margin: 0 auto 1.5rem;
         }
@@ -593,7 +591,7 @@
         .author-box {
             margin-top: 3rem;
             padding: 1.5rem 1.75rem;
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.92);
             border: 1px solid var(--border-card);
             border-radius: 14px;
             display: flex;
@@ -646,7 +644,7 @@
             max-width: 1280px;
             margin: 0 auto;
             padding-top: 2rem;
-            border-top: 1px solid #E2E8F0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -655,37 +653,10 @@
             font-size: 0.82rem;
             color: var(--text-muted);
         }
-    
-        @media (max-width: 768px) {
-            .ambient-glow-top-left, .ambient-glow-top-right, .ambient-glow-mid {
-                display: none !important;
-            }
-        }
     </style>
     <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
-    <!-- ===== TOP TRUST BAR ===== -->
-    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
-        <div class="top-trust-inner">
-            <div class="trust-left">
-                <span class="pulse-dot-wrap">
-                    <span class="pulse-dot-ping"></span>
-                    <span class="pulse-dot-core"></span>
-                </span>
-                <strong style="color:#1E293B; font-weight:600;">100% Private Client-Side Sandbox:</strong>
-                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
-            </div>
-            <div class="trust-right">
-                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
-                <span>•</span>
-                <span>Zero Telemetry</span>
-                <span>•</span>
-                <span style="color:#334155; font-family:monospace;">auratoolkit360.com</span>
-            </div>
-        </div>
-    </aside>
-
 
     <div class="ambient-glow-top-left"></div>
     <div class="ambient-glow-top-right"></div>
@@ -695,7 +666,7 @@
         <div class="nav-container">
             <a href="/" class="logo">
                 <div class="logo-symbol">A</div>
-                <div class="logo-text">AuraToolkit<span>360</span><span class="logo-pro-badge">Pro</span></div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
             </a>
             
             <div class="nav-center">
@@ -889,14 +860,14 @@ SKILLS: Python, TypeScript, Node.js, AWS, Docker</div>
                 <h3 style="color:#ffffff; font-size:1.2rem; margin-bottom:0.75rem;">👀 Real ATS-Friendly Template Examples (PDF &amp; DOCX):</h3>
                 <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:1.2rem;">Notice the clean single-column structure, standard section headers, and absence of floating canvas boxes:</p>
                 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.2rem;">
-                    <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; overflow:hidden; text-align:center; padding:0.85rem;">
+                    <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden; text-align:center; padding:0.85rem;">
                         <img src="/assets/templates/modern-blue-ats-resume-template.png" alt="Modern Blue ATS Resume Template Example - Free Word DOCX and PDF download" title="Modern Blue ATS Resume Template" loading="lazy" style="width:100%; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.35);">
-                        <p style="margin:0.6rem 0 0.2rem; font-size:0.88rem; font-weight:700; color:#f8fafc;">Modern Blue (ATS Pass Rate: 99%)</p>
+                        <p style="margin:0.6rem 0 0.2rem; font-size:0.88rem; font-weight:700; color:#0F172A;">Modern Blue (ATS Pass Rate: 99%)</p>
                         <a href="/resume-cv-maker/" style="color:var(--accent-cyan); font-size:0.8rem; text-decoration:none; font-weight:600;">Use This Template in Resume Maker →</a>
                     </div>
-                    <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; overflow:hidden; text-align:center; padding:0.85rem;">
+                    <div style="background:rgba(18,24,38,0.7); border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden; text-align:center; padding:0.85rem;">
                         <img src="/assets/templates/tech-matrix-developer-resume-template.png" alt="Tech Matrix Developer Software Engineer Resume Template Example" title="Tech Matrix Developer ATS Resume Template" loading="lazy" style="width:100%; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.35);">
-                        <p style="margin:0.6rem 0 0.2rem; font-size:0.88rem; font-weight:700; color:#f8fafc;">Tech Matrix Developer (ATS Pass Rate: 99%)</p>
+                        <p style="margin:0.6rem 0 0.2rem; font-size:0.88rem; font-weight:700; color:#0F172A;">Tech Matrix Developer (ATS Pass Rate: 99%)</p>
                         <a href="/resume-cv-maker/" style="color:var(--accent-cyan); font-size:0.8rem; text-decoration:none; font-weight:600;">Use This Template in Resume Maker →</a>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt" class="scroll-smooth">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
@@ -18,6 +18,7 @@
     <link rel="alternate" hreflang="pt" href="https://auratoolkit360.com/pt/">
     <link rel="alternate" hreflang="ar" href="https://auratoolkit360.com/ar/">
 
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
@@ -30,25 +31,22 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/png">
-    <meta property="og:image:alt" content="AuraToolkit360 | Free Online File Converter, ATS Resume Builder &amp; HR Tools">
-
+    <meta property="og:image:alt" content="AuraToolkit360 | Free Online File Converter, ATS Resume Builder & HR Tools">
+    
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Conversor de Arquivos Grátis & Criador de Currículo ATS | AuraToolkit360">
     <meta name="twitter:description" content="Converta PDF para Word, Word para PDF, crie currículos otimizados para ATS e faça triagem de candidatos no navegador sem upload.">
     <meta name="twitter:image" content="https://auratoolkit360.com/assets/og-image.png">
-    <meta name="twitter:image:alt" content="AuraToolkit360 | Free Online File Converter, ATS Resume Builder &amp; HR Tools">
-
+    <meta name="twitter:image:alt" content="AuraToolkit360 | Free Online File Converter, ATS Resume Builder & HR Tools">
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
-
-    <link rel="stylesheet" href="/assets/social-share.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/social-share.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/social-share.css">
     <script defer src="/assets/social-share.js"></script>
-
+    
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -70,1343 +68,1405 @@
         }
     }
     </script>
-
+    
     <style>
         :root {
-            --bg-canvas: #FAFBFD;
-            --bg-surface: #FFFFFF;
-            --bg-subtle: #F8FAFC;
-            --bg-muted: #F1F5F9;
-            --bg-dark: #090D16;
-            --bg-slate-900: #0F172A;
-            --border-subtle: #E2E8F0;
-            --border-hover: #CBD5E1;
-            --brand-50: #F5F3FF;
-            --brand-100: #EDE9FE;
-            --brand-200: #DDD6FE;
-            --brand-500: #8B5CF6;
-            --brand-600: #7C3AED;
-            --brand-700: #6D28D9;
-            --indigo-600: #4F46E5;
-            --emerald-50: #ECFDF5;
-            --emerald-500: #10B981;
-            --emerald-600: #059669;
-            --emerald-700: #047857;
-            --amber-50: #FFFBEB;
-            --amber-200: #FDE68A;
-            --amber-800: #92400E;
-            --text-strong: #0F172A;
-            --text-main: #1E293B;
+            --bg-base: #FAFBFD;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F8FAFC;
+            --border-card: #E2E8F0;
+            --border-highlight: #8B5CF6;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-magenta: #d946ef;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-orange: #f59e0b;
+            --text-primary: #0F172A;
             --text-secondary: #475569;
             --text-muted: #64748B;
-            --text-light: #94A3B8;
-            --shadow-subtle: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
-            --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
-            --shadow-card-hover: 0 16px 32px -4px rgba(15, 23, 42, 0.08), 0 6px 14px -2px rgba(15, 23, 42, 0.04);
-            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { overflow-x: clip; scroll-behavior: smooth; }
         body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-canvas);
-            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
             min-height: 100vh;
-            line-height: 1.55;
+            line-height: 1.6;
             overflow-x: clip;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        ::selection {
-            background-color: var(--brand-600);
-            color: #ffffff;
-        }
-
-        /* Modern Crisp Scrollbar */
-        ::-webkit-scrollbar { width: 7px; height: 7px; }
-        ::-webkit-scrollbar-track { background: #F8FAFC; }
-        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
-
-        /* Architectural Grid Pattern */
-        .grid-pattern {
-            background-size: 28px 28px;
-            background-image:
-                linear-gradient(to right, rgba(226, 232, 240, 0.65) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(226, 232, 240, 0.65) 1px, transparent 1px);
-        }
-
-        .container-xl {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-
-        /* ===== TOP TRUST SANDBOX BAR ===== */
-        .top-trust-bar {
-            background-color: var(--bg-dark);
-            color: #CBD5E1;
-            font-size: 0.75rem;
-            padding: 0.5rem 1rem;
-            border-bottom: 1px solid rgba(30, 41, 59, 0.85);
             position: relative;
-            z-index: 1002;
+            padding-top: 76px;
         }
-        .top-trust-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
+        
+        /* Ambient Aurora Glow Background Effects */
+        .ambient-glow-top-left {
+            position: fixed;
+            top: -150px;
+            left: -150px;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(40px);
         }
-        .trust-left {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .ambient-glow-top-right {
+            position: fixed;
+            top: -100px;
+            right: -100px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.14) 0%, rgba(217, 70, 239, 0.06) 50%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(50px);
         }
-        .pulse-dot-wrap {
-            position: relative;
-            display: inline-flex;
-            width: 8px;
-            height: 8px;
-        }
-        .pulse-dot-ping {
+        .ambient-glow-mid {
             position: absolute;
-            display: inline-flex;
-            width: 100%;
-            height: 100%;
-            border-radius: 9999px;
-            background-color: #34D399;
-            opacity: 0.75;
-            animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-        .pulse-dot-core {
-            position: relative;
-            display: inline-flex;
-            width: 8px;
-            height: 8px;
-            border-radius: 9999px;
-            background-color: #10B981;
-        }
-        @keyframes ping {
-            75%, 100% { transform: scale(2.2); opacity: 0; }
-        }
-        .trust-right {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            font-size: 0.7rem;
-            color: #94A3B8;
-        }
-        @media (max-width: 768px) {
-            .trust-right { display: none; }
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 850px;
+            height: 850px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 65%);
+            z-index: -1;
+            pointer-events: none;
         }
 
-        /* ===== HEADER NAVIGATION ===== */
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: #FAFBFD; }
+        ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
+
+        /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 0.8rem 1.5rem;
-            position: sticky;
-            top: 0;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.85rem 2rem;
+            border-bottom: 1px solid var(--border-card);
+            position: fixed !important;
+            top: 0; left: 0; right: 0;
             width: 100%;
             z-index: 1000;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
         }
-        .navbar.nav-hidden {
-            transform: translateY(-100%);
-        }
+        .navbar.nav-hidden { transform: translateY(-100%); }
         .nav-container {
-            max-width: 1280px;
+            max-width: 1320px;
             margin: 0 auto;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 1rem;
+            align-items: center;
+            gap: 1.5rem;
         }
         .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.65rem;
-            text-decoration: none;
-            color: var(--text-strong);
         }
         .logo-symbol {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 50%, #4F46E5 100%);
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+            border-radius: 9px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
             color: #ffffff;
-            font-weight: 800;
-            font-size: 1.05rem;
-            box-shadow: 0 2px 8px rgba(109, 40, 217, 0.28);
-        }
-        .logo-text {
-            font-weight: 800;
-            font-size: 1.15rem;
-            letter-spacing: -0.03em;
-            color: var(--text-strong);
-            display: flex;
-            align-items: center;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
         }
         .logo-text span {
-            color: var(--brand-600);
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .logo-pro-badge {
-            margin-left: 0.45rem;
-            padding: 0.12rem 0.42rem;
-            border-radius: 5px;
-            font-size: 0.64rem;
-            font-weight: 700;
-            background-color: var(--brand-50);
-            color: var(--brand-700);
-            border: 1px solid var(--brand-200);
-            letter-spacing: 0.02em;
-        }
-
         .nav-center {
             display: flex;
+            gap: 0.35rem;
             align-items: center;
-            gap: 0.25rem;
+        }
+        @media (max-width: 1080px) {
+            .nav-center { display: none; }
         }
         .nav-link {
             text-decoration: none;
             color: var(--text-secondary);
-            font-size: 0.84rem;
             font-weight: 600;
-            padding: 0.42rem 0.75rem;
+            padding: 0.45rem 0.85rem;
             border-radius: 8px;
-            transition: color 0.15s ease, background-color 0.15s ease;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
             white-space: nowrap;
         }
         .nav-link:hover {
-            color: var(--brand-600);
-            background-color: var(--bg-subtle);
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
         }
         .nav-link.active {
-            color: var(--brand-700);
-            background-color: var(--brand-50);
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
         }
         .nav-badge-pill {
-            background-color: var(--emerald-50);
-            color: var(--emerald-700);
-            border: 1px solid #A7F3D0;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: #ffffff;
             font-size: 0.62rem;
-            padding: 0.08rem 0.38rem;
+            padding: 0.12rem 0.42rem;
             border-radius: 999px;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-
         .nav-right-actions {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.75rem;
         }
-        .nav-cmd-search {
-            padding: 0.42rem 0.75rem;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            background-color: var(--bg-muted);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
+        .nav-search-trigger {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            color: var(--text-secondary);
+            padding: 0.45rem 0.75rem;
+            border-radius: 9px;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.15s ease;
-            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s;
         }
-        .nav-cmd-search:hover {
-            border-color: var(--brand-500);
-            color: var(--text-strong);
-            background-color: #ffffff;
-        }
-        .nav-cmd-search kbd {
-            padding: 0.1rem 0.38rem;
-            font-size: 0.66rem;
-            font-family: var(--font-mono);
-            background-color: #ffffff;
-            border: 1px solid #CBD5E1;
-            border-radius: 4px;
-            color: var(--text-main);
-            font-weight: 600;
-        }
-        .btn-launch-ats {
-            padding: 0.48rem 0.95rem;
-            border-radius: 8px;
-            font-size: 0.78rem;
-            font-weight: 700;
+        .nav-search-trigger:hover {
+            border-color: var(--accent-cyan);
             color: #ffffff;
-            background-color: var(--bg-slate-900);
+        }
+        .btn-try-hr {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
             text-decoration: none;
-            transition: background-color 0.15s ease, transform 0.15s ease;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            transition: all 0.25s;
             white-space: nowrap;
         }
-        .btn-launch-ats:hover {
-            background-color: var(--brand-600);
+        .btn-try-hr:hover {
             transform: translateY(-1px);
+            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
         }
         .btn-bookmark-nav {
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
+            background: transparent;
+            border: 1px solid var(--border-card);
             color: var(--text-secondary);
-            font-size: 0.76rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            padding: 0.44rem 0.75rem;
-            border-radius: 8px;
+            padding: 0.48rem 0.9rem;
+            border-radius: 999px;
             cursor: pointer;
-            transition: all 0.15s ease;
+            transition: all 0.2s;
             white-space: nowrap;
         }
         .btn-bookmark-nav:hover {
-            border-color: var(--brand-500);
-            color: var(--brand-600);
+            color: var(--accent-cyan);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.06);
         }
 
-        /* Override Lang Switcher for Crisp Light Header */
-        .navbar .lang-switcher-btn {
-            background: #ffffff !important;
-            border: 1px solid var(--border-subtle) !important;
-            color: var(--text-main) !important;
-            padding: 0.4rem 0.65rem !important;
-            border-radius: 8px !important;
-            font-size: 0.78rem !important;
-            font-weight: 600 !important;
-        }
-        .navbar .lang-switcher-btn:hover {
-            border-color: var(--brand-500) !important;
-        }
-
-        /* Mobile Hamburger & Drawer */
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 36px;
-            height: 36px;
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            cursor: pointer;
-            padding: 8px;
-        }
-        .nav-hamburger span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: var(--text-strong);
-            border-radius: 2px;
-            transition: transform 0.25s ease, opacity 0.25s ease;
-        }
-        .nav-hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-        .nav-hamburger.active span:nth-child(2) { opacity: 0; }
-        .nav-hamburger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-        .mobile-nav-drawer {
-            display: none;
-            width: 100%;
-            background: #ffffff;
-            border-top: 1px solid var(--border-subtle);
-            padding: 1rem 0 1.25rem;
-            margin-top: 0.75rem;
-        }
-        .mobile-nav-drawer.open { display: block; }
-        .mobile-nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-        .mobile-nav-item {
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-            padding: 0.65rem 0.9rem;
-            border-radius: 8px;
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.88rem;
-            background: var(--bg-subtle);
-        }
-        .mobile-nav-item:hover {
-            background: var(--brand-50);
-            color: var(--brand-700);
-        }
-
-        @media (max-width: 1120px) {
-            .nav-center { display: none; }
-            .nav-hamburger { display: flex; }
-        }
-        @media (max-width: 768px) {
-            .btn-bookmark-nav, .btn-launch-ats { display: none; }
-            .nav-cmd-search span { display: none; }
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero-section {
-            position: relative;
-            padding: 3.25rem 1rem 3.5rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-        .hero-inner {
-            max-width: 900px;
+        /* MAIN CONTAINER */
+        .site-container {
+            max-width: 1280px;
             margin: 0 auto;
+            padding: 1.5rem 1.5rem 4rem;
         }
-        .hero-badge {
+
+        /* ===== SECTION 1: FEATURED CAROUSEL ===== */
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.9rem;
+        }
+        .featured-header h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .featured-carousel-wrapper {
+            position: relative;
+            background: linear-gradient(135deg, rgba(20, 27, 45, 0.7), rgba(15, 23, 42, 0.85));
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            backdrop-filter: blur(16px);
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            margin-bottom: 2.8rem;
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+            width: 100%;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            padding: 2.2rem 2.5rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        @media (max-width: 900px) {
+            .carousel-slide {
+                grid-template-columns: 1fr;
+                padding: 1.8rem 1.5rem;
+                gap: 1.5rem;
+            }
+        }
+        .slide-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+        .tag-resume { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+        .tag-hr { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .tag-ats { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+        .slide-content h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.5px;
+        }
+        .slide-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.4rem;
+            line-height: 1.5;
+            max-width: 540px;
+        }
+        .slide-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.38rem 0.9rem;
-            border-radius: 9999px;
-            background-color: #ffffff;
-            border: 1px solid var(--border-subtle);
-            box-shadow: var(--shadow-subtle);
-            margin-bottom: 1.35rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-secondary);
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+            transition: all 0.25s;
         }
-        .hero-badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 9999px;
-            background-color: var(--brand-600);
+        .slide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(99, 102, 241, 0.6);
+        }
+        .slide-btn-emerald {
+            background: linear-gradient(135deg, #059669, #10b981);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+        }
+        .slide-btn-emerald:hover {
+            box-shadow: 0 10px 28px rgba(16, 185, 129, 0.55);
+        }
+
+        /* Mockup Previews inside Carousel */
+        .slide-visual-preview {
+            background: rgba(11, 15, 25, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+            position: relative;
+        }
+        .preview-resume-card {
+            background: #ffffff;
+            color: #1e293b;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            font-size: 0.78rem;
+        }
+        .preview-resume-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.6rem;
+            margin-bottom: 0.6rem;
+        }
+        .preview-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .preview-resume-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 0.4rem;
+        }
+        .preview-resume-bar.w-75 { width: 75%; }
+        .preview-resume-bar.w-50 { width: 50%; }
+        .preview-badge-ats {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: #ecfdf5;
+            color: #059669;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            margin-top: 0.4rem;
+        }
+
+        /* Carousel Navigation Controls */
+        .carousel-nav-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding-bottom: 1rem;
+        }
+        .carousel-dot {
+            width: 24px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .carousel-dot.active {
+            background: var(--accent-cyan);
+            width: 38px;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(18, 24, 38, 0.85);
+            border: 1px solid var(--border-card);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+        .carousel-btn:hover {
+            background: var(--accent-cyan);
+            color: #0b0f19;
+        }
+        .carousel-prev { left: 1rem; }
+        .carousel-next { right: 1rem; }
+
+        /* ===== SECTION 2: HERO BRANDING & 4 CORE PILLARS ===== */
+        .hero-banner {
+            text-align: center;
+            max-width: 860px;
+            margin: 0 auto 2.2rem;
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+            display: inline-block;
         }
         .hero-title {
-            font-size: clamp(2rem, 4.5vw, 3.25rem);
+            font-size: 2.5rem;
             font-weight: 800;
-            letter-spacing: -0.035em;
-            color: var(--text-strong);
-            line-height: 1.14;
+            letter-spacing: -0.8px;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
         }
-        .hero-title-gradient {
-            background: linear-gradient(90deg, #7C3AED 0%, #4F46E5 50%, #6D28D9 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        @media (max-width: 768px) {
+            .hero-title { font-size: 1.85rem; }
         }
-        .hero-subtitle {
-            margin: 1rem auto 0;
-            font-size: 1rem;
+        .hero-desc {
+            font-size: 1.02rem;
             color: var(--text-secondary);
             max-width: 680px;
+            margin: 0 auto 2rem;
             line-height: 1.6;
         }
 
-        /* ===== INTERACTIVE SEARCH PALETTE BAR ===== */
+        /* 4 Core Category Cards */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 1024px) {
+            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 580px) {
+            .pillars-grid { grid-template-columns: 1fr; }
+        }
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 1.4rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.28s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+        }
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        .pillar-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.85rem;
+        }
+        .icon-box-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+        .icon-box-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+        .icon-box-cyan { background: rgba(20, 184, 166, 0.15); color: #2dd4bf; }
+        .icon-box-green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+        .pillar-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+        .pillar-card .pillar-sub {
+            font-size: 0.76rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.55rem;
+        }
+        .pillar-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            margin-bottom: 1.2rem;
+        }
+        .btn-pillar-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.55rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.25s;
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .pillar-card:hover .btn-pillar-pill {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+        }
+
+        /* ===== SEARCH BAR ===== */
         .search-container {
-            max-width: 680px;
-            margin: 1.75rem auto 0;
+            max-width: 760px;
+            margin: 0 auto 3.2rem;
             position: relative;
         }
         .search-bar-wrap {
             display: flex;
             align-items: center;
-            background: #ffffff;
-            border: 1.5px solid var(--border-subtle);
+            background: rgba(18, 24, 38, 0.85);
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--border-card);
             border-radius: 14px;
-            padding: 0.35rem 0.5rem 0.35rem 1rem;
-            box-shadow: var(--shadow-card);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            padding: 0.55rem 0.85rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            transition: all 0.25s;
         }
         .search-bar-wrap:focus-within {
-            border-color: var(--brand-600);
-            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12), var(--shadow-card);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
         }
         .search-bar-wrap .icon {
+            font-size: 1.15rem;
+            padding: 0 0.5rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-right: 0.65rem;
-            display: flex;
-            align-items: center;
         }
-        #searchInput {
+        .search-bar-wrap input {
             flex: 1;
+            background: transparent;
             border: none;
             outline: none;
-            font-size: 0.92rem;
+            font-size: 0.95rem;
+            color: #ffffff;
             font-family: inherit;
-            color: var(--text-strong);
-            background: transparent;
-            padding: 0.55rem 0;
         }
-        #searchInput::placeholder {
-            color: var(--text-light);
+        .search-bar-wrap input::placeholder {
+            color: var(--text-muted);
         }
         .search-clear-btn {
-            display: none;
-            background: var(--bg-muted);
+            background: none;
             border: none;
             color: var(--text-secondary);
-            width: 26px;
-            height: 26px;
-            border-radius: 6px;
+            font-size: 1rem;
             cursor: pointer;
-            font-size: 0.75rem;
-            margin-right: 0.4rem;
-        }
-        .search-kbd-hint {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            background: var(--bg-subtle);
-            border: 1px solid var(--border-subtle);
-            padding: 0.22rem 0.5rem;
-            border-radius: 6px;
+            padding: 0 0.5rem;
+            display: none;
         }
         .search-results-box {
-            display: none;
             position: absolute;
             top: calc(100% + 8px);
             left: 0;
             right: 0;
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
+            background: rgba(15, 21, 35, 0.96);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-card);
             border-radius: 14px;
-            box-shadow: var(--shadow-card-hover);
-            z-index: 900;
-            max-height: 340px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            max-height: 380px;
             overflow-y: auto;
-            text-align: left;
-            padding: 0.4rem;
+            z-index: 100;
+            display: none;
         }
-        .search-results-box.show { display: block; }
+        .search-results-box.show {
+            display: block;
+        }
         .search-res-item {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            padding: 0.65rem 0.85rem;
-            border-radius: 10px;
+            gap: 0.8rem;
+            padding: 0.75rem 1.1rem;
             text-decoration: none;
-            color: var(--text-strong);
-            transition: background-color 0.15s ease;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.2s;
         }
         .search-res-item:hover {
-            background-color: var(--brand-50);
+            background: rgba(56, 189, 248, 0.12);
         }
-        .tool-cat-pill {
-            font-size: 0.68rem;
-            font-weight: 700;
+        .search-res-item .tool-cat-pill {
+            font-size: 0.7rem;
             padding: 0.18rem 0.55rem;
             border-radius: 999px;
-            background: var(--bg-muted);
-            color: var(--text-secondary);
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            margin-left: auto;
         }
-
         .quick-chips-row {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             gap: 0.45rem;
-            margin-top: 0.85rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
         }
         .chip-btn {
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             color: var(--text-secondary);
-            font-size: 0.74rem;
-            font-weight: 600;
-            padding: 0.32rem 0.75rem;
+            font-size: 0.76rem;
+            padding: 0.28rem 0.75rem;
             border-radius: 999px;
             cursor: pointer;
-            transition: all 0.15s ease;
-            font-family: inherit;
+            transition: all 0.2s;
         }
         .chip-btn:hover {
-            border-color: var(--brand-500);
-            color: var(--brand-700);
-            background: var(--brand-50);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.08);
         }
 
-        /* Metrics Strip */
-        .metrics-strip {
-            margin: 2rem auto 0;
-            max-width: 780px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.75rem;
-            text-align: left;
+        /* ===== SECTION 3: TRENDING TOOLS GRID ===== */
+        .section-headline-wrap {
+            margin-bottom: 1.4rem;
         }
-        @media (max-width: 640px) {
-            .metrics-strip { grid-template-columns: repeat(2, 1fr); }
-        }
-        .metric-card {
-            padding: 0.9rem 1rem;
-            border-radius: 12px;
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
-            box-shadow: var(--shadow-subtle);
-        }
-        .metric-val {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: var(--text-strong);
-        }
-        .metric-lbl {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-top: 0.1rem;
-        }
-
-        /* ===== BENTO SHOWCASE: FLAGSHIPS ===== */
-        .bento-section {
-            padding: 3rem 0 1.5rem;
-        }
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1.5rem;
-        }
-        .bento-ats-card {
-            grid-column: span 7;
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
-            border-radius: 24px;
-            padding: 1.75rem;
-            box-shadow: var(--shadow-card);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: box-shadow 0.2s ease, border-color 0.2s ease;
-        }
-        .bento-ats-card:hover {
-            box-shadow: var(--shadow-card-hover);
-            border-color: var(--brand-200);
-        }
-        .bento-hr-card {
-            grid-column: span 5;
-            background: var(--bg-slate-900);
-            color: #ffffff;
-            border: 1px solid #1E293B;
-            border-radius: 24px;
-            padding: 1.75rem;
-            box-shadow: var(--shadow-card);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        @media (max-width: 992px) {
-            .bento-ats-card, .bento-hr-card { grid-column: span 12; }
-        }
-
-        .bento-top-meta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.85rem;
-        }
-        .badge-brand-pill {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--brand-700);
-            background: var(--brand-50);
-            border: 1px solid var(--brand-200);
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-        }
-        .badge-emerald-pill {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: #34D399;
-            background: rgba(16, 185, 129, 0.16);
-            border: 1px solid rgba(16, 185, 129, 0.32);
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-        }
-        .mono-tag {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: var(--text-light);
-        }
-        .bento-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-        .bento-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        /* ATS Diagnostic Box inside Bento */
-        .ats-diag-box {
-            margin-top: 1.25rem;
-            padding: 1.1rem;
-            border-radius: 16px;
-            background: var(--bg-subtle);
-            border: 1px solid var(--border-subtle);
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 1.1rem;
-            align-items: center;
-        }
-        @media (max-width: 580px) {
-            .ats-diag-box { grid-template-columns: 1fr; }
-        }
-        .ats-gauge-col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding-right: 1rem;
-            border-right: 1px solid var(--border-subtle);
-        }
-        @media (max-width: 580px) {
-            .ats-gauge-col { border-right: none; border-bottom: 1px solid var(--border-subtle); padding-right: 0; padding-bottom: 0.85rem; }
-        }
-        .ats-gauge-wrap {
-            position: relative;
-            width: 82px;
-            height: 82px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .ats-check-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.45rem;
-            font-size: 0.76rem;
-        }
-        .ats-check-row {
-            padding: 0.52rem 0.75rem;
-            border-radius: 8px;
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .ats-check-row.warn {
-            background: var(--amber-50);
-            border-color: var(--amber-200);
-            color: var(--amber-800);
-        }
-
-        /* HR Candidate Ranking Rows */
-        .hr-rank-list {
-            margin-top: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.55rem;
-            font-size: 0.76rem;
-        }
-        .hr-rank-row {
-            padding: 0.68rem 0.85rem;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .hr-rank-num {
-            width: 20px;
-            height: 20px;
-            border-radius: 999px;
-            font-size: 0.65rem;
-            font-weight: 800;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-        }
-        .bento-footer {
-            margin-top: 1.25rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-subtle);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.76rem;
-        }
-        .bento-hr-card .bento-footer {
-            border-top-color: #1E293B;
-        }
-        .btn-bento-brand {
-            padding: 0.55rem 1.05rem;
-            border-radius: 10px;
-            background: var(--brand-600);
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 0.76rem;
-            text-decoration: none;
-            transition: background 0.15s ease;
-        }
-        .btn-bento-brand:hover { background: var(--brand-700); }
-        .btn-bento-white {
-            padding: 0.55rem 1.05rem;
-            border-radius: 10px;
-            background: #ffffff;
-            color: var(--bg-slate-900);
-            font-weight: 700;
-            font-size: 0.76rem;
-            text-decoration: none;
-            transition: background 0.15s ease;
-        }
-        .btn-bento-white:hover { background: #F1F5F9; }
-
-        /* ===== 4 CORE PILLARS QUICK STRIP ===== */
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin: 0.5rem 0 2.5rem;
-        }
-        @media (max-width: 992px) { .pillars-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 560px) { .pillars-grid { grid-template-columns: 1fr; } }
-        .pillar-card {
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: var(--shadow-subtle);
-            transition: all 0.2s ease;
-        }
-        .pillar-card:hover {
-            border-color: var(--brand-500);
-            box-shadow: var(--shadow-card);
-            transform: translateY(-2px);
-        }
-        .pillar-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.65rem;
-        }
-        .pillar-icon-box {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 0.95rem;
-            background: var(--brand-50);
-            color: var(--brand-600);
-            border: 1px solid var(--brand-100);
-        }
-        .pillar-sub {
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            background: var(--bg-subtle);
-            padding: 0.15rem 0.5rem;
-            border-radius: 6px;
-            border: 1px solid var(--border-subtle);
-        }
-        .pillar-card h4 {
-            font-size: 0.96rem;
-            font-weight: 800;
-            color: var(--text-strong);
-            margin-bottom: 0.3rem;
-        }
-        .pillar-card p {
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.45;
-        }
-        .btn-pillar-pill {
-            font-size: 0.76rem;
-            font-weight: 700;
-            color: var(--brand-600);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        .btn-pillar-pill:hover { color: var(--brand-700); text-decoration: underline; }
-
-        /* ===== CATEGORY FILTER BAR & DIRECTORY SUITES ===== */
-        .directory-section {
-            padding: 1rem 0 2.5rem;
-        }
-        .category-filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-        .filter-pills-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem;
-        }
-        .cat-tab-btn {
-            padding: 0.45rem 0.95rem;
-            border-radius: 999px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            border: 1px solid var(--border-subtle);
-            background: #ffffff;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.15s ease;
-            font-family: inherit;
-        }
-        .cat-tab-btn:hover {
-            border-color: var(--brand-500);
-            color: var(--brand-600);
-        }
-        .cat-tab-btn.active {
-            background: var(--bg-slate-900);
-            color: #ffffff;
-            border-color: var(--bg-slate-900);
-        }
-
-        .suite-block {
-            margin-bottom: 2.75rem;
-        }
-        .suite-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            padding-bottom: 0.55rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-        .suite-header h2 {
+        .section-headline-wrap h3 {
             font-size: 1.1rem;
             font-weight: 800;
-            color: var(--text-strong);
-            letter-spacing: -0.02em;
-        }
-        .suite-tag {
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-        .tools-bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.9rem;
-        }
-        @media (max-width: 900px) { .tools-bento-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 480px) { .tools-bento-grid { grid-template-columns: 1fr; } }
-
-        .tool-utility-card {
-            padding: 1.05rem 1.15rem;
-            border-radius: 14px;
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
-            box-shadow: var(--shadow-subtle);
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.18s ease;
-        }
-        .tool-utility-card:hover {
-            border-color: var(--brand-500);
-            box-shadow: var(--shadow-card);
-            transform: translateY(-2px);
-        }
-        .tool-card-top {
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 0.5rem;
         }
-        .tool-icon-badge {
-            width: 34px;
-            height: 34px;
-            border-radius: 9px;
-            background: var(--bg-subtle);
-            border: 1px solid var(--border-subtle);
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-bottom: 3.2rem;
+        }
+        @media (max-width: 1100px) {
+            .trending-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 720px) {
+            .trending-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 440px) {
+            .trending-grid { grid-template-columns: 1fr; }
+        }
+        .trending-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.25s;
+            position: relative;
+        }
+        .trending-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: var(--bg-card-hover);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+        .trending-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+        .icon-pdf-red { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+        .icon-word-blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+        .icon-img-green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+        .icon-compress-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+        .icon-target-orange { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+        .trending-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.85rem;
+        }
+        .btn-use-tool {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-        }
-        .tool-arrow {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            transition: transform 0.15s ease, color 0.15s ease;
-        }
-        .tool-utility-card:hover .tool-arrow {
-            color: var(--brand-600);
-            transform: translateX(3px);
-        }
-        .tool-card-name {
-            font-size: 0.86rem;
+            padding: 0.4rem 1rem;
+            background: rgba(2, 132, 199, 0.2);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            font-size: 0.76rem;
             font-weight: 700;
-            color: var(--text-strong);
-            margin-top: 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.2s;
+            width: 85%;
         }
-        .tool-card-desc {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            margin-top: 0.2rem;
+        .trending-card:hover .btn-use-tool {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
         }
 
-        /* ===== SPLIT WIDGETS: RECENT ACTIVITY & RECENTLY ADDED ===== */
+        /* ===== SECTION 4: SPLIT WIDGETS (RECENT ACTIVITY + RECENTLY ADDED) ===== */
         .split-widgets-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 0.95fr 1.05fr;
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
-        @media (max-width: 900px) { .split-widgets-row { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) {
+            .split-widgets-row { grid-template-columns: 1fr; }
+        }
         .widget-box {
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 18px;
             padding: 1.5rem;
-            box-shadow: var(--shadow-subtle);
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(14px);
         }
         .widget-head {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.65rem;
-            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
         .widget-head h4 {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             font-weight: 800;
-            color: var(--text-strong);
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 0.45rem;
         }
         .widget-head-badge {
             font-size: 0.68rem;
-            color: var(--emerald-700);
-            background: var(--emerald-50);
-            border: 1px solid #A7F3D0;
-            padding: 0.18rem 0.55rem;
+            color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.12);
+            padding: 0.2rem 0.55rem;
             border-radius: 999px;
             font-weight: 700;
         }
+
+        /* Recent Activity List Styling */
         .activity-items-list {
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 0.75rem;
             flex: 1;
         }
         .activity-row {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            background: var(--bg-subtle);
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
-            padding: 0.6rem 0.8rem;
+            gap: 0.85rem;
+            background: rgba(11, 15, 25, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 0.65rem 0.85rem;
+            transition: all 0.2s;
+        }
+        .activity-row:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.12);
         }
         .activity-icon {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 8px;
-            background: var(--brand-50);
-            color: var(--brand-600);
+            background: rgba(99, 102, 241, 0.15);
+            color: #818cf8;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
-        .activity-info { flex: 1; }
-        .activity-title { font-size: 0.82rem; font-weight: 700; color: var(--text-strong); }
-        .activity-time { font-size: 0.7rem; color: var(--text-muted); }
+        .activity-info {
+            flex: 1;
+        }
+        .activity-title {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .activity-time {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
         .activity-action-btn {
             font-size: 0.74rem;
-            color: var(--brand-600);
+            color: var(--accent-cyan);
             text-decoration: none;
-            font-weight: 700;
-            padding: 0.28rem 0.65rem;
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
             border-radius: 6px;
-            background: var(--brand-50);
-            border: 1px solid var(--brand-200);
+            background: rgba(56, 189, 248, 0.1);
         }
-        .activity-action-btn:hover { background: var(--brand-100); }
         .activity-empty-state {
             text-align: center;
-            padding: 1.2rem 0.8rem;
+            padding: 1.5rem 1rem;
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.82rem;
         }
+
+        /* Recently Added Cards (3 cards horizontal inside widget) */
         .recently-added-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
+            gap: 0.85rem;
         }
-        @media (max-width: 600px) { .recently-added-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) {
+            .recently-added-grid { grid-template-columns: 1fr; }
+        }
         .mini-tool-card {
-            background: var(--bg-subtle);
-            border: 1px solid var(--border-subtle);
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 12px;
-            padding: 0.95rem 0.75rem;
+            padding: 1rem 0.8rem;
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.2s;
         }
-        .mini-title { font-size: 0.8rem; font-weight: 800; color: var(--text-strong); margin: 0.35rem 0 0.2rem; }
-        .mini-desc { font-size: 0.7rem; color: var(--text-muted); line-height: 1.35; margin-bottom: 0.7rem; }
-        .btn-use-tool {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.35rem 0.8rem;
-            background: #ffffff;
-            color: var(--brand-700);
-            border: 1px solid var(--brand-200);
-            font-size: 0.72rem;
-            font-weight: 700;
-            border-radius: 8px;
-            text-decoration: none;
-            width: 100%;
-            transition: all 0.15s ease;
+        .mini-tool-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateY(-2px);
         }
-        .btn-use-tool:hover {
-            background: var(--brand-600);
+        .mini-icon {
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+        }
+        .mini-title {
+            font-size: 0.82rem;
+            font-weight: 800;
             color: #ffffff;
-            border-color: var(--brand-600);
+            margin-bottom: 0.3rem;
+        }
+        .mini-desc {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            line-height: 1.35;
+            margin-bottom: 0.8rem;
         }
 
-        /* ===== EDITORIAL GUIDES SECTION (AdSense Compliance) ===== */
-        .guides-section {
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
+        /* ===== SECTION 5: FEATURE SPOTLIGHT (ATS CHECKER) ===== */
+        .spotlight-banner {
+            background: linear-gradient(135deg, rgba(29, 36, 60, 0.9), rgba(18, 22, 38, 0.95));
+            border: 1px solid rgba(168, 85, 247, 0.25);
             border-radius: 24px;
             padding: 2.5rem;
-            margin-bottom: 2.75rem;
-            box-shadow: var(--shadow-subtle);
+            margin-bottom: 3.5rem;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 2.5rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
         }
-        @media (max-width: 640px) { .guides-section { padding: 1.5rem; } }
+        @media (max-width: 900px) {
+            .spotlight-banner { grid-template-columns: 1fr; padding: 1.8rem; }
+        }
+        .spotlight-visual-container {
+            background: rgba(11, 15, 25, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(99, 102, 241, 0.1);
+        }
+        .spotlight-terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 1rem;
+        }
+        .dot { width: 9px; height: 9px; border-radius: 50%; }
+        .dot-red { background: #ef4444; } .dot-yellow { background: #f59e0b; } .dot-green { background: #10b981; }
+        .spotlight-code-snippet {
+            font-family: monospace;
+            font-size: 0.78rem;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+        .code-highlight { color: var(--accent-cyan); font-weight: 700; }
+        .score-pill-floating {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: 14px;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .score-num {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #34d399;
+        }
+        .spotlight-content h3 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.25;
+            margin-bottom: 0.8rem;
+        }
+        .spotlight-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 1.4rem;
+        }
+        .spotlight-checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1.8rem;
+        }
+        .spotlight-checklist li {
+            font-size: 0.88rem;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .check-icon {
+            color: var(--accent-cyan);
+            font-weight: 900;
+        }
+        .btn-spotlight-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #0284c7, #8b5cf6);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.8rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.45);
+            transition: all 0.25s;
+        }
+        .btn-spotlight-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.65);
+        }
+
+        /* ===== SECTION 6: BEST PRACTICES & GUIDES ===== */
         .guides-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-top: 1.5rem;
+            gap: 1.4rem;
+            margin-bottom: 3.5rem;
         }
-        @media (max-width: 900px) { .guides-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) {
+            .guides-grid { grid-template-columns: 1fr; }
+        }
         .guide-card {
-            padding: 1.35rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
             border-radius: 16px;
-            background: var(--bg-subtle);
-            border: 1px solid var(--border-subtle);
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: all 0.25s;
+        }
+        .guide-card:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
         .guide-tag {
             font-size: 0.72rem;
             font-weight: 700;
+            color: var(--accent-cyan);
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
         }
         .guide-card h4 {
-            font-size: 0.96rem;
-            font-weight: 800;
-            color: var(--text-strong);
-            margin-top: 0.35rem;
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
         }
-        .guide-card p {
-            font-size: 0.78rem;
+        .guide-checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.82rem;
             color: var(--text-secondary);
-            margin-top: 0.5rem;
-            line-height: 1.6;
+        }
+        .guide-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
         }
         .btn-guide-link {
-            margin-top: 1rem;
-            font-size: 0.76rem;
+            font-size: 0.82rem;
             font-weight: 700;
-            color: var(--brand-600);
+            color: var(--accent-cyan);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.35rem;
+            transition: gap 0.2s;
         }
-        .btn-guide-link:hover { text-decoration: underline; }
+        .btn-guide-link:hover {
+            gap: 0.55rem;
+        }
 
-        /* ===== TESTIMONIALS ROW ===== */
+        /* ===== SECTION 7: USER STORIES & FEEDBACK ===== */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 1.2rem;
+            margin-bottom: 3.5rem;
         }
-        @media (max-width: 1024px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .testimonials-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1024px) {
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
         .testimonial-card {
-            background: #ffffff;
-            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
             border-radius: 16px;
-            padding: 1.25rem;
-            box-shadow: var(--shadow-subtle);
+            padding: 1.4rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: all 0.25s;
+            position: relative;
         }
-        .testimonial-stars { color: #F59E0B; font-size: 0.8rem; margin-bottom: 0.45rem; }
-        .testimonial-text { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 1rem; }
+        .testimonial-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-3px);
+        }
+        .quote-icon {
+            font-size: 1.6rem;
+            color: rgba(99, 102, 241, 0.4);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+        }
+        .testimonial-text {
+            font-size: 0.84rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            font-style: italic;
+        }
         .testimonial-user {
             display: flex;
             align-items: center;
-            gap: 0.65rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--border-subtle);
+            gap: 0.7rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 0.8rem;
         }
         .user-avatar-initials {
-            width: 30px;
-            height: 30px;
-            border-radius: 999px;
-            background: var(--brand-50);
-            color: var(--brand-700);
-            border: 1px solid var(--brand-200);
-            font-size: 0.7rem;
-            font-weight: 800;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #ffffff;
         }
-        .user-meta-name { font-size: 0.78rem; font-weight: 700; color: var(--text-strong); }
-        .user-meta-role { font-size: 0.68rem; color: var(--text-muted); }
+        .avatar-blue { background: linear-gradient(135deg, #0284c7, #3b82f6); }
+        .avatar-purple { background: linear-gradient(135deg, #7c3aed, #c084fc); }
+        .avatar-green { background: linear-gradient(135deg, #059669, #10b981); }
+        .avatar-orange { background: linear-gradient(135deg, #d97706, #fbbf24); }
+
+        .user-meta-name {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .user-meta-role {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== SECTION 8: ALL TOOLS DIRECTORY (EXPANDED FOR MAXIMUM DISCOVERABILITY) ===== */
+        .directory-wrap {
+            margin-bottom: 3.5rem;
+        }
+        .directory-category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 1.4rem;
+            margin-bottom: 1.4rem;
+        }
+        .directory-cat-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 0.6rem;
+        }
+        .directory-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 0.8rem;
+        }
+        .dir-link {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 0.65rem 0.9rem;
+            text-decoration: none;
+            color: #e2e8f0;
+            font-size: 0.84rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.2s;
+        }
+        .dir-link:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            color: var(--accent-cyan);
+            transform: translateX(2px);
+        }
 
         /* ===== FOOTER ===== */
         footer {
-            background-color: var(--bg-dark);
-            color: #94A3B8;
-            font-size: 0.78rem;
-            padding: 3.5rem 1.5rem 2rem;
-            border-top: 1px solid #1E293B;
+            background: #070a12;
+            border-top: 1px solid var(--border-card);
+            padding: 3.5rem 1.5rem 1.5rem;
+            color: var(--text-secondary);
         }
         .footer-inner {
             max-width: 1280px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
             gap: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid #1E293B;
+            margin-bottom: 2.5rem;
         }
-        @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 560px) { .footer-inner { grid-template-columns: 1fr; } }
+        @media (max-width: 992px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 576px) {
+            .footer-inner { grid-template-columns: 1fr; }
+        }
         .footer-col h5 {
+            font-size: 0.92rem;
+            font-weight: 800;
             color: #ffffff;
-            font-size: 0.82rem;
-            font-weight: 700;
-            margin-bottom: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 1.1rem;
         }
         .footer-links-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.48rem;
+            gap: 0.55rem;
         }
         .footer-links-list a {
-            color: #94A3B8;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.76rem;
-            transition: color 0.15s ease;
+            font-size: 0.84rem;
+            transition: color 0.2s;
         }
-        .footer-links-list a:hover { color: #ffffff; }
+        .footer-links-list a:hover {
+            color: var(--accent-cyan);
+        }
         .footer-bottom-bar {
             max-width: 1280px;
             margin: 0 auto;
             padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 1rem;
-            font-size: 0.72rem;
-            color: #64748B;
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
-    </style>
+    
+        /* ===== MOBILE RESPONSIVE HAMBURGER & DRAWER ===== */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card, rgba(255, 255, 255, 0.12));
+            border-radius: 9px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            transition: all 0.25s ease;
+        }
+        .nav-hamburger:hover {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: rgba(56, 189, 248, 0.35);
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-primary, #f8fafc);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-hamburger.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+        }
+        .nav-hamburger.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
 
+        .mobile-nav-drawer {
+            display: none;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-card, rgba(255, 255, 255, 0.08));
+            padding: 1rem 1.25rem 1.4rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+        }
+        .mobile-nav-drawer.open {
+            display: block;
+            animation: mobileDrawerFade 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes mobileDrawerFade {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .mobile-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .mobile-nav-item:hover, .mobile-nav-item.active {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.25);
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 1080px) {
+            .nav-center { display: none !important; }
+            .nav-hamburger { display: flex; }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0.75rem 1rem !important; }
+            .btn-bookmark-nav { display: none !important; }
+            .btn-try-hr { display: none !important; }
+            .nav-search-trigger { padding: 0.45rem 0.75rem !important; font-size: 0.82rem !important; }
+            .nav-search-trigger .search-text { display: none; }
+        }
+
+    </style>
+    
     <!-- AdSense & Analytics Scripts (Preserved) -->
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <link rel="manifest" href="/manifest.json">
     <script defer src="/assets/pwa-install.js"></script>
-    <link rel="stylesheet" href="/assets/lang-switcher.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/lang-switcher.css"></noscript>
+    <link rel="stylesheet" href="/assets/lang-switcher.css">
     <script defer src="/assets/lang-switcher.js"></script>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
-    <!-- ===== TOP TRUST BAR ===== -->
-    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
-        <div class="top-trust-inner">
-            <div class="trust-left">
-                <span class="pulse-dot-wrap">
-                    <span class="pulse-dot-ping"></span>
-                    <span class="pulse-dot-core"></span>
-                </span>
-                <strong style="color:#E2E8F0; font-weight:600;">100% Private Client-Side Sandbox:</strong>
-                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
-            </div>
-            <div class="trust-right">
-                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
-                <span>•</span>
-                <span>Zero Telemetry</span>
-                <span>•</span>
-                <span style="color:#CBD5E1; font-family:var(--font-mono);">auratoolkit360.com</span>
-            </div>
-        </div>
-    </aside>
+    <!-- Ambient Neon Aurora Glows -->
+    <div class="ambient-glow-top-left"></div>
+    <div class="ambient-glow-top-right"></div>
+    <div class="ambient-glow-mid"></div>
 
-    <!-- ===== HEADER NAVIGATION ===== -->
-    <header class="navbar" aria-label="Main Navigation">
+    <!-- ===== TOP NAVIGATION ===== -->
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/pt/" class="logo">
                 <div class="logo-symbol">A</div>
-                <div class="logo-text">
-                    AuraToolkit<span>360</span>
-                    <span class="logo-pro-badge">Pro</span>
-                </div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
             </a>
-
-            <nav class="nav-center" aria-label="Primary Links">
-                <a href="/resume-score-checker/" class="nav-link">Career &amp; ATS</a>
-                <a href="/converter/" class="nav-link">Document &amp; PDF</a>
-                <a href="/converter/#image" class="nav-link">Image &amp; Signature</a>
-                <a href="/resume-cv-maker/" class="nav-link">Resume Builder</a>
+            
+            <div class="nav-center">
+                <a href="/pt/" class="nav-link active">Início</a>
+                <a href="/pt/converter/" class="nav-link">Conversor</a>
+                <a href="/pt/resume-cv-maker/" class="nav-link">Gerador de Currículo</a>
+                <a href="/cover-letter-maker/" class="nav-link">Carta de Apresentação</a>
+                <a href="/pt/resume-score-checker/" class="nav-link">Verificador ATS</a>
                 <a href="/pt/hr-helper/" class="nav-link">Triagem RH <span class="nav-badge-pill">New</span></a>
-                <a href="/blogs/" class="nav-link">Editorial Guides</a>
-            </nav>
+                <a href="/blogs/" class="nav-link">Blog</a>
+                <a href="/about/" class="nav-link">Sobre</a>
+            </div>
 
             <div class="nav-right-actions">
-                <button type="button" class="nav-cmd-search" onclick="focusSearch()" aria-label="Search 30+ tools">
-                    <span>Search 30+ tools...</span>
-                    <kbd>⌘K</kbd>
-                </button>
-                <a href="/resume-score-checker/" class="btn-launch-ats">Launch ATS Checker</a>
-                <button type="button" class="btn-bookmark-nav" onclick="bookmarkSite()" title="Bookmark AuraToolkit360">★</button>
-
+                <a href="/pt/hr-helper/" class="btn-try-hr">Testar Triagem RH →</a>
+                <button class="btn-bookmark-nav" onclick="bookmarkSite()">★ Salvar</button>
                 <div class="lang-switcher" id="langSwitcherContainer">
     <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
         <span class="lang-globe">🌐</span>
@@ -1423,7 +1483,6 @@
         <a href="/ar/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
     </div>
 </div>
-
                 <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
@@ -1431,793 +1490,659 @@
                 </button>
             </div>
         </div>
-
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
-                <a href="/converter/" class="mobile-nav-item"><span>🔄</span> Document &amp; PDF Converter Suite</a>
+                <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
-                <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
-                <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> ATS Resume Score Checker</a>
+            <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
+                <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
                 <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
-                <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Editorial &amp; Career Guides</a>
+                <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
                 <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
-                <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#059669; width:100%; border:none; text-align:left; background:#ECFDF5; font-size:0.9rem; font-weight:700; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
-                <div class="mobile-lang-container">
-                    <div class="mobile-lang-title">🌐 Language / Idioma / Sprache</div>
-                    <div class="mobile-lang-grid">
-                        <a href="/" class="mobile-lang-item active" data-lang="en"><span class="flag">🇺🇸</span> EN</a>
-                        <a href="/es/" class="mobile-lang-item" data-lang="es"><span class="flag">🇪🇸</span> ES</a>
-                        <a href="/fr/" class="mobile-lang-item" data-lang="fr"><span class="flag">🇫🇷</span> FR</a>
-                        <a href="/de/" class="mobile-lang-item" data-lang="de"><span class="flag">🇩🇪</span> DE</a>
-                        <a href="/pt/" class="mobile-lang-item" data-lang="pt"><span class="flag">🇧🇷</span> PT</a>
-                        <a href="/ar/" class="mobile-lang-item" data-lang="ar"><span class="flag">🇸🇦</span> AR</a>
-                    </div>
-                </div>
+                <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
+            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+        <div class="mobile-lang-container">
+    <div class="mobile-lang-title">🌐 Language / Idioma / Sprache</div>
+    <div class="mobile-lang-grid">
+        <a href="/" class="mobile-lang-item active" data-lang="en"><span class="flag">🇺🇸</span> EN</a>
+        <a href="/es/" class="mobile-lang-item " data-lang="es"><span class="flag">🇪🇸</span> ES</a>
+        <a href="/fr/" class="mobile-lang-item " data-lang="fr"><span class="flag">🇫🇷</span> FR</a>
+        <a href="/de/" class="mobile-lang-item " data-lang="de"><span class="flag">🇩🇪</span> DE</a>
+        <a href="/pt/" class="mobile-lang-item " data-lang="pt"><span class="flag">🇧🇷</span> PT</a>
+        <a href="/ar/" class="mobile-lang-item " data-lang="ar"><span class="flag">🇸🇦</span> AR</a>
+    </div>
+</div>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero-section grid-pattern">
-        <div class="hero-inner">
-            <div class="hero-badge">
-                <span class="hero-badge-dot"></span>
-                <span style="color:var(--brand-700); font-weight:700;">AuraToolkit 2.4</span>
-                <span>•</span>
-                <span>Zero Server Uploads</span>
-                <span>•</span>
-                <span style="color:var(--emerald-700); font-weight:700;">100% In-Browser Engine</span>
+    <!-- ===== MAIN CONTENT CONTAINER ===== -->
+    <main class="site-container">
+
+        <!-- ===== SECTION 1: FEATURED CAROUSEL ===== -->
+        <div class="featured-header">
+            <h3>Featured Highlights</h3>
+        </div>
+
+        <div class="featured-carousel-wrapper" id="carouselWrapper">
+            <button class="carousel-btn carousel-prev" onclick="prevSlide()" aria-label="Previous Slide">‹</button>
+            <button class="carousel-btn carousel-next" onclick="nextSlide()" aria-label="Next Slide">›</button>
+
+            <div class="carousel-slides" id="carouselSlides">
+                <!-- Slide 1: Resume Builder -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <span class="slide-tag tag-resume">AI-Powered Templates</span>
+                        <h2>RESUME BUILDER</h2>
+                        <p>Build ATS-optimized resumes in minutes. Pass automated recruiter screening with 7 proven layout designs and instant PDF export.</p>
+                        <a href="/resume-cv-maker/" class="slide-btn">Start Creating &gt;</a>
+                    </div>
+                    <div class="slide-visual-preview">
+                        <div class="preview-resume-card">
+                            <div class="preview-resume-header">
+                                <div class="preview-avatar">JD</div>
+                                <div>
+                                    <strong style="font-size:0.85rem;">John Doe</strong><br>
+                                    <span style="font-size:0.7rem; color:#64748b;">Senior Full-Stack Engineer</span>
+                                </div>
+                            </div>
+                            <div class="preview-resume-bar w-75"></div>
+                            <div class="preview-resume-bar w-50"></div>
+                            <div class="preview-badge-ats">✓ ATS Tested: 92/100 Score</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: HR Helper -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <span class="slide-tag tag-hr">Bulk Candidate Screening</span>
+                        <h2>HR HELPER</h2>
+                        <p>Screen, score, and rank up to 300+ candidate CVs simultaneously in your browser. Save 15+ hours per recruitment cycle with complete client-side confidentiality.</p>
+                        <a href="/hr-helper/" class="slide-btn slide-btn-emerald">Screen Candidates &gt;</a>
+                    </div>
+                    <div class="slide-visual-preview">
+                        <div style="font-size:0.8rem; color:#ffffff; margin-bottom:0.6rem; font-weight:700;">Recruiter Batch Processor</div>
+                        <div style="background:rgba(255,255,255,0.05); padding:0.6rem; border-radius:8px; margin-bottom:0.4rem; display:flex; justify-content:space-between;">
+                            <span>📁 150 Resumes Uploaded</span>
+                            <span style="color:#10b981; font-weight:700;">100% Parsed</span>
+                        </div>
+                        <div style="font-size:0.72rem; color:#475569;">Top Candidates Ranked by Job Match %</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: ATS Score Checker -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <span class="slide-tag tag-ats">Live Match Analyzer</span>
+                        <h2>ATS SCORE CHECKER</h2>
+                        <p>Upload your resume and paste a job description. Detect missing keywords, formatting errors, and get instant recommendations to boost your interview callbacks.</p>
+                        <a href="/resume-score-checker/" class="slide-btn">Score Your CV &gt;</a>
+                    </div>
+                    <div class="slide-visual-preview" style="text-align:center;">
+                        <div style="font-size:2.2rem; font-weight:900; color:#38bdf8; margin-bottom:0.2rem;">88%</div>
+                        <div style="font-size:0.8rem; color:#334155; font-weight:700;">High Interview Match Probability</div>
+                        <div style="font-size:0.72rem; color:#475569; margin-top:0.4rem;">Keywords Identified: React, TypeScript, GraphQL</div>
+                    </div>
+                </div>
             </div>
 
-            <h1 class="hero-title">
-                Private, In-Browser Utilities for <br>
-                <span class="hero-title-gradient">Documents, Career &amp; HR Workflows</span>
-            </h1>
-
-            <p class="hero-subtitle">
-                Audit ATS resumes against real job specs, batch-screen 300+ candidate CVs locally, and convert sensitive files without transmitting a single byte to third-party cloud servers.
-            </p>
-
-            <!-- Interactive Search Bar & Quick Filter Chips -->
-            <div class="search-container">
-                <div class="search-bar-wrap">
-                    <span class="icon">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                    </span>
-                    <input type="text" id="searchInput" placeholder="Search 30+ tools (e.g. PDF to Word, Merge PDF, ATS Score, HR Screener...)" autocomplete="off">
-                    <button class="search-clear-btn" id="searchClearBtn" onclick="clearSearch()" aria-label="Clear Search">✕</button>
-                    <span class="search-kbd-hint">⌘K</span>
-                </div>
-                <div class="search-results-box" id="searchResultsBox"></div>
-
-                <div class="quick-chips-row">
-                    <button class="chip-btn" onclick="quickFilter('PDF to Word')">📕 PDF to Word</button>
-                    <button class="chip-btn" onclick="quickFilter('Merge PDF')">➕ Merge PDF</button>
-                    <button class="chip-btn" onclick="quickFilter('Compress PDF')">🗜️ Compress PDF</button>
-                    <button class="chip-btn" onclick="quickFilter('JPG to PNG')">🖼️ JPG to PNG</button>
-                    <button class="chip-btn" onclick="quickFilter('Resume')">📄 Resume Builder</button>
-                    <button class="chip-btn" onclick="quickFilter('ATS')">🎯 ATS Checker</button>
-                </div>
-            </div>
-
-            <!-- Metrics Strip -->
-            <div class="metrics-strip">
-                <div class="metric-card">
-                    <div class="metric-val">30+</div>
-                    <div class="metric-lbl">Utilities Active</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-val" style="color:var(--emerald-600);">0 KB</div>
-                    <div class="metric-lbl">Cloud Storage (Local RAM)</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-val" style="color:var(--brand-600);">300+ CVs</div>
-                    <div class="metric-lbl">Batch Screening Pool</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-val" style="color:var(--indigo-600);">100% Free</div>
-                    <div class="metric-lbl">No Paywalls / Signups</div>
-                </div>
+            <!-- Dots Indicator -->
+            <div class="carousel-nav-dots" id="carouselDots">
+                <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                <div class="carousel-dot" onclick="goToSlide(2)"></div>
             </div>
         </div>
-    </section>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="container-xl">
+        <!-- ===== SECTION 2: BRAND TAGLINE & 4 PILLARS ===== -->
+        <div class="hero-banner">
+            <span class="hero-eyebrow">AURATOOLKIT360 | Free Online File Converter &amp; HR Tools</span>
+            <h1 class="hero-title">Your All-in-One Digital Toolkit</h1>
+            <p class="hero-desc">Convert Files, Build ATS Resumes &amp; Automate HR Tasks. Faster, Private, and 100% Free with zero cloud uploads.</p>
+        </div>
 
-        <!-- ===== BENTO SHOWCASE: FLAGSHIPS ===== -->
-        <section class="bento-section" aria-label="Flagship Career & HR Tools">
-            <div class="bento-grid">
-
-                <!-- Left Bento Card: ATS Resume Score Checker -->
-                <div class="bento-ats-card">
-                    <div>
-                        <div class="bento-top-meta">
-                            <span class="badge-brand-pill">● Live ATS Parser v2.4</span>
-                            <span class="mono-tag">PDF • DOCX • TXT</span>
-                        </div>
-
-                        <h3 class="bento-title" style="color:var(--text-strong);">ATS Resume Score Checker</h3>
-                        <p class="bento-desc">Simulates corporate recruiter parsers (Greenhouse, Workday, Taleo) to score keyword density and layout.</p>
-
-                        <div class="ats-diag-box">
-                            <div class="ats-gauge-col">
-                                <div class="ats-gauge-wrap">
-                                    <svg style="width:100%; height:100%; transform:rotate(-90deg);" viewBox="0 0 36 36">
-                                        <path stroke="#E2E8F0" stroke-width="3.5" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                        <path stroke="#7C3AED" stroke-dasharray="92, 100" stroke-width="3.5" stroke-linecap="round" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                    </svg>
-                                    <div style="position:absolute; text-align:center;">
-                                        <span style="font-size:1.3rem; font-weight:900; color:var(--text-strong); line-height:1;">92</span>
-                                        <span style="display:block; font-size:0.55rem; color:var(--text-light); font-weight:700;">/ 100</span>
-                                    </div>
-                                </div>
-                                <span style="font-size:0.7rem; font-weight:700; color:var(--emerald-600); margin-top:0.35rem;">Ready to Apply</span>
-                            </div>
-
-                            <div class="ats-check-list">
-                                <div class="ats-check-row">
-                                    <span style="color:var(--text-main);">✓ Single Column Layout</span>
-                                    <span style="color:var(--emerald-700); font-weight:700;">Pass</span>
-                                </div>
-                                <div class="ats-check-row">
-                                    <span style="color:var(--text-main);">✓ Target Skills: React, Node, TS</span>
-                                    <span style="color:var(--brand-600); font-weight:700;">100% Match</span>
-                                </div>
-                                <div class="ats-check-row warn">
-                                    <span>⚠ Suggestion: Add Cloud KPIs</span>
-                                    <span style="font-weight:700;">+4 Pts</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bento-footer">
-                        <span style="color:var(--text-light);">Processed locally in browser memory</span>
-                        <a href="/resume-score-checker/" class="btn-bento-brand">Upload Resume (PDF)</a>
-                    </div>
-                </div>
-
-                <!-- Right Bento Card: HR Helper Bulk Screener -->
-                <div class="bento-hr-card">
-                    <div>
-                        <div class="bento-top-meta">
-                            <span class="badge-emerald-pill">HR Bulk Screener</span>
-                            <span class="mono-tag" style="color:#94A3B8;">Batch 300+ CVs</span>
-                        </div>
-
-                        <h3 class="bento-title" style="color:#ffffff;">Simultaneous Candidate Screening</h3>
-                        <p class="bento-desc" style="color:#CBD5E1;">Tokenize and rank hundreds of applicant files in seconds without data leakage.</p>
-
-                        <div class="hr-rank-list">
-                            <div class="hr-rank-row">
-                                <div style="display:flex; align-items:center; gap:0.55rem;">
-                                    <span class="hr-rank-num" style="background:#10B981;">1</span>
-                                    <span style="font-weight:600;">Sarah K. Jenkins (Sr. Architect)</span>
-                                </div>
-                                <span style="color:#34D399; font-weight:700; background:rgba(16,185,129,0.2); padding:0.15rem 0.5rem; border-radius:6px;">98% Fit</span>
-                            </div>
-                            <div class="hr-rank-row">
-                                <div style="display:flex; align-items:center; gap:0.55rem;">
-                                    <span class="hr-rank-num" style="background:#8B5CF6;">2</span>
-                                    <span style="font-weight:600;">Alex Wong (Fullstack Dev)</span>
-                                </div>
-                                <span style="color:#C4B5FD; font-weight:700; background:rgba(139,92,246,0.22); padding:0.15rem 0.5rem; border-radius:6px;">94% Fit</span>
-                            </div>
-                            <div class="hr-rank-row">
-                                <div style="display:flex; align-items:center; gap:0.55rem;">
-                                    <span class="hr-rank-num" style="background:#334155; color:#CBD5E1;">3</span>
-                                    <span style="font-weight:600;">Fatima Al-Sayed (Lead)</span>
-                                </div>
-                                <span style="color:#CBD5E1; font-weight:700; background:rgba(255,255,255,0.1); padding:0.15rem 0.5rem; border-radius:6px;">89% Fit</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bento-footer">
-                        <span style="color:#94A3B8;">Export shortlist to CSV</span>
-                        <a href="/hr-helper/" class="btn-bento-white">Launch Screener</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ===== 4 CORE WORKFLOW PILLARS ===== -->
-        <section class="pillars-grid" aria-label="Core Platform Workflows">
+        <!-- 4 Core Pillars Grid -->
+        <div class="pillars-grid">
+            <!-- Pillar 1: File Converter -->
             <div class="pillar-card">
                 <div>
-                    <div class="pillar-head">
-                        <div class="pillar-icon-box">⇄</div>
-                        <span class="pillar-sub">30+ Formats</span>
-                    </div>
-                    <h4>File Converter Suite</h4>
-                    <p>Convert PDF, Word, Excel, Images &amp; OCR text directly in your browser RAM.</p>
+                    <div class="pillar-icon-box icon-box-blue">⇄</div>
+                    <h4>File Converter</h4>
+                    <div class="pillar-sub">30+ Formats</div>
+                    <p>Convert PDF, Word, Excel, Images &amp; Audio files directly in your web browser.</p>
                 </div>
-                <a href="/converter/" class="btn-pillar-pill">Explore Converter →</a>
+                <a href="/converter/" class="btn-pillar-pill">Explore Converter &gt;</a>
             </div>
 
+            <!-- Pillar 2: Resume Builder -->
             <div class="pillar-card">
                 <div>
-                    <div class="pillar-head">
-                        <div class="pillar-icon-box">📝</div>
-                        <span class="pillar-sub">12 ATS Layouts</span>
-                    </div>
-                    <h4>ATS Resume Builder</h4>
-                    <p>Craft job-winning resumes with pre-validated single-column ATS templates.</p>
+                    <div class="pillar-icon-box icon-box-purple">📝</div>
+                    <h4>Resume Builder</h4>
+                    <div class="pillar-sub">ATS Templates</div>
+                    <p>Craft job-winning resumes with pre-formatted ATS designs and live preview.</p>
                 </div>
-                <a href="/resume-cv-maker/" class="btn-pillar-pill">Create Resume →</a>
+                <a href="/resume-cv-maker/" class="btn-pillar-pill">Create Resume &gt;</a>
             </div>
 
+            <!-- Pillar 3: ATS Checker -->
             <div class="pillar-card">
                 <div>
-                    <div class="pillar-head">
-                        <div class="pillar-icon-box">✉️</div>
-                        <span class="pillar-sub">Instant Export</span>
-                    </div>
-                    <h4>Cover Letter Maker</h4>
-                    <p>Generate tailored, role-specific cover letters synchronized with your CV theme.</p>
+                    <div class="pillar-icon-box icon-box-cyan">🎯</div>
+                    <h4>ATS Checker</h4>
+                    <div class="pillar-sub">Check CV Online</div>
+                    <p>Audit your resume against job descriptions to spot missing keywords and flaws.</p>
                 </div>
-                <a href="/cover-letter-maker/" class="btn-pillar-pill">Build Cover Letter →</a>
+                <a href="/resume-score-checker/" class="btn-pillar-pill">Check ATS Score &gt;</a>
             </div>
 
+            <!-- Pillar 4: HR Helper -->
             <div class="pillar-card">
                 <div>
-                    <div class="pillar-head">
-                        <div class="pillar-icon-box">✨</div>
-                        <span class="pillar-sub">Fluency &amp; Tone</span>
-                    </div>
-                    <h4>Paraphrasing Studio</h4>
-                    <p>Rewrite bullet points and executive summaries for stronger impact and clarity.</p>
+                    <div class="pillar-icon-box icon-box-green">👥</div>
+                    <h4>HR Helper</h4>
+                    <div class="pillar-sub">Bulk Screening</div>
+                    <p>Screen hundreds of applicants in bulk and export ranked shortlists in seconds.</p>
                 </div>
-                <a href="/paraphrasing-tool/" class="btn-pillar-pill">Open Paraphraser →</a>
+                <a href="/hr-helper/" class="btn-pillar-pill">Try HR Helper &gt;</a>
             </div>
-        </section>
+        </div>
 
-        <!-- ===== COMPLETE GRID DIRECTORY (ALL 30+ TOOLS WITH FILTERING) ===== -->
-        <section class="directory-section" id="toolsDirectory">
-            <div class="category-filter-bar">
-                <div class="filter-pills-group" role="tablist" aria-label="Filter Tool Categories">
-                    <button type="button" class="cat-tab-btn active" onclick="filterCategory('all', this)">All Modules (24)</button>
-                    <button type="button" class="cat-tab-btn" onclick="filterCategory('pdf', this)">Document &amp; PDF (8)</button>
-                    <button type="button" class="cat-tab-btn" onclick="filterCategory('image', this)">Media, Image &amp; Photo (8)</button>
-                    <button type="button" class="cat-tab-btn" onclick="filterCategory('dev', this)">Career, Code &amp; Utilities (8)</button>
-                </div>
-                <span style="font-size:0.74rem; color:var(--text-muted); font-family:var(--font-mono);">Local WebAssembly + FileReader API</span>
+        <!-- ===== SEARCH BOX ===== -->
+        <div class="search-container">
+            <div class="search-bar-wrap">
+                <span class="icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search any tool (e.g. PDF to Word, Merge PDF, Resume Maker...)" autocomplete="off">
+                <button class="search-clear-btn" id="searchClearBtn" onclick="clearSearch()" aria-label="Clear Search">✕</button>
             </div>
+            <div class="search-results-box" id="searchResultsBox"></div>
 
-            <!-- Suite 1: Document & PDF Tools -->
-            <div class="suite-block" data-suite="pdf">
-                <div class="suite-header">
-                    <h2>Document &amp; PDF Tools (8)</h2>
-                    <span class="suite-tag" style="color:var(--brand-600);">100% In-Browser</span>
-                </div>
-                <div class="tools-bento-grid">
-                    <a href="/converter/pdf-to-word/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">📕</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">PDF to Word</div>
-                            <div class="tool-card-desc">Editable DOCX converter</div>
-                        </div>
-                    </a>
-                    <a href="/converter/word-to-pdf/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">📝</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Word to PDF</div>
-                            <div class="tool-card-desc">Convert DOC to clean PDF</div>
-                        </div>
-                    </a>
-                    <a href="/converter/merge-pdf/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">➕</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Merge PDF</div>
-                            <div class="tool-card-desc">Combine multi-page docs</div>
-                        </div>
-                    </a>
-                    <a href="/converter/split-pdf/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">✂️</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Split PDF</div>
-                            <div class="tool-card-desc">Separate selected pages</div>
-                        </div>
-                    </a>
-                    <a href="/converter/compress-pdf/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🗜️</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Compress PDF</div>
-                            <div class="tool-card-desc">Reduce file size up to 80%</div>
-                        </div>
-                    </a>
-                    <a href="/converter/excel-to-pdf/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">📗</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Excel to PDF</div>
-                            <div class="tool-card-desc">Spreadsheet to PDF sheets</div>
-                        </div>
-                    </a>
-                    <a href="/converter/ppt-to-pdf/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">📊</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">PPT to PDF</div>
-                            <div class="tool-card-desc">Slide deck conversion</div>
-                        </div>
-                    </a>
-                    <a href="/converter/#office" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🔄</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Rotate &amp; Lock PDF</div>
-                            <div class="tool-card-desc">Orientation &amp; AES cipher</div>
-                        </div>
-                    </a>
-                </div>
+            <div class="quick-chips-row">
+                <button class="chip-btn" onclick="quickFilter('PDF to Word')">📕 PDF to Word</button>
+                <button class="chip-btn" onclick="quickFilter('Merge PDF')">➕ Merge PDF</button>
+                <button class="chip-btn" onclick="quickFilter('Compress PDF')">🗜️ Compress PDF</button>
+                <button class="chip-btn" onclick="quickFilter('JPG to PNG')">🖼️ JPG to PNG</button>
+                <button class="chip-btn" onclick="quickFilter('Resume')">📄 Resume Builder</button>
+                <button class="chip-btn" onclick="quickFilter('ATS')">🎯 ATS Checker</button>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 3: TRENDING TOOLS GRID ===== -->
+        <div class="section-headline-wrap">
+            <h3>🔥 Trending Tools</h3>
+        </div>
+
+        <div class="trending-grid">
+            <!-- 1. PDF to Word -->
+            <div class="trending-card">
+                <div class="trending-icon icon-pdf-red">📕</div>
+                <div class="trending-name">PDF to Word</div>
+                <a href="/converter/pdf-to-word/" class="btn-use-tool">Use Tool &gt;</a>
             </div>
 
-            <!-- Suite 2: Media, Image & Photo Suite -->
-            <div class="suite-block" data-suite="image">
-                <div class="suite-header">
-                    <h2>Media, Image &amp; Photo Suite (8)</h2>
-                    <span class="suite-tag" style="color:var(--emerald-600);">Lossless Processing</span>
-                </div>
-                <div class="tools-bento-grid">
-                    <a href="/converter/jpg-to-pdf/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🖼️</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">JPG to PNG / PDF</div>
-                            <div class="tool-card-desc">Lossless format swap</div>
-                        </div>
-                    </a>
-                    <a href="/converter/ocr-to-text/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🔍</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">OCR Image to Text</div>
-                            <div class="tool-card-desc">Extract selectable text</div>
-                        </div>
-                    </a>
-                    <a href="/converter/passport-photo-maker/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🛂</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Passport Photo Maker</div>
-                            <div class="tool-card-desc">2x2" and 35x45mm specs</div>
-                        </div>
-                    </a>
-                    <a href="/converter/resize-signature/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">✍️</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Resize Signature</div>
-                            <div class="tool-card-desc">Contract &amp; 20KB stamp sizing</div>
-                        </div>
-                    </a>
-                    <a href="/converter/resize-image/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">📐</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Image Resizer (Px/CM)</div>
-                            <div class="tool-card-desc">Exact dimension locks</div>
-                        </div>
-                    </a>
-                    <a href="/converter/compress-image/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🗜️</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Compress Image</div>
-                            <div class="tool-card-desc">WebP, PNG, JPG reduction</div>
-                        </div>
-                    </a>
-                    <a href="/converter/crop-rotate-image/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">✂️</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Crop &amp; Rotate</div>
-                            <div class="tool-card-desc">1:1 and 16:9 crop aspect</div>
-                        </div>
-                    </a>
-                    <a href="/converter/favicon-generator/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🌟</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Favicon Generator</div>
-                            <div class="tool-card-desc">Multi-size .ico bundles</div>
-                        </div>
-                    </a>
-                </div>
+            <!-- 2. JPG to PNG -->
+            <div class="trending-card">
+                <div class="trending-icon icon-img-green">🖼️</div>
+                <div class="trending-name">JPG to PNG</div>
+                <a href="/converter/#image" class="btn-use-tool">Use Tool &gt;</a>
             </div>
 
-            <!-- Suite 3: Career, Developer & Code Utilities -->
-            <div class="suite-block" data-suite="dev">
-                <div class="suite-header">
-                    <h2>Career, Developer &amp; Code Utilities (8)</h2>
-                    <span class="suite-tag" style="color:var(--brand-700);">Web Crypto &amp; Workers</span>
-                </div>
-                <div class="tools-bento-grid">
-                    <a href="/converter/#office" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">📑</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">JSON to CSV</div>
-                            <div class="tool-card-desc">Nested array table output</div>
-                        </div>
-                    </a>
-                    <a href="/converter/case-converter/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">&lt;/&gt;</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Code Minifier</div>
-                            <div class="tool-card-desc">HTML, CSS, JS compression</div>
-                        </div>
-                    </a>
-                    <a href="/converter/case-converter/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🔤</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Text Case Converter</div>
-                            <div class="tool-card-desc">camelCase, snake_case, CAPS</div>
-                        </div>
-                    </a>
-                    <a href="/converter/password-generator/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🔑</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Password Generator</div>
-                            <div class="tool-card-desc">32-character Web Crypto</div>
-                        </div>
-                    </a>
-                    <a href="/resume-cv-maker/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">📝</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">ATS Resume Builder</div>
-                            <div class="tool-card-desc">12 recruiter-tested layouts</div>
-                        </div>
-                    </a>
-                    <a href="/resume-score-checker/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">🎯</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">ATS Score Checker</div>
-                            <div class="tool-card-desc">Instant JD keyword audit</div>
-                        </div>
-                    </a>
-                    <a href="/hr-helper/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">👥</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">HR Bulk Screener</div>
-                            <div class="tool-card-desc">Rank 300+ CVs locally</div>
-                        </div>
-                    </a>
-                    <a href="/converter/word-counter/" class="tool-utility-card">
-                        <div class="tool-card-top">
-                            <span class="tool-icon-badge">📊</span>
-                            <span class="tool-arrow">→</span>
-                        </div>
-                        <div>
-                            <div class="tool-card-name">Word &amp; Char Counter</div>
-                            <div class="tool-card-desc">Reading time &amp; density</div>
-                        </div>
-                    </a>
-                </div>
+            <!-- 3. Merge PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-pdf-red">➕</div>
+                <div class="trending-name">Merge PDF</div>
+                <a href="/converter/merge-pdf/" class="btn-use-tool">Use Tool &gt;</a>
             </div>
-        </section>
 
-        <!-- ===== SPLIT WIDGETS: RECENT ACTIVITY & RECENTLY ADDED ===== -->
-        <section class="split-widgets-row" aria-label="Workspace Activity and New Utilities">
+            <!-- 4. Word to PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-word-blue">📝</div>
+                <div class="trending-name">Word to PDF</div>
+                <a href="/converter/word-to-pdf/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 5. Compress PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-compress-purple">🗜️</div>
+                <div class="trending-name">Compress PDF</div>
+                <a href="/converter/compress-pdf/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 6. JPG to PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-img-green">🖼️</div>
+                <div class="trending-name">JPG to PDF</div>
+                <a href="/converter/jpg-to-pdf/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 7. Split PDF -->
+            <div class="trending-card">
+                <div class="trending-icon icon-pdf-red">✂️</div>
+                <div class="trending-name">Split PDF</div>
+                <a href="/converter/split-pdf/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 8. OCR to Text -->
+            <div class="trending-card">
+                <div class="trending-icon icon-word-blue">📄</div>
+                <div class="trending-name">OCR to Text</div>
+                <a href="/converter/ocr-to-text/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 9. Compress Image -->
+            <div class="trending-card">
+                <div class="trending-icon icon-compress-purple">🗜️</div>
+                <div class="trending-name">Compress Image</div>
+                <a href="/converter/compress-image/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+
+            <!-- 10. Resume Score -->
+            <div class="trending-card">
+                <div class="trending-icon icon-target-orange">🎯</div>
+                <div class="trending-name">Resume Score</div>
+                <a href="/resume-score-checker/" class="btn-use-tool">Use Tool &gt;</a>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 4: RECENT ACTIVITY & RECENTLY ADDED WIDGETS ===== -->
+        <div class="split-widgets-row">
+            <!-- Left: Smart Recent Activity (Client-Side LocalStorage) -->
             <div class="widget-box">
                 <div class="widget-head">
                     <h4>🕒 Recent Activity</h4>
-                    <span class="widget-head-badge">🔒 Stored in Local Browser</span>
+                    <span class="widget-head-badge">🔒 100% Private to You</span>
                 </div>
                 <div class="activity-items-list" id="recentActivityList">
                     <!-- Populated dynamically via JS -->
                 </div>
             </div>
 
+            <!-- Right: Recently Added Tools -->
             <div class="widget-box">
                 <div class="widget-head">
-                    <h4>✨ Recently Added Utilities</h4>
-                    <a href="/converter/" style="font-size:0.75rem; color:var(--brand-600); text-decoration:none; font-weight:700;">View All →</a>
+                    <h4>✨ Recently Added</h4>
+                    <a href="/converter/" style="font-size:0.75rem; color:var(--accent-cyan); text-decoration:none; font-weight:700;">View All &gt;</a>
                 </div>
                 <div class="recently-added-grid">
+                    <!-- Card 1 -->
                     <div class="mini-tool-card">
-                        <div>
-                            <div style="font-size:1.3rem;">📑</div>
-                            <div class="mini-title">JSON to CSV</div>
-                            <div class="mini-desc">Convert structured JSON arrays into clean spreadsheet sheets.</div>
-                        </div>
-                        <a href="/converter/#office" class="btn-use-tool">Launch Tool</a>
+                        <div class="mini-icon">📑</div>
+                        <div class="mini-title">JSON to CSV</div>
+                        <div class="mini-desc">Convert and parse structured JSON data into clean CSV sheets.</div>
+                        <a href="/converter/#office" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
+                    <!-- Card 2 -->
                     <div class="mini-tool-card">
-                        <div>
-                            <div style="font-size:1.3rem;">📏</div>
-                            <div class="mini-title">Image Resizer</div>
-                            <div class="mini-desc">Resize photos by custom pixel, cm, or inch specs with zero loss.</div>
-                        </div>
-                        <a href="/converter/resize-image/" class="btn-use-tool">Launch Tool</a>
+                        <div class="mini-icon">📏</div>
+                        <div class="mini-title">Image Resizer</div>
+                        <div class="mini-desc">Resize photos by custom pixel, cm, or inch specs with zero quality loss.</div>
+                        <a href="/converter/resize-image/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
+                    <!-- Card 3 -->
                     <div class="mini-tool-card">
-                        <div>
-                            <div style="font-size:1.3rem;">&lt;/&gt;</div>
-                            <div class="mini-title">Code Minifier</div>
-                            <div class="mini-desc">Minify and compress HTML, CSS &amp; JavaScript payloads locally.</div>
-                        </div>
-                        <a href="/converter/case-converter/" class="btn-use-tool">Launch Tool</a>
+                        <div class="mini-icon">&lt;/&gt;</div>
+                        <div class="mini-title">Code Minifier</div>
+                        <div class="mini-desc">Minify and compress HTML, CSS &amp; JavaScript code locally.</div>
+                        <a href="/converter/case-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ===== EDITORIAL GUIDES SECTION (AdSense Compliance) ===== -->
-        <section class="guides-section" aria-label="Educational Guides">
-            <div style="max-width:680px;">
-                <span style="font-size:0.72rem; text-transform:uppercase; font-weight:800; color:var(--brand-600); letter-spacing:0.06em;">Educational Guides</span>
-                <h2 style="font-size:1.5rem; font-weight:800; color:var(--text-strong); margin-top:0.25rem; letter-spacing:-0.02em;">Understanding ATS &amp; Data Privacy Standards</h2>
-                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">Comprehensive documentation explaining our parsing heuristics and in-browser WebAssembly security.</p>
-            </div>
+        <!-- ===== SECTION 5: FEATURE SPOTLIGHT: ATS CHECKER ===== -->
+        <div class="section-headline-wrap">
+            <h3>✨ Feature Spotlight</h3>
+        </div>
 
-            <div class="guides-grid">
-                <div class="guide-card">
-                    <div>
-                        <span class="guide-tag" style="color:var(--brand-600);">Career Engineering</span>
-                        <h4>How Modern ATS Parsers Read Resumes</h4>
-                        <p>Explains how Applicant Tracking Systems strip nested columns and graphics into plain text strings and how to ensure keyword match without triggering automated rejections.</p>
-                    </div>
-                    <a href="/blogs/" class="btn-guide-link">Read Documentation →</a>
+        <div class="spotlight-banner">
+            <div class="spotlight-visual-container">
+                <div class="spotlight-terminal-header">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                    <span style="font-size:0.72rem; color:#64748b; font-family:monospace; margin-left:0.5rem;">ats-parser-v2.0.exe</span>
                 </div>
-
-                <div class="guide-card">
-                    <div>
-                        <span class="guide-tag" style="color:var(--indigo-600);">Privacy Architecture</span>
-                        <h4>Why In-Browser WASM Protects Users</h4>
-                        <p>Explains how client-side WebAssembly and JavaScript FileReader prevent sensitive corporate spreadsheets and identity documents from being uploaded to cloud databases.</p>
-                    </div>
-                    <a href="/blogs/" class="btn-guide-link">Read Documentation →</a>
+                <div class="spotlight-code-snippet">
+                    &gt; Reading resume structure... <span class="code-highlight">DONE</span><br>
+                    &gt; Scanning job description keywords... <span class="code-highlight">MATCHED</span><br>
+                    &gt; Checking formatting &amp; table compatibility... <span class="code-highlight">PASS</span><br>
+                    &gt; Computing candidate suitability rating...
                 </div>
-
-                <div class="guide-card">
-                    <div>
-                        <span class="guide-tag" style="color:var(--emerald-600);">Recruiter Efficiency</span>
-                        <h4>Screening 300+ Candidate CVs in Bulk</h4>
-                        <p>Outlines the tokenization mathematics behind evaluating entire applicant pools simultaneously, saving talent acquisition teams up to 15 hours per opening.</p>
-                    </div>
-                    <a href="/hr-helper/" class="btn-guide-link">Explore HR Workflow →</a>
+                <div class="score-pill-floating">
+                    <span class="score-num">89%</span>
+                    <span style="font-size:0.74rem; font-weight:700; color:#334155;">Interview<br>Ready</span>
                 </div>
             </div>
-        </section>
 
-        <!-- ===== USER STORIES & FEEDBACK ===== -->
-        <section aria-label="User Feedback">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
-                <h3 style="font-size:1.05rem; font-weight:800; color:var(--text-strong);">Trusted by Job Seekers, Engineers &amp; Hiring Teams</h3>
-                <span style="font-size:0.75rem; color:var(--text-muted);">4.9/5 Average Satisfaction</span>
+            <div class="spotlight-content">
+                <h3>Check Your ATS Resume Score</h3>
+                <p>The ATS checker validates your resume against real recruiter algorithms, highlighting missing skills, formatting issues, and keyword gaps.</p>
+                <ul class="spotlight-checklist">
+                    <li><span class="check-icon">✓</span> Check CV Score and receive actionable optimization advice</li>
+                    <li><span class="check-icon">✓</span> Detect missing keywords, hard skills, and certification matches</li>
+                    <li><span class="check-icon">✓</span> Eliminate parsing errors that cause automated job rejections</li>
+                </ul>
+                <a href="/resume-score-checker/" class="btn-spotlight-cta">Check Your Resume →</a>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 6: BEST PRACTICES & GUIDES ===== -->
+        <div class="section-headline-wrap">
+            <h3>📚 Best Practices &amp; Guides</h3>
+        </div>
+
+        <div class="guides-grid">
+            <!-- Guide 1 -->
+            <div class="guide-card">
+                <div>
+                    <span class="guide-tag">Career Advice</span>
+                    <h4>Writing a Winning Resume</h4>
+                    <ul class="guide-checklist">
+                        <li>• Use standard ATS-friendly headers and clean typography</li>
+                        <li>• Tailor skill keywords specifically to each job description</li>
+                        <li>• Highlight measurable impact with numbers and metrics</li>
+                    </ul>
+                </div>
+                <a href="/blogs/" class="btn-guide-link">Learn Solutions &gt;</a>
             </div>
 
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div>
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"The ATS Checker showed me 4 critical skills missing from my resume. After updating, I got 3 interview calls within 2 weeks."</p>
-                    </div>
-                    <div class="testimonial-user">
-                        <div class="user-avatar-initials">JD</div>
-                        <div>
-                            <div class="user-meta-name">John D.</div>
-                            <div class="user-meta-role">Full-Stack Developer</div>
-                        </div>
-                    </div>
+            <!-- Guide 2 -->
+            <div class="guide-card">
+                <div>
+                    <span class="guide-tag">Data Security</span>
+                    <h4>Improving Your File Security</h4>
+                    <ul class="guide-checklist">
+                        <li>• Why in-browser client-side file conversions are safer</li>
+                        <li>• Protecting private business documents from third-party servers</li>
+                        <li>• Best practices for password protecting confidential PDFs</li>
+                    </ul>
                 </div>
+                <a href="/blogs/" class="btn-guide-link">Learn Solutions &gt;</a>
+            </div>
 
-                <div class="testimonial-card">
-                    <div>
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Saved our recruitment team over 10 hours screening 250 candidate resumes. The private browser processing is incredible."</p>
-                    </div>
-                    <div class="testimonial-user">
-                        <div class="user-avatar-initials">SL</div>
-                        <div>
-                            <div class="user-meta-name">Sarah L.</div>
-                            <div class="user-meta-role">Talent Acquisition Lead</div>
-                        </div>
-                    </div>
+            <!-- Guide 3 -->
+            <div class="guide-card">
+                <div>
+                    <span class="guide-tag">Recruitment Workflow</span>
+                    <h4>Using the HR Bulk Screener</h4>
+                    <ul class="guide-checklist">
+                        <li>• How to screen 300+ applicant CVs in under 2 minutes</li>
+                        <li>• Weighting required vs nice-to-have job skills effectively</li>
+                        <li>• Exporting clean shortlist spreadsheets for hiring managers</li>
+                    </ul>
                 </div>
+                <a href="/hr-helper/" class="btn-guide-link">Learn Solutions &gt;</a>
+            </div>
+        </div>
 
-                <div class="testimonial-card">
-                    <div>
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Zero wait times, no annoying subscription popups, and totally private client-side conversions. My daily go-to toolkit."</p>
-                    </div>
-                    <div class="testimonial-user">
-                        <div class="user-avatar-initials">AR</div>
-                        <div>
-                            <div class="user-meta-name">Ahmad R.</div>
-                            <div class="user-meta-role">Product Designer</div>
-                        </div>
-                    </div>
+        <!-- ===== SECTION 7: USER STORIES & FEEDBACK ===== -->
+        <div class="section-headline-wrap">
+            <h3>💬 User Stories &amp; Feedback</h3>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div>
+                    <div class="quote-icon">“</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The ATS Checker showed me 4 critical skills missing from my resume. After updating, I got 3 interview calls within 2 weeks!"</p>
                 </div>
-
-                <div class="testimonial-card">
+                <div class="testimonial-user">
+                    <div class="user-avatar-initials avatar-blue">JD</div>
                     <div>
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Creating my CV took less than 10 minutes. The formatting looks super sharp and clean on mobile as well as PDF export."</p>
-                    </div>
-                    <div class="testimonial-user">
-                        <div class="user-avatar-initials">EM</div>
-                        <div>
-                            <div class="user-meta-name">Elena M.</div>
-                            <div class="user-meta-role">Marketing Specialist</div>
-                        </div>
+                        <div class="user-meta-name">John D.</div>
+                        <div class="user-meta-role">Full-Stack Developer</div>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div>
+                    <div class="quote-icon">“</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Saved our recruitment team over 10 hours screening 250 candidate resumes. The private browser processing is incredible."</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="user-avatar-initials avatar-purple">SL</div>
+                    <div>
+                        <div class="user-meta-name">Sarah L.</div>
+                        <div class="user-meta-role">Talent Acquisition Lead</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div>
+                    <div class="quote-icon">“</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Zero wait times, no annoying subscription popups, and totally private client-side conversions. My daily go-to toolkit."</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="user-avatar-initials avatar-green">AR</div>
+                    <div>
+                        <div class="user-meta-name">Ahmad R.</div>
+                        <div class="user-meta-role">Product Designer</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card">
+                <div>
+                    <div class="quote-icon">“</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Creating my CV took less than 10 minutes. The formatting looks super sharp and clean on mobile as well as PDF export."</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="user-avatar-initials avatar-orange">EM</div>
+                    <div>
+                        <div class="user-meta-name">Elena M.</div>
+                        <div class="user-meta-role">Marketing Specialist</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 8: ALL TOOLS DIRECTORY (EXPANDED FOR MAXIMUM DISCOVERABILITY) ===== -->
+        <div class="directory-wrap">
+            <div class="section-headline-wrap">
+                <h3>🗂️ Complete Tool Suite Directory</h3>
+            </div>
+
+            <!-- Category: Office & PDF -->
+            <div class="directory-category-card">
+                <div class="directory-cat-title">📕 PDF &amp; Office Document Tools</div>
+                <div class="directory-links-grid">
+                    <a href="/converter/pdf-to-word/" class="dir-link">📕→📝 PDF to Word</a>
+                    <a href="/converter/word-to-pdf/" class="dir-link">📝→📕 Word to PDF</a>
+                    <a href="/converter/merge-pdf/" class="dir-link">➕ Merge PDF</a>
+                    <a href="/converter/split-pdf/" class="dir-link">✂️ Split PDF</a>
+                    <a href="/converter/compress-pdf/" class="dir-link">🗜️ Compress PDF</a>
+                    <a href="/converter/excel-to-pdf/" class="dir-link">📗→📕 Excel to PDF</a>
+                    <a href="/converter/ppt-to-pdf/" class="dir-link">📊→📕 PPT to PDF</a>
+                    <a href="/converter/#office" class="dir-link">🔄 Rotate &amp; Lock PDF</a>
+                </div>
+            </div>
+
+            <!-- Category: Photo & Image -->
+            <div class="directory-category-card">
+                <div class="directory-cat-title">🖼️ Image, Photo &amp; Signature Tools</div>
+                <div class="directory-links-grid">
+                    <a href="/converter/jpg-to-pdf/" class="dir-link">🖼️→📕 Image to PDF</a>
+                    <a href="/converter/ocr-to-text/" class="dir-link">📄 OCR Image to Text</a>
+                    <a href="/converter/passport-photo-maker/" class="dir-link">🛂 Passport Photo Maker</a>
+                    <a href="/converter/resize-signature/" class="dir-link">✍️ Resize Signature Tool</a>
+                    <a href="/converter/resize-image/" class="dir-link">📏 Resize Image (Pixels/CM)</a>
+                    <a href="/converter/compress-image/" class="dir-link">🗜️ Compress Image Size</a>
+                    <a href="/converter/crop-rotate-image/" class="dir-link">✂️ Crop &amp; Rotate Image</a>
+                    <a href="/converter/favicon-generator/" class="dir-link">🌟 Favicon Generator</a>
+                </div>
+            </div>
+
+            <!-- Category: Career & Recruiter -->
+            <div class="directory-category-card">
+                <div class="directory-cat-title">💼 Career, Resume &amp; Recruiter Automation</div>
+                <div class="directory-links-grid">
+                    <a href="/resume-cv-maker/" class="dir-link">📝 Resume Builder (12 ATS Templates)</a>
+                    <a href="/resume-score-checker/" class="dir-link">🎯 ATS Resume Score Checker</a>
+                    <a href="/hr-helper/" class="dir-link">👥 HR Bulk Candidate Screener</a>
+                    <a href="/converter/word-counter/" class="dir-link">📊 Word &amp; Character Counter</a>
+                    <a href="/converter/case-converter/" class="dir-link">🔤 Text Case Converter</a>
+                    <a href="/converter/password-generator/" class="dir-link">🔑 Secure Password Tool</a>
+                    <a href="/paraphrasing-tool/" class="dir-link">✨ Paraphrasing &amp; Rewrite</a>
+                </div>
+            </div>
+        </div>
 
         <!-- 1-Click Viral Social Sharing Container -->
-        <div class="aura-share-container" data-title="AuraToolkit360 — Private, In-Browser Tools for Documents, Career &amp; HR" data-subtitle="Help friends, students, and job seekers access 100% free privacy-first online tools with zero watermarks or subscription traps!"></div>
+        <div class="aura-share-container" data-title="AuraToolkit360 — Free File Converters, ATS Resume Builder &amp; HR Tools" data-subtitle="Help friends, students, and job seekers access 100% free privacy-first online tools with zero watermarks or subscription traps!"></div>
 
     </main>
 
     <!-- ===== FOOTER ===== -->
     <footer>
         <div class="footer-inner">
+            <!-- Col 1: Brand Info -->
             <div class="footer-col">
-                <a href="/" style="display:inline-flex; align-items:center; gap:0.55rem; text-decoration:none; color:#ffffff; font-weight:800; font-size:1.05rem; margin-bottom:0.75rem;">
-                    <span style="width:26px; height:26px; border-radius:7px; background:var(--brand-600); display:inline-flex; align-items:center; justify-content:center; font-size:0.8rem;">A</span>
-                    AuraToolkit360
+                <a href="/" class="logo" style="margin-bottom:1rem;">
+                    <div class="logo-symbol">A</div>
+                    <div class="logo-text">AuraToolkit<span>360</span></div>
                 </a>
-                <p style="font-size:0.76rem; color:#94A3B8; line-height:1.6; max-width:340px;">
-                    High-performance browser-based utilities engineered for candidate screening, ATS optimization, and secure document processing without compromising data confidentiality.
+                <p style="font-size:0.85rem; line-height:1.6; margin-bottom:1.2rem;">
+                    Your privacy is our highest priority. All conversions, resume building, and candidate screening run 100% inside your web browser.
                 </p>
-                <div style="margin-top:0.85rem; font-size:0.74rem; color:#64748B;">
-                    Contact: <a href="mailto:info@auratoolkit360.com" style="color:#CBD5E1; text-decoration:none;">info@auratoolkit360.com</a>
+                <div style="font-size:0.82rem; color:var(--text-muted);">
+                    Contact: <a href="mailto:info@auratoolkit360.com" style="color:var(--accent-cyan); text-decoration:none;">info@auratoolkit360.com</a>
                 </div>
             </div>
 
+            <!-- Col 2: Product Suite -->
             <div class="footer-col">
-                <h5>Career &amp; ATS</h5>
+                <h5>Products</h5>
                 <ul class="footer-links-list">
-                    <li><a href="/resume-score-checker/">ATS Resume Checker</a></li>
-                    <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
-                    <li><a href="/hr-helper/">HR Helper Screener</a></li>
-                    <li><a href="/cover-letter-maker/">ATS Cover Letter Builder</a></li>
-                    <li><a href="/paraphrasing-tool/">Paraphraser Tool</a></li>
-                    <li><a href="/canva-resume-alternative/">Canva ATS Alternative</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h5>Document Suite</h5>
-                <ul class="footer-links-list">
-                    <li><a href="/converter/pdf-to-word/">PDF to Word</a></li>
-                    <li><a href="/converter/word-to-pdf/">Word to PDF</a></li>
-                    <li><a href="/converter/merge-pdf/">Merge PDF</a></li>
-                    <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
-                    <li><a href="/converter/resize-signature/">Resize Signature to 20KB</a></li>
+                    <li><a href="/converter/">File Converter Suite</a></li>
                     <li><a href="/ilovepdf-alternative/">iLovePDF Alternative</a></li>
+                    <li><a href="/canva-resume-alternative/">Canva ATS Alternative</a></li>
+                    <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
+                    <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
+                    <li><a href="/hr-helper/">HR Bulk Screener</a></li>
+                    <li><a href="/converter/resize-signature/">Resize Signature to 20KB</a></li>
+                    <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                    <li><a href="/cover-letter-maker/">ATS Cover Letter Builder</a></li>
                     <li><a href="javascript:void(0)" onclick="installPwaApp()">📲 Install App (Offline)</a></li>
                 </ul>
             </div>
 
+            <!-- Col 3: Company & Articles -->
             <div class="footer-col">
-                <h5>Legal &amp; Trust</h5>
+                <h5>Company</h5>
                 <ul class="footer-links-list">
                     <li><a href="/about/">About AuraToolkit360</a></li>
-                    <li><a href="/blogs/">Editorial &amp; Tech Guides</a></li>
+                    <li><a href="/blogs/">Career &amp; Tech Guides</a></li>
                     <li><a href="/contact/">Help &amp; Contact Support</a></li>
-                    <li><a href="/privacy-policy/">Privacy Policy (GDPR)</a></li>
+                    <li><a href="/converter/word-counter/">Text Utilities</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Legal & Security -->
+            <div class="footer-col">
+                <h5>Legal &amp; Security</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/privacy-policy/">Privacy Policy (GDPR / CCPA)</a></li>
                     <li><a href="/terms/">Terms of Service</a></li>
-                    <li><a href="/disclaimer/">Disclaimer</a></li>
+                    <li><a href="/disclaimer/">Disclaimer Statement</a></li>
+                    <li><span style="font-size:0.75rem; color:#10b981;">● System Status: All Systems Operational</span></li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom-bar">
-            <div>© 2026 AuraToolkit360. 100% Client-Side Privacy Guaranteed.</div>
-            <div style="color:#34D399; font-weight:600;">● Status: All Systems Operational</div>
+            <div>© 2026 AuraToolkit360. All rights reserved. 100% Client-Side Privacy Guaranteed.</div>
+            <div>
+                <a href="/privacy-policy/" style="color:var(--text-muted); text-decoration:none; margin-right:1rem;">Privacy</a>
+                <a href="/terms/" style="color:var(--text-muted); text-decoration:none;">Terms</a>
+            </div>
         </div>
     </footer>
 
-    <!-- ===== INTERACTIVE SCRIPTS ===== -->
+    <!-- ===== SCRIPT: CAROUSEL, SEARCH & SMART RECENT ACTIVITY ===== -->
     <script>
-        // --- 1. CATEGORY SUITE FILTERING ---
-        function filterCategory(cat, btnEl) {
-            const buttons = document.querySelectorAll('.cat-tab-btn');
-            buttons.forEach(b => b.classList.remove('active'));
-            if (btnEl) btnEl.classList.add('active');
+        // --- 1. FEATURED CAROUSEL LOGIC ---
+        let currentSlideIndex = 0;
+        const totalSlides = 3;
+        const slidesContainer = document.getElementById('carouselSlides');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let autoSlideTimer = null;
 
-            const blocks = document.querySelectorAll('.suite-block');
-            blocks.forEach(block => {
-                if (cat === 'all' || block.getAttribute('data-suite') === cat) {
-                    block.style.display = 'block';
-                } else {
-                    block.style.display = 'none';
-                }
+        function updateSlideUI() {
+            slidesContainer.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlideIndex);
             });
         }
 
-        // --- 2. SEARCH DATABASE & CMD+K FILTER ENGINE ---
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            updateSlideUI();
+            resetAutoSlide();
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+            updateSlideUI();
+            resetAutoSlide();
+        }
+
+        function goToSlide(idx) {
+            currentSlideIndex = idx;
+            updateSlideUI();
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            autoSlideTimer = setInterval(() => {
+                nextSlide();
+            }, 6500);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideTimer);
+            startAutoSlide();
+        }
+
+        startAutoSlide();
+
+        // Pause carousel on hover
+        const carouselWrapper = document.getElementById('carouselWrapper');
+        if (carouselWrapper) {
+            carouselWrapper.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+            carouselWrapper.addEventListener('mouseleave', () => startAutoSlide());
+        }
+
+        // --- 2. SEARCH DATABASE & FILTER ENGINE ---
         const toolsDatabase = [
-            { name: "PDF to Word", icon: "📕", url: "/converter/pdf-to-word/", category: "Document & PDF", keywords: ["pdf to word", "convert", "docx"] },
-            { name: "Word to PDF", icon: "📝", url: "/converter/word-to-pdf/", category: "Document & PDF", keywords: ["word to pdf", "docx to pdf"] },
-            { name: "Merge PDF", icon: "➕", url: "/converter/merge-pdf/", category: "Document & PDF", keywords: ["merge pdf", "combine", "join"] },
-            { name: "Split PDF", icon: "✂️", url: "/converter/split-pdf/", category: "Document & PDF", keywords: ["split pdf", "extract pages"] },
-            { name: "Compress PDF", icon: "🗜️", url: "/converter/compress-pdf/", category: "Document & PDF", keywords: ["compress pdf", "reduce size"] },
-            { name: "Excel to PDF", icon: "📗", url: "/converter/excel-to-pdf/", category: "Document & PDF", keywords: ["excel to pdf", "xlsx", "spreadsheet"] },
-            { name: "PPT to PDF", icon: "📊", url: "/converter/ppt-to-pdf/", category: "Document & PDF", keywords: ["ppt to pdf", "powerpoint", "slides"] },
-            { name: "JPG to PDF / PNG", icon: "🖼️", url: "/converter/jpg-to-pdf/", category: "Image & Media", keywords: ["jpg to pdf", "image to pdf", "jpg to png"] },
-            { name: "OCR Image to Text", icon: "🔍", url: "/converter/ocr-to-text/", category: "Image & Media", keywords: ["ocr", "scan", "extract text"] },
-            { name: "Resume CV Maker", icon: "📝", url: "/resume-cv-maker/", category: "Career & ATS", keywords: ["resume", "cv builder", "maker", "templates"] },
-            { name: "ATS Cover Letter Builder", icon: "✉️", url: "/cover-letter-maker/", category: "Career & ATS", keywords: ["cover letter", "job application"] },
-            { name: "ATS Resume Score Checker", icon: "🎯", url: "/resume-score-checker/", category: "Career & ATS", keywords: ["ats", "score checker", "cv test"] },
-            { name: "HR Bulk Candidate Screener", icon: "👥", url: "/hr-helper/", category: "Career & ATS", keywords: ["hr helper", "bulk screening", "recruiting", "300 cvs"] },
-            { name: "Paraphrasing & Rewrite Studio", icon: "✨", url: "/paraphrasing-tool/", category: "Career & ATS", keywords: ["paraphrase", "rewrite", "grammar"] },
-            { name: "Resize Image (Pixels/CM)", icon: "📐", url: "/converter/resize-image/", category: "Image & Media", keywords: ["resize image", "dimensions", "dpi"] },
-            { name: "Compress Image", icon: "🗜️", url: "/converter/compress-image/", category: "Image & Media", keywords: ["compress image", "reduce kb", "webp"] },
-            { name: "Crop & Rotate Image", icon: "✂️", url: "/converter/crop-rotate-image/", category: "Image & Media", keywords: ["crop image", "rotate photo"] },
-            { name: "Passport Photo Maker", icon: "🛂", url: "/converter/passport-photo-maker/", category: "Image & Media", keywords: ["passport photo", "visa", "2x2"] },
-            { name: "Resize Signature Tool", icon: "✍️", url: "/converter/resize-signature/", category: "Image & Media", keywords: ["signature", "resize signature", "20kb"] },
-            { name: "Favicon Generator", icon: "🌟", url: "/converter/favicon-generator/", category: "Image & Media", keywords: ["favicon", "ico generator"] },
-            { name: "JSON to CSV Converter", icon: "📑", url: "/converter/#office", category: "Code & Utilities", keywords: ["json to csv", "data table"] },
-            { name: "Text Case & Code Minifier", icon: "🔤", url: "/converter/case-converter/", category: "Code & Utilities", keywords: ["case converter", "code minifier", "camelcase"] },
-            { name: "Word & Character Counter", icon: "📊", url: "/converter/word-counter/", category: "Code & Utilities", keywords: ["word counter", "character count"] },
-            { name: "Secure Password Generator", icon: "🔑", url: "/converter/password-generator/", category: "Code & Utilities", keywords: ["password generator", "security", "crypto"] }
+            { name: "PDF to Word", icon: "📕", url: "/converter/pdf-to-word/", category: "Office", keywords: ["pdf to word", "convert", "docx"] },
+            { name: "Word to PDF", icon: "📝", url: "/converter/word-to-pdf/", category: "Office", keywords: ["word to pdf", "docx to pdf"] },
+            { name: "Merge PDF", icon: "➕", url: "/converter/merge-pdf/", category: "PDF", keywords: ["merge pdf", "combine", "join"] },
+            { name: "Split PDF", icon: "✂️", url: "/converter/split-pdf/", category: "PDF", keywords: ["split pdf", "extract pages"] },
+            { name: "Compress PDF", icon: "🗜️", url: "/converter/compress-pdf/", category: "PDF", keywords: ["compress pdf", "reduce size"] },
+            { name: "JPG to PDF", icon: "🖼️", url: "/converter/jpg-to-pdf/", category: "Image", keywords: ["jpg to pdf", "image to pdf"] },
+            { name: "OCR Image to Text", icon: "📄", url: "/converter/ocr-to-text/", category: "Image", keywords: ["ocr", "scan", "extract text"] },
+            { name: "Resume CV Maker", icon: "📝", url: "/resume-cv-maker/", category: "Career", keywords: ["resume", "cv builder", "maker", "templates"] },
+            { name: "ATS Resume Score Checker", icon: "🎯", url: "/resume-score-checker/", category: "Career", keywords: ["ats", "score checker", "cv test"] },
+            { name: "HR Bulk Candidate Screener", icon: "👥", url: "/hr-helper/", category: "HR", keywords: ["hr helper", "bulk screening", "recruiting"] },
+            { name: "Resize Image (Pixels/CM)", icon: "📏", url: "/converter/resize-image/", category: "Image", keywords: ["resize image", "dimensions", "dpi"] },
+            { name: "Compress Image", icon: "🗜️", url: "/converter/compress-image/", category: "Image", keywords: ["compress image", "reduce kb"] },
+            { name: "Passport Photo Maker", icon: "🛂", url: "/converter/passport-photo-maker/", category: "Photo", keywords: ["passport photo", "visa"] },
+            { name: "Resize Signature Tool", icon: "✍️", url: "/converter/resize-signature/", category: "Photo", keywords: ["signature", "resize signature"] },
+            { name: "Word & Character Counter", icon: "📊", url: "/converter/word-counter/", category: "Writing", keywords: ["word counter", "character count"] },
+            { name: "Secure Password Generator", icon: "🔑", url: "/converter/password-generator/", category: "Utilities", keywords: ["password generator", "security"] }
         ];
 
         const searchInput = document.getElementById('searchInput');
@@ -2240,19 +2165,17 @@
 
             if (filtered.length === 0) {
                 searchResultsBox.innerHTML = `
-                    <div style="padding:1rem; text-align:center; color:#64748B; font-size:0.84rem;">
-                        No utilities found matching "<strong>${escapeHtml(query)}</strong>"
+                    <div style="padding:1rem; text-align:center; color:#475569; font-size:0.85rem;">
+                        No tools found matching "<strong>${escapeHtml(query)}</strong>"
                     </div>
                 `;
             } else {
                 searchResultsBox.innerHTML = filtered.map(item => `
                     <a href="${item.url}" class="search-res-item">
-                        <div style="display:flex; align-items:center; gap:0.75rem;">
-                            <span style="font-size:1.15rem;">${item.icon}</span>
-                            <div>
-                                <div style="font-weight:700; font-size:0.86rem; color:#0F172A;">${escapeHtml(item.name)}</div>
-                                <div style="font-size:0.7rem; color:#64748B;">${escapeHtml(item.category)}</div>
-                            </div>
+                        <span style="font-size:1.2rem;">${item.icon}</span>
+                        <div>
+                            <div style="font-weight:700; font-size:0.88rem;">${escapeHtml(item.name)}</div>
+                            <div style="font-size:0.72rem; color:#475569;">${escapeHtml(item.category)} Tool</div>
                         </div>
                         <span class="tool-cat-pill">${escapeHtml(item.category)}</span>
                     </a>
@@ -2276,18 +2199,8 @@
 
         function focusSearch() {
             searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => searchInput.focus(), 220);
+            searchInput.focus();
         }
-
-        // Cmd+K / Ctrl+K shortcut support
-        document.addEventListener('keydown', (e) => {
-            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-                e.preventDefault();
-                focusSearch();
-            } else if (e.key === 'Escape') {
-                searchResultsBox.classList.remove('show');
-            }
-        });
 
         function escapeHtml(str) {
             return String(str || '').replace(/[&<>"']/g, m => ({
@@ -2297,7 +2210,7 @@
 
         searchInput.addEventListener('input', e => performSearch(e.target.value));
         document.addEventListener('click', e => {
-            if (!e.target.closest('.search-container') && !e.target.closest('.nav-cmd-search')) {
+            if (!e.target.closest('.search-container')) {
                 searchResultsBox.classList.remove('show');
             }
         });
@@ -2316,14 +2229,15 @@
             }
 
             if (!activities || activities.length === 0) {
+                // Helpful starter state for new users
                 container.innerHTML = `
                     <div class="activity-empty-state">
-                        <div style="font-size:0.92rem; font-weight:700; color:#0F172A; margin-bottom:0.25rem;">Ready for your first local task</div>
-                        <p style="margin-bottom:0.85rem;">Your recent in-browser conversions and ATS checks appear here privately.</p>
+                        <div style="font-size:1.3rem; margin-bottom:0.3rem;">✨ Ready for your first task!</div>
+                        <p style="margin-bottom:0.8rem;">Your recent file conversions and resume drafts will appear here for quick access.</p>
                         <div style="display:flex; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
-                            <a href="/converter/pdf-to-word/" class="activity-action-btn">PDF to Word</a>
+                            <a href="/converter/pdf-to-word/" class="activity-action-btn">Convert a File</a>
                             <a href="/resume-cv-maker/" class="activity-action-btn">Build Resume</a>
-                            <a href="/resume-score-checker/" class="activity-action-btn">Check ATS Score</a>
+                            <a href="/resume-score-checker/" class="activity-action-btn">Check ATS</a>
                         </div>
                     </div>
                 `;
@@ -2338,8 +2252,8 @@
                         <a href="${act.url || '/'}" class="activity-action-btn">Open →</a>
                     </div>
                 `).join('') + `
-                    <div style="text-align:right; margin-top:0.35rem;">
-                        <button onclick="clearActivityHistory()" style="background:none; border:none; color:#64748B; font-size:0.72rem; cursor:pointer; text-decoration:underline;">Clear Local History</button>
+                    <div style="text-align:right; margin-top:0.4rem;">
+                        <button onclick="clearActivityHistory()" style="background:none; border:none; color:#64748b; font-size:0.72rem; cursor:pointer; text-decoration:underline;">Clear History</button>
                     </div>
                 `;
             }
@@ -2352,12 +2266,10 @@
             } catch(e) {}
         }
 
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(loadRecentActivity);
-        } else {
-            setTimeout(loadRecentActivity, 200);
-        }
+        // Initialize activity list on load
+        loadRecentActivity();
 
+        // Helper for bookmarking
         function bookmarkSite() {
             alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!');
         }
@@ -2370,7 +2282,7 @@
 
             window.addEventListener('scroll', () => {
                 const currentY = window.scrollY;
-                if (currentY > lastY && currentY > 140) {
+                if (currentY > lastY && currentY > 120) {
                     nav.classList.add('nav-hidden');
                 } else if (currentY < lastY) {
                     nav.classList.remove('nav-hidden');
@@ -2379,8 +2291,8 @@
                 lastY = currentY;
             }, { passive: true });
         })();
-
-        // --- 5. MOBILE DRAWER TOGGLE ---
+    </script>
+<script>
         function toggleMobileMenu() {
             const btn = document.getElementById('navHamburger');
             const drawer = document.getElementById('mobileNavDrawer');
@@ -2396,7 +2308,6 @@
                 btn.setAttribute('aria-expanded', 'true');
             }
         }
-
         document.addEventListener('click', (e) => {
             const nav = document.querySelector('.navbar');
             const drawer = document.getElementById('mobileNavDrawer');
@@ -2409,6 +2320,6 @@
                 }
             }
         });
-    </script>
+</script>
 </body>
 </html>

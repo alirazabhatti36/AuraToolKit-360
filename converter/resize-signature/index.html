@@ -35,11 +35,8 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional"></noscript>>
-    <link rel="stylesheet" href="/assets/social-share.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/assets/social-share.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/social-share.css">
     <script defer src="/assets/social-share.js"></script>
 
     <!-- Structured Data: SoftwareApplication & FAQPage -->
@@ -112,14 +109,14 @@
     <style>
         :root {
             --bg-base: #FAFBFD;
-            --bg-card: #FFFFFF;
-            --bg-card-hover: #F8FAFC;
+            --bg-card: rgba(18, 24, 38, 0.75);
+            --bg-card-hover: rgba(28, 36, 56, 0.9);
             --border-card: #E2E8F0;
-            --border-highlight: #DDD6FE;
-            --accent-cyan: #7C3AED;
-            --accent-purple: #6D28D9;
-            --accent-green: #059669;
-            --accent-blue: #4F46E5;
+            --border-highlight: rgba(56, 189, 248, 0.35);
+            --accent-cyan: #38bdf8;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
             --accent-amber: #f59e0b;
             --accent-red: #ef4444;
             --text-primary: #0F172A;
@@ -157,7 +154,7 @@
 
         /* Navbar */
         .navbar {
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px);
             padding: 0.6rem 2rem;
             border-bottom: 1px solid var(--border-card);
@@ -222,7 +219,7 @@
             white-space: nowrap;
         }
         .nav-links a:hover {
-            background:#F8FAFC;
+            background: rgba(255, 255, 255, 0.06);
             color: var(--accent-cyan);
         }
         .nav-links a.active {
@@ -245,7 +242,7 @@
             top: 66px;
             left: 0;
             right: 0;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.98);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-card);
             padding: 1.2rem 1.5rem;
@@ -312,14 +309,14 @@
             border-radius: 22px;
             border: 1px solid var(--border-card);
             padding: 2.2rem;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
             margin-bottom: 3.5rem;
         }
         .upload-zone {
             border: 2px dashed rgba(56, 189, 248, 0.4);
             border-radius: 18px;
             padding: 2.5rem 1.5rem;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.6);
             cursor: pointer;
             transition: all 0.25s ease;
             margin-bottom: 1.5rem;
@@ -347,14 +344,14 @@
         .control-group label {
             font-size: 0.85rem;
             font-weight: 700;
-            color:#334155;
+            color: #cbd5e1;
             display: flex;
             align-items: center;
             gap: 0.4rem;
         }
         .control-group select, .control-group input {
-            background: #FFFFFF;
-            border: 1px solid #CBD5E1;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 10px;
             padding: 0.65rem 0.9rem;
             color: #f8fafc;
@@ -393,8 +390,8 @@
         /* Result Area */
         .output-box {
             margin-top: 2rem;
-            background: #FFFFFF;
-            border: 1px solid #CBD5E1;
+            background: rgba(11, 15, 25, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             padding: 1.6rem;
             text-align: center;
@@ -403,7 +400,7 @@
         .preview-canvas-wrap {
             max-width: 400px;
             margin: 0 auto 1.2rem;
-            border: 1px solid #CBD5E1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             background: #ffffff;
             border-radius: 10px;
             overflow: hidden;
@@ -453,7 +450,7 @@
         }
         .specs-table th {
             padding: 0.9rem 1.1rem;
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.92);
             color: var(--accent-cyan);
             font-size: 0.88rem;
             font-weight: 800;
@@ -461,11 +458,11 @@
         }
         .specs-table td {
             padding: 0.85rem 1.1rem;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             font-size: 0.88rem;
             color: var(--text-secondary);
         }
-        .specs-table tr:hover td { background:#F8FAFC; }
+        .specs-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
         /* Guide & Security Section */
         .info-card {
@@ -508,8 +505,8 @@
             margin-top: 1.4rem;
         }
         .faq-item {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 14px;
             padding: 1.3rem 1.5rem;
         }
@@ -528,7 +525,7 @@
         /* Footer */
         footer {
             margin-top: auto;
-            background: #FFFFFF;
+            background: rgba(11, 15, 25, 0.98);
             border-top: 1px solid var(--border-card);
             padding: 3rem 1.5rem 2rem;
         }
@@ -563,7 +560,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding-top: 1.5rem;
-            border-top: 1px solid #E2E8F0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -584,40 +581,14 @@
             .tool-card { padding: 1.5rem 1.2rem; }
             .page-head h1 { font-size: 1.75rem; }
         }
-    
-        @media (max-width: 768px) {
-            .ambient-glow-top-left, .ambient-glow-top-right, .ambient-glow-mid {
-                display: none !important;
-            }
-        }
     </style>
 
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
-    <!-- ===== TOP TRUST BAR ===== -->
-    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
-        <div class="top-trust-inner">
-            <div class="trust-left">
-                <span class="pulse-dot-wrap">
-                    <span class="pulse-dot-ping"></span>
-                    <span class="pulse-dot-core"></span>
-                </span>
-                <strong style="color:#1E293B; font-weight:600;">100% Private Client-Side Sandbox:</strong>
-                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
-            </div>
-            <div class="trust-right">
-                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
-                <span>•</span>
-                <span>Zero Telemetry</span>
-                <span>•</span>
-                <span style="color:#334155; font-family:monospace;">auratoolkit360.com</span>
-            </div>
-        </div>
-    </aside>
-
 
     <div class="ambient-glow-top-left"></div>
 
@@ -626,7 +597,7 @@
         <div class="nav-container">
             <a href="/" class="logo">
                 <div class="logo-symbol">⚡</div>
-                <div class="logo-text">AuraToolkit<span>360</span><span class="logo-pro-badge">Pro</span></div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
             </a>
             <div class="nav-links">
                 <a href="/">Home</a>
