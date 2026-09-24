@@ -1,8 +1,11 @@
-const CACHE_NAME = 'auratoolkit360-v1';
+const CACHE_NAME = 'auratoolkit360-v2.4-saas';
 const STATIC_ASSETS = [
     '/',
     '/favicon.svg',
     '/manifest.json',
+    '/assets/saas-ui.css',
+    '/assets/lang-switcher.css',
+    '/assets/lang-switcher.js',
     '/assets/og-image.png',
     '/assets/icon-192.png',
     '/assets/icon-512.png',

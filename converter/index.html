@@ -7,7 +7,7 @@
     <meta name="description" content="Convert, merge, compress, and edit PDF, Word, Excel, JPG, and video files locally in your browser. Fast, secure, and 100% private.">
     <meta name="keywords" content="free file converter online, pdf to word converter without email, merge pdf files free, compress pdf, docx to pdf, private file tools">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#0b0f19">
+    <meta name="theme-color" content="#FAFBFD">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/converter/">
     <link rel="alternate" hreflang="x-default" href="https://auratoolkit360.com/converter/">
@@ -43,8 +43,11 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/social-share.css">
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional"></noscript>>
+    <link rel="stylesheet" href="/assets/social-share.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/social-share.css"></noscript>
     <script defer src="/assets/social-share.js"></script>
     
     <script type="application/ld+json">
@@ -60,19 +63,19 @@
     
     <style>
         :root {
-            --bg-base: #0b0f19;
-            --bg-card: rgba(18, 24, 38, 0.7);
-            --bg-card-hover: rgba(28, 36, 56, 0.85);
-            --border-card: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(99, 102, 241, 0.35);
-            --accent-cyan: #38bdf8;
-            --accent-purple: #8b5cf6;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
+            --bg-base: #FAFBFD;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F8FAFC;
+            --border-card: #E2E8F0;
+            --border-highlight: #DDD6FE;
+            --accent-cyan: #7C3AED;
+            --accent-purple: #6D28D9;
+            --accent-green: #059669;
+            --accent-blue: #4F46E5;
             --accent-orange: #f59e0b;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -134,7 +137,7 @@
 
         /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(11, 15, 25, 0.85);
+            background: #FFFFFF;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 0.85rem 2rem;
@@ -206,7 +209,7 @@
         }
         .nav-link:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
+            background:#F8FAFC;
         }
         .nav-link.active {
             color: #ffffff;
@@ -317,7 +320,7 @@
             margin: 1.5rem auto 2.5rem;
         }
         .chip-btn {
-            background: rgba(18, 24, 38, 0.7);
+            background: #FFFFFF;
             border: 1px solid var(--border-card);
             color: var(--text-secondary);
             font-size: 0.82rem;
@@ -407,7 +410,7 @@
             transform: translateY(-5px);
             border-color: rgba(56, 189, 248, 0.35);
             background: var(--bg-card-hover);
-            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
         }
         .tool-icon {
             font-size: 2rem;
@@ -435,8 +438,8 @@
         
         input[type="file"], input[type="text"], input[type="number"], select, textarea {
             width: 100%;
-            background: rgba(11, 15, 25, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #FFFFFF;
+            border: 1px solid #CBD5E1;
             border-radius: 10px;
             padding: 0.6rem 0.8rem;
             font-size: 0.84rem;
@@ -503,8 +506,8 @@
             padding: 0.8rem;
             border-radius: 12px;
             font-size: 0.84rem;
-            background: rgba(11, 15, 25, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #FFFFFF;
+            border: 1px solid #CBD5E1;
         }
         .result-box.success { border-color: rgba(52, 211, 153, 0.4); color: #34d399; }
         .result-box.error { border-color: rgba(239, 68, 68, 0.4); color: #fca5a5; }
@@ -541,8 +544,8 @@
             margin: 1.5rem 0;
         }
         .feature-box {
-            background: rgba(11, 15, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
             border-radius: 14px;
             padding: 1.3rem;
         }
@@ -562,7 +565,7 @@
             line-height: 1.5;
         }
         .faq-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid #E2E8F0;
             padding: 1.1rem 0;
         }
         .faq-item:last-child { border-bottom: none; }
@@ -630,7 +633,7 @@
             max-width: 1280px;
             margin: 0 auto;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid #E2E8F0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -653,7 +656,7 @@
             justify-content: space-around;
             width: 38px;
             height: 38px;
-            background: rgba(255, 255, 255, 0.05);
+            background:#F8FAFC;
             border: 1px solid var(--border-card, rgba(255, 255, 255, 0.12));
             border-radius: 9px;
             cursor: pointer;
@@ -687,12 +690,12 @@
         .mobile-nav-drawer {
             display: none;
             width: 100%;
-            background: rgba(11, 15, 25, 0.98);
+            background: #FFFFFF;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid var(--border-card, rgba(255, 255, 255, 0.08));
             padding: 1rem 1.25rem 1.4rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
         }
         .mobile-nav-drawer.open {
             display: block;
@@ -713,11 +716,11 @@
             gap: 0.75rem;
             padding: 0.75rem 1rem;
             border-radius: 10px;
-            color: #cbd5e1;
+            color:#334155;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.92rem;
-            background: rgba(255, 255, 255, 0.03);
+            background:#F8FAFC;
             border: 1px solid transparent;
             transition: all 0.2s ease;
         }
@@ -742,18 +745,46 @@
             .nav-search-trigger .search-text { display: none; }
         }
 
+    
+        @media (max-width: 768px) {
+            .ambient-glow-top-left, .ambient-glow-top-right, .ambient-glow-mid {
+                display: none !important;
+            }
+        }
     </style>
     
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
     <script defer src="/assets/pwa-install.js"></script>
-    <link rel="stylesheet" href="/assets/lang-switcher.css">
+    <link rel="stylesheet" href="/assets/lang-switcher.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/lang-switcher.css"></noscript>
     <script defer src="/assets/lang-switcher.js"></script>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
+    <!-- ===== TOP TRUST BAR ===== -->
+    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
+        <div class="top-trust-inner">
+            <div class="trust-left">
+                <span class="pulse-dot-wrap">
+                    <span class="pulse-dot-ping"></span>
+                    <span class="pulse-dot-core"></span>
+                </span>
+                <strong style="color:#1E293B; font-weight:600;">100% Private Client-Side Sandbox:</strong>
+                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
+            </div>
+            <div class="trust-right">
+                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
+                <span>•</span>
+                <span>Zero Telemetry</span>
+                <span>•</span>
+                <span style="color:#334155; font-family:monospace;">auratoolkit360.com</span>
+            </div>
+        </div>
+    </aside>
+
 
     <!-- Ambient Neon Aurora Glows -->
     <div class="ambient-glow-top-left"></div>
@@ -765,7 +796,7 @@
         <div class="nav-container">
             <a href="/" class="logo">
                 <div class="logo-symbol">A</div>
-                <div class="logo-text">AuraToolkit<span>360</span></div>
+                <div class="logo-text">AuraToolkit<span>360</span><span class="logo-pro-badge">Pro</span></div>
             </a>
             
             <div class="nav-center">
@@ -1200,20 +1231,45 @@
         </div>
     </footer>
 
-    <!-- Comprehensive Client-Side Conversion Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/tesseract.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-
+    <!-- Comprehensive Client-Side Conversion Libraries (Loaded on User Interaction) -->
     <script>
-        if (window.pdfjsLib) {
-            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+        let _converterScriptsLoaded = false;
+        function loadConverterLibraries() {
+            if (_converterScriptsLoaded) return;
+            _converterScriptsLoaded = true;
+            const libs = [
+                'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js',
+                'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js',
+                'https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js',
+                'https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js',
+                'https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/tesseract.min.js',
+                'https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js',
+                'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js'
+            ];
+            libs.forEach(src => {
+                if (!document.querySelector(`script[src="${src}"]`)) {
+                    const s = document.createElement('script');
+                    s.src = src;
+                    s.async = true;
+                    if (src.includes('pdf.min.js')) {
+                        s.onload = () => {
+                            if (window.pdfjsLib) {
+                                window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+                            }
+                        };
+                    }
+                    document.head.appendChild(s);
+                }
+            });
         }
+
+        // Prefetch on first touch, scroll, or file input focus
+        ['touchstart', 'scroll', 'pointerdown', 'focusin'].forEach(evt => {
+            window.addEventListener(evt, loadConverterLibraries, { once: true, passive: true });
+        });
+    </script>
+    <script>
 
         function downloadBlob(blob, filename) {
             const url = URL.createObjectURL(blob);

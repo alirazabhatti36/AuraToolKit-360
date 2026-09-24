@@ -1,7 +1,11 @@
 // AuraToolkit360 PWA Registration & 1-Click Install System
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(() => {});
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => navigator.serviceWorker.register('/sw.js').catch(() => {}), { timeout: 3000 });
+        } else {
+            setTimeout(() => navigator.serviceWorker.register('/sw.js').catch(() => {}), 2500);
+        }
     });
 }
 

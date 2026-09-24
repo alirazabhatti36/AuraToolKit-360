@@ -103,25 +103,46 @@
     window.__atk360GaConfigured = true;
   }
 
-  function enableAds() {
+  function triggerAdsLoad() {
     if (window.__atk360AdsLoaded) {
       return;
     }
+    window.__atk360AdsLoaded = true;
+
+    var events = ['scroll', 'touchstart', 'click'];
+    events.forEach(function (evt) {
+      window.removeEventListener(evt, triggerAdsLoad, { passive: true });
+    });
 
     loadScriptOnce(
       'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(adsenseClient),
       { crossorigin: 'anonymous' }
     );
-    window.__atk360AdsLoaded = true;
   }
 
-  function applyPreferences(prefs) {
+  function enableAds(immediate) {
+    if (window.__atk360AdsLoaded) {
+      return;
+    }
+
+    if (immediate) {
+      triggerAdsLoad();
+      return;
+    }
+
+    var events = ['scroll', 'touchstart', 'click'];
+    events.forEach(function (evt) {
+      window.addEventListener(evt, triggerAdsLoad, { passive: true, once: true });
+    });
+  }
+
+  function applyPreferences(prefs, immediate) {
     applyConsentMode(prefs);
     if (prefs.analytics) {
       enableAnalytics();
     }
     if (prefs.ads) {
-      enableAds();
+      enableAds(immediate);
     }
   }
 
@@ -193,7 +214,7 @@
     var normalized = savePrefs(prefs);
     removeBanner();
     removeModal();
-    applyPreferences(normalized);
+    applyPreferences(normalized, true);
   }
 
   function openPreferencesModal(initialPrefs) {

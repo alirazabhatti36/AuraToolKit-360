@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <title>AuraToolkit360 | ATS Resume Score Checker — Free In-Browser CV Scanner</title>
-    <meta name="description" content="Check your ATS Resume score with AuraToolkit360. Analyze key terms, keyword density, missing terms, formatting, and structural compatibility instantly. 100% client side.">
-    <meta name="keywords" content="ATS resume checker, ATS score scanner, resume compatibility, keyword matcher, AuraToolkit360">
+    <title>Free ATS Resume Score Checker & Keyword Scanner | AuraToolkit360</title>
+    <meta name="description" content="Scan your resume against job descriptions for instant ATS match scoring, missing keyword analysis, and recruiter insights 100% privately in browser.">
+    <meta name="keywords" content="free ats resume checker, check resume score online, resume keyword scanner, ats compatibility tester, optimize resume for job description">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#0b0f19">
+    <meta name="theme-color" content="#FAFBFD">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/resume-score-checker/">
+    <link rel="alternate" hreflang="x-default" href="https://auratoolkit360.com/resume-score-checker/">
+    <link rel="alternate" hreflang="en" href="https://auratoolkit360.com/resume-score-checker/">
+    <link rel="alternate" hreflang="es" href="https://auratoolkit360.com/es/resume-score-checker/">
+    <link rel="alternate" hreflang="fr" href="https://auratoolkit360.com/fr/resume-score-checker/">
+    <link rel="alternate" hreflang="de" href="https://auratoolkit360.com/de/resume-score-checker/">
+    <link rel="alternate" hreflang="pt" href="https://auratoolkit360.com/pt/resume-score-checker/">
+    <link rel="alternate" hreflang="ar" href="https://auratoolkit360.com/ar/resume-score-checker/">
+
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AuraToolkit360">
-    <meta property="og:title" content="AuraToolkit360 | ATS Resume Score Checker">
-    <meta property="og:description" content="Free browser-based ATS score scanner. Check resume keywords, structure, and formatting. 100% private.">
+    <meta property="og:title" content="Free ATS Resume Score Checker & Keyword Scanner | AuraToolkit360">
+    <meta property="og:description" content="Scan your resume against job descriptions for instant ATS match scoring, missing keyword analysis, and recruiter insights 100% privately in browser.">
     <meta property="og:url" content="https://auratoolkit360.com/resume-score-checker/">
     <meta property="og:locale" content="en_US">
     <meta property="og:image" content="https://auratoolkit360.com/assets/og-image.png">
@@ -27,16 +35,19 @@
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AuraToolkit360 | ATS Resume Score Checker">
-    <meta name="twitter:description" content="Scan your CV for ATS keyword matches and formatting quality directly in your browser.">
+    <meta name="twitter:title" content="Free ATS Resume Score Checker & Keyword Scanner | AuraToolkit360">
+    <meta name="twitter:description" content="Scan your resume against job descriptions for instant ATS match scoring, missing keyword analysis, and recruiter insights 100% privately in browser.">
     <meta name="twitter:image" content="https://auratoolkit360.com/assets/og-image.png">
     <meta name="twitter:image:alt" content="AuraToolkit360 | ATS Resume Score Checker — Free In-Browser CV Scanner">
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/social-share.css">
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional"></noscript>>
+    <link rel="stylesheet" href="/assets/social-share.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/social-share.css"></noscript>
     <script defer src="/assets/social-share.js"></script>
     
     <script type="application/ld+json">
@@ -52,20 +63,20 @@
     
     <style>
         :root {
-            --bg-base: #0b0f19;
-            --bg-card: rgba(18, 24, 38, 0.7);
-            --bg-card-hover: rgba(28, 36, 56, 0.85);
-            --border-card: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(99, 102, 241, 0.35);
-            --accent-cyan: #38bdf8;
-            --accent-purple: #8b5cf6;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
+            --bg-base: #FAFBFD;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F8FAFC;
+            --border-card: #E2E8F0;
+            --border-highlight: #DDD6FE;
+            --accent-cyan: #7C3AED;
+            --accent-purple: #6D28D9;
+            --accent-green: #059669;
+            --accent-blue: #4F46E5;
             --accent-amber: #f59e0b;
             --accent-red: #ef4444;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -127,7 +138,7 @@
 
         /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(11, 15, 25, 0.85);
+            background: #FFFFFF;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 0.85rem 2rem;
@@ -199,7 +210,7 @@
         }
         .nav-link:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
+            background:#F8FAFC;
         }
         .nav-link.active {
             color: #ffffff;
@@ -304,7 +315,7 @@
             margin-top: 1rem;
         }
         .feat-pill {
-            background: rgba(18, 24, 38, 0.6);
+            background: #FFFFFF;
             border: 1px solid var(--border-card);
             color: var(--text-secondary);
             font-size: 0.78rem;
@@ -330,7 +341,7 @@
             border-radius: 20px;
             padding: 1.8rem;
             border: 1px solid var(--border-card);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
         }
         @media(max-width: 768px) {
             .grid-input { grid-template-columns: 1fr; padding: 1.3rem; }
@@ -351,7 +362,7 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.28s;
-            background: rgba(11, 15, 25, 0.5);
+            background: #FFFFFF;
         }
         .drop-zone:hover {
             border-color: var(--accent-cyan);
@@ -373,8 +384,8 @@
         textarea {
             width: 100%;
             height: 165px;
-            background: rgba(11, 15, 25, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #FFFFFF;
+            border: 1px solid #CBD5E1;
             border-radius: 14px;
             padding: 0.85rem;
             color: #ffffff;
@@ -426,7 +437,7 @@
             padding: 2rem;
             margin-top: 2rem;
             border: 1px solid var(--border-card);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
             display: none;
         }
         .res-top {
@@ -436,7 +447,7 @@
             flex-wrap: wrap;
             margin-bottom: 1.8rem;
             padding-bottom: 1.4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid #E2E8F0;
         }
         .score-circle {
             position: relative;
@@ -481,11 +492,11 @@
             .metrics-grid { grid-template-columns: repeat(2, 1fr); }
         }
         .metric-box {
-            background: rgba(11, 15, 25, 0.5);
+            background: #FFFFFF;
             border-radius: 14px;
             padding: 1rem 0.8rem;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid #E2E8F0;
         }
         .metric-val {
             font-size: 1.4rem;
@@ -534,16 +545,16 @@
         }
 
         .suggestion-box {
-            background: rgba(11, 15, 25, 0.6);
+            background: #FFFFFF;
             border-left: 4px solid var(--accent-cyan);
             padding: 1rem 1.2rem;
             border-radius: 0 14px 14px 0;
             font-size: 0.88rem;
             line-height: 1.6;
-            color: #e2e8f0;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            color:#1E293B;
+            border-top: 1px solid #E2E8F0;
             border-right: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid #E2E8F0;
         }
 
         /* Recommendation CTA Box */
@@ -555,7 +566,7 @@
             border-radius: 18px;
             text-align: center;
             border: 1px solid rgba(168, 85, 247, 0.3);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
         }
         .cta-recommend-box h3 {
             font-size: 1.22rem;
@@ -622,8 +633,8 @@
             margin: 1.5rem 0;
         }
         .feature-box {
-            background: rgba(11, 15, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
             border-radius: 14px;
             padding: 1.3rem;
         }
@@ -643,7 +654,7 @@
             line-height: 1.5;
         }
         .faq-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid #E2E8F0;
             padding: 1.1rem 0;
         }
         .faq-item:last-child { border-bottom: none; }
@@ -711,7 +722,7 @@
             max-width: 1280px;
             margin: 0 auto;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid #E2E8F0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -734,7 +745,7 @@
             justify-content: space-around;
             width: 38px;
             height: 38px;
-            background: rgba(255, 255, 255, 0.05);
+            background:#F8FAFC;
             border: 1px solid var(--border-card, rgba(255, 255, 255, 0.12));
             border-radius: 9px;
             cursor: pointer;
@@ -768,12 +779,12 @@
         .mobile-nav-drawer {
             display: none;
             width: 100%;
-            background: rgba(11, 15, 25, 0.98);
+            background: #FFFFFF;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid var(--border-card, rgba(255, 255, 255, 0.08));
             padding: 1rem 1.25rem 1.4rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
         }
         .mobile-nav-drawer.open {
             display: block;
@@ -794,11 +805,11 @@
             gap: 0.75rem;
             padding: 0.75rem 1rem;
             border-radius: 10px;
-            color: #cbd5e1;
+            color:#334155;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.92rem;
-            background: rgba(255, 255, 255, 0.03);
+            background:#F8FAFC;
             border: 1px solid transparent;
             transition: all 0.2s ease;
         }
@@ -823,16 +834,46 @@
             .nav-search-trigger .search-text { display: none; }
         }
 
+    
+        @media (max-width: 768px) {
+            .ambient-glow-top-left, .ambient-glow-top-right, .ambient-glow-mid {
+                display: none !important;
+            }
+        }
     </style>
     
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <meta name="google-site-verification" content="N0rLFYsip2eaN77OK361NOkyHS3eqB9i9gf2EYZkbMA">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <link rel="manifest" href="/manifest.json">
     <script defer src="/assets/pwa-install.js"></script>
+    <link rel="stylesheet" href="/assets/lang-switcher.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/lang-switcher.css"></noscript>
+    <script defer src="/assets/lang-switcher.js"></script>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
+    <!-- ===== TOP TRUST BAR ===== -->
+    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
+        <div class="top-trust-inner">
+            <div class="trust-left">
+                <span class="pulse-dot-wrap">
+                    <span class="pulse-dot-ping"></span>
+                    <span class="pulse-dot-core"></span>
+                </span>
+                <strong style="color:#1E293B; font-weight:600;">100% Private Client-Side Sandbox:</strong>
+                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
+            </div>
+            <div class="trust-right">
+                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
+                <span>•</span>
+                <span>Zero Telemetry</span>
+                <span>•</span>
+                <span style="color:#334155; font-family:monospace;">auratoolkit360.com</span>
+            </div>
+        </div>
+    </aside>
+
 
     <!-- Ambient Neon Aurora Glows -->
     <div class="ambient-glow-top-left"></div>
@@ -844,7 +885,7 @@
         <div class="nav-container">
             <a href="/" class="logo">
                 <div class="logo-symbol">A</div>
-                <div class="logo-text">AuraToolkit<span>360</span></div>
+                <div class="logo-text">AuraToolkit<span>360</span><span class="logo-pro-badge">Pro</span></div>
             </a>
             
             <div class="nav-center">
@@ -861,7 +902,23 @@
             <div class="nav-right-actions">
                 <a href="/hr-helper/" class="btn-try-hr">Try HR Helper →</a>
                 <button class="btn-bookmark-nav" onclick="alert('Press Ctrl + D (or Cmd + D on Mac) to bookmark AuraToolkit360!')">★ Bookmark</button>
-                            <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
+                            <div class="lang-switcher" id="langSwitcherContainer">
+    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+        <span class="lang-globe">🌐</span>
+        <span class="lang-current-flag">🇺🇸</span>
+        <span class="lang-current-label">EN</span>
+        <span class="lang-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+        <a href="/resume-score-checker/" class="lang-option active" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
+        <a href="/es/resume-score-checker/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
+        <a href="/fr/resume-score-checker/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
+        <a href="/de/resume-score-checker/" class="lang-option " data-lang="de" role="menuitem"><span class="flag">🇩🇪</span> Deutsch</a>
+        <a href="/pt/resume-score-checker/" class="lang-option " data-lang="pt" role="menuitem"><span class="flag">🇧🇷</span> Português</a>
+        <a href="/ar/resume-score-checker/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
+    </div>
+</div>
+                <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -881,7 +938,18 @@
                 <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
                 <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
             <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
-        </div>
+        <div class="mobile-lang-container">
+    <div class="mobile-lang-title">🌐 Language / Idioma / Sprache</div>
+    <div class="mobile-lang-grid">
+        <a href="/resume-score-checker/" class="mobile-lang-item active" data-lang="en"><span class="flag">🇺🇸</span> EN</a>
+        <a href="/es/resume-score-checker/" class="mobile-lang-item " data-lang="es"><span class="flag">🇪🇸</span> ES</a>
+        <a href="/fr/resume-score-checker/" class="mobile-lang-item " data-lang="fr"><span class="flag">🇫🇷</span> FR</a>
+        <a href="/de/resume-score-checker/" class="mobile-lang-item " data-lang="de"><span class="flag">🇩🇪</span> DE</a>
+        <a href="/pt/resume-score-checker/" class="mobile-lang-item " data-lang="pt"><span class="flag">🇧🇷</span> PT</a>
+        <a href="/ar/resume-score-checker/" class="mobile-lang-item " data-lang="ar"><span class="flag">🇸🇦</span> AR</a>
+    </div>
+</div>
+            </div>
         </div>
     </nav>
 
@@ -1009,7 +1077,7 @@
           Career counselors, universities, and job bloggers: Add our privacy-first ATS resume scanner directly to your site or blog. Copy the clean iframe snippet below:
         </p>
         <div style="position:relative;">
-          <textarea id="widgetEmbedCode" readonly style="width:100%; height:95px; background:rgba(11,15,25,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:12px; color:#e2e8f0; font-family:monospace; font-size:0.82rem; padding:0.8rem; resize:none; line-height:1.4;">&lt;iframe src="https://auratoolkit360.com/resume-score-checker/widget/" width="100%" height="620" style="border:none; border-radius:16px; box-shadow:0 12px 35px rgba(0,0,0,0.25);" title="Free ATS Resume Score Checker - AuraToolkit360"&gt;&lt;/iframe&gt;
+          <textarea id="widgetEmbedCode" readonly style="width:100%; height:95px; background:#F8FAFC; border:1px solid rgba(255,255,255,0.12); border-radius:12px; color:#1E293B; font-family:monospace; font-size:0.82rem; padding:0.8rem; resize:none; line-height:1.4;">&lt;iframe src="https://auratoolkit360.com/resume-score-checker/widget/" width="100%" height="620" style="border:none; border-radius:16px; box-shadow:0 12px 35px rgba(0,0,0,0.25);" title="Free ATS Resume Score Checker - AuraToolkit360"&gt;&lt;/iframe&gt;
 &lt;p style="font-size:12px; text-align:center; margin-top:8px; color:#64748b;"&gt;Free ATS resume test powered by &lt;a href="https://auratoolkit360.com/resume-score-checker/?ref=embed-widget" target="_blank" rel="noopener" style="color:#0284c7; text-decoration:none; font-weight:600;"&gt;AuraToolKit 360&lt;/a&gt;&lt;/p&gt;</textarea>
           <div style="margin-top:0.8rem; display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center;">
             <button id="copyEmbedBtn" onclick="copyWidgetEmbedCode()" style="background:linear-gradient(135deg, #0284c7, #6366f1); color:#ffffff; border:none; padding:0.6rem 1.3rem; border-radius:10px; font-weight:700; font-size:0.85rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; box-shadow:0 4px 12px rgba(2,132,199,0.35);">
@@ -1135,12 +1203,32 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
   <script>
-    if (window.pdfjsLib) {
-      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    let _scoreCheckerLibsPromise = null;
+    function loadScoreCheckerLibs() {
+      if (_scoreCheckerLibsPromise) return _scoreCheckerLibsPromise;
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = src;
+          s.onload = resolve;
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
+      _scoreCheckerLibsPromise = Promise.all([
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js'),
+        loadScript('https://unpkg.com/mammoth/mammoth.browser.min.js')
+      ]).then(() => {
+        if (window.pdfjsLib) {
+          window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+        }
+      });
+      return _scoreCheckerLibsPromise;
     }
+    ['touchstart', 'scroll', 'pointerdown', 'focusin', 'dragover'].forEach(evt => {
+      window.addEventListener(evt, () => loadScoreCheckerLibs(), { once: true, passive: true });
+    });
 
     const STOP_WORDS = new Set([
       'the','and','for','are','with','this','that','you','your','have','from',

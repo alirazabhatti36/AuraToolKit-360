@@ -31,11 +31,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=optional"></noscript>>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     
     <style>
         :root {
@@ -43,10 +44,10 @@
             --card-bg: rgba(30, 41, 59, 0.75);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-cyan: #38bdf8;
-            --accent-blue: #2563eb;
-            --accent-purple: #7c3aed;
+            --text-muted: #64748B;
+            --accent-cyan: #7C3AED;
+            --accent-blue: #4F46E5;
+            --accent-purple: #6D28D9;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { overflow-x: hidden; scroll-behavior: smooth; }
@@ -55,12 +56,12 @@
         body::before { content: ''; position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(102,126,234,0.18) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
         body::after { content: ''; position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(118,75,162,0.18) 0%, rgba(15,23,42,0) 70%); z-index: -1; pointer-events: none; }
 
-        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 100; overflow-x: auto; }
+        .navbar { background: #FFFFFF; backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid #E2E8F0; position: sticky; top: 0; z-index: 100; overflow-x: auto; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
         .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
         .nav-links { display: flex; gap: 0.4rem; align-items: center; }
         .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a:hover { background:#F8FAFC; color: #38bdf8; }
         .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
@@ -68,45 +69,67 @@
         .page-header h1 { font-size: 2.6rem; font-weight: 800; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -1px; margin-bottom: 0.6rem; }
         .page-header p { color: #94a3b8; font-size: 1.05rem; max-width: 750px; margin: 0 auto; }
 
-        .tool-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; padding: 2.5rem 2rem; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 20px 50px rgba(0,0,0,0.4); margin-bottom: 3rem; }
+        .tool-card { background: #FFFFFF; backdrop-filter: blur(16px); border-radius: 24px; padding: 2.5rem 2rem; border: 1px solid #CBD5E1; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03); margin-bottom: 3rem; }
         .btn-primary { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(37,99,235,0.35); }
         .btn-primary:hover { opacity: 0.92; transform: translateY(-2px); }
         input[type="file"] { width: 100%; color: #f8fafc; font-family: inherit; }
 
         .info-section { margin-top: 2rem; }
-        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; color: #f8fafc; margin-bottom: 2rem; }
+        .info-card { background: #FFFFFF; backdrop-filter: blur(12px); border: 1px solid #E2E8F0; border-radius: 20px; padding: 2rem; color: #f8fafc; margin-bottom: 2rem; }
         .info-card h2 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 1.2rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
         .info-card h3 { font-size: 1.2rem; color: #f8fafc; margin: 1.5rem 0 0.8rem; }
         .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
         
         .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
-        .step-box { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.2rem; }
+        .step-box { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.2rem; }
         .step-box h4 { color: #38bdf8; font-size: 1rem; margin-bottom: 0.4rem; }
         .step-box p { color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 0; }
 
-        .faq-item { border-top: 1px solid rgba(255,255,255,0.08); padding: 1.2rem 0; }
+        .faq-item { border-top: 1px solid #E2E8F0; padding: 1.2rem 0; }
         .faq-item:first-of-type { border-top: none; }
         .faq-q { font-weight: 700; color: #f8fafc; font-size: 1.05rem; margin-bottom: 0.4rem; }
         .faq-a { color: #94a3b8; font-size: 0.92rem; line-height: 1.6; }
 
         .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-        .related-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.2rem; text-decoration: none; color: inherit; transition: all 0.3s; display: block; text-align: center; }
+        .related-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.2rem; text-decoration: none; color: inherit; transition: all 0.3s; display: block; text-align: center; }
         .related-card:hover { transform: translateY(-4px); border-color: #38bdf8; background: rgba(56,189,248,0.08); }
         .related-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
         .related-card h4 { color: #f8fafc; font-size: 0.95rem; margin-bottom: 0.3rem; }
         .related-card p { color: #94a3b8; font-size: 0.78rem; line-height: 1.4; margin-bottom: 0; }
 
-        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        footer { margin-top: auto; background: #FFFFFF; border-top: 1px solid #E2E8F0; padding-top: 2rem; }
         .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
         .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
         .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
         .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
         .footer-links a { color: #94a3b8; text-decoration: none; }
         .footer-links a:hover { color: #38bdf8; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+        .footer-bottom { border-top: 1px solid #E2E8F0; text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
     </style>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
+    <!-- ===== TOP TRUST BAR ===== -->
+    <aside class="top-trust-bar" aria-label="Privacy Architecture Status">
+        <div class="top-trust-inner">
+            <div class="trust-left">
+                <span class="pulse-dot-wrap">
+                    <span class="pulse-dot-ping"></span>
+                    <span class="pulse-dot-core"></span>
+                </span>
+                <strong style="color:#1E293B; font-weight:600;">100% Private Client-Side Sandbox:</strong>
+                <span style="color:#94A3B8;">Files processed in local RAM. Zero server storage.</span>
+            </div>
+            <div class="trust-right">
+                <span style="color:#34D399; font-weight:600;">✓ GDPR &amp; CCPA Compliant</span>
+                <span>•</span>
+                <span>Zero Telemetry</span>
+                <span>•</span>
+                <span style="color:#334155; font-family:monospace;">auratoolkit360.com</span>
+            </div>
+        </div>
+    </aside>
+
 
     <nav class="navbar">
         <div class="nav-container">
@@ -137,11 +160,11 @@
                 <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1.5rem;">Supports PNG, JPG, JPEG, and WebP photos and graphics.</p>
                 <form data-action="/compress-image">
                     <div style="margin-bottom:1rem;">
-                        <input type="file" name="file" accept=".png,.jpg,.jpeg,.webp" required style="padding:1rem; border:2px dashed rgba(56,189,248,0.4); border-radius:14px; background:rgba(15,23,42,0.6); cursor:pointer;">
+                        <input type="file" name="file" accept=".png,.jpg,.jpeg,.webp" required style="padding:1rem; border:2px dashed rgba(56,189,248,0.4); border-radius:14px; background:#F8FAFC; cursor:pointer;">
                     </div>
                     <div style="margin-bottom:1.5rem; text-align:left; max-width:300px; margin-left:auto; margin-right:auto;">
-                        <label style="display:block; font-size:0.85rem; color:#cbd5e1; margin-bottom:0.4rem; font-weight:600;">Compression Quality:</label>
-                        <select name="quality" style="width:100%; background:rgba(15,23,42,0.8); border:1px solid rgba(255,255,255,0.2); color:#f8fafc; padding:0.6rem; border-radius:10px;">
+                        <label style="display:block; font-size:0.85rem; color:#334155; margin-bottom:0.4rem; font-weight:600;">Compression Quality:</label>
+                        <select name="quality" style="width:100%; background:#F8FAFC; border:1px solid rgba(255,255,255,0.2); color:#f8fafc; padding:0.6rem; border-radius:10px;">
                             <option value="80">High Quality (Light Compression ~40%)</option>
                             <option value="60" selected>Medium Quality (Optimal Balance ~70%)</option>
                             <option value="30">Low Quality (Maximum Compression ~85%)</option>
@@ -222,15 +245,44 @@
         <div class="footer-bottom">© 2026 AuraToolkit360. All rights reserved. | 100% Client-Side Private Processing</div>
     </footer>
 
-    <!-- Comprehensive Client-Side Conversion Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/tesseract.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <!-- Comprehensive Client-Side Conversion Libraries (Loaded on User Interaction) -->
+    <script>
+        let _converterScriptsLoaded = false;
+        function loadConverterLibraries() {
+            if (_converterScriptsLoaded) return;
+            _converterScriptsLoaded = true;
+            const libs = [
+                'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js',
+                'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js',
+                'https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js',
+                'https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js',
+                'https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/tesseract.min.js',
+                'https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js',
+                'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js'
+            ];
+            libs.forEach(src => {
+                if (!document.querySelector(`script[src="${src}"]`)) {
+                    const s = document.createElement('script');
+                    s.src = src;
+                    s.async = true;
+                    if (src.includes('pdf.min.js')) {
+                        s.onload = () => {
+                            if (window.pdfjsLib) {
+                                window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+                            }
+                        };
+                    }
+                    document.head.appendChild(s);
+                }
+            });
+        }
+
+        // Prefetch on first touch, scroll, or file input focus
+        ['touchstart', 'scroll', 'pointerdown', 'focusin'].forEach(evt => {
+            window.addEventListener(evt, loadConverterLibraries, { once: true, passive: true });
+        });
+    </script>
 
     <script>
         if (window.pdfjsLib) {

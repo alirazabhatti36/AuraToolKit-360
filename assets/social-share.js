@@ -130,12 +130,22 @@
         }
     };
 
-    // Initialize automatically when DOM is ready
+    // Initialize automatically when DOM is ready and idle
+    function scheduleRender() {
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(function() {
+                window.AuraShare.renderWidgets();
+            });
+        } else {
+            setTimeout(function() {
+                window.AuraShare.renderWidgets();
+            }, 150);
+        }
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            window.AuraShare.renderWidgets();
-        });
+        document.addEventListener('DOMContentLoaded', scheduleRender);
     } else {
-        window.AuraShare.renderWidgets();
+        scheduleRender();
     }
 })();
