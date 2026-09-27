@@ -219,14 +219,15 @@
         .faq-a { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
 
         /* FOOTER */
-        footer { background: #060911; border-top: 1px solid var(--border-card); padding: 3rem 1.5rem 2rem; margin-top: 4rem; }
+        footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 3rem 1.5rem 2rem; margin-top: 4rem; color: #475569; }
         .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
         @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; } }
-        .footer-col h5 { font-size: 0.92rem; font-weight: 800; color: #ffffff; text-transform: uppercase; margin-bottom: 1rem; }
+        .footer-col h5 { font-size: 0.92rem; font-weight: 800; color: #0f172a; text-transform: uppercase; margin-bottom: 1rem; }
         .footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-        .footer-links-list a { color: var(--text-secondary); text-decoration: none; font-size: 0.84rem; transition: color 0.2s; }
-        .footer-links-list a:hover { color: var(--accent-cyan); }
+        .footer-links-list a { color: #475569; text-decoration: none; font-size: 0.84rem; transition: color 0.2s; }
+        .footer-links-list a:hover { color: #4f46e5; }
     </style>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -253,6 +254,7 @@
             </div>
 
             <div class="nav-right-actions">
+                <a href="/saas/" class="btn-primary" style="background: linear-gradient(135deg, #4f46e5, #06b6d4); border:none; color:#fff; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4); padding:0.45rem 0.9rem; font-size:0.82rem; text-decoration:none;"><span style="margin-right:4px;">⚡</span> AuraHR 360</a>
                 <a href="/resume-cv-maker/" class="btn-primary" style="padding:0.45rem 0.9rem; font-size:0.82rem; text-decoration:none;">Resume Maker →</a>
                 <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
@@ -264,6 +266,7 @@
     <!-- MOBILE NAV DRAWER -->
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
         <div class="mobile-nav-links">
+            <a href="/saas/" class="mobile-nav-item" style="color:#4f46e5; font-weight:700; background:rgba(79,70,229,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
             <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
             <a href="/converter/" class="mobile-nav-item"><span>🔄</span> Converter Suite (30+ Tools)</a>
             <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
@@ -493,6 +496,8 @@
             <div class="footer-col">
                 <h5>Career Tools</h5>
                 <ul class="footer-links-list">
+                    <li><a href="/saas/" style="color:#4f46e5; font-weight:700;">⚡ AuraHR 360 (B2B SaaS)</a></li>
+                    <li><a href="/bamboohr-alternative/">BambooHR Alternative</a></li>
                     <li><a href="/resume-cv-maker/">ATS Resume Maker</a></li>
                     <li><a href="/cover-letter-maker/">ATS Cover Letter Builder</a></li>
                     <li><a href="/resume-score-checker/">ATS Score Scanner</a></li>

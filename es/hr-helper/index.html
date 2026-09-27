@@ -825,10 +825,10 @@
 
         /* ===== FOOTER ===== */
         footer {
-            background: #070a12;
-            border-top: 1px solid var(--border-card);
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
             padding: 3.5rem 1.5rem 1.5rem;
-            color: var(--text-secondary);
+            color: #475569;
             margin-top: auto;
         }
         .footer-inner {
@@ -848,7 +848,7 @@
         .footer-col h5 {
             font-size: 0.92rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #0f172a;
             text-transform: uppercase;
             letter-spacing: 0.6px;
             margin-bottom: 1.1rem;
@@ -860,26 +860,26 @@
             gap: 0.55rem;
         }
         .footer-links-list a {
-            color: var(--text-secondary);
+            color: #475569;
             text-decoration: none;
             font-size: 0.84rem;
             transition: color 0.2s;
         }
         .footer-links-list a:hover {
-            color: var(--accent-cyan);
+            color: #4f46e5;
         }
         .footer-bottom-bar {
             max-width: 1280px;
             margin: 0 auto;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: #64748b;
         }
 
         /* Prevent iOS Safari auto-zoom on inputs */
@@ -998,6 +998,7 @@
     <script defer src="/assets/pwa-install.js"></script>
     <link rel="stylesheet" href="/assets/lang-switcher.css">
     <script defer src="/assets/lang-switcher.js"></script>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -1026,6 +1027,7 @@
             </div>
 
             <div class="nav-right-actions">
+                <a href="/saas/" class="btn-try-hr" style="background: linear-gradient(135deg, #4f46e5, #06b6d4); border:none; color:#fff; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);"><span style="margin-right:4px;">⚡</span> AuraHR 360</a>
                 <a href="/converter/" class="btn-try-hr">⚡ Quick Convert</a>
                 <button class="btn-bookmark-nav" onclick="bookmarkSite()">★ Guardar</button>
                             <div class="lang-switcher" id="langSwitcherContainer">
@@ -1054,12 +1056,13 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
+                <a href="/saas/" class="mobile-nav-item" style="color:#4f46e5; font-weight:700; background:rgba(79,70,229,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
             <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
                 <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
-                <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
+                <a href="/hr-helper/" class="mobile-nav-item active"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
                 <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
                 <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
                 <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
@@ -1093,6 +1096,23 @@
                 <span class="hero-feature-pill">🎯 Custom Job Description Matching</span>
                 <span class="hero-feature-pill">📊 Export Shortlisted CSV &amp; ZIP</span>
                 <span class="hero-feature-pill">🔒 100% GDPR Compliant</span>
+            </div>
+        </div>
+
+        <!-- AuraToolKit 360 Enterprise SaaS Upgrade Banner -->
+        <div style="background: #ffffff; border: 1px solid #c7d2fe; border-radius: 16px; padding: 1.25rem 1.6rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; box-shadow: 0 4px 20px rgba(79, 70, 229, 0.06);">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #4f46e5, #06b6d4); display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; box-shadow: 0 8px 20px rgba(79,70,229,0.3);">⚡</div>
+                <div>
+                    <h3 style="font-size: 1.05rem; font-weight: 800; color: #0f172a; margin: 0 0 4px 0;">Need Multi-User Team Hiring, Biometric Sync &amp; Payroll?</h3>
+                    <p style="font-size: 0.85rem; color: #475569; margin: 0;">Upgrade to <strong>AuraHR 360 (B2B SaaS)</strong> — Cloud ATS pipelines, Hikvision attendance sync, automated payroll &amp; multi-tenant security.</p>
+                </div>
+            </div>
+            <div>
+                <a href="/saas/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4f46e5, #2563eb); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 10px 22px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 20px rgba(79,70,229,0.35); transition: transform 0.2s;">
+                    <span>Launch AuraHR 360</span>
+                    <span>→</span>
+                </a>
             </div>
         </div>
 
@@ -1308,6 +1328,8 @@
             <div class="footer-col">
                 <h5>Products</h5>
                 <ul class="footer-links-list">
+                    <li><a href="/saas/" style="color:#4f46e5; font-weight:700;">⚡ AuraHR 360 (B2B SaaS)</a></li>
+                    <li><a href="/bamboohr-alternative/">BambooHR Alternative</a></li>
                     <li><a href="/converter/">File Converter Suite</a></li>
                     <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
                     <li><a href="/resume-score-checker/">ATS Score Checker</a></li>

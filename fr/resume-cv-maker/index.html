@@ -821,10 +821,10 @@
 
         /* ===== FOOTER ===== */
         footer {
-            background: #070a12;
-            border-top: 1px solid var(--border-card);
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
             padding: 3.5rem 1.5rem 1.5rem;
-            color: var(--text-secondary);
+            color: #475569;
             margin-top: auto;
         }
         .footer-inner {
@@ -844,7 +844,7 @@
         .footer-col h5 {
             font-size: 0.92rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #0f172a;
             text-transform: uppercase;
             letter-spacing: 0.6px;
             margin-bottom: 1.1rem;
@@ -856,26 +856,26 @@
             gap: 0.55rem;
         }
         .footer-links-list a {
-            color: var(--text-secondary);
+            color: #475569;
             text-decoration: none;
             font-size: 0.84rem;
             transition: color 0.2s;
         }
         .footer-links-list a:hover {
-            color: var(--accent-cyan);
+            color: #4f46e5;
         }
         .footer-bottom-bar {
             max-width: 1280px;
             margin: 0 auto;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: #64748b;
         }
 
         @media screen and (max-width: 768px) {
@@ -1219,6 +1219,7 @@
     <script defer src="/assets/pwa-install.js"></script>
     <link rel="stylesheet" href="/assets/lang-switcher.css">
     <script defer src="/assets/lang-switcher.js"></script>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -1247,6 +1248,7 @@
             </div>
 
             <div class="nav-right-actions">
+                <a href="/saas/" class="btn-try-hr" style="background: linear-gradient(135deg, #4f46e5, #06b6d4); border:none; color:#fff; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);"><span style="margin-right:4px;">⚡</span> AuraHR 360</a>
                 <a href="/fr/hr-helper/" class="btn-try-hr">Essayer Outil RH →</a>
                 <button class="btn-bookmark-nav" onclick="bookmarkSite()">★ Favori</button>
                             <div class="lang-switcher" id="langSwitcherContainer">
@@ -1275,6 +1277,7 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
+                <a href="/saas/" class="mobile-nav-item" style="color:#4f46e5; font-weight:700; background:rgba(79,70,229,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
@@ -1965,6 +1968,8 @@
             <div class="footer-col">
                 <h5>Products</h5>
                 <ul class="footer-links-list">
+                    <li><a href="/saas/" style="color:#4f46e5; font-weight:700;">⚡ AuraHR 360 (B2B SaaS)</a></li>
+                    <li><a href="/bamboohr-alternative/">BambooHR Alternative</a></li>
                     <li><a href="/converter/">File Converter Suite</a></li>
                     <li><a href="/ilovepdf-alternative/">iLovePDF Alternative</a></li>
                     <li><a href="/canva-resume-alternative/">Canva ATS Alternative</a></li>
