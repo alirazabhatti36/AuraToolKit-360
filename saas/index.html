@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -85,6 +85,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/saas-ui.css">
     
     <style>
         :root {
@@ -178,6 +179,14 @@
             }
         }
 
+        /* Modal Dialog Mobile Viewport Padding */
+        @media (max-width: 576px) {
+            .modal-dialog {
+                margin: 12px !important;
+                max-width: calc(100vw - 24px) !important;
+            }
+        }
+
         /* Country Modal Grid */
         .country-grid-item {
             background: #f8fafc;
@@ -204,7 +213,7 @@
         /* Hero Section */
         .hero-section {
             background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, rgba(248, 250, 252, 1) 70%);
-            padding: 120px 0 80px;
+            padding: 110px 0 70px;
         }
 
         .hero-badge {
@@ -221,9 +230,9 @@
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: clamp(1.85rem, 5.5vw, 3.5rem);
             font-weight: 800;
-            line-height: 1.15;
+            line-height: 1.18;
             color: #0f172a;
         }
 
@@ -234,10 +243,31 @@
         }
 
         .hero-desc {
-            font-size: 1.2rem;
+            font-size: clamp(0.98rem, 2.4vw, 1.2rem);
             color: #64748b;
             max-width: 680px;
-            margin: 25px auto 35px;
+            margin: 20px auto 30px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 85px 0 40px;
+            }
+            .hero-badge {
+                font-size: 0.82rem;
+                padding: 6px 14px;
+                margin-bottom: 18px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 70px 0 30px;
+            }
+            .hero-badge {
+                font-size: 0.76rem;
+                padding: 5px 12px;
+            }
         }
 
         .btn-gradient-primary {
@@ -355,9 +385,29 @@
         }
 
         footer {
-            background: #090d16;
-            color: #94a3b8;
-            padding: 60px 0 30px;
+            background: #ffffff;
+            color: #475569;
+            padding: 50px 0 25px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        @media (max-width: 576px) {
+            .btn-lg {
+                padding: 12px 20px !important;
+                font-size: 0.95rem !important;
+                width: 100% !important;
+            }
+            .pricing-card {
+                padding: 24px 18px !important;
+                border-radius: 20px !important;
+            }
+            .price-amount {
+                font-size: 2.1rem !important;
+            }
+            .payment-badge {
+                padding: 8px 14px !important;
+                font-size: 0.85rem !important;
+            }
         }
     </style>
 </head>
@@ -435,41 +485,41 @@
 
             <!-- Live Dashboard Preview Card -->
             <div class="mt-5 pt-3">
-                <div class="card border-0 shadow-lg rounded-5 overflow-hidden p-3 bg-white max-w-100 mx-auto" style="max-width: 1000px;">
-                    <div class="bg-dark rounded-4 p-4 text-start text-white position-relative">
-                        <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-3 mb-4">
+                <div class="card border-0 shadow-lg rounded-5 overflow-hidden p-2 p-md-3 bg-white max-w-100 mx-auto" style="max-width: 1000px;">
+                    <div class="bg-dark rounded-4 p-3 p-md-4 text-start text-white position-relative">
+                        <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-3 mb-3 mb-md-4 flex-wrap gap-2">
                             <div class="d-flex align-items-center gap-2">
                                 <span class="badge bg-primary rounded-pill">🚀 Live System Preview</span>
                                 <small class="text-white-50">AuraToolKit 360 Enterprise Platform</small>
                             </div>
-                            <div class="d-flex gap-2">
+                            <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-success rounded-pill"><i class="bi bi-shield-check me-1"></i>Tenant Isolated</span>
                                 <span class="badge bg-info text-dark rounded-pill"><i class="bi bi-cpu me-1"></i>Hikvision Sync Ready</span>
                             </div>
                         </div>
-                        <div class="row g-3">
-                            <div class="col-md-3">
-                                <div class="bg-secondary bg-opacity-25 p-3 rounded-3">
-                                    <small class="text-white-50">ACTIVE EMPLOYEES</small>
-                                    <h3 class="fw-bold mt-1 text-white">148</h3>
+                        <div class="row g-2 g-md-3">
+                            <div class="col-6 col-lg-3">
+                                <div class="bg-secondary bg-opacity-25 p-2 p-md-3 rounded-3">
+                                    <small class="text-white-50 d-block text-truncate">ACTIVE EMPLOYEES</small>
+                                    <h3 class="fw-bold mt-1 text-white fs-4 fs-md-3">148</h3>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="bg-secondary bg-opacity-25 p-3 rounded-3">
-                                    <small class="text-white-50">ATS CANDIDATES</small>
-                                    <h3 class="fw-bold mt-1 text-info">320 Parsed</h3>
+                            <div class="col-6 col-lg-3">
+                                <div class="bg-secondary bg-opacity-25 p-2 p-md-3 rounded-3">
+                                    <small class="text-white-50 d-block text-truncate">ATS CANDIDATES</small>
+                                    <h3 class="fw-bold mt-1 text-info fs-4 fs-md-3">320 Parsed</h3>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="bg-secondary bg-opacity-25 p-3 rounded-3">
-                                    <small class="text-white-50">ATTENDANCE RATE</small>
-                                    <h3 class="fw-bold mt-1 text-success">98.5% Checked In</h3>
+                            <div class="col-6 col-lg-3">
+                                <div class="bg-secondary bg-opacity-25 p-2 p-md-3 rounded-3">
+                                    <small class="text-white-50 d-block text-truncate">ATTENDANCE RATE</small>
+                                    <h3 class="fw-bold mt-1 text-success fs-4 fs-md-3">98.5%</h3>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="bg-secondary bg-opacity-25 p-3 rounded-3">
-                                    <small class="text-white-50">MONTHLY PAYROLL</small>
-                                    <h3 class="fw-bold mt-1 text-warning" id="heroPayroll">₨ 7.4M Processed</h3>
+                            <div class="col-6 col-lg-3">
+                                <div class="bg-secondary bg-opacity-25 p-2 p-md-3 rounded-3">
+                                    <small class="text-white-50 d-block text-truncate">MONTHLY PAYROLL</small>
+                                    <h3 class="fw-bold mt-1 text-warning fs-4 fs-md-3 text-truncate" id="heroPayroll">₨ 7.4M</h3>
                                 </div>
                             </div>
                         </div>
@@ -849,43 +899,43 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row g-4 pb-4 border-bottom border-secondary">
+            <div class="row g-4 pb-4 border-bottom border-light-subtle">
                 <div class="col-lg-4">
                     <h3 class="navbar-brand-logo mb-3">AuraToolKit 360</h3>
-<p class="text-white-50 small">Enterprise B2B HR, ATS & Biometric SaaS Suite</p>
-                    <p class="text-white-50">Global Enterprise B2B Multi-Tenant Platform for HR, ATS, Biometric Attendance & Payroll.</p>
+                    <p class="text-primary fw-semibold small mb-1">Enterprise B2B HR, ATS & Biometric SaaS Suite</p>
+                    <p class="text-muted">Global Enterprise B2B Multi-Tenant Platform for HR, ATS, Biometric Attendance & Payroll.</p>
                 </div>
-                <div class="col-lg-2 ms-auto">
-                    <h6 class="text-white fw-bold mb-3">Product</h6>
+                <div class="col-lg-2 ms-auto col-6 col-md-3">
+                    <h6 class="text-dark fw-bold mb-3">Product</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#features" class="text-white-50 text-decoration-none">Features</a></li>
-                        <li><a href="#pricing" class="text-white-50 text-decoration-none">Pricing</a></li>
-                        <li><a href="/login" class="text-white-50 text-decoration-none">Client Portal</a></li>
+                        <li><a href="#features" class="text-muted text-decoration-none">Features</a></li>
+                        <li><a href="#pricing" class="text-muted text-decoration-none">Pricing</a></li>
+                        <li><a href="/login" class="text-muted text-decoration-none">Client Portal</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2">
-                    <h6 class="text-white fw-bold mb-3">Company</h6>
+                <div class="col-lg-2 col-6 col-md-3">
+                    <h6 class="text-dark fw-bold mb-3">Company</h6>
                     <ul class="list-unstyled">
-                        <li><a href="/about-us" class="text-white-50 text-decoration-none">About Us</a></li>
-                        <li><a href="#contact" class="text-white-50 text-decoration-none">Contact Sales</a></li>
+                        <li><a href="/about-us" class="text-muted text-decoration-none">About Us</a></li>
+                        <li><a href="#contact" class="text-muted text-decoration-none">Contact Sales</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3">
-                    <h6 class="text-white fw-bold mb-3">Legal & Compliance</h6>
+                <div class="col-lg-3 col-12 col-md-4">
+                    <h6 class="text-dark fw-bold mb-3">Legal & Compliance</h6>
                     <ul class="list-unstyled">
-                        <li><a href="/privacy-policy" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
-                        <li><a href="/terms-of-service" class="text-white-50 text-decoration-none">Terms of Service</a></li>
-                        <li><a href="/cookie-policy" class="text-white-50 text-decoration-none">Cookie Policy</a></li>
+                        <li><a href="/privacy-policy" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service" class="text-muted text-decoration-none">Terms of Service</a></li>
+                        <li><a href="/cookie-policy" class="text-muted text-decoration-none">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="d-flex justify-content-between align-items-center pt-4 flex-wrap gap-2">
-                <small class="text-white-50">&copy; 2026 AuraToolKit 360. All rights reserved.</small>
-                <div class="d-flex gap-3">
-                    <a href="/privacy-policy" class="text-white-50 text-decoration-none small">Privacy</a>
-                    <a href="/terms-of-service" class="text-white-50 text-decoration-none small">Terms</a>
-                    <a href="/cookie-policy" class="text-white-50 text-decoration-none small">Cookies</a>
-                    <a href="/login" class="text-white-50 text-decoration-none small">Client Login</a>
+            <div class="d-flex justify-content-between align-items-center pt-4 flex-wrap gap-2 text-muted">
+                <small class="text-muted">&copy; 2026 AuraToolKit 360. All rights reserved.</small>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="/privacy-policy" class="text-muted text-decoration-none small">Privacy</a>
+                    <a href="/terms-of-service" class="text-muted text-decoration-none small">Terms</a>
+                    <a href="/cookie-policy" class="text-muted text-decoration-none small">Cookies</a>
+                    <a href="/login" class="text-muted text-decoration-none small">Client Login</a>
                 </div>
             </div>
         </div>
