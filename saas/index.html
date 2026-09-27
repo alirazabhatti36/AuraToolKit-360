@@ -2,9 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraToolKit 360 | Enterprise B2B HR, ATS & Biometric Payroll Platform</title>
-    <meta name="description" content="Streamline your hiring, biometric attendance, payroll processing, and asset tracking with AuraToolKit 360 - The all-in-one multi-tenant B2B HR SaaS platform for worldwide companies.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>AuraToolKit 360 | Cloud HR Software, ATS & Biometric Payroll Platform</title>
+    <meta name="description" content="All-in-one cloud HRMS & ATS software with real-time Hikvision biometric attendance sync, automated payroll, resume scoring, and multi-tenant security. Explore AuraToolKit 360.">
+    <meta name="keywords" content="cloud hr software, biometric attendance payroll, hikvision hr sync, applicant tracking system ats, multi-tenant hrm, employee asset management, AuraToolKit 360">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/saas/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AuraToolkit360">
+    <meta property="og:title" content="AuraToolKit 360 | Cloud HR Software, ATS & Biometric Payroll Platform">
+    <meta property="og:description" content="Enterprise cloud HRMS & ATS software with Hikvision biometric sync, automated payroll, and multi-tenant isolation.">
+    <meta property="og:url" content="https://auratoolkit360.com/saas/">
+    <meta property="og:image" content="https://auratoolkit360.com/assets/og-image.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AuraToolKit 360 | Cloud HR Software, ATS & Biometric Payroll Platform">
+    <meta name="twitter:description" content="All-in-one cloud HRMS & ATS software with Hikvision biometric sync and automated payroll.">
+    <meta name="twitter:image" content="https://auratoolkit360.com/assets/og-image.png">
+
+    <!-- JSON-LD Structured Data: SoftwareApplication & FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AuraToolKit 360 Enterprise HR & ATS SaaS",
+        "operatingSystem": "All (Web Cloud SaaS)",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "HR & Applicant Tracking",
+        "description": "Enterprise B2B HR, ATS and biometric attendance software with Hikvision sync and automated payroll.",
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "PKR",
+            "lowPrice": "4999",
+            "highPrice": "24999",
+            "offerCount": "3"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "128"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Does AuraToolKit 360 support Hikvision biometric attendance machines?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, AuraToolKit 360 includes a real-time local bridge that connects with your office Hikvision biometric hardware over LAN and synchronizes punch logs with cloud payroll."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is AuraToolKit 360 multi-tenant?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, AuraToolKit 360 provides strict company-level data isolation, allowing multiple client businesses to manage their own teams, candidates, and payroll safely."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does AuraToolKit 360 calculate payroll and taxes automatically?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, our automated payroll module computes base salary, allowances, overtime, unpaid leaves, and tax deductions with 1-click payslip generation."
+                }
+            }
+        ]
+    }
+    </script>
     <!-- Bootstrap 5 & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -324,20 +400,8 @@
                         <span id="currentCountryName">Pakistan — PKR (₨)</span>
                         <i class="bi bi-globe text-primary ms-1"></i>
                     </button>
-
                     <a href="#contact" class="btn btn-gradient-primary rounded-pill px-3 py-2 text-nowrap"><i class="bi bi-calendar-check me-1"></i>Request Live Demo</a>
-                        <a href="#pricing" class="btn btn-outline-dark-custom rounded-pill px-3 py-2 text-nowrap"><i class="bi bi-tags me-1"></i>View Plans</a>" 
-                           class="btn btn-gradient-primary rounded-pill px-4">
-                            <i class="bi bi-speedometer2 me-1"></i><span data-i18n="btn_dashboard">Go to Dashboard</span>
-                        </a>
-                    {% else %}
-                        <a href="/register-company" class="btn btn-gradient-primary rounded-pill px-3 py-2 text-nowrap">
-                            <i class="bi bi-building-add me-1"></i>Register Company
-                        </a>
-                        <a href="/login" class="btn btn-outline-dark-custom rounded-pill px-3 py-2 text-nowrap">
-                            <i class="bi bi-box-arrow-in-right me-1"></i><span data-i18n="btn_login">Client Login</span>
-                        </a>
-                    {% endif %}
+                    <a href="#pricing" class="btn btn-outline-dark-custom rounded-pill px-3 py-2 text-nowrap"><i class="bi bi-tags me-1"></i>View Plans</a>
                 </div>
             </div>
         </div>
@@ -358,11 +422,11 @@
                 instant Hikvision biometric hardware syncing, and localized country-wise payroll management.
             </p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="/demo-login" class="btn btn-warning btn-lg fw-bold rounded-pill text-dark px-4 shadow">
-                    <i class="bi bi-controller me-2"></i>🎮 Try Instant Live Demo
+                <a href="#contact" class="btn btn-warning btn-lg fw-bold rounded-pill text-dark px-4 shadow">
+                    <i class="bi bi-calendar2-check me-2"></i>Request Live Demo
                 </a>
-                <a href="/register-company" class="btn btn-gradient-primary btn-lg rounded-pill px-4">
-                    <i class="bi bi-rocket-takeoff me-2"></i><span>Register Company</span>
+                <a href="#pricing" class="btn btn-gradient-primary btn-lg rounded-pill px-4 text-white">
+                    <i class="bi bi-stars me-2"></i><span>Explore Plans</span>
                 </a>
                 <a href="#pricing" class="btn btn-outline-dark-custom btn-lg rounded-pill px-4">
                     <span data-i18n="btn_pricing">View Pricing</span> <i class="bi bi-arrow-down ms-1"></i>

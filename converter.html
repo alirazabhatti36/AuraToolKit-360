@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <meta name="description" content="Convert PDF, Word, Excel, PPT, JSON, and image files with AuraToolkit360 File Converter. Fast, easy, and 100% privacy-first client side in your browser.">
     <meta name="keywords" content="file converter, PDF tools, word to pdf, pdf to word, image converter, excel converter, online converter, free tools, private converter">
     <meta name="author" content="AuraToolkit360">
-    <meta name="theme-color" content="#0b0f19">
+    <meta name="theme-color" content="#f8fafc">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://auratoolkit360.com/converter/">
     
@@ -52,18 +52,18 @@
     
     <style>
         :root {
-            --bg-base: #0b0f19;
-            --bg-card: rgba(18, 24, 38, 0.7);
-            --bg-card-hover: rgba(28, 36, 56, 0.85);
-            --border-card: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(99, 102, 241, 0.35);
+            --bg-base: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --border-card: #e2e8f0;
+            --border-highlight: #6366f1;
             --accent-cyan: #38bdf8;
-            --accent-purple: #8b5cf6;
+            --accent-purple: #4f46e5;
             --accent-green: #10b981;
             --accent-blue: #3b82f6;
             --accent-orange: #f59e0b;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
             --text-muted: #64748b;
         }
 
@@ -742,6 +742,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
     <script defer src="/assets/pwa-install.js"></script>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -1728,7 +1729,8 @@
             const file = readSingleFile(form);
             const arrayBuffer = await file.arrayBuffer();
             const res = await window.mammoth.convertToHtml({ arrayBuffer });
-            const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Converted Document</title></head><body>` + (res.value || '') + `</body></html>`;
+            const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Converted Document</title>    <link rel="stylesheet" href="/assets/saas-ui.css">
+</head><body>` + (res.value || '') + `</body></html>`;
             downloadBlob(new Blob([html], { type: 'text/html;charset=utf-8' }), 'converted.html');
         }
     </script>
