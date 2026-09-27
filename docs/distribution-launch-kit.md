@@ -7,7 +7,7 @@ Yeh comprehensive marketing & distribution playbook AuraToolkit360 ke organic tr
 ## 📑 Distribution Playbook Index
 1. [The Embeddable ATS Widget Outreach (High-Authority .EDU & Career Backlinks)](#1-widget-outreach)
 2. [Viral Social Media Loops: The 1200×630 Scorecard Badge](#2-viral-scorecard-loop)
-3. [Competitor Disruption Campaigns (`/ilovepdf-alternative/` & `/canva-resume-alternative/`)](#3-competitor-campaigns)
+3. [Competitor Disruption Campaigns (Private PDF & ATS Builder)](#3-competitor-campaigns)
 4. [Micro-Intent Campaign: 20KB Signature Resizer for Exam & Job Portals](#4-signature-resizer-campaign)
 5. [Product Hunt Official Launch Kit](#5-product-hunt-kit)
 6. [AlternativeTo.net Verified Listing Profile](#6-alternativeto-profile)
@@ -82,12 +82,12 @@ Jab candidate apna resume scan karta hai, to system ek 1200×630 high-resolution
 <a name="3-competitor-campaigns"></a>
 ## 3. ⚔️ Competitor Disruption Campaigns
 
-### Campaign A: iLovePDF Alternative (`/ilovepdf-alternative/`)
+### Campaign A: Private PDF Suite (`/converter/`)
 - **Hook:** *"Stop uploading confidential corporate agreements, bank statements, and tax returns to cloud converters."*
 - **Angle:** iLovePDF aur Smallpdf har saal billions of confidential pages apne servers par process karte hain. AuraToolkit360 WebAssembly aur client-side memory me convert karta hai jahan 0 bytes remote servers par jaate hain.
 - **Direct Target Communities:** r/privacy, r/cybersecurity, LinkedIn Legal & FinTech networks.
 
-### Campaign B: Canva ATS Alternative (`/canva-resume-alternative/`)
+### Campaign B: In-Browser ATS Builder (`/resume-cv-maker/`)
 - **Hook:** *"Why 75% of beautiful Canva resumes are instantly rejected by corporate ATS parsers."*
 - **Angle:** Canva multi-column graphic layers me text export karta hai jo Workday aur Taleo ke linear parser me garbar ho jata hai. AuraToolkit360 clean linear semantic DOM aur vector PDF/DOCX produce karta hai.
 - **Direct Target Communities:** r/resumes, r/recruiting, LinkedIn Job Seekers.
@@ -194,7 +194,7 @@ Try it live: https://auratoolkit360.com/
   - Open your Network Tab in Chrome DevTools: exactly 0 bytes of your file ever leave your computer.
   - Zero accounts, zero cookies tracking your file history.
 
-  Check out our comparison breakdown here: https://auratoolkit360.com/ilovepdf-alternative/
+  Check out the suite here: https://auratoolkit360.com/converter/
 
   Feedback on edge-case client performance or WebAssembly sandboxing is very welcome!
   ```
@@ -206,7 +206,7 @@ Try it live: https://auratoolkit360.com/
   Hey everyone,
 
   Two biggest mistakes people make when applying to jobs online:
-  1. Using Canva templates: Canva exports multi-column visual graphics where text boxes float without reading order tags. When Workday or Taleo parses it, your job titles, dates, and bullet points get jumbled into meaningless sentences. (Deep dive here: https://auratoolkit360.com/canva-resume-alternative/)
+  1. Using Canva templates: Canva exports multi-column visual graphics where text boxes float without reading order tags. When Workday or Taleo parses it, your job titles, dates, and bullet points get jumbled into meaningless sentences.
   2. Spending 2 hours on a commercial builder only to find out downloading the PDF requires a $19.99/mo subscription.
 
   We built a completely free, privacy-first alternative:
