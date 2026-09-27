@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Edit Asset{% endblock %}
+{% block content %}
+<div style="max-width:600px; margin:0 auto;">
+    <h2>✏️ Edit Asset Details</h2>
+    <form method="post" action="/update-asset/{{ asset[0] }}" style="background:white; padding:30px; border-radius:20px;">
+        <label>Asset Name</label>
+        <input type="text" name="asset_name" value="{{ asset[1] }}" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
+        <label>Category</label>
+        <input type="text" name="category" value="{{ asset[2] }}" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
+        <label>Serial Number</label>
+        <input type="text" name="serial_number" value="{{ asset[3] }}" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
+        <label>Brand / Model</label>
+        <input type="text" name="brand_model" value="{{ asset[4] }}" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
+        <label>Date of Allotment</label>
+        <input type="date" name="date_of_allotment" value="{{ asset[10] if asset|length > 10 else '' }}" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
+        <label>Date of Return</label>
+        <input type="date" name="date_of_return" value="{{ asset[11] if asset|length > 11 else '' }}" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
+        <label>Cost (PKR)</label>
+        <input type="text" name="cost" value="{{ asset[12] if asset|length > 12 else '' }}" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
+        <label>Status</label>
+        <select name="status" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">
+            <option value="Available" {% if asset[7]=='Available' %}selected{% endif %}>✅ Available</option>
+            <option value="Assigned" {% if asset[7]=='Assigned' %}selected{% endif %}>👥 Assigned</option>
+            <option value="Maintenance">🔧 Maintenance</option>
+            <option value="Damaged">⚠️ Damaged</option>
+        </select>
+        <label>Remarks</label>
+        <textarea name="remarks" rows="3" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ddd; border-radius:5px;">{{ asset[13] if asset|length > 13 else '' }}</textarea>
+        <button type="submit" style="background:#17a2b8; color:white; padding:12px; border:none; border-radius:8px; cursor:pointer; width:100%;">💾 Save Changes</button>
+        <button type="button" class="btn-back" onclick="window.location.href='/inventory'" style="background:#6c757d; color:white; padding:12px; border:none; border-radius:8px; cursor:pointer; width:100%; margin-top:10px;">← Cancel</button>
+    </form>
+</div>
+{% endblock %}

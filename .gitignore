@@ -1,4 +1,4 @@
-﻿__pycache__/
+__pycache__/
 *.pyc
 *.pyo
 *.pyd
@@ -12,3 +12,12 @@ uploads/
 *.zip
 .vscode/
 .idea/
+scratch/
+*.db
+*.sqlite3
+databases/
+aura_hrm_saas/databases/
+aura_hrm_saas/uploads/
+firebase_credentials.json
+*.json.key
+.env

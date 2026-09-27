@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Edit Payroll{% endblock %}
+{% block content %}
+<style>
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 8px 10px; border: 1px solid #ddd; border-radius: 6px; }
+    .form-group input:read-only { background: #f5f5f5; }
+    .calculation-box { background: #e8f4f8; padding: 15px; border-radius: 10px; margin: 20px 0; display: flex; justify-content: space-between; font-weight: bold; }
+    .btn-save { background: #28a745; color: white; padding: 12px; border: none; border-radius: 8px; width: 100%; margin-top: 10px; cursor: pointer; }
+    .btn-cancel { background: #6c757d; color: white; padding: 12px; border: none; border-radius: 8px; width: 100%; margin-top: 10px; cursor: pointer; }
+    @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
+</style>
+<div style="max-width: 650px; margin: 0 auto;">
+    <h2>✏️ Edit Payroll Record</h2>
+    <form method="post" action="/update-payroll/{{ payroll[0] }}" onsubmit="return calculateNet()" style="background: white; padding: 25px; border-radius: 15px;">
+        <div class="form-row">
+            <div class="form-group"><label>Team</label><input type="text" name="team" value="{{ payroll[2] }}" readonly></div>
+            <div class="form-group"><label>Employee Name</label><input type="text" name="employee_name" value="{{ payroll[3] }}" readonly></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group"><label>Working Days</label><input type="number" name="working_days" value="{{ payroll[4] }}" readonly></div>
+            <div class="form-group"><label>Leaves</label><input type="number" name="leaves" id="leaves" value="{{ payroll[11] }}" oninput="calculateNet()"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group"><label>Basic Salary</label><input type="number" name="basic_salary" id="basic" value="{{ payroll[5] }}" step="0.01" oninput="calculateNet()"></div>
+            <div class="form-group"><label>Petrol Allowance</label><input type="number" name="petrol_allowance" id="petrol" value="{{ payroll[6] }}" step="0.01" oninput="calculateNet()"></div>
+        </div>
+        <div class="form-group"><label>Additional Earnings</label><input type="number" name="additional_earnings" id="additional" value="{{ payroll[7] }}" step="0.01" oninput="calculateNet()"></div>
+        <div class="form-row">
+            <div class="form-group"><label>Income Tax</label><input type="number" name="income_tax" id="tax" value="{{ payroll[9] }}" step="0.01" oninput="calculateNet()"></div>
+            <div class="form-group"><label>Other Deductions</label><input type="number" name="other_deductions" id="deductions" value="{{ payroll[10] }}" step="0.01" oninput="calculateNet()"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group"><label>Bank Salary</label><input type="number" name="bank_salary" id="bank" value="{{ payroll[13] }}" step="0.01" oninput="syncBankCash()"></div>
+            <div class="form-group"><label>Cash Salary</label><input type="number" name="cash_salary" id="cash" value="{{ payroll[14] }}" step="0.01" oninput="syncBankCash()"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group"><label>Bank Name</label><input type="text" name="bank_name" value="{{ payroll[16] }}"></div>
+            <div class="form-group"><label>Account Number</label><input type="text" name="account_number" value="{{ payroll[17] }}"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group"><label>Month</label><select name="month"><option value="{{ payroll[18] }}" selected>{{ payroll[18] }}</option><option value="January">January</option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option></select></div>
+            <div class="form-group"><label>Year</label><input type="number" name="year" value="{{ payroll[19] }}"></div>
+        </div>
+        <div class="form-group"><label>Status</label><select name="status"><option value="Pending" {% if payroll[20]=='Pending' %}selected{% endif %}>Pending</option><option value="Paid" {% if payroll[20]=='Paid' %}selected{% endif %}>Paid</option></select></div>
+        <div class="form-group"><label>Remarks</label><textarea name="remarks" rows="2">{{ payroll[15] if payroll[15] else '' }}</textarea></div>
+        
+        <input type="hidden" name="employee_id" value="0">
+        <input type="hidden" name="gross_salary" id="gross" value="{{ payroll[8] }}">
+        <input type="hidden" name="net_salary" id="net" value="{{ payroll[12] }}">
+        
+        <div class="calculation-box"><span>📊 Gross Salary:</span><span>₨ <span id="grossDisplay">{{ payroll[8] }}</span></span></div>
+        <button type="submit" class="btn-save">💾 Save Changes</button>
+        <button type="button" class="btn-cancel" onclick="window.location.href='/payroll'">← Cancel</button>
+    </form>
+</div>
+<script>
+    function calculateNet() {
+        let basic = parseFloat(document.getElementById('basic').value) || 0;
+        let petrol = parseFloat(document.getElementById('petrol').value) || 0;
+        let additional = parseFloat(document.getElementById('additional').value) || 0;
+        let tax = parseFloat(document.getElementById('tax').value) || 0;
+        let deductions = parseFloat(document.getElementById('deductions').value) || 0;
+        let gross = basic + petrol + additional;
+        let net = gross - (tax + deductions);
+        document.getElementById('gross').value = gross;
+        document.getElementById('net').value = net;
+        document.getElementById('grossDisplay').innerText = gross.toFixed(2);
+        return true;
+    }
+    function syncBankCash() {
+        let net = parseFloat(document.getElementById('net').value) || 0;
+        let bank = parseFloat(document.getElementById('bank').value) || 0;
+        if (bank !== 0) document.getElementById('cash').value = (net - bank).toFixed(2);
+    }
+</script>
+{% endblock %}

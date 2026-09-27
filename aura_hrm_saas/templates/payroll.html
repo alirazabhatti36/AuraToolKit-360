@@ -1,0 +1,791 @@
+{% extends "base.html" %}
+{% block title %}Payroll Management{% endblock %}
+{% block content %}
+<style>
+    /* Premium Styles */
+    .premium-card {
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .premium-card:hover {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* Stats Grid */
+    .stats-premium {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .stat-premium {
+        background: white;
+        border-radius: 20px;
+        padding: 25px 20px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+    .stat-premium::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+    .stat-premium:hover {
+        transform: translateY(-5px);
+    }
+    .stat-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    .stat-number {
+        font-size: 32px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 5px;
+    }
+    .stat-label {
+        color: #666;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .stat-premium.payroll .stat-number { color: #fd7e14; }
+    .stat-premium.paid .stat-number { color: #28a745; }
+    .stat-premium.pending .stat-number { color: #ffc107; }
+    
+    /* Team Summary */
+    .team-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .team-premium {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border-left: 4px solid;
+        transition: all 0.3s;
+    }
+    .team-premium.web { border-left-color: #667eea; }
+    .team-premium.simpli { border-left-color: #28a745; }
+    .team-premium.bugg { border-left-color: #fd7e14; }
+    .team-premium:hover { transform: translateX(5px); }
+    .team-name { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .team-stats { display: flex; justify-content: space-between; font-size: 13px; color: #666; }
+    .team-amount { font-weight: 700; color: #28a745; }
+    
+    /* Filter Bar */
+    .filter-premium {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 25px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .filter-premium input, .filter-premium select {
+        padding: 10px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 13px;
+        flex: 1;
+        min-width: 150px;
+        transition: all 0.3s;
+    }
+    .filter-premium input:focus, .filter-premium select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+    }
+    .btn-premium {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 10px 24px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+    }
+    .btn-premium:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102,126,234,0.3);
+    }
+    .btn-premium-outline {
+        background: white;
+        color: #667eea;
+        border: 1px solid #667eea;
+        padding: 9px 23px;
+    }
+    .btn-premium-outline:hover {
+        background: #667eea;
+        color: white;
+    }
+    .btn-add {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        margin-bottom: 25px;
+    }
+    .btn-clear {
+        background: #6c757d;
+    }
+    
+    /* Table */
+    .table-premium {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    .payroll-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .payroll-table th {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 15px 12px;
+        font-weight: 600;
+        font-size: 13px;
+    }
+    .payroll-table td {
+        padding: 12px;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 13px;
+    }
+    .payroll-table tr:hover {
+        background: #f8f9fa;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+    .status-paid {
+        background: #d4edda;
+        color: #155724;
+    }
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+    .action-btn {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 11px;
+        margin: 2px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+    .action-edit { background: #ffc107; color: #333; }
+    .action-process { background: #17a2b8; color: white; }
+    .action-delete { background: #dc3545; color: white; }
+    .action-btn:hover { transform: translateY(-1px); opacity: 0.9; }
+    
+    /* Modal Premium */
+    .modal-premium {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    .modal-content-premium {
+        background: white;
+        max-width: 650px;
+        margin: 40px auto;
+        border-radius: 24px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        overflow: hidden;
+    }
+    .modal-header-premium {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 20px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .modal-header-premium h3 {
+        margin: 0;
+        font-size: 20px;
+    }
+    .modal-close {
+        font-size: 28px;
+        cursor: pointer;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+    }
+    .modal-close:hover { opacity: 1; }
+    .modal-body-premium {
+        padding: 25px;
+    }
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    .form-group-full {
+        grid-column: span 2;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #555;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 13px;
+        transition: all 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+    }
+    .form-group input:read-only {
+        background: #f8f9fa;
+    }
+    .payment-options {
+        display: flex;
+        gap: 12px;
+        margin-top: 8px;
+    }
+    .payment-option {
+        flex: 1;
+        padding: 10px;
+        text-align: center;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .payment-option:hover {
+        border-color: #667eea;
+    }
+    .payment-option.selected {
+        border-color: #28a745;
+        background: #d4edda;
+        color: #155724;
+    }
+    .bank-details {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 12px;
+        margin-top: 10px;
+        display: none;
+    }
+    .calculation-box {
+        background: linear-gradient(135deg, #667eea10, #764ba210);
+        padding: 15px 20px;
+        border-radius: 12px;
+        margin: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 16px;
+    }
+    .btn-submit {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(40,167,69,0.3);
+    }
+    .employee-search { position: relative; }
+    .suggestions {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 1001;
+        display: none;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .suggestion-item {
+        padding: 12px 15px;
+        cursor: pointer;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background 0.2s;
+    }
+    .suggestion-item:hover {
+        background: linear-gradient(135deg, #667eea10, #764ba210);
+    }
+    .auto-fill-badge {
+        background: #d4edda;
+        color: #155724;
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-size: 12px;
+        margin-top: 10px;
+        display: none;
+    }
+    @media (max-width: 768px) {
+        .stats-premium { grid-template-columns: 1fr 1fr; }
+        .form-grid { grid-template-columns: 1fr; }
+        .form-group-full { grid-column: span 1; }
+        .filter-premium { flex-direction: column; }
+        .filter-premium input, .filter-premium select, .filter-premium button { width: 100%; }
+    }
+</style>
+
+<h2 style="margin-bottom: 5px;">💰 Payroll Management</h2>
+<p style="color: #666; margin-bottom: 25px;">Manage employee salaries, track payments, and generate payslips</p>
+
+<!-- Premium Stats -->
+<div class="stats-premium">
+    <div class="stat-premium payroll">
+        <div class="stat-icon">📊</div>
+        <div class="stat-number">{{ stats.total }}</div>
+        <div class="stat-label">Total Records</div>
+    </div>
+    <div class="stat-premium paid">
+        <div class="stat-icon">✅</div>
+        <div class="stat-number">{{ stats.paid }}</div>
+        <div class="stat-label">Paid</div>
+    </div>
+    <div class="stat-premium pending">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-number">{{ stats.pending }}</div>
+        <div class="stat-label">Pending</div>
+    </div>
+    <div class="stat-premium">
+        <div class="stat-icon">💰</div>
+        <div class="stat-number">{{ stats.payrolls|length if stats.payrolls else 0 }}</div>
+        <div class="stat-label">This Month</div>
+    </div>
+</div>
+
+<!-- Team Summary -->
+<div class="team-summary">
+    {% for stat in team_stats %}
+    <div class="team-premium 
+        {% if 'Webbuggs' in stat[0] %}web
+        {% elif 'Simpli' in stat[0] %}simpli
+        {% else %}bugg{% endif %}">
+        <div class="team-name">🏢 {{ stat[0] }}</div>
+        <div class="team-stats">
+            <span>👥 {{ stat[1] }} Employees</span>
+            <span class="team-amount">💰 ₨ {{ "{:,.0f}".format(stat[2]) }}</span>
+        </div>
+        <div class="team-stats" style="margin-top: 8px;">
+            <span>✅ Paid: ₨ {{ "{:,.0f}".format(stat[3]) }}</span>
+            <span>📅 This Month</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Filter Bar -->
+<div class="filter-premium">
+    <input type="text" id="searchInput" placeholder="🔍 Search by employee or team..." onkeyup="filterTable()">
+    <select id="teamFilter" onchange="filterTable()">
+        <option value="all">🏢 All Teams</option>
+        <option value="Webbuggs">Webbuggs</option>
+        <option value="Simpli Plugin">Simpli Plugin</option>
+        <option value="BuggByte Studios">BuggByte Studios</option>
+    </select>
+    <select id="statusFilter" onchange="filterTable()">
+        <option value="all">📊 All Status</option>
+        <option value="Pending">⏳ Pending</option>
+        <option value="Paid">✅ Paid</option>
+    </select>
+    <button class="btn-premium btn-clear" onclick="clearFilters()">🗑️ Clear Filters</button>
+</div>
+
+<button class="btn-premium btn-add" onclick="openAddModal()">➕ Add Payroll Record</button>
+
+<!-- Table -->
+<div class="table-premium">
+    <table class="payroll-table" id="payrollTable">
+        <thead>
+            <tr>
+                <th>ID</th><th>Team</th><th>Employee</th><th>Basic</th><th>Petrol</th>
+                <th>Add. Earnings</th><th>Gross</th><th>Tax</th><th>Deductions</th>
+                <th>Net</th><th>Month/Year</th><th>Status</th><th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in payrolls %}
+            <tr data-team="{{ p[2] }}" data-status="{{ p[20] }}" data-name="{{ p[3].lower() }}">
+                <td>#{{ loop.index }}</td>
+                <td><strong>{{ p[2] }}</strong></td>
+                <td>{{ p[3] }}</td>
+                <td>₨ {{ "{:,.0f}".format(p[5]) }}</td>
+                <td>₨ {{ "{:,.0f}".format(p[6]) }}</td>
+                <td>₨ {{ "{:,.0f}".format(p[7]) }}</td>
+                <td><strong>₨ {{ "{:,.0f}".format(p[8]) }}</strong></td>
+                <td>₨ {{ "{:,.0f}".format(p[9]) }}</td>
+                <td>₨ {{ "{:,.0f}".format(p[10]) }}</td>
+                <td><strong>₨ {{ "{:,.0f}".format(p[12]) }}</strong></td>
+                <td>{{ p[18] }}/{{ p[19] }}</td>
+                <td><span class="status-badge status-{{ 'paid' if p[20] == 'Paid' else 'pending' }}">{{ '✅ Paid' if p[20] == 'Paid' else '⏳ Pending' }}</span></td>
+                <td>
+                    <a href="/edit-payroll/{{ p[0] }}" class="action-btn action-edit">✏️ Edit</a>
+                    {% if p[20] != 'Paid' %}<a href="/process-payroll/{{ p[0] }}" class="action-btn action-process">💰 Process</a>{% endif %}
+                    <a href="/delete-payroll/{{ p[0] }}" class="action-btn action-delete" onclick="return confirm('Delete this record?')">🗑️ Del</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Premium Modal -->
+<div id="addModal" class="modal-premium">
+    <div class="modal-content-premium">
+        <div class="modal-header-premium">
+            <h3>➕ Add Payroll Record</h3>
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body-premium">
+            <form method="post" action="/add-payroll" onsubmit="return validateAndSubmit()">
+                <div class="form-group employee-search">
+                    <label>👤 Search Employee</label>
+                    <input type="text" id="employeeSearch" placeholder="Type employee name..." autocomplete="off" onkeyup="searchEmployees()" style="font-size: 14px;">
+                    <div id="employeeSuggestions" class="suggestions"></div>
+                    <input type="hidden" name="employee_id" id="employeeId" value="0">
+                    <input type="hidden" name="employee_name" id="employeeName">
+                    <input type="hidden" name="team" id="team">
+                    <div id="autoFillInfo" class="auto-fill-badge">✨ Auto-filled from employee record</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>🏢 Team</label>
+                    <input type="text" id="teamDisplay" readonly style="background:#f8f9fa;">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>📅 Working Days</label>
+                        <input type="number" name="working_days" value="30" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>🏖️ Leaves</label>
+                        <input type="number" name="leaves" id="leaves" value="0" oninput="calculateNet()">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>💰 Basic Salary</label>
+                        <input type="number" name="basic_salary" id="basic" step="0.01" required oninput="calculateNet()">
+                    </div>
+                    <div class="form-group">
+                        <label>⛽ Petrol Allowance</label>
+                        <input type="number" name="petrol_allowance" id="petrol" value="0" step="0.01" oninput="calculateNet()">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>🎁 Additional Earnings (OT + Bonus + Commission)</label>
+                    <input type="number" name="additional_earnings" id="additional" value="0" step="0.01" oninput="calculateNet()">
+                    <small style="color: #888;">Weekend earnings auto-add from Weekend Sheet</small>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>📊 Income Tax</label>
+                        <input type="number" name="income_tax" id="tax" value="0" step="0.01" oninput="calculateNet()">
+                    </div>
+                    <div class="form-group">
+                        <label>📉 Other Deductions</label>
+                        <input type="number" name="other_deductions" id="deductions" value="0" step="0.01" oninput="calculateNet()">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>💳 Payment Method</label>
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="selectPaymentMethod('cash')" id="optCash">💵 Cash Only</div>
+                        <div class="payment-option" onclick="selectPaymentMethod('bank')" id="optBank">🏦 Bank Only</div>
+                        <div class="payment-option" onclick="selectPaymentMethod('both')" id="optBoth">💰 Both</div>
+                    </div>
+                    <input type="hidden" name="payment_method" id="paymentMethod" value="cash">
+                </div>
+                
+                <div id="bankDetails" class="bank-details">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>🏛️ Bank Name</label>
+                            <input type="text" name="bank_name" id="bankName">
+                        </div>
+                        <div class="form-group">
+                            <label>🔢 Account Number</label>
+                            <input type="text" name="account_number" id="accountNumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>🏦 Bank Amount</label>
+                        <input type="number" name="bank_salary" id="bank" step="0.01" value="0" oninput="syncBankCash()">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>💵 Cash Amount</label>
+                    <input type="number" name="cash_salary" id="cash" step="0.01" value="0" oninput="syncBankCash()">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>📅 Month</label>
+                        <select name="month" id="month" required>
+                            <option value="January">January</option><option value="February">February</option>
+                            <option value="March">March</option><option value="April">April</option>
+                            <option value="May">May</option><option value="June">June</option>
+                            <option value="July">July</option><option value="August">August</option>
+                            <option value="September">September</option><option value="October">October</option>
+                            <option value="November">November</option><option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Year</label>
+                        <input type="number" name="year" id="year" value="2025" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>📌 Status</label>
+                    <select name="status">
+                        <option value="Pending">⏳ Pending</option>
+                        <option value="Paid">✅ Paid</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>📝 Remarks</label>
+                    <textarea name="remarks" rows="2" placeholder="Any notes..."></textarea>
+                </div>
+                
+                <input type="hidden" name="gross_salary" id="gross">
+                <input type="hidden" name="net_salary" id="net">
+                
+                <div class="calculation-box">
+                    <span>📊 Gross Salary:</span>
+                    <span>₨ <span id="grossDisplay">0</span></span>
+                </div>
+                
+                <button type="submit" class="btn-submit">✅ Save Payroll Record</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let selectedPaymentMethod = 'cash';
+    let currentEmployeeId = 0;
+    
+    async function searchEmployees() {
+        const searchTerm = document.getElementById('employeeSearch').value;
+        if (searchTerm.length < 2) {
+            document.getElementById('employeeSuggestions').style.display = 'none';
+            return;
+        }
+        try {
+            const response = await fetch(`/api/search-employees?q=${encodeURIComponent(searchTerm)}`);
+            const data = await response.json();
+            const suggestionsDiv = document.getElementById('employeeSuggestions');
+            if (data.employees && data.employees.length > 0) {
+                suggestionsDiv.style.display = 'block';
+                suggestionsDiv.innerHTML = data.employees.map(emp => `
+                    <div class="suggestion-item" onclick="selectEmployee(${emp.id})">
+                        <strong>👤 ${emp.name}</strong><br>
+                        <small>🏢 ${emp.team || 'No team'} | 📌 ${emp.position || 'No position'} | 💰 ₨ ${emp.salary.toLocaleString()}</small>
+                    </div>
+                `).join('');
+            } else {
+                suggestionsDiv.style.display = 'none';
+            }
+        } catch(e) { console.log(e); }
+    }
+    
+    async function selectEmployee(employeeId) {
+        currentEmployeeId = employeeId;
+        document.getElementById('employeeId').value = employeeId;
+        try {
+            const response = await fetch(`/api/employee-details/${employeeId}`);
+            const data = await response.json();
+            if (data.success && data.employee) {
+                const emp = data.employee;
+                document.getElementById('employeeSearch').value = emp.name;
+                document.getElementById('employeeName').value = emp.name;
+                document.getElementById('team').value = emp.team || '';
+                document.getElementById('teamDisplay').value = emp.team || '';
+                document.getElementById('basic').value = emp.salary || 0;
+                document.getElementById('bankName').value = emp.bank_name || '';
+                document.getElementById('accountNumber').value = emp.account_number || '';
+                document.getElementById('autoFillInfo').style.display = 'block';
+                setTimeout(() => { document.getElementById('autoFillInfo').style.display = 'none'; }, 3000);
+                calculateNet();
+            }
+        } catch(e) { console.log(e); }
+        document.getElementById('employeeSuggestions').style.display = 'none';
+    }
+    
+    function selectPaymentMethod(method) {
+        selectedPaymentMethod = method;
+        document.getElementById('paymentMethod').value = method;
+        document.getElementById('optCash').classList.remove('selected');
+        document.getElementById('optBank').classList.remove('selected');
+        document.getElementById('optBoth').classList.remove('selected');
+        if (method === 'cash') {
+            document.getElementById('optCash').classList.add('selected');
+            document.getElementById('bankDetails').style.display = 'none';
+        } else if (method === 'bank') {
+            document.getElementById('optBank').classList.add('selected');
+            document.getElementById('bankDetails').style.display = 'block';
+        } else {
+            document.getElementById('optBoth').classList.add('selected');
+            document.getElementById('bankDetails').style.display = 'block';
+        }
+        calculateAndUpdateSplit();
+    }
+    
+    function calculateNet() {
+        let basic = parseFloat(document.getElementById('basic').value) || 0;
+        let petrol = parseFloat(document.getElementById('petrol').value) || 0;
+        let additional = parseFloat(document.getElementById('additional').value) || 0;
+        let tax = parseFloat(document.getElementById('tax').value) || 0;
+        let deductions = parseFloat(document.getElementById('deductions').value) || 0;
+        let gross = basic + petrol + additional;
+        let net = gross - (tax + deductions);
+        document.getElementById('gross').value = gross.toFixed(2);
+        document.getElementById('net').value = net.toFixed(2);
+        document.getElementById('grossDisplay').innerText = gross.toFixed(2);
+        calculateAndUpdateSplit();
+    }
+    
+    function calculateAndUpdateSplit() {
+        let net = parseFloat(document.getElementById('net').value) || 0;
+        if (selectedPaymentMethod === 'cash') {
+            document.getElementById('cash').value = net.toFixed(2);
+            document.getElementById('bank').value = 0;
+        } else if (selectedPaymentMethod === 'bank') {
+            document.getElementById('bank').value = net.toFixed(2);
+            document.getElementById('cash').value = 0;
+        } else if (selectedPaymentMethod === 'both') {
+            let bank = parseFloat(document.getElementById('bank').value) || 0;
+            if (bank === 0 && net > 0) {
+                document.getElementById('bank').value = (net / 2).toFixed(2);
+                document.getElementById('cash').value = (net / 2).toFixed(2);
+            }
+        }
+    }
+    
+    function syncBankCash() {
+        let net = parseFloat(document.getElementById('net').value) || 0;
+        let bank = parseFloat(document.getElementById('bank').value) || 0;
+        if (selectedPaymentMethod === 'both' && bank <= net) {
+            document.getElementById('cash').value = (net - bank).toFixed(2);
+        }
+    }
+    
+    function validateAndSubmit() {
+        calculateNet();
+        if (document.getElementById('employeeId').value == 0) {
+            alert('Please select an employee from suggestions');
+            return false;
+        }
+        return true;
+    }
+    
+    function openAddModal() {
+        document.getElementById('addModal').style.display = 'block';
+        document.getElementById('employeeSearch').value = '';
+        document.getElementById('employeeId').value = 0;
+        document.getElementById('employeeName').value = '';
+        document.getElementById('team').value = '';
+        document.getElementById('teamDisplay').value = '';
+        document.getElementById('basic').value = '';
+        document.getElementById('petrol').value = 0;
+        document.getElementById('additional').value = 0;
+        document.getElementById('tax').value = 0;
+        document.getElementById('deductions').value = 0;
+        document.getElementById('leaves').value = 0;
+        document.getElementById('bankName').value = '';
+        document.getElementById('accountNumber').value = '';
+        document.getElementById('bank').value = 0;
+        document.getElementById('cash').value = 0;
+        document.getElementById('autoFillInfo').style.display = 'none';
+        selectPaymentMethod('cash');
+        calculateNet();
+    }
+    
+    function closeModal() { document.getElementById('addModal').style.display = 'none'; }
+    
+    function filterTable() {
+        let search = document.getElementById('searchInput').value.toLowerCase();
+        let teamFilter = document.getElementById('teamFilter').value;
+        let statusFilter = document.getElementById('statusFilter').value;
+        let rows = document.querySelectorAll('#payrollTable tbody tr');
+        rows.forEach(row => {
+            let team = row.getAttribute('data-team');
+            let status = row.getAttribute('data-status');
+            let name = row.getAttribute('data-name');
+            let match = (search === '' || name.includes(search) || (team && team.toLowerCase().includes(search))) &&
+                        (teamFilter === 'all' || team === teamFilter) &&
+                        (statusFilter === 'all' || status === statusFilter);
+            row.style.display = match ? '' : 'none';
+        });
+    }
+    
+    function clearFilters() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('teamFilter').value = 'all';
+        document.getElementById('statusFilter').value = 'all';
+        filterTable();
+    }
+    
+    window.onclick = function(e) { if (e.target == document.getElementById('addModal')) closeModal(); }
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.employee-search')) {
+            document.getElementById('employeeSuggestions').style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,78 @@
+﻿{% extends "base.html" %}
+
+{% block title %}AuraToolKit 360 - Organization Hierarchy Chart{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-1">🌳 Company Organization Chart</h2>
+            <p class="text-muted small">Visual hierarchy, departments, and employee reporting structure for <strong>{{ current_company }}</strong>.</p>
+        </div>
+        <div>
+            <button onclick="window.print()" class="btn btn-outline-dark rounded-pill px-3">
+                <i class="bi bi-printer me-1"></i> Print Chart
+            </button>
+        </div>
+    </div>
+
+    <!-- Org Chart Container -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+        <div class="text-center mb-5">
+            <div class="d-inline-block bg-primary text-white p-4 rounded-4 shadow-sm" style="min-width: 260px;">
+                <div class="fs-1">🏢</div>
+                <h4 class="fw-bold mb-1">{{ current_company }}</h4>
+                <span class="badge bg-light text-primary fw-bold">Executive Board</span>
+            </div>
+            <div class="my-3 text-secondary fs-3">&darr;</div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Management & HR -->
+            <div class="col-md-4">
+                <div class="card border border-primary border-opacity-25 rounded-4 p-3 bg-light text-center h-100">
+                    <div class="fs-2 text-primary"><i class="bi bi-people-fill"></i></div>
+                    <h5 class="fw-bold mt-2">Management & HR</h5>
+                    <p class="text-muted small mb-3">Policy, Hiring & Administration</p>
+                    
+                    <div class="bg-white p-3 rounded-3 shadow-sm border mb-2 text-start">
+                        <span class="badge bg-success float-end">Manager</span>
+                        <strong class="d-block text-dark">HR Manager</strong>
+                        <small class="text-muted">hr@{{ current_company.lower().replace(' ', '') }}.com</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engineering & Product -->
+            <div class="col-md-4">
+                <div class="card border border-info border-opacity-25 rounded-4 p-3 bg-light text-center h-100">
+                    <div class="fs-2 text-info"><i class="bi bi-code-slash"></i></div>
+                    <h5 class="fw-bold mt-2">Engineering & IT</h5>
+                    <p class="text-muted small mb-3">Software Development & Systems</p>
+
+                    <div class="bg-white p-3 rounded-3 shadow-sm border mb-2 text-start">
+                        <span class="badge bg-primary float-end">Team Lead</span>
+                        <strong class="d-block text-dark">Senior Software Developer</strong>
+                        <small class="text-muted">Web & Infrastructure Team</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Finance & Payroll -->
+            <div class="col-md-4">
+                <div class="card border border-warning border-opacity-25 rounded-4 p-3 bg-light text-center h-100">
+                    <div class="fs-2 text-warning"><i class="bi bi-cash-stack"></i></div>
+                    <h5 class="fw-bold mt-2">Finance & Payroll</h5>
+                    <p class="text-muted small mb-3">Accounting & Disbursements</p>
+
+                    <div class="bg-white p-3 rounded-3 shadow-sm border mb-2 text-start">
+                        <span class="badge bg-warning text-dark float-end">Lead</span>
+                        <strong class="d-block text-dark">Head Accountant</strong>
+                        <small class="text-muted">Finance & Payroll Dept</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

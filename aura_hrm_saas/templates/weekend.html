@@ -1,0 +1,456 @@
+{% extends "base.html" %}
+{% block title %}Weekend Sheet{% endblock %}
+{% block content %}
+<style>
+    .premium-card {
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    .stats-premium {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .stat-premium {
+        background: white;
+        border-radius: 20px;
+        padding: 25px 20px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: hidden;
+    }
+    .stat-premium::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(135deg, #fd7e14, #ffc107);
+    }
+    .stat-number {
+        font-size: 32px;
+        font-weight: 700;
+        color: #fd7e14;
+    }
+    .filter-premium {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 25px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .filter-premium input, .filter-premium select {
+        padding: 10px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        flex: 1;
+        min-width: 150px;
+    }
+    .btn-premium {
+        background: linear-gradient(135deg, #fd7e14, #ffc107);
+        color: white;
+        padding: 10px 24px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+    .btn-add {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        margin-bottom: 20px;
+    }
+    .table-premium {
+        background: white;
+        border-radius: 20px;
+        overflow-x: auto;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    .weekend-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 700px;
+    }
+    .weekend-table th {
+        background: linear-gradient(135deg, #fd7e14, #ffc107);
+        color: white;
+        padding: 15px;
+        font-weight: 600;
+    }
+    .weekend-table td {
+        padding: 12px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .weekend-table tr:hover {
+        background: #f8f9fa;
+    }
+    .action-btn {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-size: 11px;
+        text-decoration: none;
+        background: #dc3545;
+        color: white;
+    }
+    .modal-premium {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    .modal-content-premium {
+        background: white;
+        max-width: 700px;
+        margin: 40px auto;
+        border-radius: 24px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        overflow: hidden;
+    }
+    .modal-header-premium {
+        background: linear-gradient(135deg, #fd7e14, #ffc107);
+        color: white;
+        padding: 20px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .modal-close {
+        font-size: 28px;
+        cursor: pointer;
+    }
+    .modal-body-premium {
+        padding: 25px;
+    }
+    .weekend-entry {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .weekend-entry select, .weekend-entry input {
+        flex: 1;
+        min-width: 150px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+    .btn-remove {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .btn-add-more {
+        background: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    .btn-submit {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    .calculation-note {
+        background: #e8f4f8;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 12px;
+        color: #17a2b8;
+        margin-bottom: 15px;
+    }
+    @media (max-width: 768px) {
+        .stats-premium { grid-template-columns: 1fr 1fr; }
+        .filter-premium { flex-direction: column; }
+        .filter-premium input, .filter-premium select, .filter-premium button { width: 100%; }
+        .weekend-entry { flex-direction: column; }
+        .weekend-entry select, .weekend-entry input { width: 100%; }
+    }
+</style>
+
+<h2>📅 Weekend Sheet</h2>
+<p style="color:#666; margin-bottom:20px;">Add multiple weekend days for employees (Auto-calculates: Basic/30 × Weekends)</p>
+
+<div class="stats-premium">
+    <div class="stat-premium"><div class="stat-number">{{ stats.total }}</div><div>Total Weekends</div></div>
+    <div class="stat-premium"><div class="stat-number">₨ {{ "{:,.0f}".format(stats.total_amount) }}</div><div>Total Amount</div></div>
+</div>
+
+<div class="filter-premium">
+    <input type="text" id="searchInput" placeholder="🔍 Search by employee or team..." onkeyup="filterTable()">
+    <select id="teamFilter" onchange="filterTable()">
+        <option value="all">🏢 All Teams</option>
+        <option value="Webbuggs">Webbuggs</option>
+        <option value="Simpli Plugin">Simpli Plugin</option>
+        <option value="BuggByte Studios">BuggByte Studios</option>
+    </select>
+    <select id="monthFilter" onchange="filterTable()">
+        <option value="all">📅 All Months</option>
+        <option value="January">January</option><option value="February">February</option>
+        <option value="March">March</option><option value="April">April</option>
+        <option value="May">May</option><option value="June">June</option>
+        <option value="July">July</option><option value="August">August</option>
+        <option value="September">September</option><option value="October">October</option>
+        <option value="November">November</option><option value="December">December</option>
+    </select>
+    <select id="yearFilter" onchange="filterTable()">
+        <option value="all">📅 All Years</option>
+        <option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option>
+    </select>
+    <button class="btn-premium" onclick="clearFilters()">🗑️ Clear</button>
+</div>
+
+<button class="btn-premium btn-add" onclick="openAddModal()">➕ Add Weekend Days</button>
+
+<div class="table-premium">
+    <table class="weekend-table" id="weekendTable">
+        <thead>
+            <tr>
+                <th>ID</th><th>Team</th><th>Employee</th><th>Weekend Days</th><th>Month</th><th>Year</th><th>Amount</th><th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for w in weekend %}
+            <tr data-team="{{ w[3] }}" data-month="{{ w[5] }}" data-year="{{ w[6] }}">
+                <td>{{ w[0] }}</td>
+                <td>{{ w[3] }}</td>
+                <td>{{ w[2] }}</td>
+                <td>{{ w[4] }} days</td>
+                <td>{{ w[5] }}</td>
+                <td>{{ w[6] }}</td>
+                <td>₨ {{ "{:,.0f}".format(w[7]) }}</td>
+                <td><a href="/delete-weekend/{{ w[0] }}" class="action-btn" onclick="return confirm('Delete this weekend entry? Payroll will update automatically.')">🗑️ Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Add Modal -->
+<div id="addModal" class="modal-premium">
+    <div class="modal-content-premium">
+        <div class="modal-header-premium">
+            <h3>➕ Add Weekend Days</h3>
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body-premium">
+            <div class="calculation-note">
+                💡 <strong>How it works:</strong> Weekend Amount = (Basic Salary ÷ 30) × Number of Weekend Days<br>
+                Example: Basic 100,000 ÷ 30 = 3,333 per weekend day
+            </div>
+            <form method="post" action="/add-weekend-bulk" onsubmit="return validateForm()">
+                <div id="weekendEntries">
+                    <div class="weekend-entry" data-index="0">
+                        <select name="employee_id[]" class="employee-select" required style="flex:2;">
+                            <option value="">-- Select Employee --</option>
+                            {% for emp in employees %}
+                            <option value="{{ emp[0] }}" data-name="{{ emp[1] }}" data-team="{{ emp[5] }}" data-basic="{{ emp[7] }}">{{ emp[1] }} ({{ emp[5] }}) - Basic: ₨ {{ emp[7] }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="hidden" name="employee_name[]" class="employee-name">
+                        <input type="hidden" name="team[]" class="employee-team">
+                        <input type="number" name="weekend_count[]" placeholder="Number of weekend days" min="1" max="31" required style="flex:1;">
+                        <button type="button" class="btn-remove" onclick="removeEntry(this)">✗ Remove</button>
+                    </div>
+                </div>
+                <button type="button" class="btn-add-more" onclick="addWeekendEntry()">+ Add Another Employee</button>
+                
+                <div style="margin-top: 20px;">
+                    <label>📅 Select Month & Year (for all entries)</label>
+                    <div style="display: flex; gap: 10px; margin-top: 5px;">
+                        <select name="month" required style="flex:1; padding:10px; border-radius:8px;">
+                            <option value="January">January</option><option value="February">February</option>
+                            <option value="March">March</option><option value="April">April</option>
+                            <option value="May">May</option><option value="June">June</option>
+                            <option value="July">July</option><option value="August">August</option>
+                            <option value="September">September</option><option value="October">October</option>
+                            <option value="November">November</option><option value="December">December</option>
+                        </select>
+                        <input type="number" name="year" value="2025" required style="flex:1; padding:10px; border-radius:8px;">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-submit">✅ Add Weekend Days & Update Payroll</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let entryCount = 1;
+    
+    function updateEmployeeDetails(select) {
+        const selectedOption = select.options[select.selectedIndex];
+        const parentDiv = select.closest('.weekend-entry');
+        const weekendCountInput = parentDiv.querySelector('input[name="weekend_count[]"]');
+        const employeeNameInput = parentDiv.querySelector('input[name="employee_name[]"]');
+        const employeeTeamInput = parentDiv.querySelector('input[name="team[]"]');
+        
+        employeeNameInput.value = selectedOption.getAttribute('data-name') || '';
+        employeeTeamInput.value = selectedOption.getAttribute('data-team') || '';
+        
+        // Show preview of per day amount
+        const basicSalary = parseFloat(selectedOption.getAttribute('data-basic')) || 0;
+        const perDayAmount = basicSalary / 30;
+        
+        function calculateAndPreview() {
+            const count = parseFloat(weekendCountInput.value) || 0;
+            const amount = perDayAmount * count;
+            
+            // Remove existing preview
+            const existingPreview = parentDiv.querySelector('.amount-preview');
+            if (existingPreview) existingPreview.remove();
+            
+            if (count > 0) {
+                const preview = document.createElement('span');
+                preview.className = 'amount-preview';
+                preview.style.background = '#e8f4f8';
+                preview.style.padding = '8px 12px';
+                preview.style.borderRadius = '8px';
+                preview.style.fontSize = '12px';
+                preview.style.fontWeight = 'bold';
+                preview.style.whiteSpace = 'nowrap';
+                preview.innerText = `💰 ₨ ${amount.toFixed(2)}`;
+                weekendCountInput.parentNode.appendChild(preview);
+            }
+        }
+        
+        weekendCountInput.addEventListener('input', calculateAndPreview);
+        calculateAndPreview();
+    }
+    
+    function addWeekendEntry() {
+        const container = document.getElementById('weekendEntries');
+        const newEntry = document.createElement('div');
+        newEntry.className = 'weekend-entry';
+        newEntry.setAttribute('data-index', entryCount);
+        
+        newEntry.innerHTML = `
+            <select name="employee_id[]" class="employee-select" required style="flex:2;" onchange="updateEmployeeDetails(this)">
+                <option value="">-- Select Employee --</option>
+                {% for emp in employees %}
+                <option value="{{ emp[0] }}" data-name="{{ emp[1] }}" data-team="{{ emp[5] }}" data-basic="{{ emp[7] }}">{{ emp[1] }} ({{ emp[5] }}) - Basic: ₨ {{ emp[7] }}</option>
+                {% endfor %}
+            </select>
+            <input type="hidden" name="employee_name[]" class="employee-name">
+            <input type="hidden" name="team[]" class="employee-team">
+            <input type="number" name="weekend_count[]" placeholder="Number of weekend days" min="1" max="31" required style="flex:1;">
+            <button type="button" class="btn-remove" onclick="removeEntry(this)">✗ Remove</button>
+        `;
+        container.appendChild(newEntry);
+        entryCount++;
+    }
+    
+    function removeEntry(button) {
+        const container = document.getElementById('weekendEntries');
+        if (container.children.length > 1) {
+            button.closest('.weekend-entry').remove();
+        } else {
+            alert('At least one entry is required');
+        }
+    }
+    
+    function validateForm() {
+        const entries = document.querySelectorAll('.weekend-entry');
+        let hasError = false;
+        
+        entries.forEach(entry => {
+            const select = entry.querySelector('.employee-select');
+            const countInput = entry.querySelector('input[name="weekend_count[]"]');
+            
+            if (!select.value) {
+                alert('Please select employee for all entries');
+                hasError = true;
+            }
+            if (!countInput.value || countInput.value < 1) {
+                alert('Please enter valid weekend count for all entries');
+                hasError = true;
+            }
+        });
+        
+        return !hasError;
+    }
+    
+    function openAddModal() {
+        document.getElementById('addModal').style.display = 'block';
+        // Reset first entry's select and inputs
+        const firstEntry = document.querySelector('.weekend-entry');
+        if (firstEntry) {
+            const firstSelect = firstEntry.querySelector('.employee-select');
+            if (firstSelect) firstSelect.value = '';
+            const firstNameInput = firstEntry.querySelector('input[name="employee_name[]"]');
+            const firstTeamInput = firstEntry.querySelector('input[name="team[]"]');
+            const firstCountInput = firstEntry.querySelector('input[name="weekend_count[]"]');
+            if (firstNameInput) firstNameInput.value = '';
+            if (firstTeamInput) firstTeamInput.value = '';
+            if (firstCountInput) firstCountInput.value = '';
+            const preview = firstEntry.querySelector('.amount-preview');
+            if (preview) preview.remove();
+        }
+    }
+    
+    function closeModal() { document.getElementById('addModal').style.display = 'none'; }
+    
+    function filterTable() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        const teamFilter = document.getElementById('teamFilter').value;
+        const monthFilter = document.getElementById('monthFilter').value;
+        const yearFilter = document.getElementById('yearFilter').value;
+        const rows = document.querySelectorAll('#weekendTable tbody tr');
+        
+        rows.forEach(row => {
+            const team = row.getAttribute('data-team') || '';
+            const month = row.getAttribute('data-month') || '';
+            const year = row.getAttribute('data-year') || '';
+            const text = row.innerText.toLowerCase();
+            
+            let match = (search === '' || text.includes(search)) &&
+                        (teamFilter === 'all' || team === teamFilter) &&
+                        (monthFilter === 'all' || month === monthFilter) &&
+                        (yearFilter === 'all' || year === yearFilter);
+            row.style.display = match ? '' : 'none';
+        });
+    }
+    
+    function clearFilters() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('teamFilter').value = 'all';
+        document.getElementById('monthFilter').value = 'all';
+        document.getElementById('yearFilter').value = 'all';
+        filterTable();
+    }
+    
+    window.onclick = function(e) { if (e.target == document.getElementById('addModal')) closeModal(); }
+</script>
+{% endblock %}

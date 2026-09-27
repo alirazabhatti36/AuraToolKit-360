@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block title %}Inventory Management{% endblock %}
+{% block content %}
+<h2>📦 Inventory Management</h2>
+<p style="color:#666; margin-bottom:20px;">Track and manage company assets</p>
+
+<style>
+    .status-card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        flex: 1;
+        text-align: center;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    }
+    .status-card:hover { transform: translateY(-2px); }
+    .status-card.active { border-color: #667eea; box-shadow: 0 6px 20px rgba(102,126,234,0.12); }
+</style>
+<div class="stats" style="display:flex; gap:20px; margin-bottom:30px; flex-wrap:wrap;">
+    <div class="status-card active" data-status="all" onclick="filterInventoryStatus('all', this)" style="background:white; padding:20px; border-radius:15px; flex:1; text-align:center;">
+        <div class="stat-number" style="font-size:32px; font-weight:bold; color:#17a2b8;">{{ stats.total }}</div>
+        <div>Total Assets</div>
+    </div>
+    <div class="status-card" data-status="available" onclick="filterInventoryStatus('available', this)" style="background:white; padding:20px; border-radius:15px; flex:1; text-align:center;">
+        <div class="stat-number" style="font-size:32px; font-weight:bold; color:#28a745;">{{ stats.available }}</div>
+        <div>Available</div>
+    </div>
+    <div class="status-card" data-status="assigned" onclick="filterInventoryStatus('assigned', this)" style="background:white; padding:20px; border-radius:15px; flex:1; text-align:center;">
+        <div class="stat-number" style="font-size:32px; font-weight:bold; color:#ffc107;">{{ stats.assigned }}</div>
+        <div>Assigned</div>
+    </div>
+</div>
+
+<div class="search-bar" style="background:white; padding:20px; border-radius:15px; margin-bottom:20px;">
+    <input type="text" id="searchInput" placeholder="🔍 Search by asset name, serial number, or brand..." onkeyup="filterTable()" style="width:100%; padding:12px; border:2px solid #e0e0e0; border-radius:10px;">
+</div>
+
+<div style="display:flex; gap:10px; margin-bottom:20px;">
+    <button class="btn-add" onclick="openAddModal()" style="background:#28a745; color:white; padding:10px 20px; border:none; border-radius:8px; cursor:pointer;">➕ Add New Asset</button>
+    <button class="btn-export" onclick="window.location.href='/export-inventory'" style="background:#17a2b8; color:white; padding:10px 20px; border:none; border-radius:8px; cursor:pointer;">⬇️ Export CSV</button>
+</div>
+
+<div style="overflow-x:auto;">
+    <table id="assetTable" style="width:100%; border-collapse:collapse; background:white; border-radius:15px;">
+        <thead>
+            <tr>
+                <th style="padding:12px; background:#17a2b8; color:white;">Asset Name</th>
+                <th style="padding:12px; background:#17a2b8; color:white;">Category</th>
+                <th style="padding:12px; background:#17a2b8; color:white;">Serial Number</th>
+                <th style="padding:12px; background:#17a2b8; color:white;">Brand/Model</th>
+                <th style="padding:12px; background:#17a2b8; color:white;">Status</th>
+                <th style="padding:12px; background:#17a2b8; color:white;">Assigned To</th>
+                <th style="padding:12px; background:#17a2b8; color:white;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in assets %}
+            <tr style="border-bottom:1px solid #eee;" data-status="{{ a[7]|lower }}">
+                <td style="padding:12px;"><strong>{{ a[1] }}</strong></td>
+                <td style="padding:12px;">{{ a[2] }}</td>
+                <td style="padding:12px;">{{ a[3] if a[3] else '-' }}</td>
+                <td style="padding:12px;">{{ a[4] if a[4] else '-' }}</td>
+                <td style="padding:12px;">{% if a[7] == 'Available' %}<span style="background:#28a745; color:white; padding:4px 8px; border-radius:15px;">✅ Available</span>{% else %}<span style="background:#ffc107; color:#333; padding:4px 8px; border-radius:15px;">👥 Assigned</span>{% endif %}</td>
+                <td style="padding:12px;">{% if a[5] %}{% set emp = get_employee_by_id(a[5]) %}{{ emp[1] if emp else 'ID: '+a[5]|string }}{% else %}-{% endif %}</td>
+                <td style="padding:12px;">
+                    <a href="/edit-asset/{{ a[0] }}" class="btn-edit" style="background:#ffc107; color:#333; padding:4px 10px; border-radius:5px; text-decoration:none; font-size:11px;">✏️ Edit</a>
+                    {% if a[7] == 'Available' %}<a href="#" onclick="assignAsset({{ a[0] }})" class="btn-assign" style="background:#28a745; color:white; padding:4px 10px; border-radius:5px; text-decoration:none; font-size:11px;">👥 Assign</a>{% endif %}
+                    <a href="/delete-asset/{{ a[0] }}" class="btn-delete" style="background:#dc3545; color:white; padding:4px 10px; border-radius:5px; text-decoration:none; font-size:11px;" onclick="return confirm('Delete this asset?')">🗑️ Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="addModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; padding:20px; overflow:auto;">
+    <div class="modal-content" style="background:white; max-width:500px; width:100%; max-height:calc(100vh - 60px); margin:50px auto; padding:30px; border-radius:15px; overflow-y:auto; box-shadow:0 20px 40px rgba(0,0,0,0.2);">
+        <span class="close" onclick="closeAddModal()" style="float:right; font-size:28px; cursor:pointer;">&times;</span>
+        <h3>➕ Add New Asset</h3>
+        <form method="post" action="/add-asset">
+            <input type="text" name="asset_name" placeholder="Asset Name" required style="width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:5px;">
+            <select name="category" style="width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:5px;">
+                <option value="">-- Select Category --</option>
+                {% for cat in categories %}<option value="{{ cat }}">{{ cat }}</option>{% endfor %}
+            </select>
+            <input type="text" name="serial_number" placeholder="Serial Number" style="width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:5px;">
+            <input type="text" name="brand_model" placeholder="Brand / Model" style="width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:5px;">
+            <label style="font-size:13px; margin-top:8px;">Date of Allotment</label>
+            <input type="date" name="date_of_allotment" style="width:100%; padding:10px; margin:6px 0 14px 0; border:1px solid #ddd; border-radius:5px;">
+            <label style="font-size:13px; margin-top:8px;">Date of Return (optional)</label>
+            <input type="date" name="date_of_return" style="width:100%; padding:10px; margin:6px 0 14px 0; border:1px solid #ddd; border-radius:5px;">
+            <input type="text" name="cost" placeholder="Cost (PKR)" style="width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:5px;">
+            <textarea name="remarks" rows="2" placeholder="Remarks" style="width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:5px;"></textarea>
+            <button type="submit" style="background:#17a2b8; color:white; padding:10px; border:none; border-radius:5px; cursor:pointer; width:100%;">✅ Add Asset</button>
+        </form>
+    </div>
+</div>
+
+<div id="assignModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; padding:20px; overflow:auto;">
+    <div class="modal-content" style="background:white; max-width:500px; width:100%; max-height:calc(100vh - 60px); margin:50px auto; padding:30px; border-radius:15px; overflow-y:auto; box-shadow:0 20px 40px rgba(0,0,0,0.2);">
+        <span class="close" onclick="closeAssignModal()" style="float:right; font-size:28px; cursor:pointer;">&times;</span>
+        <h3>👥 Assign Asset to Employee</h3>
+        <form method="post" action="/assign-asset">
+            <input type="hidden" name="asset_id" id="assignAssetId">
+            <select name="employee_id" required style="width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:5px;">
+                <option value="">-- Select Employee --</option>
+                {% for emp in active_employees %}<option value="{{ emp[0] }}">{{ emp[1] }} ({{ emp[4] }})</option>{% endfor %}
+            </select>
+            <label style="font-size:13px; margin-top:8px;">Date of Allotment</label>
+            <input type="date" name="assigned_date" id="assignedDate" required style="width:100%; padding:10px; margin:6px 0 14px 0; border:1px solid #ddd; border-radius:5px;">
+            <button type="submit" style="background:#28a745; color:white; padding:10px; border:none; border-radius:5px; cursor:pointer; width:100%;">📦 Assign Asset</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openAddModal(){
+        const assign = document.getElementById('assignModal'); if(assign) assign.style.display = 'none';
+        const add = document.getElementById('addModal'); add.style.display='flex'; add.style.alignItems='center'; add.style.justifyContent='center';
+    }
+    function closeAddModal(){document.getElementById('addModal').style.display='none';}
+    function assignAsset(id){
+        const add = document.getElementById('addModal'); if(add) add.style.display = 'none';
+        document.getElementById('assignAssetId').value=id;
+        const assign = document.getElementById('assignModal'); assign.style.display='flex'; assign.style.alignItems='center'; assign.style.justifyContent='center';
+    }
+    function closeAssignModal(){document.getElementById('assignModal').style.display='none';}
+    function filterTable(){
+        let input=document.getElementById('searchInput').value.toLowerCase();
+        let rows=document.querySelectorAll('#assetTable tbody tr');
+        rows.forEach(row=>{row.style.display=row.innerText.toLowerCase().includes(input)?'': 'none';});
+    }
+    function filterInventoryStatus(status, el){
+        // toggle active class
+        document.querySelectorAll('.status-card').forEach(card => card.classList.toggle('active', card.dataset.status === status));
+        // show/hide rows based on data-status
+        document.querySelectorAll('#assetTable tbody tr').forEach(row => {
+            const rowStatus = (row.dataset.status || '').toLowerCase();
+            row.style.display = (status === 'all' || rowStatus === status) ? '' : 'none';
+        });
+    }
+    // click outside to close
+    window.onclick=function(e){
+        if(e.target==document.getElementById('addModal')) closeAddModal();
+        if(e.target==document.getElementById('assignModal')) closeAssignModal();
+    }
+</script>
+{% endblock %}

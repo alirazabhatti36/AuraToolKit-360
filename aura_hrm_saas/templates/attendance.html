@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+{% block title %}Attendance Management{% endblock %}
+{% block page_title %}Attendance Management{% endblock %}
+{% block content %}
+
+<style>
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .stat-card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .stat-number {
+        font-size: 32px;
+        font-weight: bold;
+    }
+    .stat-label {
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+    }
+    .filter-bar {
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #FF6B35, #F7C948);
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .btn-add {
+        background: #28a745;
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    .table-container {
+        background: white;
+        border-radius: 15px;
+        overflow-x: auto;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .attendance-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 800px;
+    }
+    .attendance-table th, .attendance-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    .attendance-table th {
+        background: #FF6B35;
+        color: white;
+        font-weight: 600;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+    .status-present { background: #28a745; color: white; }
+    .status-absent { background: #dc3545; color: white; }
+    .status-late { background: #ffc107; color: #333; }
+    .status-half_day { background: #17a2b8; color: white; }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+    }
+    .modal-content {
+        background: white;
+        max-width: 500px;
+        margin: 100px auto;
+        padding: 25px;
+        border-radius: 15px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+    .btn-submit {
+        background: #28a745;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        width: 100%;
+        cursor: pointer;
+    }
+</style>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number" style="color:#FF6B35;">{{ stats.total if stats else 0 }}</div>
+        <div class="stat-label">📊 Total Records</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color:#28a745;">{{ stats.present if stats else 0 }}</div>
+        <div class="stat-label">✅ Present</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color:#dc3545;">{{ stats.absent if stats else 0 }}</div>
+        <div class="stat-label">❌ Absent</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color:#ffc107;">{{ stats.late if stats else 0 }}</div>
+        <div class="stat-label">⏰ Late</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color:#17a2b8;">{{ stats.half_day if stats else 0 }}</div>
+        <div class="stat-label">🌓 Half Day</div>
+    </div>
+</div>
+
+<div class="filter-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Search by employee name..." style="flex:2; padding:10px; border:1px solid #ddd; border-radius:8px;">
+    <select id="statusFilter" style="padding:10px; border:1px solid #ddd; border-radius:8px;">
+        <option value="all">All Status</option>
+        <option value="present">Present</option>
+        <option value="absent">Absent</option>
+        <option value="late">Late</option>
+        <option value="half_day">Half Day</option>
+    </select>
+    <button class="btn-primary" onclick="filterTable()">🔍 Filter</button>
+    <button class="btn-primary" onclick="clearFilters()">🗑️ Clear</button>
+</div>
+
+<div style="margin-bottom:20px; padding:18px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; color:#0f172a;">
+    � Attendance is now set for manual entry. Select an employee, choose a date, and mark the attendance status directly.
+</div>
+<button class="btn-add" onclick="openAddModal()">➕ Mark Attendance</button>
+
+<div class="table-container">
+    <table class="attendance-table" id="attendanceTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Employee Name</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Remarks</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for att in attendances %}
+            <tr class="attendance-row" data-name="{{ att[2].lower() if att[2] else '' }}" data-status="{{ att[4].lower() if att[4] else '' }}">
+                <td>{{ att[0] }}</td>
+                <td>{{ att[2] }}</td>
+                <td>{{ att[3] }}</td>
+                <td>
+                    {% if att[4] == 'present' %}
+                        <span class="status-badge status-present">✅ Present</span>
+                    {% elif att[4] == 'absent' %}
+                        <span class="status-badge status-absent">❌ Absent</span>
+                    {% elif att[4] == 'late' %}
+                        <span class="status-badge status-late">⏰ Late</span>
+                    {% elif att[4] == 'half_day' %}
+                        <span class="status-badge status-half_day">🌓 Half Day</span>
+                    {% else %}
+                        <span class="status-badge">{{ att[4] }}</span>
+                    {% endif %}
+                </td>
+                <td>{{ att[5] if att[5] else '-' }}</td>
+                <td>{{ att[6] if att[6] else '-' }}</td>
+                <td>{{ att[7] if att[7] else '-' }}</td>
+                <td>—</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="8" style="text-align:center; padding:40px;">📋 No attendance records found. Click "Mark Attendance" to add.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Add/Edit Modal -->
+<div id="attendanceModal" class="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle">➕ Mark Attendance</h3>
+        <form method="post" id="attendanceForm" action="/mark-attendance">
+            <div class="form-group">
+                <label>Employee *</label>
+                <select name="employee_id" id="employee_id" required>
+                    <option value="">Select Employee</option>
+                    {% for emp in employees %}
+                    <option value="{{ emp[0] }}">{{ emp[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Date *</label>
+                <input type="date" name="date" id="date" value="{{ current_date }}" required>
+            </div>
+            <div class="form-group">
+                <label>Status *</label>
+                <select name="status" id="status" required>
+                    <option value="present">✅ Present</option>
+                    <option value="absent">❌ Absent</option>
+                    <option value="late">⏰ Late</option>
+                    <option value="half_day">🌓 Half Day</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Check In</label>
+                <input type="time" name="check_in" id="check_in">
+            </div>
+            <div class="form-group">
+                <label>Check Out</label>
+                <input type="time" name="check_out" id="check_out">
+            </div>
+            <div class="form-group">
+                <label>Remarks</label>
+                <textarea name="remarks" id="remarks" rows="2" style="width:100%;"></textarea>
+            </div>
+            <input type="hidden" name="employee_name" id="employee_name">
+            <button type="submit" class="btn-submit">✅ Save</button>
+        </form>
+        <button onclick="closeModal()" style="margin-top:10px; width:100%; padding:8px; background:#ccc; border:none; border-radius:6px;">Cancel</button>
+    </div>
+</div>
+
+<script>
+    function filterTable() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const statusFilter = document.getElementById('statusFilter').value.toLowerCase();
+        const rows = document.querySelectorAll('.attendance-row');
+        
+        rows.forEach(row => {
+            const name = row.getAttribute('data-name') || '';
+            const status = row.getAttribute('data-status') || '';
+            
+            let matchesSearch = searchTerm === '' || name.includes(searchTerm);
+            let matchesStatus = statusFilter === 'all' || status === statusFilter;
+            
+            row.style.display = (matchesSearch && matchesStatus) ? '' : 'none';
+        });
+    }
+    
+    function clearFilters() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('statusFilter').value = 'all';
+        filterTable();
+    }
+    
+    function openAddModal() {
+        document.getElementById('modalTitle').innerText = '➕ Mark Attendance';
+        document.getElementById('attendanceForm').action = '/mark-attendance';
+        document.getElementById('attendanceForm').reset();
+        document.getElementById('employee_name').value = '';
+        document.getElementById('attendanceModal').style.display = 'block';
+    }
+    
+    function closeModal() {
+        document.getElementById('attendanceModal').style.display = 'none';
+    }
+    
+    function editAttendance(id) {
+        // For edit functionality - fetch and populate
+        closeModal();
+        alert('Edit functionality - will fetch data for ID: ' + id);
+    }
+    
+    // Auto-fill employee name when employee is selected
+    document.getElementById('employee_id').addEventListener('change', function() {
+        const select = this;
+        const selectedOption = select.options[select.selectedIndex];
+        document.getElementById('employee_name').value = selectedOption.text;
+    });
+    
+    window.onclick = function(e) {
+        if (e.target == document.getElementById('attendanceModal')) {
+            closeModal();
+        }
+    }
+</script>
+
+{% endblock %}

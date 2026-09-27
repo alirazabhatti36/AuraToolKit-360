@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Edit Employee{% endblock %}
+{% block content %}
+<style>
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 5px; color: #555; }
+    .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; }
+    .btn-save { background: #28a745; color: white; padding: 12px; border: none; border-radius: 8px; width: 100%; cursor: pointer; margin-top: 10px; }
+    .btn-cancel { background: #6c757d; color: white; padding: 12px; border: none; border-radius: 8px; width: 100%; cursor: pointer; margin-top: 10px; }
+    @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+</style>
+<div style="max-width: 700px; margin: 0 auto;">
+    <h2>✏️ Edit Employee Details</h2>
+    <form method="post" action="/update-employee/{{ employee[0] }}" style="background: white; padding: 25px; border-radius: 20px;">
+        <div class="form-grid">
+            <div class="form-group"><label>Full Name</label><input type="text" name="name" value="{{ employee[1] }}" required></div>
+            <div class="form-group"><label>Email</label><input type="email" name="email" value="{{ employee[2] }}" required></div>
+            <div class="form-group"><label>Phone</label><input type="text" name="phone" value="{{ employee[3] }}"></div>
+            <div class="form-group"><label>Position</label><input type="text" name="position" value="{{ employee[4] }}" required></div>
+            <div class="form-group"><label>Team/Department</label><input type="text" name="department" value="{{ employee[5] }}"></div>
+            <div class="form-group"><label>Date of Joining</label><input type="date" name="joining_date" value="{{ employee[6] }}" required></div>
+            <div class="form-group"><label>Basic Salary</label><input type="number" name="salary" value="{{ employee[7] }}" step="0.01" required></div>
+            <div class="form-group"><label>Petrol Allowance</label><input type="number" name="petrol_allowance" value="{{ employee[8] }}" step="0.01" required></div>
+            <div class="form-group"><label>Location</label><input type="text" name="location" value="{{ employee[9] }}"></div>
+            <div class="form-group"><label>CNIC</label><input type="text" name="cnic" value="{{ employee[12] if employee[12] else '' }}" placeholder="12345-1234567-1"></div>
+            <div class="form-group"><label>Bank Name</label><input type="text" name="bank_name" value="{{ employee[13] if employee[13] else '' }}"></div>
+            <div class="form-group"><label>Account Number</label><input type="text" name="account_number" value="{{ employee[14] if employee[14] else '' }}"></div>
+            <div class="form-group"><label>Employee Type</label>
+                <select name="employee_type">
+                    <option value="Permanent" {% if employee[10]=='Permanent' %}selected{% endif %}>✅ Permanent</option>
+                    <option value="Probation" {% if employee[10]=='Probation' %}selected{% endif %}>📋 Probation</option>
+                    <option value="Intern" {% if employee[10]=='Intern' %}selected{% endif %}>🎓 Intern</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn-save">💾 Save Changes</button>
+        <button type="button" class="btn-cancel" onclick="window.location.href='/employees'">← Cancel</button>
+    </form>
+</div>
+{% endblock %}

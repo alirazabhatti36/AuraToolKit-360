@@ -1,0 +1,431 @@
+﻿{% extends "base.html" %}
+{% block title %}Increment Sheet{% endblock %}
+{% block page_title %}📈 Increment Sheet{% endblock %}
+{% block content %}
+
+<style>
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+    .stat-card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .stat-number {
+        font-size: 32px;
+        font-weight: bold;
+    }
+    .stat-label {
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+    }
+    .filter-bar {
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #FF6B35, #F7C948);
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .btn-success {
+        background: #28a745;
+        color: white;
+        padding: 5px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 11px;
+    }
+    .btn-warning {
+        background: #ffc107;
+        color: #333;
+        padding: 5px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 11px;
+    }
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+        padding: 5px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 11px;
+    }
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+        padding: 5px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 11px;
+    }
+    .table-container {
+        background: white;
+        border-radius: 15px;
+        overflow-x: auto;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .increment-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 1200px;
+    }
+    .increment-table th, .increment-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        font-size: 13px;
+    }
+    .increment-table th {
+        background: #FF6B35;
+        color: white;
+        font-weight: 600;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+    .status-pending { background: #ffc107; color: #333; }
+    .status-approved { background: #28a745; color: white; }
+    .status-implemented { background: #17a2b8; color: white; }
+    .status-rejected { background: #dc3545; color: white; }
+    .team-tag {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 15px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+    .team-webbugs { background: #e3f2fd; color: #1976d2; }
+    .team-buggbyte { background: #f3e5f5; color: #7b1fa2; }
+    .team-simpli { background: #e8f5e9; color: #388e3c; }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    .modal-content {
+        background: white;
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 25px;
+        border-radius: 15px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+    .btn-submit {
+        background: #28a745;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        width: 100%;
+        cursor: pointer;
+    }
+</style>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number" style="color:#FF6B35;">{{ stats.total }}</div>
+        <div class="stat-label">📊 Total Employees</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color:#ffc107;">{{ stats.pending }}</div>
+        <div class="stat-label">⏳ Pending</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color:#28a745;">{{ stats.approved }}</div>
+        <div class="stat-label">✅ Approved</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color:#17a2b8;">{{ stats.implemented }}</div>
+        <div class="stat-label">🚀 Implemented</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color:#dc3545;">₹{{ "%.0f"|format(stats.total_increase) }}</div>
+        <div class="stat-label">💰 Total Increase</div>
+    </div>
+</div>
+
+<div class="filter-bar">
+    <span style="font-weight:600;">📅 Today: {{ today_date }}</span>
+    <span style="font-weight:600;">📋 Last Increment: May 2025</span>
+    <span style="font-weight:600;">🎯 Next Increment: June 2026</span>
+    <button class="btn-primary" onclick="openBulkModal()">📊 Bulk Increment</button>
+    <button class="btn-primary" onclick="window.location.href='/increment-sheet'">🔄 All Teams</button>
+    {% for team in teams %}
+    <button class="btn-primary" onclick="window.location.href='/increment-sheet/team/{{ team }}'">{{ team }}</button>
+    {% endfor %}
+</div>
+
+<div class="table-container">
+    <table class="increment-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Employee</th>
+                <th>Team</th>
+                <th>Current Salary</th>
+                <th>Increment %</th>
+                <th>New Salary</th>
+                <th>Last Inc Date</th>
+                <th>Next Inc Date</th>
+                <th>Effective Date</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inc in increments %}
+            <tr>
+                <td>{{ inc[0] }}</td>
+                <td><strong>{{ inc[2] }}</strong></td>
+                <td>
+                    {% if inc[3] == 'Webbugs' or inc[3] == 'AuraTech' %}
+                        <span class="team-tag team-webbugs">🖥️ AuraTech</span>
+                    {% elif inc[3] == 'BuggByte' %}
+                        <span class="team-tag team-buggbyte">🎮 BuggByte</span>
+                    {% else %}
+                        <span class="team-tag team-simpli">🚀 Simpli Plugin</span>
+                    {% endif %}
+                </td>
+                <td>₹{{ "%.0f"|format(inc[4]) }}</td>
+                <td>
+                    <input type="number" step="0.5" value="{{ inc[5] }}" class="inc-percent-{{ inc[0] }}" style="width:70px; padding:5px;">
+                </td>
+                <td>₹{{ "%.0f"|format(inc[6]) }}</td>
+                <td>{{ inc[7] if inc[7] else '-' }}</td>
+                <td>{{ inc[8] if inc[8] else '-' }}</td>
+                <td>{{ inc[9] if inc[9] else '-' }}</td>
+                <td>{{ inc[10] if inc[10] else '-' }}</td>
+                <td>
+                    {% if inc[11] == 'pending' %}
+                        <span class="status-badge status-pending">⏳ Pending</span>
+                    {% elif inc[11] == 'approved' %}
+                        <span class="status-badge status-approved">✅ Approved</span>
+                    {% elif inc[11] == 'implemented' %}
+                        <span class="status-badge status-implemented">🚀 Implemented</span>
+                    {% else %}
+                        <span class="status-badge status-rejected">❌ Rejected</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <button class="btn-success" onclick="updateIncrement({{ inc[0] }})">💾 Save</button>
+                    {% if inc[11] == 'pending' %}
+                    <button class="btn-warning" onclick="openApproveModal({{ inc[0] }}, '{{ inc[2] }}')">✅ Approve</button>
+                    <button class="btn-danger" onclick="openRejectModal({{ inc[0] }}, '{{ inc[2] }}')">❌ Reject</button>
+                    {% endif %}
+                    {% if inc[11] == 'approved' %}
+                    <button class="btn-info" onclick="implementIncrement({{ inc[0] }})">🚀 Implement</button>
+                    {% endif %}
+                 </td>
+             </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Update Form -->
+<form id="updateForm" method="post" action="/update-increment">
+    <input type="hidden" name="employee_id" id="update_employee_id">
+    <input type="hidden" name="employee_name" id="update_employee_name">
+    <input type="hidden" name="team" id="update_team">
+    <input type="hidden" name="current_salary" id="update_current_salary">
+    <input type="hidden" name="increment_percent" id="update_increment_percent">
+    <input type="hidden" name="last_increment_date" id="update_last_increment_date">
+    <input type="hidden" name="next_increment_date" id="update_next_increment_date">
+    <input type="hidden" name="effective_date" id="update_effective_date">
+    <input type="hidden" name="reason" id="update_reason">
+    <input type="hidden" name="remarks" id="update_remarks">
+</form>
+
+<!-- Approve Modal -->
+<div id="approveModal" class="modal">
+    <div class="modal-content">
+        <h3>✅ Approve Increment</h3>
+        <form method="post" id="approveForm">
+            <div class="form-group">
+                <label>Employee</label>
+                <input type="text" id="approve_employee_name" readonly style="background:#f5f5f5;">
+            </div>
+            <div class="form-group">
+                <label>Remarks (Optional)</label>
+                <textarea name="remarks" rows="2" placeholder="Any comments..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">✅ Confirm Approve</button>
+        </form>
+        <button onclick="closeApproveModal()" style="margin-top:10px; width:100%; padding:8px; background:#ccc; border:none; border-radius:6px;">Cancel</button>
+    </div>
+</div>
+
+<!-- Reject Modal -->
+<div id="rejectModal" class="modal">
+    <div class="modal-content">
+        <h3>❌ Reject Increment</h3>
+        <form method="post" id="rejectForm">
+            <div class="form-group">
+                <label>Employee</label>
+                <input type="text" id="reject_employee_name" readonly style="background:#f5f5f5;">
+            </div>
+            <div class="form-group">
+                <label>Reason for Rejection *</label>
+                <textarea name="remarks" rows="2" required placeholder="Why is this increment being rejected?"></textarea>
+            </div>
+            <button type="submit" class="btn-submit" style="background:#dc3545;">❌ Confirm Reject</button>
+        </form>
+        <button onclick="closeRejectModal()" style="margin-top:10px; width:100%; padding:8px; background:#ccc; border:none; border-radius:6px;">Cancel</button>
+    </div>
+</div>
+
+<!-- Bulk Increment Modal -->
+<div id="bulkModal" class="modal">
+    <div class="modal-content">
+        <h3>📊 Bulk Increment</h3>
+        <form method="post" action="/bulk-increment">
+            <div class="form-group">
+                <label>Select Team *</label>
+                <select name="team" required>
+                    <option value="">-- Select Team --</option>
+                    <option value="AuraTech">🖥️ AuraTech</option>
+                    <option value="BuggByte">🎮 BuggByte</option>
+                    <option value="Simpli Plugin">🚀 Simpli Plugin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Increment Percentage (%) *</label>
+                <input type="number" step="0.5" name="increment_percent" required placeholder="e.g., 10">
+            </div>
+            <div class="form-group">
+                <label>Effective Date *</label>
+                <input type="date" name="effective_date" required>
+            </div>
+            <div class="form-group">
+                <label>Reason *</label>
+                <select name="reason" required>
+                    <option value="Annual">📅 Annual Increment</option>
+                    <option value="Performance">⭐ Performance Based</option>
+                    <option value="Promotion">📈 Promotion</option>
+                    <option value="Market Adjustment">💰 Market Adjustment</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">📊 Apply Bulk Increment</button>
+        </form>
+        <button onclick="closeBulkModal()" style="margin-top:10px; width:100%; padding:8px; background:#ccc; border:none; border-radius:6px;">Cancel</button>
+    </div>
+</div>
+
+<script>
+    function updateIncrement(id) {
+        const percent = document.querySelector(`.inc-percent-${id}`).value;
+        
+        // Get current values from table
+        const row = document.querySelector(`tr td:first-child`).parentElement;
+        const employee_name = row.cells[1].innerText;
+        const team = row.cells[2].innerText.trim();
+        const current_salary = parseFloat(row.cells[3].innerText.replace('₹', '').replace(',', ''));
+        
+        document.getElementById('update_employee_id').value = id;
+        document.getElementById('update_employee_name').value = employee_name;
+        document.getElementById('update_team').value = team;
+        document.getElementById('update_current_salary').value = current_salary;
+        document.getElementById('update_increment_percent').value = percent;
+        document.getElementById('update_last_increment_date').value = '2025-05-01';
+        document.getElementById('update_next_increment_date').value = '2026-05-01';
+        document.getElementById('update_effective_date').value = '2026-06-01';
+        document.getElementById('update_reason').value = 'Manual Update';
+        document.getElementById('update_remarks').value = '';
+        
+        document.getElementById('updateForm').submit();
+    }
+    
+    function openApproveModal(id, name) {
+        document.getElementById('approveForm').action = '/approve-increment/' + id;
+        document.getElementById('approve_employee_name').value = name;
+        document.getElementById('approveModal').style.display = 'block';
+    }
+    
+    function closeApproveModal() {
+        document.getElementById('approveModal').style.display = 'none';
+    }
+    
+    function openRejectModal(id, name) {
+        document.getElementById('rejectForm').action = '/reject-increment/' + id;
+        document.getElementById('reject_employee_name').value = name;
+        document.getElementById('rejectModal').style.display = 'block';
+    }
+    
+    function closeRejectModal() {
+        document.getElementById('rejectModal').style.display = 'none';
+    }
+    
+    function openBulkModal() {
+        document.getElementById('bulkModal').style.display = 'block';
+    }
+    
+    function closeBulkModal() {
+        document.getElementById('bulkModal').style.display = 'none';
+    }
+    
+    function implementIncrement(id) {
+        if (confirm('⚠️ Are you sure? This will update the employee\'s salary permanently.')) {
+            window.location.href = '/implement-increment/' + id;
+        }
+    }
+    
+    window.onclick = function(e) {
+        if (e.target == document.getElementById('approveModal')) closeApproveModal();
+        if (e.target == document.getElementById('rejectModal')) closeRejectModal();
+        if (e.target == document.getElementById('bulkModal')) closeBulkModal();
+    }
+    
+    // Set effective date to tomorrow by default
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    document.querySelector('input[name="effective_date"]').value = tomorrow.toISOString().split('T')[0];
+</script>
+
+{% endblock %}

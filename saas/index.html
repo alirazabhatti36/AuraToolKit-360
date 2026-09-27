@@ -1,0 +1,1162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraToolKit 360 | Enterprise B2B HR, ATS & Biometric Payroll Platform</title>
+    <meta name="description" content="Streamline your hiring, biometric attendance, payroll processing, and asset tracking with AuraToolKit 360 - The all-in-one multi-tenant B2B HR SaaS platform for worldwide companies.">
+    <!-- Bootstrap 5 & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
+            --secondary-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .rtl {
+            direction: rtl;
+            font-family: 'Noto Naskh Arabic', 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-link, 
+        .navbar .btn,
+        .navbar-brand,
+        .navbar-brand-logo {
+            white-space: nowrap !important;
+        }
+
+        .navbar-brand-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+            padding: 6px 10px !important;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #4f46e5;
+        }
+
+        .header-cta-group .btn {
+            font-size: 0.85rem;
+            padding: 8px 16px !important;
+        }
+
+        /* Responsive Mobile Header Tweaks */
+        @media (max-width: 1199.98px) {
+            .navbar-collapse {
+                background: white;
+                padding: 24px;
+                border-radius: 20px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+                margin-top: 15px;
+                border: 1px solid #e2e8f0;
+            }
+            .navbar-nav {
+                margin-bottom: 20px;
+            }
+            .nav-link {
+                padding: 12px 0 !important;
+                border-bottom: 1px solid #f1f5f9;
+            }
+            .header-cta-group {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px !important;
+            }
+            .header-cta-group .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .country-btn-mobile {
+                max-width: 150px;
+                font-size: 0.8rem;
+                padding: 6px 12px !important;
+            }
+        }
+
+        /* Country Modal Grid */
+        .country-grid-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .country-grid-item:hover, .country-grid-item.active {
+            background: #4f46e5;
+            color: white !important;
+            border-color: #4f46e5;
+        }
+
+        .country-grid-item:hover .text-muted, .country-grid-item.active .text-muted {
+            color: #e0e7ff !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, rgba(248, 250, 252, 1) 70%);
+            padding: 120px 0 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: #e0e7ff;
+            color: #4338ca;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: #0f172a;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 680px;
+            margin: 25px auto 35px;
+        }
+
+        .btn-gradient-primary {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-gradient-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+            color: white;
+        }
+
+        .btn-outline-dark-custom {
+            border: 2px solid #cbd5e1;
+            color: #1e293b;
+            padding: 14px 32px;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-dark-custom:hover {
+            background: #1e293b;
+            color: white;
+            border-color: #1e293b;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 35px 25px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+            border-color: #c7d2fe;
+        }
+
+        .feature-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        /* Pricing Cards */
+        .pricing-card {
+            background: white;
+            border-radius: 28px;
+            padding: 40px 30px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: #4f46e5;
+            box-shadow: 0 20px 45px rgba(79, 70, 229, 0.15);
+            transform: scale(1.03);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .price-amount {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        /* Payment Badge Pill */
+        .payment-badge {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 12px 20px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            color: #1e293b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: all 0.2s;
+        }
+
+        .payment-badge:hover {
+            transform: translateY(-2px);
+            border-color: #6366f1;
+        }
+
+        footer {
+            background: #090d16;
+            color: #94a3b8;
+            padding: 60px 0 30px;
+        }
+    </style>
+</head>
+<body id="body">
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-xl fixed-top border-bottom border-light shadow-sm py-3">
+        <div class="container-fluid container-xl">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                <span class="fs-2">🚀</span>
+                <span class="navbar-brand-logo">AuraToolKit 360</span>
+            </a>
+
+            <!-- Right Controls for Mobile -->
+            <div class="d-flex align-items-center gap-2 d-xl-none ms-auto me-2">
+                <button type="button" class="btn btn-light border rounded-pill px-2 py-1 fw-bold text-dark d-flex align-items-center gap-1 country-btn-mobile" onclick="openCountryModal()">
+                    <span id="currentFlagMobile">🇵🇰</span>
+                    <span id="currentLangLabelMobile">PKR</span>
+                    <i class="bi bi-globe text-primary small"></i>
+                </button>
+            </div>
+
+            <button class="navbar-toggler border-0 p-2 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link text-nowrap" href="https://auratoolkit360.com/" target="_blank"><span class="badge bg-light text-primary border me-1">Free Tools Suite ↗</span></a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap" href="#features" data-i18n="nav_why">Why Choose Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap" href="#pricing" data-i18n="nav_pricing">Pricing Plans</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap" href="#payments" data-i18n="nav_payments">Payment Methods</a></li>
+                    <li class="nav-item"><a class="nav-link text-nowrap" href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-2 header-cta-group">
+                    <!-- Desktop Country & Language Selector Button -->
+                    <button type="button" class="btn btn-light border rounded-pill px-3 fw-bold text-dark d-none d-xl-flex align-items-center gap-2 text-nowrap" onclick="openCountryModal()">
+                        <span id="currentFlag">🇵🇰</span>
+                        <span id="currentCountryName">Pakistan — PKR (₨)</span>
+                        <i class="bi bi-globe text-primary ms-1"></i>
+                    </button>
+
+                    <a href="#contact" class="btn btn-gradient-primary rounded-pill px-3 py-2 text-nowrap"><i class="bi bi-calendar-check me-1"></i>Request Live Demo</a>
+                        <a href="#pricing" class="btn btn-outline-dark-custom rounded-pill px-3 py-2 text-nowrap"><i class="bi bi-tags me-1"></i>View Plans</a>" 
+                           class="btn btn-gradient-primary rounded-pill px-4">
+                            <i class="bi bi-speedometer2 me-1"></i><span data-i18n="btn_dashboard">Go to Dashboard</span>
+                        </a>
+                    {% else %}
+                        <a href="/register-company" class="btn btn-gradient-primary rounded-pill px-3 py-2 text-nowrap">
+                            <i class="bi bi-building-add me-1"></i>Register Company
+                        </a>
+                        <a href="/login" class="btn btn-outline-dark-custom rounded-pill px-3 py-2 text-nowrap">
+                            <i class="bi bi-box-arrow-in-right me-1"></i><span data-i18n="btn_login">Client Login</span>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <div class="hero-badge">
+                <i class="bi bi-stars"></i> <span data-i18n="hero_badge">Global Enterprise B2B SaaS Solution</span>
+            </div>
+            <h1 class="hero-title" data-i18n="hero_title">
+                Smart HR, ATS & Biometric Payroll <br>
+                <span class="gradient-text">All In One Platform</span>
+            </h1>
+            <p class="hero-desc" data-i18n="hero_desc">
+                Empower your global workforce with multi-tenant company isolation, automated candidate resume filtering, 
+                instant Hikvision biometric hardware syncing, and localized country-wise payroll management.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="/demo-login" class="btn btn-warning btn-lg fw-bold rounded-pill text-dark px-4 shadow">
+                    <i class="bi bi-controller me-2"></i>🎮 Try Instant Live Demo
+                </a>
+                <a href="/register-company" class="btn btn-gradient-primary btn-lg rounded-pill px-4">
+                    <i class="bi bi-rocket-takeoff me-2"></i><span>Register Company</span>
+                </a>
+                <a href="#pricing" class="btn btn-outline-dark-custom btn-lg rounded-pill px-4">
+                    <span data-i18n="btn_pricing">View Pricing</span> <i class="bi bi-arrow-down ms-1"></i>
+                </a>
+            </div>
+
+            <!-- Live Dashboard Preview Card -->
+            <div class="mt-5 pt-3">
+                <div class="card border-0 shadow-lg rounded-5 overflow-hidden p-3 bg-white max-w-100 mx-auto" style="max-width: 1000px;">
+                    <div class="bg-dark rounded-4 p-4 text-start text-white position-relative">
+                        <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-3 mb-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge bg-primary rounded-pill">🚀 Live System Preview</span>
+                                <small class="text-white-50">AuraToolKit 360 Enterprise Platform</small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-success rounded-pill"><i class="bi bi-shield-check me-1"></i>Tenant Isolated</span>
+                                <span class="badge bg-info text-dark rounded-pill"><i class="bi bi-cpu me-1"></i>Hikvision Sync Ready</span>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <div class="bg-secondary bg-opacity-25 p-3 rounded-3">
+                                    <small class="text-white-50">ACTIVE EMPLOYEES</small>
+                                    <h3 class="fw-bold mt-1 text-white">148</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="bg-secondary bg-opacity-25 p-3 rounded-3">
+                                    <small class="text-white-50">ATS CANDIDATES</small>
+                                    <h3 class="fw-bold mt-1 text-info">320 Parsed</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="bg-secondary bg-opacity-25 p-3 rounded-3">
+                                    <small class="text-white-50">ATTENDANCE RATE</small>
+                                    <h3 class="fw-bold mt-1 text-success">98.5% Checked In</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="bg-secondary bg-opacity-25 p-3 rounded-3">
+                                    <small class="text-white-50">MONTHLY PAYROLL</small>
+                                    <h3 class="fw-bold mt-1 text-warning" id="heroPayroll">₨ 7.4M Processed</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us / Features -->
+    <section id="features" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="text-center max-w-600 mx-auto mb-5">
+                <span class="text-primary fw-bold text-uppercase tracking-wider" data-i18n="feat_subtitle">Why Choose AuraToolKit 360</span>
+                <h2 class="fw-bold fs-1 mt-2 text-dark" data-i18n="feat_title">Built Specifically for Modern Growing Businesses</h2>
+                <p class="text-muted" data-i18n="feat_desc">No generic bloated software. Everything you need to hire, manage, and pay employees seamlessly worldwide.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper bg-primary bg-opacity-10 text-primary">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3" data-i18n="f1_title">Multi-Tenant Data Privacy</h4>
+                        <p class="text-muted" data-i18n="f1_desc">Strict company-level isolation. Each organization's salary and employee records stay 100% confidential and secure.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper bg-success bg-opacity-10 text-success">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3" data-i18n="f2_title">Hikvision Biometric Sync</h4>
+                        <p class="text-muted" data-i18n="f2_desc">Direct integration with local Hikvision attendance devices via our automated lightweight office bridge script (`hikvision_bridge.py`).</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper bg-info bg-opacity-10 text-info">
+                            <i class="bi bi-filter-square"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3" data-i18n="f3_title">ATS Resume Parser</h4>
+                        <p class="text-muted" data-i18n="f3_desc">Upload candidate CVs in bulk. Automatically extract text, match keywords, score experience, and manage hiring pipelines.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper bg-warning bg-opacity-10 text-warning">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3" data-i18n="f4_title">Localized Payroll & Taxes</h4>
+                        <p class="text-muted" data-i18n="f4_desc">Automated allowance calculations, tax deductions, bank/cash salary splits, and multi-currency payroll sheets.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper bg-danger bg-opacity-10 text-danger">
+                            <i class="bi bi-box-seam"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3" data-i18n="f5_title">Asset Inventory Management</h4>
+                        <p class="text-muted" data-i18n="f5_desc">Track company laptops, monitors, headphones, and access cards assigned to employees with full return & warranty history.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper bg-purple bg-opacity-10 text-primary">
+                            <i class="bi bi-buildings"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3" data-i18n="f6_title">Super Admin Control Portal</h4>
+                        <p class="text-muted" data-i18n="f6_desc">Manage multiple B2B client companies, assign employee limits, monitor platform health, and control SaaS subscriptions easily.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Payment Methods Section -->
+    <section id="payments" class="py-5 bg-white border-top border-bottom border-light">
+        <div class="container py-3">
+            <div class="text-center mb-4">
+                <span class="text-primary fw-bold text-uppercase tracking-wider" data-i18n="pay_subtitle">Global & Local Payments</span>
+                <h2 class="fw-bold fs-2 mt-1 text-dark" data-i18n="pay_title">Supported Payment Gateways & Banking</h2>
+                <p class="text-muted" data-i18n="pay_desc">We accept all major local mobile wallets, bank transfers, and international credit cards.</p>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+                <div class="payment-badge">
+                    <i class="bi bi-wallet2 text-danger fs-4"></i>
+                    <span>JazzCash</span>
+                </div>
+                <div class="payment-badge">
+                    <i class="bi bi-phone text-success fs-4"></i>
+                    <span>EasyPaisa</span>
+                </div>
+                <div class="payment-badge">
+                    <i class="bi bi-bank text-primary fs-4"></i>
+                    <span>Raast / Bank Transfer</span>
+                </div>
+                <div class="payment-badge">
+                    <i class="bi bi-credit-card-2-front text-dark fs-4"></i>
+                    <span>Visa / Mastercard</span>
+                </div>
+                <div class="payment-badge">
+                    <i class="bi bi-stripe text-indigo fs-4" style="color: #6366f1;"></i>
+                    <span>Stripe</span>
+                </div>
+                <div class="payment-badge">
+                    <i class="bi bi-paypal text-primary fs-4"></i>
+                    <span>PayPal</span>
+                </div>
+                <div class="payment-badge">
+                    <i class="bi bi-qr-code-scan text-secondary fs-4"></i>
+                    <span>MADA / STC Pay / Apple Pay</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive ROI & Savings Calculator Section -->
+    <section class="py-5 bg-gradient-primary text-white" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);">
+        <div class="container py-4">
+            <div class="text-center max-w-600 mx-auto mb-5">
+                <span class="badge bg-primary px-3 py-2 rounded-pill text-uppercase mb-2 fw-bold">🧮 Interactive ROI Calculator</span>
+                <h2 class="fw-bold fs-1 mt-2 text-white">Calculate Your Monthly HR Savings</h2>
+                <p class="text-white-50">Drag the slider to see how much time & money AuraToolKit 360 saves your business every month.</p>
+            </div>
+
+            <div class="card border-0 shadow-lg rounded-5 p-4 p-md-5 bg-dark text-white border border-secondary">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6">
+                        <label class="form-label fw-bold fs-5 mb-3">Select Number of Employees: <span id="empCountLabel" class="text-primary fs-3 fw-extrabold ms-2">45 Employees</span></label>
+                        <input type="range" class="form-range" id="empRange" min="10" max="500" value="45" step="5" oninput="updateRoiCalc()">
+                        <div class="d-flex justify-content-between text-white-50 small mt-2">
+                            <span>10 Employees</span>
+                            <span>250</span>
+                            <span>500+ Employees</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="bg-secondary bg-opacity-25 p-3 rounded-4 border border-secondary text-center">
+                                    <small class="text-white-50 d-block mb-1">HR HOURS SAVED</small>
+                                    <h3 class="fw-bold text-success mb-0" id="calcHours">42 Hrs / mo</h3>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-secondary bg-opacity-25 p-3 rounded-4 border border-secondary text-center">
+                                    <small class="text-white-50 d-block mb-1">ESTIMATED ROI</small>
+                                    <h3 class="fw-bold text-warning mb-0" id="calcRoi">480% ROI</h3>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="bg-primary bg-opacity-25 p-3 rounded-4 border border-primary text-center">
+                                    <small class="text-white-50 d-block mb-1">RECOMMENDED PLAN COST</small>
+                                    <h3 class="fw-bold text-white mb-0" id="calcCost">Pro Business (₨ 12,000 / $55)</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="text-center max-w-600 mx-auto mb-5">
+                <span class="text-primary fw-bold text-uppercase tracking-wider" data-i18n="price_subtitle">Flexible B2B Pricing</span>
+                <h2 class="fw-bold fs-1 mt-2 text-dark" data-i18n="price_title">Pay Only for What You Need</h2>
+                <p class="text-muted" data-i18n="price_desc">Transparent monthly plans per company with zero hidden fees.</p>
+            </div>
+
+            <div class="row g-4 align-items-center">
+                <!-- Starter Plan -->
+                <div class="col-lg-4">
+                    <div class="pricing-card">
+                        <h4 class="fw-bold mb-2" data-i18n="p1_name">Starter Plan</h4>
+                        <p class="text-muted small" data-i18n="p1_sub">Ideal for small teams & software houses</p>
+                        <div class="mb-4">
+                            <span class="price-amount" id="p1_price">₨ 5,000</span>
+                            <span class="text-muted" data-i18n="per_month">/ month</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Up to 25 Employees</li>
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Core HR & Employee Records</li>
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Attendance & Leave Requests</li>
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Basic Payroll Calculation</li>
+                        </ul>
+                        <button onclick="openPlanCheckout('Starter Plan', 'p1')" class="btn btn-outline-dark-custom w-100" data-i18n="btn_sub">Subscribe Now</button>
+                    </div>
+                </div>
+
+                <!-- Pro Plan (Featured) -->
+                <div class="col-lg-4">
+                    <div class="pricing-card featured">
+                        <span class="popular-tag">MOST POPULAR</span>
+                        <h4 class="fw-bold mb-2 text-primary" data-i18n="p2_name">Pro Business</h4>
+                        <p class="text-muted small" data-i18n="p2_sub">Best for growing agencies & offices</p>
+                        <div class="mb-4">
+                            <span class="price-amount" id="p2_price">₨ 12,000</span>
+                            <span class="text-muted" data-i18n="per_month">/ month</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Up to 100 Employees</li>
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>ATS Candidate Resume Parser</li>
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Hikvision Biometric Device Sync</li>
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Payroll, Petrol & Weekend Sheets</li>
+                        </ul>
+                        <button onclick="openPlanCheckout('Pro Business', 'p2')" class="btn btn-gradient-primary w-100" data-i18n="btn_sub_pro">Start 14-Day Free Trial</button>
+                    </div>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="col-lg-4">
+                    <div class="pricing-card">
+                        <h4 class="fw-bold mb-2" data-i18n="p3_name">Enterprise</h4>
+                        <p class="text-muted small" data-i18n="p3_sub">For large organizations & factories</p>
+                        <div class="mb-4">
+                            <span class="price-amount" id="p3_price">₨ 25,000</span>
+                            <span class="text-muted" data-i18n="per_month">/ month</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Unlimited Employees</li>
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Multiple Biometric Locations</li>
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Dedicated Onboarding Manager</li>
+                            <li class="py-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>24/7 Priority Support</li>
+                        </ul>
+                        <button onclick="openPlanCheckout('Enterprise', 'p3')" class="btn btn-outline-dark-custom w-100" data-i18n="btn_contact_sales">Contact Sales & Pay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Country & Language Search Modal -->
+    <div class="modal fade" id="countryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 bg-dark text-white rounded-top-4 p-4">
+                    <div>
+                        <h5 class="modal-title fw-bold">🌍 Select Country & Language / Currency</h5>
+                        <small class="text-white-50">Choose your country to automatically adjust language, currency & local payment methods</small>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="mb-4 position-relative">
+                        <input type="text" id="countrySearchInput" onkeyup="filterCountries()" class="form-control form-control-lg rounded-pill ps-4" placeholder="🔍 Type to search country (e.g. UK, Saudi, Germany, UAE, India, Turkey, USA...)...">
+                    </div>
+
+                    <div class="row g-3" id="countryGrid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5">
+                    <span class="text-primary fw-bold text-uppercase tracking-wider" data-i18n="c_sub">Get In Touch</span>
+                    <h2 class="fw-bold fs-1 mt-2 mb-3 text-dark" data-i18n="c_title">Ready to Upgrade Your Company HR?</h2>
+                    <p class="text-muted mb-4" data-i18n="c_desc">Have questions about AuraToolKit 360, Hikvision setup, or multi-company deployment? Contact our team today.</p>
+                    
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="p-3 bg-primary bg-opacity-10 text-primary rounded-circle">
+                            <i class="bi bi-envelope-at fs-4"></i>
+                        </div>
+                        <div>
+                            <small class="text-muted d-block">EMAIL US</small>
+                            <span class="fw-bold text-dark">support@auratoolkit360.com</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="p-3 bg-success bg-opacity-10 text-success rounded-circle">
+                            <i class="bi bi-telephone fs-4"></i>
+                        </div>
+                        <div>
+                            <small class="text-muted d-block">CALL / WHATSAPP</small>
+                            <span class="fw-bold text-dark">+92 300 0000000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-light">
+                        <h4 class="fw-bold mb-4">Send Us a Direct Message</h4>
+                        <form onsubmit="alert('Thank you! Our sales team will contact you shortly.'); return false;">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">Your Name *</label>
+                                    <input type="text" class="form-control rounded-3 p-3" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">Company Name *</label>
+                                    <input type="text" class="form-control rounded-3 p-3" placeholder="Tech Enterprise Studios" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">Email Address *</label>
+                                    <input type="email" class="form-control rounded-3 p-3" placeholder="user@company.com" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">Phone / WhatsApp</label>
+                                    <input type="text" class="form-control rounded-3 p-3" placeholder="0311-0000000">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">Message / Requirements</label>
+                                <textarea class="form-control rounded-3 p-3" rows="4" placeholder="Tell us about your team size and biometric requirements..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-gradient-primary btn-lg w-100">Send Sales Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription & Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 bg-primary text-white rounded-top-4">
+                    <h5 class="modal-title fw-bold" id="modalPlanTitle">Subscribe to Plan</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-primary rounded-3 text-center mb-4">
+                        <span class="d-block small text-uppercase fw-semibold">Selected Plan Price</span>
+                        <h2 class="fw-bold mb-0 text-primary" id="modalPlanPrice">₨ 5,000 / month</h2>
+                    </div>
+
+                    <h6 class="fw-bold mb-3">Select Payment Method:</h6>
+                    <div class="d-grid gap-2 mb-4">
+                        <button class="btn btn-outline-danger text-start p-3 rounded-3 d-flex align-items-center justify-content-between" onclick="selectPaymentMethod('JazzCash / EasyPaisa / Local Mobile Wallet')">
+                            <span><i class="bi bi-wallet2 me-2"></i>Local Mobile Wallet (JazzCash / EasyPaisa)</span>
+                            <span class="badge bg-danger">Instant</span>
+                        </button>
+                        <button class="btn btn-outline-primary text-start p-3 rounded-3 d-flex align-items-center justify-content-between" onclick="selectPaymentMethod('Raast / Direct Local Bank Transfer')">
+                            <span><i class="bi bi-bank me-2"></i>Local Bank Transfer / Wire</span>
+                            <span class="badge bg-primary">Local Bank</span>
+                        </button>
+                        <button class="btn btn-outline-secondary text-start p-3 rounded-3 d-flex align-items-center justify-content-between" onclick="selectPaymentMethod('Stripe / International Card (Visa / Mastercard)')">
+                            <span><i class="bi bi-credit-card me-2"></i>Stripe / International Visa & Mastercard</span>
+                            <span class="badge bg-dark">Global</span>
+                        </button>
+                    </div>
+
+                    <div id="paymentDetails" class="bg-light p-3 rounded-3 d-none">
+                        <h6 class="fw-bold text-dark mb-2" id="selectedMethodTitle">Bank Transfer Details</h6>
+                        <p class="small text-muted mb-1">Send payment screenshot to activate company account instantly:</p>
+                        <div class="bg-white p-2 rounded border font-monospace small">
+                            <strong>Account Title:</strong> AuraToolKit 360 Enterprise SaaS<br>
+                            <strong>Bank Name:</strong> Meezan Bank Ltd.<br>
+                            <strong>IBAN:</strong> PK00MEZN0001234567890<br>
+                            <strong>WhatsApp Support:</strong> +92 300 0000000
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="/register-company" id="proceedRegBtn" class="btn btn-gradient-primary rounded-pill px-4">Proceed to Registration</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 pb-4 border-bottom border-secondary">
+                <div class="col-lg-4">
+                    <h3 class="navbar-brand-logo mb-3">AuraToolKit 360</h3>
+<p class="text-white-50 small">Enterprise B2B HR, ATS & Biometric SaaS Suite</p>
+                    <p class="text-white-50">Global Enterprise B2B Multi-Tenant Platform for HR, ATS, Biometric Attendance & Payroll.</p>
+                </div>
+                <div class="col-lg-2 ms-auto">
+                    <h6 class="text-white fw-bold mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#features" class="text-white-50 text-decoration-none">Features</a></li>
+                        <li><a href="#pricing" class="text-white-50 text-decoration-none">Pricing</a></li>
+                        <li><a href="/login" class="text-white-50 text-decoration-none">Client Portal</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="text-white fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/about-us" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li><a href="#contact" class="text-white-50 text-decoration-none">Contact Sales</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="text-white fw-bold mb-3">Legal & Compliance</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/privacy-policy" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service" class="text-white-50 text-decoration-none">Terms of Service</a></li>
+                        <li><a href="/cookie-policy" class="text-white-50 text-decoration-none">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center pt-4 flex-wrap gap-2">
+                <small class="text-white-50">&copy; 2026 AuraToolKit 360. All rights reserved.</small>
+                <div class="d-flex gap-3">
+                    <a href="/privacy-policy" class="text-white-50 text-decoration-none small">Privacy</a>
+                    <a href="/terms-of-service" class="text-white-50 text-decoration-none small">Terms</a>
+                    <a href="/cookie-policy" class="text-white-50 text-decoration-none small">Cookies</a>
+                    <a href="/login" class="text-white-50 text-decoration-none small">Client Login</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner (Google AdSense & GDPR Compliance) -->
+    <div id="cookieConsentBanner" class="position-fixed bottom-0 start-0 end-0 bg-dark text-white p-3 shadow-lg border-top border-secondary z-3" style="display: none;">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <div class="small">
+                🍪 <strong>We value your privacy:</strong> AuraToolKit 360 uses cookies and Google AdSense advertising partners to enhance your browsing experience and serve personalized ads. Read our <a href="/privacy-policy" class="text-info text-decoration-underline">Privacy Policy</a> and <a href="/cookie-policy" class="text-info text-decoration-underline">Cookie Policy</a>.
+            </div>
+            <button onclick="acceptCookies()" class="btn btn-gradient-primary rounded-pill px-4 text-nowrap btn-sm">Accept Cookies</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
+
+    <!-- Global Countries & Translation Engine Script -->
+    <script>
+        let currentCountryKey = 'pk';
+
+        // Global Countries Database
+        const globalCountries = [
+            { key: 'pk', name: 'Pakistan', flag: '🇵🇰', currency: '₨', symbol: 'PKR', dir: 'ltr', p1: '₨ 5,000', p2: '₨ 12,000', p3: '₨ 25,000', payroll: '₨ 7.4M' },
+            { key: 'us', name: 'United States', flag: '🇺🇸', currency: '$', symbol: 'USD', dir: 'ltr', p1: '$25', p2: '$55', p3: '$110', payroll: '$350K' },
+            { key: 'gb', name: 'United Kingdom', flag: '🇬🇧', currency: '£', symbol: 'GBP', dir: 'ltr', p1: '£20', p2: '£45', p3: '£90', payroll: '£280K' },
+            { key: 'eu', name: 'European Union (Germany/France/Spain)', flag: '🇪🇺', currency: '€', symbol: 'EUR', dir: 'ltr', p1: '€23', p2: '€50', p3: '€100', payroll: '€320K' },
+            { key: 'sa', name: 'Saudi Arabia', flag: '🇸🇦', currency: '﷼', symbol: 'SAR', dir: 'rtl', p1: '﷼ 95', p2: '﷼ 210', p3: '﷼ 420', payroll: '﷼ 1.2M' },
+            { key: 'ae', name: 'United Arab Emirates (Dubai)', flag: '🇦🇪', currency: 'د.إ', symbol: 'AED', dir: 'rtl', p1: 'د.إ 90', p2: 'د.إ 200', p3: 'د.إ 400', payroll: 'د.إ 1.3M' },
+            { key: 'qa', name: 'Qatar', flag: '🇶🇦', currency: 'ر.ق', symbol: 'QAR', dir: 'rtl', p1: 'ر.ق 90', p2: 'ر.ق 200', p3: 'ر.ق 400', payroll: 'ر.ق 1.2M' },
+            { key: 'tr', name: 'Turkey', flag: '🇹🇷', currency: '₺', symbol: 'TRY', dir: 'ltr', p1: '₺ 850', p2: '₺ 1,850', p3: '₺ 3,700', payroll: '₺ 120K' },
+            { key: 'in', name: 'India', flag: '🇮🇳', currency: '₹', symbol: 'INR', dir: 'ltr', p1: '₹ 2,000', p2: '₹ 4,500', p3: '₹ 9,000', payroll: '₹ 2.8M' },
+            { key: 'bd', name: 'Bangladesh', flag: '🇧🇩', currency: '৳', symbol: 'BDT', dir: 'ltr', p1: '৳ 2,800', p2: '৳ 6,000', p3: '৳ 12,000', payroll: '৳ 3.8M' },
+            { key: 'ca', name: 'Canada', flag: '🇨🇦', currency: 'CA$', symbol: 'CAD', dir: 'ltr', p1: 'CA$34', p2: 'CA$75', p3: 'CA$150', payroll: 'CA$480K' },
+            { key: 'au', name: 'Australia', flag: '🇦🇺', currency: 'A$', symbol: 'AUD', dir: 'ltr', p1: 'A$38', p2: 'A$85', p3: 'A$170', payroll: 'A$520K' },
+            { key: 'my', name: 'Malaysia', flag: '🇲🇾', currency: 'RM', symbol: 'MYR', dir: 'ltr', p1: 'RM 110', p2: 'RM 250', p3: 'RM 500', payroll: 'RM 1.5M' },
+            { key: 'sg', name: 'Singapore', flag: '🇸🇬', currency: 'S$', symbol: 'SGD', dir: 'ltr', p1: 'S$34', p2: 'S$75', p3: 'S$150', payroll: 'S$470K' },
+            { key: 'cn', name: 'China', flag: '🇨🇳', currency: '¥', symbol: 'CNY', dir: 'ltr', p1: '¥ 180', p2: '¥ 400', p3: '¥ 800', payroll: '¥ 2.5M' },
+            { key: 'jp', name: 'Japan', flag: '🇯🇵', currency: '¥', symbol: 'JPY', dir: 'ltr', p1: '¥ 3,800', p2: '¥ 8,500', p3: '¥ 17,000', payroll: '¥ 50M' },
+            { key: 'br', name: 'Brazil', flag: '🇧🇷', currency: 'R$', symbol: 'BRL', dir: 'ltr', p1: 'R$ 130', p2: 'R$ 280', p3: 'R$ 560', payroll: 'R$ 1.8M' },
+            { key: 'za', name: 'South Africa', flag: '🇿🇦', currency: 'R', symbol: 'ZAR', dir: 'ltr', p1: 'R 460', p2: 'R 1,000', p3: 'R 2,000', payroll: 'R 6.5M' }
+        ];
+
+        // Language Translation Dictionary
+        const i18nData = {
+            pk: {
+                hero_badge: "Next-Gen B2B HR & Payroll Platform",
+                hero_title: "Smart HR, ATS & Biometric Payroll <br><span class='gradient-text'>All In One Platform</span>",
+                hero_desc: "Apni company ka HR, candidates hiring, Hikvision biometric attendance, aur salary payroll effortlessly manage karein.",
+                btn_portal: "Access Client Portal",
+                btn_pricing: "Pricing & Payment Methods",
+                nav_why: "Why Choose Us",
+                nav_pricing: "Pricing Plans",
+                nav_payments: "Payment Methods",
+                nav_contact: "Contact Us",
+                btn_login: "Client Login",
+                btn_dashboard: "Go to Dashboard",
+                feat_subtitle: "Why Choose AuraToolKit 360",
+                feat_title: "Built Specifically for Modern Growing Businesses",
+                feat_desc: "Tailored software for software houses, agencies, and enterprise offices.",
+                f1_title: "Multi-Tenant Data Privacy",
+                f1_desc: "Har company ka record isolated aur safe rehta hai.",
+                f2_title: "Hikvision Biometric Sync",
+                f2_desc: "Office network par Hikvision devices ke saath direct attendance sync.",
+                f3_title: "ATS Resume Parser",
+                f3_desc: "CVs in bulk upload karein aur keywords ke mutabiq candidates filter karein.",
+                f4_title: "Payroll & Allowances",
+                f4_desc: "Automated petrol allowance, tax deductions, cash/bank salary splits.",
+                f5_title: "Asset Inventory",
+                f5_desc: "Employees ko assign kiye gaye laptops aur items ka complete record.",
+                f6_title: "Super Admin Control",
+                f6_desc: "B2B client companies aur subscription plans manage karein.",
+                pay_subtitle: "Global & Local Payments",
+                pay_title: "Supported Payment Gateways",
+                pay_desc: "JazzCash, EasyPaisa, Raast, Bank Transfer, Stripe aur Credit Cards accepted.",
+                price_subtitle: "Flexible B2B Pricing",
+                price_title: "Pay Only for What You Need",
+                price_desc: "Har company ke liye transparent monthly plans.",
+                p1_name: "Starter Plan",
+                p1_sub: "Small teams ke liye ideal",
+                p2_name: "Pro Business",
+                p2_sub: "Growing offices ke liye best",
+                p3_name: "Enterprise",
+                p3_sub: "Large companies & factories",
+                per_month: "/ month",
+                btn_sub: "Subscribe Now",
+                btn_sub_pro: "Start 14-Day Free Trial",
+                btn_contact_sales: "Contact Sales & Pay"
+            },
+            us: {
+                hero_badge: "Global Enterprise B2B SaaS Solution",
+                hero_title: "Smart HR, ATS & Biometric Payroll <br><span class='gradient-text'>All In One Platform</span>",
+                hero_desc: "Empower your global workforce with multi-tenant company isolation, automated candidate resume filtering, instant Hikvision biometric hardware syncing, and localized country-wise payroll management.",
+                btn_portal: "Access Client Portal",
+                btn_pricing: "View Pricing & Payment",
+                nav_why: "Why Choose Us",
+                nav_pricing: "Pricing Plans",
+                nav_payments: "Payment Methods",
+                nav_contact: "Contact Us",
+                btn_login: "Client Login",
+                btn_dashboard: "Go to Dashboard",
+                feat_subtitle: "Why Choose AuraToolKit 360",
+                feat_title: "Built Specifically for Modern Growing Businesses",
+                feat_desc: "No generic bloated software. Everything you need to hire, manage, and pay employees seamlessly.",
+                f1_title: "Multi-Tenant Data Privacy",
+                f1_desc: "Strict company-level isolation. Each organization's salary and employee records stay 100% confidential.",
+                f2_title: "Hikvision Biometric Sync",
+                f2_desc: "Direct integration with local Hikvision attendance devices via our automated bridge script.",
+                f3_title: "ATS Resume Parser",
+                f3_desc: "Upload candidate CVs in bulk. Automatically extract text and match keywords.",
+                f4_title: "Localized Payroll & Taxes",
+                f4_desc: "Automated allowance calculations, tax deductions, and bank/cash salary splits.",
+                f5_title: "Asset Inventory Management",
+                f5_desc: "Track company laptops, monitors, headphones, and cards assigned to employees.",
+                f6_title: "Super Admin Control Portal",
+                f6_desc: "Manage multiple B2B client companies and control SaaS subscriptions easily.",
+                pay_subtitle: "Global Payments",
+                pay_title: "Supported Payment Gateways",
+                pay_desc: "Accepting Stripe, PayPal, Visa, Mastercard, and International Wire Transfers.",
+                price_subtitle: "Flexible B2B Pricing",
+                price_title: "Pay Only for What You Need",
+                price_desc: "Transparent monthly plans per company with zero hidden fees.",
+                p1_name: "Starter Plan",
+                p1_sub: "Ideal for small teams",
+                p2_name: "Pro Business",
+                p2_sub: "Best for growing offices",
+                p3_name: "Enterprise",
+                p3_sub: "For large organizations",
+                per_month: "/ month",
+                btn_sub: "Subscribe Now",
+                btn_sub_pro: "Start 14-Day Free Trial",
+                btn_contact_sales: "Contact Sales & Pay"
+            },
+            sa: {
+                hero_badge: "حل المؤسسات B2B لإدارة الموارد البشرية",
+                hero_title: "إدارة الموارد البشرية والرواتب والبصمة <br><span class='gradient-text'>منصة واحدة شاملة</span>",
+                hero_desc: "قم بتمكين فريق عملك من خلال نظام متعدد الشركات، وتصفية السير الذاتية تلقائيًا، ومزامنة أجهزة بصمة Hikvision وحساب الرواتب بسهولة.",
+                btn_portal: "الدخول إلى بوابة العميل",
+                btn_pricing: "عرض الأسعار وطرق الدفع",
+                nav_why: "لماذا تختارنا",
+                nav_pricing: "خطة الأسعار",
+                nav_payments: "طرق الدفع",
+                nav_contact: "اتصل بنا",
+                btn_login: "تسجيل الدخول",
+                btn_dashboard: "الانتقال إلى لوحة التحكم",
+                feat_subtitle: "لماذا تختار AuraToolKit 360",
+                feat_title: "مصمم خصيصاً للشركات الحديثة والنامية",
+                feat_desc: "كل ما تحتاجه لتوظيف وتوجيه ودفع أجور الموظفين بسلاسة دون تعقيدات.",
+                f1_title: "خصوصية البيانات متعددة الشركات",
+                f1_desc: "عزل تام لبيانات كل شركة بحماية وتشفير 100%.",
+                f2_title: "مزامنة أجهزة البصمة Hikvision",
+                f2_desc: "ربط مباشر مع أجهزة الحضور والانصراف Hikvision عبر البرمجية المباشرة.",
+                f3_title: "نظام التوظيف ATS",
+                f3_desc: "رفع السير الذاتية وتصفيتها تلقائياً حسب الكلمات المفتاحية.",
+                f4_title: "حساب الرواتب والبدلات",
+                f4_desc: "حساب تلقائي لبدل الوقود والضرائب والخصومات والتسليم البنكي.",
+                f5_title: "إدارة أصول الشركة",
+                f5_desc: "تتبع أجهزة الكمبيوتر المحمولة والأجهزة المسلمة للموظفين.",
+                f6_title: "لوحة تحكم المسؤول الأكبر Super Admin",
+                f6_desc: "إدارة اشتراكات الشركات والحد الأقصى للموظفين بسهولة.",
+                pay_subtitle: "مدفوعات الخليج والعالم",
+                pay_title: "بوابات الدفع المعتمدة",
+                pay_desc: "نقبل مدى MADA، STC Pay، البطاقات الائتمانية والتحويل البنكي المباشر.",
+                price_subtitle: "أسعار مرنة للمؤسسات",
+                price_title: "ادفع فقط مقابل ما تحتاجه",
+                price_desc: "خطط شهرية شفافة بدون أي رسوم خفية.",
+                p1_name: "الخطة المبتدئة",
+                p1_sub: "مثالية للفرق الصغيرة",
+                p2_name: "الاحترافية Pro",
+                p2_sub: "الأفضل للشركات المتقدمة",
+                p3_name: "خطة المؤسسات Enterprise",
+                p3_sub: "للشركات الكبرى والمصانع",
+                per_month: "/ شهرياً",
+                btn_sub: "اشترك الآن",
+                btn_sub_pro: "ابدأ التجربة المجانية",
+                btn_contact_sales: "تواصل مع المبيعات والدفع"
+            }
+        };
+
+        function renderCountryGrid(filterText = '') {
+            const grid = document.getElementById('countryGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            const filtered = globalCountries.filter(c => 
+                c.name.toLowerCase().includes(filterText.toLowerCase()) || 
+                c.symbol.toLowerCase().includes(filterText.toLowerCase()) ||
+                c.currency.includes(filterText)
+            );
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="col-12 text-center text-muted py-4">No countries matched your search.</div>';
+                return;
+            }
+
+            filtered.forEach(c => {
+                const isActive = c.key === currentCountryKey ? 'active' : '';
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-4';
+                col.innerHTML = `
+                    <div class="country-grid-item ${isActive}" onclick="selectCountry('${c.key}')">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fs-4">${c.flag}</span>
+                            <div>
+                                <strong class="d-block text-truncate" style="max-width: 140px;">${c.name}</strong>
+                                <small class="text-muted">${c.symbol} (${c.currency})</small>
+                            </div>
+                        </div>
+                        <span class="badge bg-light text-dark rounded-pill">${c.p1}</span>
+                    </div>
+                `;
+                grid.appendChild(col);
+            });
+        }
+
+        function filterCountries() {
+            const input = document.getElementById('countrySearchInput').value;
+            renderCountryGrid(input);
+        }
+
+        function openCountryModal() {
+            renderCountryGrid();
+            const modal = new bootstrap.Modal(document.getElementById('countryModal'));
+            modal.show();
+        }
+
+        function selectCountry(countryKey) {
+            currentCountryKey = countryKey;
+            const country = globalCountries.find(c => c.key === countryKey);
+            if (!country) return;
+
+            // Update Navbar Desktop & Mobile Buttons
+            const flagEl = document.getElementById('currentFlag');
+            const flagMobEl = document.getElementById('currentFlagMobile');
+            const labelEl = document.getElementById('currentCountryName');
+            const labelMobEl = document.getElementById('currentLangLabelMobile');
+
+            if (flagEl) flagEl.innerText = country.flag;
+            if (flagMobEl) flagMobEl.innerText = country.flag;
+            if (labelEl) labelEl.innerText = country.name + ' — ' + country.symbol + ' (' + country.currency + ')';
+            if (labelMobEl) labelMobEl.innerText = country.symbol;
+
+            // RTL Handling for Arabic countries
+            const body = document.getElementById('body');
+            if (country.dir === 'rtl') {
+                body.classList.add('rtl');
+            } else {
+                body.classList.remove('rtl');
+            }
+
+            // Translation fallback
+            let langData = i18nData[countryKey] || i18nData[country.dir === 'rtl' ? 'sa' : 'us'];
+            if (countryKey === 'pk') langData = i18nData['pk'];
+
+            // Translate Text Elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (langData[key]) {
+                    el.innerHTML = langData[key];
+                }
+            });
+
+            // Update Dynamic Prices
+            if (document.getElementById('p1_price')) document.getElementById('p1_price').innerText = country.p1;
+            if (document.getElementById('p2_price')) document.getElementById('p2_price').innerText = country.p2;
+            if (document.getElementById('p3_price')) document.getElementById('p3_price').innerText = country.p3;
+            if (document.getElementById('heroPayroll')) document.getElementById('heroPayroll').innerText = country.payroll + ' Processed';
+
+            // Close Modal
+            const modalEl = document.getElementById('countryModal');
+            if (modalEl) {
+                const modal = bootstrap.Modal.getInstance(modalEl);
+                if (modal) modal.hide();
+            }
+        }
+
+        function openPlanCheckout(planName, planKey) {
+            const country = globalCountries.find(c => c.key === currentCountryKey) || globalCountries[0];
+            const price = (country && country[planKey] ? country[planKey] : '₨ 5,000') + ' / month';
+            
+            const titleEl = document.getElementById('modalPlanTitle');
+            const priceEl = document.getElementById('modalPlanPrice');
+            const regBtn = document.getElementById('proceedRegBtn');
+            
+            if (titleEl) titleEl.innerText = 'Subscribe to ' + planName + ' (' + (country ? country.name : 'Pakistan') + ')';
+            if (priceEl) priceEl.innerText = price;
+            if (regBtn) regBtn.href = '/register-company?plan=' + encodeURIComponent(planName);
+            
+            const modalEl = document.getElementById('paymentModal');
+            if (modalEl) {
+                const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+                modal.show();
+            }
+        }
+
+        function selectPaymentMethod(methodName) {
+            document.getElementById('paymentDetails').classList.remove('d-none');
+            document.getElementById('selectedMethodTitle').innerText = 'Payment Method: ' + methodName;
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('auratoolkit360_cookie_consent', 'accepted');
+            const banner = document.getElementById('cookieConsentBanner');
+            if (banner) banner.style.display = 'none';
+        }
+
+        function updateRoiCalc() {
+            const count = parseInt(document.getElementById('empRange').value) || 45;
+            document.getElementById('empCountLabel').innerText = count + ' Employees';
+            
+            const hours = Math.round(count * 0.95);
+            document.getElementById('calcHours').innerText = hours + ' Hrs / mo';
+            
+            const roi = Math.round(350 + (count * 2.5));
+            document.getElementById('calcRoi').innerText = roi + '% ROI';
+            
+            let planText = 'Starter Plan (₨ 5,000 / $25)';
+            if (count > 100) {
+                planText = 'Enterprise Plan (₨ 25,000 / $110)';
+            } else if (count > 25) {
+                planText = 'Pro Business (₨ 12,000 / $55)';
+            }
+            document.getElementById('calcCost').innerText = planText;
+        }
+
+        // Initialize Grid & Cookie Banner on load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCountryGrid();
+            updateRoiCalc();
+            if (!localStorage.getItem('auratoolkit360_cookie_consent')) {
+                const banner = document.getElementById('cookieConsentBanner');
+                if (banner) banner.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

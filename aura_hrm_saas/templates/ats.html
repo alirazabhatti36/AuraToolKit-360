@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}ATS - Resume Filter{% endblock %}
+{% block content %}
+<h2>🎯 ATS - Resume Filtering System</h2>
+<p class="subtitle">Upload resumes, set keywords, and get ranked candidates instantly</p>
+
+<div class="storage-info" style="background:#e8f4f8; padding:15px; border-radius:12px; margin-bottom:20px; display:flex; justify-content:space-between; flex-wrap:wrap;">
+    <span>💾 DB Size: {{ db_size }} MB</span>
+    <span>📁 Uploads: {{ uploads_size }} MB</span>
+    <span>⏰ Auto-delete: 7 days</span>
+</div>
+
+<form id="uploadForm" method="post" action="/ats-upload" enctype="multipart/form-data">
+    <label>💼 Job Title</label>
+    <input type="text" id="jobTitle" name="job_title" placeholder="e.g., Software Engineer, Python Developer" required style="width:100%; padding:12px; margin-bottom:15px; border:2px solid #e0e0e0; border-radius:10px;">
+    
+    <label>🔑 Keywords (comma separated)</label>
+    <input type="text" id="keywords" name="keywords" placeholder="e.g., Python, SQL, React, Leadership" required style="width:100%; padding:12px; margin-bottom:15px; border:2px solid #e0e0e0; border-radius:10px;">
+    
+    <label>📅 Received Date</label>
+    <input type="date" id="receivedDate" name="received_date" value="{{ today_date }}" required style="width:100%; padding:12px; margin-bottom:15px; border:2px solid #e0e0e0; border-radius:10px;">
+    
+    <label>📎 Upload Resumes (PDF or DOCX)</label>
+    <div class="upload-area" onclick="document.getElementById('fileInput').click()" style="border:2px dashed #667eea; border-radius:10px; padding:30px; text-align:center; background:#f9f9ff; cursor:pointer;">
+        📂 Click or drag to upload resumes<br>
+        <small>Supports multiple files | Temporary storage only</small>
+        <input type="file" id="fileInput" name="resumes" multiple accept=".pdf,.docx" style="display:none" required>
+    </div>
+    <div class="selected-files" id="selectedFiles" style="margin-top:15px; padding:10px; background:#e8e8ff; border-radius:8px; text-align:center;"></div>
+    
+    <div class="progress-container" id="progressContainer" style="margin-top:25px; padding:20px; background:#f8f9fa; border-radius:12px; display:none;">
+        <div class="progress-bar-wrapper" style="background:#e0e0e0; border-radius:10px; height:30px; overflow:hidden;">
+            <div class="progress-fill" id="progressFill" style="background:linear-gradient(135deg, #667eea, #764ba2); width:0%; height:100%; display:flex; align-items:center; justify-content:center; color:white; font-size:12px; transition:width 0.3s;">0%</div>
+        </div>
+        <div class="progress-stats" style="display:flex; justify-content:space-between; margin:10px 0;">
+            <span>✅ Processed: <span id="processedCount">0</span></span>
+            <span>📋 Total: <span id="totalCount">0</span></span>
+            <span>⏳ Remaining: <span id="remainingCount">0</span></span>
+        </div>
+        <div class="current-file" id="currentFile" style="background:#e8e8ff; padding:8px; border-radius:8px;">📄 Waiting...</div>
+    </div>
+    
+    <button type="submit" id="submitBtn" style="width:100%; padding:14px; background:linear-gradient(135deg, #667eea, #764ba2); color:white; border:none; border-radius:10px; font-size:16px; margin-top:30px; cursor:pointer;">🚀 Analyze & Rank Resumes</button>
+    <button type="button" class="btn-new-task" onclick="startNewTask()" style="width:100%; padding:14px; background:#dc3545; color:white; border:none; border-radius:10px; margin-top:15px; cursor:pointer;">🔄 Start New Task (Clear Previous Data)</button>
+</form>
+
+<script>
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('receivedDate').value = today;
+    
+    async function startNewTask() {
+        if (confirm('⚠️ Warning: This will delete ALL previous resumes and data. Are you sure?')) {
+            const response = await fetch('/clear-all-data', { method: 'POST' });
+            const result = await response.json();
+            if (result.success) {
+                alert(result.message);
+                document.getElementById('fileInput').value = '';
+                document.getElementById('selectedFiles').innerHTML = '';
+                window.location.href = '/ats';
+            }
+        }
+    }
+    
+    const fileInput = document.getElementById('fileInput');
+    const selectedFilesDiv = document.getElementById('selectedFiles');
+    const submitBtn = document.getElementById('submitBtn');
+    const uploadForm = document.getElementById('uploadForm');
+    const progressContainer = document.getElementById('progressContainer');
+    
+    fileInput.addEventListener('change', function(e) {
+        const files = Array.from(e.target.files);
+        selectedFilesDiv.innerHTML = files.length > 0 ? `📁 ${files.length} resume(s) selected` : '';
+    });
+    
+    uploadForm.addEventListener('submit', function(e) {
+        const files = fileInput.files;
+        if (files.length === 0) { alert('Please select at least one resume'); e.preventDefault(); return; }
+        progressContainer.style.display = 'block';
+        submitBtn.disabled = true;
+        const total = files.length;
+        document.getElementById('totalCount').innerText = total;
+        document.getElementById('remainingCount').innerText = total;
+        let processed = 0;
+        const interval = setInterval(() => {
+            if (processed < total) {
+                processed++;
+                const percent = Math.round((processed / total) * 100);
+                document.getElementById('progressFill').style.width = percent + '%';
+                document.getElementById('progressFill').innerText = percent + '%';
+                document.getElementById('processedCount').innerText = processed;
+                document.getElementById('remainingCount').innerText = total - processed;
+                if (files[processed - 1]) document.getElementById('currentFile').innerHTML = `📄 Analyzing: ${files[processed - 1].name}`;
+            }
+        }, 600);
+        setTimeout(() => { clearInterval(interval); document.getElementById('progressFill').style.width = '100%'; document.getElementById('progressFill').innerText = '100%'; document.getElementById('currentFile').innerHTML = '✅ Complete! Redirecting...'; }, total * 600 + 500);
+    });
+</script>
+{% endblock %}

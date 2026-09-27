@@ -1,0 +1,77 @@
+﻿{% extends "base.html" %}
+
+{% block title %}AuraToolKit 360 - SaaS Billing & Invoices{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-1">🧾 SaaS Subscription Billing & Invoices</h2>
+            <p class="text-muted small">Manage billing receipts, monthly plan renewal, and official invoices for <strong>{{ current_company }}</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Active Subscription Banner -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-gradient-primary text-white" style="background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+                <span class="badge bg-white text-primary fw-bold text-uppercase px-3 py-2 rounded-pill mb-2">Active Plan Tier</span>
+                <h3 class="fw-bold text-white mb-1">{{ current_company }} — Enterprise B2B Plan</h3>
+                <p class="text-white-50 mb-0">Multi-tenant data isolation, biometric Hikvision sync, ATS resume parser & payroll.</p>
+            </div>
+            <div class="text-end">
+                <span class="d-block text-white-50 small">RENEWAL STATUS</span>
+                <span class="fs-4 fw-bold text-white">✅ Paid & Active</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoices Table -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+        <h5 class="fw-bold mb-3 text-dark">Billing History & Receipts</h5>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Invoice #</th>
+                        <th>Billing Date</th>
+                        <th>Plan Tier</th>
+                        <th>Amount</th>
+                        <th>Payment Method</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>#INV-2026-0812</strong></td>
+                        <td>August 12, 2026</td>
+                        <td><span class="badge bg-primary">Pro Business</span></td>
+                        <td><strong>₨ 12,000 / $55</strong></td>
+                        <td>Bank Transfer / Raast</td>
+                        <td><span class="badge bg-success">Paid</span></td>
+                        <td>
+                            <button onclick="window.print()" class="btn btn-sm btn-outline-primary rounded-pill">
+                                <i class="bi bi-download me-1"></i> PDF Invoice
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>#INV-2026-0712</strong></td>
+                        <td>July 12, 2026</td>
+                        <td><span class="badge bg-primary">Pro Business</span></td>
+                        <td><strong>₨ 12,000 / $55</strong></td>
+                        <td>JazzCash Wallet</td>
+                        <td><span class="badge bg-success">Paid</span></td>
+                        <td>
+                            <button onclick="window.print()" class="btn btn-sm btn-outline-primary rounded-pill">
+                                <i class="bi bi-download me-1"></i> PDF Invoice
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+{% block title %}Requests Management{% endblock %}
+{% block page_title %}Requests Management{% endblock %}
+{% block content %}
+
+<style>
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+    .stat-card {
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .stat-number {
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .stat-label {
+        font-size: 12px;
+        color: #666;
+    }
+    .tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    .tab-btn {
+        padding: 10px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        color: #666;
+    }
+    .tab-btn.active {
+        color: #FF6B35;
+        border-bottom: 2px solid #FF6B35;
+    }
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active {
+        display: block;
+    }
+    .requests-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .requests-table th, .requests-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    .requests-table th {
+        background: #f8f9fa;
+        font-weight: 600;
+        font-size: 13px;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+    .status-pending { background: #ffc107; color: #333; }
+    .status-approved { background: #28a745; color: white; }
+    .status-rejected { background: #dc3545; color: white; }
+    .btn-approve {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 5px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 11px;
+    }
+    .btn-reject {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 5px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 11px;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+    }
+    .modal-content {
+        background: white;
+        max-width: 400px;
+        margin: 100px auto;
+        padding: 20px;
+        border-radius: 12px;
+    }
+</style>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number" style="color: #ffc107;">{{ stats.pending }}</div>
+        <div class="stat-label">⏳ Pending</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color: #28a745;">{{ stats.approved }}</div>
+        <div class="stat-label">✅ Approved</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color: #dc3545;">{{ stats.rejected }}</div>
+        <div class="stat-label">❌ Rejected</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" style="color: #FF6B35;">{{ stats.total }}</div>
+        <div class="stat-label">📋 Total</div>
+    </div>
+</div>
+
+<div class="tabs">
+    <button class="tab-btn active" onclick="showTab('pending')">⏳ Pending Requests ({{ stats.pending }})</button>
+    <button class="tab-btn" onclick="showTab('approved')">✅ Approved Requests ({{ stats.approved }})</button>
+    <button class="tab-btn" onclick="showTab('rejected')">❌ Rejected Requests ({{ stats.rejected }})</button>
+</div>
+
+<!-- Pending Tab -->
+<div id="pending-tab" class="tab-content active">
+    <table class="requests-table">
+        <thead>
+            <tr><th>ID</th><th>Employee</th><th>Type</th><th>Subject</th><th>Dates</th><th>Submitted</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+            {% for req in pending %}
+            <tr>
+                <td>{{ req[0] }}</td>
+                <td>{{ req[2] }}</td>
+                <td>{{ req[3] }}</td>
+                <td>{{ req[4] }}</td>
+                <td>{{ req[6] }} to {{ req[7] }}</td>
+                <td>{{ req[13][:10] if req[13] else '-' }}</td>
+                <td>
+                    <button class="btn-approve" onclick="openActionModal({{ req[0] }}, 'approve')">✅ Approve</button>
+                    <button class="btn-reject" onclick="openActionModal({{ req[0] }}, 'reject')">❌ Reject</button>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="7" style="text-align:center;">No pending requests</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Approved Tab -->
+<div id="approved-tab" class="tab-content">
+    <table class="requests-table">
+        <thead>
+            <tr><th>ID</th><th>Employee</th><th>Type</th><th>Subject</th><th>Dates</th><th>Reviewed By</th><th>Reviewed Date</th></tr>
+        </thead>
+        <tbody>
+            {% for req in approved %}
+            <tr>
+                <td>{{ req[0] }}</td>
+                <td>{{ req[2] }}</td>
+                <td>{{ req[3] }}</td>
+                <td>{{ req[4] }}</td>
+                <td>{{ req[6] }} to {{ req[7] }}</td>
+                <td>{{ req[10] if req[10] else '-' }}</td>
+                <td>{{ req[12][:10] if req[12] else '-' }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="7" style="text-align:center;">No approved requests</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Rejected Tab -->
+<div id="rejected-tab" class="tab-content">
+    <table class="requests-table">
+        <thead>
+            <tr><th>ID</th><th>Employee</th><th>Type</th><th>Subject</th><th>Dates</th><th>Reviewed By</th><th>Remarks</th></tr>
+        </thead>
+        <tbody>
+            {% for req in rejected %}
+            <tr>
+                <td>{{ req[0] }}</td>
+                <td>{{ req[2] }}</td>
+                <td>{{ req[3] }}</td>
+                <td>{{ req[4] }}</td>
+                <td>{{ req[6] }} to {{ req[7] }}</td>
+                <td>{{ req[10] if req[10] else '-' }}</td>
+                <td>{{ req[11] if req[11] else '-' }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="7" style="text-align:center;">No rejected requests</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal for remarks -->
+<div id="actionModal" class="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle">Approve Request</h3>
+        <form method="post" id="actionForm">
+            <div class="form-group">
+                <label>Remarks (Optional)</label>
+                <textarea name="remarks" rows="3" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;"></textarea>
+            </div>
+            <button type="submit" class="btn-approve" style="width:100%; margin-top:10px;">Confirm</button>
+        </form>
+        <button onclick="closeModal()" style="margin-top:10px; width:100%; padding:8px; background:#ccc; border:none; border-radius:6px;">Cancel</button>
+    </div>
+</div>
+
+<script>
+    function showTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.getElementById(tab + '-tab').classList.add('active');
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+    
+    function openActionModal(requestId, action) {
+        const modal = document.getElementById('actionModal');
+        const form = document.getElementById('actionForm');
+        const title = document.getElementById('modalTitle');
+        
+        if (action === 'approve') {
+            form.action = `/approve-request/${requestId}`;
+            title.innerText = '✅ Approve Request';
+        } else {
+            form.action = `/reject-request/${requestId}`;
+            title.innerText = '❌ Reject Request';
+        }
+        modal.style.display = 'block';
+    }
+    
+    function closeModal() {
+        document.getElementById('actionModal').style.display = 'none';
+    }
+    
+    window.onclick = function(e) {
+        if (e.target == document.getElementById('actionModal')) {
+            closeModal();
+        }
+    }
+</script>
+
+{% endblock %}

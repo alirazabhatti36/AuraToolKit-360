@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Super admin full platform access
+    function isSuperAdmin() {
+      return request.auth != null && request.auth.token.role == 'super_admin';
+    }
+
+    // Tenant access helper
+    function isTenantUser(companyId) {
+      return request.auth != null && request.auth.token.company_id == companyId;
+    }
+
+    // Companies collection
+    match /companies/{companyId} {
+      allow read: if isTenantUser(companyId) || isSuperAdmin();
+      allow write: if isSuperAdmin();
+      
+      // Multi-Tenant isolated sub-collections
+      match /{document=**} {
+        allow read, write: if isTenantUser(companyId) || isSuperAdmin();
+      }
+    }
+  }
+}
