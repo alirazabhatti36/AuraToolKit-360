@@ -40,23 +40,40 @@ footer .footer-inner,
 }
 
 .footer-logo-icon {
-    width: 34px !important;
-    height: 34px !important;
-    border-radius: 9px !important;
-    background: #9333EA !important;
-    color: #FFFFFF !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
+    background: transparent !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     flex-shrink: 0 !important;
-    box-shadow: 0 4px 14px rgba(147, 51, 234, 0.45) !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4) !important;
+}
+
+.footer-logo-icon svg {
+    display: block !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
 }
 
 .footer-brand-name {
     color: #FFFFFF !important;
-    font-size: 1.18rem !important;
-    font-weight: 700 !important;
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
     letter-spacing: -0.02em !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.footer-brand-name span {
+    background: linear-gradient(135deg, #818CF8, #38BDF8) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #818CF8 !important;
+    font-weight: 800 !important;
 }
 
 .footer-brand-desc,
@@ -862,9 +879,12 @@ html[data-theme="dark"] .theme-toggle-btn {
     color: #F8FAFC !important;
 }
 
+html[data-theme="dark"] .btn-bookmark-nav:hover,
+html[data-theme="dark"] .navbar .lang-switcher-btn:hover,
 html[data-theme="dark"] .theme-toggle-btn:hover {
     background: rgba(255, 255, 255, 0.1) !important;
     border-color: #818CF8 !important;
+    color: #38BDF8 !important;
 }
 
 html[data-theme="dark"] .nav-hamburger {
@@ -1018,26 +1038,233 @@ html[data-theme="dark"] tr:hover td {
     background-color: #1E293B !important;
 }
 
-/* Theme Toggle Button */
+/* Theme Toggle & Elevated Header Navigation UI */
 .theme-toggle-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
-    padding: 0.44rem 0.75rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #475569;
-    background: #FFFFFF;
-    border: 1px solid #E2E8F0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    height: 36px !important;
+    min-width: 36px !important;
+    padding: 0 0.72rem !important;
+    border-radius: 9px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    color: #475569 !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.38rem !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
 }
 
 .theme-toggle-btn:hover {
-    border-color: #6366F1;
-    color: #4F46E5;
-    background: #EEF2FF;
+    border-color: #6366F1 !important;
+    color: #4F46E5 !important;
+    background: #EEF2FF !important;
 }
+
+.theme-toggle-btn .theme-icon {
+    font-size: 0.92rem !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+}
+
+/* Header Navbar Structure & Elements */
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 0.65rem 1.5rem !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.nav-container {
+    max-width: 1360px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    width: 100% !important;
+}
+
+.logo {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+}
+
+.logo-symbol {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
+    background: linear-gradient(135deg, #4338CA 0%, #4F46E5 50%, #06B6D4 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(79, 70, 229, 0.35) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    overflow: hidden !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+.logo:hover .logo-symbol {
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.5) !important;
+}
+
+.logo-text {
+    color: #0F172A !important;
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+.logo-text span:not(.logo-pro-badge) {
+    background: linear-gradient(135deg, #4F46E5, #06B6D4) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #4F46E5 !important;
+    font-weight: 800 !important;
+}
+
+.nav-center {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.2rem !important;
+}
+
+.nav-link {
+    color: #475569 !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    padding: 0.45rem 0.72rem !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: all 0.18s ease !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+}
+.nav-link:hover {
+    color: #4F46E5 !important;
+    background: #F1F5F9 !important;
+}
+.nav-link.active {
+    color: #4338CA !important;
+    background: #EEF2FF !important;
+    font-weight: 700 !important;
+}
+
+.nav-right-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.55rem !important;
+    flex-shrink: 0 !important;
+}
+
+/* Flagship AuraHR 360 CTA Button */
+.btn-aura-saas,
+a.btn-try-hr[href*="/saas/"] {
+    height: 36px !important;
+    padding: 0 0.95rem !important;
+    border-radius: 9px !important;
+    background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%) !important;
+    color: #FFFFFF !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    box-shadow: 0 3px 12px rgba(79, 70, 229, 0.32) !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+}
+.btn-aura-saas:hover,
+a.btn-try-hr[href*="/saas/"]:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 5px 18px rgba(79, 70, 229, 0.5) !important;
+    color: #FFFFFF !important;
+}
+
+/* Bookmark Nav Button */
+.btn-bookmark-nav {
+    height: 36px !important;
+    padding: 0 0.72rem !important;
+    border-radius: 9px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    color: #475569 !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+}
+.btn-bookmark-nav:hover {
+    border-color: #6366F1 !important;
+    color: #4F46E5 !important;
+    background: #EEF2FF !important;
+}
+
+.navbar .lang-switcher-btn {
+    height: 36px !important;
+    padding: 0 0.72rem !important;
+    border-radius: 9px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    color: #1E293B !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+}
+.navbar .lang-switcher-btn:hover {
+    border-color: #6366F1 !important;
+    color: #4F46E5 !important;
+    background: #EEF2FF !important;
+}
+
+.nav-hamburger {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 9px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    padding: 7px !important;
+}
+
+@media (max-width: 1160px) {
+    .nav-center { display: none !important; }
+    .nav-hamburger { display: flex !important; }
+    .btn-bookmark-nav { display: none !important; }
+}
+@media (max-width: 1280px) {
+    .btn-bookmark-nav .bm-text { display: none !important; }
+    .btn-bookmark-nav { padding: 0 0.55rem !important; }
+}
+@media (max-width: 640px) {
+    .theme-toggle-btn .theme-label { display: none !important; }
+    .theme-toggle-btn { padding: 0 0.55rem !important; }
+}
+
 

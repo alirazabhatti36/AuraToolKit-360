@@ -161,9 +161,10 @@ function generateLocalizedFile(sourceFilePath, targetFilePath, lang, pageKey, pa
     content = content.replace(/<a href="\/hr-helper\/" class="nav-link([^"]*)">HR Bulk/, '<a href="/' + lang.code + '/hr-helper/\" class="nav-link$1">' + lang.nav.hr_helper);
     content = content.replace(/<a href="\/blogs\/" class="nav-link">Blogs<\/a>/, '<a href="/blogs/\" class="nav-link">' + lang.nav.blogs + '</a>');
     content = content.replace(/<a href="\/about\/" class="nav-link">About<\/a>/, '<a href="/about/\" class="nav-link">' + lang.nav.about + '</a>');
-    content = content.replace(/<a href="\/hr-helper\/" class="btn-try-hr">Try HR Helper →<\/a>/, '<a href="/' + lang.code + '/hr-helper/\" class="btn-try-hr">' + lang.nav.try_hr + '</a>');
-    content = content.replace(/<button class="btn-bookmark-nav"[^>]*>★ Bookmark<\/button>/, '<button class="btn-bookmark-nav" onclick="bookmarkSite()">' + lang.nav.bookmark + '</button>');
-    content = content.replace(/<a href="\/" class="logo">/, '<a href="/' + lang.code + '/\" class="logo">');
+    content = content.replace(/<a href="\/hr-helper\/" class="btn-try-hr">[\s\S]*?<\/a>/, '<a href="/' + lang.code + '/hr-helper/\" class="btn-try-hr">' + lang.nav.try_hr + '</a>');
+    content = content.replace(/<button class="btn-bookmark-nav"[^>]*>[\s\S]*?<\/button>/, '<button class="btn-bookmark-nav" onclick="bookmarkSite()" title="' + lang.nav.bookmark + '" aria-label="' + lang.nav.bookmark + '"><span class="bm-star">★</span><span class="bm-text"> ' + lang.nav.bookmark.replace('★', '').trim() + '</span></button>');
+    content = content.replace(/<a href="\/" class="logo"([^>]*)>/, '<a href="/' + lang.code + '/\" class="logo"$1>');
+    content = content.replace(/<a href="\/" class="footer-brand-logo"([^>]*)>/, '<a href="/' + lang.code + '/\" class="footer-brand-logo"$1>');
 
     // RTL for Arabic
     if (lang.dir === 'rtl') {

@@ -16,8 +16,11 @@
     function updateThemeButtons() {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-            btn.innerHTML = isDark ? '<span>☀️</span> Light' : '<span>🌙</span> Dark';
+            btn.innerHTML = isDark 
+                ? '<span class="theme-icon">☀️</span><span class="theme-label">Light</span>' 
+                : '<span class="theme-icon">🌙</span><span class="theme-label">Dark</span>';
             btn.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+            btn.setAttribute('title', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
         });
     }
 
