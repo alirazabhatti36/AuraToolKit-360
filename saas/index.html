@@ -86,6 +86,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/saas-ui.css">
+    <script defer src="/assets/theme-toggle.js"></script>
     
     <style>
         :root {
@@ -441,6 +442,7 @@
                     <li class="nav-item"><a class="nav-link text-nowrap" href="#pricing" data-i18n="nav_pricing">Pricing Plans</a></li>
                     <li class="nav-item"><a class="nav-link text-nowrap" href="#payments" data-i18n="nav_payments">Payment Methods</a></li>
                     <li class="nav-item"><a class="nav-link text-nowrap" href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+                    <li class="nav-item"><button type="button" class="btn btn-sm btn-warning rounded-pill px-3 fw-bold ms-lg-2 text-dark" onclick="openSaasSandbox()"><i class="bi bi-play-circle-fill text-danger me-1"></i>Live Sandbox</button></li>
                 </ul>
                 
                 <div class="d-flex align-items-center gap-2 header-cta-group">
@@ -450,8 +452,10 @@
                         <span id="currentCountryName">Pakistan — PKR (₨)</span>
                         <i class="bi bi-globe text-primary ms-1"></i>
                     </button>
-                    <a href="#contact" class="btn btn-gradient-primary rounded-pill px-3 py-2 text-nowrap"><i class="bi bi-calendar-check me-1"></i>Request Live Demo</a>
+                    <button type="button" class="btn btn-warning rounded-pill px-3 py-2 text-nowrap fw-bold text-dark d-none d-xl-flex align-items-center gap-1 shadow-sm" onclick="openSaasSandbox()"><i class="bi bi-play-circle-fill text-danger me-1"></i>Live Sandbox</button>
+                    <a href="#contact" class="btn btn-gradient-primary rounded-pill px-3 py-2 text-nowrap"><i class="bi bi-calendar-check me-1"></i>Request Demo</a>
                     <a href="#pricing" class="btn btn-outline-dark-custom rounded-pill px-3 py-2 text-nowrap"><i class="bi bi-tags me-1"></i>View Plans</a>
+                    <button type="button" class="theme-toggle-btn" onclick="toggleAuraTheme()" aria-label="Toggle Theme"><span>🌙</span> Dark</button>
                 </div>
             </div>
         </div>
@@ -472,14 +476,14 @@
                 instant Hikvision biometric hardware syncing, and localized country-wise payroll management.
             </p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="#contact" class="btn btn-warning btn-lg fw-bold rounded-pill text-dark px-4 shadow">
-                    <i class="bi bi-calendar2-check me-2"></i>Request Live Demo
-                </a>
+                <button type="button" class="btn btn-warning btn-lg fw-bold rounded-pill text-dark px-4 shadow d-inline-flex align-items-center gap-2" onclick="openSaasSandbox()">
+                    <span class="fs-5">⚡</span> <span>Launch Interactive Live Sandbox (No Login)</span>
+                </button>
                 <a href="#pricing" class="btn btn-gradient-primary btn-lg rounded-pill px-4 text-white">
                     <i class="bi bi-stars me-2"></i><span>Explore Plans</span>
                 </a>
-                <a href="#pricing" class="btn btn-outline-dark-custom btn-lg rounded-pill px-4">
-                    <span data-i18n="btn_pricing">View Pricing</span> <i class="bi bi-arrow-down ms-1"></i>
+                <a href="#contact" class="btn btn-outline-dark-custom btn-lg rounded-pill px-4">
+                    <i class="bi bi-calendar2-check me-2"></i><span>Book Enterprise Demo</span>
                 </a>
             </div>
 
@@ -488,9 +492,9 @@
                 <div class="card border-0 shadow-lg rounded-5 overflow-hidden p-2 p-md-3 bg-white max-w-100 mx-auto" style="max-width: 1000px;">
                     <div class="bg-dark rounded-4 p-3 p-md-4 text-start text-white position-relative">
                         <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-3 mb-3 mb-md-4 flex-wrap gap-2">
-                            <div class="d-flex align-items-center gap-2">
-                                <span class="badge bg-primary rounded-pill">🚀 Live System Preview</span>
-                                <small class="text-white-50">AuraToolKit 360 Enterprise Platform</small>
+                            <div class="d-flex align-items-center gap-2" onclick="openSaasSandbox()" style="cursor:pointer;" title="Click to test live interactive sandbox">
+                                <span class="badge bg-primary rounded-pill">🚀 Live System Sandbox</span>
+                                <small class="text-white-50 text-decoration-underline">Click to test live biometric &amp; ATS controls ↗</small>
                             </div>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-success rounded-pill"><i class="bi bi-shield-check me-1"></i>Tenant Isolated</span>
@@ -951,6 +955,382 @@
         </div>
     </div>
 
+    <!-- ===== LIVE INTERACTIVE ENTERPRISE SAAS SANDBOX MODAL ===== -->
+    <div class="modal fade" id="saasSandboxModal" tabindex="-1" aria-labelledby="saasSandboxModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden" style="background:#0b0f19; color:#f8fafc;">
+                <!-- Sandbox Modal Header -->
+                <div class="modal-header border-bottom border-secondary border-opacity-25 px-4 py-3 bg-dark">
+                    <div class="d-flex align-items-center gap-3 flex-wrap">
+                        <div class="bg-primary bg-opacity-25 p-2 rounded-3 text-primary d-flex align-items-center justify-content-center" style="width:42px; height:42px;">
+                            <span class="fs-4">🚀</span>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-center gap-2">
+                                <h5 class="modal-title fw-bold text-white mb-0" id="saasSandboxModalLabel">AuraHR 360 Interactive Enterprise Sandbox</h5>
+                                <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill small">🟢 Live Simulated Tenant</span>
+                            </div>
+                            <small class="text-white-50">Tenant: <strong>Apex Innovations Group</strong> • Multi-Branch (HQ, R&amp;D Lab, Dubai Hub)</small>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Sandbox Modal Body -->
+                <div class="modal-body p-3 p-md-4">
+                    <!-- Live KPI Top Strip -->
+                    <div class="row g-2 g-md-3 mb-4">
+                        <div class="col-6 col-lg-3">
+                            <div class="bg-secondary bg-opacity-10 border border-secondary border-opacity-25 p-3 rounded-3">
+                                <small class="text-secondary d-block fw-bold text-uppercase">Total Headcount</small>
+                                <div class="d-flex align-items-baseline gap-2 mt-1">
+                                    <h3 class="fw-bold text-white mb-0 fs-4">148</h3>
+                                    <span class="text-success small fw-bold">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <div class="bg-secondary bg-opacity-10 border border-secondary border-opacity-25 p-3 rounded-3">
+                                <small class="text-secondary d-block fw-bold text-uppercase">On-Time Punch Rate</small>
+                                <div class="d-flex align-items-baseline gap-2 mt-1">
+                                    <h3 class="fw-bold text-info mb-0 fs-4" id="kpiOnTime">98.5%</h3>
+                                    <span class="badge bg-info-subtle text-info small">Hikvision Live</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <div class="bg-secondary bg-opacity-10 border border-secondary border-opacity-25 p-3 rounded-3">
+                                <small class="text-secondary d-block fw-bold text-uppercase">Pending Leaves</small>
+                                <div class="d-flex align-items-baseline gap-2 mt-1">
+                                    <h3 class="fw-bold text-warning mb-0 fs-4" id="kpiLeaves">3 Requests</h3>
+                                    <span class="text-warning small">Awaiting</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <div class="bg-secondary bg-opacity-10 border border-secondary border-opacity-25 p-3 rounded-3">
+                                <small class="text-secondary d-block fw-bold text-uppercase">Current Payroll Batch</small>
+                                <div class="d-flex align-items-baseline gap-2 mt-1">
+                                    <h3 class="fw-bold text-success mb-0 fs-4">$128,450</h3>
+                                    <span class="text-success small">Calculated</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sandbox Nav Tabs -->
+                    <ul class="nav nav-pills gap-2 mb-3 bg-secondary bg-opacity-10 p-2 rounded-3" id="sandboxTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active rounded-pill fw-bold text-white px-3 py-2" id="tab-biometric-btn" data-bs-toggle="pill" data-bs-target="#tab-biometric" type="button" role="tab">
+                                📡 Biometric Punch Stream
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill fw-bold text-white px-3 py-2" id="tab-ats-btn" data-bs-toggle="pill" data-bs-target="#tab-ats" type="button" role="tab">
+                                👥 ATS Hiring Pipeline
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill fw-bold text-white px-3 py-2" id="tab-payroll-btn" data-bs-toggle="pill" data-bs-target="#tab-payroll" type="button" role="tab">
+                                💰 Payroll &amp; Tax Calculator
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill fw-bold text-white px-3 py-2" id="tab-leaves-btn" data-bs-toggle="pill" data-bs-target="#tab-leaves" type="button" role="tab">
+                                🌴 Leave Approvals
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Sandbox Tab Contents -->
+                    <div class="tab-content" id="sandboxTabContent">
+                        <!-- TAB 1: BIOMETRIC ATTENDANCE STREAM -->
+                        <div class="tab-pane fade show active" id="tab-biometric" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                                <div>
+                                    <h6 class="fw-bold text-white mb-1">Live Hikvision Hardware Connection Stream</h6>
+                                    <small class="text-white-50">Local bridge active on <code class="text-info">LAN 192.168.1.100:8000</code>. Real-time face recognition and fingerprint events.</small>
+                                </div>
+                                <button type="button" class="btn btn-primary fw-bold rounded-pill px-3 shadow d-flex align-items-center gap-2" onclick="simulateBiometricPunch()">
+                                    <span>⚡</span> Simulate Instant Punch In
+                                </button>
+                            </div>
+                            <div class="table-responsive rounded-3 border border-secondary border-opacity-25">
+                                <table class="table table-dark table-hover mb-0 align-middle">
+                                    <thead class="table-secondary text-uppercase small">
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>Employee</th>
+                                            <th>Terminal</th>
+                                            <th>Method</th>
+                                            <th>Type</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="biometricPunchTable">
+                                        <tr>
+                                            <td class="text-white-50 font-monospace">09:02:14 AM</td>
+                                            <td class="fw-bold text-white">Hamza Malik <small class="text-white-50">(EMP-104)</small></td>
+                                            <td>HQ Main Turnstile</td>
+                                            <td><span class="badge bg-secondary">Face Recognition</span></td>
+                                            <td><span class="text-info fw-bold">Check-In</span></td>
+                                            <td><span class="badge bg-success">On-Time</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-white-50 font-monospace">09:05:42 AM</td>
+                                            <td class="fw-bold text-white">Ayesha Tariq <small class="text-white-50">(EMP-088)</small></td>
+                                            <td>HQ Main Turnstile</td>
+                                            <td><span class="badge bg-secondary">Fingerprint</span></td>
+                                            <td><span class="text-info fw-bold">Check-In</span></td>
+                                            <td><span class="badge bg-success">On-Time</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-white-50 font-monospace">09:14:02 AM</td>
+                                            <td class="fw-bold text-white">Bilal Ahmed <small class="text-white-50">(EMP-112)</small></td>
+                                            <td>R&amp;D Terminal B</td>
+                                            <td><span class="badge bg-secondary">Face Recognition</span></td>
+                                            <td><span class="text-info fw-bold">Check-In</span></td>
+                                            <td><span class="badge bg-warning text-dark">Grace Period</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-white-50 font-monospace">09:18:25 AM</td>
+                                            <td class="fw-bold text-white">Zainab Noor <small class="text-white-50">(EMP-135)</small></td>
+                                            <td>HQ Main Turnstile</td>
+                                            <td><span class="badge bg-secondary">RFID Card</span></td>
+                                            <td><span class="text-info fw-bold">Check-In</span></td>
+                                            <td><span class="badge bg-success">On-Time</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- TAB 2: ATS CANDIDATE PIPELINE -->
+                        <div class="tab-pane fade" id="tab-ats" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                                <div>
+                                    <h6 class="fw-bold text-white mb-1">Applicant Tracking System (ATS) Candidate Pipeline</h6>
+                                    <small class="text-white-50">Drag or click to advance candidates through stages with automated ATS compatibility scoring.</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill px-3 py-2">Total Candidates: 6</span>
+                            </div>
+                            <div class="row g-3" id="atsKanbanRow">
+                                <!-- Column 1: Applied -->
+                                <div class="col-12 col-md-6 col-xl-3">
+                                    <div class="bg-secondary bg-opacity-10 border border-secondary border-opacity-25 rounded-3 p-3 h-100">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="fw-bold text-white small text-uppercase">1. Applied</span>
+                                            <span class="badge bg-secondary" id="colCountApplied">2</span>
+                                        </div>
+                                        <div class="d-flex flex-column gap-2" id="kanbanApplied">
+                                            <div class="bg-dark p-2 rounded-2 border border-secondary border-opacity-25 candidate-card" id="cand-1">
+                                                <div class="d-flex justify-content-between">
+                                                    <strong class="text-white small">Kamran Akram</strong>
+                                                    <span class="badge bg-success-subtle text-success small">91% ATS</span>
+                                                </div>
+                                                <small class="text-white-50 d-block">Cloud DevOps Lead</small>
+                                                <button type="button" class="btn btn-outline-info btn-sm w-100 mt-2 py-0" style="font-size:0.75rem;" onclick="advanceCandidate('cand-1', 'kanbanScreening')">Move to Screening →</button>
+                                            </div>
+                                            <div class="bg-dark p-2 rounded-2 border border-secondary border-opacity-25 candidate-card" id="cand-2">
+                                                <div class="d-flex justify-content-between">
+                                                    <strong class="text-white small">Farah Khan</strong>
+                                                    <span class="badge bg-success-subtle text-success small">88% ATS</span>
+                                                </div>
+                                                <small class="text-white-50 d-block">Senior UI/UX Designer</small>
+                                                <button type="button" class="btn btn-outline-info btn-sm w-100 mt-2 py-0" style="font-size:0.75rem;" onclick="advanceCandidate('cand-2', 'kanbanScreening')">Move to Screening →</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Column 2: Screening -->
+                                <div class="col-12 col-md-6 col-xl-3">
+                                    <div class="bg-secondary bg-opacity-10 border border-secondary border-opacity-25 rounded-3 p-3 h-100">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="fw-bold text-info small text-uppercase">2. Screening</span>
+                                            <span class="badge bg-info" id="colCountScreening">2</span>
+                                        </div>
+                                        <div class="d-flex flex-column gap-2" id="kanbanScreening">
+                                            <div class="bg-dark p-2 rounded-2 border border-secondary border-opacity-25 candidate-card" id="cand-3">
+                                                <div class="d-flex justify-content-between">
+                                                    <strong class="text-white small">Sarah Miller</strong>
+                                                    <span class="badge bg-success-subtle text-success small">96% ATS</span>
+                                                </div>
+                                                <small class="text-white-50 d-block">React Architect</small>
+                                                <button type="button" class="btn btn-outline-warning btn-sm w-100 mt-2 py-0" style="font-size:0.75rem;" onclick="advanceCandidate('cand-3', 'kanbanInterview')">Move to Interview →</button>
+                                            </div>
+                                            <div class="bg-dark p-2 rounded-2 border border-secondary border-opacity-25 candidate-card" id="cand-4">
+                                                <div class="d-flex justify-content-between">
+                                                    <strong class="text-white small">Ali Hassan</strong>
+                                                    <span class="badge bg-success-subtle text-success small">93% ATS</span>
+                                                </div>
+                                                <small class="text-white-50 d-block">Full Stack Developer</small>
+                                                <button type="button" class="btn btn-outline-warning btn-sm w-100 mt-2 py-0" style="font-size:0.75rem;" onclick="advanceCandidate('cand-4', 'kanbanInterview')">Move to Interview →</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Column 3: Interview -->
+                                <div class="col-12 col-md-6 col-xl-3">
+                                    <div class="bg-secondary bg-opacity-10 border border-secondary border-opacity-25 rounded-3 p-3 h-100">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="fw-bold text-warning small text-uppercase">3. Interview</span>
+                                            <span class="badge bg-warning text-dark" id="colCountInterview">1</span>
+                                        </div>
+                                        <div class="d-flex flex-column gap-2" id="kanbanInterview">
+                                            <div class="bg-dark p-2 rounded-2 border border-secondary border-opacity-25 candidate-card" id="cand-5">
+                                                <div class="d-flex justify-content-between">
+                                                    <strong class="text-white small">David Chen</strong>
+                                                    <span class="badge bg-success-subtle text-success small">95% ATS</span>
+                                                </div>
+                                                <small class="text-white-50 d-block">VP Engineering</small>
+                                                <button type="button" class="btn btn-outline-success btn-sm w-100 mt-2 py-0" style="font-size:0.75rem;" onclick="advanceCandidate('cand-5', 'kanbanOffered')">Send Offer Letter →</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Column 4: Offered -->
+                                <div class="col-12 col-md-6 col-xl-3">
+                                    <div class="bg-secondary bg-opacity-10 border border-secondary border-opacity-25 rounded-3 p-3 h-100">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="fw-bold text-success small text-uppercase">4. Offered</span>
+                                            <span class="badge bg-success" id="colCountOffered">1</span>
+                                        </div>
+                                        <div class="d-flex flex-column gap-2" id="kanbanOffered">
+                                            <div class="bg-dark p-2 rounded-2 border border-secondary border-opacity-25 candidate-card" id="cand-6">
+                                                <div class="d-flex justify-content-between">
+                                                    <strong class="text-white small">Zoya Tariq</strong>
+                                                    <span class="badge bg-success small">Accepted ✅</span>
+                                                </div>
+                                                <small class="text-white-50 d-block">Lead Data Scientist</small>
+                                                <small class="text-success d-block mt-1">Pkg: $115,000 / yr</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 3: PAYROLL CALCULATOR -->
+                        <div class="tab-pane fade" id="tab-payroll" role="tabpanel">
+                            <div class="row g-4 align-items-center">
+                                <div class="col-lg-6">
+                                    <h6 class="fw-bold text-white mb-2">Interactive 1-Click Payroll Computation</h6>
+                                    <p class="text-white-50 small mb-3">Adjust allowances, overtime hours, and unpaid leaves to see gross-to-net salary computed instantly.</p>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-white small fw-bold">Base Monthly Salary ($)</label>
+                                        <input type="number" id="sandboxBaseSalary" class="form-control bg-dark text-white border-secondary" value="4500" oninput="calculateSandboxPayroll()">
+                                    </div>
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-6">
+                                            <label class="form-label text-white small fw-bold">Overtime Hours</label>
+                                            <input type="number" id="sandboxOvertimeHours" class="form-control bg-dark text-white border-secondary" value="12" oninput="calculateSandboxPayroll()">
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label text-white small fw-bold">Unpaid Leaves (Days)</label>
+                                            <input type="number" id="sandboxUnpaidDays" class="form-control bg-dark text-white border-secondary" value="1" oninput="calculateSandboxPayroll()">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-white small fw-bold">Performance Bonus ($)</label>
+                                        <input type="number" id="sandboxBonus" class="form-control bg-dark text-white border-secondary" value="350" oninput="calculateSandboxPayroll()">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="bg-dark p-4 rounded-3 border border-secondary border-opacity-50">
+                                        <h6 class="fw-bold text-info border-bottom border-secondary pb-2 mb-3">Estimated Payslip Summary</h6>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="text-white-50">Base Salary:</span>
+                                            <strong class="text-white" id="outBase">$4,500.00</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="text-white-50">Overtime Pay (1.5x):</span>
+                                            <span class="text-success fw-bold" id="outOvertime">+$375.00</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="text-white-50">Bonus / Allowance:</span>
+                                            <span class="text-success fw-bold" id="outBonus">+$350.00</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="text-white-50">Unpaid Absence Deduction:</span>
+                                            <span class="text-danger fw-bold" id="outAbsence">-$150.00</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="text-white-50">Automated Tax Deduction (12%):</span>
+                                            <span class="text-danger fw-bold" id="outTax">-$609.00</span>
+                                        </div>
+                                        <hr class="border-secondary my-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fs-5 fw-bold text-white">Net Payout:</span>
+                                            <span class="fs-3 fw-bold text-success" id="outNet">$4,466.00</span>
+                                        </div>
+                                        <button type="button" class="btn btn-outline-success w-100 mt-3 fw-bold" onclick="alert('✅ Generated Sample Payslip PDF for EMP-104!')">
+                                            📥 Download Mock Payslip PDF
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 4: LEAVE APPROVALS -->
+                        <div class="tab-pane fade" id="tab-leaves" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                                <div>
+                                    <h6 class="fw-bold text-white mb-1">Pending Leave &amp; Absence Requests</h6>
+                                    <small class="text-white-50">Empower managers to approve or reject leave requests with 1 click.</small>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-3" id="leaveRequestsList">
+                                <div class="bg-dark p-3 rounded-3 border border-secondary border-opacity-25 d-flex justify-content-between align-items-center flex-wrap gap-3" id="leave-1">
+                                    <div>
+                                        <strong class="text-white d-block">Usman Rashid <small class="text-white-50">(EMP-104 • Engineering)</small></strong>
+                                        <small class="text-white-50">Annual Vacation • 3 Days (Oct 12 – Oct 14) • Available Balance: 14 Days</small>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button type="button" class="btn btn-sm btn-success fw-bold px-3" onclick="handleLeaveAction('leave-1', true)">✅ Approve</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger px-3" onclick="handleLeaveAction('leave-1', false)">❌ Reject</button>
+                                    </div>
+                                </div>
+                                <div class="bg-dark p-3 rounded-3 border border-secondary border-opacity-25 d-flex justify-content-between align-items-center flex-wrap gap-3" id="leave-2">
+                                    <div>
+                                        <strong class="text-white d-block">Hira Baig <small class="text-white-50">(EMP-076 • Product)</small></strong>
+                                        <small class="text-white-50">Medical Leave • 1 Day (Tomorrow) • Available Balance: 8 Days</small>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button type="button" class="btn btn-sm btn-success fw-bold px-3" onclick="handleLeaveAction('leave-2', true)">✅ Approve</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger px-3" onclick="handleLeaveAction('leave-2', false)">❌ Reject</button>
+                                    </div>
+                                </div>
+                                <div class="bg-dark p-3 rounded-3 border border-secondary border-opacity-25 d-flex justify-content-between align-items-center flex-wrap gap-3" id="leave-3">
+                                    <div>
+                                        <strong class="text-white d-block">Mustafa Qureshi <small class="text-white-50">(EMP-129 • Sales)</small></strong>
+                                        <small class="text-white-50">Remote Work Request • 1 Day (Friday)</small>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button type="button" class="btn btn-sm btn-success fw-bold px-3" onclick="handleLeaveAction('leave-3', true)">✅ Approve</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger px-3" onclick="handleLeaveAction('leave-3', false)">❌ Reject</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-top border-secondary border-opacity-25 px-4 py-3 bg-dark d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <small class="text-white-50">Ready to deploy AuraHR 360 for your organization?</small>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-outline-secondary text-white" data-bs-dismiss="modal">Close Sandbox</button>
+                        <a href="#contact" class="btn btn-warning fw-bold text-dark" data-bs-dismiss="modal">Book Full Enterprise Demo →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
 
@@ -1260,6 +1640,118 @@
                 planText = 'Pro Business (₨ 12,000 / $55)';
             }
             document.getElementById('calcCost').innerText = planText;
+        }
+
+        /* ===== SAAS INTERACTIVE SANDBOX LOGIC ===== */
+        function openSaasSandbox() {
+            const el = document.getElementById('saasSandboxModal');
+            if (el) {
+                const modal = bootstrap.Modal.getOrCreateInstance(el);
+                modal.show();
+                calculateSandboxPayroll();
+            }
+        }
+
+        const sampleNames = ['Raza Bhatti', 'Fatima Zahra', 'Khurram Shah', 'Danyaal Qureshi', 'Maryam Nawaz'];
+        const sampleTerminals = ['HQ Main Turnstile', 'R&D Lab Gate 2', 'Warehouse Entrance'];
+        function simulateBiometricPunch() {
+            const table = document.getElementById('biometricPunchTable');
+            if (!table) return;
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const name = sampleNames[Math.floor(Math.random() * sampleNames.length)];
+            const empId = 'EMP-' + Math.floor(100 + Math.random() * 899);
+            const terminal = sampleTerminals[Math.floor(Math.random() * sampleTerminals.length)];
+
+            const row = document.createElement('tr');
+            row.style.background = 'rgba(16, 185, 129, 0.25)';
+            row.innerHTML = `
+                <td class="text-white-50 font-monospace">${timeStr}</td>
+                <td class="fw-bold text-white">${name} <small class="text-white-50">(${empId})</small></td>
+                <td>${terminal}</td>
+                <td><span class="badge bg-secondary">Face Recognition</span></td>
+                <td><span class="text-info fw-bold">Check-In</span></td>
+                <td><span class="badge bg-success">On-Time</span></td>
+            `;
+            table.prepend(row);
+            setTimeout(() => { row.style.transition = 'background 1s'; row.style.background = 'transparent'; }, 600);
+
+            const kpi = document.getElementById('kpiOnTime');
+            if (kpi) kpi.innerText = '99.1%';
+        }
+
+        function advanceCandidate(candId, nextColId) {
+            const card = document.getElementById(candId);
+            const targetCol = document.getElementById(nextColId);
+            if (!card || !targetCol) return;
+            targetCol.appendChild(card);
+            
+            const btn = card.querySelector('button');
+            if (btn) {
+                if (nextColId === 'kanbanInterview') {
+                    btn.innerText = 'Send Offer Letter →';
+                    btn.className = 'btn btn-outline-success btn-sm w-100 mt-2 py-0';
+                    btn.setAttribute('onclick', `advanceCandidate('${candId}', 'kanbanOffered')`);
+                } else if (nextColId === 'kanbanOffered') {
+                    btn.remove();
+                    const acceptedBadge = document.createElement('div');
+                    acceptedBadge.className = 'text-success fw-bold small mt-1';
+                    acceptedBadge.innerText = 'Offer Released ✅';
+                    card.appendChild(acceptedBadge);
+                }
+            }
+            updateKanbanCounts();
+        }
+
+        function updateKanbanCounts() {
+            const c1 = document.querySelectorAll('#kanbanApplied .candidate-card').length;
+            const c2 = document.querySelectorAll('#kanbanScreening .candidate-card').length;
+            const c3 = document.querySelectorAll('#kanbanInterview .candidate-card').length;
+            const c4 = document.querySelectorAll('#kanbanOffered .candidate-card').length;
+            
+            const el1 = document.getElementById('colCountApplied'); if (el1) el1.innerText = c1;
+            const el2 = document.getElementById('colCountScreening'); if (el2) el2.innerText = c2;
+            const el3 = document.getElementById('colCountInterview'); if (el3) el3.innerText = c3;
+            const el4 = document.getElementById('colCountOffered'); if (el4) el4.innerText = c4;
+        }
+
+        function calculateSandboxPayroll() {
+            const baseInput = document.getElementById('sandboxBaseSalary');
+            if (!baseInput) return;
+            const base = parseFloat(baseInput.value) || 0;
+            const otHours = parseFloat(document.getElementById('sandboxOvertimeHours').value) || 0;
+            const unpaidDays = parseFloat(document.getElementById('sandboxUnpaidDays').value) || 0;
+            const bonus = parseFloat(document.getElementById('sandboxBonus').value) || 0;
+
+            const hourlyRate = (base / 160) * 1.5;
+            const otPay = otHours * hourlyRate;
+            const dayRate = base / 22;
+            const absenceDeduct = unpaidDays * dayRate;
+            const taxableGross = Math.max(0, base + otPay + bonus - absenceDeduct);
+            const tax = taxableGross * 0.12;
+            const net = Math.max(0, taxableGross - tax);
+
+            document.getElementById('outBase').innerText = '$' + base.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('outOvertime').innerText = '+$' + otPay.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('outBonus').innerText = '+$' + bonus.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('outAbsence').innerText = '-$' + absenceDeduct.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('outTax').innerText = '-$' + tax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('outNet').innerText = '$' + net.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        let pendingLeaveCount = 3;
+        function handleLeaveAction(leaveId, approved) {
+            const el = document.getElementById(leaveId);
+            if (!el) return;
+            const actionsDiv = el.querySelector('div:last-child');
+            if (actionsDiv) {
+                actionsDiv.innerHTML = approved ? 
+                    '<span class="badge bg-success py-2 px-3">Approved ✅</span>' : 
+                    '<span class="badge bg-danger py-2 px-3">Rejected ❌</span>';
+            }
+            pendingLeaveCount = Math.max(0, pendingLeaveCount - 1);
+            const kpi = document.getElementById('kpiLeaves');
+            if (kpi) kpi.innerText = pendingLeaveCount + ' Requests';
         }
 
         // Initialize Grid & Cookie Banner on load
