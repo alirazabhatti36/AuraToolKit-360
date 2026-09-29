@@ -82,6 +82,9 @@
         .footer-links a:hover { color: #38bdf8; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
     </style>
+    <link rel="stylesheet" href="/assets/aura-fx.css">
+    <script defer src="/assets/theme-toggle.js"></script>
+    <script defer src="/assets/aura-fx.js"></script>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
@@ -99,7 +102,7 @@
                 <a href="/converter/currency-converter/">Currency</a>
                 <a href="/converter/unit-converter/">Unit Converter</a>
                 <a href="/resume-cv-maker/">Resume Tools</a>
-                <a href="/blogs/">Blogs</a>
+                <button type="button" class="theme-toggle-pill theme-toggle-btn" onclick="toggleAuraTheme()" aria-label="Toggle Theme">🌙 Dark</button>
             </div>
         </div>
     </nav>
@@ -112,7 +115,7 @@
         </div>
 
         <div class="zakat-layout">
-            <div class="tool-card">
+            <div class="tool-card aura-glow-card">
                 <h3>💵 Cash &amp; Bank Balances</h3>
                 <div class="zakat-input-row">
                     <label>Cash in Hand &amp; Accounts:</label>
@@ -154,7 +157,7 @@
                 </div>
             </div>
 
-            <div class="summary-card">
+            <div class="summary-card aura-glow-card">
                 <div class="zakat-hero-label">Total Zakat Due (2.5%)</div>
                 <div class="zakat-hero-val" id="zakatTotalDue">18,750</div>
                 <div><span class="nisab-badge" id="nisabStatus">✓ Nisab Threshold Met</span></div>
@@ -223,10 +226,18 @@
             const net = Math.max(0, gross - debts);
             const zakat = net * 0.025;
 
-            document.getElementById('dispGross').textContent = Math.round(gross).toLocaleString();
-            document.getElementById('dispDebts').textContent = '-' + Math.round(debts).toLocaleString();
-            document.getElementById('dispNet').textContent = Math.round(net).toLocaleString();
-            document.getElementById('zakatTotalDue').textContent = Math.round(zakat).toLocaleString();
+            if (window.AuraFX) {
+                AuraFX.animateCount(document.getElementById('dispGross'), Math.round(gross));
+                document.getElementById('dispDebts').textContent = '-' + Math.round(debts).toLocaleString();
+                AuraFX.animateCount(document.getElementById('dispNet'), Math.round(net));
+                AuraFX.animateCount(document.getElementById('zakatTotalDue'), Math.round(zakat));
+                if (zakat > 0) AuraFX.confetti();
+            } else {
+                document.getElementById('dispGross').textContent = Math.round(gross).toLocaleString();
+                document.getElementById('dispDebts').textContent = '-' + Math.round(debts).toLocaleString();
+                document.getElementById('dispNet').textContent = Math.round(net).toLocaleString();
+                document.getElementById('zakatTotalDue').textContent = Math.round(zakat).toLocaleString();
+            }
 
             const badge = document.getElementById('nisabStatus');
             if (net > 0) {

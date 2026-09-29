@@ -115,6 +115,9 @@
         .footer-links a:hover { color: #38bdf8; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
     </style>
+    <link rel="stylesheet" href="/assets/aura-fx.css">
+    <script defer src="/assets/theme-toggle.js"></script>
+    <script defer src="/assets/aura-fx.js"></script>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
@@ -132,7 +135,7 @@
                 <a href="/converter/currency-converter/">Currency</a>
                 <a href="/converter/unit-converter/">Unit Converter</a>
                 <a href="/resume-cv-maker/">Resume Tools</a>
-                <a href="/blogs/">Blogs</a>
+                <button type="button" class="theme-toggle-pill theme-toggle-btn" onclick="toggleAuraTheme()" aria-label="Toggle Theme">🌙 Dark</button>
             </div>
         </div>
     </nav>
@@ -146,7 +149,7 @@
 
         <div class="calc-sections-grid">
             <!-- 1. What is X% of Y -->
-            <div class="calc-card">
+            <div class="calc-card aura-glow-card">
                 <h3><span>💡</span> What is X% of Y?</h3>
                 <div class="inline-calc-row">
                     What is <input type="number" id="p1_x" value="15" oninput="calc1()"> % of <input type="number" id="p1_y" value="250" oninput="calc1()"> ?
@@ -155,7 +158,7 @@
             </div>
 
             <!-- 2. X is what % of Y -->
-            <div class="calc-card">
+            <div class="calc-card aura-glow-card">
                 <h3><span>🔍</span> X is what % of Y?</h3>
                 <div class="inline-calc-row">
                     <input type="number" id="p2_x" value="45" oninput="calc2()"> is what % of <input type="number" id="p2_y" value="180" oninput="calc2()"> ?
@@ -164,7 +167,7 @@
             </div>
 
             <!-- 3. Percentage Increase / Decrease -->
-            <div class="calc-card">
+            <div class="calc-card aura-glow-card">
                 <h3><span>📈</span> Percentage Increase or Decrease</h3>
                 <div class="inline-calc-row">
                     From <input type="number" id="p3_x" value="100" oninput="calc3()"> to <input type="number" id="p3_y" value="135" oninput="calc3()">
@@ -173,7 +176,7 @@
             </div>
 
             <!-- 4. Student Marks to Percentage -->
-            <div class="calc-card">
+            <div class="calc-card aura-glow-card">
                 <h3><span>🎓</span> Exam Marks to Percentage</h3>
                 <div class="inline-calc-row">
                     Obtained: <input type="number" id="p4_marks" value="890" oninput="calc4()"> / Total: <input type="number" id="p4_total" value="1100" oninput="calc4()">
@@ -182,7 +185,7 @@
             </div>
 
             <!-- 5. Discount & Sales Tax (GST) Calculator -->
-            <div class="calc-card" style="grid-column: 1 / -1;">
+            <div class="calc-card aura-glow-card" style="grid-column: 1 / -1;">
                 <h3><span>🏷️</span> Shopping Discount &amp; Sales Tax (GST) Calculator</h3>
                 <div class="inline-calc-row">
                     Original Price: <input type="number" id="p5_price" value="5000" style="width: 120px;" oninput="calc5()">

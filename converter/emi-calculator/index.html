@@ -87,6 +87,9 @@
         .footer-links a:hover { color: #38bdf8; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
     </style>
+    <link rel="stylesheet" href="/assets/aura-fx.css">
+    <script defer src="/assets/theme-toggle.js"></script>
+    <script defer src="/assets/aura-fx.js"></script>
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
@@ -104,7 +107,7 @@
                 <a href="/converter/currency-converter/">Currency</a>
                 <a href="/converter/unit-converter/">Unit Converter</a>
                 <a href="/resume-cv-maker/">Resume Tools</a>
-                <a href="/blogs/">Blogs</a>
+                <button type="button" class="theme-toggle-pill theme-toggle-btn" onclick="toggleAuraTheme()" aria-label="Toggle Theme">🌙 Dark</button>
             </div>
         </div>
     </nav>
@@ -117,7 +120,7 @@
         </div>
 
         <div class="calc-wrapper">
-            <div class="tool-card">
+            <div class="tool-card aura-glow-card">
                 <div class="field-group">
                     <label for="loanAmount">💰 Loan Amount (Principal):</label>
                     <input type="number" id="loanAmount" value="1000000" step="1000" oninput="calculateEMI()">
@@ -132,7 +135,7 @@
                 </div>
             </div>
 
-            <div class="summary-card">
+            <div class="summary-card aura-glow-card">
                 <div class="emi-hero-label">Monthly EMI Due</div>
                 <div class="emi-hero-val" id="emiVal">22,498</div>
 
@@ -213,10 +216,17 @@
             const pctP = Math.round((P / totalPayment) * 100);
             const pctI = 100 - pctP;
 
-            document.getElementById('emiVal').textContent = Math.round(emi).toLocaleString();
-            document.getElementById('dispPrincipal').textContent = Math.round(P).toLocaleString();
-            document.getElementById('dispInterest').textContent = Math.round(totalInterest).toLocaleString();
-            document.getElementById('dispTotal').textContent = Math.round(totalPayment).toLocaleString();
+            if (window.AuraFX) {
+                AuraFX.animateCount(document.getElementById('emiVal'), Math.round(emi));
+                AuraFX.animateCount(document.getElementById('dispPrincipal'), Math.round(P));
+                AuraFX.animateCount(document.getElementById('dispInterest'), Math.round(totalInterest));
+                AuraFX.animateCount(document.getElementById('dispTotal'), Math.round(totalPayment));
+            } else {
+                document.getElementById('emiVal').textContent = Math.round(emi).toLocaleString();
+                document.getElementById('dispPrincipal').textContent = Math.round(P).toLocaleString();
+                document.getElementById('dispInterest').textContent = Math.round(totalInterest).toLocaleString();
+                document.getElementById('dispTotal').textContent = Math.round(totalPayment).toLocaleString();
+            }
 
             document.getElementById('barPrincipal').style.width = pctP + '%';
             document.getElementById('barInterest').style.width = pctI + '%';
