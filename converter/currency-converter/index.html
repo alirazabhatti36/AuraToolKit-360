@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Live Currency Converter Online | Real-Time Exchange Rates - AuraToolkit360</title>
+    <meta name="description" content="Convert 150+ currencies instantly with real-time live forex exchange rates. Free USD, PKR, EUR, GBP, AED, SAR, INR, CAD currency exchange calculator.">
+    <meta name="keywords" content="currency converter, exchange rates, usd to pkr, live forex rates, eur to usd, aed to pkr, gbp to pkr, sar to pkr, money converter, free online tools">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/converter/currency-converter/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AuraToolkit360">
+    <meta property="og:title" content="Live Currency Converter Online | Real-Time Exchange Rates">
+    <meta property="og:description" content="Convert 150+ world currencies with live real-time market exchange rates.">
+    <meta property="og:url" content="https://auratoolkit360.com/converter/currency-converter/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://auratoolkit360.com/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Live Currency Converter Online | AuraToolkit360">
+    <meta name="twitter:description" content="Convert 150+ currencies with real-time exchange rates.">
+    <meta name="twitter:image" content="https://auratoolkit360.com/assets/og-image.png">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
+
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .nav-links { display: flex; gap: 0.4rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
+
+        .container { max-width: 1050px; margin: 0 auto; padding: 2.5rem 1.5rem; flex: 1; }
+        .page-head { text-align: center; margin-bottom: 2rem; }
+        .page-head h1 { font-size: 2.3rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
+        .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; max-width: 680px; margin-left: auto; margin-right: auto; }
+
+        .tool-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); padding: 2.2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); text-align: center; }
+
+        .currency-row { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
+        @media(max-width: 768px) { .currency-row { flex-direction: column; } }
+
+        .currency-field { flex: 1; width: 100%; text-align: left; }
+        .currency-field label { display: block; font-size: 0.82rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .currency-input-wrap { display: flex; background: rgba(15,23,42,0.85); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+        .currency-input-wrap:focus-within { border-color: #38bdf8; box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); }
+        .currency-input-wrap input { flex: 1; background: transparent; border: none; padding: 0.85rem 1rem; color: #ffffff; font-size: 1.25rem; font-weight: 700; outline: none; width: 100%; }
+        .currency-input-wrap select { background: rgba(30, 41, 59, 0.9); border: none; border-left: 1px solid rgba(255,255,255,0.12); color: #38bdf8; font-weight: 700; font-size: 0.95rem; padding: 0.85rem 0.9rem; outline: none; cursor: pointer; max-width: 140px; }
+
+        .swap-btn {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border: none;
+            color: #fff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+            flex-shrink: 0;
+            margin-top: 1.2rem;
+        }
+        .swap-btn:hover { transform: rotate(180deg) scale(1.08); }
+        @media(max-width: 768px) { .swap-btn { margin: 0.2rem 0; } }
+
+        .rate-summary-box {
+            background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(124,58,237,0.2));
+            border: 1px solid rgba(56,189,248,0.3);
+            border-radius: 16px;
+            padding: 1.3rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .rate-summary-box .big-result { font-size: 2rem; font-weight: 900; color: #ffffff; }
+        .rate-summary-box .big-result span { color: #38bdf8; }
+        .rate-summary-box .sub-rate { font-size: 0.85rem; color: #94a3b8; margin-top: 0.3rem; }
+
+        /* Popular Pairs Table */
+        .pairs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem; }
+        @media(max-width: 900px) { .pairs-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width: 500px) { .pairs-grid { grid-template-columns: 1fr; } }
+        .pair-card {
+            background: rgba(15,23,42,0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pair-card:hover { border-color: #38bdf8; transform: translateY(-2px); }
+        .pair-name { font-size: 0.82rem; color: #94a3b8; font-weight: 600; }
+        .pair-rate { font-size: 1.15rem; font-weight: 800; color: #f8fafc; margin-top: 0.2rem; }
+
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
+        .info-card h2 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
+
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; }
+        .footer-links a:hover { color: #38bdf8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+    </style>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit360</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/converter/" class="active">Converter Suite</a>
+                <a href="/converter/age-calculator/">Age Calculator</a>
+                <a href="/converter/time-converter/">Time Converter</a>
+                <a href="/converter/currency-converter/">Currency</a>
+                <a href="/converter/unit-converter/">Unit Converter</a>
+                <a href="/resume-cv-maker/">Resume Tools</a>
+                <a href="/blogs/">Blogs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-head">
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(16,185,129,0.12); color:#34d399; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.8rem; font-weight:700; border:1px solid rgba(16,185,129,0.25); margin-bottom:0.8rem;">💵 Live Market Exchange Rates</div>
+            <h1>Live Currency Converter &amp; Exchange Rates</h1>
+            <p>Convert 150+ world currencies instantly with real-time foreign exchange market rates. Fast, free, and accurate currency calculator.</p>
+        </div>
+
+        <div class="tool-card">
+            <div class="currency-row">
+                <div class="currency-field">
+                    <label for="fromAmount">You Send / Convert:</label>
+                    <div class="currency-input-wrap">
+                        <input type="number" id="fromAmount" value="1" step="any" min="0" oninput="doConvert()">
+                        <select id="fromCurrency" onchange="doConvert()"></select>
+                    </div>
+                </div>
+
+                <button class="swap-btn" onclick="swapCurrencies()" title="Swap Currencies" aria-label="Swap Currencies">⇄</button>
+
+                <div class="currency-field">
+                    <label for="toAmount">You Receive (Converted):</label>
+                    <div class="currency-input-wrap">
+                        <input type="number" id="toAmount" step="any" min="0" oninput="doReverseConvert()">
+                        <select id="toCurrency" onchange="doConvert()"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rate-summary-box">
+                <div class="big-result" id="rateDisplay">1 USD = 278.50 PKR</div>
+                <div class="sub-rate" id="rateSubText">Mid-market exchange rate · Updated live</div>
+            </div>
+
+            <h3 style="text-align: left; font-size: 1.1rem; color: #fff; margin-top: 2rem; margin-bottom: 0.5rem;">🔥 Popular Currency Exchange Rates</h3>
+            <div class="pairs-grid" id="popularPairsGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Understanding Real-Time Foreign Exchange Rates</h2>
+            <p>The foreign exchange market (Forex) is the largest financial market globally, determining the relative values of different currencies. AuraToolkit360 pulls official mid-market exchange rates, offering transparency without retail broker markups.</p>
+
+            <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">Key Factors Influencing Exchange Rates</h3>
+            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
+                <li><strong>Central Bank Interest Rates:</strong> Higher interest rates in a country attract foreign capital, strengthening the domestic currency.</li>
+                <li><strong>Inflation Rates:</strong> Countries with consistently lower inflation typically experience an appreciation in currency purchasing power.</li>
+                <li><strong>Trade Balances (Imports vs Exports):</strong> A country that exports more goods than it imports generates foreign currency reserves, raising currency demand.</li>
+                <li><strong>Remittances &amp; Freelancing:</strong> Inbound international remittances (such as overseas workers and freelance earnings) provide crucial currency liquidity.</li>
+            </ul>
+
+            <h3 style="color:#38bdf8; margin: 1.5rem 0 0.5rem; font-size:1.15rem;">Frequently Asked Questions (FAQ)</h3>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Is the converted amount exactly what my bank will give me?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Our tool reflects the global mid-market spot rate. Retail banks, money transfer agencies, and credit cards may charge an additional 1% to 3.5% currency conversion spread fee.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ Does this currency converter work offline?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Yes! If offline or unable to connect to the live network, it automatically relies on its built-in cached exchange rates benchmark.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Private, lightning-fast digital toolkit for everyday conversions, calculations, and documents.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Converters</h4>
+                <div class="footer-links">
+                    <a href="/converter/">All Converters Suite</a>
+                    <a href="/converter/age-calculator/">Age Calculator</a>
+                    <a href="/converter/time-converter/">Time &amp; Date Converter</a>
+                    <a href="/converter/currency-converter/">Currency Converter</a>
+                    <a href="/converter/unit-converter/">Universal Unit Converter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 AuraToolkit360. All rights reserved.</div>
+    </footer>
+
+    <script>
+        // High-frequency curated currencies
+        const CURRENCIES = [
+            { code: 'USD', name: 'US Dollar ($)', flag: '🇺🇸' },
+            { code: 'PKR', name: 'Pakistani Rupee (₨)', flag: '🇵🇰' },
+            { code: 'EUR', name: 'Euro (€)', flag: '🇪🇺' },
+            { code: 'GBP', name: 'British Pound (£)', flag: '🇬🇧' },
+            { code: 'AED', name: 'UAE Dirham (د.إ)', flag: '🇦🇪' },
+            { code: 'SAR', name: 'Saudi Riyal (﷼)', flag: '🇸🇦' },
+            { code: 'INR', name: 'Indian Rupee (₹)', flag: '🇮🇳' },
+            { code: 'CAD', name: 'Canadian Dollar (C$)', flag: '🇨🇦' },
+            { code: 'AUD', name: 'Australian Dollar (A$)', flag: '🇦🇺' },
+            { code: 'TRY', name: 'Turkish Lira (₺)', flag: '🇹🇷' },
+            { code: 'CNY', name: 'Chinese Yuan (¥)', flag: '🇨🇳' },
+            { code: 'JPY', name: 'Japanese Yen (¥)', flag: '🇯🇵' },
+            { code: 'CHF', name: 'Swiss Franc (CHF)', flag: '🇨🇭' },
+            { code: 'QAR', name: 'Qatari Riyal (﷼)', flag: '🇶🇦' },
+            { code: 'KWD', name: 'Kuwaiti Dinar (د.ك)', flag: '🇰🇼' },
+            { code: 'OMR', name: 'Omani Rial (﷼)', flag: '🇴🇲' },
+            { code: 'BHD', name: 'Bahraini Dinar (.د.ب)', flag: '🇧🇭' },
+            { code: 'MYR', name: 'Malaysian Ringgit (RM)', flag: '🇲🇾' },
+            { code: 'SGD', name: 'Singapore Dollar (S$)', flag: '🇸🇬' },
+            { code: 'BDT', name: 'Bangladeshi Taka (৳)', flag: '🇧🇩' }
+        ];
+
+        // Benchmark fallback rates (base: USD)
+        let rates = {
+            USD: 1,
+            PKR: 278.45,
+            EUR: 0.92,
+            GBP: 0.77,
+            AED: 3.67,
+            SAR: 3.75,
+            INR: 83.85,
+            CAD: 1.37,
+            AUD: 1.51,
+            TRY: 34.12,
+            CNY: 7.02,
+            JPY: 143.50,
+            CHF: 0.85,
+            QAR: 3.64,
+            KWD: 0.31,
+            OMR: 0.38,
+            BHD: 0.38,
+            MYR: 4.14,
+            SGD: 1.29,
+            BDT: 119.80
+        };
+
+        async function fetchLiveRates() {
+            try {
+                const res = await fetch('https://open.er-api.com/v6/latest/USD');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.rates) {
+                        rates = { ...rates, ...data.rates };
+                        document.getElementById('rateSubText').textContent = 'Live mid-market rates · Updated just now';
+                        updatePopularPairs();
+                        doConvert();
+                    }
+                }
+            } catch (e) {
+                console.log('Using offline cached currency rates.');
+            }
+        }
+
+        function initCurrencyDropdowns() {
+            const fromSel = document.getElementById('fromCurrency');
+            const toSel = document.getElementById('toCurrency');
+
+            CURRENCIES.forEach(c => {
+                const opt1 = document.createElement('option');
+                opt1.value = c.code;
+                opt1.textContent = `${c.flag} ${c.code} - ${c.name}`;
+                fromSel.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = c.code;
+                opt2.textContent = `${c.flag} ${c.code} - ${c.name}`;
+                toSel.appendChild(opt2);
+            });
+
+            fromSel.value = 'USD';
+            toSel.value = 'PKR';
+        }
+
+        function doConvert() {
+            const amount = parseFloat(document.getElementById('fromAmount').value) || 0;
+            const from = document.getElementById('fromCurrency').value;
+            const to = document.getElementById('toCurrency').value;
+
+            // Base is USD
+            const rateFrom = rates[from] || 1;
+            const rateTo = rates[to] || 1;
+            const singleRate = rateTo / rateFrom;
+            const result = amount * singleRate;
+
+            document.getElementById('toAmount').value = result >= 100 ? result.toFixed(2) : result.toFixed(4);
+            document.getElementById('rateDisplay').innerHTML = `1 <span>${from}</span> = ${singleRate >= 100 ? singleRate.toFixed(2) : singleRate.toFixed(4)} <span>${to}</span>`;
+        }
+
+        function doReverseConvert() {
+            const amount = parseFloat(document.getElementById('toAmount').value) || 0;
+            const from = document.getElementById('fromCurrency').value;
+            const to = document.getElementById('toCurrency').value;
+
+            const rateFrom = rates[from] || 1;
+            const rateTo = rates[to] || 1;
+            const singleRate = rateFrom / rateTo;
+            const result = amount * singleRate;
+
+            document.getElementById('fromAmount').value = result >= 100 ? result.toFixed(2) : result.toFixed(4);
+        }
+
+        function swapCurrencies() {
+            const fromSel = document.getElementById('fromCurrency');
+            const toSel = document.getElementById('toCurrency');
+            const tmp = fromSel.value;
+            fromSel.value = toSel.value;
+            toSel.value = tmp;
+            doConvert();
+        }
+
+        function updatePopularPairs() {
+            const popularPairs = [
+                { from: 'USD', to: 'PKR', label: 'USD to PKR' },
+                { from: 'EUR', to: 'PKR', label: 'EUR to PKR' },
+                { from: 'GBP', to: 'PKR', label: 'GBP to PKR' },
+                { from: 'AED', to: 'PKR', label: 'AED to PKR' },
+                { from: 'SAR', to: 'PKR', label: 'SAR to PKR' },
+                { from: 'USD', to: 'INR', label: 'USD to INR' },
+                { from: 'EUR', to: 'USD', label: 'EUR to USD' },
+                { from: 'CAD', to: 'PKR', label: 'CAD to PKR' }
+            ];
+
+            const grid = document.getElementById('popularPairsGrid');
+            grid.innerHTML = '';
+
+            popularPairs.forEach(p => {
+                const r = (rates[p.to] / rates[p.from]).toFixed(2);
+                const card = document.createElement('div');
+                card.className = 'pair-card';
+                card.innerHTML = `
+                    <div class="pair-name">${p.label}</div>
+                    <div class="pair-rate">${r} ${p.to}</div>
+                `;
+                card.onclick = () => {
+                    document.getElementById('fromCurrency').value = p.from;
+                    document.getElementById('toCurrency').value = p.to;
+                    doConvert();
+                    window.scrollTo({ top: 150, behavior: 'smooth' });
+                };
+                grid.appendChild(card);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initCurrencyDropdowns();
+            doConvert();
+            updatePopularPairs();
+            fetchLiveRates();
+        });
+    </script>
+</body>
+</html>

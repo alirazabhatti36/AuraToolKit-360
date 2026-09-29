@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Percentage Calculator Online | 5-in-1 Percent, Discount & Marks - AuraToolkit360</title>
+    <meta name="description" content="Free all-in-one percentage calculator. Calculate what is X% of Y, percentage increase/decrease, exam marks percentage, and shopping discount & sales tax.">
+    <meta name="keywords" content="percentage calculator, percent off calculator, marks to percentage, percentage increase calculator, discount calculator, free online tools">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/converter/percentage-calculator/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AuraToolkit360">
+    <meta property="og:title" content="Percentage Calculator Online | 5-in-1 Percent & Marks Tool">
+    <meta property="og:description" content="Solve any percentage problem instantly: percentage of values, percentage difference, marks, and shopping discounts.">
+    <meta property="og:url" content="https://auratoolkit360.com/converter/percentage-calculator/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://auratoolkit360.com/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Percentage Calculator Online | AuraToolkit360">
+    <meta name="twitter:description" content="Calculate percentage of, percentage change, exam marks, and discounts.">
+    <meta name="twitter:image" content="https://auratoolkit360.com/assets/og-image.png">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
+
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .nav-links { display: flex; gap: 0.4rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
+
+        .container { max-width: 1050px; margin: 0 auto; padding: 2.5rem 1.5rem; flex: 1; }
+        .page-head { text-align: center; margin-bottom: 2rem; }
+        .page-head h1 { font-size: 2.3rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
+        .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; max-width: 680px; margin-left: auto; margin-right: auto; }
+
+        .calc-sections-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        @media(max-width: 768px) { .calc-sections-grid { grid-template-columns: 1fr; } }
+
+        .calc-card {
+            background: rgba(30, 41, 59, 0.75);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: left;
+        }
+        .calc-card h3 { font-size: 1.1rem; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+
+        .inline-calc-row { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; font-size: 0.95rem; color: #cbd5e1; margin-bottom: 1rem; }
+        .inline-calc-row input {
+            background: rgba(15,23,42,0.85);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 0.5rem 0.7rem;
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            width: 100px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .inline-calc-row input:focus { border-color: #38bdf8; }
+
+        .calc-result-badge {
+            background: rgba(15,23,42,0.7);
+            border: 1px solid rgba(56,189,248,0.25);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            color: #38bdf8;
+            font-weight: 800;
+            font-size: 1.15rem;
+        }
+
+        .btn-mini {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.5rem 1.2rem;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-mini:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 1.5rem; }
+        .info-card h2 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
+
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; }
+        .footer-links a:hover { color: #38bdf8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+    </style>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit360</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/converter/" class="active">Converter Suite</a>
+                <a href="/converter/age-calculator/">Age Calculator</a>
+                <a href="/converter/time-converter/">Time Converter</a>
+                <a href="/converter/currency-converter/">Currency</a>
+                <a href="/converter/unit-converter/">Unit Converter</a>
+                <a href="/resume-cv-maker/">Resume Tools</a>
+                <a href="/blogs/">Blogs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-head">
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(16,185,129,0.12); color:#34d399; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.8rem; font-weight:700; border:1px solid rgba(16,185,129,0.25); margin-bottom:0.8rem;">🔢 5-in-1 Fast Math Tools</div>
+            <h1>All-In-One Percentage Calculator</h1>
+            <p>Calculate percentage of values, percentage increase/decrease, student exam marks percentages, and retail discounts instantly.</p>
+        </div>
+
+        <div class="calc-sections-grid">
+            <!-- 1. What is X% of Y -->
+            <div class="calc-card">
+                <h3><span>💡</span> What is X% of Y?</h3>
+                <div class="inline-calc-row">
+                    What is <input type="number" id="p1_x" value="15" oninput="calc1()"> % of <input type="number" id="p1_y" value="250" oninput="calc1()"> ?
+                </div>
+                <div class="calc-result-badge" id="res1">Result: 37.5</div>
+            </div>
+
+            <!-- 2. X is what % of Y -->
+            <div class="calc-card">
+                <h3><span>🔍</span> X is what % of Y?</h3>
+                <div class="inline-calc-row">
+                    <input type="number" id="p2_x" value="45" oninput="calc2()"> is what % of <input type="number" id="p2_y" value="180" oninput="calc2()"> ?
+                </div>
+                <div class="calc-result-badge" id="res2">Result: 25%</div>
+            </div>
+
+            <!-- 3. Percentage Increase / Decrease -->
+            <div class="calc-card">
+                <h3><span>📈</span> Percentage Increase or Decrease</h3>
+                <div class="inline-calc-row">
+                    From <input type="number" id="p3_x" value="100" oninput="calc3()"> to <input type="number" id="p3_y" value="135" oninput="calc3()">
+                </div>
+                <div class="calc-result-badge" id="res3">Increase of 35%</div>
+            </div>
+
+            <!-- 4. Student Marks to Percentage -->
+            <div class="calc-card">
+                <h3><span>🎓</span> Exam Marks to Percentage</h3>
+                <div class="inline-calc-row">
+                    Obtained: <input type="number" id="p4_marks" value="890" oninput="calc4()"> / Total: <input type="number" id="p4_total" value="1100" oninput="calc4()">
+                </div>
+                <div class="calc-result-badge" id="res4">80.91% (Grade: A+)</div>
+            </div>
+
+            <!-- 5. Discount & Sales Tax (GST) Calculator -->
+            <div class="calc-card" style="grid-column: 1 / -1;">
+                <h3><span>🏷️</span> Shopping Discount &amp; Sales Tax (GST) Calculator</h3>
+                <div class="inline-calc-row">
+                    Original Price: <input type="number" id="p5_price" value="5000" style="width: 120px;" oninput="calc5()">
+                    Discount %: <input type="number" id="p5_disc" value="20" style="width: 80px;" oninput="calc5()">
+                    Sales Tax / GST %: <input type="number" id="p5_tax" value="18" style="width: 80px;" oninput="calc5()">
+                </div>
+                <div class="calc-result-badge" id="res5">
+                    Final Price: 4,720 (You save: 1,000 | Tax: 720)
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Essential Percentage Math Formulas</h2>
+            <p>A percentage is a number or ratio expressed as a fraction of 100. Understanding fundamental formulas simplifies daily business accounting, grade assessments, and retail budget planning.</p>
+
+            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1rem;">
+                <li><strong>Percentage of Value:</strong> <code>P = (X × Y) / 100</code></li>
+                <li><strong>Ratio to Percentage:</strong> <code>Percentage = (X / Y) × 100</code></li>
+                <li><strong>Percentage Change:</strong> <code>((New Value - Old Value) / Old Value) × 100</code></li>
+                <li><strong>Discount Price:</strong> <code>Discounted Price = Original Price - (Original Price × Discount% / 100)</code></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Private, lightning-fast digital toolkit for everyday conversions, calculations, and documents.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Converters</h4>
+                <div class="footer-links">
+                    <a href="/converter/">All Converters Suite</a>
+                    <a href="/converter/age-calculator/">Age Calculator</a>
+                    <a href="/converter/time-converter/">Time &amp; Date Converter</a>
+                    <a href="/converter/currency-converter/">Currency Converter</a>
+                    <a href="/converter/unit-converter/">Universal Unit Converter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 AuraToolkit360. All rights reserved.</div>
+    </footer>
+
+    <script>
+        function calc1() {
+            const x = parseFloat(document.getElementById('p1_x').value);
+            const y = parseFloat(document.getElementById('p1_y').value);
+            if (isNaN(x) || isNaN(y)) return;
+            const res = (x * y) / 100;
+            document.getElementById('res1').textContent = `Result: ${formatNum(res)}`;
+        }
+
+        function calc2() {
+            const x = parseFloat(document.getElementById('p2_x').value);
+            const y = parseFloat(document.getElementById('p2_y').value);
+            if (isNaN(x) || isNaN(y) || y === 0) return;
+            const res = (x / y) * 100;
+            document.getElementById('res2').textContent = `Result: ${formatNum(res)}%`;
+        }
+
+        function calc3() {
+            const x = parseFloat(document.getElementById('p3_x').value);
+            const y = parseFloat(document.getElementById('p3_y').value);
+            if (isNaN(x) || isNaN(y) || x === 0) return;
+            const diff = y - x;
+            const pct = (diff / Math.abs(x)) * 100;
+            const type = diff >= 0 ? 'Increase' : 'Decrease';
+            document.getElementById('res3').textContent = `${type} of ${formatNum(Math.abs(pct))}% (${diff >= 0 ? '+' : ''}${formatNum(diff)})`;
+        }
+
+        function calc4() {
+            const obtained = parseFloat(document.getElementById('p4_marks').value);
+            const total = parseFloat(document.getElementById('p4_total').value);
+            if (isNaN(obtained) || isNaN(total) || total === 0) return;
+            const pct = (obtained / total) * 100;
+            let grade = 'F';
+            if (pct >= 80) grade = 'A+ (Distinction)';
+            else if (pct >= 70) grade = 'A (Excellent)';
+            else if (pct >= 60) grade = 'B (Good)';
+            else if (pct >= 50) grade = 'C (Pass)';
+            else if (pct >= 40) grade = 'D (Satisfactory)';
+
+            document.getElementById('res4').textContent = `${pct.toFixed(2)}% · Grade: ${grade}`;
+        }
+
+        function calc5() {
+            const price = parseFloat(document.getElementById('p5_price').value) || 0;
+            const disc = parseFloat(document.getElementById('p5_disc').value) || 0;
+            const tax = parseFloat(document.getElementById('p5_tax').value) || 0;
+
+            const discAmount = (price * disc) / 100;
+            const priceAfterDisc = price - discAmount;
+            const taxAmount = (priceAfterDisc * tax) / 100;
+            const finalPrice = priceAfterDisc + taxAmount;
+
+            document.getElementById('res5').textContent = 
+                `Final Price: ${formatNum(finalPrice)} (You save: ${formatNum(discAmount)} | Tax: ${formatNum(taxAmount)})`;
+        }
+
+        function formatNum(n) {
+            return Number.isInteger(n) ? n.toLocaleString() : parseFloat(n.toFixed(2)).toLocaleString();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            calc1();
+            calc2();
+            calc3();
+            calc4();
+            calc5();
+        });
+    </script>
+</body>
+</html>

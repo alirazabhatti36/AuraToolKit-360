@@ -1701,12 +1701,63 @@
             <div class="search-results-box" id="searchResultsBox"></div>
 
             <div class="quick-chips-row">
+                <button class="chip-btn" onclick="quickFilter('Age')">🎂 Age Calculator</button>
+                <button class="chip-btn" onclick="quickFilter('Time')">⏱️ Time Converter</button>
+                <button class="chip-btn" onclick="quickFilter('Currency')">💵 Currency Rates</button>
+                <button class="chip-btn" onclick="quickFilter('Unit')">📐 Unit Converter</button>
+                <button class="chip-btn" onclick="quickFilter('Percentage')">🔢 Percentage</button>
                 <button class="chip-btn" onclick="quickFilter('PDF to Word')">📕 PDF to Word</button>
                 <button class="chip-btn" onclick="quickFilter('Merge PDF')">➕ Merge PDF</button>
-                <button class="chip-btn" onclick="quickFilter('Compress PDF')">🗜️ Compress PDF</button>
-                <button class="chip-btn" onclick="quickFilter('JPG to PNG')">🖼️ JPG to PNG</button>
                 <button class="chip-btn" onclick="quickFilter('Resume')">📄 Resume Builder</button>
-                <button class="chip-btn" onclick="quickFilter('ATS')">🎯 ATS Checker</button>
+            </div>
+        </div>
+
+        <!-- ===== NEW SECTION: DAILY LIFE CONVERTERS & CALCULATORS ===== -->
+        <div class="section-headline-wrap" style="display:flex; justify-content:space-between; align-items:center; margin-top:2.5rem;">
+            <h3>⚡ Daily Life Converters &amp; Calculators <span style="font-size:0.72rem; background:linear-gradient(135deg, #2563eb, #7c3aed); color:white; padding:0.2rem 0.6rem; border-radius:999px; margin-left:0.4rem; vertical-align:middle; font-weight:700;">NEW</span></h3>
+            <a href="/converter/#datetime" style="font-size:0.82rem; color:var(--accent-cyan); text-decoration:none; font-weight:700;">View All 45+ Tools &gt;</a>
+        </div>
+
+        <div class="trending-grid" style="margin-bottom: 2.5rem;">
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(236,72,153,0.15); color:#f472b6;">🎂</div>
+                <div class="trending-name">Age Calculator</div>
+                <a href="/converter/age-calculator/" class="btn-use-tool">Calculate Age &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(56,189,248,0.15); color:#38bdf8;">⏱️</div>
+                <div class="trending-name">Time Converter</div>
+                <a href="/converter/time-converter/" class="btn-use-tool">Convert Time &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(52,211,153,0.15); color:#34d399;">💵</div>
+                <div class="trending-name">Currency Rates</div>
+                <a href="/converter/currency-converter/" class="btn-use-tool">Live Forex &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(168,85,247,0.15); color:#c084fc;">📐</div>
+                <div class="trending-name">Unit Converter</div>
+                <a href="/converter/unit-converter/" class="btn-use-tool">Convert Units &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(245,158,11,0.15); color:#fbbf24;">🔢</div>
+                <div class="trending-name">Percentage Tool</div>
+                <a href="/converter/percentage-calculator/" class="btn-use-tool">Calculate &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(239,68,68,0.15); color:#f87171;">❤️</div>
+                <div class="trending-name">BMI Calculator</div>
+                <a href="/converter/bmi-calculator/" class="btn-use-tool">Check BMI &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(99,102,241,0.15); color:#818cf8;">🏦</div>
+                <div class="trending-name">Loan / Car EMI</div>
+                <a href="/converter/emi-calculator/" class="btn-use-tool">Calculate EMI &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(16,185,129,0.15); color:#10b981;">🌙</div>
+                <div class="trending-name">Zakat (2.5%)</div>
+                <a href="/converter/zakat-calculator/" class="btn-use-tool">Calculate Zakat &gt;</a>
             </div>
         </div>
 
@@ -1809,24 +1860,24 @@
                 <div class="recently-added-grid">
                     <!-- Card 1 -->
                     <div class="mini-tool-card">
-                        <div class="mini-icon">📑</div>
-                        <div class="mini-title">JSON to CSV</div>
-                        <div class="mini-desc">Convert and parse structured JSON data into clean CSV sheets.</div>
-                        <a href="/converter/#office" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                        <div class="mini-icon">🎂</div>
+                        <div class="mini-title">Age Calculator</div>
+                        <div class="mini-desc">Calculate exact age, next birthday countdown, and life milestones.</div>
+                        <a href="/converter/age-calculator/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                     <!-- Card 2 -->
                     <div class="mini-tool-card">
-                        <div class="mini-icon">📏</div>
-                        <div class="mini-title">Image Resizer</div>
-                        <div class="mini-desc">Resize photos by custom pixel, cm, or inch specs with zero quality loss.</div>
-                        <a href="/converter/resize-image/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                        <div class="mini-icon">⏱️</div>
+                        <div class="mini-title">Time Converter</div>
+                        <div class="mini-desc">Minutes to seconds, days to weeks, and business days between dates.</div>
+                        <a href="/converter/time-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                     <!-- Card 3 -->
                     <div class="mini-tool-card">
-                        <div class="mini-icon">&lt;/&gt;</div>
-                        <div class="mini-title">Code Minifier</div>
-                        <div class="mini-desc">Minify and compress HTML, CSS &amp; JavaScript code locally.</div>
-                        <a href="/converter/case-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                        <div class="mini-icon">💵</div>
+                        <div class="mini-title">Live Currency Rates</div>
+                        <div class="mini-desc">Real-time forex exchange rates for 150+ currencies including USD/PKR.</div>
+                        <a href="/converter/currency-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                 </div>
             </div>
@@ -2038,6 +2089,21 @@
                     <a href="/paraphrasing-tool/" class="dir-link">✨ Paraphrasing &amp; Rewrite</a>
                 </div>
             </div>
+
+            <!-- Category: Calculators & Converters -->
+            <div class="directory-category-card">
+                <div class="directory-cat-title">⏱️ Time, Currency &amp; Math Converters</div>
+                <div class="directory-links-grid">
+                    <a href="/converter/age-calculator/" class="dir-link">🎂 Exact Age Calculator</a>
+                    <a href="/converter/time-converter/" class="dir-link">⏱️ Time Units &amp; Duration</a>
+                    <a href="/converter/currency-converter/" class="dir-link">💵 Live Forex Currency</a>
+                    <a href="/converter/unit-converter/" class="dir-link">📐 Universal Unit Converter</a>
+                    <a href="/converter/percentage-calculator/" class="dir-link">🔢 5-in-1 Percentage Tool</a>
+                    <a href="/converter/bmi-calculator/" class="dir-link">❤️ BMI Health Calculator</a>
+                    <a href="/converter/emi-calculator/" class="dir-link">🏦 Loan &amp; Car EMI</a>
+                    <a href="/converter/zakat-calculator/" class="dir-link">🌙 2.5% Zakat Calculator</a>
+                </div>
+            </div>
         </div>
 
         <!-- 1-Click Viral Social Sharing Container -->
@@ -2180,6 +2246,14 @@
 
         // --- 2. SEARCH DATABASE & FILTER ENGINE ---
         const toolsDatabase = [
+            { name: "Exact Age Calculator", icon: "🎂", url: "/converter/age-calculator/", category: "Time & Date", keywords: ["age", "age calculator", "birthday", "dob", "date of birth", "calculate age", "how old am i", "next birthday", "zodiac"] },
+            { name: "Time & Duration Converter", icon: "⏱️", url: "/converter/time-converter/", category: "Time & Date", keywords: ["time", "time converter", "minutes to seconds", "seconds to minutes", "hours to minutes", "days to weeks", "duration", "days between dates", "business days"] },
+            { name: "Live Currency Converter", icon: "💵", url: "/converter/currency-converter/", category: "Currency", keywords: ["currency", "currency converter", "exchange rates", "usd to pkr", "forex", "money", "dollar rate", "aed to pkr", "sar to pkr", "eur to usd", "inr to usd"] },
+            { name: "Universal Unit Converter", icon: "📐", url: "/converter/unit-converter/", category: "Units", keywords: ["unit", "unit converter", "length", "weight", "area", "marla", "kanal", "sq ft", "temperature", "celsius to fahrenheit", "kg to lbs", "speed", "data storage"] },
+            { name: "5-in-1 Percentage Calculator", icon: "🔢", url: "/converter/percentage-calculator/", category: "Math", keywords: ["percentage", "percent", "percentage calculator", "marks percentage", "discount calculator", "gst tax", "sales tax", "exam marks"] },
+            { name: "BMI & Ideal Weight Calculator", icon: "❤️", url: "/converter/bmi-calculator/", category: "Health", keywords: ["bmi", "bmi calculator", "body mass index", "weight", "ideal weight", "healthy weight", "diet"] },
+            { name: "Loan & Car EMI Calculator", icon: "🏦", url: "/converter/emi-calculator/", category: "Finance", keywords: ["emi", "emi calculator", "loan calculator", "car loan", "home loan", "interest calculator", "installment", "monthly emi"] },
+            { name: "2.5% Zakat Calculator", icon: "🌙", url: "/converter/zakat-calculator/", category: "Finance", keywords: ["zakat", "zakat calculator", "calculate zakat", "gold zakat", "silver zakat", "nisab", "2.5%", "zakat on cash"] },
             { name: "PDF to Word", icon: "📕", url: "/converter/pdf-to-word/", category: "Office", keywords: ["pdf to word", "convert", "docx"] },
             { name: "Word to PDF", icon: "📝", url: "/converter/word-to-pdf/", category: "Office", keywords: ["word to pdf", "docx to pdf"] },
             { name: "Merge PDF", icon: "➕", url: "/converter/merge-pdf/", category: "PDF", keywords: ["merge pdf", "combine", "join"] },

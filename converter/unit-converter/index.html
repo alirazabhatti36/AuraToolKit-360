@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Universal Unit Converter Online | Length, Weight, Area, Temp, Data - AuraToolkit360</title>
+    <meta name="description" content="All-in-one universal unit converter. Convert length, weight, area (marla, kanal, sq ft), temperature, speed, and digital data storage units in real-time.">
+    <meta name="keywords" content="unit converter, length converter, weight converter, area converter, marla to sq ft, celsius to fahrenheit, kg to lbs, free online tools">
+    <meta name="author" content="AuraToolkit360">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://auratoolkit360.com/converter/unit-converter/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AuraToolkit360">
+    <meta property="og:title" content="Universal Unit Converter Online | Length, Weight, Area, Temp, Data">
+    <meta property="og:description" content="Convert length, weight, area, temperature, speed, and digital data storage units instantly in your browser.">
+    <meta property="og:url" content="https://auratoolkit360.com/converter/unit-converter/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://auratoolkit360.com/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Universal Unit Converter Online | AuraToolkit360">
+    <meta name="twitter:description" content="Convert units of length, weight, area, temperature, speed, and digital storage.">
+    <meta name="twitter:image" content="https://auratoolkit360.com/assets/og-image.png">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
+
+        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
+        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .nav-links { display: flex; gap: 0.4rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
+        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
+
+        .container { max-width: 1050px; margin: 0 auto; padding: 2.5rem 1.5rem; flex: 1; }
+        .page-head { text-align: center; margin-bottom: 2rem; }
+        .page-head h1 { font-size: 2.3rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
+        .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; max-width: 680px; margin-left: auto; margin-right: auto; }
+
+        /* Category Chips Bar */
+        .category-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.8rem; }
+        .cat-chip {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cat-chip:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        .cat-chip.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; border-color: transparent; box-shadow: 0 4px 15px rgba(37,99,235,0.35); }
+
+        .tool-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); padding: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); text-align: center; }
+
+        .converter-grid { display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin: 1.5rem 0; }
+        @media(max-width: 768px) { .converter-grid { flex-direction: column; } }
+
+        .unit-col { flex: 1; width: 100%; text-align: left; }
+        .unit-col label { display: block; font-size: 0.8rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .unit-input-group { background: rgba(15,23,42,0.85); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 0.4rem 0.6rem; display: flex; flex-direction: column; gap: 0.4rem; transition: border-color 0.2s; }
+        .unit-input-group:focus-within { border-color: #38bdf8; box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); }
+        .unit-input-group input { background: transparent; border: none; padding: 0.6rem 0.5rem; color: #fff; font-size: 1.4rem; font-weight: 700; outline: none; width: 100%; }
+        .unit-input-group select { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #38bdf8; font-weight: 600; font-size: 0.9rem; padding: 0.5rem 0.7rem; outline: none; cursor: pointer; width: 100%; }
+
+        .swap-circle-btn {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border: none;
+            color: #fff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+            margin-top: 1.2rem;
+        }
+        .swap-circle-btn:hover { transform: rotate(180deg) scale(1.08); }
+        @media(max-width: 768px) { .swap-circle-btn { margin: 0.2rem 0; } }
+
+        .formula-box {
+            background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(124,58,237,0.2));
+            border: 1px solid rgba(56,189,248,0.3);
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .formula-box .big-val { font-size: 1.8rem; font-weight: 900; color: #ffffff; }
+        .formula-box .big-val span { color: #38bdf8; }
+        .formula-box .formula-text { font-size: 0.85rem; color: #94a3b8; margin-top: 0.3rem; }
+
+        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
+        .info-card h2 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
+        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
+
+        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; }
+        .footer-links a:hover { color: #38bdf8; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+    </style>
+    <meta name="google-adsense-account" content="ca-pub-1373118680696037">
+    <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit360</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/converter/" class="active">Converter Suite</a>
+                <a href="/converter/age-calculator/">Age Calculator</a>
+                <a href="/converter/time-converter/">Time Converter</a>
+                <a href="/converter/currency-converter/">Currency</a>
+                <a href="/converter/unit-converter/">Unit Converter</a>
+                <a href="/resume-cv-maker/">Resume Tools</a>
+                <a href="/blogs/">Blogs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-head">
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(16,185,129,0.12); color:#34d399; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.8rem; font-weight:700; border:1px solid rgba(16,185,129,0.25); margin-bottom:0.8rem;">📐 High Precision Scientific &amp; Local Units</div>
+            <h1>Universal Unit &amp; Measurement Converter</h1>
+            <p>Convert units of Length, Weight, Area (including Marla &amp; Kanal), Temperature, Speed, and Digital Storage instantly.</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <button class="cat-chip active" onclick="setCategory('length')">📏 Length</button>
+            <button class="cat-chip" onclick="setCategory('weight')">⚖️ Weight &amp; Mass</button>
+            <button class="cat-chip" onclick="setCategory('area')">🗺️ Area &amp; Land</button>
+            <button class="cat-chip" onclick="setCategory('temperature')">🌡️ Temperature</button>
+            <button class="cat-chip" onclick="setCategory('speed')">🚀 Speed</button>
+            <button class="cat-chip" onclick="setCategory('data')">💾 Digital Data</button>
+        </div>
+
+        <div class="tool-card">
+            <div class="converter-grid">
+                <div class="unit-col">
+                    <label>From:</label>
+                    <div class="unit-input-group">
+                        <input type="number" id="fromVal" value="1" step="any" oninput="calculateUnit()">
+                        <select id="fromUnit" onchange="calculateUnit()"></select>
+                    </div>
+                </div>
+
+                <button class="swap-circle-btn" onclick="swapUnits()" title="Swap Units" aria-label="Swap Units">⇄</button>
+
+                <div class="unit-col">
+                    <label>To:</label>
+                    <div class="unit-input-group">
+                        <input type="number" id="toVal" step="any" oninput="reverseCalculateUnit()">
+                        <select id="toUnit" onchange="calculateUnit()"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="formula-box">
+                <div class="big-val" id="resultFormulaDisplay">1 Kilometer = 1,000 Meters</div>
+                <div class="formula-text" id="resultFormulaSub">Instant conversion formula</div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Supported Measurement Units &amp; Standard Scales</h2>
+            <p>AuraToolkit360 supports standard International System of Units (SI), Imperial measurements, as well as regionally recognized land and weight units (such as Marla, Kanal, and Tola).</p>
+
+            <h3 style="color:#38bdf8; margin: 1.2rem 0 0.5rem; font-size:1.15rem;">Key Regional Measurement Standards</h3>
+            <ul style="color:#94a3b8; line-height:1.8; margin-left:1.5rem; margin-bottom:1.5rem;">
+                <li><strong>Marla (Lahore/Punjab Standard):</strong> 1 Marla is officially recognized as 225 square feet (approx 25 square yards). The older British revenue standard is 272.25 square feet.</li>
+                <li><strong>Kanal:</strong> 1 Kanal equals 20 Marlas = 4,500 square feet (or 5,445 sq ft in revenue records).</li>
+                <li><strong>Tola (Precious Metals):</strong> Traditional South Asian unit used for gold and silver, officially standardized at 11.664 grams (1 Tola = 12 Mashas).</li>
+                <li><strong>Digital Data (Binary 1024):</strong> 1 Kilobyte (KB) = 1,024 Bytes, 1 Megabyte (MB) = 1,024 KB, 1 Gigabyte (GB) = 1,024 MB.</li>
+            </ul>
+
+            <h3 style="color:#38bdf8; margin: 1.5rem 0 0.5rem; font-size:1.15rem;">Frequently Asked Questions (FAQ)</h3>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ How do I convert Celsius to Fahrenheit manually?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">Multiply degrees Celsius by 9/5 (or 1.8) and then add 32: <em>°F = (°C × 1.8) + 32</em>.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 0;">
+                <h4 style="color:#f8fafc; margin-bottom:0.3rem;">❓ How many pounds are in 1 kilogram?</h4>
+                <p style="color:#94a3b8; font-size:0.9rem;">1 kilogram is equal to approximately 2.20462 pounds (lbs).</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>AuraToolkit360</h3>
+                <p>Private, lightning-fast digital toolkit for everyday conversions, calculations, and documents.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Converters</h4>
+                <div class="footer-links">
+                    <a href="/converter/">All Converters Suite</a>
+                    <a href="/converter/age-calculator/">Age Calculator</a>
+                    <a href="/converter/time-converter/">Time &amp; Date Converter</a>
+                    <a href="/converter/currency-converter/">Currency Converter</a>
+                    <a href="/converter/unit-converter/">Universal Unit Converter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 AuraToolkit360. All rights reserved.</div>
+    </footer>
+
+    <script>
+        const UNIT_DATA = {
+            length: {
+                base: 'meter',
+                units: {
+                    kilometer: { name: 'Kilometer (km)', factor: 1000 },
+                    meter: { name: 'Meter (m)', factor: 1 },
+                    centimeter: { name: 'Centimeter (cm)', factor: 0.01 },
+                    millimeter: { name: 'Millimeter (mm)', factor: 0.001 },
+                    mile: { name: 'Mile (mi)', factor: 1609.344 },
+                    yard: { name: 'Yard (yd)', factor: 0.9144 },
+                    foot: { name: 'Foot (ft)', factor: 0.3048 },
+                    inch: { name: 'Inch (in)', factor: 0.0254 },
+                    nautical_mile: { name: 'Nautical Mile', factor: 1852 }
+                },
+                defaultFrom: 'kilometer',
+                defaultTo: 'meter'
+            },
+            weight: {
+                base: 'kilogram',
+                units: {
+                    metric_ton: { name: 'Metric Ton (t)', factor: 1000 },
+                    kilogram: { name: 'Kilogram (kg)', factor: 1 },
+                    gram: { name: 'Gram (g)', factor: 0.001 },
+                    milligram: { name: 'Milligram (mg)', factor: 0.000001 },
+                    pound: { name: 'Pound (lb)', factor: 0.45359237 },
+                    ounce: { name: 'Ounce (oz)', factor: 0.02834952 },
+                    tola: { name: 'Tola (11.664g)', factor: 0.011664 },
+                    masha: { name: 'Masha (0.972g)', factor: 0.000972 }
+                },
+                defaultFrom: 'kilogram',
+                defaultTo: 'pound'
+            },
+            area: {
+                base: 'sq_meter',
+                units: {
+                    sq_meter: { name: 'Square Meter (m²)', factor: 1 },
+                    sq_kilometer: { name: 'Square Kilometer (km²)', factor: 1000000 },
+                    sq_foot: { name: 'Square Foot (ft²)', factor: 0.092903 },
+                    sq_yard: { name: 'Square Yard (Gaj)', factor: 0.836127 },
+                    acre: { name: 'Acre', factor: 4046.85642 },
+                    hectare: { name: 'Hectare', factor: 10000 },
+                    marla_225: { name: 'Marla (225 sq ft)', factor: 20.90318 },
+                    marla_272: { name: 'Marla (272.25 sq ft)', factor: 25.29285 },
+                    kanal: { name: 'Kanal (20 Marlas / 4,500 sq ft)', factor: 418.06368 }
+                },
+                defaultFrom: 'marla_225',
+                defaultTo: 'sq_foot'
+            },
+            temperature: {
+                special: true,
+                units: {
+                    celsius: { name: 'Celsius (°C)' },
+                    fahrenheit: { name: 'Fahrenheit (°F)' },
+                    kelvin: { name: 'Kelvin (K)' }
+                },
+                defaultFrom: 'celsius',
+                defaultTo: 'fahrenheit'
+            },
+            speed: {
+                base: 'mps',
+                units: {
+                    kmh: { name: 'Kilometers per hour (km/h)', factor: 0.277778 },
+                    mph: { name: 'Miles per hour (mph)', factor: 0.44704 },
+                    mps: { name: 'Meters per second (m/s)', factor: 1 },
+                    knot: { name: 'Knot (nautical mi/h)', factor: 0.514444 },
+                    fps: { name: 'Feet per second (ft/s)', factor: 0.3048 }
+                },
+                defaultFrom: 'kmh',
+                defaultTo: 'mph'
+            },
+            data: {
+                base: 'byte',
+                units: {
+                    bit: { name: 'Bit (b)', factor: 0.125 },
+                    byte: { name: 'Byte (B)', factor: 1 },
+                    kb: { name: 'Kilobyte (KB)', factor: 1024 },
+                    mb: { name: 'Megabyte (MB)', factor: 1048576 },
+                    gb: { name: 'Gigabyte (GB)', factor: 1073741824 },
+                    tb: { name: 'Terabyte (TB)', factor: 1099511627776 },
+                    pb: { name: 'Petabyte (PB)', factor: 1125899906842624 }
+                },
+                defaultFrom: 'gb',
+                defaultTo: 'mb'
+            }
+        };
+
+        let currentCat = 'length';
+
+        function setCategory(cat) {
+            currentCat = cat;
+            document.querySelectorAll('.cat-chip').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('onclick').includes(cat));
+            });
+
+            const data = UNIT_DATA[cat];
+            const fromSel = document.getElementById('fromUnit');
+            const toSel = document.getElementById('toUnit');
+            fromSel.innerHTML = '';
+            toSel.innerHTML = '';
+
+            for (const [key, u] of Object.entries(data.units)) {
+                const opt1 = document.createElement('option');
+                opt1.value = key;
+                opt1.textContent = u.name;
+                fromSel.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = key;
+                opt2.textContent = u.name;
+                toSel.appendChild(opt2);
+            }
+
+            fromSel.value = data.defaultFrom;
+            toSel.value = data.defaultTo;
+            document.getElementById('fromVal').value = 1;
+            calculateUnit();
+        }
+
+        function calculateUnit() {
+            const val = parseFloat(document.getElementById('fromVal').value);
+            const from = document.getElementById('fromUnit').value;
+            const to = document.getElementById('toUnit').value;
+            const data = UNIT_DATA[currentCat];
+
+            if (isNaN(val)) {
+                document.getElementById('toVal').value = '';
+                return;
+            }
+
+            let result = 0;
+            let formulaStr = '';
+
+            if (currentCat === 'temperature') {
+                result = convertTemp(val, from, to);
+                formulaStr = getTempFormula(val, from, to, result);
+            } else {
+                const baseVal = val * data.units[from].factor;
+                result = baseVal / data.units[to].factor;
+                const singleVal = data.units[from].factor / data.units[to].factor;
+                formulaStr = `1 ${data.units[from].name} = ${formatNumber(singleVal)} ${data.units[to].name}`;
+            }
+
+            document.getElementById('toVal').value = formatNumber(result);
+            document.getElementById('resultFormulaDisplay').innerHTML = `${val} <span>${data.units[from].name}</span> = ${formatNumber(result)} <span>${data.units[to].name}</span>`;
+            document.getElementById('resultFormulaSub').textContent = formulaStr;
+        }
+
+        function reverseCalculateUnit() {
+            const val = parseFloat(document.getElementById('toVal').value);
+            const from = document.getElementById('fromUnit').value;
+            const to = document.getElementById('toUnit').value;
+            const data = UNIT_DATA[currentCat];
+
+            if (isNaN(val)) {
+                document.getElementById('fromVal').value = '';
+                return;
+            }
+
+            let result = 0;
+            if (currentCat === 'temperature') {
+                result = convertTemp(val, to, from);
+            } else {
+                const baseVal = val * data.units[to].factor;
+                result = baseVal / data.units[from].factor;
+            }
+
+            document.getElementById('fromVal').value = formatNumber(result);
+        }
+
+        function swapUnits() {
+            const fromSel = document.getElementById('fromUnit');
+            const toSel = document.getElementById('toUnit');
+            const tmp = fromSel.value;
+            fromSel.value = toSel.value;
+            toSel.value = tmp;
+            calculateUnit();
+        }
+
+        function convertTemp(v, from, to) {
+            let celsius = v;
+            if (from === 'fahrenheit') celsius = (v - 32) * (5/9);
+            else if (from === 'kelvin') celsius = v - 273.15;
+
+            if (to === 'celsius') return celsius;
+            if (to === 'fahrenheit') return (celsius * 9/5) + 32;
+            if (to === 'kelvin') return celsius + 273.15;
+            return celsius;
+        }
+
+        function getTempFormula(v, from, to, res) {
+            if (from === 'celsius' && to === 'fahrenheit') return `(${v}°C × 9/5) + 32 = ${formatNumber(res)}°F`;
+            if (from === 'fahrenheit' && to === 'celsius') return `(${v}°F - 32) × 5/9 = ${formatNumber(res)}°C`;
+            if (from === 'celsius' && to === 'kelvin') return `${v}°C + 273.15 = ${formatNumber(res)} K`;
+            return `Temperature scale conversion`;
+        }
+
+        function formatNumber(n) {
+            if (Math.abs(n) >= 1000000 || (Math.abs(n) < 0.0001 && n !== 0)) {
+                return n.toExponential(4);
+            }
+            return Number.isInteger(n) ? n : parseFloat(n.toFixed(6));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setCategory('length');
+        });
+    </script>
+</body>
+</html>
