@@ -34,58 +34,59 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { overflow-x: clip; scroll-behavior: smooth; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f172a; min-height: 100vh; color: #f8fafc; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #f8fafc; min-height: 100vh; color: #1e293b; display: flex; flex-direction: column; line-height: 1.6; overflow-x: clip; padding-top: 65px; -webkit-font-smoothing: antialiased; }
 
-        .navbar { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; }
+        .navbar { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); padding: 0.8rem 2rem; border-bottom: 1px solid #e2e8f0; position: fixed !important; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; overflow-x: auto; box-shadow: 0 1px 3px rgba(15,23,42,0.05); }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: max-content; }
-        .logo { font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
-        .logo-icon { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: #0f172a; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo span.brand-accent { color: #2563eb; }
+        .logo-icon { background: linear-gradient(135deg, #1d4ed8, #2563eb); color: white; width: 34px; height: 34px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
         .nav-links { display: flex; gap: 0.4rem; align-items: center; }
-        .nav-links a { text-decoration: none; color: #94a3b8; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.3s; font-size: 0.88rem; }
-        .nav-links a:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
-        .nav-links a.active { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; }
+        .nav-links a { text-decoration: none; color: #334155; font-weight: 600; padding: 0.5rem 0.9rem; border-radius: 10px; transition: all 0.2s; font-size: 0.88rem; }
+        .nav-links a:hover { background: #f1f5f9; color: #2563eb; }
+        .nav-links a.active { background: #2563eb; color: white; box-shadow: 0 2px 8px rgba(37,99,235,0.25); }
 
         .container { max-width: 1050px; margin: 0 auto; padding: 2.5rem 1.5rem; flex: 1; }
         .page-head { text-align: center; margin-bottom: 2rem; }
-        .page-head h1 { font-size: 2.3rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
-        .page-head p { color: #94a3b8; font-size: 1rem; margin-top: 0.4rem; max-width: 680px; margin-left: auto; margin-right: auto; }
+        .page-head h1 { font-size: 2.3rem; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
+        .page-head p { color: #334155; font-size: 1.05rem; margin-top: 0.4rem; max-width: 680px; margin-left: auto; margin-right: auto; font-weight: 500; }
 
         .calc-wrapper { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.5rem; align-items: start; }
         @media(max-width: 850px) { .calc-wrapper { grid-template-columns: 1fr; } }
 
-        .tool-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); padding: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); text-align: left; }
+        .tool-card { background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 2rem; box-shadow: 0 4px 20px -2px rgba(15,23,42,0.06), 0 2px 6px -1px rgba(15,23,42,0.03); text-align: left; }
 
         .field-group { margin-bottom: 1.25rem; }
-        .field-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.4rem; }
-        .field-group input { width: 100%; background: rgba(15,23,42,0.85); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 0.75rem 1rem; color: #fff; font-size: 1.1rem; font-weight: 700; outline: none; transition: border-color 0.2s; }
-        .field-group input:focus { border-color: #38bdf8; }
+        .field-group label { display: block; font-size: 0.88rem; font-weight: 700; color: #0f172a; margin-bottom: 0.45rem; }
+        .field-group input { width: 100%; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.75rem 1rem; color: #0f172a; font-size: 1.1rem; font-weight: 700; outline: none; transition: border-color 0.2s; }
+        .field-group input:focus { border-color: #2563eb; box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.15); }
 
         /* Output Summary Card */
-        .summary-card { background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(124,58,237,0.2)); border: 1px solid rgba(56,189,248,0.3); border-radius: 24px; padding: 2rem; text-align: center; }
-        .emi-hero-val { font-size: 2.6rem; font-weight: 900; color: #38bdf8; line-height: 1.1; margin: 0.5rem 0; }
-        .emi-hero-label { font-size: 0.85rem; color: #94a3b8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .summary-card { background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 24px; padding: 2rem; text-align: center; box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08); }
+        .emi-hero-val { font-size: 2.6rem; font-weight: 900; color: #1d4ed8; line-height: 1.1; margin: 0.5rem 0; }
+        .emi-hero-label { font-size: 0.85rem; color: #1e40af; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; }
 
-        .split-bar-wrap { width: 100%; height: 16px; border-radius: 999px; background: rgba(15,23,42,0.8); overflow: hidden; display: flex; margin: 1.5rem 0 1rem; border: 1px solid rgba(255,255,255,0.1); }
-        .split-principal { background: #38bdf8; transition: width 0.3s; }
-        .split-interest { background: #a855f7; transition: width 0.3s; }
+        .split-bar-wrap { width: 100%; height: 16px; border-radius: 999px; background: #e2e8f0; overflow: hidden; display: flex; margin: 1.5rem 0 1rem; border: 1px solid #cbd5e1; }
+        .split-principal { background: #2563eb; transition: width 0.3s; }
+        .split-interest { background: #d97706; transition: width 0.3s; }
 
-        .breakdown-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; }
+        .breakdown-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; }
         .breakdown-row:last-child { border-bottom: none; font-weight: 800; font-size: 1.05rem; }
-        .breakdown-row .lbl { color: #cbd5e1; }
-        .breakdown-row .val { color: #ffffff; font-weight: 700; }
+        .breakdown-row .lbl { color: #334155; font-weight: 600; }
+        .breakdown-row .val { color: #0f172a; font-weight: 800; }
 
-        .info-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; color: #f8fafc; margin-top: 2.5rem; }
-        .info-card h2 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 1rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem; }
-        .info-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
+        .info-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 2rem; color: #1e293b; margin-top: 2.5rem; box-shadow: 0 4px 16px rgba(15,23,42,0.04); }
+        .info-card h2 { font-size: 1.4rem; color: #0f172a; font-weight: 800; margin-bottom: 1rem; border-left: 4px solid #2563eb; padding-left: 0.75rem; }
+        .info-card p { color: #334155; line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; }
 
-        footer { margin-top: auto; background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
+        footer { margin-top: auto; background: #0f172a; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
         .footer-grid { max-width: 1350px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.8rem; }
+        .footer-col h3, .footer-col h4 { font-size: 1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.8rem; }
         .footer-col p { font-size: 0.84rem; color: #94a3b8; line-height: 1.6; }
         .footer-links { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.84rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; }
-        .footer-links a:hover { color: #38bdf8; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1rem; font-size: 0.78rem; color: #64748b; }
+        .footer-links a { color: #cbd5e1; text-decoration: none; }
+        .footer-links a:hover { color: #60a5fa; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); text-align: center; padding: 1rem; font-size: 0.78rem; color: #94a3b8; }
     </style>
     <link rel="stylesheet" href="/assets/aura-fx.css">
     <script defer src="/assets/theme-toggle.js"></script>
@@ -98,7 +99,7 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit360</a>
+            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit<span class="brand-accent">360</span></a>
             <div class="nav-links">
                 <a href="/">Home</a>
                 <a href="/converter/" class="active">Converter Suite</a>
@@ -114,7 +115,7 @@
 
     <main class="container">
         <div class="page-head">
-            <div style="display:inline-flex; align-items:center; gap:0.4rem; background:rgba(16,185,129,0.12); color:#34d399; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.8rem; font-weight:700; border:1px solid rgba(16,185,129,0.25); margin-bottom:0.8rem;">🏦 Financial Loan Amortization</div>
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; background:#ecfdf5; color:#047857; padding:0.35rem 1.1rem; border-radius:999px; font-size:0.82rem; font-weight:700; border:1px solid #a7f3d0; margin-bottom:0.8rem;">🏦 Financial Loan Amortization</div>
             <h1>Loan &amp; Car EMI Calculator Online</h1>
             <p>Calculate your monthly installment (EMI), total interest payable, and total loan payback schedule with instant breakdown.</p>
         </div>

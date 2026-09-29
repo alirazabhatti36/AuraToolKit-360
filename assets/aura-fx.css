@@ -1,162 +1,615 @@
 /* ==========================================================================
-   AuraToolkit360 — Luxury Micro-Interactions, Motion FX & Dual-Theme Engine
-   Vercel / Linear / Raycast inspired hardware-accelerated experience
+   AuraToolkit360 — Professional Color System & Luxury Motion FX
+   Palette: Pure White + Razor-Sharp Jet Black + Royal Blue + Vibrant Highlights
+   100% High-Contrast, WCAG AAA Readability, 60fps Hardware Acceleration
    ========================================================================== */
 
-/* Dual-Theme Variables */
-:root, html[data-theme="dark"] {
-    --aura-bg: #0f172a;
-    --aura-bg-subtle: #1e293b;
-    --aura-card-bg: rgba(30, 41, 59, 0.75);
-    --aura-card-border: rgba(255, 255, 255, 0.1);
-    --aura-card-solid: #1e293b;
-    --aura-text: #f8fafc;
+:root {
+    /* Base Surfaces */
+    --aura-bg: #f8fafc;
+    --aura-surface: #ffffff;
+    --aura-surface-subtle: #f1f5f9;
+    --aura-border: #e2e8f0;
+    --aura-border-strong: #cbd5e1;
+    
+    /* Black / High-Contrast Typography */
+    --aura-black: #0f172a;
+    --aura-text-main: #0f172a;
+    --aura-text-body: #1e293b;
+    --aura-text-muted: #334155;
+    
+    /* Royal Blue — The Anchor Brand Accent */
+    --aura-blue: #2563eb;
+    --aura-blue-dark: #1d4ed8;
+    --aura-blue-hover: #1e40af;
+    --aura-blue-light: #eff6ff;
+    --aura-blue-border: #bfdbfe;
+    
+    /* Attractive Highlights (Badges, Accents, Success) */
+    --aura-highlight-emerald: #047857;
+    --aura-highlight-emerald-bg: #ecfdf5;
+    --aura-highlight-emerald-border: #a7f3d0;
+    
+    --aura-highlight-amber: #b45309;
+    --aura-highlight-amber-bg: #fffbeb;
+    --aura-highlight-amber-border: #fde68a;
+
+    --aura-glow-primary: rgba(37, 99, 235, 0.15);
+    --aura-glow-secondary: rgba(59, 130, 246, 0.1);
+}
+
+/* ==========================================================================
+   PRIMARY UNIVERSAL STYLING (Crisp White + Jet Black + Royal Blue)
+   ========================================================================== */
+
+/* Universal Clean Reset for Converter Tools & Standalone Pages */
+body {
+    background-color: var(--aura-bg) !important;
+    color: var(--aura-text-body) !important;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Clean White Sticky Navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid var(--aura-border) !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+}
+
+.logo {
+    color: var(--aura-black) !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+}
+
+.logo-icon {
+    background: linear-gradient(135deg, var(--aura-blue-dark), var(--aura-blue)) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3) !important;
+}
+
+.nav-links a {
+    color: var(--aura-text-muted) !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+
+.nav-links a:hover {
+    background: var(--aura-surface-subtle) !important;
+    color: var(--aura-blue) !important;
+}
+
+.nav-links a.active {
+    background: var(--aura-blue) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28) !important;
+}
+
+/* Headings & Page Header */
+.page-head h1,
+.container h1,
+main h1 {
+    color: var(--aura-black) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.025em !important;
+}
+
+.page-head p,
+.container > p,
+.hero-desc {
+    color: var(--aura-text-muted) !important;
+    font-weight: 500 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Attractive Highlight Badge / Eyebrow */
+.highlight-badge,
+.hero-eyebrow,
+.pulse-badge,
+.nisab-badge {
+    background: var(--aura-highlight-emerald-bg) !important;
+    border: 1px solid var(--aura-highlight-emerald-border) !important;
+    color: var(--aura-highlight-emerald) !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+}
+
+/* Pure White Cards with High Contrast & Subtle Elevation */
+.tool-card,
+.info-card,
+.calc-card,
+.summary-card,
+.detail-card,
+.unit-box,
+.stat-badge-box,
+.highlight-card,
+.pair-card,
+.fun-fact-card,
+.metric-box,
+.conversion-card,
+.faq-box,
+.trending-card,
+.widget-box,
+.guide-card,
+.testimonial-card,
+.directory-category-card {
+    background: var(--aura-surface) !important;
+    border: 1px solid var(--aura-border) !important;
+    border-radius: 18px !important;
+    color: var(--aura-text-body) !important;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03) !important;
+    backdrop-filter: none !important;
+}
+
+/* Sub-cards and nested row boxes inside widgets */
+.activity-row,
+.mini-tool-card,
+.feature-box {
+    background: var(--aura-bg) !important;
+    border: 1px solid var(--aura-border) !important;
+    border-radius: 14px !important;
+}
+
+/* Card Headings & Titles — Razor-Sharp Jet Black */
+.tool-card h2, .tool-card h3, .tool-card h4,
+.info-card h2, .info-card h3,
+.calc-card h3,
+.summary-card h3,
+.trending-name,
+.widget-head h4,
+.activity-title,
+.mini-title,
+.guide-card h4,
+.user-meta-name,
+.directory-cat-title,
+.feature-box h4,
+.section-title {
+    color: var(--aura-black) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.01em !important;
+}
+
+.widget-head {
+    border-bottom: 1.5px solid var(--aura-border) !important;
+}
+
+.directory-cat-title {
+    border-bottom: 1.5px solid var(--aura-border) !important;
+    padding-bottom: 0.6rem !important;
+}
+
+.testimonial-text {
+    color: var(--aura-text-body) !important;
+    font-weight: 500 !important;
+}
+
+.user-meta-role,
+.mini-desc,
+.activity-time {
+    color: var(--aura-text-muted) !important;
+}
+
+/* Directory Links — Clean Pill Cards with Blue Accent Hover */
+.dir-link {
+    background: var(--aura-bg) !important;
+    border: 1px solid var(--aura-border) !important;
+    color: var(--aura-black) !important;
+    font-weight: 600 !important;
+}
+
+.dir-link:hover {
+    background: var(--aura-blue-light) !important;
+    border-color: var(--aura-blue-border) !important;
+    color: var(--aura-blue-dark) !important;
+    transform: translateX(2px) !important;
+}
+
+/* Tool Buttons on Cards */
+.btn-use-tool {
+    background: var(--aura-blue-light) !important;
+    color: var(--aura-blue-dark) !important;
+    border: 1px solid var(--aura-blue-border) !important;
+    font-weight: 700 !important;
+}
+
+.btn-use-tool:hover {
+    background: linear-gradient(135deg, var(--aura-blue-dark), var(--aura-blue)) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+}
+
+/* Converter Hub Filter Chips & Stats Banner */
+.chip-btn {
+    background: #ffffff !important;
+    border: 1px solid var(--aura-border) !important;
+    color: var(--aura-text-body) !important;
+    font-weight: 600 !important;
+}
+
+.chip-btn:hover {
+    background: var(--aura-blue-light) !important;
+    border-color: var(--aura-blue-border) !important;
+    color: var(--aura-blue-dark) !important;
+}
+
+.stats-banner {
+    background: #ffffff !important;
+    border: 1px solid var(--aura-border) !important;
+}
+
+.stats-banner .stat-number {
+    color: var(--aura-blue-dark) !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+}
+
+.stats-banner .stat-label {
+    color: var(--aura-text-muted) !important;
+    font-weight: 700 !important;
+}
+
+.info-card p,
+.info-card li,
+.faq-box p {
+    color: var(--aura-text-muted) !important;
+    line-height: 1.7 !important;
+}
+
+/* Form Inputs, Selects & Textareas — Razor-Sharp Crisp Fields */
+label,
+.input-group label,
+.form-row label,
+.currency-field label,
+.unit-col label,
+.field-group label,
+.zakat-input-row label {
+    color: var(--aura-black) !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    display: block !important;
+    margin-bottom: 0.45rem !important;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="email"],
+input[type="search"],
+select,
+textarea {
+    background: #ffffff !important;
+    border: 1.5px solid var(--aura-border-strong) !important;
+    border-radius: 12px !important;
+    color: var(--aura-black) !important;
+    font-weight: 600 !important;
+    font-size: 0.98rem !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.2s ease !important;
+    outline: none !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    background: #ffffff !important;
+    border-color: var(--aura-blue) !important;
+    box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.15) !important;
+    color: var(--aura-black) !important;
+}
+
+/* Primary Royal Blue Action Buttons */
+.btn-action,
+.btn-primary,
+.btn-scan,
+button.btn-convert,
+.btn-mini {
+    background: linear-gradient(135deg, var(--aura-blue-dark) 0%, var(--aura-blue) 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    border: 1px solid var(--aura-blue-dark) !important;
+    border-radius: 12px !important;
+    padding: 0.85rem 2rem !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.32) !important;
+    transition: all 0.25s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+}
+
+.btn-action:hover,
+.btn-primary:hover,
+.btn-scan:hover,
+button.btn-convert:hover,
+.btn-mini:hover {
+    background: linear-gradient(135deg, var(--aura-blue-hover) 0%, var(--aura-blue-dark) 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.42) !important;
+    color: #ffffff !important;
+}
+
+.btn-secondary {
+    background: var(--aura-surface-subtle) !important;
+    border: 1px solid var(--aura-border-strong) !important;
+    color: var(--aura-black) !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    padding: 0.85rem 1.6rem !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-secondary:hover {
+    background: #e2e8f0 !important;
+    color: var(--aura-black) !important;
+}
+
+/* ==========================================================================
+   RESULT HERO & CALCULATION BOXES (Clean Royal Blue Highlight)
+   ========================================================================== */
+
+.hero-age-box,
+.summary-card,
+.rate-summary-box,
+.formula-box,
+.calc-result-badge {
+    background: var(--aura-blue-light) !important;
+    border: 1.5px solid var(--aura-blue-border) !important;
+    border-radius: 18px !important;
+    color: var(--aura-black) !important;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08) !important;
+}
+
+.hero-age-label,
+.emi-hero-label,
+.zakat-hero-label {
+    color: var(--aura-blue-hover) !important;
+    font-size: 0.82rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+.hero-age-main,
+.emi-hero-val,
+.zakat-hero-val,
+.big-val {
+    color: var(--aura-blue-dark) !important;
+    font-size: 2.3rem !important;
+    font-weight: 900 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em !important;
+}
+
+.hero-age-main span,
+.big-val span {
+    color: var(--aura-blue) !important;
+}
+
+.hero-age-sub,
+.rate-summary-box .sub-rate,
+.formula-box .formula-text {
+    color: var(--aura-text-muted) !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+/* Stat Grid Cards & Mini Metrics */
+.stat-badge-box .val,
+.metric-box .metric-val,
+.pair-rate,
+.calc-result-badge {
+    color: var(--aura-blue-dark) !important;
+    font-weight: 800 !important;
+}
+
+.stat-badge-box .lbl,
+.metric-box .metric-lbl,
+.pair-name {
+    color: var(--aura-text-muted) !important;
+    font-weight: 700 !important;
+    font-size: 0.78rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+}
+
+/* Unit and Category Switcher Buttons */
+.unit-toggle button,
+.tab-btn,
+.cat-chip {
+    background: #ffffff !important;
+    border: 1.5px solid var(--aura-border-strong) !important;
+    color: var(--aura-text-body) !important;
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+    padding: 0.65rem 1.4rem !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.unit-toggle button:hover,
+.tab-btn:hover,
+.cat-chip:hover {
+    border-color: var(--aura-blue) !important;
+    color: var(--aura-blue) !important;
+    background: var(--aura-blue-light) !important;
+}
+
+.unit-toggle button.active,
+.tab-btn.active,
+.cat-chip.active {
+    background: var(--aura-blue) !important;
+    border-color: var(--aura-blue-dark) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+}
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; }
+th {
+    background-color: var(--aura-surface-subtle) !important;
+    color: var(--aura-black) !important;
+    font-weight: 800 !important;
+    border-bottom: 1.5px solid var(--aura-border-strong) !important;
+    padding: 0.85rem 1rem !important;
+}
+td {
+    background-color: #ffffff !important;
+    color: var(--aura-text-body) !important;
+    border-bottom: 1px solid var(--aura-border) !important;
+    padding: 0.85rem 1rem !important;
+}
+tr:hover td {
+    background-color: var(--aura-surface-subtle) !important;
+}
+
+/* Footer — Crisp Deep Charcoal with Pure White Text */
+footer {
+    background: #0f172a !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #94a3b8 !important;
+    margin-top: 3rem !important;
+}
+
+.footer-col h3, .footer-col h4 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+.footer-col p, .footer-links a, .footer-bottom {
+    color: #94a3b8 !important;
+}
+
+.footer-links a:hover {
+    color: #60a5fa !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-pill {
+    background: #ffffff !important;
+    border: 1.5px solid var(--aura-border-strong) !important;
+    color: var(--aura-black) !important;
+    border-radius: 999px !important;
+    padding: 0.42rem 0.95rem !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    cursor: pointer !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+.theme-toggle-pill:hover {
+    background: var(--aura-blue-light) !important;
+    border-color: var(--aura-blue) !important;
+    color: var(--aura-blue) !important;
+    transform: scale(1.04) !important;
+}
+
+/* ==========================================================================
+   OPTIONAL DARK MODE OVERRIDES (Deep Obsidian Black + Crisp White)
+   ========================================================================== */
+html[data-theme="dark"] {
+    --aura-bg: #090d16;
+    --aura-surface: #111827;
+    --aura-surface-subtle: #1f2937;
+    --aura-border: rgba(255, 255, 255, 0.1);
+    --aura-border-strong: rgba(255, 255, 255, 0.18);
+    --aura-black: #ffffff;
+    --aura-text-main: #ffffff;
+    --aura-text-body: #e2e8f0;
     --aura-text-muted: #94a3b8;
-    --aura-input-bg: rgba(15, 23, 42, 0.85);
-    --aura-input-border: rgba(255, 255, 255, 0.15);
-    --aura-nav-bg: rgba(15, 23, 42, 0.85);
-    --aura-glow-primary: rgba(56, 189, 248, 0.2);
+    --aura-blue: #38bdf8;
+    --aura-blue-dark: #60a5fa;
+    --aura-blue-hover: #93c5fd;
+    --aura-blue-light: rgba(56, 189, 248, 0.12);
+    --aura-blue-border: rgba(56, 189, 248, 0.35);
+    --aura-glow-primary: rgba(56, 189, 248, 0.22);
     --aura-glow-secondary: rgba(99, 102, 241, 0.15);
 }
 
-html[data-theme="light"] {
-    --aura-bg: #f8fafc;
-    --aura-bg-subtle: #f1f5f9;
-    --aura-card-bg: rgba(255, 255, 255, 0.95);
-    --aura-card-border: rgba(226, 232, 240, 0.9);
-    --aura-card-solid: #ffffff;
-    --aura-text: #0f172a;
-    --aura-text-muted: #64748b;
-    --aura-input-bg: #ffffff;
-    --aura-input-border: #cbd5e1;
-    --aura-nav-bg: rgba(255, 255, 255, 0.95);
-    --aura-glow-primary: rgba(37, 99, 235, 0.12);
-    --aura-glow-secondary: rgba(124, 58, 237, 0.08);
+html[data-theme="dark"] body {
+    background-color: #090d16 !important;
+    color: #e2e8f0 !important;
 }
 
-/* Light Theme Overrides for Converter Suites & Standalone Pages */
-html[data-theme="light"] body {
-    background-color: var(--aura-bg) !important;
-    color: var(--aura-text) !important;
+html[data-theme="dark"] .navbar {
+    background: rgba(11, 15, 25, 0.94) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-html[data-theme="light"] .navbar {
-    background: var(--aura-nav-bg) !important;
-    border-bottom: 1px solid #e2e8f0 !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+html[data-theme="dark"] .nav-links a {
+    color: #94a3b8 !important;
 }
 
-html[data-theme="light"] .nav-links a {
-    color: #475569 !important;
+html[data-theme="dark"] .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #38bdf8 !important;
 }
 
-html[data-theme="light"] .nav-links a:hover {
-    background: rgba(15, 23, 42, 0.05) !important;
-    color: #2563eb !important;
+html[data-theme="dark"] .tool-card,
+html[data-theme="dark"] .info-card,
+html[data-theme="dark"] .calc-card,
+html[data-theme="dark"] .stat-badge-box,
+html[data-theme="dark"] .highlight-card,
+html[data-theme="dark"] .pair-card,
+html[data-theme="dark"] .trending-card,
+html[data-theme="dark"] .widget-box,
+html[data-theme="dark"] .guide-card,
+html[data-theme="dark"] .testimonial-card,
+html[data-theme="dark"] .directory-category-card,
+html[data-theme="dark"] .stats-banner,
+html[data-theme="dark"] .chip-btn {
+    background: #111827 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #e2e8f0 !important;
 }
 
-html[data-theme="light"] .page-head h1 {
-    color: #0f172a !important;
+html[data-theme="dark"] .activity-row,
+html[data-theme="dark"] .mini-tool-card,
+html[data-theme="dark"] .feature-box,
+html[data-theme="dark"] .dir-link {
+    background: #1a2234 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #e2e8f0 !important;
 }
 
-html[data-theme="light"] .page-head p {
-    color: #475569 !important;
+html[data-theme="dark"] input[type="text"],
+html[data-theme="dark"] input[type="number"],
+html[data-theme="dark"] input[type="date"],
+html[data-theme="dark"] input[type="time"],
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+    background: #1a2234 !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
 }
 
-html[data-theme="light"] .tool-card,
-html[data-theme="light"] .info-card,
-html[data-theme="light"] .faq-box,
-html[data-theme="light"] .detail-card,
-html[data-theme="light"] .unit-box,
-html[data-theme="light"] .breakdown-row {
-    background: var(--aura-card-solid) !important;
-    border-color: var(--aura-card-border) !important;
-    color: var(--aura-text) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+html[data-theme="dark"] .theme-toggle-pill {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    color: #ffffff !important;
 }
 
-html[data-theme="light"] .tool-card label,
-html[data-theme="light"] .input-group label,
-html[data-theme="light"] .form-row label {
-    color: #334155 !important;
-}
+/* ==========================================================================
+   MOTION FX & MICRO-INTERACTIONS
+   ========================================================================== */
 
-html[data-theme="light"] input[type="text"],
-html[data-theme="light"] input[type="number"],
-html[data-theme="light"] input[type="date"],
-html[data-theme="light"] input[type="time"],
-html[data-theme="light"] select,
-html[data-theme="light"] textarea {
-    background: #ffffff !important;
-    border: 1px solid #cbd5e1 !important;
-    color: #0f172a !important;
-}
-
-html[data-theme="light"] input:focus,
-html[data-theme="light"] select:focus,
-html[data-theme="light"] textarea:focus {
-    border-color: #2563eb !important;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
-}
-
-html[data-theme="light"] .metric-box,
-html[data-theme="light"] .fun-fact-card,
-html[data-theme="light"] .unit-card,
-html[data-theme="light"] .summary-item {
-    background: #f1f5f9 !important;
-    border-color: #e2e8f0 !important;
-    color: #0f172a !important;
-}
-
-html[data-theme="light"] .metric-box .metric-val,
-html[data-theme="light"] .unit-card .u-val {
-    color: #2563eb !important;
-}
-
-html[data-theme="light"] .metric-box .metric-lbl,
-html[data-theme="light"] .unit-card .u-name {
-    color: #64748b !important;
-}
-
-html[data-theme="light"] .info-card p,
-html[data-theme="light"] .info-card li,
-html[data-theme="light"] .faq-box p {
-    color: #475569 !important;
-}
-
-html[data-theme="light"] footer {
-    background: #f8fafc !important;
-    border-top: 1px solid #e2e8f0 !important;
-}
-
-html[data-theme="light"] .footer-col h3,
-html[data-theme="light"] .footer-col h4 {
-    color: #0f172a !important;
-}
-
-html[data-theme="light"] .footer-col p,
-html[data-theme="light"] .footer-links a,
-html[data-theme="light"] .footer-bottom {
-    color: #64748b !important;
-}
-
-html[data-theme="light"] .btn-secondary {
-    background: #e2e8f0 !important;
-    border-color: #cbd5e1 !important;
-    color: #334155 !important;
-}
-
-html[data-theme="light"] .btn-secondary:hover {
-    background: #cbd5e1 !important;
-    color: #0f172a !important;
-}
-
-/* Smooth Global Motion & Theme Transitions */
-* {
-    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease, box-shadow 0.25s ease;
-}
-
-/* Luxury Glow Card Effect (Linear / Raycast Style) */
+/* Cursor-Follower Radial Glow */
 .aura-glow-card {
     position: relative;
     overflow: hidden;
@@ -164,8 +617,9 @@ html[data-theme="light"] .btn-secondary:hover {
 }
 
 .aura-glow-card:hover {
-    transform: translateY(-4px) scale(1.008);
-    box-shadow: 0 20px 40px -15px var(--aura-glow-primary), 0 0 30px var(--aura-glow-secondary) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 16px 36px -10px var(--aura-glow-primary) !important;
+    border-color: var(--aura-blue) !important;
 }
 
 .aura-glow-card::before {
@@ -173,9 +627,9 @@ html[data-theme="light"] .btn-secondary:hover {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     border-radius: inherit;
-    background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--aura-glow-primary), transparent 40%);
+    background: radial-gradient(650px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--aura-glow-primary), transparent 45%);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.35s ease;
     pointer-events: none;
     z-index: 1;
 }
@@ -184,97 +638,21 @@ html[data-theme="light"] .btn-secondary:hover {
     opacity: 1;
 }
 
-/* Button Shimmer Ripple Effect */
-.btn-shimmer {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-shimmer::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
-    transform: rotate(30deg) translateX(-100%);
-    transition: transform 0.65s ease;
-    pointer-events: none;
-}
-
-.btn-shimmer:hover::after {
-    transform: rotate(30deg) translateX(100%);
-}
-
-/* Animated Result Hero Appear */
+/* Animated Pop-In */
 .animate-pop-in {
-    animation: auraPopIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: auraPopIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes auraPopIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.94) translateY(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-/* Pulsing Badge Indicator */
-.pulse-badge {
-    animation: auraPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes auraPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.75; transform: scale(0.97); }
+    0% { opacity: 0; transform: scale(0.96) translateY(8px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 /* Canvas Confetti Layer */
 #auraConfettiCanvas {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
     pointer-events: none;
-    z-index: 99999;
-}
-
-/* Navbar Theme Toggle Button */
-.theme-toggle-pill {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--aura-text);
-    border-radius: 999px;
-    padding: 0.4rem 0.85rem;
-    font-size: 0.82rem;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-html[data-theme="light"] .theme-toggle-pill {
-    background: #f1f5f9;
-    border-color: #cbd5e1;
-    color: #334155;
-}
-
-.theme-toggle-pill:hover {
-    background: rgba(56, 189, 248, 0.18);
-    border-color: rgba(56, 189, 248, 0.4);
-    color: #38bdf8;
-    transform: scale(1.05);
-}
-
-html[data-theme="light"] .theme-toggle-pill:hover {
-    background: #e2e8f0;
-    border-color: #94a3b8;
-    color: #2563eb;
+    z-index: 999999;
 }
