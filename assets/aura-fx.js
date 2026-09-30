@@ -154,9 +154,99 @@
         }
     };
 
+    // Global Mobile Navigation Toggle
+    window.toggleMobileMenu = function() {
+        const drawer = document.getElementById('mobileNavDrawer');
+        const hamburger = document.getElementById('navHamburger');
+        if (drawer) {
+            drawer.classList.toggle('open');
+            const isOpen = drawer.classList.contains('open');
+            if (hamburger) {
+                hamburger.classList.toggle('active', isOpen);
+                hamburger.setAttribute('aria-expanded', isOpen);
+            }
+        }
+    };
+
+    // Global Bookmark Handler
+    window.bookmarkSite = function() {
+        if (navigator.userAgent.toLowerCase().indexOf('mac') !== -1) {
+            alert('Press Cmd + D to bookmark AuraToolkit360!');
+        } else {
+            alert('Press Ctrl + D to bookmark AuraToolkit360!');
+        }
+    };
+
+    // Global Language Switcher Toggle
+    window.toggleLangDropdown = function(e) {
+        if (e) e.stopPropagation();
+        const menu = document.getElementById('langDropdownMenu');
+        const btn = document.getElementById('langSwitcherBtn');
+        if (menu) {
+            menu.classList.toggle('show');
+            if (btn) btn.setAttribute('aria-expanded', menu.classList.contains('show'));
+        }
+    };
+
+    document.addEventListener('click', function(e) {
+        const menu = document.getElementById('langDropdownMenu');
+        const btn = document.getElementById('langSwitcherBtn');
+        if (menu && menu.classList.contains('show')) {
+            if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
+                menu.classList.remove('show');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
+
+    // Global Theme Toggle Fallback
+    if (!window.toggleAuraTheme) {
+        window.toggleAuraTheme = function() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try { localStorage.setItem('atk_theme', next); } catch(e) {}
+            document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+                btn.innerHTML = next === 'dark' 
+                    ? '<span class="theme-icon">☀️</span><span class="theme-label">Light</span>' 
+                    : '<span class="theme-icon">🌙</span><span class="theme-label">Dark</span>';
+                btn.setAttribute('aria-label', next === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+                btn.setAttribute('title', next === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+            });
+        };
+    }
+
+    // PWA Install Fallback
+    if (!window.installPwaApp) {
+        window.installPwaApp = function() {
+            alert('To install AuraToolkit360 on your device:\n\n• Chrome/Edge (Desktop): Click the install icon in the URL address bar.\n• Android: Tap the three dots (⋮) and select "Install app" or "Add to Home Screen".\n• iPhone/iPad: Tap the Share button (⎋) and select "Add to Home Screen".');
+        };
+    }
+
+    // Highlight Active Navigation Link Automatically
+    function highlightActiveNav() {
+        const path = window.location.pathname;
+        const normalized = path.replace(/\/$/, '') || '/';
+
+        document.querySelectorAll('.navbar .nav-link, .mobile-nav-item').forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            const linkNorm = href.replace(/\/$/, '') || '/';
+            if (linkNorm === '/' && normalized === '/') {
+                link.classList.add('active');
+            } else if (linkNorm !== '/' && (normalized === linkNorm || normalized.startsWith(linkNorm + '/'))) {
+                link.classList.add('active');
+            } else if (linkNorm === '/' && normalized !== '/') {
+                link.classList.remove('active');
+            }
+        });
+    }
+
     window.AuraFX = AuraFX;
 
     document.addEventListener('DOMContentLoaded', () => {
         AuraFX.initCardGlow();
+        highlightActiveNav();
     });
 })(window);
+

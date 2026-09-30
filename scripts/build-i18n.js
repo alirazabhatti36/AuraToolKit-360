@@ -12,13 +12,13 @@ const EN_KEYWORD_FIRST_SEO = {
         keywords: 'convert pdf to word free, free online file converter, ats resume builder free, resume score checker, bulk resume screener, merge pdf online, AuraToolkit360'
     },
     converter: {
-        title: 'Free Online File Converter Suite (30+ PDF & Office Tools) | AuraToolkit360',
+        title: 'Free Online File Converter Suite (40+ PDF & Office Tools) | AuraToolkit360',
         desc: 'Convert, merge, compress, and edit PDF, Word, Excel, JPG, and video files locally in your browser. Fast, secure, and 100% private.',
         keywords: 'free file converter online, pdf to word converter without email, merge pdf files free, compress pdf, docx to pdf, private file tools'
     },
     resume: {
         title: 'Free ATS Resume Builder & Professional CV Maker | AuraToolkit360',
-        desc: 'Build recruiter-approved, 100% ATS-compliant resumes with 7 modern templates. Instant PDF & Word DOCX download without account creation.',
+        desc: 'Build recruiter-approved, 100% ATS-compliant resumes with 12 modern ATS templates. Instant PDF & Word DOCX download without account creation.',
         keywords: 'free ats resume builder, ats friendly resume maker no sign up, professional cv creator free, download resume docx pdf, private resume builder'
     },
     score_checker: {

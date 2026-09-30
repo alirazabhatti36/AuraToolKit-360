@@ -13,7 +13,7 @@
 <p align="center">
   <a href="https://auratoolkit360.com/"><img src="https://img.shields.io/badge/Website-auratoolkit360.com-38bdf8?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"></a>
   <a href="https://auratoolkit360.com/resume-cv-maker/"><img src="https://img.shields.io/badge/Resume_Maker-12_Templates-10b981?style=for-the-badge" alt="Resume CV Maker"></a>
-  <a href="https://auratoolkit360.com/converter/"><img src="https://img.shields.io/badge/Converter-30+_Tools-8b5cf6?style=for-the-badge" alt="Converter Suite"></a>
+  <a href="https://auratoolkit360.com/converter/"><img src="https://img.shields.io/badge/Converter-40+_Tools-8b5cf6?style=for-the-badge" alt="Converter Suite"></a>
   <img src="https://img.shields.io/badge/Privacy-100%25_In--Browser-blue?style=for-the-badge" alt="Privacy">
 </p>
 
@@ -39,7 +39,7 @@ Your data, photos, resumes, and documents **never leave your device**.
 - In-browser scanner comparing resume files against real job descriptions.
 - Highlights keyword match percentages, missing technical/soft skills, section integrity, and ATS parsing red flags before applying.
 
-### 3. 🔄 [30+ File Converter Suite](https://auratoolkit360.com/converter/)
+### 3. 🔄 [40+ File Converter & Calculator Suite](https://auratoolkit360.com/converter/)
 - **PDF Tools:** [PDF to Word](https://auratoolkit360.com/converter/pdf-to-word/), [Word to PDF](https://auratoolkit360.com/converter/word-to-pdf/), [Merge PDF](https://auratoolkit360.com/converter/merge-pdf/), [Split PDF](https://auratoolkit360.com/converter/split-pdf/), [Compress PDF](https://auratoolkit360.com/converter/compress-pdf/), Excel to PDF, PowerPoint to PDF.
 - **Image Utilities:** [OCR Image to Text](https://auratoolkit360.com/converter/ocr-to-text/), [Passport Photo Maker](https://auratoolkit360.com/converter/passport-photo-maker/), [Resize Signature](https://auratoolkit360.com/converter/resize-signature/), Image Compression, JPG/PNG/WEBP converters.
 
@@ -63,7 +63,7 @@ Your data, photos, resumes, and documents **never leave your device**.
 
 1. **Client-Side Execution:** Code runs directly inside the client's web browser sandbox.
 2. **Zero Uploads:** No document, PDF, photo, or resume data is ever transmitted, logged, or saved to a remote database.
-3. **No Login Required:** Complete access to all 30+ tools without mandatory account registration or email capture.
+3. **No Login Required:** Complete access to all 40+ tools without mandatory account registration or email capture.
 
 ---
 

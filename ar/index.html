@@ -60,7 +60,7 @@
             "price": "0.00",
             "priceCurrency": "USD"
         },
-        "description": "AuraToolkit360 is a free, privacy-first online toolkit featuring 30+ file conversion tools, ATS resume score checker, 7 professional resume builder templates, and bulk HR candidate screening.",
+        "description": "AuraToolkit360 is a free, privacy-first online toolkit featuring 40+ in-browser file converters & math calculators, ATS resume score checker, 12 ATS resume builder templates, cover letter builder, and bulk HR candidate screening.",
         "url": "https://auratoolkit360.com/",
         "author": {
             "@type": "Organization",
@@ -75,16 +75,16 @@
             --bg-card: #ffffff;
             --bg-card-hover: #f1f5f9;
             --border-card: #e2e8f0;
-            --border-highlight: #6366f1;
-            --accent-cyan: #06b6d4;
-            --accent-purple: #4f46e5;
-            --accent-magenta: #8b5cf6;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
-            --accent-orange: #f59e0b;
+            --border-highlight: #2563eb;
+            --accent-cyan: #1d4ed8;
+            --accent-purple: #1e40af;
+            --accent-magenta: #2563eb;
+            --accent-green: #047857;
+            --accent-blue: #2563eb;
+            --accent-orange: #d97706;
             --text-primary: #0f172a;
-            --text-secondary: #334155;
-            --text-muted: #64748b;
+            --text-secondary: #1e293b;
+            --text-muted: #475569;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -794,19 +794,19 @@
 
         .trending-name {
             font-size: 0.88rem;
-            font-weight: 700;
-            color: #ffffff;
+            font-weight: 800;
+            color: #0f172a;
             margin-bottom: 0.85rem;
         }
         .btn-use-tool {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.4rem 1rem;
-            background: rgba(2, 132, 199, 0.2);
-            color: var(--accent-cyan);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            font-size: 0.76rem;
+            padding: 0.45rem 1rem;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+            font-size: 0.78rem;
             font-weight: 700;
             border-radius: 999px;
             text-decoration: none;
@@ -814,10 +814,10 @@
             width: 85%;
         }
         .trending-card:hover .btn-use-tool {
-            background: linear-gradient(135deg, #0284c7, #6366f1);
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
             color: #ffffff;
             border-color: transparent;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
         }
 
         /* ===== SECTION 4: SPLIT WIDGETS (RECENT ACTIVITY + RECENTLY ADDED) ===== */
@@ -845,12 +845,12 @@
             align-items: center;
             margin-bottom: 1.2rem;
             padding-bottom: 0.6rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1.5px solid #e2e8f0;
         }
         .widget-head h4 {
             font-size: 0.95rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #0f172a;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: flex;
@@ -859,11 +859,12 @@
         }
         .widget-head-badge {
             font-size: 0.68rem;
-            color: var(--accent-green);
-            background: rgba(16, 185, 129, 0.12);
+            color: #047857;
+            background: #ecfdf5;
             padding: 0.2rem 0.55rem;
             border-radius: 999px;
             font-weight: 700;
+            border: 1px solid #a7f3d0;
         }
 
         /* Recent Activity List Styling */
@@ -877,22 +878,22 @@
             display: flex;
             align-items: center;
             gap: 0.85rem;
-            background: rgba(11, 15, 25, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 0.65rem 0.85rem;
             transition: all 0.2s;
         }
         .activity-row:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.12);
+            background: #f1f5f9;
+            border-color: #cbd5e1;
         }
         .activity-icon {
             width: 34px;
             height: 34px;
             border-radius: 8px;
-            background: rgba(99, 102, 241, 0.15);
-            color: #818cf8;
+            background: #eff6ff;
+            color: #1d4ed8;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -904,7 +905,7 @@
         .activity-title {
             font-size: 0.84rem;
             font-weight: 700;
-            color: #ffffff;
+            color: #0f172a;
         }
         .activity-time {
             font-size: 0.72rem;
@@ -912,12 +913,13 @@
         }
         .activity-action-btn {
             font-size: 0.74rem;
-            color: var(--accent-cyan);
+            color: #1d4ed8;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             padding: 0.25rem 0.65rem;
             border-radius: 6px;
-            background: rgba(56, 189, 248, 0.1);
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
         }
         .activity-empty-state {
             text-align: center;
@@ -936,8 +938,8 @@
             .recently-added-grid { grid-template-columns: 1fr; }
         }
         .mini-tool-card {
-            background: rgba(11, 15, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 1rem 0.8rem;
             text-align: center;
@@ -948,7 +950,8 @@
             transition: all 0.2s;
         }
         .mini-tool-card:hover {
-            border-color: rgba(168, 85, 247, 0.4);
+            border-color: #93c5fd;
+            background: #eff6ff;
             transform: translateY(-2px);
         }
         .mini-icon {
@@ -958,14 +961,15 @@
         .mini-title {
             font-size: 0.82rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #0f172a;
             margin-bottom: 0.3rem;
         }
         .mini-desc {
             font-size: 0.72rem;
-            color: var(--text-secondary);
+            color: #475569;
             line-height: 1.35;
             margin-bottom: 0.8rem;
+            font-weight: 500;
         }
 
         /* ===== SECTION 5: FEATURE SPOTLIGHT (ATS CHECKER) ===== */
@@ -1106,16 +1110,16 @@
         }
         .guide-tag {
             font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
+            font-weight: 800;
+            color: #1d4ed8;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0.4rem;
         }
         .guide-card h4 {
             font-size: 1.08rem;
-            font-weight: 700;
-            color: #ffffff;
+            font-weight: 800;
+            color: #0f172a;
             margin-bottom: 0.8rem;
         }
         .guide-checklist {
@@ -1135,7 +1139,7 @@
         .btn-guide-link {
             font-size: 0.82rem;
             font-weight: 700;
-            color: var(--accent-cyan);
+            color: #1d4ed8;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -1171,26 +1175,27 @@
             position: relative;
         }
         .testimonial-card:hover {
-            border-color: rgba(99, 102, 241, 0.3);
+            border-color: rgba(37, 99, 235, 0.3);
             transform: translateY(-3px);
         }
         .quote-icon {
             font-size: 1.6rem;
-            color: rgba(99, 102, 241, 0.4);
+            color: rgba(37, 99, 235, 0.3);
             line-height: 1;
             margin-bottom: 0.5rem;
         }
         .testimonial-stars {
-            color: #fbbf24;
+            color: #f59e0b;
             font-size: 0.85rem;
             margin-bottom: 0.6rem;
         }
         .testimonial-text {
-            font-size: 0.84rem;
-            color: #cbd5e1;
+            font-size: 0.88rem;
+            color: #1e293b;
             line-height: 1.5;
             margin-bottom: 1.2rem;
             font-style: italic;
+            font-weight: 500;
         }
         .testimonial-user {
             display: flex;
@@ -1210,15 +1215,15 @@
             font-size: 0.8rem;
             color: #ffffff;
         }
-        .avatar-blue { background: linear-gradient(135deg, #0284c7, #3b82f6); }
-        .avatar-purple { background: linear-gradient(135deg, #7c3aed, #c084fc); }
+        .avatar-blue { background: linear-gradient(135deg, #1d4ed8, #2563eb); }
+        .avatar-purple { background: linear-gradient(135deg, #4f46e5, #7c3aed); }
         .avatar-green { background: linear-gradient(135deg, #059669, #10b981); }
         .avatar-orange { background: linear-gradient(135deg, #d97706, #fbbf24); }
 
         .user-meta-name {
             font-size: 0.82rem;
-            font-weight: 700;
-            color: #ffffff;
+            font-weight: 800;
+            color: #0f172a;
         }
         .user-meta-role {
             font-size: 0.72rem;
@@ -1239,12 +1244,12 @@
         .directory-cat-title {
             font-size: 1.15rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #0f172a;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1.5px solid #e2e8f0;
             padding-bottom: 0.6rem;
         }
         .directory-links-grid {
@@ -1253,12 +1258,12 @@
             gap: 0.8rem;
         }
         .dir-link {
-            background: rgba(11, 15, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
             border-radius: 10px;
             padding: 0.65rem 0.9rem;
             text-decoration: none;
-            color: #e2e8f0;
+            color: #0f172a;
             font-size: 0.84rem;
             font-weight: 600;
             display: flex;
@@ -1267,9 +1272,9 @@
             transition: all 0.2s;
         }
         .dir-link:hover {
-            background: rgba(56, 189, 248, 0.1);
-            border-color: rgba(56, 189, 248, 0.3);
-            color: var(--accent-cyan);
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #1d4ed8;
             transform: translateX(2px);
         }
 
@@ -1447,6 +1452,8 @@
     <script defer src="/assets/lang-switcher.js"></script>
     <script defer src="/assets/theme-toggle.js"></script>
     <link rel="stylesheet" href="/assets/saas-ui.css">
+    <link rel="stylesheet" href="/assets/aura-fx.css">
+    <script defer src="/assets/aura-fx.js"></script>
 <style>
     [dir="rtl"] { direction: rtl; text-align: right; }
     [dir="rtl"] .nav-center { flex-direction: row-reverse; }
@@ -1560,7 +1567,7 @@
                     <div class="slide-content">
                         <span class="slide-tag tag-resume">AI-Powered Templates</span>
                         <h2>RESUME BUILDER</h2>
-                        <p>Build ATS-optimized resumes in minutes. Pass automated recruiter screening with 7 proven layout designs and instant PDF export.</p>
+                        <p>Build ATS-optimized resumes in minutes. Pass automated recruiter screening with 12 proven layout designs and instant PDF &amp; Word DOCX export.</p>
                         <a href="/resume-cv-maker/" class="slide-btn">Start Creating &gt;</a>
                     </div>
                     <div class="slide-visual-preview">
@@ -1635,8 +1642,8 @@
                 <div>
                     <div class="pillar-icon-box icon-box-blue">⇄</div>
                     <h4>File Converter</h4>
-                    <div class="pillar-sub">30+ Formats</div>
-                    <p>Convert PDF, Word, Excel, Images &amp; Audio files directly in your web browser.</p>
+                    <div class="pillar-sub">40+ In-Browser Tools</div>
+                    <p>Convert PDF, Word, Excel, Images, Video &amp; Audio files plus everyday calculators directly in your web browser.</p>
                 </div>
                 <a href="/converter/" class="btn-pillar-pill">Explore Converter &gt;</a>
             </div>
@@ -1708,12 +1715,63 @@
             <div class="search-results-box" id="searchResultsBox"></div>
 
             <div class="quick-chips-row">
+                <button class="chip-btn" onclick="quickFilter('Age')">🎂 Age Calculator</button>
+                <button class="chip-btn" onclick="quickFilter('Time')">⏱️ Time Converter</button>
+                <button class="chip-btn" onclick="quickFilter('Currency')">💵 Currency Rates</button>
+                <button class="chip-btn" onclick="quickFilter('Unit')">📐 Unit Converter</button>
+                <button class="chip-btn" onclick="quickFilter('Percentage')">🔢 Percentage</button>
                 <button class="chip-btn" onclick="quickFilter('PDF to Word')">📕 PDF to Word</button>
                 <button class="chip-btn" onclick="quickFilter('Merge PDF')">➕ Merge PDF</button>
-                <button class="chip-btn" onclick="quickFilter('Compress PDF')">🗜️ Compress PDF</button>
-                <button class="chip-btn" onclick="quickFilter('JPG to PNG')">🖼️ JPG to PNG</button>
                 <button class="chip-btn" onclick="quickFilter('Resume')">📄 Resume Builder</button>
-                <button class="chip-btn" onclick="quickFilter('ATS')">🎯 ATS Checker</button>
+            </div>
+        </div>
+
+        <!-- ===== NEW SECTION: DAILY LIFE CONVERTERS & CALCULATORS ===== -->
+        <div class="section-headline-wrap" style="display:flex; justify-content:space-between; align-items:center; margin-top:2.5rem;">
+            <h3>⚡ Daily Life Converters &amp; Calculators <span style="font-size:0.72rem; background:linear-gradient(135deg, #2563eb, #7c3aed); color:white; padding:0.2rem 0.6rem; border-radius:999px; margin-left:0.4rem; vertical-align:middle; font-weight:700;">NEW</span></h3>
+            <a href="/converter/#datetime" style="font-size:0.82rem; color:var(--accent-cyan); text-decoration:none; font-weight:700;">View All 45+ Tools &gt;</a>
+        </div>
+
+        <div class="trending-grid" style="margin-bottom: 2.5rem;">
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(236,72,153,0.15); color:#f472b6;">🎂</div>
+                <div class="trending-name">Age Calculator</div>
+                <a href="/converter/age-calculator/" class="btn-use-tool">Calculate Age &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(56,189,248,0.15); color:#38bdf8;">⏱️</div>
+                <div class="trending-name">Time Converter</div>
+                <a href="/converter/time-converter/" class="btn-use-tool">Convert Time &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(52,211,153,0.15); color:#34d399;">💵</div>
+                <div class="trending-name">Currency Rates</div>
+                <a href="/converter/currency-converter/" class="btn-use-tool">Live Forex &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(168,85,247,0.15); color:#c084fc;">📐</div>
+                <div class="trending-name">Unit Converter</div>
+                <a href="/converter/unit-converter/" class="btn-use-tool">Convert Units &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(245,158,11,0.15); color:#fbbf24;">🔢</div>
+                <div class="trending-name">Percentage Tool</div>
+                <a href="/converter/percentage-calculator/" class="btn-use-tool">Calculate &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(239,68,68,0.15); color:#f87171;">❤️</div>
+                <div class="trending-name">BMI Calculator</div>
+                <a href="/converter/bmi-calculator/" class="btn-use-tool">Check BMI &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(99,102,241,0.15); color:#818cf8;">🏦</div>
+                <div class="trending-name">Loan / Car EMI</div>
+                <a href="/converter/emi-calculator/" class="btn-use-tool">Calculate EMI &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(16,185,129,0.15); color:#10b981;">🌙</div>
+                <div class="trending-name">Zakat (2.5%)</div>
+                <a href="/converter/zakat-calculator/" class="btn-use-tool">Calculate Zakat &gt;</a>
             </div>
         </div>
 
@@ -1816,24 +1874,24 @@
                 <div class="recently-added-grid">
                     <!-- Card 1 -->
                     <div class="mini-tool-card">
-                        <div class="mini-icon">📑</div>
-                        <div class="mini-title">JSON to CSV</div>
-                        <div class="mini-desc">Convert and parse structured JSON data into clean CSV sheets.</div>
-                        <a href="/converter/#office" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                        <div class="mini-icon">🎂</div>
+                        <div class="mini-title">Age Calculator</div>
+                        <div class="mini-desc">Calculate exact age, next birthday countdown, and life milestones.</div>
+                        <a href="/converter/age-calculator/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                     <!-- Card 2 -->
                     <div class="mini-tool-card">
-                        <div class="mini-icon">📏</div>
-                        <div class="mini-title">Image Resizer</div>
-                        <div class="mini-desc">Resize photos by custom pixel, cm, or inch specs with zero quality loss.</div>
-                        <a href="/converter/resize-image/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                        <div class="mini-icon">⏱️</div>
+                        <div class="mini-title">Time Converter</div>
+                        <div class="mini-desc">Minutes to seconds, days to weeks, and business days between dates.</div>
+                        <a href="/converter/time-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                     <!-- Card 3 -->
                     <div class="mini-tool-card">
-                        <div class="mini-icon">&lt;/&gt;</div>
-                        <div class="mini-title">Code Minifier</div>
-                        <div class="mini-desc">Minify and compress HTML, CSS &amp; JavaScript code locally.</div>
-                        <a href="/converter/case-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                        <div class="mini-icon">💵</div>
+                        <div class="mini-title">Live Currency Rates</div>
+                        <div class="mini-desc">Real-time forex exchange rates for 150+ currencies including USD/PKR.</div>
+                        <a href="/converter/currency-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                 </div>
             </div>
@@ -2013,7 +2071,8 @@
                     <a href="/converter/compress-pdf/" class="dir-link">🗜️ Compress PDF</a>
                     <a href="/converter/excel-to-pdf/" class="dir-link">📗→📕 Excel to PDF</a>
                     <a href="/converter/ppt-to-pdf/" class="dir-link">📊→📕 PPT to PDF</a>
-                    <a href="/converter/#office" class="dir-link">🔄 Rotate &amp; Lock PDF</a>
+                    <a href="/converter/pdf-to-jpg/" class="dir-link">🖼️ PDF to JPG Image</a>
+                    <a href="/converter/png-to-pdf/" class="dir-link">📄 PNG to PDF</a>
                 </div>
             </div>
 
@@ -2025,10 +2084,22 @@
                     <a href="/converter/ocr-to-text/" class="dir-link">📄 OCR Image to Text</a>
                     <a href="/converter/passport-photo-maker/" class="dir-link">🛂 Passport Photo Maker</a>
                     <a href="/converter/resize-signature/" class="dir-link">✍️ Resize Signature Tool</a>
+                    <a href="/converter/merge-photo-signature/" class="dir-link">🔗 Merge Photo &amp; Sign</a>
                     <a href="/converter/resize-image/" class="dir-link">📏 Resize Image (Pixels/CM)</a>
                     <a href="/converter/compress-image/" class="dir-link">🗜️ Compress Image Size</a>
+                    <a href="/converter/compress-image-target/" class="dir-link">🎯 Target KB Compressor</a>
                     <a href="/converter/crop-rotate-image/" class="dir-link">✂️ Crop &amp; Rotate Image</a>
+                    <a href="/converter/watermark-image/" class="dir-link">💧 Image Watermark Tool</a>
                     <a href="/converter/favicon-generator/" class="dir-link">🌟 Favicon Generator</a>
+                </div>
+            </div>
+
+            <!-- Category: Media & Audio -->
+            <div class="directory-category-card">
+                <div class="directory-cat-title">🎬 Video &amp; Audio Converters</div>
+                <div class="directory-links-grid">
+                    <a href="/converter/compress-video/" class="dir-link">🎬 Compress Video Online</a>
+                    <a href="/converter/mp3-converter/" class="dir-link">🎵 Audio &amp; Video to MP3</a>
                 </div>
             </div>
 
@@ -2037,12 +2108,29 @@
                 <div class="directory-cat-title">💼 Career, Resume &amp; Recruiter Automation</div>
                 <div class="directory-links-grid">
                     <a href="/resume-cv-maker/" class="dir-link">📝 Resume Builder (12 ATS Templates)</a>
+                    <a href="/cover-letter-maker/" class="dir-link">✉️ ATS Cover Letter Builder</a>
                     <a href="/resume-score-checker/" class="dir-link">🎯 ATS Resume Score Checker</a>
                     <a href="/hr-helper/" class="dir-link">👥 HR Bulk Candidate Screener</a>
+                    <a href="/paraphrasing-tool/" class="dir-link">✨ Paraphrasing &amp; Rewrite</a>
                     <a href="/converter/word-counter/" class="dir-link">📊 Word &amp; Character Counter</a>
                     <a href="/converter/case-converter/" class="dir-link">🔤 Text Case Converter</a>
                     <a href="/converter/password-generator/" class="dir-link">🔑 Secure Password Tool</a>
-                    <a href="/paraphrasing-tool/" class="dir-link">✨ Paraphrasing &amp; Rewrite</a>
+                    <a href="/saas/" class="dir-link">⚡ AuraHR 360 Enterprise SaaS</a>
+                </div>
+            </div>
+
+            <!-- Category: Calculators & Converters -->
+            <div class="directory-category-card">
+                <div class="directory-cat-title">⏱️ Time, Currency &amp; Math Converters</div>
+                <div class="directory-links-grid">
+                    <a href="/converter/age-calculator/" class="dir-link">🎂 Exact Age Calculator</a>
+                    <a href="/converter/time-converter/" class="dir-link">⏱️ Time Units &amp; Duration</a>
+                    <a href="/converter/currency-converter/" class="dir-link">💵 Live Forex Currency</a>
+                    <a href="/converter/unit-converter/" class="dir-link">📐 Universal Unit Converter</a>
+                    <a href="/converter/percentage-calculator/" class="dir-link">🔢 5-in-1 Percentage Tool</a>
+                    <a href="/converter/bmi-calculator/" class="dir-link">❤️ BMI Health Calculator</a>
+                    <a href="/converter/emi-calculator/" class="dir-link">🏦 Loan &amp; Car EMI</a>
+                    <a href="/converter/zakat-calculator/" class="dir-link">🌙 2.5% Zakat Calculator</a>
                 </div>
             </div>
         </div>
@@ -2077,7 +2165,7 @@
                     Private, lightning-fast digital toolkit for HR leaders, job seekers, and digital creators. Built for confidential, in-browser execution with zero tracking.
                 </p>
                 <div class="footer-status-pill">
-                    <span class="status-green-dot">●</span> All 30+ Tools Operational
+                    <span class="status-green-dot">●</span> All 40+ Tools Operational
                 </div>
             </div>
 
@@ -2109,9 +2197,9 @@
             <div class="footer-col">
                 <h5 class="footer-col-title">DATA &amp; MEDIA</h5>
                 <ul class="footer-links-list">
-                    <li><a href="/converter/#data-tools">JSON to CSV</a></li>
+                    <li><a href="/converter/compress-video/">Video Compressor</a></li>
+                    <li><a href="/converter/mp3-converter/">Audio to MP3</a></li>
                     <li><a href="/converter/resize-image/">Image Resizer</a></li>
-                    <li><a href="/converter/#code-tools">Code Minifier</a></li>
                     <li><a href="/converter/ocr-to-text/">OCR Text Extractor</a></li>
                     <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
                 </ul>
@@ -2126,6 +2214,7 @@
                 <a href="/about/#privacy">Privacy Architecture</a>
                 <a href="/terms/">Terms</a>
                 <a href="/privacy-policy/#gdpr">GDPR Compliance</a>
+                <a href="/disclaimer/">Disclaimer</a>
                 <a href="https://auratoolkit360.com/" class="footer-domain-link">auratoolkit360.com <span class="arrow-up-right">↗</span></a>
             </div>
         </div>
@@ -2187,22 +2276,56 @@
 
         // --- 2. SEARCH DATABASE & FILTER ENGINE ---
         const toolsDatabase = [
-            { name: "PDF to Word", icon: "📕", url: "/converter/pdf-to-word/", category: "Office", keywords: ["pdf to word", "convert", "docx"] },
-            { name: "Word to PDF", icon: "📝", url: "/converter/word-to-pdf/", category: "Office", keywords: ["word to pdf", "docx to pdf"] },
-            { name: "Merge PDF", icon: "➕", url: "/converter/merge-pdf/", category: "PDF", keywords: ["merge pdf", "combine", "join"] },
-            { name: "Split PDF", icon: "✂️", url: "/converter/split-pdf/", category: "PDF", keywords: ["split pdf", "extract pages"] },
-            { name: "Compress PDF", icon: "🗜️", url: "/converter/compress-pdf/", category: "PDF", keywords: ["compress pdf", "reduce size"] },
-            { name: "JPG to PDF", icon: "🖼️", url: "/converter/jpg-to-pdf/", category: "Image", keywords: ["jpg to pdf", "image to pdf"] },
-            { name: "OCR Image to Text", icon: "📄", url: "/converter/ocr-to-text/", category: "Image", keywords: ["ocr", "scan", "extract text"] },
-            { name: "Resume CV Maker", icon: "📝", url: "/resume-cv-maker/", category: "Career", keywords: ["resume", "cv builder", "maker", "templates"] },
-            { name: "ATS Resume Score Checker", icon: "🎯", url: "/resume-score-checker/", category: "Career", keywords: ["ats", "score checker", "cv test"] },
-            { name: "HR Bulk Candidate Screener", icon: "👥", url: "/hr-helper/", category: "HR", keywords: ["hr helper", "bulk screening", "recruiting"] },
-            { name: "Resize Image (Pixels/CM)", icon: "📏", url: "/converter/resize-image/", category: "Image", keywords: ["resize image", "dimensions", "dpi"] },
-            { name: "Compress Image", icon: "🗜️", url: "/converter/compress-image/", category: "Image", keywords: ["compress image", "reduce kb"] },
-            { name: "Passport Photo Maker", icon: "🛂", url: "/converter/passport-photo-maker/", category: "Photo", keywords: ["passport photo", "visa"] },
-            { name: "Resize Signature Tool", icon: "✍️", url: "/converter/resize-signature/", category: "Photo", keywords: ["signature", "resize signature"] },
-            { name: "Word & Character Counter", icon: "📊", url: "/converter/word-counter/", category: "Writing", keywords: ["word counter", "character count"] },
-            { name: "Secure Password Generator", icon: "🔑", url: "/converter/password-generator/", category: "Utilities", keywords: ["password generator", "security"] }
+            // Core Career & HR Tools
+            { name: "ATS Resume Builder (12 Templates)", icon: "📝", url: "/resume-cv-maker/", category: "Career", keywords: ["resume", "cv builder", "maker", "templates", "ats cv", "curriculum vitae", "docx resume", "pdf resume", "europass", "student resume"] },
+            { name: "ATS Cover Letter Builder", icon: "✉️", url: "/cover-letter-maker/", category: "Career", keywords: ["cover letter", "cover letter builder", "job application", "ats letter", "star format", "recruiter letter"] },
+            { name: "ATS Resume Score Checker", icon: "🎯", url: "/resume-score-checker/", category: "Career", keywords: ["ats", "score checker", "cv test", "resume match", "job description matcher", "keyword scanner"] },
+            { name: "HR Bulk Candidate Screener", icon: "👥", url: "/hr-helper/", category: "HR", keywords: ["hr helper", "bulk screening", "recruiting", "batch parse", "shortlist", "candidate filter"] },
+            { name: "Paraphrasing Tool & Text Rewriter", icon: "✨", url: "/paraphrasing-tool/", category: "Writing", keywords: ["paraphrase", "paraphrasing tool", "rewrite", "rewriter", "sentence rewrite", "essay rewriter", "article spinner", "grammar"] },
+            { name: "AuraHR 360 Enterprise SaaS", icon: "⚡", url: "/saas/", category: "HR & Enterprise", keywords: ["saas", "aurahr", "hrm", "attendance", "hikvision biometric", "payroll", "hrms", "employee management"] },
+
+            // Calculators & Converters
+            { name: "Exact Age Calculator", icon: "🎂", url: "/converter/age-calculator/", category: "Time & Date", keywords: ["age", "age calculator", "birthday", "dob", "date of birth", "calculate age", "how old am i", "next birthday", "zodiac"] },
+            { name: "Time & Duration Converter", icon: "⏱️", url: "/converter/time-converter/", category: "Time & Date", keywords: ["time", "time converter", "minutes to seconds", "seconds to minutes", "hours to minutes", "days to weeks", "duration", "days between dates", "business days"] },
+            { name: "Live Currency Converter", icon: "💵", url: "/converter/currency-converter/", category: "Currency", keywords: ["currency", "currency converter", "exchange rates", "usd to pkr", "forex", "money", "dollar rate", "aed to pkr", "sar to pkr", "eur to usd", "inr to usd"] },
+            { name: "Universal Unit Converter", icon: "📐", url: "/converter/unit-converter/", category: "Units", keywords: ["unit", "unit converter", "length", "weight", "area", "marla", "kanal", "sq ft", "temperature", "celsius to fahrenheit", "kg to lbs", "speed", "data storage"] },
+            { name: "5-in-1 Percentage Calculator", icon: "🔢", url: "/converter/percentage-calculator/", category: "Math", keywords: ["percentage", "percent", "percentage calculator", "marks percentage", "discount calculator", "gst tax", "sales tax", "exam marks"] },
+            { name: "BMI & Ideal Weight Calculator", icon: "❤️", url: "/converter/bmi-calculator/", category: "Health", keywords: ["bmi", "bmi calculator", "body mass index", "weight", "ideal weight", "healthy weight", "diet"] },
+            { name: "Loan & Car EMI Calculator", icon: "🏦", url: "/converter/emi-calculator/", category: "Finance", keywords: ["emi", "emi calculator", "loan calculator", "car loan", "home loan", "interest calculator", "installment", "monthly emi"] },
+            { name: "2.5% Zakat Calculator", icon: "🌙", url: "/converter/zakat-calculator/", category: "Finance", keywords: ["zakat", "zakat calculator", "calculate zakat", "gold zakat", "silver zakat", "nisab", "2.5%", "zakat on cash"] },
+
+            // PDF Tools
+            { name: "PDF to Word", icon: "📕", url: "/converter/pdf-to-word/", category: "Office", keywords: ["pdf to word", "convert", "docx", "edit pdf"] },
+            { name: "Word to PDF", icon: "📝", url: "/converter/word-to-pdf/", category: "Office", keywords: ["word to pdf", "docx to pdf", "doc to pdf"] },
+            { name: "Merge PDF", icon: "➕", url: "/converter/merge-pdf/", category: "PDF", keywords: ["merge pdf", "combine", "join", "combine pdfs"] },
+            { name: "Split PDF", icon: "✂️", url: "/converter/split-pdf/", category: "PDF", keywords: ["split pdf", "extract pages", "separate pdf"] },
+            { name: "Compress PDF", icon: "🗜️", url: "/converter/compress-pdf/", category: "PDF", keywords: ["compress pdf", "reduce size", "reduce pdf kb", "100kb pdf", "200kb pdf"] },
+            { name: "Excel to PDF", icon: "📗", url: "/converter/excel-to-pdf/", category: "Office", keywords: ["excel to pdf", "xlsx to pdf", "xls to pdf", "spreadsheet to pdf"] },
+            { name: "PPT to PDF", icon: "📊", url: "/converter/ppt-to-pdf/", category: "Office", keywords: ["ppt to pdf", "pptx to pdf", "powerpoint to pdf", "slides to pdf"] },
+            { name: "PDF to JPG", icon: "🖼️", url: "/converter/pdf-to-jpg/", category: "PDF", keywords: ["pdf to jpg", "pdf to image", "pdf to png", "extract images from pdf"] },
+            { name: "JPG to PDF", icon: "🖼️", url: "/converter/jpg-to-pdf/", category: "Image", keywords: ["jpg to pdf", "image to pdf", "jpeg to pdf"] },
+            { name: "PNG to PDF", icon: "📄", url: "/converter/png-to-pdf/", category: "Image", keywords: ["png to pdf", "transparent png to pdf", "convert png"] },
+
+            // Image & Photo Utilities
+            { name: "OCR Image to Text", icon: "📄", url: "/converter/ocr-to-text/", category: "Image", keywords: ["ocr", "scan", "extract text", "photo to text", "image ocr"] },
+            { name: "Compress Image", icon: "🗜️", url: "/converter/compress-image/", category: "Image", keywords: ["compress image", "reduce kb", "shrink photo", "jpg compress", "png compress"] },
+            { name: "Compress Image to Target KB", icon: "🎯", url: "/converter/compress-image-target/", category: "Image", keywords: ["target kb", "20kb", "50kb", "100kb", "compress photo to 20kb", "compress image target kb"] },
+            { name: "Resize Image (Pixels/CM)", icon: "📏", url: "/converter/resize-image/", category: "Image", keywords: ["resize image", "dimensions", "dpi", "pixels", "centimeters", "inches"] },
+            { name: "Crop & Rotate Image", icon: "✂️", url: "/converter/crop-rotate-image/", category: "Image", keywords: ["crop image", "rotate image", "flip photo", "square crop", "circle crop"] },
+            { name: "Image Watermark Tool", icon: "💧", url: "/converter/watermark-image/", category: "Image", keywords: ["watermark", "add watermark", "logo on photo", "text watermark", "protect photo"] },
+            { name: "Favicon & ICO Generator", icon: "🌟", url: "/converter/favicon-generator/", category: "Image", keywords: ["favicon", "ico generator", "16x16", "32x32", "website icon", "app icon"] },
+            { name: "Passport Photo Maker", icon: "🛂", url: "/converter/passport-photo-maker/", category: "Photo", keywords: ["passport photo", "visa", "2x2", "35x45mm", "white background", "biometric photo"] },
+            { name: "Resize Signature Tool", icon: "✍️", url: "/converter/resize-signature/", category: "Photo", keywords: ["signature", "resize signature", "signature 20kb", "signature 10kb", "exam signature"] },
+            { name: "Merge Photo & Signature", icon: "🔗", url: "/converter/merge-photo-signature/", category: "Photo", keywords: ["merge photo signature", "combine photo and sign", "exam admit card", "job portal photo sign"] },
+
+            // Video & Audio Converters
+            { name: "Compress Video Online", icon: "🎬", url: "/converter/compress-video/", category: "Media", keywords: ["compress video", "shrink video", "reduce mp4 size", "video size reducer", "video compressor"] },
+            { name: "Audio & Video to MP3 Converter", icon: "🎵", url: "/converter/mp3-converter/", category: "Media", keywords: ["mp3 converter", "video to mp3", "audio converter", "wav to mp3", "extract mp3", "music converter"] },
+
+            // Text & Security Utilities
+            { name: "Word & Character Counter", icon: "📊", url: "/converter/word-counter/", category: "Writing", keywords: ["word counter", "character count", "reading time", "sentence count"] },
+            { name: "Text Case Converter", icon: "🔤", url: "/converter/case-converter/", category: "Writing", keywords: ["case converter", "uppercase", "lowercase", "title case", "sentence case", "capitalize"] },
+            { name: "Secure Password Generator", icon: "🔑", url: "/converter/password-generator/", category: "Utilities", keywords: ["password generator", "security", "strong password", "random password"] }
         ];
 
         const searchInput = document.getElementById('searchInput');

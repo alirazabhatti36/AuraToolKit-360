@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /templates/
+Disallow: /scratch/
+Disallow: /aura_hrm_saas/
 
 Sitemap: https://auratoolkit360.com/sitemap.xml
 # LLM Context: https://auratoolkit360.com/llms.txt

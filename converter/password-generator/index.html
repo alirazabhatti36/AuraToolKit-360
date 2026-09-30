@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Secure Password Generator Online | Free & 100% Private - AuraToolkit360</title>
     <meta name="description" content="Generate strong, uncrackable random passwords with custom length, numbers, and symbols 100% locally in browser memory.">
-    <meta name="keywords" content="secure password generator, word counter, case converter, password generator, compress video, image watermark, free online tools">
+    <meta name="keywords" content="secure password generator, strong password generator, random password creator, password maker online, generate uncrackable password, client side password generator">
     <meta name="author" content="AuraToolkit360">
     <meta name="theme-color" content="#0f172a">
     <meta name="robots" content="index,follow,max-image-preview:large">
@@ -86,20 +86,100 @@
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
     <script defer src="/tracking-consent.js" data-adsense-client="ca-pub-1373118680696037" data-ga-measurement-id="G-06PT7VHV1Q"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1373118680696037" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/aura-fx.css">
+    <script defer src="/assets/aura-fx.js"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Secure Password Generator Online - AuraToolkit360",
+        "url": "https://auratoolkit360.com/converter/password-generator/",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All",
+        "offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" },
+        "description": "Generate strong, uncrackable random passwords with custom length, numbers, and symbols 100% locally in browser memory.",
+        "author": { "@type": "Organization", "name": "AuraToolkit360" }
+    }
+    </script>
 </head>
 <body>
 
-    <nav class="navbar">
+        <!-- ===== TOP NAVIGATION ===== -->
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
-            <a href="/" class="logo"><span class="logo-icon">⚡</span> AuraToolkit360</a>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/converter/" class="active">Converter</a>
-                <a href="/resume-cv-maker/">Resume Tools</a>
-                <a href="/resume-score-checker/">Score Checker</a>
-                <a href="/paraphrasing-tool/">Paraphraser</a>
-                <a href="/hr-helper/">HR Helper</a>
-                <a href="/blogs/">Blogs</a>
+            <a href="/" class="logo" aria-label="AuraToolkit360 Home">
+                <div class="logo-symbol">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="22" height="22" role="img" aria-hidden="true">
+                        <circle cx="32" cy="32" r="20" fill="rgba(255,255,255,0.22)"/>
+                        <path d="M22 42L32 20l10 22h-5l-2.1-5h-5.8L27 42h-5zm9.9-8h4.2L34 25.7 31.9 34z" fill="#fff"/>
+                    </svg>
+                </div>
+                <div class="logo-text">AuraToolkit<span>360</span></div>
+            </a>
+            
+            <div class="nav-center">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/converter/" class="nav-link">Converter</a>
+                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/cover-letter-maker/" class="nav-link">Cover Letter</a>
+                <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
+                <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="nav-link">Blogs</a>
+                <a href="/about/" class="nav-link">About</a>
+            </div>
+
+            <div class="nav-right-actions">
+                <a href="/saas/" class="btn-aura-saas" title="Launch AuraHR 360 Enterprise SaaS Portal"><span>⚡</span> AuraHR 360</a>
+                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="Bookmark AuraToolkit360 (Ctrl+D)" aria-label="Bookmark site"><span class="bm-star">★</span><span class="bm-text"> Bookmark</span></button>
+                <button type="button" class="theme-toggle-btn" onclick="toggleAuraTheme()" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode"><span class="theme-icon">🌙</span><span class="theme-label">Dark</span></button>
+                <div class="lang-switcher" id="langSwitcherContainer">
+                    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+                        <span class="lang-globe">🌐</span>
+                        <span class="lang-current-flag">🇺🇸</span>
+                        <span class="lang-current-label">EN</span>
+                        <span class="lang-arrow">▾</span>
+                    </button>
+                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+                        <a href="/" class="lang-option active" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
+                        <a href="/es/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
+                        <a href="/fr/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
+                        <a href="/de/" class="lang-option " data-lang="de" role="menuitem"><span class="flag">🇩🇪</span> Deutsch</a>
+                        <a href="/pt/" class="lang-option " data-lang="pt" role="menuitem"><span class="flag">🇧🇷</span> Português</a>
+                        <a href="/ar/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
+                    </div>
+                </div>
+                <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <div class="mobile-nav-links">
+                <a href="/saas/" class="mobile-nav-item" style="color:#1d4ed8; font-weight:700; background:rgba(37,99,235,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
+                <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
+                <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
+                <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
+                <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
+                <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
+                <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
+                <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
+                <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
+                <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+                <div class="mobile-lang-container">
+                    <div class="mobile-lang-title">🌐 Language / Idioma / Sprache</div>
+                    <div class="mobile-lang-grid">
+                        <a href="/" class="mobile-lang-item active" data-lang="en"><span class="flag">🇺🇸</span> EN</a>
+                        <a href="/es/" class="mobile-lang-item " data-lang="es"><span class="flag">🇪🇸</span> ES</a>
+                        <a href="/fr/" class="mobile-lang-item " data-lang="fr"><span class="flag">🇫🇷</span> FR</a>
+                        <a href="/de/" class="mobile-lang-item " data-lang="de"><span class="flag">🇩🇪</span> DE</a>
+                        <a href="/pt/" class="mobile-lang-item " data-lang="pt"><span class="flag">🇧🇷</span> PT</a>
+                        <a href="/ar/" class="mobile-lang-item " data-lang="ar"><span class="flag">🇸🇦</span> AR</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -184,24 +264,83 @@
             </div>
         </div></main>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>AuraToolkit360</h3>
-                <p>Smart privacy-first browser toolkit for file conversions, text utilities, resumes, and HR tools.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <div class="footer-links">
-                    <a href="/">Home Page</a>
-                    <a href="/converter/">File Converter Suite</a>
-                    <a href="/converter/word-counter/">Word Counter</a>
-                    <a href="/converter/password-generator/">Password Generator</a>
-                    <a href="/privacy-policy/">Privacy Policy</a>
+        <!-- ===== FOOTER ===== -->
+    <footer class="aura-footer-v2">
+        <div class="footer-inner">
+            <!-- Col 1: Brand Info & Status -->
+            <div class="footer-col footer-col-brand">
+                <a href="/" class="footer-brand-logo" aria-label="AuraToolkit360 Home">
+                    <span class="footer-logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36" role="img" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="footerAtkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#4F46E5"/>
+                                    <stop offset="100%" stop-color="#06B6D4"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="64" height="64" rx="16" fill="url(#footerAtkGrad)"/>
+                            <circle cx="32" cy="32" r="18" fill="rgba(255,255,255,0.18)"/>
+                            <path d="M22 42L32 20l10 22h-5l-2.1-5h-5.8L27 42h-5zm9.9-8h4.2L34 25.7 31.9 34z" fill="#fff"/>
+                        </svg>
+                    </span>
+                    <span class="footer-brand-name">AuraToolkit<span>360</span></span>
+                </a>
+                <p class="footer-brand-desc">
+                    Private, lightning-fast digital toolkit for HR leaders, job seekers, and digital creators. Built for confidential, in-browser execution with zero tracking.
+                </p>
+                <div class="footer-status-pill">
+                    <span class="status-green-dot">●</span> All 30+ Tools Operational
                 </div>
             </div>
+
+            <!-- Col 2: HR & CAREERS -->
+            <div class="footer-col">
+                <h5 class="footer-col-title">HR &amp; CAREERS</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/hr-helper/">HR Bulk Screener</a></li>
+                    <li><a href="/resume-score-checker/">ATS Score Checker</a></li>
+                    <li><a href="/resume-cv-maker/">ATS Resume Builder</a></li>
+                    <li><a href="/cover-letter-maker/">Cover Letter Generator</a></li>
+                    <li><a href="/resume-score-checker/#job-match">Job Description Matcher</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: PDF & OFFICE -->
+            <div class="footer-col">
+                <h5 class="footer-col-title">PDF &amp; OFFICE</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/converter/pdf-to-word/">PDF to Word</a></li>
+                    <li><a href="/converter/word-to-pdf/">Word to PDF</a></li>
+                    <li><a href="/converter/compress-pdf/">Compress PDF</a></li>
+                    <li><a href="/converter/merge-pdf/">Merge PDF</a></li>
+                    <li><a href="/converter/split-pdf/">Split PDF</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: DATA & MEDIA -->
+            <div class="footer-col">
+                <h5 class="footer-col-title">DAILY TOOLS &amp; DATA</h5>
+                <ul class="footer-links-list">
+                    <li><a href="/converter/age-calculator/">Age Calculator</a></li>
+                    <li><a href="/converter/currency-converter/">Currency Converter</a></li>
+                    <li><a href="/converter/time-converter/">Time Converter</a></li>
+                    <li><a href="/converter/unit-converter/">Unit Converter</a></li>
+                    <li><a href="/converter/percentage-calculator/">Percentage Calculator</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-bottom">© 2026 AuraToolkit360. All rights reserved.</div>
+
+        <div class="footer-bottom-bar">
+            <div class="footer-copyright">
+                © 2026 AuraToolkit360. All rights reserved. Zero server tracking.
+            </div>
+            <div class="footer-bottom-links">
+                <a href="/about/#privacy">Privacy Architecture</a>
+                <a href="/terms/">Terms</a>
+                <a href="/privacy-policy/#gdpr">GDPR Compliance</a>
+                <a href="https://auratoolkit360.com/" class="footer-domain-link">auratoolkit360.com <span class="arrow-up-right">↗</span></a>
+            </div>
+        </div>
     </footer>
 
     <script>

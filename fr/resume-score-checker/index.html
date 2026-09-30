@@ -851,6 +851,8 @@
     <script defer src="/assets/lang-switcher.js"></script>
     <script defer src="/assets/theme-toggle.js"></script>
     <link rel="stylesheet" href="/assets/saas-ui.css">
+    <link rel="stylesheet" href="/assets/aura-fx.css">
+    <script defer src="/assets/aura-fx.js"></script>
 </head>
 <body>
 
@@ -859,7 +861,7 @@
     <div class="ambient-glow-top-right"></div>
     <div class="ambient-glow-mid"></div>
 
-    <!-- ===== TOP NAVIGATION ===== -->
+        <!-- ===== TOP NAVIGATION ===== -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/fr/" class="logo" aria-label="AuraToolkit360 Home">
@@ -877,7 +879,7 @@
                 <a href="/fr/converter/" class="nav-link">Convertisseur</a>
                 <a href="/fr/resume-cv-maker/" class="nav-link">Créateur de CV</a>
                 <a href="/cover-letter-maker/" class="nav-link">Lettre de Motivation</a>
-                <a href="/fr/resume-score-checker/" class="nav-link active">Vérificateur ATS</a>
+                <a href="/fr/resume-score-checker/" class="nav-link">Vérificateur ATS</a>
                 <a href="/fr/hr-helper/" class="nav-link">Recrutement RH <span class="nav-badge-pill">New</span></a>
                 <a href="/blogs/" class="nav-link">Blog</a>
                 <a href="/about/" class="nav-link">À propos</a>
@@ -887,7 +889,7 @@
                 <a href="/saas/" class="btn-aura-saas" title="Launch AuraHR 360 Enterprise SaaS Portal"><span>⚡</span> AuraHR 360</a>
                 <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="★ Favori" aria-label="★ Favori"><span class="bm-star">★</span><span class="bm-text"> Favori</span></button>
                 <button type="button" class="theme-toggle-btn" onclick="toggleAuraTheme()" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode"><span class="theme-icon">🌙</span><span class="theme-label">Dark</span></button>
-                            <div class="lang-switcher" id="langSwitcherContainer">
+                <div class="lang-switcher" id="langSwitcherContainer">
     <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
         <span class="lang-globe">🌐</span>
         <span class="lang-current-flag">🇫🇷</span>
@@ -913,28 +915,28 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
-                <a href="/saas/" class="mobile-nav-item" style="color:#4f46e5; font-weight:700; background:rgba(79,70,229,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
+                <a href="/saas/" class="mobile-nav-item" style="color:#1d4ed8; font-weight:700; background:rgba(37,99,235,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
-            <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
+                <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
                 <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
                 <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
                 <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
                 <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
                 <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
-            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
-        <div class="mobile-lang-container">
-    <div class="mobile-lang-title">🌐 Language / Idioma / Sprache</div>
-    <div class="mobile-lang-grid">
-        <a href="/resume-score-checker/" class="mobile-lang-item active" data-lang="en"><span class="flag">🇺🇸</span> EN</a>
-        <a href="/es/resume-score-checker/" class="mobile-lang-item " data-lang="es"><span class="flag">🇪🇸</span> ES</a>
-        <a href="/fr/resume-score-checker/" class="mobile-lang-item " data-lang="fr"><span class="flag">🇫🇷</span> FR</a>
-        <a href="/de/resume-score-checker/" class="mobile-lang-item " data-lang="de"><span class="flag">🇩🇪</span> DE</a>
-        <a href="/pt/resume-score-checker/" class="mobile-lang-item " data-lang="pt"><span class="flag">🇧🇷</span> PT</a>
-        <a href="/ar/resume-score-checker/" class="mobile-lang-item " data-lang="ar"><span class="flag">🇸🇦</span> AR</a>
-    </div>
-</div>
+                <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+                <div class="mobile-lang-container">
+                    <div class="mobile-lang-title">🌐 Language / Idioma / Sprache</div>
+                    <div class="mobile-lang-grid">
+                        <a href="/" class="mobile-lang-item active" data-lang="en"><span class="flag">🇺🇸</span> EN</a>
+                        <a href="/es/" class="mobile-lang-item " data-lang="es"><span class="flag">🇪🇸</span> ES</a>
+                        <a href="/fr/" class="mobile-lang-item " data-lang="fr"><span class="flag">🇫🇷</span> FR</a>
+                        <a href="/de/" class="mobile-lang-item " data-lang="de"><span class="flag">🇩🇪</span> DE</a>
+                        <a href="/pt/" class="mobile-lang-item " data-lang="pt"><span class="flag">🇧🇷</span> PT</a>
+                        <a href="/ar/" class="mobile-lang-item " data-lang="ar"><span class="flag">🇸🇦</span> AR</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -1123,7 +1125,7 @@
 
     </main>
 
-    <!-- ===== FOOTER ===== -->
+        <!-- ===== FOOTER ===== -->
     <footer class="aura-footer-v2">
         <div class="footer-inner">
             <!-- Col 1: Brand Info & Status -->
@@ -1148,7 +1150,7 @@
                     Private, lightning-fast digital toolkit for HR leaders, job seekers, and digital creators. Built for confidential, in-browser execution with zero tracking.
                 </p>
                 <div class="footer-status-pill">
-                    <span class="status-green-dot">●</span> All 30+ Tools Operational
+                    <span class="status-green-dot">●</span> All 40+ Tools Operational
                 </div>
             </div>
 
@@ -1178,13 +1180,13 @@
 
             <!-- Col 4: DATA & MEDIA -->
             <div class="footer-col">
-                <h5 class="footer-col-title">DATA &amp; MEDIA</h5>
+                <h5 class="footer-col-title">DAILY TOOLS &amp; DATA</h5>
                 <ul class="footer-links-list">
-                    <li><a href="/converter/#data-tools">JSON to CSV</a></li>
-                    <li><a href="/converter/resize-image/">Image Resizer</a></li>
-                    <li><a href="/converter/#code-tools">Code Minifier</a></li>
-                    <li><a href="/converter/ocr-to-text/">OCR Text Extractor</a></li>
-                    <li><a href="/converter/passport-photo-maker/">Passport Photo Maker</a></li>
+                    <li><a href="/converter/age-calculator/">Age Calculator</a></li>
+                    <li><a href="/converter/currency-converter/">Currency Converter</a></li>
+                    <li><a href="/converter/time-converter/">Time Converter</a></li>
+                    <li><a href="/converter/unit-converter/">Unit Converter</a></li>
+                    <li><a href="/converter/percentage-calculator/">Percentage Calculator</a></li>
                 </ul>
             </div>
         </div>
@@ -1197,6 +1199,7 @@
                 <a href="/about/#privacy">Privacy Architecture</a>
                 <a href="/terms/">Terms</a>
                 <a href="/privacy-policy/#gdpr">GDPR Compliance</a>
+                <a href="/disclaimer/">Disclaimer</a>
                 <a href="https://auratoolkit360.com/" class="footer-domain-link">auratoolkit360.com <span class="arrow-up-right">↗</span></a>
             </div>
         </div>
