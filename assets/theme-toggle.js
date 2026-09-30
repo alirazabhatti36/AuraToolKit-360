@@ -5,10 +5,10 @@
 (function() {
     function initTheme() {
         const savedTheme = localStorage.getItem('atk_theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
+        if (savedTheme === 'light') {
             document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
         }
         updateThemeButtons();
     }
