@@ -197,7 +197,32 @@
                 if (btn) btn.setAttribute('aria-expanded', 'false');
             }
         }
+        const drawer = document.getElementById('mobileNavDrawer');
+        const hamburger = document.getElementById('navHamburger');
+        if (drawer && drawer.classList.contains('open')) {
+            if (!drawer.contains(e.target) && (!hamburger || !hamburger.contains(e.target))) {
+                drawer.classList.remove('open');
+                if (hamburger) {
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+            }
+        }
     });
+
+    // Global Language Dropdown Fallback
+    if (!window.toggleLangDropdown) {
+        window.toggleLangDropdown = function(e) {
+            if (e) e.stopPropagation();
+            const dropdown = document.getElementById('langDropdownMenu');
+            if (dropdown) {
+                const isOpen = dropdown.classList.toggle('show');
+                dropdown.style.display = isOpen ? 'flex' : 'none';
+                const btn = document.getElementById('langSwitcherBtn');
+                if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            }
+        };
+    }
 
     // Global Theme Toggle Fallback
     if (!window.toggleAuraTheme) {

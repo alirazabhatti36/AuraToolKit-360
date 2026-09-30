@@ -133,27 +133,31 @@
         ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
 
-        /* ===== NAVBAR ===== */
+                        /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(11, 15, 25, 0.85);
+            background: rgba(11, 15, 25, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 0.85rem 2rem;
+            padding: 0.65rem 1.5rem;
             border-bottom: 1px solid var(--border-card);
             position: fixed !important;
             top: 0; left: 0; right: 0;
             width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
             z-index: 1000;
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
         }
         .navbar.nav-hidden { transform: translateY(-100%); }
         .nav-container {
-            max-width: 1320px;
+            max-width: 1440px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1.5rem;
+            gap: 0.75rem;
+            width: 100%;
+            box-sizing: border-box;
         }
         .logo {
             font-size: 1.35rem;
@@ -189,8 +193,9 @@
             gap: 0.35rem;
             align-items: center;
         }
-        @media (max-width: 1080px) {
-            .nav-center { display: none; }
+        @media (max-width: 1240px) {
+            .nav-center { display: none !important; }
+            .nav-hamburger { display: flex !important; }
         }
         .nav-link {
             text-decoration: none;
@@ -212,6 +217,7 @@
         .nav-link.active {
             color: #ffffff;
             background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
         }
         .nav-badge-pill {
             background: linear-gradient(135deg, #ec4899, #8b5cf6);
@@ -227,22 +233,6 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-        }
-        .btn-try-hr {
-            background: linear-gradient(135deg, #0284c7, #6366f1);
-            color: #ffffff;
-            font-size: 0.84rem;
-            font-weight: 700;
-            padding: 0.5rem 1.15rem;
-            border-radius: 999px;
-            text-decoration: none;
-            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
-            transition: all 0.25s;
-            white-space: nowrap;
-        }
-        .btn-try-hr:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
         }
         .btn-bookmark-nav {
             background: transparent;
@@ -261,8 +251,112 @@
             border-color: rgba(56, 189, 248, 0.3);
             background: rgba(56, 189, 248, 0.06);
         }
+        .btn-aura-saas {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .btn-aura-saas:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
+        }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-card);
+            border-radius: 9px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .nav-hamburger span {
+            width: 100%;
+            height: 2px;
+            background: #f8fafc;
+            border-radius: 2px;
+            transition: all 0.25s;
+        }
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        .lang-switcher-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.38rem;
+            padding: 0.42rem 0.72rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .lang-switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(56, 189, 248, 0.35);
+            color: #38bdf8;
+        }
+        .lang-dropdown-menu {
+            display: none !important;
+            position: absolute !important;
+            top: calc(100% + 8px) !important;
+            right: 0 !important;
+            min-width: 170px !important;
+            background: rgba(14, 19, 31, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 12px !important;
+            padding: 0.4rem !important;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6) !important;
+            flex-direction: column !important;
+            gap: 0.2rem !important;
+            z-index: 2000 !important;
+        }
+        .lang-dropdown-menu.show {
+            display: flex !important;
+        }
+        .lang-option {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.55rem !important;
+            padding: 0.45rem 0.65rem !important;
+            border-radius: 8px !important;
+            color: #cbd5e1 !important;
+            text-decoration: none !important;
+            font-size: 0.82rem !important;
+            font-weight: 600 !important;
+            transition: all 0.15s ease !important;
+            white-space: nowrap !important;
+        }
+        .lang-option:hover,
+        .lang-option.active {
+            background: rgba(56, 189, 248, 0.15) !important;
+            color: #38bdf8 !important;
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0.55rem 0.85rem !important; }
+        }
 
-        /* ===== MAIN CONTAINER ===== */
+/* ===== MAIN CONTAINER ===== */
         .container {
             max-width: 1240px;
             margin: 0 auto;
@@ -1021,10 +1115,10 @@
     <div class="ambient-glow-top-right"></div>
     <div class="ambient-glow-mid"></div>
 
-        <!-- ===== TOP NAVIGATION ===== -->
+    <!-- ===== TOP NAVIGATION ===== -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
-            <a href="/pt/" class="logo" aria-label="AuraToolkit360 Home">
+            <a href="/" class="logo" aria-label="AuraToolkit360 Home">
                 <div class="logo-symbol">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="22" height="22" role="img" aria-hidden="true">
                         <circle cx="32" cy="32" r="20" fill="rgba(255,255,255,0.22)"/>
@@ -1035,36 +1129,36 @@
             </a>
             
             <div class="nav-center">
-                <a href="/pt/" class="nav-link">Início</a>
-                <a href="/pt/converter/" class="nav-link">Conversor</a>
-                <a href="/pt/resume-cv-maker/" class="nav-link">Gerador de Currículo</a>
-                <a href="/cover-letter-maker/" class="nav-link">Carta de Apresentação</a>
-                <a href="/pt/resume-score-checker/" class="nav-link">Verificador ATS</a>
-                <a href="/pt/hr-helper/" class="nav-link">Triagem RH <span class="nav-badge-pill">New</span></a>
-                <a href="/blogs/" class="nav-link">Blog</a>
-                <a href="/about/" class="nav-link">Sobre</a>
+                <a href="/" class="nav-link">Home</a>
+                <a href="/converter/" class="nav-link">Converter</a>
+                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/cover-letter-maker/" class="nav-link">Cover Letter</a>
+                <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
+                <a href="/hr-helper/" class="nav-link active">HR Bulk <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="nav-link">Blogs</a>
+                <a href="/about/" class="nav-link">About</a>
             </div>
 
             <div class="nav-right-actions">
                 <a href="/saas/" class="btn-aura-saas" title="Launch AuraHR 360 Enterprise SaaS Portal"><span>⚡</span> AuraHR 360</a>
-                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="★ Salvar" aria-label="★ Salvar"><span class="bm-star">★</span><span class="bm-text"> Salvar</span></button>
+                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="Bookmark AuraToolkit360 (Ctrl+D)" aria-label="Bookmark site"><span class="bm-star">★</span><span class="bm-text"> Bookmark</span></button>
                 <button type="button" class="theme-toggle-btn" onclick="toggleAuraTheme()" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode"><span class="theme-icon">🌙</span><span class="theme-label">Dark</span></button>
                 <div class="lang-switcher" id="langSwitcherContainer">
-    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
-        <span class="lang-globe">🌐</span>
-        <span class="lang-current-flag">🇧🇷</span>
-        <span class="lang-current-label">PT</span>
-        <span class="lang-arrow">▾</span>
-    </button>
-    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
-        <a href="/hr-helper/" class="lang-option " data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
-        <a href="/es/hr-helper/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
-        <a href="/fr/hr-helper/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
-        <a href="/de/hr-helper/" class="lang-option " data-lang="de" role="menuitem"><span class="flag">🇩🇪</span> Deutsch</a>
-        <a href="/pt/hr-helper/" class="lang-option active" data-lang="pt" role="menuitem"><span class="flag">🇧🇷</span> Português</a>
-        <a href="/ar/hr-helper/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
-    </div>
-</div>
+                    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+                        <span class="lang-globe">🌐</span>
+                        <span class="lang-current-flag">🇺🇸</span>
+                        <span class="lang-current-label">EN</span>
+                        <span class="lang-arrow">▾</span>
+                    </button>
+                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" style="display: none;">
+                        <a href="/" class="lang-option active" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
+                        <a href="/es/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
+                        <a href="/fr/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
+                        <a href="/de/" class="lang-option " data-lang="de" role="menuitem"><span class="flag">🇩🇪</span> Deutsch</a>
+                        <a href="/pt/" class="lang-option " data-lang="pt" role="menuitem"><span class="flag">🇧🇷</span> Português</a>
+                        <a href="/ar/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
+                    </div>
+                </div>
                 <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
@@ -1075,7 +1169,7 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
-                <a href="/saas/" class="mobile-nav-item" style="color:#1d4ed8; font-weight:700; background:rgba(37,99,235,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
+                <a href="/saas/" class="mobile-nav-item" style="color:#38bdf8; font-weight:700; background:rgba(56,189,248,0.1); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>

@@ -141,7 +141,7 @@
         ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
 
-        /* ===== NAVBAR ===== */
+                        /* ===== NAVBAR ===== */
         .navbar {
             background: rgba(11, 15, 25, 0.88);
             backdrop-filter: blur(20px);
@@ -202,7 +202,8 @@
             align-items: center;
         }
         @media (max-width: 1240px) {
-            .nav-center { display: none; }
+            .nav-center { display: none !important; }
+            .nav-hamburger { display: flex !important; }
         }
         .nav-link {
             text-decoration: none;
@@ -224,6 +225,7 @@
         .nav-link.active {
             color: #ffffff;
             background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
         }
         .nav-badge-pill {
             background: linear-gradient(135deg, #ec4899, #8b5cf6);
@@ -239,39 +241,6 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-        }
-        .nav-search-trigger {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-card);
-            color: var(--text-secondary);
-            padding: 0.45rem 0.75rem;
-            border-radius: 9px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            transition: all 0.2s;
-        }
-        .nav-search-trigger:hover {
-            border-color: var(--accent-cyan);
-            color: #ffffff;
-        }
-        .btn-try-hr {
-            background: linear-gradient(135deg, #0284c7, #6366f1);
-            color: #ffffff;
-            font-size: 0.84rem;
-            font-weight: 700;
-            padding: 0.5rem 1.15rem;
-            border-radius: 999px;
-            text-decoration: none;
-            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
-            transition: all 0.25s;
-            white-space: nowrap;
-        }
-        .btn-try-hr:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
         }
         .btn-bookmark-nav {
             background: transparent;
@@ -290,8 +259,112 @@
             border-color: rgba(56, 189, 248, 0.3);
             background: rgba(56, 189, 248, 0.06);
         }
+        .btn-aura-saas {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .btn-aura-saas:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
+        }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-card);
+            border-radius: 9px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .nav-hamburger span {
+            width: 100%;
+            height: 2px;
+            background: #f8fafc;
+            border-radius: 2px;
+            transition: all 0.25s;
+        }
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        .lang-switcher-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.38rem;
+            padding: 0.42rem 0.72rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .lang-switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(56, 189, 248, 0.35);
+            color: #38bdf8;
+        }
+        .lang-dropdown-menu {
+            display: none !important;
+            position: absolute !important;
+            top: calc(100% + 8px) !important;
+            right: 0 !important;
+            min-width: 170px !important;
+            background: rgba(14, 19, 31, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 12px !important;
+            padding: 0.4rem !important;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6) !important;
+            flex-direction: column !important;
+            gap: 0.2rem !important;
+            z-index: 2000 !important;
+        }
+        .lang-dropdown-menu.show {
+            display: flex !important;
+        }
+        .lang-option {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.55rem !important;
+            padding: 0.45rem 0.65rem !important;
+            border-radius: 8px !important;
+            color: #cbd5e1 !important;
+            text-decoration: none !important;
+            font-size: 0.82rem !important;
+            font-weight: 600 !important;
+            transition: all 0.15s ease !important;
+            white-space: nowrap !important;
+        }
+        .lang-option:hover,
+        .lang-option.active {
+            background: rgba(56, 189, 248, 0.15) !important;
+            color: #38bdf8 !important;
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0.55rem 0.85rem !important; }
+        }
 
-        /* MAIN CONTAINER */
+/* MAIN CONTAINER */
         .site-container {
             max-width: 1280px;
             margin: 0 auto;
@@ -1495,21 +1568,21 @@
                 <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="Bookmark AuraToolkit360 (Ctrl+D)" aria-label="Bookmark site"><span class="bm-star">★</span><span class="bm-text"> Bookmark</span></button>
                 <button type="button" class="theme-toggle-btn" onclick="toggleAuraTheme()" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode"><span class="theme-icon">🌙</span><span class="theme-label">Dark</span></button>
                 <div class="lang-switcher" id="langSwitcherContainer">
-    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
-        <span class="lang-globe">🌐</span>
-        <span class="lang-current-flag">🇺🇸</span>
-        <span class="lang-current-label">EN</span>
-        <span class="lang-arrow">▾</span>
-    </button>
-    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
-        <a href="/" class="lang-option active" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
-        <a href="/es/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
-        <a href="/fr/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
-        <a href="/de/" class="lang-option " data-lang="de" role="menuitem"><span class="flag">🇩🇪</span> Deutsch</a>
-        <a href="/pt/" class="lang-option " data-lang="pt" role="menuitem"><span class="flag">🇧🇷</span> Português</a>
-        <a href="/ar/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
-    </div>
-</div>
+                    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+                        <span class="lang-globe">🌐</span>
+                        <span class="lang-current-flag">🇺🇸</span>
+                        <span class="lang-current-label">EN</span>
+                        <span class="lang-arrow">▾</span>
+                    </button>
+                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" style="display: none;">
+                        <a href="/" class="lang-option active" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
+                        <a href="/es/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
+                        <a href="/fr/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
+                        <a href="/de/" class="lang-option " data-lang="de" role="menuitem"><span class="flag">🇩🇪</span> Deutsch</a>
+                        <a href="/pt/" class="lang-option " data-lang="pt" role="menuitem"><span class="flag">🇧🇷</span> Português</a>
+                        <a href="/ar/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
+                    </div>
+                </div>
                 <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
@@ -1524,24 +1597,24 @@
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
-            <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
+                <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
                 <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
                 <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
                 <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
                 <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
                 <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
-            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
-        <div class="mobile-lang-container">
-    <div class="mobile-lang-title">🌐 Language / Idioma / Sprache</div>
-    <div class="mobile-lang-grid">
-        <a href="/" class="mobile-lang-item active" data-lang="en"><span class="flag">🇺🇸</span> EN</a>
-        <a href="/es/" class="mobile-lang-item " data-lang="es"><span class="flag">🇪🇸</span> ES</a>
-        <a href="/fr/" class="mobile-lang-item " data-lang="fr"><span class="flag">🇫🇷</span> FR</a>
-        <a href="/de/" class="mobile-lang-item " data-lang="de"><span class="flag">🇩🇪</span> DE</a>
-        <a href="/pt/" class="mobile-lang-item " data-lang="pt"><span class="flag">🇧🇷</span> PT</a>
-        <a href="/ar/" class="mobile-lang-item " data-lang="ar"><span class="flag">🇸🇦</span> AR</a>
-    </div>
-</div>
+                <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
+                <div class="mobile-lang-container">
+                    <div class="mobile-lang-title">🌐 Language / Idioma / Sprache</div>
+                    <div class="mobile-lang-grid">
+                        <a href="/" class="mobile-lang-item active" data-lang="en"><span class="flag">🇺🇸</span> EN</a>
+                        <a href="/es/" class="mobile-lang-item " data-lang="es"><span class="flag">🇪🇸</span> ES</a>
+                        <a href="/fr/" class="mobile-lang-item " data-lang="fr"><span class="flag">🇫🇷</span> FR</a>
+                        <a href="/de/" class="mobile-lang-item " data-lang="de"><span class="flag">🇩🇪</span> DE</a>
+                        <a href="/pt/" class="mobile-lang-item " data-lang="pt"><span class="flag">🇧🇷</span> PT</a>
+                        <a href="/ar/" class="mobile-lang-item " data-lang="ar"><span class="flag">🇸🇦</span> AR</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -1549,8 +1622,62 @@
     <!-- ===== MAIN CONTENT CONTAINER ===== -->
     <main class="site-container">
 
-        <!-- ===== SECTION 1: FEATURED CAROUSEL ===== -->
-        <div class="featured-header">
+        <!-- ===== SECTION 1: HERO BRANDING & 4 CORE PILLARS ===== -->
+        <div class="hero-banner">
+            <span class="hero-eyebrow">AURATOOLKIT360 | Free Online File Converter &amp; HR Tools</span>
+            <h1 class="hero-title">Your All-in-One Digital Toolkit</h1>
+            <p class="hero-desc">Convert Files, Build ATS Resumes &amp; Automate HR Tasks. Faster, Private, and 100% Free with zero cloud uploads.</p>
+        </div>
+
+        <!-- 4 Core Pillars Grid -->
+        <div class="pillars-grid">
+            <!-- Pillar 1: File Converter -->
+            <div class="pillar-card">
+                <div>
+                    <div class="pillar-icon-box icon-box-blue">⇄</div>
+                    <h4>File Converter</h4>
+                    <div class="pillar-sub">40+ In-Browser Tools</div>
+                    <p>Convert PDF, Word, Excel, Images, Video &amp; Audio files plus everyday calculators directly in your web browser.</p>
+                </div>
+                <a href="/converter/" class="btn-pillar-pill">Explore Converter &gt;</a>
+            </div>
+
+            <!-- Pillar 2: Resume Builder -->
+            <div class="pillar-card">
+                <div>
+                    <div class="pillar-icon-box icon-box-purple">📝</div>
+                    <h4>Resume Builder</h4>
+                    <div class="pillar-sub">ATS Templates</div>
+                    <p>Craft job-winning resumes with pre-formatted ATS designs and live preview.</p>
+                </div>
+                <a href="/resume-cv-maker/" class="btn-pillar-pill">Create Resume &gt;</a>
+            </div>
+
+            <!-- Pillar 3: ATS Checker -->
+            <div class="pillar-card">
+                <div>
+                    <div class="pillar-icon-box icon-box-cyan">🎯</div>
+                    <h4>ATS Checker</h4>
+                    <div class="pillar-sub">Check CV Online</div>
+                    <p>Audit your resume against job descriptions to spot missing keywords and flaws.</p>
+                </div>
+                <a href="/resume-score-checker/" class="btn-pillar-pill">Check ATS Score &gt;</a>
+            </div>
+
+            <!-- Pillar 4: HR Helper -->
+            <div class="pillar-card">
+                <div>
+                    <div class="pillar-icon-box icon-box-green">👥</div>
+                    <h4>HR Helper</h4>
+                    <div class="pillar-sub">Bulk Screening</div>
+                    <p>Screen hundreds of applicants in bulk and export ranked shortlists in seconds.</p>
+                </div>
+                <a href="/hr-helper/" class="btn-pillar-pill">Screen Candidates &gt;</a>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 2: FEATURED CAROUSEL (HIGHLIGHTS SHOWCASE) ===== -->
+        <div class="featured-header" style="margin-top: 2rem;">
             <h3>Featured Highlights</h3>
         </div>
 
@@ -1625,85 +1752,8 @@
             </div>
         </div>
 
-        <!-- ===== SECTION 2: BRAND TAGLINE & 4 PILLARS ===== -->
-        <div class="hero-banner">
-            <span class="hero-eyebrow">AURATOOLKIT360 | Free Online File Converter &amp; HR Tools</span>
-            <h1 class="hero-title">Your All-in-One Digital Toolkit</h1>
-            <p class="hero-desc">Convert Files, Build ATS Resumes &amp; Automate HR Tasks. Faster, Private, and 100% Free with zero cloud uploads.</p>
-        </div>
-
-        <!-- 4 Core Pillars Grid -->
-        <div class="pillars-grid">
-            <!-- Pillar 1: File Converter -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-icon-box icon-box-blue">⇄</div>
-                    <h4>File Converter</h4>
-                    <div class="pillar-sub">40+ In-Browser Tools</div>
-                    <p>Convert PDF, Word, Excel, Images, Video &amp; Audio files plus everyday calculators directly in your web browser.</p>
-                </div>
-                <a href="/converter/" class="btn-pillar-pill">Explore Converter &gt;</a>
-            </div>
-
-            <!-- Pillar 2: Resume Builder -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-icon-box icon-box-purple">📝</div>
-                    <h4>Resume Builder</h4>
-                    <div class="pillar-sub">ATS Templates</div>
-                    <p>Craft job-winning resumes with pre-formatted ATS designs and live preview.</p>
-                </div>
-                <a href="/resume-cv-maker/" class="btn-pillar-pill">Create Resume &gt;</a>
-            </div>
-
-            <!-- Pillar 3: ATS Checker -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-icon-box icon-box-cyan">🎯</div>
-                    <h4>ATS Checker</h4>
-                    <div class="pillar-sub">Check CV Online</div>
-                    <p>Audit your resume against job descriptions to spot missing keywords and flaws.</p>
-                </div>
-                <a href="/resume-score-checker/" class="btn-pillar-pill">Check ATS Score &gt;</a>
-            </div>
-
-            <!-- Pillar 4: HR Helper -->
-            <div class="pillar-card">
-                <div>
-                    <div class="pillar-icon-box icon-box-green">👥</div>
-                    <h4>HR Helper</h4>
-                    <div class="pillar-sub">Bulk Screening</div>
-                    <p>Screen hundreds of applicants in bulk and export ranked shortlists in seconds.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- AuraToolKit 360 Enterprise SaaS Showcase Card -->
-        <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 20px; padding: 1.8rem 2rem; margin-bottom: 2.8rem; box-shadow: 0 15px 35px rgba(0,0,0,0.35); position: relative; overflow: hidden;">
-            <div style="position: absolute; top:-50px; right:-50px; width:220px; height:220px; background:radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%); pointer-events:none;"></div>
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; position: relative; z-index: 1;">
-                <div style="max-width: 680px;">
-                    <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 999px; font-size: 0.75rem; font-weight: 700; color: #818cf8; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.8rem;">
-                        <span>⚡</span> B2B Enterprise SaaS Solution
-                    </div>
-                    <h3 style="font-size: 1.45rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem; letter-spacing: -0.3px;">
-                        AuraToolKit 360 <span style="background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">HR, ATS &amp; Biometric SaaS</span>
-                    </h3>
-                    <p style="font-size: 0.92rem; color: #94a3b8; line-height: 1.55; margin-bottom: 0;">
-                        Looking for an all-in-one platform for your company? Manage multi-tenant organizations, cloud candidate pipelines, automated payroll, asset inventory, and real-time Hikvision biometric attendance sync.
-                    </p>
-                </div>
-                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                    <a href="/saas/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4f46e5, #06b6d4); color: #ffffff; font-weight: 700; font-size: 0.9rem; padding: 12px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4); transition: transform 0.2s;">
-                        <span>Launch AuraHR 360</span>
-                        <span>⚡</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== SEARCH BOX ===== -->
-        <div class="search-container">
+        <!-- ===== SECTION 3: SEARCH BOX ===== -->
+        <div class="search-container" style="margin-top: 2.8rem; margin-bottom: 2.5rem;">
             <div class="search-bar-wrap">
                 <span class="icon">🔍</span>
                 <input type="text" id="searchInput" placeholder="Search any tool (e.g. PDF to Word, Merge PDF, Resume Maker...)" autocomplete="off">
@@ -1712,69 +1762,20 @@
             <div class="search-results-box" id="searchResultsBox"></div>
 
             <div class="quick-chips-row">
+                <button class="chip-btn" onclick="quickFilter('PDF to Word')">📕 PDF to Word</button>
+                <button class="chip-btn" onclick="quickFilter('Merge PDF')">➕ Merge PDF</button>
+                <button class="chip-btn" onclick="quickFilter('Compress PDF')">🗜️ Compress PDF</button>
+                <button class="chip-btn" onclick="quickFilter('Resume')">📄 Resume Builder</button>
                 <button class="chip-btn" onclick="quickFilter('Age')">🎂 Age Calculator</button>
                 <button class="chip-btn" onclick="quickFilter('Time')">⏱️ Time Converter</button>
                 <button class="chip-btn" onclick="quickFilter('Currency')">💵 Currency Rates</button>
                 <button class="chip-btn" onclick="quickFilter('Unit')">📐 Unit Converter</button>
-                <button class="chip-btn" onclick="quickFilter('Percentage')">🔢 Percentage</button>
-                <button class="chip-btn" onclick="quickFilter('PDF to Word')">📕 PDF to Word</button>
-                <button class="chip-btn" onclick="quickFilter('Merge PDF')">➕ Merge PDF</button>
-                <button class="chip-btn" onclick="quickFilter('Resume')">📄 Resume Builder</button>
             </div>
         </div>
 
-        <!-- ===== NEW SECTION: DAILY LIFE CONVERTERS & CALCULATORS ===== -->
-        <div class="section-headline-wrap" style="display:flex; justify-content:space-between; align-items:center; margin-top:2.5rem;">
-            <h3>⚡ Daily Life Converters &amp; Calculators <span style="font-size:0.72rem; background:linear-gradient(135deg, #2563eb, #7c3aed); color:white; padding:0.2rem 0.6rem; border-radius:999px; margin-left:0.4rem; vertical-align:middle; font-weight:700;">NEW</span></h3>
-            <a href="/converter/#datetime" style="font-size:0.82rem; color:var(--accent-cyan); text-decoration:none; font-weight:700;">View All 45+ Tools &gt;</a>
-        </div>
-
-        <div class="trending-grid" style="margin-bottom: 2.5rem;">
-            <div class="trending-card">
-                <div class="trending-icon" style="background:rgba(236,72,153,0.15); color:#f472b6;">🎂</div>
-                <div class="trending-name">Age Calculator</div>
-                <a href="/converter/age-calculator/" class="btn-use-tool">Calculate Age &gt;</a>
-            </div>
-            <div class="trending-card">
-                <div class="trending-icon" style="background:rgba(56,189,248,0.15); color:#38bdf8;">⏱️</div>
-                <div class="trending-name">Time Converter</div>
-                <a href="/converter/time-converter/" class="btn-use-tool">Convert Time &gt;</a>
-            </div>
-            <div class="trending-card">
-                <div class="trending-icon" style="background:rgba(52,211,153,0.15); color:#34d399;">💵</div>
-                <div class="trending-name">Currency Rates</div>
-                <a href="/converter/currency-converter/" class="btn-use-tool">Live Forex &gt;</a>
-            </div>
-            <div class="trending-card">
-                <div class="trending-icon" style="background:rgba(168,85,247,0.15); color:#c084fc;">📐</div>
-                <div class="trending-name">Unit Converter</div>
-                <a href="/converter/unit-converter/" class="btn-use-tool">Convert Units &gt;</a>
-            </div>
-            <div class="trending-card">
-                <div class="trending-icon" style="background:rgba(245,158,11,0.15); color:#fbbf24;">🔢</div>
-                <div class="trending-name">Percentage Tool</div>
-                <a href="/converter/percentage-calculator/" class="btn-use-tool">Calculate &gt;</a>
-            </div>
-            <div class="trending-card">
-                <div class="trending-icon" style="background:rgba(239,68,68,0.15); color:#f87171;">❤️</div>
-                <div class="trending-name">BMI Calculator</div>
-                <a href="/converter/bmi-calculator/" class="btn-use-tool">Check BMI &gt;</a>
-            </div>
-            <div class="trending-card">
-                <div class="trending-icon" style="background:rgba(99,102,241,0.15); color:#818cf8;">🏦</div>
-                <div class="trending-name">Loan / Car EMI</div>
-                <a href="/converter/emi-calculator/" class="btn-use-tool">Calculate EMI &gt;</a>
-            </div>
-            <div class="trending-card">
-                <div class="trending-icon" style="background:rgba(16,185,129,0.15); color:#10b981;">🌙</div>
-                <div class="trending-name">Zakat (2.5%)</div>
-                <a href="/converter/zakat-calculator/" class="btn-use-tool">Calculate Zakat &gt;</a>
-            </div>
-        </div>
-
-        <!-- ===== SECTION 3: TRENDING TOOLS GRID ===== -->
+        <!-- ===== SECTION 4: TRENDING TOOLS GRID ===== -->
         <div class="section-headline-wrap">
-            <h3>🔥 Trending Tools</h3>
+            <h3>🔥 Trending &amp; Popular Tools</h3>
         </div>
 
         <div class="trending-grid">
@@ -1849,7 +1850,80 @@
             </div>
         </div>
 
-        <!-- ===== SECTION 4: RECENT ACTIVITY & RECENTLY ADDED WIDGETS ===== -->
+        <!-- ===== SECTION 5: DAILY LIFE CONVERTERS & CALCULATORS ===== -->
+        <div class="section-headline-wrap" style="display:flex; justify-content:space-between; align-items:center; margin-top:2.8rem;">
+            <h3>⚡ Daily Life Converters &amp; Calculators <span style="font-size:0.72rem; background:linear-gradient(135deg, #2563eb, #7c3aed); color:white; padding:0.2rem 0.6rem; border-radius:999px; margin-left:0.4rem; vertical-align:middle; font-weight:700;">NEW</span></h3>
+            <a href="/converter/#datetime" style="font-size:0.82rem; color:var(--accent-cyan); text-decoration:none; font-weight:700;">View All 45+ Tools &gt;</a>
+        </div>
+
+        <div class="trending-grid" style="margin-bottom: 2.8rem;">
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(236,72,153,0.15); color:#f472b6;">🎂</div>
+                <div class="trending-name">Age Calculator</div>
+                <a href="/converter/age-calculator/" class="btn-use-tool">Calculate Age &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(56,189,248,0.15); color:#38bdf8;">⏱️</div>
+                <div class="trending-name">Time Converter</div>
+                <a href="/converter/time-converter/" class="btn-use-tool">Convert Time &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(52,211,153,0.15); color:#34d399;">💵</div>
+                <div class="trending-name">Currency Rates</div>
+                <a href="/converter/currency-converter/" class="btn-use-tool">Live Forex &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(168,85,247,0.15); color:#c084fc;">📐</div>
+                <div class="trending-name">Unit Converter</div>
+                <a href="/converter/unit-converter/" class="btn-use-tool">Convert Units &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(245,158,11,0.15); color:#fbbf24;">🔢</div>
+                <div class="trending-name">Percentage Tool</div>
+                <a href="/converter/percentage-calculator/" class="btn-use-tool">Calculate &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(239,68,68,0.15); color:#f87171;">❤️</div>
+                <div class="trending-name">BMI Calculator</div>
+                <a href="/converter/bmi-calculator/" class="btn-use-tool">Check BMI &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(99,102,241,0.15); color:#818cf8;">🏦</div>
+                <div class="trending-name">Loan / Car EMI</div>
+                <a href="/converter/emi-calculator/" class="btn-use-tool">Calculate EMI &gt;</a>
+            </div>
+            <div class="trending-card">
+                <div class="trending-icon" style="background:rgba(16,185,129,0.15); color:#10b981;">🌙</div>
+                <div class="trending-name">Zakat (2.5%)</div>
+                <a href="/converter/zakat-calculator/" class="btn-use-tool">Calculate Zakat &gt;</a>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 6: AuraToolKit 360 Enterprise SaaS Showcase Card ===== -->
+        <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 20px; padding: 1.8rem 2rem; margin-bottom: 2.8rem; box-shadow: 0 15px 35px rgba(0,0,0,0.35); position: relative; overflow: hidden;">
+            <div style="position: absolute; top:-50px; right:-50px; width:220px; height:220px; background:radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%); pointer-events:none;"></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; position: relative; z-index: 1;">
+                <div style="max-width: 680px;">
+                    <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 999px; font-size: 0.75rem; font-weight: 700; color: #818cf8; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.8rem;">
+                        <span>⚡</span> B2B Enterprise SaaS Solution
+                    </div>
+                    <h3 style="font-size: 1.45rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem; letter-spacing: -0.3px;">
+                        AuraToolKit 360 <span style="background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">HR, ATS &amp; Biometric SaaS</span>
+                    </h3>
+                    <p style="font-size: 0.92rem; color: #94a3b8; line-height: 1.55; margin-bottom: 0;">
+                        Looking for an all-in-one platform for your company? Manage multi-tenant organizations, cloud candidate pipelines, automated payroll, asset inventory, and real-time Hikvision biometric attendance sync.
+                    </p>
+                </div>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                    <a href="/saas/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4f46e5, #06b6d4); color: #ffffff; font-weight: 700; font-size: 0.9rem; padding: 12px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4); transition: transform 0.2s;">
+                        <span>Launch AuraHR 360</span>
+                        <span>⚡</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 7: RECENT ACTIVITY & RECENTLY ADDED WIDGETS ===== -->
         <div class="split-widgets-row">
             <!-- Left: Smart Recent Activity (Client-Side LocalStorage) -->
             <div class="widget-box">
@@ -1871,30 +1945,30 @@
                 <div class="recently-added-grid">
                     <!-- Card 1 -->
                     <div class="mini-tool-card">
-                        <div class="mini-icon">🎂</div>
-                        <div class="mini-title">Age Calculator</div>
-                        <div class="mini-desc">Calculate exact age, next birthday countdown, and life milestones.</div>
-                        <a href="/converter/age-calculator/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                        <div class="mini-icon">🎯</div>
+                        <div class="mini-title">Target KB Compressor</div>
+                        <div class="mini-desc">Compress images to exact file sizes (20KB, 50KB, 100KB) for forms &amp; portals.</div>
+                        <a href="/converter/compress-image-target/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                     <!-- Card 2 -->
                     <div class="mini-tool-card">
-                        <div class="mini-icon">⏱️</div>
-                        <div class="mini-title">Time Converter</div>
-                        <div class="mini-desc">Minutes to seconds, days to weeks, and business days between dates.</div>
-                        <a href="/converter/time-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                        <div class="mini-icon">✍️</div>
+                        <div class="mini-title">Resize Signature</div>
+                        <div class="mini-desc">Crop and size digital signatures to exact admission and exam portal requirements.</div>
+                        <a href="/converter/resize-signature/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                     <!-- Card 3 -->
                     <div class="mini-tool-card">
-                        <div class="mini-icon">💵</div>
-                        <div class="mini-title">Live Currency Rates</div>
-                        <div class="mini-desc">Real-time forex exchange rates for 150+ currencies including USD/PKR.</div>
-                        <a href="/converter/currency-converter/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
+                        <div class="mini-icon">✨</div>
+                        <div class="mini-title">Paraphrasing Tool</div>
+                        <div class="mini-desc">Rewrite sentences, paragraphs, and essays with smart vocabulary and tone modes.</div>
+                        <a href="/paraphrasing-tool/" class="btn-use-tool" style="width:100%;">Use Tool &gt;</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ===== SECTION 5: FEATURE SPOTLIGHT: ATS CHECKER ===== -->
+        <!-- ===== SECTION 8: FEATURE SPOTLIGHT: ATS CHECKER ===== -->
         <div class="section-headline-wrap">
             <h3>✨ Feature Spotlight</h3>
         </div>
@@ -1931,7 +2005,7 @@
             </div>
         </div>
 
-        <!-- ===== SECTION 6: BEST PRACTICES & GUIDES ===== -->
+        <!-- ===== SECTION 9: BEST PRACTICES & GUIDES ===== -->
         <div class="section-headline-wrap">
             <h3>📚 Best Practices &amp; Guides</h3>
         </div>
@@ -1980,7 +2054,7 @@
             </div>
         </div>
 
-        <!-- ===== SECTION 7: USER STORIES & FEEDBACK ===== -->
+        <!-- ===== SECTION 10: USER STORIES & FEEDBACK ===== -->
         <div class="section-headline-wrap">
             <h3>💬 User Stories &amp; Feedback</h3>
         </div>
@@ -2051,7 +2125,7 @@
             </div>
         </div>
 
-        <!-- ===== SECTION 8: ALL TOOLS DIRECTORY (EXPANDED FOR MAXIMUM DISCOVERABILITY) ===== -->
+        <!-- ===== SECTION 11: ALL TOOLS DIRECTORY (EXPANDED FOR MAXIMUM DISCOVERABILITY) ===== -->
         <div class="directory-wrap">
             <div class="section-headline-wrap">
                 <h3>🗂️ Complete Tool Suite Directory</h3>

@@ -128,27 +128,31 @@
         ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
 
-        /* ===== NAVBAR ===== */
+                        /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(11, 15, 25, 0.85);
+            background: rgba(11, 15, 25, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 0.85rem 2rem;
+            padding: 0.65rem 1.5rem;
             border-bottom: 1px solid var(--border-card);
             position: fixed !important;
             top: 0; left: 0; right: 0;
             width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
             z-index: 1000;
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
         }
         .navbar.nav-hidden { transform: translateY(-100%); }
         .nav-container {
-            max-width: 1320px;
+            max-width: 1440px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1.5rem;
+            gap: 0.75rem;
+            width: 100%;
+            box-sizing: border-box;
         }
         .logo {
             font-size: 1.35rem;
@@ -184,8 +188,9 @@
             gap: 0.35rem;
             align-items: center;
         }
-        @media (max-width: 1080px) {
-            .nav-center { display: none; }
+        @media (max-width: 1240px) {
+            .nav-center { display: none !important; }
+            .nav-hamburger { display: flex !important; }
         }
         .nav-link {
             text-decoration: none;
@@ -198,6 +203,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: #ffffff;
@@ -206,6 +212,7 @@
         .nav-link.active {
             color: #ffffff;
             background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
         }
         .nav-badge-pill {
             background: linear-gradient(135deg, #ec4899, #8b5cf6);
@@ -222,7 +229,24 @@
             align-items: center;
             gap: 0.75rem;
         }
-        .btn-try-hr {
+        .btn-bookmark-nav {
+            background: transparent;
+            border: 1px solid var(--border-card);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.48rem 0.9rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .btn-bookmark-nav:hover {
+            color: var(--accent-cyan);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.06);
+        }
+        .btn-aura-saas {
             background: linear-gradient(135deg, #0284c7, #6366f1);
             color: #ffffff;
             font-size: 0.84rem;
@@ -234,163 +258,100 @@
             transition: all 0.25s;
             white-space: nowrap;
         }
-        .btn-try-hr:hover {
+        .btn-aura-saas:hover {
             transform: translateY(-1px);
             box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
         }
-        .btn-bookmark-nav {
-            background: transparent;
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.05);
             border: 1px solid var(--border-card);
-            color: var(--text-secondary);
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 0.48rem 0.9rem;
-            border-radius: 999px;
+            border-radius: 9px;
             cursor: pointer;
-            transition: all 0.2s;
+            padding: 8px;
+            z-index: 1001;
         }
-        .btn-bookmark-nav:hover {
-            color: var(--accent-cyan);
-            border-color: rgba(56, 189, 248, 0.3);
-            background: rgba(56, 189, 248, 0.06);
-        }
-
-        /* ARTICLE LAYOUT & CARD */
-        .wrap {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1.5rem 1.2rem 4rem;
+        .nav-hamburger span {
             width: 100%;
+            height: 2px;
+            background: #f8fafc;
+            border-radius: 2px;
+            transition: all 0.25s;
         }
-        .back-nav-link {
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            color: var(--accent-cyan);
-            font-weight: 700;
-            font-size: 0.88rem;
-            text-decoration: none;
-            margin-bottom: 1.5rem;
-            transition: transform 0.2s;
         }
-        .back-nav-link:hover {
-            transform: translateX(-3px);
-            text-decoration: underline;
-        }
-        .card {
-            background: var(--bg-card) !important;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-card) !important;
-            border-radius: 20px !important;
-            padding: 2.5rem 2.2rem !important;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
-            color: var(--text-primary);
-        }
-        @media (max-width: 600px) {
-            .card { padding: 1.6rem 1.2rem !important; }
-        }
-        h1 {
-            font-size: 2.1rem !important;
-            font-weight: 800;
-            line-height: 1.3;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent !important;
-            margin-bottom: 0.85rem;
-        }
-        .meta {
-            color: var(--text-muted) !important;
-            font-size: 0.88rem;
-            margin-bottom: 1.4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 0.85rem;
-        }
-        .meta strong {
-            color: #ffffff !important;
-        }
-        .chip {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.15);
-            color: #a5b4fc;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 0.25rem 0.65rem;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: 0.4rem;
-            margin-bottom: 1.2rem;
-        }
-        h2 {
-            font-size: 1.35rem !important;
-            color: var(--accent-cyan) !important;
-            margin-top: 2rem;
-            margin-bottom: 0.8rem;
-            border-left: 4px solid var(--accent-cyan) !important;
-            padding-left: 0.8rem;
-            font-weight: 700;
-        }
-        h3 {
-            font-size: 1.15rem;
-            color: #ffffff;
-            margin-top: 1.4rem;
-            margin-bottom: 0.6rem;
-            font-weight: 700;
-        }
-        p, li {
-            color: #cbd5e1 !important;
-            line-height: 1.75;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-        ul, ol {
-            padding-left: 1.4rem;
-            margin-bottom: 1.2rem;
-        }
-        li {
-            margin-bottom: 0.4rem;
-        }
-        a {
-            color: var(--accent-cyan);
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-        a:hover {
-            color: #7dd3fc;
-        }
-        .note {
-            background: rgba(14, 21, 37, 0.7);
-            border-left: 4px solid var(--accent-cyan);
-            border-radius: 12px;
-            padding: 1.1rem 1.4rem;
-            margin: 1.4rem 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-right: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .author-box {
-            margin-top: 2.5rem;
-            padding: 1.4rem 1.6rem;
-            background: rgba(11, 15, 25, 0.65) !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            border-radius: 16px !important;
-            display: flex;
+        .lang-switcher-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 0.38rem;
+            padding: 0.42rem 0.72rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            white-space: nowrap;
         }
-        .author-box h3 {
-            color: #ffffff !important;
-            margin: 0.15rem 0 0.35rem !important;
+        .lang-switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(56, 189, 248, 0.35);
+            color: #38bdf8;
         }
-        .author-box p {
-            color: var(--text-secondary) !important;
-            font-size: 0.86rem !important;
-            line-height: 1.5;
-            margin: 0 !important;
+        .lang-dropdown-menu {
+            display: none !important;
+            position: absolute !important;
+            top: calc(100% + 8px) !important;
+            right: 0 !important;
+            min-width: 170px !important;
+            background: rgba(14, 19, 31, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 12px !important;
+            padding: 0.4rem !important;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6) !important;
+            flex-direction: column !important;
+            gap: 0.2rem !important;
+            z-index: 2000 !important;
+        }
+        .lang-dropdown-menu.show {
+            display: flex !important;
+        }
+        .lang-option {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.55rem !important;
+            padding: 0.45rem 0.65rem !important;
+            border-radius: 8px !important;
+            color: #cbd5e1 !important;
+            text-decoration: none !important;
+            font-size: 0.82rem !important;
+            font-weight: 600 !important;
+            transition: all 0.15s ease !important;
+            white-space: nowrap !important;
+        }
+        .lang-option:hover,
+        .lang-option.active {
+            background: rgba(56, 189, 248, 0.15) !important;
+            color: #38bdf8 !important;
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0.55rem 0.85rem !important; }
         }
 
-        /* ===== FOOTER ===== */
+/* ===== FOOTER ===== */
         footer {
             background: #070a12;
             border-top: 1px solid var(--border-card);
@@ -549,6 +510,10 @@
     <script defer src="/assets/social-share.js"></script>
     <link rel="stylesheet" href="/assets/aura-fx.css">
     <script defer src="/assets/aura-fx.js"></script>
+    <link rel="stylesheet" href="/assets/lang-switcher.css">
+    <script defer src="/assets/lang-switcher.js"></script>
+    <script defer src="/assets/theme-toggle.js"></script>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
 <body>
 
@@ -557,7 +522,7 @@
     <div class="ambient-glow-top-right"></div>
     <div class="ambient-glow-mid"></div>
 
-        <!-- ===== TOP NAVIGATION ===== -->
+    <!-- ===== TOP NAVIGATION ===== -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/" class="logo" aria-label="AuraToolkit360 Home">
@@ -573,7 +538,7 @@
             <div class="nav-center">
                 <a href="/" class="nav-link">Home</a>
                 <a href="/converter/" class="nav-link">Converter</a>
-                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
+                <a href="/resume-cv-maker/" class="nav-link active">Resume</a>
                 <a href="/cover-letter-maker/" class="nav-link">Cover Letter</a>
                 <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
                 <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
@@ -592,7 +557,7 @@
                         <span class="lang-current-label">EN</span>
                         <span class="lang-arrow">▾</span>
                     </button>
-                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" style="display: none;">
                         <a href="/" class="lang-option active" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
                         <a href="/es/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
                         <a href="/fr/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
@@ -611,7 +576,7 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
-                <a href="/saas/" class="mobile-nav-item" style="color:#1d4ed8; font-weight:700; background:rgba(37,99,235,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
+                <a href="/saas/" class="mobile-nav-item" style="color:#38bdf8; font-weight:700; background:rgba(56,189,248,0.1); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>

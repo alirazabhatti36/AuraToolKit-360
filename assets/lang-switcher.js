@@ -62,6 +62,7 @@
         const dropdown = document.getElementById('langDropdownMenu');
         if (dropdown) {
             const isOpen = dropdown.classList.toggle('show');
+            dropdown.style.display = isOpen ? 'flex' : 'none';
             const btn = document.getElementById('langSwitcherBtn');
             if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
@@ -74,6 +75,7 @@
         if (dropdown && dropdown.classList.contains('show')) {
             if (!dropdown.contains(e.target) && (!btn || !btn.contains(e.target))) {
                 dropdown.classList.remove('show');
+                dropdown.style.display = 'none';
                 if (btn) btn.setAttribute('aria-expanded', 'false');
             }
         }
@@ -84,6 +86,7 @@
             const dropdown = document.getElementById('langDropdownMenu');
             if (dropdown && dropdown.classList.contains('show')) {
                 dropdown.classList.remove('show');
+                dropdown.style.display = 'none';
                 const btn = document.getElementById('langSwitcherBtn');
                 if (btn) btn.setAttribute('aria-expanded', 'false');
             }

@@ -144,10 +144,11 @@
         "author": { "@type": "Organization", "name": "AuraToolkit360" }
     }
     </script>
+    <link rel="stylesheet" href="/assets/lang-switcher.css">
+    <script defer src="/assets/lang-switcher.js"></script>
+    <link rel="stylesheet" href="/assets/saas-ui.css">
 </head>
-<body>
-
-        <!-- ===== TOP NAVIGATION ===== -->
+<body><!-- ===== TOP NAVIGATION ===== -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/" class="logo" aria-label="AuraToolkit360 Home">
@@ -162,7 +163,7 @@
             
             <div class="nav-center">
                 <a href="/" class="nav-link">Home</a>
-                <a href="/converter/" class="nav-link">Converter</a>
+                <a href="/converter/" class="nav-link active">Converter</a>
                 <a href="/resume-cv-maker/" class="nav-link">Resume</a>
                 <a href="/cover-letter-maker/" class="nav-link">Cover Letter</a>
                 <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
@@ -182,7 +183,7 @@
                         <span class="lang-current-label">EN</span>
                         <span class="lang-arrow">▾</span>
                     </button>
-                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" style="display: none;">
                         <a href="/" class="lang-option active" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
                         <a href="/es/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
                         <a href="/fr/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
@@ -201,7 +202,7 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
-                <a href="/saas/" class="mobile-nav-item" style="color:#1d4ed8; font-weight:700; background:rgba(37,99,235,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
+                <a href="/saas/" class="mobile-nav-item" style="color:#38bdf8; font-weight:700; background:rgba(56,189,248,0.1); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>

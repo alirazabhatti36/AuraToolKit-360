@@ -104,59 +104,285 @@
             z-index: -1; pointer-events: none; filter: blur(50px);
         }
 
-        /* ===== NAVBAR ===== */
+                                /* ===== NAVBAR ===== */
         .navbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(11, 15, 25, 0.82); backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-card); padding: 0.85rem 2rem;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(11, 15, 25, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.65rem 1.5rem;
+            border-bottom: 1px solid var(--border-card);
+            position: fixed !important;
+            top: 0; left: 0; right: 0;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
         }
-        .nav-hidden { transform: translateY(-100%); }
-        .nav-container { max-width: 1360px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-        .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: #ffffff; font-weight: 800; font-size: 1.2rem; }
-        .logo-symbol { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #ffffff; }
-        .logo-text span { color: var(--accent-cyan); }
-        .nav-center { display: flex; align-items: center; gap: 0.8rem; }
-        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; font-weight: 500; padding: 0.45rem 0.75rem; border-radius: 8px; transition: all 0.2s;
-            white-space: nowrap;
+        .navbar.nav-hidden { transform: translateY(-100%); }
+        .nav-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            box-sizing: border-box;
         }
-        .nav-link:hover, .nav-link.active { color: #ffffff; background: rgba(255, 255, 255, 0.06); }
-        .nav-link.active { color: var(--accent-cyan); font-weight: 600; }
-        .nav-badge-pill { font-size: 0.65rem; font-weight: 700; background: rgba(56, 189, 248, 0.2); color: var(--accent-cyan); padding: 0.15rem 0.4rem; border-radius: 999px; margin-left: 0.3rem; border: 1px solid rgba(56, 189, 248, 0.3); }
-
-        .nav-right-actions { display: flex; align-items: center; gap: 0.6rem; }
-
-        .nav-hamburger { display: none; flex-direction: column; justify-content: space-around; width: 38px; height: 38px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-card); border-radius: 9px; cursor: pointer; padding: 8px; z-index: 1001; }
-        .nav-hamburger span { width: 100%; height: 2px; background: #f8fafc; border-radius: 2px; transition: all 0.25s; }
-        .mobile-nav-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(11, 15, 25, 0.96); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; padding: 5.5rem 1.5rem 2rem; overflow-y: auto; }
-        .mobile-nav-drawer.open { display: flex; }
-        .mobile-nav-links { display: flex; flex-direction: column; gap: 0.5rem; }
-        .mobile-nav-item { display: flex; align-items: center; gap: 0.75rem; color: #f8fafc; text-decoration: none; padding: 0.85rem 1rem; border-radius: 12px; font-size: 1rem; font-weight: 600; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
-
-        @media (max-width: 1080px) {
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .logo-symbol {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+        }
+        .logo-text span {
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-center {
+            display: flex;
+            gap: 0.35rem;
+            align-items: center;
+        }
+        @media (max-width: 1240px) {
             .nav-center { display: none !important; }
             .nav-hamburger { display: flex !important; }
         }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            white-space: nowrap;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-link.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        .nav-badge-pill {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: #ffffff;
+            font-size: 0.62rem;
+            padding: 0.12rem 0.42rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .btn-bookmark-nav {
+            background: transparent;
+            border: 1px solid var(--border-card);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.48rem 0.9rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .btn-bookmark-nav:hover {
+            color: var(--accent-cyan);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.06);
+        }
+        .btn-aura-saas {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .btn-aura-saas:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
+        }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-card);
+            border-radius: 9px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .nav-hamburger span {
+            width: 100%;
+            height: 2px;
+            background: #f8fafc;
+            border-radius: 2px;
+            transition: all 0.25s;
+        }
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        .lang-switcher-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.38rem;
+            padding: 0.42rem 0.72rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .lang-switcher-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(56, 189, 248, 0.35);
+            color: #38bdf8;
+        }
+        .lang-dropdown-menu {
+            display: none !important;
+            position: absolute !important;
+            top: calc(100% + 8px) !important;
+            right: 0 !important;
+            min-width: 170px !important;
+            background: rgba(14, 19, 31, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 12px !important;
+            padding: 0.4rem !important;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6) !important;
+            flex-direction: column !important;
+            gap: 0.2rem !important;
+            z-index: 2000 !important;
+        }
+        .lang-dropdown-menu.show {
+            display: flex !important;
+        }
+        .lang-option {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.55rem !important;
+            padding: 0.45rem 0.65rem !important;
+            border-radius: 8px !important;
+            color: #cbd5e1 !important;
+            text-decoration: none !important;
+            font-size: 0.82rem !important;
+            font-weight: 600 !important;
+            transition: all 0.15s ease !important;
+            white-space: nowrap !important;
+        }
+        .lang-option:hover,
+        .lang-option.active {
+            background: rgba(56, 189, 248, 0.15) !important;
+            color: #38bdf8 !important;
+        }
         @media (max-width: 768px) {
-            .nav-right-actions a.btn-primary { display: none !important; }
-            .navbar { padding: 0.65rem 1rem !important; }
-        }
-        @media (max-width: 480px) {
-            .navbar { padding: 0.5rem 0.75rem !important; }
-            .logo { font-size: 1.15rem !important; }
-            .logo-symbol { width: 30px !important; height: 30px !important; }
-            .card { padding: 1.1rem 0.85rem !important; }
-            .letter-paper { padding: 1.2rem 0.85rem !important; }
+            .navbar { padding: 0.55rem 0.85rem !important; }
         }
 
-        /* ===== CONTAINER & HEADER ===== */
-        .container { max-width: 1360px; margin: 0 auto; padding: 1.5rem 1.2rem 3rem; flex: 1; width: 100%; }
-        .page-header { text-align: center; margin-bottom: 2rem; }
-        .pill-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.25); color: var(--accent-cyan); padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.8rem; }
-        .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.6rem; background: linear-gradient(135deg, #ffffff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .page-header p { color: var(--text-secondary); max-width: 720px; margin: 0 auto; font-size: 0.98rem; }
+/* ===== HERO BANNER / PAGE HEADER STANDARD ===== */
+        .hero-banner, .page-header {
+            text-align: center;
+            max-width: 860px;
+            margin: 0 auto 2.2rem;
+        }
+        .hero-eyebrow, .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.35rem 0.95rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 0.8rem;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+        }
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+            animation: pulseGlow 2s infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+        .hero-title, .page-header h1 {
+            font-size: clamp(2rem, 4.5vw, 2.7rem);
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            line-height: 1.2;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        .hero-desc, .page-header p {
+            font-size: 1.02rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 1.8rem;
+            line-height: 1.6;
+        }
 
-        /* ===== DUAL PANE WORKSPACE ===== */
+/* ===== DUAL PANE WORKSPACE ===== */
         .workspace { display: grid; grid-template-columns: 1fr 1.05fr; gap: 1.5rem; align-items: start; }
         @media (max-width: 1024px) {
             .workspace { grid-template-columns: 1fr; }
@@ -241,13 +467,18 @@
     <link rel="stylesheet" href="/assets/saas-ui.css">
     <link rel="stylesheet" href="/assets/aura-fx.css">
     <script defer src="/assets/aura-fx.js"></script>
+    <link rel="stylesheet" href="/assets/lang-switcher.css">
+    <script defer src="/assets/lang-switcher.js"></script>
+    <script defer src="/assets/theme-toggle.js"></script>
 </head>
 <body>
 
+        <!-- Ambient Neon Aurora Glows -->
     <div class="ambient-glow-top-left"></div>
     <div class="ambient-glow-top-right"></div>
+    <div class="ambient-glow-mid"></div>
 
-        <!-- ===== TOP NAVIGATION ===== -->
+    <!-- ===== TOP NAVIGATION ===== -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
             <a href="/" class="logo" aria-label="AuraToolkit360 Home">
@@ -264,7 +495,7 @@
                 <a href="/" class="nav-link">Home</a>
                 <a href="/converter/" class="nav-link">Converter</a>
                 <a href="/resume-cv-maker/" class="nav-link">Resume</a>
-                <a href="/cover-letter-maker/" class="nav-link">Cover Letter</a>
+                <a href="/cover-letter-maker/" class="nav-link active">Cover Letter</a>
                 <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
                 <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
                 <a href="/blogs/" class="nav-link">Blogs</a>
@@ -282,7 +513,7 @@
                         <span class="lang-current-label">EN</span>
                         <span class="lang-arrow">▾</span>
                     </button>
-                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" style="display: none;">
                         <a href="/" class="lang-option active" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
                         <a href="/es/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
                         <a href="/fr/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
@@ -301,7 +532,7 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
-                <a href="/saas/" class="mobile-nav-item" style="color:#1d4ed8; font-weight:700; background:rgba(37,99,235,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
+                <a href="/saas/" class="mobile-nav-item" style="color:#38bdf8; font-weight:700; background:rgba(56,189,248,0.1); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
@@ -327,28 +558,15 @@
         </div>
     </nav>
 
-    <!-- MOBILE NAV DRAWER -->
-    <div class="mobile-nav-drawer" id="mobileNavDrawer">
-        <div class="mobile-nav-links">
-            <a href="/saas/" class="mobile-nav-item" style="color:#4f46e5; font-weight:700; background:rgba(79,70,229,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
-            <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
-            <a href="/converter/" class="mobile-nav-item"><span>🔄</span> Converter Suite (40+ Tools)</a>
-            <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
-            <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
-            <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
-            <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener</a>
-            <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career &amp; Tech Blogs</a>
-            <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
-            <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
-    </div>
-    </div>
-
     <!-- MAIN CONTENT -->
     <main class="container">
-        <div class="page-header">
-            <div class="pill-badge">🛡️ 100% In-Browser Privacy — Zero Server Uploads</div>
-            <h1>Free ATS Cover Letter Builder</h1>
-            <p>Generate matching, high-impact cover letters tailored to your target job in 60 seconds. Choose from 3 proven tones, customize colors and typography, and export clean PDF or Word DOCX.</p>
+        <div class="hero-banner page-header">
+            <div class="hero-eyebrow">
+                <span class="pulse-dot"></span>
+                <span>100% In-Browser Privacy • Zero Server Uploads</span>
+            </div>
+            <h1 class="hero-title">Free ATS <span class="gradient-text">Cover Letter Builder</span></h1>
+            <p class="hero-desc">Generate matching, high-impact cover letters tailored to your target job in 60 seconds. Choose from 3 proven tones, customize colors and typography, and export clean PDF or Word DOCX.</p>
         </div>
 
         <div class="workspace">
