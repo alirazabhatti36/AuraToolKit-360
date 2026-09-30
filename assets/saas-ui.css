@@ -1072,7 +1072,7 @@ html[data-theme="dark"] tr:hover td {
 
 /* Header Navbar Handled by Brand Standard in aura-fx.css */
 
-@media (max-width: 1160px) {
+@media (max-width: 1240px) {
     .nav-center { display: none !important; }
     .nav-hamburger { display: flex !important; }
     .btn-bookmark-nav { display: none !important; }
