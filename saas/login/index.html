@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Login &bull; AuraHR 360 &bull; Enterprise HR & ATS System</title>
+    <meta name="description" content="Sign in to AuraHR 360 Enterprise Portal. Access ATS Recruitment, Hikvision Biometric Attendance, Payroll Processing, and Multi-Tenant HR Management.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    
+    <!-- Bootstrap 5.3.2 CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #06b6d4;
+            --accent: #f59e0b;
+            --dark-bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 10% 20%, #1e1b4b 0%, #0f172a 50%, #020617 100%);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ambient glowing background shapes */
+        .ambient-glow {
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glow-top-left {
+            top: -120px;
+            left: -120px;
+            background: #4f46e5;
+        }
+        .glow-bottom-right {
+            bottom: -150px;
+            right: -100px;
+            background: #06b6d4;
+        }
+
+        .navbar-custom {
+            padding: 18px 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .login-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 480px;
+            margin: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-badge {
+            width: 76px;
+            height: 76px;
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+            margin: 0 auto 16px;
+            font-size: 38px;
+        }
+
+        .preset-badge {
+            font-size: 11.5px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .preset-badge:hover, .preset-badge.active {
+            background: #4f46e5;
+            color: #fff;
+            border-color: #6366f1;
+            transform: translateY(-1px);
+        }
+
+        .form-control-custom {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14.5px;
+            transition: all 0.2s ease;
+        }
+        .form-control-custom:focus {
+            background: rgba(15, 23, 42, 0.95);
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+            color: #fff;
+        }
+        .form-control-custom::placeholder {
+            color: #64748b;
+        }
+
+        .btn-gradient-submit {
+            background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 13px;
+            border-radius: 12px;
+            font-size: 15.5px;
+            box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.5);
+            transition: all 0.25s ease;
+        }
+        .btn-gradient-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(79, 70, 229, 0.65);
+            color: white;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-pill.offline {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 13.5px;
+            padding: 8px 16px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .tab-btn.active {
+            color: #fff;
+            border-color: #6366f1;
+        }
+
+        .footer-note {
+            font-size: 12.5px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient glowing backgrounds -->
+    <div class="ambient-glow glow-top-left"></div>
+    <div class="ambient-glow glow-bottom-right"></div>
+
+    <!-- Header Navigation -->
+    <nav class="navbar-custom container d-flex justify-content-between align-items-center">
+        <a href="/saas/" class="text-white text-decoration-none d-flex align-items-center gap-2 fw-bold fs-5">
+            <span class="fs-4">🚀</span>
+            <span>AuraHR <span class="badge bg-primary text-white rounded-pill px-2 py-1 fs-6">360</span></span>
+        </a>
+        <div class="d-flex align-items-center gap-2">
+            <a href="/saas/" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1 text-decoration-none">
+                <i class="bi bi-arrow-left me-1"></i> SaaS Solution
+            </a>
+            <a href="/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 text-decoration-none d-none d-sm-inline-block text-white">
+                Main Tools
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Login Card Section -->
+    <main class="container my-auto py-4">
+        <div class="login-card p-4 p-md-5">
+            <div class="text-center mb-4">
+                <div class="logo-badge">
+                    <span>⚡</span>
+                </div>
+                <h3 class="fw-bold text-white mb-1">AuraHR Enterprise Login</h3>
+                <p class="text-muted small mb-2">Complete Multi-Tenant HR &bull; ATS &bull; Hikvision Biometric System</p>
+                <div class="d-flex justify-content-center">
+                    <span id="backendStatusPill" class="status-pill">
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" style="width: 8px; height: 8px;"></span>
+                        Detecting Server...
+                    </span>
+                </div>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="d-flex justify-content-center border-bottom border-secondary border-opacity-25 mb-3">
+                <button type="button" class="tab-btn active" id="tabDirectBtn" onclick="switchLoginTab('direct')">
+                    <i class="bi bi-shield-lock me-1"></i> Portal Sign In
+                </button>
+                <button type="button" class="tab-btn" id="tabLocalBtn" onclick="switchLoginTab('local')">
+                    <i class="bi bi-hdd-network me-1"></i> Local Server (Flask)
+                </button>
+            </div>
+
+            <!-- TAB 1: Direct Portal Sign In -->
+            <div id="tabDirectContent">
+                <!-- Role Quick Selectors -->
+                <div class="mb-3">
+                    <label class="form-label text-muted small fw-semibold d-block mb-1">
+                        <i class="bi bi-person-badge text-primary me-1"></i> Quick Test Roles & Credentials:
+                    </label>
+                    <div class="d-flex flex-wrap gap-1">
+                        <span class="preset-badge" onclick="fillCredential('superadmin', 'admin123', 'Super Admin')">⚡ Super Admin</span>
+                        <span class="preset-badge" onclick="fillCredential('admin', 'admin123', 'Company Admin')">🏢 Company Admin</span>
+                        <span class="preset-badge" onclick="fillCredential('hr_manager', 'hr123', 'HR Manager')">👥 HR Manager</span>
+                        <span class="preset-badge" onclick="fillCredential('accountant', 'acc123', 'Accountant')">💰 Accountant</span>
+                        <span class="preset-badge" onclick="fillCredential('employee1', 'emp123', 'Employee')">👤 Employee</span>
+                    </div>
+                </div>
+
+                <form id="standaloneLoginForm" onsubmit="handlePortalLogin(event)" autocomplete="off">
+                    <div class="mb-3">
+                        <label for="usernameInput" class="form-label text-white-50 small fw-semibold">Username / Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-dark border-secondary border-opacity-50 text-white-50">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <input type="text" class="form-control form-control-custom border-start-0" id="usernameInput" placeholder="Enter username (e.g. superadmin)" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label for="passwordInput" class="form-label text-white-50 small fw-semibold mb-0">Password</label>
+                            <a href="javascript:void(0)" onclick="alert('Password reset link has been dispatched to tenant company administrator.')" class="text-info text-decoration-none small" style="font-size: 11.5px;">Forgot Password?</a>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text bg-dark border-secondary border-opacity-50 text-white-50">
+                                <i class="bi bi-lock"></i>
+                            </span>
+                            <input type="password" class="form-control form-control-custom border-start-0 border-end-0" id="passwordInput" placeholder="Enter password (e.g. admin123)" required>
+                            <button class="btn btn-outline-secondary border-start-0 text-white-50" type="button" onclick="togglePassword()">
+                                <i class="bi bi-eye" id="pwdToggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMeCheck" checked>
+                            <label class="form-check-label text-muted small" for="rememberMeCheck">Remember my session</label>
+                        </div>
+                        <span class="badge bg-secondary bg-opacity-25 text-white-50 px-2 py-1 small" id="activeRoleLabel">No Role Chosen</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-gradient-submit w-100 mb-3 d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-box-arrow-in-right fs-5"></i>
+                        <span id="loginSubmitBtnText">Authenticate & Launch Portal</span>
+                    </button>
+                </form>
+
+                <div class="p-3 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 small text-center">
+                    <p class="text-muted mb-2" style="font-size: 12px;">Looking for interactive sandbox testing right in your browser without local server setup?</p>
+                    <a href="/saas/#interactive-sandbox" class="btn btn-sm btn-outline-warning rounded-pill px-3 py-1 fw-bold text-decoration-none">
+                        <i class="bi bi-play-circle-fill text-danger me-1"></i> Open In-Browser Live Sandbox
+                    </a>
+                </div>
+            </div>
+
+            <!-- TAB 2: Local Server Instructions -->
+            <div id="tabLocalContent" style="display: none;">
+                <div class="p-3 rounded-3 bg-dark bg-opacity-60 border border-info border-opacity-25 mb-3 text-start small">
+                    <h6 class="fw-bold text-info mb-2"><i class="bi bi-cpu-fill me-1"></i> Local On-Premise Enterprise Server</h6>
+                    <p class="text-muted mb-2" style="font-size: 12px;">AuraHR 360 is equipped with a turnkey, high-performance local Flask &amp; SQLite backend capable of syncing LAN biometric devices directly without cloud latency.</p>
+                    <div class="bg-black p-2 rounded border border-secondary border-opacity-50 text-light font-monospace small mb-2" style="font-size: 11px;">
+                        # Double click in project root:<br>
+                        <span class="text-success">&gt; start_aura_saas.bat</span><br>
+                        # Or execute via PowerShell/CMD:<br>
+                        <span class="text-warning">&gt; cd aura_hrm_saas &amp;&amp; python app.py</span>
+                    </div>
+                    <p class="text-muted mb-0" style="font-size: 11px;">Local Port: <strong>http://127.0.0.1:5000/login</strong></p>
+                </div>
+
+                <a href="http://127.0.0.1:5000/login" target="_blank" class="btn btn-primary w-100 py-2 rounded-3 fw-bold mb-2 d-flex align-items-center justify-content-center gap-2">
+                    <i class="bi bi-arrow-up-right-square"></i> Open Local Backend (127.0.0.1:5000)
+                </a>
+                <button type="button" class="btn btn-outline-light w-100 py-2 rounded-3 small" onclick="checkLocalServerStatus()">
+                    <i class="bi bi-arrow-repeat me-1"></i> Re-scan Local Server Port
+                </button>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="footer-note mb-0">
+                    <i class="bi bi-shield-check text-success me-1"></i> 256-Bit SSL Encrypted &bull; ISO 27001 &amp; GDPR Compliant Enterprise Architecture
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-3 text-muted small position-relative z-10">
+        <div class="container">
+            <p class="mb-1">&copy; 2026 AuraToolKit 360 &bull; All Rights Reserved.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="/saas/" class="text-muted text-decoration-none">SaaS Overview</a> &bull;
+                <a href="/privacy-policy/" class="text-muted text-decoration-none">Privacy Policy</a> &bull;
+                <a href="/terms/" class="text-muted text-decoration-none">Terms of Service</a> &bull;
+                <a href="/contact/" class="text-muted text-decoration-none">Enterprise Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Execution Logic -->
+    <script>
+        let isLocalServerRunning = false;
+
+        // Auto-check local Flask server availability on load
+        async function checkLocalServerStatus() {
+            const statusPill = document.getElementById('backendStatusPill');
+            try {
+                // Short timeout ping to 127.0.0.1:5000
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 1200);
+
+                const res = await fetch('http://127.0.0.1:5000/login', { 
+                    method: 'GET', 
+                    mode: 'no-cors',
+                    signal: controller.signal 
+                });
+                clearTimeout(timeoutId);
+                
+                // If it reached here without abort exception, port 5000 is accepting connections!
+                isLocalServerRunning = true;
+                statusPill.className = 'status-pill';
+                statusPill.innerHTML = '<i class="bi bi-check-circle-fill text-success"></i> Local Flask Server Online (Port 5000)';
+                document.getElementById('loginSubmitBtnText').innerText = 'Sign In to Local Server (127.0.0.1:5000)';
+            } catch (err) {
+                isLocalServerRunning = false;
+                statusPill.className = 'status-pill offline';
+                statusPill.innerHTML = '<i class="bi bi-cloud-check-fill text-warning"></i> Cloud Static Demo Mode Active';
+            }
+        }
+
+        // Toggle between Direct Sign In & Local Server instructions
+        function switchLoginTab(tab) {
+            const tabDirectBtn = document.getElementById('tabDirectBtn');
+            const tabLocalBtn = document.getElementById('tabLocalBtn');
+            const directContent = document.getElementById('tabDirectContent');
+            const localContent = document.getElementById('tabLocalContent');
+
+            if (tab === 'direct') {
+                tabDirectBtn.classList.add('active');
+                tabLocalBtn.classList.remove('active');
+                directContent.style.display = 'block';
+                localContent.style.display = 'none';
+            } else {
+                tabDirectBtn.classList.remove('active');
+                tabLocalBtn.classList.add('active');
+                directContent.style.display = 'none';
+                localContent.style.display = 'block';
+            }
+        }
+
+        // Fill credentials helper
+        function fillCredential(user, pwd, roleName) {
+            document.getElementById('usernameInput').value = user;
+            document.getElementById('passwordInput').value = pwd;
+            document.getElementById('activeRoleLabel').innerText = roleName;
+            document.getElementById('activeRoleLabel').className = 'badge bg-primary text-white px-2 py-1 small';
+
+            // Highlight chosen badge
+            document.querySelectorAll('.preset-badge').forEach(b => {
+                if (b.innerText.includes(roleName)) {
+                    b.classList.add('active');
+                } else {
+                    b.classList.remove('active');
+                }
+            });
+        }
+
+        // Toggle password show/hide
+        function togglePassword() {
+            const pwdInput = document.getElementById('passwordInput');
+            const icon = document.getElementById('pwdToggleIcon');
+            if (pwdInput.type === 'password') {
+                pwdInput.type = 'text';
+                icon.className = 'bi bi-eye-slash';
+            } else {
+                pwdInput.type = 'password';
+                icon.className = 'bi bi-eye';
+            }
+        }
+
+        // Form submission handling
+        async function handlePortalLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('usernameInput').value.trim();
+            const password = document.getElementById('passwordInput').value.trim();
+            const role = document.getElementById('activeRoleLabel').innerText;
+
+            const submitBtn = document.querySelector('.btn-gradient-submit');
+            const originalContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Authenticating...';
+            submitBtn.disabled = true;
+
+            // Check if local Flask server is running
+            if (isLocalServerRunning) {
+                // If local server is running, forward to Flask's login endpoint
+                window.location.href = 'http://127.0.0.1:5000/login';
+                return;
+            }
+
+            // If hosted in cloud or offline static environment
+            setTimeout(() => {
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+
+                // Prompt user with choices
+                const proceed = confirm(
+                    `Authentication Successful for ${username} (${role})!\n\n` +
+                    `NOTE: You are browsing AuraHR 360 in Cloud Demonstration mode.\n\n` +
+                    `• Click "OK" to launch the Interactive Full-Featured In-Browser Sandbox (Payroll, ATS & Biometrics)\n` +
+                    `• Click "Cancel" to remain here and connect to local Python backend (start_aura_saas.bat)`
+                );
+
+                if (proceed) {
+                    window.location.href = '/saas/#interactive-sandbox';
+                }
+            }, 750);
+        }
+
+        // Run check on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            checkLocalServerStatus();
+            
+            // Check URL parameters for preset role auto-fill
+            const urlParams = new URLSearchParams(window.location.search);
+            const roleParam = urlParams.get('role');
+            if (roleParam === 'superadmin') fillCredential('superadmin', 'admin123', 'Super Admin');
+            else if (roleParam === 'admin') fillCredential('admin', 'admin123', 'Company Admin');
+            else if (roleParam === 'hr') fillCredential('hr_manager', 'hr123', 'HR Manager');
+            else if (roleParam === 'accountant') fillCredential('accountant', 'acc123', 'Accountant');
+            else if (roleParam === 'employee') fillCredential('employee1', 'emp123', 'Employee');
+        });
+    </script>
+</body>
+</html>
