@@ -224,22 +224,8 @@
         };
     }
 
-    // Global Theme Toggle Fallback
-    if (!window.toggleAuraTheme) {
-        window.toggleAuraTheme = function() {
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            try { localStorage.setItem('atk_theme', next); } catch(e) {}
-            document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-                btn.innerHTML = next === 'dark' 
-                    ? '<span class="theme-icon">☀️</span><span class="theme-label">Light</span>' 
-                    : '<span class="theme-icon">🌙</span><span class="theme-label">Dark</span>';
-                btn.setAttribute('aria-label', next === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
-                btn.setAttribute('title', next === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
-            });
-        };
-    }
+    // Theme toggle neutralized (site runs permanently on signature Dark Luxury mode)
+    window.toggleAuraTheme = function() {};
 
     // PWA Install Fallback
     if (!window.installPwaApp) {

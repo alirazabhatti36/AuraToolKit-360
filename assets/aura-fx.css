@@ -238,21 +238,7 @@ a.btn-try-hr[href*="/saas/"]:hover {
 
 .theme-toggle-btn,
 .theme-toggle-pill {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    color: #ffffff !important;
-    font-size: 0.82rem !important;
-    font-weight: 600 !important;
-    padding: 0.45rem 0.85rem !important;
-    border-radius: 999px !important;
-    cursor: pointer !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0.35rem !important;
-    transition: all 0.2s ease !important;
-    height: 36px !important;
-    white-space: nowrap !important;
+    display: none !important;
 }
 
 .theme-toggle-btn:hover,
