@@ -132,7 +132,7 @@
         ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
 
-                        /* ===== NAVBAR ===== */
+                                /* ===== NAVBAR ===== */
         .navbar {
             background: rgba(11, 15, 25, 0.88);
             backdrop-filter: blur(20px);
@@ -846,6 +846,339 @@
             .logo-symbol { width: 30px !important; height: 30px !important; }
         }
 
+
+        /* ===== CONVERTER SEARCH BAR & FILTER SYSTEM ===== */
+        .converter-search-container {
+            max-width: 860px;
+            margin: 1.8rem auto 1.5rem;
+            position: relative;
+            text-align: left;
+        }
+        .converter-search-bar {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 0.65rem 1.1rem;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            gap: 0.75rem;
+            position: relative;
+            z-index: 101;
+        }
+        .converter-search-bar:focus-within {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15), 0 16px 32px rgba(37, 99, 235, 0.12);
+            transform: translateY(-1px);
+        }
+        .converter-search-bar .search-icon {
+            font-size: 1.25rem;
+            color: #64748b;
+            flex-shrink: 0;
+            user-select: none;
+            display: flex;
+            align-items: center;
+        }
+        .converter-search-bar input {
+            flex: 1;
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            font-size: 1rem;
+            color: #0f172a;
+            font-family: inherit;
+            font-weight: 600;
+            padding: 0 !important;
+            margin: 0 !important;
+            box-shadow: none !important;
+        }
+        .converter-search-bar input::placeholder {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        .search-kbd-badge {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 0.15rem 0.5rem;
+            font-size: 0.72rem;
+            font-family: inherit;
+            font-weight: 700;
+            color: #64748b;
+            user-select: none;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .search-kbd-badge { display: none !important; }
+        }
+        .converter-search-bar .search-clear-btn {
+            background: #f1f5f9;
+            border: none;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 700;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 0;
+            transition: all 0.2s;
+        }
+        .converter-search-bar .search-clear-btn:hover {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        .converter-search-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 16px;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18), 0 8px 16px rgba(15, 23, 42, 0.08);
+            max-height: 420px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            scrollbar-width: thin;
+        }
+        .converter-search-dropdown.show {
+            display: block;
+        }
+        .search-res-item {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.85rem 1.15rem;
+            text-decoration: none;
+            color: #0f172a;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.15s ease, transform 0.15s ease;
+            cursor: pointer;
+        }
+        .search-res-item:last-child {
+            border-bottom: none;
+        }
+        .search-res-item:hover,
+        .search-res-item.selected {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+        .search-res-icon {
+            font-size: 1.4rem;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .search-res-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .search-res-name {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: #0f172a;
+            line-height: 1.25;
+        }
+        .search-res-item:hover .search-res-name,
+        .search-res-item.selected .search-res-name {
+            color: #1d4ed8;
+        }
+        .search-res-desc {
+            font-size: 0.74rem;
+            color: #64748b;
+            margin-top: 0.15rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .search-res-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex-shrink: 0;
+        }
+        .search-res-cat {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            background: #e0f2fe;
+            color: #0284c7;
+            white-space: nowrap;
+        }
+        .search-res-jump-btn {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: 8px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #2563eb;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .search-res-jump-btn:hover {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+        }
+        .search-res-dedicated-link {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #64748b;
+            text-decoration: none;
+            padding: 0.2rem 0.45rem;
+            border-radius: 6px;
+            transition: all 0.15s;
+        }
+        .search-res-dedicated-link:hover {
+            color: #0284c7;
+            background: #f1f5f9;
+        }
+        .converter-search-status {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            border-radius: 12px;
+            padding: 0.65rem 1.1rem;
+            margin: 1.2rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.88rem;
+            font-weight: 600;
+            gap: 0.8rem;
+        }
+        .converter-search-status button {
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: auto;
+            transition: background 0.2s;
+        }
+        .converter-search-status button:hover {
+            background: #1d4ed8;
+        }
+        .popular-search-tags {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .popular-label {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 0.2rem;
+        }
+        .tag-chip {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            width: auto;
+        }
+        .tag-chip:hover {
+            border-color: #2563eb;
+            color: #1d4ed8;
+            background: #eff6ff;
+            transform: translateY(-1px);
+        }
+        .chip-btn.active {
+            background: #2563eb !important;
+            color: #ffffff !important;
+            border-color: #2563eb !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+        }
+        .tool-card-target-highlight {
+            animation: toolPulseHighlight 2.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        @keyframes toolPulseHighlight {
+            0% {
+                outline: 3px solid #2563eb;
+                outline-offset: 4px;
+                box-shadow: 0 0 35px rgba(37, 99, 235, 0.5);
+                transform: translateY(-6px) scale(1.02);
+            }
+            50% {
+                outline: 3px solid #38bdf8;
+                outline-offset: 4px;
+                box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
+                transform: translateY(-6px) scale(1.02);
+            }
+            100% {
+                outline: 3px solid transparent;
+                outline-offset: 0;
+                box-shadow: none;
+                transform: none;
+            }
+        }
+        .nav-search-trigger {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #cbd5e1;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        .nav-search-trigger:hover {
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+            border-color: rgba(56, 189, 248, 0.35);
+        }
+        .nav-search-trigger kbd {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            padding: 0.1rem 0.35rem;
+            font-size: 0.68rem;
+            color: #94a3b8;
+        }
+        @media (max-width: 768px) {
+            .nav-search-trigger { padding: 0.45rem 0.75rem !important; font-size: 0.82rem !important; }
+            .nav-search-trigger .search-text, .nav-search-trigger kbd { display: none !important; }
+        }
+
     </style>
     
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
@@ -870,7 +1203,7 @@
     <!-- ===== TOP NAVIGATION ===== -->
     <nav class="navbar" aria-label="Main Navigation">
         <div class="nav-container">
-            <a href="/" class="logo" aria-label="AuraToolkit360 Home">
+            <a href="/es/" class="logo" aria-label="AuraToolkit360 Home">
                 <div class="logo-symbol">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="22" height="22" role="img" aria-hidden="true">
                         <circle cx="32" cy="32" r="20" fill="rgba(255,255,255,0.22)"/>
@@ -881,35 +1214,40 @@
             </a>
             
             <div class="nav-center">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/converter/" class="nav-link active">Converter</a>
-                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
-                <a href="/cover-letter-maker/" class="nav-link">Cover Letter</a>
-                <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
-                <a href="/hr-helper/" class="nav-link">HR Bulk <span class="nav-badge-pill">New</span></a>
-                <a href="/blogs/" class="nav-link">Blogs</a>
-                <a href="/about/" class="nav-link">About</a>
+                <a href="/es/" class="nav-link">Inicio</a>
+                <a href="/es/converter/" class="nav-link active">Convertidor</a>
+                <a href="/es/resume-cv-maker/" class="nav-link">Currículum CV</a>
+                <a href="/cover-letter-maker/" class="nav-link">Carta Presentación</a>
+                <a href="/es/resume-score-checker/" class="nav-link">Verificador ATS</a>
+                <a href="/es/hr-helper/" class="nav-link">Selección RRHH <span class="nav-badge-pill">New</span></a>
+                <a href="/blogs/" class="nav-link">Blog</a>
+                <a href="/about/" class="nav-link">Acerca de</a>
             </div>
 
             <div class="nav-right-actions">
+                                <button type="button" class="nav-search-trigger" onclick="focusConverterSearch()" aria-label="Search tools and converters" title="Search Tools (Ctrl+K)">
+                    <span class="icon">🔍</span>
+                    <span class="search-text">Search Tools</span>
+                    <kbd>Ctrl+K</kbd>
+                </button>
                 <a href="/saas/" class="btn-aura-saas" title="Launch AuraHR 360 Enterprise SaaS Portal"><span>⚡</span> AuraHR 360</a>
-                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="Bookmark AuraToolkit360 (Ctrl+D)" aria-label="Bookmark site"><span class="bm-star">★</span><span class="bm-text"> Bookmark</span></button>
+                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="★ Guardar" aria-label="★ Guardar"><span class="bm-star">★</span><span class="bm-text"> Guardar</span></button>
                 <div class="lang-switcher" id="langSwitcherContainer">
-                    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
-                        <span class="lang-globe">🌐</span>
-                        <span class="lang-current-flag">🇺🇸</span>
-                        <span class="lang-current-label">EN</span>
-                        <span class="lang-arrow">▾</span>
-                    </button>
-                    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" style="display: none;">
-                        <a href="/" class="lang-option active" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
-                        <a href="/es/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
-                        <a href="/fr/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
-                        <a href="/de/" class="lang-option " data-lang="de" role="menuitem"><span class="flag">🇩🇪</span> Deutsch</a>
-                        <a href="/pt/" class="lang-option " data-lang="pt" role="menuitem"><span class="flag">🇧🇷</span> Português</a>
-                        <a href="/ar/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
-                    </div>
-                </div>
+    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+        <span class="lang-globe">🌐</span>
+        <span class="lang-current-flag">🇪🇸</span>
+        <span class="lang-current-label">ES</span>
+        <span class="lang-arrow">▾</span>
+    </button>
+    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+        <a href="/converter/" class="lang-option " data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
+        <a href="/es/converter/" class="lang-option active" data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
+        <a href="/fr/converter/" class="lang-option " data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
+        <a href="/de/converter/" class="lang-option " data-lang="de" role="menuitem"><span class="flag">🇩🇪</span> Deutsch</a>
+        <a href="/pt/converter/" class="lang-option " data-lang="pt" role="menuitem"><span class="flag">🇧🇷</span> Português</a>
+        <a href="/ar/converter/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
+    </div>
+</div>
                 <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
@@ -920,7 +1258,8 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
-                <a href="/saas/" class="mobile-nav-item" style="color:#38bdf8; font-weight:700; background:rgba(56,189,248,0.1); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
+                <a href="/saas/"
+<button type="button" class="mobile-nav-item" onclick="focusConverterSearch(); toggleMobileMenu();" style="background:transparent; border:none; width:100%; text-align:left; cursor:pointer;"><span>🔍</span> Search Tools &amp; Calculators</button> class="mobile-nav-item" style="color:#38bdf8; font-weight:700; background:rgba(56,189,248,0.1); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
                 <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
                 <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
                 <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
@@ -954,17 +1293,45 @@
             <h1>File Converter &amp; Calculator Suite</h1>
             <p>Convert, edit, and compress 45+ documents, media formats, time units, currencies, and everyday math calculators instantly inside your browser without limits.</p>
             
-            <!-- Quick Category Jump Chips -->
-            <div class="quick-chips-row">
-                <a href="#office" class="chip-btn">📁 Office Documents</a>
-                <a href="#pdf" class="chip-btn">📕 PDF Utilities</a>
-                <a href="#image" class="chip-btn">🖼️ Image &amp; OCR Tools</a>
-                <a href="#media" class="chip-btn">🎬 Video &amp; Audio</a>
-                <a href="#writing" class="chip-btn">✍️ Text &amp; Utilities</a>
-                <a href="#datetime" class="chip-btn">⏱️ Time &amp; Age</a>
-                <a href="#currency" class="chip-btn">💰 Currency &amp; Finance</a>
-                <a href="#units" class="chip-btn">📏 Units &amp; Math</a>
-                <span class="chip-btn" style="border-color: rgba(16, 185, 129, 0.35); color: #34d399; background: rgba(16, 185, 129, 0.08);">⚡ Private Local Processing</span>
+                        <!-- ===== CONVERTER SEARCH BAR & FILTER SUITE ===== -->
+            <div class="converter-search-container" id="converterSearchContainer">
+                <div class="converter-search-bar">
+                    <span class="search-icon" aria-hidden="true">🔍</span>
+                    <input type="text" id="converterSearchInput" placeholder="Search 45+ tools &amp; calculators (e.g. PDF to Word, Merge, Compress, OCR, Age, Currency...)" autocomplete="off" aria-label="Search all tools and converters">
+                    <kbd class="search-kbd-badge" title="Press Ctrl+K or / to search">Ctrl+K</kbd>
+                    <button type="button" class="search-clear-btn" id="converterSearchClearBtn" onclick="clearConverterSearch()" aria-label="Clear Search">✕</button>
+                </div>
+                <!-- Instant Search Dropdown Suggestions -->
+                <div class="converter-search-dropdown" id="converterSearchResultsBox" role="listbox" aria-label="Search suggestions"></div>
+
+                <!-- Live Filter Status Notification -->
+                <div id="converterSearchStatus" class="converter-search-status" style="display: none;"></div>
+
+                <!-- Quick Category Filter Chips -->
+                <div class="quick-chips-row" id="converterFilterChips">
+                    <button type="button" class="chip-btn active" data-filter="all" onclick="filterConverterCategory('all', this)">⚡ All Tools</button>
+                    <button type="button" class="chip-btn" data-filter="office" onclick="filterConverterCategory('office', this)">📁 Office</button>
+                    <button type="button" class="chip-btn" data-filter="pdf" onclick="filterConverterCategory('pdf', this)">📕 PDF</button>
+                    <button type="button" class="chip-btn" data-filter="image" onclick="filterConverterCategory('image', this)">🖼️ Image &amp; OCR</button>
+                    <button type="button" class="chip-btn" data-filter="media" onclick="filterConverterCategory('media', this)">🎬 Video &amp; Audio</button>
+                    <button type="button" class="chip-btn" data-filter="writing" onclick="filterConverterCategory('writing', this)">✍️ Text Utilities</button>
+                    <button type="button" class="chip-btn" data-filter="datetime" onclick="filterConverterCategory('datetime', this)">⏱️ Time &amp; Age</button>
+                    <button type="button" class="chip-btn" data-filter="currency" onclick="filterConverterCategory('currency', this)">💰 Currency</button>
+                    <button type="button" class="chip-btn" data-filter="units" onclick="filterConverterCategory('units', this)">📏 Units &amp; Math</button>
+                </div>
+
+                <!-- Popular Search Suggestion Tags -->
+                <div class="popular-search-tags">
+                    <span class="popular-label">Popular Searches:</span>
+                    <button type="button" class="tag-chip" onclick="quickConverterSearch('PDF to Word')">PDF to Word</button>
+                    <button type="button" class="tag-chip" onclick="quickConverterSearch('Merge PDF')">Merge PDF</button>
+                    <button type="button" class="tag-chip" onclick="quickConverterSearch('Compress PDF')">Compress PDF</button>
+                    <button type="button" class="tag-chip" onclick="quickConverterSearch('OCR to Text')">OCR to Text</button>
+                    <button type="button" class="tag-chip" onclick="quickConverterSearch('Age Calculator')">Age Calculator</button>
+                    <button type="button" class="tag-chip" onclick="quickConverterSearch('Currency')">Currency Rates</button>
+                    <button type="button" class="tag-chip" onclick="quickConverterSearch('Passport Photo')">Passport Photo</button>
+                    <button type="button" class="tag-chip" onclick="quickConverterSearch('Unit Converter')">Unit Converter</button>
+                </div>
             </div>
         </div>
 
@@ -1051,24 +1418,28 @@
                 <form data-action="/word-to-pdf">
                     <input type="file" name="file" accept=".docx" required>
                     <button class="btn btn-primary" type="submit">Convert & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/word-to-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
                 </form>
             </div>
             <div class="tool-card"><div class="tool-icon">📕→📝</div><h3>PDF to Word</h3>
                 <form data-action="/pdf-to-word">
                     <input type="file" name="file" accept=".pdf" required>
                     <button class="btn btn-primary" type="submit">Convert & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/pdf-to-word/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
                 </form>
             </div>
             <div class="tool-card"><div class="tool-icon">📊→📕</div><h3>PPT to PDF</h3>
                 <form data-action="/ppt-to-pdf">
                     <input type="file" name="file" accept=".pptx" required>
                     <button class="btn btn-primary" type="submit">Convert & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/ppt-to-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
                 </form>
             </div>
             <div class="tool-card"><div class="tool-icon">📗→📕</div><h3>Excel to PDF</h3>
                 <form data-action="/excel-to-pdf">
                     <input type="file" name="file" accept=".xlsx,.xls,.csv" required>
                     <button class="btn btn-primary" type="submit">Convert & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/excel-to-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
                 </form>
             </div>
             <div class="tool-card"><div class="tool-icon">📄→📝</div><h3>RTF to DOCX</h3>
@@ -1130,18 +1501,21 @@
                     <p class="extra-text">Select multiple PDF files</p>
                     <input type="file" name="files" accept=".pdf" multiple required>
                     <button class="btn btn-primary" type="submit">Merge & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/merge-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
                 </form>
             </div>
             <div class="tool-card"><div class="tool-icon">✂️</div><h3>Split PDF</h3>
                 <form data-action="/split-pdf">
                     <input type="file" name="file" accept=".pdf" required>
                     <button class="btn btn-primary" type="submit">Split & Download ZIP</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/split-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
                 </form>
             </div>
             <div class="tool-card"><div class="tool-icon">🗜️</div><h3>Compress PDF</h3>
                 <form data-action="/compress-pdf">
                     <input type="file" name="file" accept=".pdf" required>
                     <button class="btn btn-primary" type="submit">Compress & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/compress-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
                 </form>
             </div>
             <div class="tool-card"><div class="tool-icon">🔄</div><h3>Rotate PDF</h3>
@@ -1206,6 +1580,28 @@
             </div>
         </div>
 
+        
+            <div class="tool-card">
+                <div class="tool-icon">🖼️</div>
+                <h3>PDF to JPG Extractor</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert PDF pages into high-resolution JPG or PNG images with zero server uploads.</p>
+                <a href="/converter/pdf-to-jpg/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open PDF to JPG ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">📄</div>
+                <h3>PNG to PDF Converter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert transparent PNG graphics and screenshots into clean PDF documents in your browser.</p>
+                <a href="/converter/png-to-pdf/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open PNG to PDF ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🖼️</div>
+                <h3>JPG to PDF Converter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert JPG and JPEG photos into printable vector-quality PDF pages with zero compression artifacts.</p>
+                <a href="/converter/jpg-to-pdf/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open JPG to PDF ⚡</a>
+            </div>
+
+        </div>
+
         <!-- Image Tools -->
         <div class="section-title" id="image">🖼️ Image Tools</div>
         <div class="grid">
@@ -1231,6 +1627,7 @@
                 <form data-action="/ocr-to-text">
                     <input type="file" name="file" accept=".png,.jpg,.jpeg" required>
                     <button class="btn btn-primary" type="submit">Extract Text</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/ocr-to-text/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
                 </form>
             </div>
             <div class="tool-card"><div class="tool-icon">JPG→PNG</div><h3>JPG to PNG</h3>
@@ -1262,6 +1659,7 @@
                     <input type="file" name="file" accept=".png,.jpg,.jpeg,.webp" required>
                     <select name="quality"><option value="80">High Quality</option><option value="60" selected>Medium Quality</option><option value="30">Low Quality</option></select>
                     <button class="btn btn-primary" type="submit">Compress & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/compress-image/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
                 </form>
             </div>
             <div class="tool-card"><div class="tool-icon">↔️🖼️</div><h3>Flip Image</h3>
@@ -1275,6 +1673,58 @@
 
         <!-- Date, Time & Age Converters -->
         
+        
+            <div class="tool-card">
+                <div class="tool-icon">🎯</div>
+                <h3>Compress Image to Target KB</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Compress photos to exact 20KB, 50KB, 100KB, or 200KB sizes for job portals, UPSC, and passport uploads.</p>
+                <a href="/converter/compress-image-target/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Target KB Compress ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🔗</div>
+                <h3>Merge Photo &amp; Signature</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Combine applicant photo and signature into a single file for competitive exam admit cards and job portals.</p>
+                <a href="/converter/merge-photo-signature/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Merge Photo &amp; Sign ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">💧</div>
+                <h3>Image Watermark Tool</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Add custom text or image watermarks to protect your photos and digital proofs 100% privately.</p>
+                <a href="/converter/watermark-image/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Add Watermark ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🌟</div>
+                <h3>Favicon &amp; ICO Generator</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Generate multi-size .ico website favicons (16x16, 32x32, 48x48) instantly from PNG or JPG images.</p>
+                <a href="/converter/favicon-generator/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Generate Favicon ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🛂</div>
+                <h3>Passport Photo Maker</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Create 2x2 inch and 35x45mm biometric passport photos with white or blue background in browser.</p>
+                <a href="/converter/passport-photo-maker/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Passport Photo Maker ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">✍️</div>
+                <h3>Resize Signature Tool</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Resize signature dimensions and compress to 10KB-20KB for government and banking applications.</p>
+                <a href="/converter/resize-signature/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Resize Signature ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">✂️</div>
+                <h3>Crop &amp; Rotate Image</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Crop photos to standard aspect ratios (1:1, 16:9, 4:3) and rotate or flip photos with live preview.</p>
+                <a href="/converter/crop-rotate-image/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Crop &amp; Rotate Image ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">📏</div>
+                <h3>Resize Image (Pixels/CM)</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Exact pixel, centimeter, and DPI image resizing with aspect ratio preservation 100% privately.</p>
+                <a href="/converter/resize-image/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Resize Image ⚡</a>
+            </div>
+
+        </div>
+
         <!-- Video & Audio Converters -->
         <div class="section-title" id="media">🎬 Video &amp; Audio Converters</div>
         <div class="grid">
@@ -1289,6 +1739,36 @@
                 <h3>Audio &amp; Video to MP3</h3>
                 <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert MP4, WebM, WAV, OGG, and AAC into crystal-clear MP3 audio files 100% privately in-browser.</p>
                 <a href="/converter/mp3-converter/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open MP3 Converter ⚡</a>
+            </div>
+        </div>
+
+        
+        <!-- Text & Writing Utilities -->
+        <div class="section-title" id="writing">✍️ Text &amp; Writing Utilities</div>
+        <div class="grid">
+            <div class="tool-card">
+                <div class="tool-icon">📊</div>
+                <h3>Word &amp; Character Counter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Count words, characters, sentences, paragraphs, and reading time live with zero server uploads.</p>
+                <a href="/converter/word-counter/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Word Counter ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🔤</div>
+                <h3>Case Converter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, and snake_case.</p>
+                <a href="/converter/case-converter/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Case Converter ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🔑</div>
+                <h3>Secure Password Generator</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Generate strong, cryptographically secure passwords with custom length, symbols, and entropy score.</p>
+                <a href="/converter/password-generator/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Generate Password ⚡</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">✍️</div>
+                <h3>AI Paraphrasing Tool</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Rewrite sentences and paragraphs with Fluency, Academic, Formal, and Creative modes 100% privately.</p>
+                <a href="/paraphrasing-tool/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Paraphraser ⚡</a>
             </div>
         </div>
 
@@ -2101,5 +2581,437 @@
             }
         });
 </script>
+
+    <!-- ===== CONVERTER SEARCH & REAL-TIME FILTER ENGINE ===== -->
+    <script>
+        const converterToolsDB = [
+            // Office Converters
+            { name: "Word to PDF", slug: "word-to-pdf", icon: "📝→📕", category: "Office", section: "office", url: "/converter/word-to-pdf/", keywords: ["word to pdf", "docx to pdf", "doc to pdf", "convert word", "microsoft word", "document to pdf"] },
+            { name: "PDF to Word", slug: "pdf-to-word", icon: "📕→📝", category: "Office", section: "office", url: "/converter/pdf-to-word/", keywords: ["pdf to word", "pdf to docx", "convert pdf", "edit pdf", "docx", "editable document"] },
+            { name: "PPT to PDF", slug: "ppt-to-pdf", icon: "📊→📕", category: "Office", section: "office", url: "/converter/ppt-to-pdf/", keywords: ["ppt to pdf", "pptx to pdf", "powerpoint to pdf", "slides to pdf", "presentation"] },
+            { name: "Excel to PDF", slug: "excel-to-pdf", icon: "📗→📕", category: "Office", section: "office", url: "/converter/excel-to-pdf/", keywords: ["excel to pdf", "xlsx to pdf", "xls to pdf", "spreadsheet to pdf", "sheets"] },
+            { name: "RTF to DOCX", slug: "rtf-to-docx", icon: "📄→📝", category: "Office", section: "office", url: null, keywords: ["rtf to docx", "rich text format", "convert rtf", "word document"] },
+            { name: "TXT to PDF", slug: "txt-to-pdf", icon: "📄→📕", category: "Office", section: "office", url: null, keywords: ["txt to pdf", "text to pdf", "notepad to pdf", "plain text to pdf"] },
+            { name: "DOCX to TXT", slug: "docx-to-txt", icon: "📝→📄", category: "Office", section: "office", url: null, keywords: ["docx to txt", "word to text", "extract text from word", "doc to txt"] },
+            { name: "Excel to CSV", slug: "excel-to-csv", icon: "📗→📄", category: "Office", section: "office", url: null, keywords: ["excel to csv", "xlsx to csv", "convert sheet to csv", "spreadsheet to csv"] },
+            { name: "Word to HTML", slug: "word-to-html", icon: "📝→🌐", category: "Office", section: "office", url: null, keywords: ["word to html", "docx to html", "web page", "convert word to code"] },
+            { name: "CSV to JSON", slug: "csv-to-json", icon: "CSV→JSON", category: "Office", section: "office", url: null, keywords: ["csv to json", "table to json", "convert csv to json data"] },
+            { name: "JSON to CSV", slug: "json-to-csv", icon: "JSON→CSV", category: "Office", section: "office", url: null, keywords: ["json to csv", "export json to csv", "convert json table"] },
+            { name: "JSON Formatter", slug: "json-formatter", icon: "{ }", category: "Office", section: "office", url: null, keywords: ["json formatter", "pretty print json", "minify json", "beautify json", "json parser"] },
+
+            // PDF Tools
+            { name: "Merge PDF", slug: "merge-pdf", icon: "➕", category: "PDF", section: "pdf", url: "/converter/merge-pdf/", keywords: ["merge pdf", "combine pdf", "join pdf", "combine files", "multiple pdfs into one"] },
+            { name: "Split PDF", slug: "split-pdf", icon: "✂️", category: "PDF", section: "pdf", url: "/converter/split-pdf/", keywords: ["split pdf", "separate pdf", "extract pages", "cut pdf", "break pdf"] },
+            { name: "Compress PDF", slug: "compress-pdf", icon: "🗜️", category: "PDF", section: "pdf", url: "/converter/compress-pdf/", keywords: ["compress pdf", "reduce pdf size", "shrink pdf", "pdf kb reducer", "100kb pdf", "200kb pdf"] },
+            { name: "Rotate PDF", slug: "rotate-pdf", icon: "🔄", category: "PDF", section: "pdf", url: null, keywords: ["rotate pdf", "turn pdf", "landscape to portrait", "orientation", "90 degrees"] },
+            { name: "Lock PDF", slug: "lock-pdf", icon: "🔒", category: "PDF", section: "pdf", url: null, keywords: ["lock pdf", "password protect pdf", "encrypt pdf", "secure pdf", "add password to pdf"] },
+            { name: "Unlock PDF", slug: "unlock-pdf", icon: "🔓", category: "PDF", section: "pdf", url: null, keywords: ["unlock pdf", "remove password", "decrypt pdf", "remove pdf security"] },
+            { name: "Add Watermark", slug: "add-watermark", icon: "💧", category: "PDF", section: "pdf", url: null, keywords: ["watermark pdf", "add watermark", "stamp pdf", "text watermark pdf"] },
+            { name: "Delete Pages", slug: "delete-pages", icon: "🗑️", category: "PDF", section: "pdf", url: null, keywords: ["delete pages", "remove pages from pdf", "cut pages", "delete pdf pages"] },
+            { name: "Extract Pages", slug: "extract-pages", icon: "📤", category: "PDF", section: "pdf", url: null, keywords: ["extract pages", "save selected pages", "export pages from pdf", "isolate pages"] },
+            { name: "Add Page Numbers", slug: "add-page-numbers", icon: "🔢", category: "PDF", section: "pdf", url: null, keywords: ["add page numbers", "number pdf", "paginate pdf", "header footer page numbers"] },
+            { name: "PDF to Image", slug: "pdf-to-image", icon: "🖼️", category: "PDF", section: "pdf", url: null, keywords: ["pdf to image", "pdf to png", "pdf to picture", "render pdf pages as images"] },
+            { name: "PDF to TXT", slug: "pdf-to-txt", icon: "📄", category: "PDF", section: "pdf", url: null, keywords: ["pdf to txt", "extract text from pdf", "pdf text extraction", "ocr pdf"] },
+            { name: "PDF to JPG Extractor", slug: "pdf-to-jpg-extractor", icon: "🖼️", category: "PDF", section: "pdf", url: "/converter/pdf-to-jpg/", keywords: ["pdf to jpg", "pdf to jpg extractor", "pdf to jpeg", "extract photos from pdf"] },
+            { name: "PNG to PDF Converter", slug: "png-to-pdf-converter", icon: "📄", category: "PDF", section: "pdf", url: "/converter/png-to-pdf/", keywords: ["png to pdf", "convert png to pdf", "transparent png to pdf"] },
+            { name: "JPG to PDF Converter", slug: "jpg-to-pdf-converter", icon: "🖼️", category: "PDF", section: "pdf", url: "/converter/jpg-to-pdf/", keywords: ["jpg to pdf", "jpeg to pdf", "convert photo to pdf", "pictures to pdf"] },
+
+            // Image & OCR Tools
+            { name: "Image to PDF", slug: "image-to-pdf", icon: "🖼️→📕", category: "Image", section: "image", url: "/converter/jpg-to-pdf/", keywords: ["image to pdf", "photo to pdf", "pictures to pdf", "album to pdf"] },
+            { name: "Image to Word (OCR)", slug: "image-to-word-ocr", icon: "🖼️→📝", category: "Image", section: "image", url: null, keywords: ["image to word", "photo to docx", "ocr docx", "picture to word document"] },
+            { name: "Image to Excel (OCR)", slug: "image-to-excel-ocr", icon: "🖼️→📊", category: "Image", section: "image", url: null, keywords: ["image to excel", "photo to xlsx", "table ocr", "picture to spreadsheet"] },
+            { name: "OCR to Text", slug: "ocr-to-text", icon: "📄", category: "Image", section: "image", url: "/converter/ocr-to-text/", keywords: ["ocr to text", "extract text", "photo to text", "scan text", "optical character recognition", "read image text"] },
+            { name: "JPG to PNG", slug: "jpg-to-png", icon: "JPG→PNG", category: "Image", section: "image", url: null, keywords: ["jpg to png", "jpeg to png", "convert jpg to transparent png"] },
+            { name: "PNG to JPG", slug: "png-to-jpg", icon: "PNG→JPG", category: "Image", section: "image", url: null, keywords: ["png to jpg", "png to jpeg", "convert png format"] },
+            { name: "WEBP to PNG", slug: "webp-to-png", icon: "WEBP→PNG", category: "Image", section: "image", url: null, keywords: ["webp to png", "convert webp", "google webp to png"] },
+            { name: "SVG to PNG", slug: "svg-to-png", icon: "SVG→PNG", category: "Image", section: "image", url: null, keywords: ["svg to png", "vector to png", "render svg as png", "icon to png"] },
+            { name: "Compress Image", slug: "compress-image", icon: "🗜️", category: "Image", section: "image", url: "/converter/compress-image/", keywords: ["compress image", "shrink photo", "reduce image kb", "jpg compress", "png compress"] },
+            { name: "Flip Image", slug: "flip-image", icon: "↔️🖼️", category: "Image", section: "image", url: null, keywords: ["flip image", "mirror photo", "horizontal flip", "vertical flip", "reverse picture"] },
+            { name: "Compress Image to Target KB", slug: "compress-image-to-target-kb", icon: "🎯", category: "Image", section: "image", url: "/converter/compress-image-target/", keywords: ["target kb", "compress image to target kb", "20kb", "50kb", "100kb", "exact file size photo"] },
+            { name: "Merge Photo & Signature", slug: "merge-photo-signature", icon: "🔗", category: "Image", section: "image", url: "/converter/merge-photo-signature/", keywords: ["merge photo and signature", "combine photo signature", "exam admit card", "job portal photo sign"] },
+            { name: "Image Watermark Tool", slug: "image-watermark-tool", icon: "💧", category: "Image", section: "image", url: "/converter/watermark-image/", keywords: ["watermark image", "add logo", "protect photo", "copyright picture", "watermark photo"] },
+            { name: "Favicon & ICO Generator", slug: "favicon-ico-generator", icon: "🌟", category: "Image", section: "image", url: "/converter/favicon-generator/", keywords: ["favicon generator", "ico creator", "16x16", "32x32", "website icon", "app icon", "favicon.ico"] },
+            { name: "Passport Photo Maker", slug: "passport-photo-maker", icon: "🛂", category: "Image", section: "image", url: "/converter/passport-photo-maker/", keywords: ["passport photo maker", "visa photo", "2x2 photo", "35x45mm", "white background photo", "biometric photo"] },
+            { name: "Resize Signature Tool", slug: "resize-signature-tool", icon: "✍️", category: "Image", section: "image", url: "/converter/resize-signature/", keywords: ["resize signature", "signature 20kb", "signature 10kb", "sign dimensions", "exam signature"] },
+            { name: "Crop & Rotate Image", slug: "crop-rotate-image", icon: "✂️", category: "Image", section: "image", url: "/converter/crop-rotate-image/", keywords: ["crop image", "rotate image", "square crop", "circle crop", "turn photo", "angle"] },
+            { name: "Resize Image (Pixels/CM)", slug: "resize-image-pixels-cm", icon: "📏", category: "Image", section: "image", url: "/converter/resize-image/", keywords: ["resize image", "dimensions", "pixels", "centimeters", "inches", "dpi", "scale photo"] },
+
+            // Video & Audio Converters
+            { name: "Compress Video Online", slug: "compress-video-online", icon: "🎬", category: "Media", section: "media", url: "/converter/compress-video/", keywords: ["compress video", "shrink video", "reduce mp4 size", "video size reducer", "video compressor", "small mp4"] },
+            { name: "Audio & Video to MP3", slug: "audio-video-to-mp3", icon: "🎵", category: "Media", section: "media", url: "/converter/mp3-converter/", keywords: ["mp3 converter", "video to mp3", "audio to mp3", "extract sound", "wav to mp3", "music converter"] },
+
+            // Text & Writing Utilities
+            { name: "Word & Character Counter", slug: "word-character-counter", icon: "📊", category: "Writing", section: "writing", url: "/converter/word-counter/", keywords: ["word counter", "character count", "reading time", "words and characters", "sentence counter", "paragraph counter"] },
+            { name: "Case Converter", slug: "case-converter", icon: "🔤", category: "Writing", section: "writing", url: "/converter/case-converter/", keywords: ["case converter", "uppercase", "lowercase", "title case", "sentence case", "capitalize"] },
+            { name: "Secure Password Generator", slug: "secure-password-generator", icon: "🔑", category: "Writing", section: "writing", url: "/converter/password-generator/", keywords: ["password generator", "strong password", "random password", "passphrase generator", "security"] },
+            { name: "AI Paraphrasing Tool", slug: "ai-paraphrasing-tool", icon: "✍️", category: "Writing", section: "writing", url: "/paraphrasing-tool/", keywords: ["paraphrasing tool", "rewrite text", "sentence rewriter", "rephrase", "article spinner", "grammar"] },
+
+            // Date, Time & Age Converters
+            { name: "Age Calculator", slug: "age-calculator", icon: "🎂", category: "Time & Date", section: "datetime", url: "/converter/age-calculator/", keywords: ["age calculator", "dob", "birthday", "exact age", "how old am i", "zodiac", "chronological age", "next birthday countdown"] },
+            { name: "Time & Duration Converter", slug: "time-duration-converter", icon: "⏱️", category: "Time & Date", section: "datetime", url: "/converter/time-converter/", keywords: ["time converter", "minutes to seconds", "seconds to minutes", "hours to minutes", "days to hours", "duration", "time between dates", "business days"] },
+
+            // Currency & Financial Calculators
+            { name: "Live Currency Converter", slug: "live-currency-converter", icon: "💵", category: "Currency", section: "currency", url: "/converter/currency-converter/", keywords: ["currency converter", "exchange rates", "forex", "usd to pkr", "money converter", "dollar rate", "aed to pkr", "sar to pkr", "eur to usd", "inr to usd"] },
+            { name: "Loan & Car EMI Calculator", slug: "loan-car-emi-calculator", icon: "🏦", category: "Finance", section: "currency", url: "/converter/emi-calculator/", keywords: ["emi calculator", "loan calculator", "monthly emi", "car loan", "home loan", "interest rate", "mortgage", "amortization schedule"] },
+            { name: "2.5% Zakat Calculator", slug: "2-5-zakat-calculator", icon: "🌙", category: "Finance", section: "currency", url: "/converter/zakat-calculator/", keywords: ["zakat calculator", "islamic zakat", "calculate zakat 2.5%", "gold nisab", "silver nisab", "wealth zakat", "zakat on cash"] },
+
+            // Smart Unit & Everyday Math Tools
+            { name: "Universal Unit Converter", slug: "universal-unit-converter", icon: "📐", category: "Units & Math", section: "units", url: "/converter/unit-converter/", keywords: ["unit converter", "length", "weight", "temperature", "celsius to fahrenheit", "kg to lbs", "marla", "kanal", "sq ft", "speed", "data size", "area converter"] },
+            { name: "5-in-1 Percentage Calculator", slug: "5-in-1-percentage-calculator", icon: "🔢", category: "Units & Math", section: "units", url: "/converter/percentage-calculator/", keywords: ["percentage calculator", "calculate percent", "exam marks percentage", "discount calculator", "gst tax", "percentage increase decrease"] },
+            { name: "BMI Health Calculator", slug: "bmi-health-calculator", icon: "❤️", category: "Health", section: "units", url: "/converter/bmi-calculator/", keywords: ["bmi calculator", "body mass index", "healthy weight", "ideal weight", "obesity check", "metric imperial bmi", "weight loss"] }
+        ];
+
+        let activeCategory = 'all';
+        let currentSearchQuery = '';
+        let selectedDropdownIndex = -1;
+
+        function initConverterTools() {
+            // Assign data-attributes and IDs to all tool cards
+            document.querySelectorAll('.tool-card').forEach(card => {
+                const h3 = card.querySelector('h3');
+                if (h3) {
+                    const name = h3.textContent.trim();
+                    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                    card.setAttribute('data-tool-name', name);
+                    card.setAttribute('data-tool-slug', slug);
+                    if (!card.id) card.id = 'tool-card-' + slug;
+                }
+            });
+
+            const input = document.getElementById('converterSearchInput');
+            const clearBtn = document.getElementById('converterSearchClearBtn');
+            const resultsBox = document.getElementById('converterSearchResultsBox');
+
+            if (!input) return;
+
+            input.addEventListener('input', (e) => {
+                handleConverterSearch(e.target.value);
+            });
+
+            input.addEventListener('keydown', (e) => {
+                const items = resultsBox ? resultsBox.querySelectorAll('.search-res-item') : [];
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (items.length > 0) {
+                        selectedDropdownIndex = (selectedDropdownIndex + 1) % items.length;
+                        updateDropdownSelection(items);
+                    }
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (items.length > 0) {
+                        selectedDropdownIndex = (selectedDropdownIndex - 1 + items.length) % items.length;
+                        updateDropdownSelection(items);
+                    }
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (selectedDropdownIndex >= 0 && selectedDropdownIndex < items.length) {
+                        items[selectedDropdownIndex].click();
+                    } else if (items.length > 0) {
+                        items[0].click();
+                    }
+                } else if (e.key === 'Escape') {
+                    clearConverterSearch();
+                    input.blur();
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#converterSearchContainer')) {
+                    if (resultsBox) resultsBox.classList.remove('show');
+                }
+            });
+
+            // Global keyboard shortcut Ctrl+K or /
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey && e.key === 'k') || (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName))) {
+                    e.preventDefault();
+                    focusConverterSearch();
+                }
+            });
+        }
+
+        function handleConverterSearch(query) {
+            currentSearchQuery = (query || '').trim();
+            const clearBtn = document.getElementById('converterSearchClearBtn');
+            const resultsBox = document.getElementById('converterSearchResultsBox');
+            selectedDropdownIndex = -1;
+
+            if (!currentSearchQuery) {
+                if (clearBtn) clearBtn.style.display = 'none';
+                if (resultsBox) {
+                    resultsBox.innerHTML = '';
+                    resultsBox.classList.remove('show');
+                }
+                applyConverterFilter('', activeCategory);
+                return;
+            }
+
+            if (clearBtn) clearBtn.style.display = 'flex';
+
+            // 1. Search dropdown matches
+            const qLower = currentSearchQuery.toLowerCase();
+            const matches = converterToolsDB.filter(tool => {
+                const searchable = (tool.name + ' ' + tool.category + ' ' + (tool.keywords || []).join(' ')).toLowerCase();
+                return searchable.includes(qLower);
+            });
+
+            renderDropdownResults(matches, currentSearchQuery);
+
+            // 2. Filter in-page cards
+            applyConverterFilter(currentSearchQuery, activeCategory);
+        }
+
+        function renderDropdownResults(matches, query) {
+            const resultsBox = document.getElementById('converterSearchResultsBox');
+            if (!resultsBox) return;
+
+            if (matches.length === 0) {
+                resultsBox.innerHTML = `
+                    <div style="padding: 1.2rem; text-align: center; color: #64748b; font-size: 0.88rem;">
+                        No tools found matching "<strong>${escapeHtml(query)}</strong>".
+                        <div style="margin-top: 0.6rem;">
+                            <button type="button" class="tag-chip" onclick="clearConverterSearch()">View All 45+ Tools</button>
+                        </div>
+                    </div>
+                `;
+                resultsBox.classList.add('show');
+                return;
+            }
+
+            const html = matches.slice(0, 10).map((tool, index) => {
+                const cardExistsOnPage = !!document.querySelector(`[data-tool-slug="${tool.slug}"]`);
+                return `
+                    <div class="search-res-item" data-index="${index}" onclick="onSelectSearchResult('${tool.slug}', '${tool.url || ''}')" role="option">
+                        <div class="search-res-icon">${tool.icon}</div>
+                        <div class="search-res-info">
+                            <div class="search-res-name">${escapeHtml(tool.name)}</div>
+                            <div class="search-res-desc">${escapeHtml(tool.category)} • 100% Client-Side</div>
+                        </div>
+                        <div class="search-res-actions">
+                            <span class="search-res-cat">${escapeHtml(tool.category)}</span>
+                            ${cardExistsOnPage ? `<span class="search-res-jump-btn" title="Jump to tool on this page">Jump ↓</span>` : ''}
+                            ${tool.url ? `<a href="${tool.url}" class="search-res-dedicated-link" onclick="event.stopPropagation()" title="Open standalone tool page">Page ↗</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            resultsBox.innerHTML = html;
+            resultsBox.classList.add('show');
+        }
+
+        function updateDropdownSelection(items) {
+            items.forEach((item, idx) => {
+                if (idx === selectedDropdownIndex) {
+                    item.classList.add('selected');
+                    item.scrollIntoView({ block: 'nearest' });
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        }
+
+        function onSelectSearchResult(slug, dedicatedUrl) {
+            const resultsBox = document.getElementById('converterSearchResultsBox');
+            if (resultsBox) resultsBox.classList.remove('show');
+
+            const card = document.querySelector(`[data-tool-slug="${slug}"]`);
+            if (card) {
+                // Ensure section and card are visible
+                card.style.display = '';
+                const parentGrid = card.closest('.grid');
+                if (parentGrid) {
+                    parentGrid.style.display = '';
+                    const secTitle = parentGrid.previousElementSibling;
+                    if (secTitle && secTitle.classList.contains('section-title')) {
+                        secTitle.style.display = '';
+                    }
+                }
+                
+                // Smooth scroll to card
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Remove and re-apply highlight animation
+                card.classList.remove('tool-card-target-highlight');
+                void card.offsetWidth; // Trigger reflow
+                card.classList.add('tool-card-target-highlight');
+
+                // Focus first actionable input
+                const inputToFocus = card.querySelector('input, select, button');
+                if (inputToFocus) {
+                    setTimeout(() => inputToFocus.focus(), 400);
+                }
+            } else if (dedicatedUrl) {
+                window.location.href = dedicatedUrl;
+            }
+        }
+
+        function applyConverterFilter(query, category) {
+            const q = (query || '').trim().toLowerCase();
+            const cat = category || activeCategory || 'all';
+            let visibleCount = 0;
+
+            const sections = ['office', 'pdf', 'image', 'media', 'writing', 'datetime', 'currency', 'units'];
+
+            sections.forEach(secId => {
+                const titleEl = document.getElementById(secId);
+                if (!titleEl) return;
+                const gridEl = titleEl.nextElementSibling;
+                if (!gridEl || !gridEl.classList.contains('grid')) return;
+
+                const cards = gridEl.querySelectorAll('.tool-card');
+                let secVisibleCount = 0;
+
+                cards.forEach(card => {
+                    const toolName = card.getAttribute('data-tool-name') || card.querySelector('h3')?.textContent || '';
+                    const toolSlug = card.getAttribute('data-tool-slug') || '';
+                    const cardText = card.textContent.toLowerCase();
+
+                    const matchesCategory = (cat === 'all') || (secId === cat);
+
+                    let matchesQuery = true;
+                    if (q) {
+                        const dbTool = converterToolsDB.find(t => t.slug === toolSlug || t.name.toLowerCase() === toolName.toLowerCase());
+                        const keywords = dbTool ? (dbTool.keywords || []).join(' ').toLowerCase() : '';
+                        matchesQuery = toolName.toLowerCase().includes(q) || cardText.includes(q) || keywords.includes(q);
+                    }
+
+                    if (matchesCategory && matchesQuery) {
+                        card.style.display = '';
+                        secVisibleCount++;
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Hide section heading & grid if 0 cards match
+                if (secVisibleCount === 0) {
+                    titleEl.style.display = 'none';
+                    gridEl.style.display = 'none';
+                } else {
+                    titleEl.style.display = '';
+                    gridEl.style.display = '';
+                }
+            });
+
+            // Featured Calculators Highlight Banner
+            const featBanner = document.getElementById('featuredCalculatorsBanner');
+            if (featBanner) {
+                if (q || cat !== 'all') {
+                    featBanner.style.display = 'none';
+                } else {
+                    featBanner.style.display = '';
+                }
+            }
+
+            // Status Banner
+            const statusBanner = document.getElementById('converterSearchStatus');
+            if (statusBanner) {
+                if (q || cat !== 'all') {
+                    statusBanner.style.display = 'flex';
+                    if (visibleCount > 0) {
+                        statusBanner.innerHTML = `
+                            <span>Found <strong>${visibleCount}</strong> tool${visibleCount === 1 ? '' : 's'}${q ? ` for "<strong>${escapeHtml(query)}</strong>"` : ''}${cat !== 'all' ? ` in <strong>${escapeHtml(cat.toUpperCase())}</strong>` : ''}</span>
+                            <button type="button" onclick="clearConverterSearch()">Show All 45+ Tools</button>
+                        `;
+                    } else {
+                        statusBanner.innerHTML = `
+                            <span>No tools found on this page matching "<strong>${escapeHtml(query)}</strong>".</span>
+                            <button type="button" onclick="clearConverterSearch()">Reset Filter</button>
+                        `;
+                    }
+                } else {
+                    statusBanner.style.display = 'none';
+                }
+            }
+        }
+
+        function filterConverterCategory(cat, btn) {
+            activeCategory = cat;
+            // Update active button state
+            const chipsContainer = document.getElementById('converterFilterChips');
+            if (chipsContainer) {
+                chipsContainer.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+            }
+            if (btn) btn.classList.add('active');
+
+            applyConverterFilter(currentSearchQuery, activeCategory);
+
+            // If a specific category was clicked and no search query, scroll to that section
+            if (cat !== 'all' && !currentSearchQuery) {
+                const secEl = document.getElementById(cat);
+                if (secEl) {
+                    secEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
+
+        function quickConverterSearch(term) {
+            const input = document.getElementById('converterSearchInput');
+            if (input) {
+                input.value = term;
+                focusConverterSearch();
+                handleConverterSearch(term);
+            }
+        }
+
+        function clearConverterSearch() {
+            const input = document.getElementById('converterSearchInput');
+            const clearBtn = document.getElementById('converterSearchClearBtn');
+            const resultsBox = document.getElementById('converterSearchResultsBox');
+            
+            if (input) {
+                input.value = '';
+            }
+            if (clearBtn) clearBtn.style.display = 'none';
+            if (resultsBox) {
+                resultsBox.innerHTML = '';
+                resultsBox.classList.remove('show');
+            }
+
+            currentSearchQuery = '';
+            activeCategory = 'all';
+
+            // Reset category chip buttons
+            const chipsContainer = document.getElementById('converterFilterChips');
+            if (chipsContainer) {
+                chipsContainer.querySelectorAll('.chip-btn').forEach(b => {
+                    if (b.getAttribute('data-filter') === 'all') {
+                        b.classList.add('active');
+                    } else {
+                        b.classList.remove('active');
+                    }
+                });
+            }
+
+            applyConverterFilter('', 'all');
+        }
+
+        function focusConverterSearch() {
+            const container = document.getElementById('converterSearchContainer');
+            const input = document.getElementById('converterSearchInput');
+            if (container) {
+                container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            if (input) {
+                setTimeout(() => input.focus(), 300);
+            }
+        }
+
+        function escapeHtml(str) {
+            return String(str || '').replace(/[&<>"']/g, m => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[m]);
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initConverterTools);
+        } else {
+            initConverterTools();
+        }
+    </script>
 </body>
 </html>
