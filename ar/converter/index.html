@@ -479,29 +479,49 @@
         }
 
         /* TOOL CARD STYLING */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 1.4rem;
+            align-items: stretch;
+        }
         .tool-card {
             background: var(--bg-card);
             backdrop-filter: blur(14px);
             border-radius: 18px;
-            padding: 1.5rem;
+            padding: 1.4rem 1.4rem 1.25rem;
             border: 1px solid var(--border-card);
-            transition: all 0.28s ease;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
             color: var(--text-primary);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             position: relative;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
         }
         .tool-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(56, 189, 248, 0.35);
-            background: var(--bg-card-hover);
-            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.45);
+            transform: translateY(-4px);
+            border-color: #93c5fd;
+            background: #ffffff;
+            box-shadow: 0 14px 28px -6px rgba(37, 99, 235, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
         }
         .tool-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.85rem;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .tool-card:hover .tool-icon {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            transform: scale(1.05);
         }
         .tool-card h3 {
             font-size: 1.05rem;
@@ -854,6 +874,11 @@
             position: relative;
             text-align: left;
         }
+        .converter-search-bar-wrap {
+            position: relative;
+            width: 100%;
+            z-index: 1050;
+        }
         .converter-search-bar {
             display: flex;
             align-items: center;
@@ -865,7 +890,6 @@
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             gap: 0.75rem;
             position: relative;
-            z-index: 101;
         }
         .converter-search-bar:focus-within {
             border-color: #2563eb;
@@ -936,21 +960,41 @@
         }
         .converter-search-dropdown {
             position: absolute;
-            top: calc(100% + 8px);
+            top: calc(100% + 6px);
             left: 0;
             right: 0;
             background: #ffffff;
-            border: 1px solid #cbd5e1;
+            border: 1.5px solid #2563eb;
             border-radius: 16px;
-            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18), 0 8px 16px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 22px 50px rgba(15, 23, 42, 0.22), 0 8px 20px rgba(15, 23, 42, 0.08);
             max-height: 420px;
             overflow-y: auto;
-            z-index: 1000;
+            z-index: 9999;
             display: none;
             scrollbar-width: thin;
         }
         .converter-search-dropdown.show {
-            display: block;
+            display: block !important;
+        }
+        .search-dropdown-header {
+            padding: 0.65rem 1.15rem;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-res-match-highlight {
+            background: #fef08a;
+            color: #854d0e;
+            padding: 0 2px;
+            border-radius: 2px;
+            font-weight: 800;
         }
         .search-res-item {
             display: flex;
@@ -972,19 +1016,27 @@
             color: #1d4ed8;
         }
         .search-res-icon {
-            font-size: 1.4rem;
-            width: 38px;
-            height: 38px;
+            font-size: 1.3rem;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: #f8fafc;
+            border: 1px solid #e2e8f0;
             border-radius: 10px;
             flex-shrink: 0;
+            transition: all 0.15s;
+        }
+        .search-res-item:hover .search-res-icon,
+        .search-res-item.selected .search-res-icon {
+            background: #dbeafe;
+            border-color: #bfdbfe;
         }
         .search-res-info {
             flex: 1;
             min-width: 0;
+            text-align: left;
         }
         .search-res-name {
             font-weight: 700;
@@ -1179,615 +1231,6 @@
             .nav-search-trigger .search-text, .nav-search-trigger kbd { display: none !important; }
         }
 
-
-        /* ==========================================================================
-           MODERN USER-FRIENDLY ALIGNMENT & DESIGN SYSTEM
-           ========================================================================== */
-        
-        /* Container & Hero Header */
-        .container {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: 2.2rem 1.5rem 5rem;
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem 1rem 3.5rem;
-            }
-        }
-        .page-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 0 1rem;
-        }
-        .page-header h1 {
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            font-weight: 800;
-            color: #0f172a;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            margin-bottom: 0.65rem;
-        }
-        .page-header p {
-            color: #475569;
-            font-size: 1.05rem;
-            max-width: 720px;
-            margin: 0 auto;
-            font-weight: 500;
-            line-height: 1.6;
-        }
-        .pill-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            background: #ecfdf5;
-            color: #047857;
-            padding: 0.4rem 1.15rem;
-            border-radius: 999px;
-            font-size: 0.84rem;
-            font-weight: 700;
-            border: 1px solid #a7f3d0;
-            margin-bottom: 1rem;
-            box-shadow: 0 1px 3px rgba(16, 185, 129, 0.08);
-        }
-
-        /* Stats Banner */
-        .stats-banner {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-            max-width: 920px;
-            margin: 2rem auto 2.8rem;
-            padding: 1.25rem 1.5rem;
-            background: #ffffff;
-            border-radius: 18px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
-            text-align: center;
-        }
-        .stat-item {
-            padding: 0.5rem 1rem;
-            position: relative;
-        }
-        .stat-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 20%;
-            height: 60%;
-            width: 1px;
-            background: #e2e8f0;
-        }
-        @media (max-width: 768px) {
-            .stats-banner {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem 0;
-            }
-            .stat-item:nth-child(2)::after {
-                display: none;
-            }
-        }
-        .stats-banner .stat-number {
-            font-size: 1.85rem;
-            font-weight: 800;
-            color: #2563eb;
-            line-height: 1.1;
-            letter-spacing: -0.5px;
-        }
-        .stats-banner .stat-label {
-            font-size: 0.76rem;
-            color: #64748b;
-            font-weight: 700;
-            margin-top: 0.35rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Search Container */
-        .converter-search-container {
-            max-width: 860px;
-            margin: 2rem auto 2.2rem;
-            position: relative;
-            text-align: center;
-        }
-        .converter-search-bar {
-            display: flex;
-            align-items: center;
-            background: #ffffff;
-            border: 2px solid #cbd5e1;
-            border-radius: 18px;
-            padding: 0.65rem 1.15rem;
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            gap: 0.75rem;
-            position: relative;
-            z-index: 101;
-            text-align: left;
-        }
-        .converter-search-bar:focus-within {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15), 0 16px 36px rgba(37, 99, 235, 0.12);
-            transform: translateY(-1px);
-        }
-        .converter-search-bar .search-icon {
-            font-size: 1.25rem;
-            color: #64748b;
-            flex-shrink: 0;
-            user-select: none;
-            display: flex;
-            align-items: center;
-        }
-        .converter-search-bar input {
-            flex: 1;
-            background: transparent !important;
-            border: none !important;
-            outline: none !important;
-            font-size: 1.02rem;
-            color: #0f172a;
-            font-family: inherit;
-            font-weight: 600;
-            padding: 0 !important;
-            margin: 0 !important;
-            box-shadow: none !important;
-        }
-        .converter-search-bar input::placeholder {
-            color: #94a3b8;
-            font-weight: 400;
-        }
-        .quick-chips-row {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin: 1.25rem auto 0.85rem;
-        }
-        .chip-btn {
-            background: #ffffff;
-            border: 1.5px solid #e2e8f0;
-            color: #334155;
-            font-size: 0.82rem;
-            font-weight: 700;
-            padding: 0.45rem 0.95rem;
-            border-radius: 999px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            white-space: nowrap;
-            width: auto;
-        }
-        .chip-btn:hover {
-            border-color: #3b82f6;
-            color: #1d4ed8;
-            background: #eff6ff;
-            transform: translateY(-1px);
-        }
-        .chip-btn.active {
-            background: #2563eb !important;
-            color: #ffffff !important;
-            border-color: #2563eb !important;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
-        }
-        .popular-search-tags {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            flex-wrap: wrap;
-            margin: 0.75rem auto 0;
-        }
-        .popular-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-right: 0.2rem;
-        }
-        .tag-chip {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            color: #475569;
-            font-size: 0.76rem;
-            font-weight: 600;
-            padding: 0.22rem 0.65rem;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
-            width: auto;
-        }
-        .tag-chip:hover {
-            border-color: #2563eb;
-            color: #1d4ed8;
-            background: #eff6ff;
-            transform: translateY(-1px);
-        }
-
-        /* Featured Everyday Calculators Banner */
-        .featured-calculators-banner {
-            background: linear-gradient(135deg, #f0f7ff 0%, #f8fafc 50%, #f5f3ff 100%);
-            border: 1.5px solid #dbeafe;
-            border-radius: 20px;
-            padding: 1.5rem 1.75rem;
-            margin: 2rem auto 2.8rem;
-            box-shadow: 0 8px 24px -6px rgba(37, 99, 235, 0.08);
-        }
-        .featured-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.85rem;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .featured-title-wrap {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-        }
-        .featured-title-wrap h3 {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin: 0;
-            letter-spacing: -0.3px;
-        }
-        .featured-title-wrap .featured-spark {
-            font-size: 1.25rem;
-        }
-        .badge-new {
-            font-size: 0.68rem;
-            background: #10b981;
-            color: #ffffff;
-            padding: 0.18rem 0.55rem;
-            border-radius: 999px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-        .featured-subtitle {
-            color: #64748b;
-            font-size: 0.84rem;
-            font-weight: 500;
-            margin: 0;
-        }
-        .featured-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0.85rem;
-        }
-        .featured-mini-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 0.9rem 1rem;
-            color: #0f172a;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
-        }
-        .featured-mini-card:hover {
-            border-color: #3b82f6;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.14);
-            background: #ffffff;
-        }
-        .featured-mini-card .mini-icon {
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f1f5f9;
-            border-radius: 10px;
-            flex-shrink: 0;
-            transition: transform 0.2s;
-        }
-        .featured-mini-card:hover .mini-icon {
-            transform: scale(1.08);
-            background: #eff6ff;
-        }
-        .featured-mini-card .mini-info {
-            flex: 1;
-            min-width: 0;
-        }
-        .featured-mini-card .mini-title {
-            font-weight: 700;
-            font-size: 0.88rem;
-            color: #0f172a;
-            line-height: 1.25;
-        }
-        .featured-mini-card:hover .mini-title {
-            color: #2563eb;
-        }
-        .featured-mini-card .mini-desc {
-            font-size: 0.72rem;
-            color: #64748b;
-            margin-top: 0.15rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .featured-mini-card .mini-arrow {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            transition: transform 0.2s, color 0.2s;
-        }
-        .featured-mini-card:hover .mini-arrow {
-            color: #2563eb;
-            transform: translateX(3px);
-        }
-
-        /* Section Titles & Anchor Dividers */
-        .section-title {
-            font-size: 1.28rem;
-            font-weight: 800;
-            margin: 3.5rem 0 1.25rem;
-            padding: 0.75rem 1.15rem;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-left: 5px solid #2563eb;
-            border-radius: 14px;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            letter-spacing: -0.3px;
-            box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.03);
-            scroll-margin-top: 85px;
-        }
-        .section-title-left {
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-        }
-        .section-count-badge {
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 0.2rem 0.6rem;
-            border-radius: 999px;
-            background: #eff6ff;
-            color: #2563eb;
-            border: 1px solid #bfdbfe;
-            letter-spacing: 0;
-        }
-        .section-top-link {
-            font-size: 0.75rem;
-            color: #64748b;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            transition: all 0.15s ease;
-        }
-        .section-top-link:hover {
-            color: #2563eb;
-            background: #f1f5f9;
-        }
-
-        /* Tool Grid & Uniform Balanced Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
-            gap: 1.35rem;
-            align-items: stretch;
-        }
-        @media (max-width: 640px) {
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-        .tool-card {
-            background: #ffffff;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 18px;
-            padding: 1.35rem;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            color: #0f172a;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            height: 100%;
-            box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04);
-            position: relative;
-        }
-        .tool-card:hover {
-            transform: translateY(-4px);
-            border-color: #93c5fd;
-            box-shadow: 0 14px 28px -6px rgba(37, 99, 235, 0.12), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-            background: #ffffff;
-        }
-        .tool-card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.95rem;
-        }
-        .tool-icon {
-            width: 44px;
-            height: 44px;
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.35rem;
-            margin-bottom: 0;
-            flex-shrink: 0;
-            transition: all 0.2s ease;
-        }
-        .tool-card:hover .tool-icon {
-            background: #eff6ff;
-            border-color: #bfdbfe;
-        }
-        .tool-card h3 {
-            font-size: 1.02rem;
-            font-weight: 800;
-            margin-bottom: 0;
-            color: #0f172a;
-            line-height: 1.25;
-        }
-        .tool-card form {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            margin-top: 0.35rem;
-        }
-        .tool-card label {
-            display: block;
-            font-size: 0.82rem;
-            color: #334155;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-        }
-        .extra-text {
-            font-size: 0.78rem;
-            color: #64748b;
-            margin-bottom: 0.55rem;
-            font-weight: 500;
-            line-height: 1.45;
-        }
-
-        /* Inputs & Form Controls */
-        .tool-card input[type="file"],
-        .tool-card input[type="text"],
-        .tool-card input[type="number"],
-        .tool-card select,
-        .tool-card textarea {
-            width: 100%;
-            background: #f8fafc;
-            border: 1.5px solid #cbd5e1;
-            border-radius: 10px;
-            padding: 0.55rem 0.75rem;
-            font-size: 0.88rem;
-            color: #0f172a;
-            font-family: inherit;
-            font-weight: 600;
-            outline: none;
-            transition: all 0.2s ease;
-            margin-bottom: 0.75rem;
-        }
-        .tool-card input[type="file"] {
-            padding: 0.4rem 0.5rem;
-            cursor: pointer;
-            color: #475569;
-        }
-        .tool-card input[type="file"]::file-selector-button {
-            background: #eff6ff;
-            color: #1d4ed8;
-            border: 1px solid #bfdbfe;
-            padding: 0.35rem 0.75rem;
-            border-radius: 7px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            cursor: pointer;
-            margin-right: 0.6rem;
-            transition: all 0.2s;
-        }
-        .tool-card input[type="file"]::file-selector-button:hover {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-        .tool-card input:focus,
-        .tool-card select:focus,
-        .tool-card textarea:focus {
-            background: #ffffff;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
-        }
-
-        /* Button & Card Footer Baseline Alignment */
-        .tool-card form button[type="submit"],
-        .tool-card .btn-primary {
-            margin-top: auto;
-            border: none;
-            border-radius: 10px;
-            padding: 0.62rem 1rem;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            transition: all 0.2s ease;
-            font-family: inherit;
-            width: 100%;
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-        }
-        .tool-card form button[type="submit"]:hover,
-        .tool-card .btn-primary:hover {
-            background: linear-gradient(135deg, #1e40af, #1d4ed8);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.38);
-        }
-        .tool-card a.btn-primary {
-            margin-top: auto;
-        }
-        .tool-card a[href*="/converter/"]:not(.btn) {
-            font-size: 0.78rem;
-            color: #2563eb;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.15s;
-        }
-        .tool-card a[href*="/converter/"]:not(.btn):hover {
-            color: #1d4ed8;
-            text-decoration: underline;
-        }
-
-        /* Information & FAQ Section */
-        .info-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            padding: 2.2rem;
-            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
-            margin-bottom: 2rem;
-        }
-        .info-card h2 {
-            font-size: 1.4rem;
-            color: #0f172a;
-            margin-bottom: 1rem;
-            border-left: 4px solid #2563eb;
-            padding-left: 0.85rem;
-            font-weight: 800;
-            letter-spacing: -0.3px;
-        }
-        .feature-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 1.25rem;
-            transition: all 0.2s ease;
-        }
-        .feature-box:hover {
-            border-color: #bfdbfe;
-            background: #ffffff;
-            box-shadow: 0 6px 16px -2px rgba(37, 99, 235, 0.08);
-        }
-
     </style>
     
     <meta name="google-adsense-account" content="ca-pub-1373118680696037">
@@ -1911,14 +1354,22 @@
             
                         <!-- ===== CONVERTER SEARCH BAR & FILTER SUITE ===== -->
             <div class="converter-search-container" id="converterSearchContainer">
-                <div class="converter-search-bar">
-                    <span class="search-icon" aria-hidden="true">🔍</span>
-                    <input type="text" id="converterSearchInput" placeholder="Search 45+ tools &amp; calculators (e.g. PDF to Word, Merge, Compress, OCR, Age, Currency...)" autocomplete="off" aria-label="Search all tools and converters">
-                    <kbd class="search-kbd-badge" title="Press Ctrl+K or / to search">Ctrl+K</kbd>
-                    <button type="button" class="search-clear-btn" id="converterSearchClearBtn" onclick="clearConverterSearch()" aria-label="Clear Search">✕</button>
+                <!-- Search bar wrapper for precise dropdown positioning -->
+                <div class="converter-search-bar-wrap">
+                    <div class="converter-search-bar">
+                        <span class="search-icon" aria-hidden="true">🔍</span>
+                        <input type="text" id="converterSearchInput" 
+                               placeholder="Search 45+ tools &amp; calculators (e.g. PDF to Word, Merge, Compress, OCR, Age, Currency...)" 
+                               autocomplete="off" 
+                               aria-label="Search all tools and converters"
+                               oninput="handleConverterSearch(this.value)"
+                               onfocus="onConverterSearchFocus()">
+                        <kbd class="search-kbd-badge" title="Press Ctrl+K or / to search">Ctrl+K</kbd>
+                        <button type="button" class="search-clear-btn" id="converterSearchClearBtn" onclick="clearConverterSearch()" aria-label="Clear Search">✕</button>
+                    </div>
+                    <!-- Instant Search Dropdown Suggestions attached directly to search input -->
+                    <div class="converter-search-dropdown" id="converterSearchResultsBox" role="listbox" aria-label="Search suggestions"></div>
                 </div>
-                <!-- Instant Search Dropdown Suggestions -->
-                <div class="converter-search-dropdown" id="converterSearchResultsBox" role="listbox" aria-label="Search suggestions"></div>
 
                 <!-- Live Filter Status Notification -->
                 <div id="converterSearchStatus" class="converter-search-status" style="display: none;"></div>
@@ -1959,80 +1410,519 @@
         </div>
 
         <!-- Featured Smart Calculators & Everyday Converters Highlight -->
-        <div id="featuredCalculatorsBanner" class="featured-calculators-banner">
-            <div class="featured-header">
-                <div class="featured-title-wrap">
-                    <span class="featured-spark">⚡</span>
-                    <h3>Daily Life Calculators &amp; Converters</h3>
-                    <span class="badge-new">NEW</span>
-                </div>
-                <p class="featured-subtitle">Instant, private, client-side everyday math &amp; conversion tools</p>
+        <div style="background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(124,58,237,0.2)); border: 1px solid rgba(56,189,248,0.35); border-radius: 20px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; margin: 0;">
+                    <span>⚡</span> Daily Life Calculators &amp; Converters 
+                    <span style="font-size: 0.7rem; background: #10b981; color: #0f172a; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 800;">NEW</span>
+                </h3>
+                <span style="color: #94a3b8; font-size: 0.84rem;">Real-time, private, zero-upload calculations</span>
             </div>
-            <div class="featured-cards-grid">
-                <a href="/converter/age-calculator/" class="featured-mini-card">
-                    <span class="mini-icon">🎂</span>
-                    <div class="mini-info">
-                        <div class="mini-title">Age Calculator</div>
-                        <div class="mini-desc">Exact DOB &amp; countdown</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
+                <a href="/converter/age-calculator/" style="background: rgba(15,23,42,0.75); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.85rem 1rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='none'">
+                    <span style="font-size: 1.5rem;">🎂</span>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.9rem;">Age Calculator</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">Exact DOB &amp; countdown</div>
                     </div>
-                    <span class="mini-arrow">→</span>
                 </a>
-                <a href="/converter/time-converter/" class="featured-mini-card">
-                    <span class="mini-icon">⏱️</span>
-                    <div class="mini-info">
-                        <div class="mini-title">Time Converter</div>
-                        <div class="mini-desc">Min ⇄ Sec ⇄ Days</div>
+                <a href="/converter/time-converter/" style="background: rgba(15,23,42,0.75); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.85rem 1rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='none'">
+                    <span style="font-size: 1.5rem;">⏱️</span>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.9rem;">Time Converter</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">Min ⇄ Sec ⇄ Days</div>
                     </div>
-                    <span class="mini-arrow">→</span>
                 </a>
-                <a href="/converter/currency-converter/" class="featured-mini-card">
-                    <span class="mini-icon">💵</span>
-                    <div class="mini-info">
-                        <div class="mini-title">Currency Rates</div>
-                        <div class="mini-desc">150+ live currencies</div>
+                <a href="/converter/currency-converter/" style="background: rgba(15,23,42,0.75); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.85rem 1rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='none'">
+                    <span style="font-size: 1.5rem;">💵</span>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.9rem;">Currency Rates</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">150+ live currencies</div>
                     </div>
-                    <span class="mini-arrow">→</span>
                 </a>
-                <a href="/converter/unit-converter/" class="featured-mini-card">
-                    <span class="mini-icon">📐</span>
-                    <div class="mini-info">
-                        <div class="mini-title">Unit Converter</div>
-                        <div class="mini-desc">Length, Marla, Temp</div>
+                <a href="/converter/unit-converter/" style="background: rgba(15,23,42,0.75); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.85rem 1rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='none'">
+                    <span style="font-size: 1.5rem;">📐</span>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.9rem;">Unit Converter</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">Length, Marla, Temp</div>
                     </div>
-                    <span class="mini-arrow">→</span>
                 </a>
-                <a href="/converter/percentage-calculator/" class="featured-mini-card">
-                    <span class="mini-icon">🔢</span>
-                    <div class="mini-info">
-                        <div class="mini-title">Percentage Tool</div>
-                        <div class="mini-desc">Marks, discount, GST</div>
+                <a href="/converter/percentage-calculator/" style="background: rgba(15,23,42,0.75); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.85rem 1rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='none'">
+                    <span style="font-size: 1.5rem;">🔢</span>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.9rem;">Percentage Tool</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">Marks, discount, GST</div>
                     </div>
-                    <span class="mini-arrow">→</span>
                 </a>
-                <a href="/converter/bmi-calculator/" class="featured-mini-card">
-                    <span class="mini-icon">❤️</span>
-                    <div class="mini-info">
-                        <div class="mini-title">BMI Calculator</div>
-                        <div class="mini-desc">Healthy weight check</div>
+                <a href="/converter/bmi-calculator/" style="background: rgba(15,23,42,0.75); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.85rem 1rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='none'">
+                    <span style="font-size: 1.5rem;">❤️</span>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.9rem;">BMI Calculator</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">Healthy weight check</div>
                     </div>
-                    <span class="mini-arrow">→</span>
                 </a>
-                <a href="/converter/emi-calculator/" class="featured-mini-card">
-                    <span class="mini-icon">🏦</span>
-                    <div class="mini-info">
-                        <div class="mini-title">Loan / Car EMI</div>
-                        <div class="mini-desc">Monthly installment</div>
+                <a href="/converter/emi-calculator/" style="background: rgba(15,23,42,0.75); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.85rem 1rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='none'">
+                    <span style="font-size: 1.5rem;">🏦</span>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.9rem;">Loan / Car EMI</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">Monthly installment</div>
                     </div>
-                    <span class="mini-arrow">→</span>
                 </a>
-                <a href="/converter/zakat-calculator/" class="featured-mini-card">
-                    <span class="mini-icon">🌙</span>
-                    <div class="mini-info">
-                        <div class="mini-title">2.5% Zakat Tool</div>
-                        <div class="mini-desc">Nisab gold/silver</div>
+                <a href="/converter/zakat-calculator/" style="background: rgba(15,23,42,0.75); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.85rem 1rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='none'">
+                    <span style="font-size: 1.5rem;">🌙</span>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.9rem;">2.5% Zakat Tool</div>
+                        <div style="font-size: 0.72rem; color: #94a3b8;">Nisab gold/silver</div>
                     </div>
-                    <span class="mini-arrow">→</span>
                 </a>
+            </div>
+        </div>
+
+        <!-- Office Converters -->
+        <div class="section-title" id="office">📁 Office Converters</div>
+        <div class="grid">
+            <div class="tool-card" id="tool-card-word-to-pdf" data-tool-slug="word-to-pdf" data-tool-name="Word to PDF"><div class="tool-icon">📝→📕</div><h3>Word to PDF</h3>
+                <form data-action="/word-to-pdf">
+                    <input type="file" name="file" accept=".docx" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/word-to-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-pdf-to-word" data-tool-slug="pdf-to-word" data-tool-name="PDF to Word"><div class="tool-icon">📕→📝</div><h3>PDF to Word</h3>
+                <form data-action="/pdf-to-word">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/pdf-to-word/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-ppt-to-pdf" data-tool-slug="ppt-to-pdf" data-tool-name="PPT to PDF"><div class="tool-icon">📊→📕</div><h3>PPT to PDF</h3>
+                <form data-action="/ppt-to-pdf">
+                    <input type="file" name="file" accept=".pptx" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/ppt-to-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-excel-to-pdf" data-tool-slug="excel-to-pdf" data-tool-name="Excel to PDF"><div class="tool-icon">📗→📕</div><h3>Excel to PDF</h3>
+                <form data-action="/excel-to-pdf">
+                    <input type="file" name="file" accept=".xlsx,.xls,.csv" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/excel-to-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-rtf-to-docx" data-tool-slug="rtf-to-docx" data-tool-name="RTF to DOCX"><div class="tool-icon">📄→📝</div><h3>RTF to DOCX</h3>
+                <form data-action="/rtf-to-docx">
+                    <input type="file" name="file" accept=".rtf" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-txt-to-pdf" data-tool-slug="txt-to-pdf" data-tool-name="TXT to PDF"><div class="tool-icon">📄→📕</div><h3>TXT to PDF</h3>
+                <form data-action="/txt-to-pdf">
+                    <input type="file" name="file" accept=".txt" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-docx-to-txt" data-tool-slug="docx-to-txt" data-tool-name="DOCX to TXT"><div class="tool-icon">📝→📄</div><h3>DOCX to TXT</h3>
+                <form data-action="/docx-to-txt">
+                    <input type="file" name="file" accept=".docx" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-excel-to-csv" data-tool-slug="excel-to-csv" data-tool-name="Excel to CSV"><div class="tool-icon">📗→📄</div><h3>Excel to CSV</h3>
+                <form data-action="/excel-to-csv">
+                    <input type="file" name="file" accept=".xlsx,.xls,.csv" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-word-to-html" data-tool-slug="word-to-html" data-tool-name="Word to HTML"><div class="tool-icon">📝→🌐</div><h3>Word to HTML</h3>
+                <form data-action="/word-to-html">
+                    <input type="file" name="file" accept=".docx" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-csv-to-json" data-tool-slug="csv-to-json" data-tool-name="CSV to JSON"><div class="tool-icon">CSV→JSON</div><h3>CSV to JSON</h3>
+                <form data-action="/csv-to-json">
+                    <input type="file" name="file" accept=".csv" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-json-to-csv" data-tool-slug="json-to-csv" data-tool-name="JSON to CSV"><div class="tool-icon">JSON→CSV</div><h3>JSON to CSV</h3>
+                <form data-action="/json-to-csv">
+                    <input type="file" name="file" accept=".json" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-json-formatter" data-tool-slug="json-formatter" data-tool-name="JSON Formatter"><div class="tool-icon">{ }</div><h3>JSON Formatter</h3>
+                <form data-action="/json-formatter">
+                    <input type="file" name="file" accept=".json" required>
+                    <select name="mode"><option value="pretty">Pretty Print</option><option value="minify">Minify</option></select>
+                    <button class="btn btn-primary" type="submit">Format & Download</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- PDF Tools -->
+        <div class="section-title" id="pdf">📕 PDF Tools</div>
+        <div class="grid">
+            <div class="tool-card" id="tool-card-merge-pdf" data-tool-slug="merge-pdf" data-tool-name="Merge PDF"><div class="tool-icon">➕</div><h3>Merge PDF</h3>
+                <form data-action="/merge-pdf">
+                    <p class="extra-text">Select multiple PDF files</p>
+                    <input type="file" name="files" accept=".pdf" multiple required>
+                    <button class="btn btn-primary" type="submit">Merge & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/merge-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-split-pdf" data-tool-slug="split-pdf" data-tool-name="Split PDF"><div class="tool-icon">✂️</div><h3>Split PDF</h3>
+                <form data-action="/split-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Split & Download ZIP</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/split-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-compress-pdf" data-tool-slug="compress-pdf" data-tool-name="Compress PDF"><div class="tool-icon">🗜️</div><h3>Compress PDF</h3>
+                <form data-action="/compress-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Compress & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/compress-pdf/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-rotate-pdf" data-tool-slug="rotate-pdf" data-tool-name="Rotate PDF"><div class="tool-icon">🔄</div><h3>Rotate PDF</h3>
+                <form data-action="/rotate-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <select name="degrees"><option value="90">90° Right</option><option value="180">180°</option><option value="270">270° Left</option></select>
+                    <button class="btn btn-primary" type="submit">Rotate & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-lock-pdf" data-tool-slug="lock-pdf" data-tool-name="Lock PDF"><div class="tool-icon">🔒</div><h3>Lock PDF</h3>
+                <form data-action="/lock-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="password" placeholder="Set Password" required>
+                    <button class="btn btn-primary" type="submit">Lock & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-unlock-pdf" data-tool-slug="unlock-pdf" data-tool-name="Unlock PDF"><div class="tool-icon">🔓</div><h3>Unlock PDF</h3>
+                <form data-action="/unlock-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="password" placeholder="Enter Password">
+                    <button class="btn btn-primary" type="submit">Unlock & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-add-watermark" data-tool-slug="add-watermark" data-tool-name="Add Watermark"><div class="tool-icon">💧</div><h3>Add Watermark</h3>
+                <form data-action="/watermark-pdf">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="watermark" placeholder="Watermark text (e.g. DRAFT)">
+                    <button class="btn btn-primary" type="submit">Add & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-delete-pages" data-tool-slug="delete-pages" data-tool-name="Delete Pages"><div class="tool-icon">🗑️</div><h3>Delete Pages</h3>
+                <form data-action="/delete-pages">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="pages" placeholder="Pages to remove (e.g. 1,3,5-7)">
+                    <button class="btn btn-primary" type="submit">Delete & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-extract-pages" data-tool-slug="extract-pages" data-tool-name="Extract Pages"><div class="tool-icon">📤</div><h3>Extract Pages</h3>
+                <form data-action="/extract-pages">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <input type="text" name="pages" placeholder="Pages to keep (e.g. 1,3,5-7)">
+                    <button class="btn btn-primary" type="submit">Extract & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-add-page-numbers" data-tool-slug="add-page-numbers" data-tool-name="Add Page Numbers"><div class="tool-icon">🔢</div><h3>Add Page Numbers</h3>
+                <form data-action="/add-page-numbers">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Add & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-pdf-to-image" data-tool-slug="pdf-to-image" data-tool-name="PDF to Image"><div class="tool-icon">🖼️</div><h3>PDF to Image</h3>
+                <form data-action="/pdf-to-image">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download ZIP</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-pdf-to-txt" data-tool-slug="pdf-to-txt" data-tool-name="PDF to TXT"><div class="tool-icon">📄</div><h3>PDF to TXT</h3>
+                <form data-action="/pdf-to-txt">
+                    <input type="file" name="file" accept=".pdf" required>
+                    <button class="btn btn-primary" type="submit">Extract Text</button>
+                </form>
+            </div>
+        </div>
+
+        
+            <div class="tool-card" id="tool-card-pdf-to-jpg-extractor" data-tool-slug="pdf-to-jpg-extractor" data-tool-name="PDF to JPG Extractor">
+                <div class="tool-icon">🖼️</div>
+                <h3>PDF to JPG Extractor</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert PDF pages into high-resolution JPG or PNG images with zero server uploads.</p>
+                <a href="/converter/pdf-to-jpg/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open PDF to JPG ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-png-to-pdf-converter" data-tool-slug="png-to-pdf-converter" data-tool-name="PNG to PDF Converter">
+                <div class="tool-icon">📄</div>
+                <h3>PNG to PDF Converter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert transparent PNG graphics and screenshots into clean PDF documents in your browser.</p>
+                <a href="/converter/png-to-pdf/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open PNG to PDF ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-jpg-to-pdf-converter" data-tool-slug="jpg-to-pdf-converter" data-tool-name="JPG to PDF Converter">
+                <div class="tool-icon">🖼️</div>
+                <h3>JPG to PDF Converter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert JPG and JPEG photos into printable vector-quality PDF pages with zero compression artifacts.</p>
+                <a href="/converter/jpg-to-pdf/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open JPG to PDF ⚡</a>
+            </div>
+
+        </div>
+
+        <!-- Image Tools -->
+        <div class="section-title" id="image">🖼️ Image Tools</div>
+        <div class="grid">
+            <div class="tool-card" id="tool-card-image-to-pdf" data-tool-slug="image-to-pdf" data-tool-name="Image to PDF"><div class="tool-icon">🖼️→📕</div><h3>Image to PDF</h3>
+                <form data-action="/image-to-pdf">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg,.webp" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-image-to-word-ocr" data-tool-slug="image-to-word-ocr" data-tool-name="Image to Word (OCR)"><div class="tool-icon">🖼️→📝</div><h3>Image to Word (OCR)</h3>
+                <form data-action="/image-to-word">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg" required>
+                    <button class="btn btn-primary" type="submit">OCR & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-image-to-excel-ocr" data-tool-slug="image-to-excel-ocr" data-tool-name="Image to Excel (OCR)"><div class="tool-icon">🖼️→📊</div><h3>Image to Excel (OCR)</h3>
+                <form data-action="/image-to-excel">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-ocr-to-text" data-tool-slug="ocr-to-text" data-tool-name="OCR to Text"><div class="tool-icon">📄</div><h3>OCR to Text</h3>
+                <form data-action="/ocr-to-text">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg" required>
+                    <button class="btn btn-primary" type="submit">Extract Text</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/ocr-to-text/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-jpg-to-png" data-tool-slug="jpg-to-png" data-tool-name="JPG to PNG"><div class="tool-icon">JPG→PNG</div><h3>JPG to PNG</h3>
+                <form data-action="/jpg-to-png">
+                    <input type="file" name="file" accept=".jpg,.jpeg" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-png-to-jpg" data-tool-slug="png-to-jpg" data-tool-name="PNG to JPG"><div class="tool-icon">PNG→JPG</div><h3>PNG to JPG</h3>
+                <form data-action="/png-to-jpg">
+                    <input type="file" name="file" accept=".png" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-webp-to-png" data-tool-slug="webp-to-png" data-tool-name="WEBP to PNG"><div class="tool-icon">WEBP→PNG</div><h3>WEBP to PNG</h3>
+                <form data-action="/webp-to-png">
+                    <input type="file" name="file" accept=".webp" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-svg-to-png" data-tool-slug="svg-to-png" data-tool-name="SVG to PNG"><div class="tool-icon">SVG→PNG</div><h3>SVG to PNG</h3>
+                <form data-action="/svg-to-png">
+                    <input type="file" name="file" accept=".svg" required>
+                    <button class="btn btn-primary" type="submit">Convert & Download</button>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-compress-image" data-tool-slug="compress-image" data-tool-name="Compress Image"><div class="tool-icon">🗜️</div><h3>Compress Image</h3>
+                <form data-action="/compress-image">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg,.webp" required>
+                    <select name="quality"><option value="80">High Quality</option><option value="60" selected>Medium Quality</option><option value="30">Low Quality</option></select>
+                    <button class="btn btn-primary" type="submit">Compress & Download</button>
+                    <div style="margin-top: 0.55rem; text-align: center;"><a href="/converter/compress-image/" style="font-size: 0.78rem; color: #0284c7; font-weight: 600; text-decoration: none;">Dedicated Tool Page ↗</a></div>
+                </form>
+            </div>
+            <div class="tool-card" id="tool-card-flip-image" data-tool-slug="flip-image" data-tool-name="Flip Image"><div class="tool-icon">↔️🖼️</div><h3>Flip Image</h3>
+                <form data-action="/flip-image">
+                    <input type="file" name="file" accept=".png,.jpg,.jpeg,.webp" required>
+                    <select name="direction"><option value="horizontal">Horizontal</option><option value="vertical">Vertical</option></select>
+                    <button class="btn btn-primary" type="submit">Flip & Download</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Date, Time & Age Converters -->
+        
+        
+            <div class="tool-card" id="tool-card-compress-image-to-target-kb" data-tool-slug="compress-image-to-target-kb" data-tool-name="Compress Image to Target KB">
+                <div class="tool-icon">🎯</div>
+                <h3>Compress Image to Target KB</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Compress photos to exact 20KB, 50KB, 100KB, or 200KB sizes for job portals, UPSC, and passport uploads.</p>
+                <a href="/converter/compress-image-target/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Target KB Compress ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-merge-photo-signature" data-tool-slug="merge-photo-signature" data-tool-name="Merge Photo & Signature">
+                <div class="tool-icon">🔗</div>
+                <h3>Merge Photo &amp; Signature</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Combine applicant photo and signature into a single file for competitive exam admit cards and job portals.</p>
+                <a href="/converter/merge-photo-signature/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Merge Photo &amp; Sign ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-image-watermark-tool" data-tool-slug="image-watermark-tool" data-tool-name="Image Watermark Tool">
+                <div class="tool-icon">💧</div>
+                <h3>Image Watermark Tool</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Add custom text or image watermarks to protect your photos and digital proofs 100% privately.</p>
+                <a href="/converter/watermark-image/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Add Watermark ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-favicon-ico-generator" data-tool-slug="favicon-ico-generator" data-tool-name="Favicon & ICO Generator">
+                <div class="tool-icon">🌟</div>
+                <h3>Favicon &amp; ICO Generator</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Generate multi-size .ico website favicons (16x16, 32x32, 48x48) instantly from PNG or JPG images.</p>
+                <a href="/converter/favicon-generator/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Generate Favicon ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-passport-photo-maker" data-tool-slug="passport-photo-maker" data-tool-name="Passport Photo Maker">
+                <div class="tool-icon">🛂</div>
+                <h3>Passport Photo Maker</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Create 2x2 inch and 35x45mm biometric passport photos with white or blue background in browser.</p>
+                <a href="/converter/passport-photo-maker/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Passport Photo Maker ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-resize-signature-tool" data-tool-slug="resize-signature-tool" data-tool-name="Resize Signature Tool">
+                <div class="tool-icon">✍️</div>
+                <h3>Resize Signature Tool</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Resize signature dimensions and compress to 10KB-20KB for government and banking applications.</p>
+                <a href="/converter/resize-signature/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Resize Signature ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-crop-rotate-image" data-tool-slug="crop-rotate-image" data-tool-name="Crop & Rotate Image">
+                <div class="tool-icon">✂️</div>
+                <h3>Crop &amp; Rotate Image</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Crop photos to standard aspect ratios (1:1, 16:9, 4:3) and rotate or flip photos with live preview.</p>
+                <a href="/converter/crop-rotate-image/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Crop &amp; Rotate Image ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-resize-image-pixels-cm" data-tool-slug="resize-image-pixels-cm" data-tool-name="Resize Image (Pixels/CM)">
+                <div class="tool-icon">📏</div>
+                <h3>Resize Image (Pixels/CM)</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Exact pixel, centimeter, and DPI image resizing with aspect ratio preservation 100% privately.</p>
+                <a href="/converter/resize-image/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Resize Image ⚡</a>
+            </div>
+
+        </div>
+
+        <!-- Video & Audio Converters -->
+        <div class="section-title" id="media">🎬 Video &amp; Audio Converters</div>
+        <div class="grid">
+            <div class="tool-card" id="tool-card-compress-video-online" data-tool-slug="compress-video-online" data-tool-name="Compress Video Online">
+                <div class="tool-icon">🎬</div>
+                <h3>Compress Video Online</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Compress MP4, WebM, and MOV video file sizes in your browser with zero cloud uploads or watermarks.</p>
+                <a href="/converter/compress-video/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Video Compressor ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-audio-video-to-mp3" data-tool-slug="audio-video-to-mp3" data-tool-name="Audio & Video to MP3">
+                <div class="tool-icon">🎵</div>
+                <h3>Audio &amp; Video to MP3</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert MP4, WebM, WAV, OGG, and AAC into crystal-clear MP3 audio files 100% privately in-browser.</p>
+                <a href="/converter/mp3-converter/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open MP3 Converter ⚡</a>
+            </div>
+        </div>
+
+        
+        <!-- Text & Writing Utilities -->
+        <div class="section-title" id="writing">✍️ Text &amp; Writing Utilities</div>
+        <div class="grid">
+            <div class="tool-card" id="tool-card-word-character-counter" data-tool-slug="word-character-counter" data-tool-name="Word & Character Counter">
+                <div class="tool-icon">📊</div>
+                <h3>Word &amp; Character Counter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Count words, characters, sentences, paragraphs, and reading time live with zero server uploads.</p>
+                <a href="/converter/word-counter/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Word Counter ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-case-converter" data-tool-slug="case-converter" data-tool-name="Case Converter">
+                <div class="tool-icon">🔤</div>
+                <h3>Case Converter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, and snake_case.</p>
+                <a href="/converter/case-converter/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Case Converter ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-secure-password-generator" data-tool-slug="secure-password-generator" data-tool-name="Secure Password Generator">
+                <div class="tool-icon">🔑</div>
+                <h3>Secure Password Generator</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Generate strong, cryptographically secure passwords with custom length, symbols, and entropy score.</p>
+                <a href="/converter/password-generator/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Generate Password ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-ai-paraphrasing-tool" data-tool-slug="ai-paraphrasing-tool" data-tool-name="AI Paraphrasing Tool">
+                <div class="tool-icon">✍️</div>
+                <h3>AI Paraphrasing Tool</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Rewrite sentences and paragraphs with Fluency, Academic, Formal, and Creative modes 100% privately.</p>
+                <a href="/paraphrasing-tool/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Paraphraser ⚡</a>
+            </div>
+        </div>
+
+        <div class="section-title" id="datetime">⏱️ Date, Time &amp; Age Converters</div>
+        <div class="grid">
+            <div class="tool-card" id="tool-card-age-calculator" data-tool-slug="age-calculator" data-tool-name="Age Calculator">
+                <div class="tool-icon">🎂</div>
+                <h3>Age Calculator</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Calculate your exact age in years, months, days, hours, seconds, and live countdown to your next birthday.</p>
+                <a href="/converter/age-calculator/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Age Calculator ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-time-duration-converter" data-tool-slug="time-duration-converter" data-tool-name="Time & Duration Converter">
+                <div class="tool-icon">⏱️</div>
+                <h3>Time &amp; Duration Converter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert minutes to seconds, hours to days, days to weeks, and calculate calendar and business days between dates.</p>
+                <a href="/converter/time-converter/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Time Converter ⚡</a>
+            </div>
+        </div>
+
+        <!-- Currency & Financial Calculators -->
+        <div class="section-title" id="currency">💰 Currency &amp; Financial Calculators</div>
+        <div class="grid">
+            <div class="tool-card" id="tool-card-live-currency-converter" data-tool-slug="live-currency-converter" data-tool-name="Live Currency Converter">
+                <div class="tool-icon">💵</div>
+                <h3>Live Currency Converter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Real-time forex exchange rates for 150+ global currencies including USD, PKR, EUR, GBP, AED, SAR, and INR.</p>
+                <a href="/converter/currency-converter/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Convert Currencies ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-loan-car-emi-calculator" data-tool-slug="loan-car-emi-calculator" data-tool-name="Loan & Car EMI Calculator">
+                <div class="tool-icon">🏦</div>
+                <h3>Loan &amp; Car EMI Calculator</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Calculate monthly installment (EMI), total interest payable, and principal vs interest schedule for home or auto loans.</p>
+                <a href="/converter/emi-calculator/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Calculate EMI ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-2-5-zakat-calculator" data-tool-slug="2-5-zakat-calculator" data-tool-name="2.5% Zakat Calculator">
+                <div class="tool-icon">🌙</div>
+                <h3>2.5% Zakat Calculator</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Calculate your annual obligatory 2.5% Zakat on cash, gold, silver, investments, and business stock with Nisab check.</p>
+                <a href="/converter/zakat-calculator/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Calculate Zakat ⚡</a>
+            </div>
+        </div>
+
+        <!-- Smart Unit & Everyday Math Tools -->
+        <div class="section-title" id="units">📏 Smart Unit &amp; Everyday Math Tools</div>
+        <div class="grid">
+            <div class="tool-card" id="tool-card-universal-unit-converter" data-tool-slug="universal-unit-converter" data-tool-name="Universal Unit Converter">
+                <div class="tool-icon">📐</div>
+                <h3>Universal Unit Converter</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Convert Length, Weight, Land Area (Marla, Kanal, Sq Ft), Temperature, Speed, and Digital Storage in real-time.</p>
+                <a href="/converter/unit-converter/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Open Unit Converter ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-5-in-1-percentage-calculator" data-tool-slug="5-in-1-percentage-calculator" data-tool-name="5-in-1 Percentage Calculator">
+                <div class="tool-icon">🔢</div>
+                <h3>5-in-1 Percentage Calculator</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Solve percentage of values, percentage increase/decrease, exam marks percentages, and shopping discount &amp; GST.</p>
+                <a href="/converter/percentage-calculator/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Calculate Percentage ⚡</a>
+            </div>
+            <div class="tool-card" id="tool-card-bmi-health-calculator" data-tool-slug="bmi-health-calculator" data-tool-name="BMI Health Calculator">
+                <div class="tool-icon">❤️</div>
+                <h3>BMI Health Calculator</h3>
+                <p class="extra-text" style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.2rem;">Calculate your Body Mass Index (BMI), health classification, and healthy recommended target weight range.</p>
+                <a href="/converter/bmi-calculator/" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-align: center;">Calculate BMI ⚡</a>
+            </div>
+        </div>
+
+        <section class="info-section">
+        <div class="info-card">
+            <h2>Why Choose AuraToolkit360 Client-Side File Converter?</h2>
+            <p>Traditional online file converters require uploading your sensitive files, documents, and images to external cloud servers. AuraToolkit360 changes the game by running 100% of conversion algorithms locally inside your web browser using modern WebAssembly and JavaScript technologies.</p>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h4>🔒 100% Guaranteed Privacy</h4>
+                    <p>Your files never leave your device. Zero server uploads mean zero data leaks or privacy risks.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>⚡ Instant Local Processing</h4>
+                    <p>No waiting in queue or uploading large files. Conversions execute at high speed directly on your hardware.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>📄 Multi-Format Support</h4>
+                    <p>Convert Word to PDF, PDF to Word, OCR Images to Text/DOCX, Compress Images, and format JSON seamlessly.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>💰 100% Free Without Limits</h4>
+                    <p>No hidden subscriptions, no daily conversion limits, and no registration required.</p>
+                </div>
             </div>
         </div>
 
@@ -2908,6 +2798,27 @@
             });
         }
 
+        function highlightSearchTerm(text, query) {
+            if (!query) return escapeHtml(text);
+            const escapedText = escapeHtml(text);
+            const safeQuery = query.replace(/[-\[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+            const regex = new RegExp('(' + safeQuery + ')', 'gi');
+            return escapedText.replace(regex, '<span class="search-res-match-highlight">$1</span>');
+        }
+
+        function onConverterSearchFocus() {
+            const input = document.getElementById('converterSearchInput');
+            const val = input ? input.value.trim() : '';
+            if (val) {
+                handleConverterSearch(val);
+            } else {
+                // Show top recommended tools as instant suggestions upon click
+                const popularSlugs = ['pdf-to-word', 'word-to-pdf', 'merge-pdf', 'compress-pdf', 'ocr-to-text', 'age-calculator', 'live-currency-converter', 'universal-unit-converter'];
+                const popularMatches = converterToolsDB.filter(t => popularSlugs.includes(t.slug));
+                renderDropdownResults(popularMatches, '', true);
+            }
+        }
+
         function handleConverterSearch(query) {
             currentSearchQuery = (query || '').trim();
             const clearBtn = document.getElementById('converterSearchClearBtn');
@@ -2926,28 +2837,31 @@
 
             if (clearBtn) clearBtn.style.display = 'flex';
 
-            // 1. Search dropdown matches
+            // 1. Search dropdown matches across name, category, and keywords
             const qLower = currentSearchQuery.toLowerCase();
             const matches = converterToolsDB.filter(tool => {
-                const searchable = (tool.name + ' ' + tool.category + ' ' + (tool.keywords || []).join(' ')).toLowerCase();
-                return searchable.includes(qLower);
+                const nameMatch = tool.name.toLowerCase().includes(qLower);
+                const catMatch = tool.category.toLowerCase().includes(qLower);
+                const kwMatch = (tool.keywords || []).some(k => k.toLowerCase().includes(qLower));
+                return nameMatch || catMatch || kwMatch;
             });
 
-            renderDropdownResults(matches, currentSearchQuery);
+            renderDropdownResults(matches, currentSearchQuery, false);
 
-            // 2. Filter in-page cards
+            // 2. Filter in-page cards and sections
             applyConverterFilter(currentSearchQuery, activeCategory);
         }
 
-        function renderDropdownResults(matches, query) {
+        function renderDropdownResults(matches, query, isPopular) {
             const resultsBox = document.getElementById('converterSearchResultsBox');
             if (!resultsBox) return;
 
-            if (matches.length === 0) {
+            if (!matches || matches.length === 0) {
                 resultsBox.innerHTML = `
-                    <div style="padding: 1.2rem; text-align: center; color: #64748b; font-size: 0.88rem;">
-                        No tools found matching "<strong>${escapeHtml(query)}</strong>".
-                        <div style="margin-top: 0.6rem;">
+                    <div style="padding: 1.4rem; text-align: center; color: #64748b; font-size: 0.88rem;">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">🔍</div>
+                        <div>No tools found matching "<strong>${escapeHtml(query)}</strong>".</div>
+                        <div style="margin-top: 0.75rem;">
                             <button type="button" class="tag-chip" onclick="clearConverterSearch()">View All 45+ Tools</button>
                         </div>
                     </div>
@@ -2956,25 +2870,32 @@
                 return;
             }
 
-            const html = matches.slice(0, 10).map((tool, index) => {
-                const cardExistsOnPage = !!document.querySelector(`[data-tool-slug="${tool.slug}"]`);
+            const headerHtml = `
+                <div class="search-dropdown-header">
+                    <span>${isPopular ? '⭐ Popular &amp; Recommended Tools' : ('⚡ Matching Tools (' + matches.length + ')')}</span>
+                    <span style="font-size: 0.7rem; font-weight: normal; color: #94a3b8;">Click tool to jump</span>
+                </div>
+            `;
+
+            const itemsHtml = matches.slice(0, 10).map((tool, index) => {
+                const cardExistsOnPage = !!document.querySelector(`[data-tool-slug="${tool.slug}"]`) || !!document.getElementById('tool-card-' + tool.slug);
                 return `
                     <div class="search-res-item" data-index="${index}" onclick="onSelectSearchResult('${tool.slug}', '${tool.url || ''}')" role="option">
                         <div class="search-res-icon">${tool.icon}</div>
                         <div class="search-res-info">
-                            <div class="search-res-name">${escapeHtml(tool.name)}</div>
-                            <div class="search-res-desc">${escapeHtml(tool.category)} • 100% Client-Side</div>
+                            <div class="search-res-name">${highlightSearchTerm(tool.name, query)}</div>
+                            <div class="search-res-desc">${escapeHtml(tool.category)} • 100% Free Client-Side</div>
                         </div>
                         <div class="search-res-actions">
                             <span class="search-res-cat">${escapeHtml(tool.category)}</span>
                             ${cardExistsOnPage ? `<span class="search-res-jump-btn" title="Jump to tool on this page">Jump ↓</span>` : ''}
-                            ${tool.url ? `<a href="${tool.url}" class="search-res-dedicated-link" onclick="event.stopPropagation()" title="Open standalone tool page">Page ↗</a>` : ''}
+                            ${tool.url ? `<a href="${tool.url}" class="search-res-dedicated-link" onclick="event.stopPropagation()" title="Open dedicated standalone tool page">Standalone ↗</a>` : ''}
                         </div>
                     </div>
                 `;
             }).join('');
 
-            resultsBox.innerHTML = html;
+            resultsBox.innerHTML = headerHtml + itemsHtml;
             resultsBox.classList.add('show');
         }
 
@@ -2993,7 +2914,8 @@
             const resultsBox = document.getElementById('converterSearchResultsBox');
             if (resultsBox) resultsBox.classList.remove('show');
 
-            const card = document.querySelector(`[data-tool-slug="${slug}"]`);
+            let card = document.querySelector(`[data-tool-slug="${slug}"]`);
+            if (!card) card = document.getElementById("tool-card-" + slug);
             if (card) {
                 // Ensure section and card are visible
                 card.style.display = '';
