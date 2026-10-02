@@ -972,6 +972,28 @@
         }
     }
 
+    
+    .page-break-marker {
+        display: none !important;
+    }
+    @media print {
+        @page {
+            size: A4 portrait;
+            margin: 12mm 15mm;
+        }
+        .page-break-marker,
+        .page-break-tag {
+            display: none !important;
+        }
+        .resume-section-block,
+        .resume-item-block,
+        .entry,
+        h1, h2, h3, p, li {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+    }
+
     /* ===== PRINT STYLES ===== */
     @media print {
         body {
@@ -3028,7 +3050,7 @@ Problem Solving</textarea>
                 const col2 = skillsArr.slice(half);
 
                 const renderSkillCol = (items) => items.map(s => `
-                    <div style="display:flex; align-items:flex-start; gap:6px; margin-bottom:3.5px;">
+                    <div style="display:flex; align-items:flex-start; gap:6px; margin-bottom:3.5px; page-break-inside:avoid; break-inside:avoid;">
                         <span style="color:#2563eb; font-weight:700; font-size:12px; line-height:1.2;">•</span>
                         <span style="font-size:11px; color:#334155;">${escapeHtml(s)}</span>
                     </div>
@@ -3036,7 +3058,7 @@ Problem Solving</textarea>
 
                 preview.innerHTML = `
                     <!-- Header -->
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 12px; border-bottom: 1.5px solid #e2e8f0; margin-bottom: 16px;">
+                    <div class="resume-section-block" style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 12px; border-bottom: 1.5px solid #e2e8f0; margin-bottom: 16px; page-break-inside: avoid; break-inside: avoid;">
                         <div>
                             <h1 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0 0 3px 0; letter-spacing: -0.5px;">${escapeHtml(data.name || 'Ali Raza Bhatti')}</h1>
                             <div style="font-size: 14px; font-weight: 600; color: #2563eb;">${escapeHtml(data.targetRole || 'HR Assistant')}</div>
@@ -3052,7 +3074,7 @@ Problem Solving</textarea>
 
                     <!-- Professional Summary -->
                     ${data.summary ? `
-                    <div style="margin-bottom: 16px;">
+                    <div class="resume-section-block" style="margin-bottom: 16px; page-break-inside: avoid; break-inside: avoid;">
                         <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
                             PROFESSIONAL SUMMARY
@@ -3062,13 +3084,13 @@ Problem Solving</textarea>
 
                     <!-- Work Experience -->
                     ${data.experience && data.experience.length ? `
-                    <div style="margin-bottom: 16px;">
-                        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+                    <div class="resume-section-block" style="margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; page-break-inside: avoid; break-inside: avoid;">
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                             WORK EXPERIENCE
                         </div>
                         ${data.experience.map(exp => `
-                            <div style="margin-bottom: 8px;">
+                            <div class="resume-item-block" style="margin-bottom: 8px; page-break-inside: avoid; break-inside: avoid;">
                                 <div style="font-size: 12px; font-weight: 700; color: #0f172a;">${escapeHtml(exp.title || '')}</div>
                                 <div style="font-size: 10.5px; color: #64748b; font-weight: 500; margin-bottom: 4px;">${escapeHtml(exp.company || '')} ${exp.years ? `| ${escapeHtml(exp.years)}` : ''}</div>
                                 <div style="font-size: 11px; color: #334155; line-height: 1.5; white-space: pre-line;">${escapeHtml(exp.bullets || '')}</div>
@@ -3078,13 +3100,13 @@ Problem Solving</textarea>
 
                     <!-- Education -->
                     ${data.education && data.education.length ? `
-                    <div style="margin-bottom: 16px;">
-                        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+                    <div class="resume-section-block" style="margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; page-break-inside: avoid; break-inside: avoid;">
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
                             EDUCATION
                         </div>
                         ${data.education.map(edu => `
-                            <div style="margin-bottom: 6px;">
+                            <div class="resume-item-block" style="margin-bottom: 6px; page-break-inside: avoid; break-inside: avoid;">
                                 <div style="display: flex; justify-content: space-between; align-items: baseline;">
                                     <strong style="font-size: 11.5px; font-weight: 700; color: #0f172a;">${escapeHtml(edu.degree || '')}</strong>
                                     <span style="font-size: 10.5px; color: #64748b;">${escapeHtml(edu.years || '')}</span>
@@ -3099,9 +3121,9 @@ Problem Solving</textarea>
 
                     <!-- Skills -->
                     ${skillsArr.length ? `
-                    <div style="margin-bottom: 16px;">
+                    <div class="resume-section-block" style="margin-bottom: 16px; page-break-inside: avoid; break-inside: avoid;">
                         <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
                             SKILLS
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; font-size: 11px; color: #334155; line-height: 1.5;">
@@ -3111,7 +3133,7 @@ Problem Solving</textarea>
                     </div>` : ''}
 
                     <!-- Resume Tagline Footer -->
-                    <div style="margin-top: 24px; padding-top: 10px; border-top: 1px solid #f1f5f9; text-align: center; font-size: 10.5px; font-style: italic; color: #94a3b8;">
+                    <div class="resume-footer-block" style="margin-top: 24px; padding-top: 10px; border-top: 1px solid #f1f5f9; text-align: center; font-size: 10.5px; font-style: italic; color: #94a3b8; page-break-inside: avoid; break-inside: avoid;">
                         Building People • Supporting Growth
                     </div>
                 `;
@@ -3262,28 +3284,76 @@ Problem Solving</textarea>
                 return;
             }
 
-            const name = document.getElementById('name').value || 'resume';
+            const nameEl = document.getElementById('name');
+            const name = (nameEl && nameEl.value.trim()) || 'resume';
             const filename = `${name.replace(/\s+/g, '-').toLowerCase()}-cv.pdf`;
+
+            // 1. Create a pristine clone of the resume to strip screen artifacts
+            const clone = preview.cloneNode(true);
+
+            // 2. Completely remove any on-screen markers, page break tags, or interactive buttons
+            clone.querySelectorAll('.page-break-marker, .page-break-tag, .no-pdf, button').forEach(el => el.remove());
+
+            // 3. Reset sheet styling to standard A4 format (clean white page, no outer card borders, no shadows)
+            clone.style.transform = 'none';
+            clone.style.boxShadow = 'none';
+            clone.style.border = 'none';
+            clone.style.borderRadius = '0';
+            clone.style.margin = '0 auto';
+            clone.style.width = '794px'; // 210mm at 96 DPI (Exact standard A4 width)
+            clone.style.maxWidth = '794px';
+            clone.style.minHeight = '1122px'; // 297mm at 96 DPI (Exact standard A4 height)
+            clone.style.boxSizing = 'border-box';
+            clone.style.padding = '40px 45px';
+            clone.style.backgroundColor = '#ffffff';
+
+            // 4. Ensure sections, items, and headings do not break halfway through across pages
+            clone.querySelectorAll('.resume-section-block, .resume-item-block, .entry, h1, h2, h3, p, li').forEach(el => {
+                el.style.pageBreakInside = 'avoid';
+                el.style.breakInside = 'avoid';
+            });
+
+            // 5. Place in off-screen staging area for accurate rendering
+            const staging = document.createElement('div');
+            staging.style.position = 'fixed';
+            staging.style.left = '-99999px';
+            staging.style.top = '-99999px';
+            staging.style.width = '794px';
+            staging.style.backgroundColor = '#ffffff';
+            staging.appendChild(clone);
+            document.body.appendChild(staging);
 
             if (typeof html2pdf !== 'undefined') {
                 const opt = {
-                    margin: [0.3, 0.4, 0.3, 0.4],
+                    margin: 0, // Full bleed 0 margin: clone has padding: 40px 45px which provides exact professional margins
                     filename: filename,
                     image: { type: 'jpeg', quality: 0.98 },
                     html2canvas: {
-                        scale: 2,
+                        scale: 2, // High resolution crisp output
                         useCORS: true,
+                        logging: false,
+                        letterRendering: true,
                         scrollY: 0,
-                        scrollX: 0
+                        scrollX: 0,
+                        windowWidth: 794
                     },
-                    jsPDF: { unit: 'in', format: currentPageFormat, orientation: currentOrientation },
-                    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                    pagebreak: { 
+                        mode: ['avoid-all', 'css', 'legacy']
+                    }
                 };
 
-                html2pdf().set(opt).from(preview).save().catch(_err => {
-                    window.print();
-                });
+                html2pdf().set(opt).from(clone).save()
+                    .then(() => {
+                        document.body.removeChild(staging);
+                    })
+                    .catch(err => {
+                        console.error('PDF export error:', err);
+                        document.body.removeChild(staging);
+                        window.print();
+                    });
             } else {
+                document.body.removeChild(staging);
                 window.print();
             }
         }
@@ -3531,15 +3601,22 @@ Problem Solving</textarea>
                     pageBadge.style.borderColor = 'rgba(245, 158, 11, 0.3)';
                 }
 
-                // Add visual dashed line
+                // Add visual dashed line ONLY on screen preview
                 const marker = document.createElement('div');
                 marker.className = 'page-break-marker';
+                marker.style.position = 'absolute';
+                marker.style.left = '0';
+                marker.style.right = '0';
                 marker.style.top = `${pageH}px`;
-                marker.innerHTML = `<span class="page-break-tag">✂️ Page 1 End (${currentPageFormat.toUpperCase()}) • Page 2 Starts Below</span>`;
+                marker.style.borderTop = '2px dashed #f59e0b';
+                marker.style.pointerEvents = 'none';
+                marker.style.zIndex = '10';
+                marker.innerHTML = `<span class="page-break-tag" style="position:absolute; right:12px; top:-12px; background:#fef3c7; color:#92400e; border:1px solid #fcd34d; border-radius:999px; padding:2px 10px; font-size:11px; font-weight:600;">✂️ Page 1 End (${currentPageFormat.toUpperCase()}) • Page 2 Starts Below</span>`;
+                preview.style.position = 'relative';
                 preview.appendChild(marker);
             } else {
                 if (pageBadge) {
-                    pageBadge.innerHTML = `📄 1 Page (${currentPageFormat.toUpperCase()} Fit ✅)`;
+                    pageBadge.innerHTML = '📄 1 Page (Standard)';
                     pageBadge.style.background = 'rgba(16, 185, 129, 0.15)';
                     pageBadge.style.color = '#10b981';
                     pageBadge.style.borderColor = 'rgba(16, 185, 129, 0.3)';
