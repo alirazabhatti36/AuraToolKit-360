@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Créateur de CV ATS Gratuit en Ligne (Sans Inscription) | AuraToolkit360</title>
@@ -43,1251 +46,977 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/social-share.css">
     <script defer src="/assets/social-share.js"></script>
     
+    
     <style>
-        :root {
-            --bg-base: #0b0f19;
-            --bg-card: rgba(18, 24, 38, 0.7);
-            --bg-card-hover: rgba(28, 36, 56, 0.85);
-            --border-card: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(99, 102, 241, 0.35);
-            --accent-cyan: #38bdf8;
-            --accent-purple: #8b5cf6;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
-            --accent-orange: #f59e0b;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
+
+    /* ===== RESET & BASE TO MATCH EXACT MOCKUP ===== */
+    :root {
+        --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        --font-doodle: 'Caveat', cursive;
+        --color-primary: #2563eb;
+        --color-primary-dark: #1d4ed8;
+        --color-primary-light: #eff6ff;
+        --color-slate-900: #0f172a;
+        --color-slate-800: #1e293b;
+        --color-slate-700: #334155;
+        --color-slate-600: #475569;
+        --color-slate-500: #64748b;
+        --color-slate-400: #94a3b8;
+        --color-slate-200: #e2e8f0;
+        --color-slate-100: #f1f5f9;
+        --color-slate-50: #f8fafc;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: var(--font-main);
+        background-color: #f8fafc;
+        background-image: 
+            linear-gradient(to right, rgba(226, 232, 240, 0.75) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(226, 232, 240, 0.75) 1px, transparent 1px);
+        background-size: 24px 24px;
+        color: var(--color-slate-800);
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAVBAR ===== */
+    .site-header {
+        background: #ffffff;
+        border-bottom: 1px solid var(--color-slate-200);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    .header-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+    }
+
+    .brand-symbol {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brand-text {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--color-slate-900);
+        letter-spacing: -0.02em;
+    }
+
+    .nav-links-menu {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        list-style: none;
+    }
+
+    .nav-link-item {
+        position: relative;
+    }
+
+    .nav-item-link {
+        color: var(--color-slate-600);
+        text-decoration: none;
+        font-size: 0.92rem;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.5rem 0.2rem;
+        transition: color 0.15s ease;
+    }
+
+    .nav-item-link:hover {
+        color: var(--color-primary);
+    }
+
+    .nav-item-link.active {
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+
+    .nav-item-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        right: 0;
+        height: 2.5px;
+        background: var(--color-primary);
+        border-radius: 999px;
+    }
+
+    .nav-chevron {
+        font-size: 0.7rem;
+        color: var(--color-slate-400);
+    }
+
+    .header-search-wrap {
+        position: relative;
+        width: 220px;
+    }
+
+    .header-search-input {
+        width: 100%;
+        padding: 0.45rem 0.85rem 0.45rem 2.1rem;
+        font-size: 0.85rem;
+        border: 1px solid var(--color-slate-200);
+        border-radius: 9999px;
+        background: #ffffff;
+        color: var(--color-slate-800);
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .header-search-input:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .header-search-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.8rem;
+        color: var(--color-slate-400);
+        pointer-events: none;
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--color-slate-700);
+        cursor: pointer;
+    }
+
+    /* ===== BREADCRUMB BAR ===== */
+    .breadcrumb-row {
+        max-width: 1400px;
+        margin: 1.2rem auto 0.4rem;
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.82rem;
+        color: var(--color-slate-500);
+    }
+
+    .breadcrumb-row a {
+        color: var(--color-slate-500);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+
+    .breadcrumb-row a:hover {
+        color: var(--color-primary);
+    }
+
+    .breadcrumb-sep {
+        color: var(--color-slate-400);
+    }
+
+    .breadcrumb-active {
+        color: var(--color-slate-800);
+        font-weight: 600;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+    }
+
+    .hero-left {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        max-width: 820px;
+    }
+
+    .hero-icon-card {
+        width: 62px;
+        height: 62px;
+        background: #eff6ff;
+        border: 1.5px solid #dbeafe;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 4px;
+    }
+
+    .hero-details h1 {
+        font-size: 2.1rem;
+        font-weight: 800;
+        color: var(--color-slate-900);
+        letter-spacing: -0.025em;
+        line-height: 1.2;
+        margin-bottom: 0.45rem;
+    }
+
+    .hero-details p {
+        font-size: 0.95rem;
+        color: var(--color-slate-600);
+        line-height: 1.5;
+        margin-bottom: 0.9rem;
+    }
+
+    .hero-badges-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+    }
+
+    .hero-badge-pill {
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.35rem 0.85rem;
+        border-radius: 9999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .badge-green {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        color: #166534;
+    }
+
+    .badge-blue {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1d4ed8;
+    }
+
+    /* Hero Doodle */
+    .hero-doodle-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0.75rem;
+        margin-right: 2rem;
+        user-select: none;
+    }
+
+    .doodle-caption {
+        font-family: var(--font-doodle);
+        font-size: 1.85rem;
+        font-weight: 700;
+        color: #4338ca;
+        transform: rotate(-10deg);
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .doodle-arrow-svg {
+        margin-top: 0.25rem;
+        margin-left: 2.5rem;
+        transform: rotate(5deg);
+    }
+
+    /* ===== MAIN BUILDER GRID ===== */
+    .builder-main-grid {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1.5rem 3.5rem;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 1.5rem;
+        align-items: start;
+    }
+
+    /* ===== LEFT CARD: STEP FORM EDITOR ===== */
+    .form-editor-card {
+        background: #ffffff;
+        border: 1px solid var(--color-slate-200);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+    }
+
+    .editor-top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--color-slate-100);
+        margin-bottom: 1.25rem;
+    }
+
+    .profile-title-text {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-slate-900);
+    }
+
+    .progress-bar-container {
+        flex: 1;
+        max-width: 250px;
+        margin: 0 1.25rem;
+        height: 7px;
+        background: var(--color-slate-200);
+        border-radius: 9999px;
+        overflow: hidden;
+    }
+
+    .progress-bar-fill {
+        height: 100%;
+        background: var(--color-primary);
+        border-radius: 9999px;
+        width: 25%;
+        transition: width 0.35s ease;
+    }
+
+    .progress-pct-display {
+        font-size: 0.82rem;
+        color: var(--color-slate-500);
+        font-weight: 500;
+        min-width: 90px;
+        text-align: right;
+    }
+
+    /* Step Tabs */
+    .step-tabs-wrapper {
+        display: flex;
+        gap: 0.45rem;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .step-tabs-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .step-tab-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.55rem 0.95rem;
+        font-size: 0.83rem;
+        font-weight: 500;
+        border-radius: 8px;
+        border: 1px solid var(--color-slate-200);
+        background: var(--color-slate-50);
+        color: var(--color-slate-600);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.15s ease;
+    }
+
+    .step-tab-btn:hover {
+        background: var(--color-slate-100);
+        color: var(--color-slate-900);
+        border-color: var(--color-slate-300);
+    }
+
+    .step-tab-btn.active {
+        background: var(--color-primary-light);
+        border-color: #bfdbfe;
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+
+    /* Tab Panes */
+    .tab-pane {
+        display: none;
+    }
+
+    .tab-pane.active {
+        display: block;
+        animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-header-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--color-slate-900);
+        margin-bottom: 0.25rem;
+    }
+
+    .tab-header-desc {
+        font-size: 0.85rem;
+        color: var(--color-slate-500);
+        margin-bottom: 1.25rem;
+    }
+
+    /* Form Grids */
+    .fields-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .field-box {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .field-box.full-width {
+        grid-column: 1 / -1;
+    }
+
+    .field-label {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--color-slate-800);
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .req-star {
+        color: #ef4444;
+    }
+
+    .opt-tag {
+        color: var(--color-slate-400);
+        font-weight: 400;
+        font-size: 0.78rem;
+    }
+
+    .input-wrapper-icon {
+        position: relative;
+        width: 100%;
+    }
+
+    .input-leading-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.85rem;
+        color: var(--color-slate-400);
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .form-text-input {
+        width: 100%;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.88rem;
+        border: 1px solid var(--color-slate-200);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--color-slate-800);
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        box-sizing: border-box;
+    }
+
+    .input-wrapper-icon .form-text-input {
+        padding-left: 2.2rem;
+    }
+
+    .form-text-input:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-textarea-input {
+        width: 100%;
+        padding: 0.65rem 0.85rem;
+        font-size: 0.88rem;
+        border: 1px solid var(--color-slate-200);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--color-slate-800);
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        resize: vertical;
+        line-height: 1.5;
+        box-sizing: border-box;
+        font-family: inherit;
+    }
+
+    .form-textarea-input:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    /* Photo Upload Box */
+    .photo-section-row {
+        margin: 1.25rem 0 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+    }
+
+    .photo-dropzone-box {
+        flex: 1;
+        border: 2px dashed #cbd5e1;
+        background: var(--color-slate-50);
+        border-radius: 12px;
+        padding: 1.25rem 1rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .photo-dropzone-box:hover {
+        border-color: var(--color-primary);
+        background: #eff6ff;
+    }
+
+    .photo-dropzone-icon {
+        font-size: 1.5rem;
+        color: var(--color-primary);
+        margin-bottom: 0.25rem;
+    }
+
+    .photo-dropzone-title {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--color-slate-900);
+        margin-bottom: 0.15rem;
+    }
+
+    .photo-dropzone-sub {
+        font-size: 0.75rem;
+        color: var(--color-slate-400);
+    }
+
+    .photo-specs-info {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        color: var(--color-slate-500);
+        font-size: 0.8rem;
+        line-height: 1.35;
+    }
+
+    .photo-specs-icon {
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--color-slate-200);
+        border-radius: 8px;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-slate-400);
+        font-size: 0.95rem;
+        flex-shrink: 0;
+    }
+
+    /* Button Actions */
+    .btn-primary-action {
+        width: 100%;
+        background: var(--color-primary);
+        color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        padding: 0.85rem 1.25rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.25);
+        transition: all 0.2s ease;
+    }
+
+    .btn-primary-action:hover {
+        background: var(--color-primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 12px -1px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary-action:active {
+        transform: translateY(0);
+    }
+
+    .nav-buttons-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .btn-secondary-back {
+        background: var(--color-slate-100);
+        color: var(--color-slate-700);
+        border: 1px solid var(--color-slate-200);
+        border-radius: 10px;
+        padding: 0.85rem 1.25rem;
+        font-size: 0.92rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s ease;
+    }
+
+    .btn-secondary-back:hover {
+        background: var(--color-slate-200);
+        color: var(--color-slate-900);
+    }
+
+    .btn-add-item {
+        background: #ffffff;
+        color: var(--color-primary);
+        border: 1.5px dashed #bfdbfe;
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        font-size: 0.88rem;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        transition: all 0.15s ease;
+    }
+
+    .btn-add-item:hover {
+        background: #eff6ff;
+        border-color: var(--color-primary);
+    }
+
+    /* Dynamic Entries Styling */
+    .entry {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1rem 1.1rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .entry-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .btn-danger {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #dc2626;
+        border-radius: 6px;
+        padding: 0.25rem 0.6rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s;
+    }
+
+    .btn-danger:hover {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .field {
+        margin-bottom: 0.65rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .field label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #334155;
+    }
+
+    .field input, .field textarea {
+        width: 100%;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.85rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #0f172a;
+        outline: none;
+        box-sizing: border-box;
+        font-family: inherit;
+    }
+
+    .field input:focus, .field textarea:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+
+    /* ===== RIGHT CARD: LIVE PREVIEW CANVAS ===== */
+    .preview-canvas-card {
+        background: var(--color-slate-50);
+        border: 1px solid var(--color-slate-200);
+        border-radius: 16px;
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .canvas-toolbar-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
+    }
+
+    .template-dropdown-wrap {
+        position: relative;
+    }
+
+    .template-select-dropdown {
+        appearance: none;
+        background: #ffffff;
+        border: 1px solid var(--color-slate-300);
+        border-radius: 8px;
+        padding: 0.5rem 2.2rem 0.5rem 0.85rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--color-slate-800);
+        cursor: pointer;
+        outline: none;
+        transition: border-color 0.15s;
+    }
+
+    .template-select-dropdown:focus {
+        border-color: var(--color-primary);
+    }
+
+    .template-dropdown-caret {
+        position: absolute;
+        right: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        font-size: 0.7rem;
+        color: var(--color-slate-500);
+    }
+
+    .canvas-zoom-control {
+        display: inline-flex;
+        align-items: center;
+        background: #ffffff;
+        border: 1px solid var(--color-slate-300);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .canvas-zoom-btn {
+        background: transparent;
+        border: none;
+        padding: 0.45rem 0.75rem;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--color-slate-600);
+        transition: background 0.15s;
+    }
+
+    .canvas-zoom-btn:hover {
+        background: var(--color-slate-100);
+        color: var(--color-slate-900);
+    }
+
+    .canvas-zoom-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--color-slate-800);
+        padding: 0 0.45rem;
+        min-width: 48px;
+        text-align: center;
+    }
+
+    .btn-download-pdf-top {
+        background: var(--color-primary);
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 1.15rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+        transition: all 0.2s ease;
+    }
+
+    .btn-download-pdf-top:hover {
+        background: var(--color-primary-dark);
+        transform: translateY(-1px);
+    }
+
+    /* Paper Viewport & Sheet */
+    .sheet-viewport {
+        background: #f1f5f9;
+        border-radius: 12px;
+        padding: 1.5rem 1rem;
+        display: flex;
+        justify-content: center;
+        min-height: 850px;
+        overflow-x: auto;
+    }
+
+    #preview.preview-paper-sheet {
+        background: #ffffff;
+        width: 100%;
+        max-width: 680px;
+        min-height: 960px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--color-slate-200);
+        border-radius: 4px;
+        padding: 38px 38px;
+        box-sizing: border-box;
+        transform-origin: top center;
+        transition: transform 0.2s ease;
+        line-height: 1.5;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+        .builder-main-grid {
+            grid-template-columns: 1fr;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { overflow-x: clip; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        .hero-doodle-wrap {
+            display: none;
+        }
+
+        .header-search-wrap {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .nav-links-menu {
+            display: none;
+        }
+
+        .mobile-menu-toggle {
+            display: block;
+        }
+
+        .fields-grid-2 {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hero-icon-card {
+            width: 48px;
+            height: 48px;
+        }
+
+        .hero-details h1 {
+            font-size: 1.7rem;
+        }
+
+        #preview.preview-paper-sheet {
+            padding: 24px 18px;
+            font-size: 12px;
+        }
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
         body {
-            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.6;
-            overflow-x: clip;
-            position: relative;
-            padding-top: 76px;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        /* Ambient Aurora Glow Background Effects */
-        .ambient-glow-top-left {
-            position: fixed;
-            top: -150px;
-            left: -150px;
-            width: 650px;
-            height: 650px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(40px);
-        }
-        .ambient-glow-top-right {
-            position: fixed;
-            top: -100px;
-            right: -100px;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.14) 0%, rgba(217, 70, 239, 0.06) 50%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(50px);
-        }
-        .ambient-glow-mid {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 850px;
-            height: 850px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 65%);
-            z-index: -1;
-            pointer-events: none;
+            background: #ffffff !important;
+            background-image: none !important;
         }
 
-        /* Modern Scrollbar */
-        ::-webkit-scrollbar { width: 7px; height: 7px; }
-        ::-webkit-scrollbar-track { background: #0b0f19; }
-        ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 999px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.65); }
-
-                        /* ===== NAVBAR ===== */
-        .navbar {
-            background: rgba(11, 15, 25, 0.88);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 0.65rem 1.5rem;
-            border-bottom: 1px solid var(--border-card);
-            position: fixed !important;
-            top: 0; left: 0; right: 0;
-            width: 100%;
-            max-width: 100vw;
-            box-sizing: border-box;
-            z-index: 1000;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
-        }
-        .navbar.nav-hidden { transform: translateY(-100%); }
-        .nav-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.75rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .logo {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-        }
-        .logo-symbol {
-            width: 34px;
-            height: 34px;
-            background: linear-gradient(135deg, #38bdf8, #8b5cf6);
-            border-radius: 9px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.1rem;
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
-        }
-        .logo-text span {
-            background: linear-gradient(135deg, #38bdf8, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .nav-center {
-            display: flex;
-            gap: 0.35rem;
-            align-items: center;
-        }
-        @media (max-width: 1240px) {
-            .nav-center { display: none !important; }
-            .nav-hamburger { display: flex !important; }
-        }
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 600;
-            padding: 0.45rem 0.85rem;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            white-space: nowrap;
-        }
-        .nav-link:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .nav-link.active {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-        }
-        .nav-badge-pill {
-            background: linear-gradient(135deg, #ec4899, #8b5cf6);
-            color: #ffffff;
-            font-size: 0.62rem;
-            padding: 0.12rem 0.42rem;
-            border-radius: 999px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .nav-right-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .btn-bookmark-nav {
-            background: transparent;
-            border: 1px solid var(--border-card);
-            color: var(--text-secondary);
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 0.48rem 0.9rem;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-        .btn-bookmark-nav:hover {
-            color: var(--accent-cyan);
-            border-color: rgba(56, 189, 248, 0.3);
-            background: rgba(56, 189, 248, 0.06);
-        }
-        .btn-aura-saas {
-            background: linear-gradient(135deg, #0284c7, #6366f1);
-            color: #ffffff;
-            font-size: 0.84rem;
-            font-weight: 700;
-            padding: 0.5rem 1.15rem;
-            border-radius: 999px;
-            text-decoration: none;
-            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
-            transition: all 0.25s;
-            white-space: nowrap;
-        }
-        .btn-aura-saas:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55);
-        }
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 38px;
-            height: 38px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border-card);
-            border-radius: 9px;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
-        }
-        .nav-hamburger span {
-            width: 100%;
-            height: 2px;
-            background: #f8fafc;
-            border-radius: 2px;
-            transition: all 0.25s;
-        }
-        /* Language Switcher */
-        .lang-switcher {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-        }
-        .lang-switcher-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.38rem;
-            padding: 0.42rem 0.72rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 999px;
-            color: #cbd5e1;
-            font-size: 0.8rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            user-select: none;
-            white-space: nowrap;
-        }
-        .lang-switcher-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(56, 189, 248, 0.35);
-            color: #38bdf8;
-        }
-        .lang-dropdown-menu {
+        .site-header,
+        .breadcrumb-row,
+        .hero-container,
+        .form-editor-card,
+        .canvas-toolbar-row,
+        .aura-footer-v2,
+        .sheet-viewport {
             display: none !important;
-            position: absolute !important;
-            top: calc(100% + 8px) !important;
-            right: 0 !important;
-            min-width: 170px !important;
-            background: rgba(14, 19, 31, 0.98) !important;
-            backdrop-filter: blur(20px) !important;
-            -webkit-backdrop-filter: blur(20px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
-            border-radius: 12px !important;
-            padding: 0.4rem !important;
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6) !important;
-            flex-direction: column !important;
-            gap: 0.2rem !important;
-            z-index: 2000 !important;
-        }
-        .lang-dropdown-menu.show {
-            display: flex !important;
-        }
-        .lang-option {
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.55rem !important;
-            padding: 0.45rem 0.65rem !important;
-            border-radius: 8px !important;
-            color: #cbd5e1 !important;
-            text-decoration: none !important;
-            font-size: 0.82rem !important;
-            font-weight: 600 !important;
-            transition: all 0.15s ease !important;
-            white-space: nowrap !important;
-        }
-        .lang-option:hover,
-        .lang-option.active {
-            background: rgba(56, 189, 248, 0.15) !important;
-            color: #38bdf8 !important;
-        }
-        @media (max-width: 768px) {
-            .navbar { padding: 0.55rem 0.85rem !important; }
+            padding: 0 !important;
+            margin: 0 !important;
+            background: none !important;
         }
 
-/* MAIN CONTAINER */
-        .container {
-            max-width: 1360px;
-            margin: 0 auto;
-            padding: 1.8rem 1.2rem 4rem;
+        .builder-main-grid {
+            display: block !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
 
-        /* PAGE HERO HEADER */
-        .page-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 0 1rem;
-        }
-        .pill-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(16, 185, 129, 0.12);
-            color: #34d399;
-            padding: 0.35rem 1.1rem;
-            border-radius: 999px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            border: 1px solid rgba(16, 185, 129, 0.25);
-            margin-bottom: 0.85rem;
-        }
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 60%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.8px;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-        }
-        @media (max-width: 768px) {
-            .page-header h1 { font-size: 1.9rem; }
-        }
-        .page-header p {
-            color: var(--text-secondary);
-            font-size: 0.98rem;
-            max-width: 680px;
-            margin: 0 auto;
-            line-height: 1.55;
+        .preview-canvas-card {
+            border: none !important;
+            background: transparent !important;
+            padding: 0 !important;
         }
 
-        /* Feature Pills Row */
-        .resume-feature-pills {
-            display: flex;
-            justify-content: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-        .res-pill {
-            background: rgba(18, 24, 38, 0.6);
-            border: 1px solid var(--border-card);
-            color: var(--text-secondary);
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 0.3rem 0.85rem;
-            border-radius: 999px;
-        }
-
-        /* RESUME BUILDER 2-COLUMN LAYOUT */
-        .layout {
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 1.5rem;
-            align-items: start;
-            position: relative;
-        }
-        @media (max-width: 960px) {
-            .layout { grid-template-columns: 1fr; }
-            .sticky-preview {
-                position: static !important;
-                max-height: none !important;
-                overflow-y: visible !important;
-            }
-        }
-
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: blur(14px);
-            border: 1px solid var(--border-card);
-            border-radius: 20px;
-            padding: 1.6rem;
-            color: var(--text-primary);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-
-        .section { margin-top: 1.4rem; }
-        .section-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.6rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .section-head h3 {
-            font-size: 1.02rem;
-            color: #ffffff;
-            font-weight: 700;
-            margin-bottom: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
-        }
-        .section h3 {
-            font-size: 1.02rem;
-            color: #ffffff;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
-
-        .field { margin-bottom: 0.8rem; }
-        .field label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 0.35rem;
-        }
-        .field input, .field textarea, .field select {
-            width: 100%;
-            background: rgba(11, 15, 25, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
-            padding: 0.6rem 0.8rem;
-            font-size: 0.86rem;
-            color: #ffffff;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .field input:focus, .field textarea:focus, .field select:focus {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
-        }
-        .field textarea { min-height: 85px; resize: vertical; }
-
-        .btn-row {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-        button, .btn-link {
-            border: none;
-            border-radius: 10px;
-            padding: 0.6rem 1rem;
-            cursor: pointer;
-            font-size: 0.84rem;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            transition: all 0.25s;
-            font-family: inherit;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #0284c7, #6366f1);
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35);
-        }
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.55);
-        }
-        .btn-outline {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent-cyan);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-        }
-        .btn-outline:hover {
-            background: rgba(56, 189, 248, 0.2);
-            border-color: var(--accent-cyan);
-            color: #ffffff;
-        }
-        .btn-danger {
-            background: rgba(239, 68, 68, 0.15);
-            color: #fca5a5;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-        }
-        .btn-danger:hover {
-            background: rgba(239, 68, 68, 0.3);
-        }
-
-        .entry {
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 0.85rem;
-            margin-bottom: 0.75rem;
-            background: rgba(11, 15, 25, 0.5);
-            transition: border-color 0.2s;
-        }
-        .entry:hover {
-            border-color: rgba(255, 255, 255, 0.16);
-        }
-        .entry-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        .entry-head strong {
-            font-size: 0.84rem;
-            color: var(--accent-cyan);
-        }
-        .small {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* Photo Picker */
-        .photo-picker {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(11, 15, 25, 0.5);
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 0.85rem;
-            margin-bottom: 1rem;
-        }
-        .photo-preview-box {
-            width: 68px;
-            height: 68px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-cyan);
-            overflow: hidden;
-            background: rgba(30, 41, 59, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-        }
-        .photo-preview-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .photo-placeholder {
-            font-size: 1.6rem;
-            color: var(--text-muted);
-        }
-
-        /* Template Selector & Customizer Bar */
-        .template-top-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(14px);
-            border: 1px solid var(--border-card);
-            border-radius: 20px;
-            padding: 1.35rem 1.6rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-        .template-grid {
-            display: grid;
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-            gap: 0.65rem;
-            margin-top: 0.6rem;
-        }
-        @media (max-width: 1200px) {
-            .template-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-        }
-        @media (max-width: 768px) {
-            .template-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-        }
-        @media (max-width: 520px) {
-            .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        }
-        .template-chip {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(11, 15, 25, 0.6);
-            border-radius: 12px;
-            padding: 0.6rem;
-            text-align: left;
-            color: #cbd5e1;
-            min-height: 88px;
-            cursor: pointer;
-            transition: all 0.22s;
-            position: relative;
-        }
-        .template-chip:hover {
-            border-color: rgba(56, 189, 248, 0.4);
-            transform: translateY(-2px);
-        }
-        .template-chip.active {
-            border-color: var(--accent-cyan);
-            background: rgba(56, 189, 248, 0.12);
-            color: #ffffff;
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
-        }
-        .template-thumb {
-            display: block;
-            height: 38px;
-            border-radius: 6px;
-            margin-bottom: 0.4rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: #ffffff;
-            overflow: hidden;
-            position: relative;
-        }
-        .thumb-modern { background: linear-gradient(180deg, #eff6ff 0 35%, #ffffff 35% 100%); }
-        .thumb-modern::before { content: ''; position: absolute; inset: 5px 6px auto; height: 5px; background: #2563eb; border-radius: 999px; }
-        .thumb-classic { background: #ffffff; }
-        .thumb-classic::before { content: ''; position: absolute; left: 6px; right: 6px; top: 6px; height: 3px; background: #475569; }
-        .thumb-minimal { background: #ffffff; }
-        .thumb-minimal::before { content: ''; position: absolute; left: 5px; top: 5px; width: 4px; bottom: 5px; background: #0f172a; }
-        .thumb-compact { background: linear-gradient(90deg, #eff6ff 0 28%, #ffffff 28% 100%); }
-        .thumb-compact::before { content: ''; position: absolute; left: 4px; top: 5px; width: 10px; bottom: 5px; background: #dbeafe; }
-        .thumb-photo-exec { background: #ffffff; }
-        .thumb-photo-exec::before { content: ''; position: absolute; left: 5px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: #2563eb; }
-        .thumb-sidebar { background: linear-gradient(90deg, #0f172a 0 32%, #ffffff 32% 100%); }
-        .thumb-sidebar::before { content: ''; position: absolute; left: 3px; top: 4px; width: 8px; height: 8px; border-radius: 50%; background: #38bdf8; }
-        .thumb-gradient { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .thumb-gradient::before { content: ''; position: absolute; left: 5px; top: 6px; width: 40%; height: 4px; background: #ffffff; border-radius: 999px; }
-        .thumb-tech { background: #0d1117; }
-        .thumb-tech::before { content: '>'; position: absolute; left: 5px; top: 4px; font-size: 7px; color: #38bdf8; font-family: monospace; }
-        .thumb-tech::after { content: ''; position: absolute; left: 14px; right: 5px; top: 7px; height: 2px; background: #238636; }
-        .thumb-europass { background: linear-gradient(90deg, #e2e8f0 0 32%, #ffffff 32% 100%); }
-        .thumb-europass::before { content: ''; position: absolute; left: 4px; top: 5px; width: 10px; height: 3px; background: #1d4ed8; }
-        .thumb-nordic { background: #ffffff; }
-        .thumb-nordic::before { content: ''; position: absolute; left: 6px; right: 6px; top: 10px; height: 1px; background: #cbd5e1; }
-        .thumb-nordic::after { content: ''; position: absolute; left: 6px; top: 5px; width: 22px; height: 3px; background: #0f172a; }
-        .thumb-split { background: linear-gradient(90deg, #f1f5f9 0 50%, #ffffff 50% 100%); }
-        .thumb-split::before { content: ''; position: absolute; left: 4px; top: 5px; width: 14px; height: 3px; background: #6366f1; }
-        .thumb-fresher { background: #ffffff; }
-        .thumb-fresher::before { content: ''; position: absolute; left: 6px; right: 6px; top: 5px; height: 4px; background: #0284c7; border-radius: 2px; }
-
-        /* Customizer Controls Bar */
-        .customizer-toolbar {
-            margin-top: 1.2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            display: grid;
-            grid-template-columns: 1.3fr 1.1fr 1fr 1.2fr;
-            gap: 1.2rem;
-            align-items: start;
-        }
-        @media (max-width: 1100px) {
-            .customizer-toolbar { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 650px) {
-            .customizer-toolbar { grid-template-columns: 1fr; }
-        }
-        .customizer-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-        .customizer-label {
-            font-size: 0.76rem;
-            font-weight: 700;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-        .color-palette {
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
-            flex-wrap: wrap;
-        }
-        .color-dot {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s;
-            position: relative;
-        }
-        .color-dot:hover {
-            transform: scale(1.18);
-        }
-        .color-dot.active {
-            border-color: #ffffff;
-            box-shadow: 0 0 10px rgba(255,255,255,0.7);
-            transform: scale(1.18);
-        }
-        .custom-color-btn {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            border: 1px dashed rgba(255,255,255,0.4);
-            background: rgba(255,255,255,0.06);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.75rem;
-        }
-        .custom-color-btn input[type="color"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-        .customizer-select {
-            background: rgba(11, 15, 25, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #f8fafc;
-            padding: 0.45rem 0.75rem;
-            border-radius: 10px;
-            font-size: 0.82rem;
-            font-family: inherit;
-            outline: none;
-            cursor: pointer;
-            transition: border-color 0.2s;
-            width: 100%;
-        }
-        .customizer-select:focus {
-            border-color: var(--accent-cyan);
-        }
-        .segmented-control {
-            display: inline-flex;
-            background: rgba(11, 15, 25, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
-            padding: 2px;
-            gap: 2px;
-            width: fit-content;
-        }
-        .seg-btn {
-            background: transparent;
-            border: none;
-            color: #94a3b8;
-            padding: 0.35rem 0.65rem;
-            border-radius: 8px;
-            font-size: 0.76rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
-        }
-        .seg-btn:hover {
-            color: #f8fafc;
-        }
-        .seg-btn.active {
-            background: linear-gradient(135deg, #0284c7, #6366f1);
-            color: #ffffff;
-            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
-        }
-
-        /* Sticky Preview Pane */
-        .sticky-preview {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 90px;
-            z-index: 40;
-            max-height: calc(100vh - 110px);
-            overflow-y: auto;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
-        }
-        .preview-paper {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            padding: 1.4rem;
-            min-height: 600px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            color: #1e293b;
-        }
-
-        /* Print Media Styles */
-        @media print {
-            body * { visibility: hidden; }
-            #preview, #preview * { visibility: visible; }
-            #preview {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100% !important;
-                margin: 0 !important;
-                padding: 1.2cm !important;
-                border: none !important;
-                box-shadow: none !important;
-            }
-        }
-
-        /* DETAILED GUIDELINES & FAQ SECTION */
-        .info-section { max-width: 1360px; margin: 3.5rem auto 1rem; padding: 0; }
-        .info-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(14px);
-            border: 1px solid var(--border-card);
-            border-radius: 20px;
-            padding: 2.2rem;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-        }
-        .info-card h2 {
-            font-size: 1.45rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent-cyan);
-            padding-left: 0.8rem;
-            font-weight: 800;
-        }
-        .info-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 0.94rem;
-            margin-bottom: 1.2rem;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.2rem;
-            margin: 1.5rem 0;
-        }
-        .feature-box {
-            background: rgba(11, 15, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 14px;
-            padding: 1.3rem;
-        }
-        .feature-box h4 {
-            color: #ffffff;
-            font-size: 1.02rem;
-            margin-bottom: 0.45rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
-        }
-        .feature-box p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 0;
-            line-height: 1.5;
-        }
-        .faq-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 1.1rem 0;
-        }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-question {
-            font-weight: 700;
-            color: #ffffff;
-            font-size: 1.02rem;
-            margin-bottom: 0.45rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .faq-answer {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: #ffffff;
-            border-top: 1px solid #e2e8f0;
-            padding: 3.5rem 1.5rem 1.5rem;
-            color: #475569;
-            margin-top: auto;
-        }
-        .footer-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
-        }
-        @media (max-width: 992px) {
-            .footer-inner { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 576px) {
-            .footer-inner { grid-template-columns: 1fr; }
-        }
-        .footer-col h5 {
-            font-size: 0.92rem;
-            font-weight: 800;
-            color: #0f172a;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 1.1rem;
-        }
-        .footer-links-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.55rem;
-        }
-        .footer-links-list a {
-            color: #475569;
-            text-decoration: none;
-            font-size: 0.84rem;
-            transition: color 0.2s;
-        }
-        .footer-links-list a:hover {
-            color: #4f46e5;
-        }
-        .footer-bottom-bar {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.8rem;
-            color: #64748b;
-        }
-
-        @media screen and (max-width: 768px) {
-            input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="file"], select, textarea {
-                font-size: 16px !important;
-            }
-        }
-    
-        /* ===== MOBILE RESPONSIVE HAMBURGER & DRAWER ===== */
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 38px;
-            height: 38px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-card, rgba(255, 255, 255, 0.12));
-            border-radius: 9px;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
-            transition: all 0.25s ease;
-        }
-        .nav-hamburger:hover {
-            background: rgba(56, 189, 248, 0.12);
-            border-color: rgba(56, 189, 248, 0.35);
-        }
-        .nav-hamburger span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: var(--text-primary, #f8fafc);
-            border-radius: 2px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        .nav-hamburger.active span:nth-child(1) {
-            transform: translateY(7.5px) rotate(45deg);
-        }
-        .nav-hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: scale(0);
-        }
-        .nav-hamburger.active span:nth-child(3) {
-            transform: translateY(-7.5px) rotate(-45deg);
-        }
-
-        .mobile-nav-drawer {
-            display: none;
-            width: 100%;
-            background: rgba(11, 15, 25, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border-card, rgba(255, 255, 255, 0.08));
-            padding: 1rem 1.25rem 1.4rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
-        }
-        .mobile-nav-drawer.open {
-            display: block;
-            animation: mobileDrawerFade 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes mobileDrawerFade {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .mobile-nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.45rem;
-        }
-        .mobile-nav-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            border-radius: 10px;
-            color: #cbd5e1;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.92rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid transparent;
-            transition: all 0.2s ease;
-        }
-        .mobile-nav-item:hover, .mobile-nav-item.active {
-            background: rgba(56, 189, 248, 0.12);
-            color: #38bdf8;
-            border-color: rgba(56, 189, 248, 0.25);
-            transform: translateX(4px);
-        }
-
-        @media (max-width: 1080px) {
-            .nav-center { display: none !important; }
-            .nav-hamburger { display: flex !important; }
-            .btn-bookmark-nav { display: none !important; }
-        }
-        @media (max-width: 900px) {
-            .nav-right-actions a.btn-try-hr:nth-of-type(2) { display: none !important; }
-        }
-        @media (max-width: 768px) {
-            .navbar { padding: 0.65rem 1rem !important; }
-            .btn-bookmark-nav { display: none !important; }
-            .btn-try-hr { display: none !important; }
-            .nav-search-trigger { padding: 0.45rem 0.75rem !important; font-size: 0.82rem !important; }
-            .nav-search-trigger .search-text { display: none; }
-        }
-        @media (max-width: 480px) {
-            .navbar { padding: 0.5rem 0.75rem !important; }
-            .logo { font-size: 1.15rem !important; }
-            .logo-symbol { width: 30px !important; height: 30px !important; }
-            .card { padding: 1.1rem 0.85rem !important; }
-            .preview-paper { padding: 1rem 0.75rem !important; }
-        }
-
-    
-        /* ===== PAGE SETUP & PAPER CONTROLS ===== */
-        .page-setup-toolbar {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .paper-palette {
-            display: flex;
-            gap: 0.45rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .paper-circle {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid rgba(255, 255, 255, 0.25);
-            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-        }
-        .paper-circle:hover, .paper-circle.active {
-            transform: scale(1.22);
-            border-color: #38bdf8;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-        }
-        .btn-autofit {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: #ffffff;
-            border: none;
-            border-radius: 7px;
-            padding: 0.35rem 0.75rem;
-            font-size: 0.76rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.15s, box-shadow 0.15s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-        .btn-autofit:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
-        }
-
-        /* Visual Page Break Marker */
-        .preview-paper {
-            position: relative !important;
-            transition: background-color 0.25s ease, max-width 0.25s ease;
-        }
-        .page-break-marker {
-            position: absolute;
-            left: -1px;
-            right: -1px;
-            border-top: 2px dashed #f59e0b;
-            z-index: 25;
-            pointer-events: none;
-            display: flex;
-            justify-content: center;
-            transform: translateY(-50%);
-        }
-        .page-break-tag {
-            background: #78350f;
-            color: #fef3c7;
-            border: 1px solid #f59e0b;
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 0.2rem 0.65rem;
-            border-radius: 999px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.35);
-            white-space: nowrap;
-        }
-        @media print {
-            .page-break-marker { display: none !important; }
-            #templateModal { display: none !important; }
-        }
-
-        /* 12 Templates Showcase Gallery */
-        .templates-showcase-section {
-            max-width: 1360px;
-            margin: 3.5rem auto 1.5rem;
-            padding: 0;
-        }
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .showcase-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-card);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-        }
-        .showcase-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
-        }
-        .showcase-thumb-wrap {
-            position: relative;
-            background: #0f172a;
-            padding: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .showcase-thumb-wrap img {
-            width: 100%;
-            height: 360px;
-            object-fit: cover;
-            object-position: top;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-        }
-        .showcase-thumb-wrap:hover img {
-            transform: scale(1.03);
-        }
-        .showcase-body {
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-        .showcase-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        .showcase-title {
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin: 0;
-        }
-        .showcase-score {
-            font-size: 0.72rem;
-            font-weight: 700;
-            background: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            padding: 0.2rem 0.55rem;
-            border-radius: 6px;
-        }
-        .showcase-desc {
-            font-size: 0.83rem;
-            color: var(--text-secondary);
-            line-height: 1.45;
-            margin-bottom: 1.1rem;
-            flex: 1;
-        }
-        .showcase-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-        .showcase-btn-use {
-            flex: 2;
-            background: linear-gradient(135deg, #0284c7, #38bdf8);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            padding: 0.6rem 0.8rem;
-            font-size: 0.84rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-        .showcase-btn-use:hover {
-            background: linear-gradient(135deg, #0369a1, #0ea5e9);
-            transform: translateY(-1px);
-        }
-        .showcase-btn-preview {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.08);
-            color: #cbd5e1;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 8px;
-            padding: 0.6rem 0.8rem;
-            font-size: 0.82rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        .showcase-btn-preview:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-        }
+        #preview.preview-paper-sheet {
+            box-shadow: none !important;
+            border: none !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            transform: none !important;
+        }
+    }
 
     </style>
+
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
@@ -1325,390 +1054,340 @@
     <link rel="stylesheet" href="/assets/saas-ui.css">
     <link rel="stylesheet" href="/assets/aura-fx.css">
     <script defer src="/assets/aura-fx.js"></script>
+
 </head>
 <body>
 
-    <!-- Ambient Neon Aurora Glows -->
-    <div class="ambient-glow-top-left"></div>
-    <div class="ambient-glow-top-right"></div>
-    <div class="ambient-glow-mid"></div>
-
-    <!-- ===== TOP NAVIGATION ===== -->
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="nav-container">
-            <a href="/fr/" class="logo" aria-label="AuraToolkit360 Home">
-                <div class="logo-symbol">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="22" height="22" role="img" aria-hidden="true">
-                        <circle cx="32" cy="32" r="20" fill="rgba(255,255,255,0.22)"/>
-                        <path d="M22 42L32 20l10 22h-5l-2.1-5h-5.8L27 42h-5zm9.9-8h4.2L34 25.7 31.9 34z" fill="#fff"/>
+    <!-- ===== TOP NAVIGATION BAR ===== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="brand-logo" aria-label="AuraToolkit360 Home">
+                <div class="brand-symbol">
+                    <svg viewBox="0 0 32 32" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 2L3 28H10.5L16 16.5L21.5 28H29L16 2Z" fill="url(#brandGrad)" />
+                        <path d="M12.5 22.5H19.5L16 15L12.5 22.5Z" fill="#ffffff" />
+                        <defs>
+                            <linearGradient id="brandGrad" x1="3" y1="2" x2="29" y2="28" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#3b82f6" />
+                                <stop offset="1" stop-color="#4f46e5" />
+                            </linearGradient>
+                        </defs>
                     </svg>
                 </div>
-                <div class="logo-text">AuraToolkit<span>360</span></div>
+                <div class="brand-text">AuraToolkit360</div>
             </a>
-            
-            <div class="nav-center">
-                <a href="/fr/" class="nav-link">Accueil</a>
-                <a href="/fr/converter/" class="nav-link">Convertisseur</a>
-                <a href="/fr/resume-cv-maker/" class="nav-link active">Créateur de CV</a>
-                <a href="/cover-letter-maker/" class="nav-link">Lettre de Motivation</a>
-                <a href="/fr/resume-score-checker/" class="nav-link">Vérificateur ATS</a>
-                <a href="/fr/hr-helper/" class="nav-link">Recrutement RH <span class="nav-badge-pill">New</span></a>
-                <a href="/blogs/" class="nav-link">Blog</a>
-                <a href="/about/" class="nav-link">À propos</a>
+
+            <ul class="nav-links-menu">
+                <li class="nav-link-item"><a href="/" class="nav-item-link">Tools <span class="nav-chevron">▾</span></a></li>
+                <li class="nav-link-item"><a href="/resume-cv-maker/" class="nav-item-link active">Resume Tools <span class="nav-chevron">▾</span></a></li>
+                <li class="nav-link-item"><a href="/converter/" class="nav-item-link">Converters <span class="nav-chevron">▾</span></a></li>
+                <li class="nav-link-item"><a href="/image-tools/" class="nav-item-link">Image Tools <span class="nav-chevron">▾</span></a></li>
+                <li class="nav-link-item"><a href="/hr-helper/" class="nav-item-link">HR Tools <span class="nav-chevron">▾</span></a></li>
+                <li class="nav-link-item"><a href="/about/" class="nav-item-link">Help <span class="nav-chevron">▾</span></a></li>
+            </ul>
+
+            <div class="header-search-wrap">
+                <span class="header-search-icon">🔍</span>
+                <input type="text" class="header-search-input" placeholder="Search tools..." aria-label="Search tools">
             </div>
 
-            <div class="nav-right-actions">
-                <a href="/saas/" class="btn-aura-saas" title="Launch AuraHR 360 Enterprise SaaS Portal"><span>⚡</span> AuraHR 360</a>
-                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="★ Favori" aria-label="★ Favori"><span class="bm-star">★</span><span class="bm-text"> Favori</span></button>
-                <div class="lang-switcher" id="langSwitcherContainer">
-    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
-        <span class="lang-globe">🌐</span>
-        <span class="lang-current-flag">🇫🇷</span>
-        <span class="lang-current-label">FR</span>
-        <span class="lang-arrow">▾</span>
-    </button>
-    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
-        <a href="/resume-cv-maker/" class="lang-option " data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>
-        <a href="/es/resume-cv-maker/" class="lang-option " data-lang="es" role="menuitem"><span class="flag">🇪🇸</span> Español</a>
-        <a href="/fr/resume-cv-maker/" class="lang-option active" data-lang="fr" role="menuitem"><span class="flag">🇫🇷</span> Français</a>
-        <a href="/de/resume-cv-maker/" class="lang-option " data-lang="de" role="menuitem"><span class="flag">🇩🇪</span> Deutsch</a>
-        <a href="/pt/resume-cv-maker/" class="lang-option " data-lang="pt" role="menuitem"><span class="flag">🇧🇷</span> Português</a>
-        <a href="/ar/resume-cv-maker/" class="lang-option " data-lang="ar" role="menuitem"><span class="flag">🇸🇦</span> العربية</a>
-    </div>
-</div>
-                <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileNav()" aria-label="Toggle Navigation">☰</button>
         </div>
-        <!-- Mobile Navigation Drawer -->
-        <div class="mobile-nav-drawer" id="mobileNavDrawer">
-            <div class="mobile-nav-links">
-                <a href="/saas/" class="mobile-nav-item" style="color:#38bdf8; font-weight:700; background:rgba(56,189,248,0.1); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
-                <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
-                <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
-                <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
-                <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
-                <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
-                <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
-                <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
-                <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
-                <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
-                <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
-                <div class="mobile-lang-container">
-                    <div class="mobile-lang-title">🌐 Language / Idioma / Sprache</div>
-                    <div class="mobile-lang-grid">
-                        <a href="/" class="mobile-lang-item active" data-lang="en"><span class="flag">🇺🇸</span> EN</a>
-                        <a href="/es/" class="mobile-lang-item " data-lang="es"><span class="flag">🇪🇸</span> ES</a>
-                        <a href="/fr/" class="mobile-lang-item " data-lang="fr"><span class="flag">🇫🇷</span> FR</a>
-                        <a href="/de/" class="mobile-lang-item " data-lang="de"><span class="flag">🇩🇪</span> DE</a>
-                        <a href="/pt/" class="mobile-lang-item " data-lang="pt"><span class="flag">🇧🇷</span> PT</a>
-                        <a href="/ar/" class="mobile-lang-item " data-lang="ar"><span class="flag">🇸🇦</span> AR</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </header>
+
+    <!-- ===== BREADCRUMB BAR ===== -->
+    <nav class="breadcrumb-row" aria-label="Breadcrumb">
+        <a href="/"><span>🏠</span> Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/resume-cv-maker/">Resume Tools</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-active">Resume CV Maker</span>
     </nav>
 
-    <!-- ===== MAIN CONTENT CONTAINER ===== -->
-    <main class="container">
-        
-        <div class="page-header">
-            <div class="pill-badge">🛡️ 100% Client-Side Privacy — Zero Server Uploads</div>
-            <h1>ATS Resume CV Maker</h1>
-            <p>Build, style, and customize professional ATS-friendly resumes in real-time. Choose from 12 templates, customize accent colors, fonts, and spacing, add photos, certifications, and export pixel-perfect PDF or editable DOCX.</p>
-            
-            <div class="resume-feature-pills">
-                <span class="res-pill">🎨 12 Modern Templates & Styling Customizer</span>
-                <span class="res-pill">📸 Photo Upload Support</span>
-                <span class="res-pill">📌 Real-Time Live Preview</span>
-                <span class="res-pill">💾 Auto-Save Drafts</span>
-                <span class="res-pill">📄 1-Click PDF &amp; DOCX</span>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-container">
+        <div class="hero-left">
+            <div class="hero-icon-card">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            </div>
+            <div class="hero-details">
+                <h1>Create Your Professional Resume</h1>
+                <p>Build a modern, ATS-friendly resume in minutes. Choose from professional templates, add your details and download as PDF — completely free.</p>
+                <div class="hero-badges-row">
+                    <span class="hero-badge-pill badge-green"><span>🌱</span> Free</span>
+                    <span class="hero-badge-pill badge-blue"><span>👤</span> No account required</span>
+                    <span class="hero-badge-pill badge-blue"><span>🛡️</span> Your data stays in the browser</span>
+                </div>
             </div>
         </div>
 
-        <!-- ===== STEP 1: CHOOSE TEMPLATE & CUSTOMIZE (SHOWN FIRST) ===== -->
-        <div class="template-top-card">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem; margin-bottom:0.75rem;">
-                <div style="display:flex; align-items:center; gap:0.65rem;">
-                    <span style="font-size:1.4rem;">🎨</span>
-                    <div>
-                        <h2 style="font-size:1.15rem; font-weight:800; color:#f8fafc; margin:0; line-height:1.3;">Step 1: Choose Resume Template &amp; Styling</h2>
-                        <p style="font-size:0.82rem; color:#94a3b8; margin:0;">Select from 12 ATS formats, customize accent colors, typography, and 1-page fit spacing in real-time.</p>
-                    </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:0.5rem;">
-                    <span class="pill-badge" style="margin:0; font-size:0.74rem; padding:0.25rem 0.75rem;">12 Pro Formats</span>
-                </div>
-            </div>
-
-            <!-- Templates Grid (12 Formats) -->
-            <div class="template-grid" id="templateGrid"></div>
-
-            <!-- Customizer Controls Bar -->
-            <div class="customizer-toolbar">
-                <!-- Color Theme -->
-                <div class="customizer-group">
-                    <label class="customizer-label"><span>🎨</span> Theme Accent Color:</label>
-                    <div class="color-palette" id="colorPalette"></div>
-                </div>
-
-                <!-- Font Family -->
-                <div class="customizer-group">
-                    <label class="customizer-label" for="fontFamilySelect"><span>🔤</span> Font Style:</label>
-                    <select id="fontFamilySelect" class="customizer-select" onchange="changeFontFamily(this.value)">
-                        <option value="'Inter', sans-serif">Inter (Clean / Tech)</option>
-                        <option value="'Roboto', sans-serif">Roboto (Corporate ATS)</option>
-                        <option value="'Merriweather', serif">Merriweather (Executive Serif)</option>
-                        <option value="'Poppins', sans-serif">Poppins (Modern Creative)</option>
-                        <option value="'JetBrains Mono', monospace">JetBrains Mono (Developer)</option>
-                    </select>
-                </div>
-
-                <!-- Font Size -->
-                <div class="customizer-group">
-                    <label class="customizer-label"><span>🔠</span> Text Size:</label>
-                    <div class="segmented-control" id="fontSizeControl">
-                        <button type="button" class="seg-btn" data-val="compact" onclick="changeFontSize('compact')">Small</button>
-                        <button type="button" class="seg-btn active" data-val="normal" onclick="changeFontSize('normal')">Medium</button>
-                        <button type="button" class="seg-btn" data-val="large" onclick="changeFontSize('large')">Large</button>
-                    </div>
-                </div>
-
-                <!-- Spacing / 1-Page Fit -->
-                <div class="customizer-group">
-                    <label class="customizer-label"><span>📏</span> Page Fit Spacing:</label>
-                    <div class="segmented-control" id="spacingControl">
-                        <button type="button" class="seg-btn" data-val="tight" onclick="changeSpacing('tight')">Tight (1-Page)</button>
-                        <button type="button" class="seg-btn active" data-val="normal" onclick="changeSpacing('normal')">Normal</button>
-                        <button type="button" class="seg-btn" data-val="relaxed" onclick="changeSpacing('relaxed')">Relaxed</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Page Setup Toolbar (Format, Orientation & Paper Color) -->
-            <div class="page-setup-toolbar">
-                <!-- Page Format -->
-                <div class="customizer-group">
-                    <label class="customizer-label" for="pageSizeSelect"><span>📐</span> Page Size:</label>
-                    <select id="pageSizeSelect" class="customizer-select" onchange="changePageSize(this.value)">
-                        <option value="a4" selected>A4 Standard (210 × 297 mm)</option>
-                        <option value="letter">US Letter (8.5 × 11 in)</option>
-                    </select>
-                </div>
-
-                <!-- Orientation -->
-                <div class="customizer-group">
-                    <label class="customizer-label"><span>🔄</span> Orientation:</label>
-                    <div class="segmented-control" id="orientationControl">
-                        <button type="button" class="seg-btn active" data-orient="portrait" onclick="changeOrientation('portrait')">Portrait</button>
-                        <button type="button" class="seg-btn" data-orient="landscape" onclick="changeOrientation('landscape')">Landscape</button>
-                    </div>
-                </div>
-
-                <!-- Paper Color Tint -->
-                <div class="customizer-group">
-                    <label class="customizer-label"><span>📜</span> Paper Color Tint:</label>
-                    <div class="paper-palette" id="paperPalette"></div>
-                </div>
-            </div>
-
+        <div class="hero-doodle-wrap">
+            <div class="doodle-caption">Stand out<br>from the crowd</div>
+            <svg class="doodle-arrow-svg" width="46" height="42" viewBox="0 0 50 45" fill="none">
+                <path d="M10 6 C 28 8, 42 22, 28 35 C 24 38, 16 35, 18 28 C 19 24, 25 25, 27 29 C 30 35, 28 40, 24 43" stroke="#4338ca" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                <path d="M19 38 L 24 43 L 30 40" stroke="#4338ca" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
         </div>
+    </section>
 
-        <div class="layout">
-            <div class="card">
-                <div class="section-head">
-                    <h3><span>📝</span> Step 2: Fill Your Information</h3>
-                    <div class="small">Draft auto-saved</div>
+    <!-- ===== BUILDER MAIN GRID ===== -->
+    <main class="builder-main-grid">
+        <!-- ===== LEFT: STEP-BY-STEP FORM CARD ===== -->
+        <div class="form-editor-card">
+            <!-- Progress Header -->
+            <div class="editor-top-bar">
+                <div class="profile-title-text">Profile</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="formProgressBar" style="width: 25%;"></div>
                 </div>
+                <div class="progress-pct-display" id="formProgressLabel">25% complete</div>
+            </div>
 
-                <!-- ===== RESUME MULTI-PROFILE WORKSPACE BAR ===== -->
-                <div class="resume-workspace-bar" style="background:rgba(79,70,229,0.06); border:1px solid rgba(99,102,241,0.2); border-radius:12px; padding:0.65rem 0.85rem; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
-                    <div style="display:flex; align-items:center; gap:0.45rem; flex-wrap:wrap;">
-                        <span style="font-size:0.8rem; font-weight:700; color:var(--text-primary); display:flex; align-items:center; gap:0.3rem;">
-                            <span>📂</span> Profile:
-                        </span>
-                        <select id="resumeProfileSelect" onchange="switchResumeProfile(this.value)" style="padding:0.3rem 0.6rem; font-size:0.8rem; border-radius:8px; border:1px solid #cbd5e1; font-weight:600; background:#ffffff; color:#0f172a; min-width:160px;"></select>
-                        <button type="button" class="btn-outline" style="padding:0.28rem 0.55rem; font-size:0.75rem;" onclick="createNewResumeProfile()">+ New</button>
-                        <button type="button" class="btn-outline" style="padding:0.28rem 0.55rem; font-size:0.75rem;" onclick="renameResumeProfile()">✏️ Rename</button>
-                        <button type="button" class="btn-danger" style="padding:0.28rem 0.55rem; font-size:0.75rem;" onclick="deleteResumeProfile()" title="Delete Profile">🗑️</button>
-                    </div>
-                    <div style="display:flex; align-items:center; gap:0.45rem;">
-                        <button type="button" class="btn-primary" style="padding:0.35rem 0.8rem; font-size:0.75rem; background:linear-gradient(135deg, #4f46e5, #06b6d4); border:none; display:inline-flex; align-items:center; gap:0.35rem; cursor:pointer;" onclick="openSmartImportModal()">
-                            <span>⚡</span> Import CV (PDF/Text)
-                        </button>
-                        <button type="button" class="btn-outline" style="padding:0.35rem 0.8rem; font-size:0.75rem; display:inline-flex; align-items:center; gap:0.35rem; cursor:pointer;" onclick="suggestSummary()">
-                            <span>✨</span> AI Assistant
-                        </button>
-                    </div>
-                </div>
+            <!-- Step Navigation Tabs -->
+            <div class="step-tabs-wrapper" id="stepTabsWrapper">
+                <button type="button" class="step-tab-btn active" data-tab="personal" onclick="switchResumeTab('personal')">
+                    <span>👤</span> Personal Info
+                </button>
+                <button type="button" class="step-tab-btn" data-tab="experience" onclick="switchResumeTab('experience')">
+                    <span>💼</span> Experience
+                </button>
+                <button type="button" class="step-tab-btn" data-tab="education" onclick="switchResumeTab('education')">
+                    <span>🎓</span> Education
+                </button>
+                <button type="button" class="step-tab-btn" data-tab="skills" onclick="switchResumeTab('skills')">
+                    <span>⚙️</span> Skills
+                </button>
+                <button type="button" class="step-tab-btn" data-tab="projects" onclick="switchResumeTab('projects')">
+                    <span>&lt;/&gt;</span> Projects
+                </button>
+                <button type="button" class="step-tab-btn" data-tab="summary" onclick="switchResumeTab('summary')">
+                    <span>📄</span> Summary
+                </button>
+            </div>
 
-                <div class="photo-picker">
-                    <div class="photo-preview-box" id="photoPreviewBox">
-                        <span class="photo-placeholder" id="photoPlaceholder">👤</span>
-                        <img id="photoImg" style="display:none;" alt="Candidate Photo">
-                    </div>
-                    <div style="flex:1;">
-                        <label style="font-size:0.78rem; font-weight:600; color:#475569; display:block; margin-bottom:0.25rem;">Candidate Photo / Avatar (Optional)</label>
-                        <input type="file" id="photoInput" accept="image/*" aria-label="Candidate Photo" style="font-size:0.75rem;" onchange="handlePhotoUpload(event)">
-                        <button type="button" id="removePhotoBtn" class="btn-danger" style="display:none; padding:0.2rem 0.5rem; font-size:0.7rem; margin-top:0.3rem;" onclick="removePhoto()">Remove Photo</button>
-                    </div>
-                </div>
+            <!-- TAB 1: Personal Info -->
+            <div class="tab-pane active" id="tab-pane-personal">
+                <h2 class="tab-header-title">Personal Information</h2>
+                <p class="tab-header-desc">Tell us about yourself. This information will appear at the top of your resume.</p>
 
-                <div class="field"><label for="name">Full Name</label><input type="text" id="name" aria-label="name" placeholder="John Doe" oninput="updatePreview()"></div>
-                <div class="field"><label for="targetRole">Target Role / Title</label><input type="text" id="targetRole" aria-label="targetRole" placeholder="Senior Software Engineer" oninput="updatePreview()"></div>
-                <div class="field"><label for="email">Email</label><input type="email" id="email" aria-label="email" placeholder="john@example.com" oninput="updatePreview()"></div>
-                <div class="field"><label for="phone">Phone</label><input type="text" id="phone" aria-label="phone" placeholder="+1 555-0199" oninput="updatePreview()"></div>
-                <div class="field"><label for="location">Location</label><input type="text" id="location" aria-label="location" placeholder="San Francisco, CA" oninput="updatePreview()"></div>
-                <div class="field"><label for="links">LinkedIn / Portfolio / Website Links</label><input type="text" id="links" aria-label="links" placeholder="linkedin.com/in/johndoe | github.com/johndoe" oninput="updatePreview()"></div>
-
-                <div class="section">
-                    <div class="section-head">
-                        <h3>Professional Summary</h3>
-                        <button type="button" class="btn-outline" aria-label="AI Polish" onclick="suggestSummary()">✨ AI Polish</button>
-                    </div>
-                    <div class="field">
-                        <textarea id="summary" aria-label="summary" placeholder="Experienced professional with strong background in..." oninput="updatePreview()"></textarea>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-head">
-                        <h3>Work Experience</h3>
-                        <button type="button" class="btn-outline" aria-label="Add Experience" onclick="addExperience()">+ Add Experience</button>
-                    </div>
-
-                    <!-- ATS STAR Bullet Helper -->
-                    <div style="background:rgba(56, 189, 248, 0.07); border:1px solid rgba(56, 189, 248, 0.22); border-radius:10px; padding:0.65rem 0.9rem; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-                        <div style="display:flex; align-items:center; gap:0.45rem;">
-                            <span style="font-size:1.1rem;">⚡</span>
-                            <div>
-                                <strong style="font-size:0.82rem; color:#f8fafc;">Pre-Written ATS Bullet Inspo (STAR Method):</strong>
-                                <span style="font-size:0.75rem; color:#94a3b8; display:block;">Select your role to insert quantified, high-impact achievements</span>
-                            </div>
+                <div class="fields-grid-2">
+                    <div class="field-box">
+                        <label class="field-label" for="name">Full Name <span class="req-star">*</span></label>
+                        <div class="input-wrapper-icon">
+                            <span class="input-leading-icon">👤</span>
+                            <input type="text" id="name" class="form-text-input" value="Ali Raza Bhatti" placeholder="e.g. John Doe" oninput="updatePreview()">
                         </div>
-                        <select id="roleInspoSelect" class="customizer-select" style="padding:0.35rem 0.7rem; font-size:0.78rem; max-width:240px;" onchange="insertRoleBullets(this.value)">
-                            <option value="">-- Choose Role &amp; Insert --</option>
-                            <option value="software">💻 Software / Web Engineer</option>
-                            <option value="marketing">📈 Digital Marketing &amp; SEO</option>
-                            <option value="sales">💼 Sales &amp; Business Dev</option>
-                            <option value="data">📊 Data Analyst / Scientist</option>
-                            <option value="pm">📋 Project Manager / Scrum</option>
-                            <option value="fresher">🎓 Student / Fresh Graduate</option>
-                        </select>
                     </div>
 
-                    <div id="experienceList"></div>
+                    <div class="field-box">
+                        <label class="field-label" for="targetRole">Professional Title <span class="req-star">*</span></label>
+                        <input type="text" id="targetRole" class="form-text-input" value="HR Assistant" placeholder="e.g. HR Assistant" oninput="updatePreview()">
+                    </div>
+
+                    <div class="field-box">
+                        <label class="field-label" for="email">Email Address <span class="req-star">*</span></label>
+                        <div class="input-wrapper-icon">
+                            <span class="input-leading-icon">✉️</span>
+                            <input type="email" id="email" class="form-text-input" value="ali.raza@gmail.com" placeholder="name@example.com" oninput="updatePreview()">
+                        </div>
+                    </div>
+
+                    <div class="field-box">
+                        <label class="field-label" for="phone">Phone Number <span class="req-star">*</span></label>
+                        <div class="input-wrapper-icon">
+                            <span class="input-leading-icon">📞</span>
+                            <input type="tel" id="phone" class="form-text-input" value="+92 331 8058822" placeholder="+1 (555) 000-0000" oninput="updatePreview()">
+                        </div>
+                    </div>
+
+                    <div class="field-box">
+                        <label class="field-label" for="location">Location <span class="req-star">*</span></label>
+                        <div class="input-wrapper-icon">
+                            <span class="input-leading-icon">📍</span>
+                            <input type="text" id="location" class="form-text-input" value="Lahore, Pakistan" placeholder="City, Country" oninput="updatePreview()">
+                        </div>
+                    </div>
+
+                    <div class="field-box">
+                        <label class="field-label" for="linkedin">LinkedIn Profile <span class="opt-tag">(optional)</span></label>
+                        <div class="input-wrapper-icon">
+                            <span class="input-leading-icon" style="font-weight:700; font-size:0.75rem;">in</span>
+                            <input type="text" id="linkedin" class="form-text-input" value="https://linkedin.com/in/ali-raza-bhatti" placeholder="https://linkedin.com/in/username" oninput="updatePreview()">
+                        </div>
+                    </div>
+
+                    <div class="field-box full-width">
+                        <label class="field-label" for="links">Website / Portfolio <span class="opt-tag">(optional)</span></label>
+                        <div class="input-wrapper-icon">
+                            <span class="input-leading-icon">🔗</span>
+                            <input type="text" id="links" class="form-text-input" value="https://auratoolkit360.com" placeholder="https://yourwebsite.com" oninput="updatePreview()">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="section">
-                    <div class="section-head">
-                        <h3>Education &amp; Qualifications</h3>
-                        <button type="button" class="btn-outline" aria-label="Add Education" onclick="addEducation()">+ Add Education</button>
+                <!-- Profile Photo Upload -->
+                <div class="photo-section-row">
+                    <div class="photo-dropzone-box" onclick="document.getElementById('photoInput').click()">
+                        <div class="photo-dropzone-icon">☁️</div>
+                        <div class="photo-dropzone-title">Upload Profile Photo</div>
+                        <div class="photo-dropzone-sub">JPG, PNG (max 2MB)</div>
+                        <input type="file" id="photoInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload(this)">
                     </div>
-                    <div id="educationList"></div>
-                </div>
-
-                <div class="section">
-                    <div class="section-head">
-                        <h3>Skills &amp; Expertise</h3>
-                        <span class="small">Supports Category Headings (e.g. Technical Skills: Python, React)</span>
-                    </div>
-                    <div class="field">
-                        <textarea id="skills" aria-label="skills" placeholder="Technical Skills: JavaScript, Python, React, Node.js&#10;Management: Agile, Scrum, Product Roadmapping&#10;Core Strengths: Problem Solving, Team Leadership" oninput="updatePreview()" style="min-height:95px; line-height:1.5;"></textarea>
+                    <div class="photo-specs-info">
+                        <div class="photo-specs-icon">📷</div>
+                        <div>Recommended size:<br>400 x 400px</div>
                     </div>
                 </div>
 
-                <div class="section">
-                    <div class="section-head">
-                        <h3>📜 Certifications &amp; Licenses</h3>
-                        <button type="button" class="btn-outline" aria-label="Add Certification" onclick="addCert()">+ Add Certification</button>
-                    </div>
-                    <div id="certList"></div>
+                <div id="photoPreviewContainer" style="display:none; align-items:center; gap:12px; margin-bottom:1rem;">
+                    <img id="photoImg" src="" style="width:48px; height:48px; border-radius:50%; object-fit:cover; border:2px solid #2563eb;">
+                    <button type="button" class="btn-remove-item" onclick="removePhoto()">✕ Remove Photo</button>
                 </div>
 
-                <div class="section">
-                    <div class="section-head">
-                        <h3>🏆 Awards &amp; Honors</h3>
-                        <button type="button" class="btn-outline" aria-label="Add Award" onclick="addAward()">+ Add Award</button>
-                    </div>
-                    <div id="awardList"></div>
-                </div>
+                <button type="button" class="btn-primary-action" onclick="nextResumeTab('personal')">
+                    Save &amp; Continue →
+                </button>
+            </div>
 
-                <div class="section">
-                    <div class="section-head">
-                        <h3>🚀 Key Projects &amp; Portfolio</h3>
-                        <button type="button" class="btn-outline" aria-label="Add Project" onclick="addProject()">+ Add Project</button>
-                    </div>
-                    <div id="projectList"></div>
-                </div>
+            <!-- TAB 2: Experience -->
+            <div class="tab-pane" id="tab-pane-experience">
+                <h2 class="tab-header-title">Work Experience</h2>
+                <p class="tab-header-desc">Add your relevant work history, starting with your most recent role.</p>
 
-                <div class="section">
-                    <div class="section-head">
-                        <h3>🌐 Languages &amp; Proficiency</h3>
-                        <button type="button" class="btn-outline" aria-label="Add Language" onclick="addLang()">+ Add Language</button>
-                    </div>
-                    <div id="langList"></div>
-                </div>
+                <div id="experienceList"></div>
 
-                <!-- Export & Action Toolbar -->
-                <div class="action-toolbar" style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(255, 255, 255, 0.08);">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
-                        <h3 style="font-size:1.02rem; color:#ffffff; font-weight:700; margin:0; display:flex; align-items:center; gap:0.45rem;">
-                            <span>💾</span> Step 3: Export &amp; Save Resume
-                        </h3>
-                        <span class="small">100% In-Browser · No Signup</span>
-                    </div>
-                    <div class="btn-row">
-                        <button class="btn-primary" aria-label="Download PDF" onclick="downloadPDF()">📄 Download PDF</button>
-                        <button class="btn-outline" aria-label="Download DOCX" onclick="downloadDOCX()">📝 Download DOCX</button>
-                        <button class="btn-outline" aria-label="Save JSON Draft" onclick="exportJSON()">💾 Save JSON Draft</button>
-                        <button class="btn-outline" aria-label="Load JSON Draft" onclick="document.getElementById('importFile').click()">📂 Load JSON Draft</button>
-                        <input type="file" id="importFile" aria-label="importFile" accept=".json" style="display:none" onchange="importJSON(event)">
-                        <button class="btn-danger" aria-label="Reset All" onclick="resetForm()">Reset All</button>
-                    </div>
-                    <div style="margin-top:0.75rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
-                        <a href="/cover-letter-maker/" class="btn-outline" style="border-color:#10b981; color:#10b981; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1rem;">📝 1-Click Matching Cover Letter</a>
-                        <button type="button" class="btn-outline" style="border-color:#0284c7; color:#38bdf8; font-weight:700; padding:0.6rem 1rem;" onclick="openLinkedInOptimizer()">💼 LinkedIn Profile Optimizer</button>
-                    </div>
+                <button type="button" class="btn-add-item" onclick="addExperience()">
+                    + Add Work Experience
+                </button>
+
+                <div class="nav-buttons-row">
+                    <button type="button" class="btn-secondary-back" onclick="prevResumeTab('experience')">← Back</button>
+                    <button type="button" class="btn-primary-action" style="width:auto; flex:1;" onclick="nextResumeTab('experience')">Save &amp; Continue →</button>
                 </div>
             </div>
 
-<div class="card sticky-preview">
-                <!-- Target Job Matcher Collapsible Bar -->
-                <div style="background:rgba(18, 24, 38, 0.9); border:1px solid rgba(255, 255, 255, 0.1); border-radius:10px; padding:0.65rem 0.85rem; margin-bottom:0.75rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="toggleJobMatcher()">
-                        <div style="display:flex; align-items:center; gap:0.45rem;">
-                            <span style="font-size:0.95rem;">🎯</span>
-                            <span style="font-size:0.82rem; font-weight:700; color:#f8fafc;">Target Job Description Matcher</span>
-                            <span id="matchScoreBadge" style="font-size:0.7rem; background:rgba(56, 189, 248, 0.15); color:#38bdf8; padding:0.12rem 0.5rem; border-radius:6px; font-weight:600;">Optional</span>
-                        </div>
-                        <span id="matcherToggleIcon" style="color:#94a3b8; font-size:0.78rem;">▼ Click to expand</span>
-                    </div>
-                    <div id="jobMatcherBody" style="display:none; margin-top:0.65rem;">
-                        <textarea id="targetJobDescInput" placeholder="Paste the job requirements or target job description here to check live keyword matches in real time..." rows="3" style="width:100%; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.12); border-radius:8px; color:#f8fafc; padding:0.55rem; font-size:0.78rem; resize:vertical; font-family:inherit;" oninput="runLiveJobMatch()"></textarea>
-                        <div id="jobKeywordChips" style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.5rem;"></div>
-                    </div>
+            <!-- TAB 3: Education -->
+            <div class="tab-pane" id="tab-pane-education">
+                <h2 class="tab-header-title">Education</h2>
+                <p class="tab-header-desc">Add your academic background, degree titles, and institutions.</p>
+
+                <div id="educationList"></div>
+
+                <button type="button" class="btn-add-item" onclick="addEducation()">
+                    + Add Education
+                </button>
+
+                <div class="nav-buttons-row">
+                    <button type="button" class="btn-secondary-back" onclick="prevResumeTab('education')">← Back</button>
+                    <button type="button" class="btn-primary-action" style="width:auto; flex:1;" onclick="nextResumeTab('education')">Save &amp; Continue →</button>
+                </div>
+            </div>
+
+            <!-- TAB 4: Skills -->
+            <div class="tab-pane" id="tab-pane-skills">
+                <h2 class="tab-header-title">Skills &amp; Expertise</h2>
+                <p class="tab-header-desc">List your skills (one per line or separated by commas). These are crucial for ATS scanners.</p>
+
+                <div class="field-box full-width">
+                    <textarea id="skills" class="form-textarea-input" rows="8" placeholder="e.g.&#10;MS Office (Word, Excel)&#10;Google Sheets & Docs&#10;Recruitment & Hiring&#10;Payroll Operations" oninput="updatePreview()">MS Office (Word, Excel, PowerPoint)
+Google Sheets & Docs
+LinkedIn / Indeed
+SMM & Canva
+Recruitment & Hiring
+Payroll & HR Operations
+Communication & Teamwork
+Problem Solving</textarea>
                 </div>
 
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.4rem;">
-                    <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
-                        <h3 style="margin:0; font-size:1.02rem; color:#ffffff;">Live Preview</h3>
-                        <span id="pageCountBadge" style="font-size:0.72rem; background:rgba(16, 185, 129, 0.15); color:#10b981; padding:0.18rem 0.55rem; border-radius:999px; font-weight:700; border:1px solid rgba(16, 185, 129, 0.3);">📄 1 Page (Clean Fit ✅)</span>
-                    </div>
-                    <div style="display:flex; gap:0.4rem; align-items:center; flex-wrap:wrap;">
-                        <button type="button" class="btn-autofit" onclick="autoFitToOnePage()" title="Automatically adjusts spacing and typography to fit content onto exactly 1 page">✨ Auto-Fit 1 Page</button>
-                        <button type="button" class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadPDF()">📄 PDF</button>
-                        <button type="button" class="btn-outline" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadDOCX()">📝 Word</button>
-                    </div>
+                <div class="nav-buttons-row">
+                    <button type="button" class="btn-secondary-back" onclick="prevResumeTab('skills')">← Back</button>
+                    <button type="button" class="btn-primary-action" style="width:auto; flex:1;" onclick="nextResumeTab('skills')">Save &amp; Continue →</button>
                 </div>
-                <div id="preview" class="preview-paper"></div>
+            </div>
+
+            <!-- TAB 5: Projects -->
+            <div class="tab-pane" id="tab-pane-projects">
+                <h2 class="tab-header-title">Key Projects</h2>
+                <p class="tab-header-desc">Highlight projects, initiatives, or key achievements that prove your capabilities.</p>
+
+                <div id="projectList"></div>
+
+                <button type="button" class="btn-add-item" onclick="addProject()">
+                    + Add Project
+                </button>
+
+                <div class="nav-buttons-row">
+                    <button type="button" class="btn-secondary-back" onclick="prevResumeTab('projects')">← Back</button>
+                    <button type="button" class="btn-primary-action" style="width:auto; flex:1;" onclick="nextResumeTab('projects')">Save &amp; Continue →</button>
+                </div>
+            </div>
+
+            <!-- TAB 6: Summary -->
+            <div class="tab-pane" id="tab-pane-summary">
+                <h2 class="tab-header-title">Professional Summary</h2>
+                <p class="tab-header-desc">Write a strong 2-4 sentence summary highlighting your background, core strengths, and goals.</p>
+
+                <div class="field-box full-width">
+                    <textarea id="summary" class="form-textarea-input" rows="6" placeholder="Write a short summary..." oninput="updatePreview()">Dedicated and detail-oriented HR Assistant with 3.5+ years of experience in full-cycle recruitment, employee relations, payroll, and general HR operations. Skilled in sourcing top talent, managing HR processes, and supporting organizational growth. Adept at using modern tools like LinkedIn, Indeed, Google Workspace and HRIS systems.</textarea>
+                </div>
+
+                <div class="nav-buttons-row">
+                    <button type="button" class="btn-secondary-back" onclick="prevResumeTab('summary')">← Back</button>
+                    <button type="button" class="btn-primary-action" style="width:auto; flex:1;" onclick="switchResumeTab('personal'); updatePreview();">Finish &amp; View Resume ✓</button>
+                </div>
             </div>
         </div>
-    
-    <!-- ===== LINKEDIN PROFILE OPTIMIZER MODAL ===== -->
+
+        <!-- ===== RIGHT: LIVE PREVIEW CANVAS ===== -->
+        <div class="preview-canvas-card">
+            <!-- Top Canvas Toolbar -->
+            <div class="canvas-toolbar-row">
+                <div class="template-dropdown-wrap">
+                    <select id="templateSelect" class="template-select-dropdown" onchange="selectTemplate(this.value)">
+                        <option value="modern" selected>Template 1 (Modern)</option>
+                        <option value="classic">Template 2 (Classic)</option>
+                        <option value="minimal">Template 3 (Minimalist)</option>
+                        <option value="photo-sidebar">Template 4 (Executive Sidebar)</option>
+                        <option value="tech-dev">Template 5 (Tech Matrix)</option>
+                        <option value="nordic">Template 6 (Nordic Clean)</option>
+                        <option value="dual-split">Template 7 (Dual Split)</option>
+                        <option value="fresher-1page">Template 8 (Fresher 1-Page)</option>
+                        <option value="europass">Template 9 (Europass ATS)</option>
+                        <option value="creative-grad">Template 10 (Creative Gradient)</option>
+                    </select>
+                    <span class="template-dropdown-caret">▾</span>
+                </div>
+
+                <div class="canvas-zoom-control">
+                    <button type="button" class="canvas-zoom-btn" onclick="zoomPreview(-10)" title="Zoom Out">−</button>
+                    <span id="zoomLevelIndicator" class="canvas-zoom-label">100%</span>
+                    <button type="button" class="canvas-zoom-btn" onclick="zoomPreview(10)" title="Zoom In">+</button>
+                </div>
+
+                <button type="button" class="btn-download-pdf-top" onclick="downloadPDF()" title="Download PDF Resume">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download PDF
+                </button>
+            </div>
+
+            <!-- Canvas Viewport -->
+            <div class="sheet-viewport">
+                <div id="preview" class="preview-paper-sheet"></div>
+            </div>
+        </div>
+    </main>
+
+<!-- ===== LINKEDIN PROFILE OPTIMIZER MODAL ===== -->
     <div id="linkedInModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:1.2rem;" onclick="closeLinkedInOptimizer()">
         <div style="position:relative; width:100%; max-width:780px; max-height:90vh; background:#111827; border:1px solid rgba(56,189,248,0.3); border-radius:18px; padding:1.8rem; overflow-y:auto; box-shadow:0 25px 60px rgba(0,0,0,0.8);" onclick="event.stopPropagation()">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.2rem;">
@@ -2195,7 +1874,8 @@
     </main>
 
         <!-- ===== FOOTER ===== -->
-    <footer class="aura-footer-v2">
+    
+<footer class="aura-footer-v2">
         <div class="footer-inner">
             <!-- Col 1: Brand Info & Status -->
             <div class="footer-col footer-col-brand">
@@ -2273,6 +1953,88 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Tab switching and progress tracking
+        const tabProgressMap = {
+            personal: 25,
+            experience: 50,
+            education: 70,
+            skills: 85,
+            projects: 95,
+            summary: 100
+        };
+
+        const tabSequence = ['personal', 'experience', 'education', 'skills', 'projects', 'summary'];
+
+        function switchResumeTab(tabKey) {
+            tabSequence.forEach(key => {
+                const pane = document.getElementById('tab-pane-' + key);
+                if (pane) {
+                    if (key === tabKey) pane.classList.add('active');
+                    else pane.classList.remove('active');
+                }
+                const btn = document.querySelector('.step-tab-btn[data-tab="' + key + '"]');
+                if (btn) {
+                    if (key === tabKey) btn.classList.add('active');
+                    else btn.classList.remove('active');
+                }
+            });
+
+            const pct = tabProgressMap[tabKey] || 25;
+            const bar = document.getElementById('formProgressBar');
+            const label = document.getElementById('formProgressLabel');
+            if (bar) bar.style.width = pct + '%';
+            if (label) label.textContent = pct + '% complete';
+        }
+
+        function nextResumeTab(currentKey) {
+            const idx = tabSequence.indexOf(currentKey);
+            if (idx >= 0 && idx < tabSequence.length - 1) {
+                switchResumeTab(tabSequence[idx + 1]);
+            } else {
+                updatePreview();
+            }
+        }
+
+        function prevResumeTab(currentKey) {
+            const idx = tabSequence.indexOf(currentKey);
+            if (idx > 0) {
+                switchResumeTab(tabSequence[idx - 1]);
+            }
+        }
+
+        // Canvas Zoom
+        let currentZoomLevel = 100;
+        function zoomPreview(delta) {
+            currentZoomLevel = Math.max(50, Math.min(150, currentZoomLevel + delta));
+            const indicator = document.getElementById('zoomLevelIndicator');
+            if (indicator) indicator.textContent = currentZoomLevel + '%';
+            const preview = document.getElementById('preview');
+            if (preview) {
+                preview.style.transform = 'scale(' + (currentZoomLevel / 100) + ')';
+                preview.style.transformOrigin = 'top center';
+            }
+        }
+
+        // Mobile Nav Toggle
+        function toggleMobileNav() {
+            const menu = document.querySelector('.nav-links-menu');
+            if (menu) {
+                menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+                menu.style.flexDirection = 'column';
+                menu.style.position = 'absolute';
+                menu.style.top = '100%';
+                menu.style.left = '0';
+                menu.style.right = '0';
+                menu.style.background = '#ffffff';
+                menu.style.padding = '1rem';
+                menu.style.boxShadow = '0 10px 15px -3px rgba(0,0,0,0.1)';
+            }
+        }
+    </script>
+
+
 
     <script>
         let experienceItems = [];
@@ -3258,6 +3020,104 @@
             if (document.getElementById('targetJobDescInput') && document.getElementById('targetJobDescInput').value.trim()) runLiveJobMatch();
 
             // Template Dispatcher
+            
+            if (selectedTemplate === 'modern') {
+                const skillsArr = (data.skills || '').split(/[\n,]+/).map(s => s.trim().replace(/^•\s*/, '')).filter(Boolean);
+                const half = Math.ceil(skillsArr.length / 2);
+                const col1 = skillsArr.slice(0, half);
+                const col2 = skillsArr.slice(half);
+
+                const renderSkillCol = (items) => items.map(s => `
+                    <div style="display:flex; align-items:flex-start; gap:6px; margin-bottom:3.5px;">
+                        <span style="color:#2563eb; font-weight:700; font-size:12px; line-height:1.2;">•</span>
+                        <span style="font-size:11px; color:#334155;">${escapeHtml(s)}</span>
+                    </div>
+                `).join('');
+
+                preview.innerHTML = `
+                    <!-- Header -->
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 12px; border-bottom: 1.5px solid #e2e8f0; margin-bottom: 16px;">
+                        <div>
+                            <h1 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0 0 3px 0; letter-spacing: -0.5px;">${escapeHtml(data.name || 'Ali Raza Bhatti')}</h1>
+                            <div style="font-size: 14px; font-weight: 600; color: #2563eb;">${escapeHtml(data.targetRole || 'HR Assistant')}</div>
+                        </div>
+                        <div style="font-size: 11px; color: #334155; line-height: 1.6; display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
+                            ${data.email ? `<div><span style="color:#64748b; margin-right:4px;">✉</span>${escapeHtml(data.email)}</div>` : ''}
+                            ${data.phone ? `<div><span style="color:#64748b; margin-right:4px;">📞</span>${escapeHtml(data.phone)}</div>` : ''}
+                            ${data.location ? `<div><span style="color:#64748b; margin-right:4px;">📍</span>${escapeHtml(data.location)}</div>` : ''}
+                            ${data.linkedin ? `<div><span style="color:#64748b; margin-right:4px; font-weight:700;">in</span>${escapeHtml(data.linkedin.replace(/^https?:\/\//, ''))}</div>` : ''}
+                            ${data.links ? `<div><span style="color:#64748b; margin-right:4px;">🌐</span>${escapeHtml(data.links.replace(/^https?:\/\//, ''))}</div>` : ''}
+                        </div>
+                    </div>
+
+                    <!-- Professional Summary -->
+                    ${data.summary ? `
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                            PROFESSIONAL SUMMARY
+                        </div>
+                        <p style="font-size: 11px; color: #334155; line-height: 1.55; margin: 0;">${escapeHtml(data.summary)}</p>
+                    </div>` : ''}
+
+                    <!-- Work Experience -->
+                    ${data.experience && data.experience.length ? `
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            WORK EXPERIENCE
+                        </div>
+                        ${data.experience.map(exp => `
+                            <div style="margin-bottom: 8px;">
+                                <div style="font-size: 12px; font-weight: 700; color: #0f172a;">${escapeHtml(exp.title || '')}</div>
+                                <div style="font-size: 10.5px; color: #64748b; font-weight: 500; margin-bottom: 4px;">${escapeHtml(exp.company || '')} ${exp.years ? `| ${escapeHtml(exp.years)}` : ''}</div>
+                                <div style="font-size: 11px; color: #334155; line-height: 1.5; white-space: pre-line;">${escapeHtml(exp.bullets || '')}</div>
+                            </div>
+                        `).join('')}
+                    </div>` : ''}
+
+                    <!-- Education -->
+                    ${data.education && data.education.length ? `
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                            EDUCATION
+                        </div>
+                        ${data.education.map(edu => `
+                            <div style="margin-bottom: 6px;">
+                                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                    <strong style="font-size: 11.5px; font-weight: 700; color: #0f172a;">${escapeHtml(edu.degree || '')}</strong>
+                                    <span style="font-size: 10.5px; color: #64748b;">${escapeHtml(edu.years || '')}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 10.5px; color: #475569;">
+                                    <span>${escapeHtml(edu.school || '')}</span>
+                                    <span>${escapeHtml(edu.cgpa || edu.details || 'CGPA: 2.9')}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>` : ''}
+
+                    <!-- Skills -->
+                    ${skillsArr.length ? `
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            SKILLS
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; font-size: 11px; color: #334155; line-height: 1.5;">
+                            <div>${renderSkillCol(col1)}</div>
+                            <div>${renderSkillCol(col2)}</div>
+                        </div>
+                    </div>` : ''}
+
+                    <!-- Resume Tagline Footer -->
+                    <div style="margin-top: 24px; padding-top: 10px; border-top: 1px solid #f1f5f9; text-align: center; font-size: 10.5px; font-style: italic; color: #94a3b8;">
+                        Building People • Supporting Growth
+                    </div>
+                `;
+                return;
+            }
+
             if (selectedTemplate === 'tech-dev') {
                 renderTechDevTemplate(preview, data, skillsCategories, accent);
                 return;
@@ -3948,14 +3808,15 @@
             };
 
             const sampleData = {
-                name: "John Doe",
-                targetRole: "Senior Software Engineer",
-                email: "john.doe@example.com",
-                phone: "+1 (555) 234-5678",
-                location: "San Francisco, CA",
-                links: "linkedin.com/in/johndoe | github.com/johndoe",
-                summary: "Results-driven Senior Software Engineer with 6+ years of experience architecting high-performance web applications, scaling cloud microservices, and leading agile engineering teams. Proven track record of improving system uptime to 99.99% and reducing latency.",
-                skills: "Technical Skills: JavaScript (ES6+), TypeScript, React.js, Node.js, Next.js, Python\nDatabases & Cloud: PostgreSQL, MongoDB, Redis, Docker, Kubernetes, AWS\nMethodologies: REST APIs, GraphQL, Microservices, CI/CD, Agile/Scrum",
+                name: "Ali Raza Bhatti",
+                targetRole: "HR Assistant",
+                email: "ali.raza@gmail.com",
+                phone: "+92 331 8058822",
+                location: "Lahore, Pakistan",
+                linkedin: "https://linkedin.com/in/ali-raza-bhatti",
+                links: "https://auratoolkit360.com",
+                summary: "Dedicated and detail-oriented HR Assistant with 3.5+ years of experience in full-cycle recruitment, employee relations, payroll, and general HR operations. Skilled in sourcing top talent, managing HR processes, and supporting organizational growth. Adept at using modern tools like LinkedIn, Indeed, Google Workspace and HRIS systems.",
+                skills: "MS Office (Word, Excel, PowerPoint)\nGoogle Sheets & Docs\nLinkedIn / Indeed\nSMM & Canva\nRecruitment & Hiring\nPayroll & HR Operations\nCommunication & Teamwork\nProblem Solving",
                 template: "modern",
                 accentColor: "#2563eb",
                 fontFamily: "'Inter', sans-serif",
@@ -3963,53 +3824,37 @@
                 spacing: "normal",
                 experience: [
                     {
-                        title: "Lead Full-Stack Developer",
-                        company: "Apex Tech Innovations",
-                        years: "2022 - Present",
-                        bullets: "• Led a team of 8 engineers delivering enterprise cloud applications serving 250,000+ active users.\n• Redesigned microservices architecture using Node.js and Redis, cutting API response times by 40%.\n• Instituted automated testing and CI/CD pipelines, increasing deployment frequency from weekly to daily."
-                    },
-                    {
-                        title: "Software Engineer",
-                        company: "NextGen Software Labs",
-                        years: "2019 - 2022",
-                        bullets: "• Developed responsive front-end interfaces using React and modern CSS, improving user conversion by 18%.\n• Optimized SQL database queries and indexing strategies, eliminating bottlenecks during peak traffic."
+                        title: "HR Assistant",
+                        company: "Webbuggs",
+                        years: "Feb 2023 - Sep 2026",
+                        bullets: "• Managed end-to-end recruitment process including job postings, CV screening and interviews.\n• Handled payroll, attendance and employee documentation.\n• Coordinated with vendors, managed admin tasks and maintained HR records.\n• Supported company social media and LinkedIn presence.\n• Provided IT support including laptop/PC repair and software troubleshooting."
                     }
                 ],
                 education: [
                     {
-                        degree: "B.S. in Computer Science & Engineering",
-                        school: "University of California, Berkeley",
-                        years: "2015 - 2019"
+                        degree: "BS Computer Science (In Progress)",
+                        school: "The Islamia University of Bahawalpur",
+                        years: "2021 - 2025",
+                        details: "CGPA: 2.9"
                     }
                 ],
                 projects: [
                     {
-                        name: "Cloud E-Commerce Platform",
-                        link: "github.com/johndoe/cloud-ecommerce",
-                        desc: "Full-stack scalable shopping platform with real-time inventory management and Stripe integration."
+                        name: "HR Management System",
+                        link: "https://auratoolkit360.com",
+                        desc: "Implemented an automated employee attendance and leave management pipeline."
                     }
                 ],
-                certifications: [
-                    {
-                        title: "AWS Certified Solutions Architect – Associate",
-                        issuer: "Amazon Web Services",
-                        year: "2023"
-                    }
-                ],
-                awards: [
-                    {
-                        title: "Excellence in Engineering Award",
-                        issuer: "Apex Tech Innovations",
-                        year: "2024"
-                    }
-                ],
-                languages: [
-                    { name: "English", level: "Native / Bilingual" },
-                    { name: "Spanish", level: "Professional Working" }
-                ]
+                certifications: [],
+                awards: [],
+                languages: []
             };
 
-            const draft = localStorage.getItem('resumeCvMakerDraft');
+            let draft = localStorage.getItem('resumeCvMakerDraft');
+     if (draft && draft.includes('John Doe')) {
+         localStorage.removeItem('resumeCvMakerDraft');
+         draft = null;
+     }
             let data = sampleData;
             if (draft) {
                 try {
@@ -4493,3 +4338,4 @@
 </script>
 </body>
 </html>
+
