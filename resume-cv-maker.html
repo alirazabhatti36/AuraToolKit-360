@@ -51,6 +51,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+
+
 <style>
         :root {
             --primary: #2563eb;
@@ -59,11 +61,9 @@
             --primary-border: #bfdbfe;
             --bg-base: #f8fafc;
             --bg-card: #ffffff;
-            --bg-card-hover: #f1f5f9;
             --border-card: #e2e8f0;
-            --border-focus: #2563eb;
-            --text-main: #0f172a;
-            --text-sub: #334155;
+            --text-heading: #0f172a;
+            --text-body: #334155;
             --text-muted: #64748b;
         }
 
@@ -78,14 +78,14 @@
             background-color: var(--bg-base);
             background-image: radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
             background-size: 24px 24px;
-            color: var(--text-sub);
+            color: var(--text-body);
             line-height: 1.5;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* ===== MODERN WHITE TOP NAVBAR ===== */
+        /* ===== NAVBAR ===== */
         .navbar {
             background: #ffffff;
             border-bottom: 1px solid #f1f5f9;
@@ -198,648 +198,764 @@
             display: block;
             width: 100%;
             height: 2px;
-            background-color: #0f172a;
+            background-color: #334155;
             border-radius: 2px;
         }
 
-        /* ===== PROFILE PROGRESS BOX ===== */
-        .profile-progress-box {
-            background: #f8fafc;
-            border: 1px solid var(--border-card);
-            border-radius: 12px;
-            padding: 0.85rem 1.1rem;
-            margin-bottom: 1.35rem;
-        }
-        .progress-info {
+        /* ===== BREADCRUMB ===== */
+        .breadcrumb-bar {
+            max-width: 1400px;
+            width: 100%;
+            margin: 1rem auto 0.5rem;
+            padding: 0 1.5rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.45rem;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #64748b;
         }
-        .progress-label {
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: var(--text-main);
+
+        .bc-link {
+            color: #64748b;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: color 0.15s;
         }
-        .progress-val {
-            font-size: 0.82rem;
-            color: var(--text-muted);
+
+        .bc-link:hover {
+            color: #0f172a;
+        }
+
+        .bc-sep {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .bc-current {
+            color: #0f172a;
             font-weight: 600;
         }
-        .progress-track {
+
+        /* ===== HERO HEADER (Matching media_1790949660715.png) ===== */
+        .resume-hero-header {
+            max-width: 1400px;
             width: 100%;
-            height: 8px;
+            margin: 0.8rem auto 1.5rem;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .resume-hero-left {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            max-width: 820px;
+        }
+
+        .resume-hero-icon-box {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            border: 1.5px solid #dbeafe;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+        }
+
+        .resume-hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .resume-hero-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+
+        .resume-hero-desc {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .resume-badge-pills {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+        }
+
+        .pill-green {
+            background: #ecfdf5;
+            color: #059669;
+            border: 1px solid #a7f3d0;
+        }
+
+        .pill-blue {
+            background: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* Handwritten Doodle Note */
+        .resume-hero-doodle {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-right: 2rem;
+            transform: rotate(-3deg);
+            user-select: none;
+        }
+
+        .doodle-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: #4338ca;
+            line-height: 1.1;
+            text-align: right;
+        }
+
+        .doodle-arrow {
+            margin-top: 2px;
+            margin-right: 14px;
+        }
+
+        /* ===== MAIN BUILDER CONTAINER & SPLIT GRID ===== */
+        .main-builder-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+            flex: 1;
+        }
+
+        .builder-split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            align-items: start;
+        }
+
+        .builder-card {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+        }
+
+        /* Left Form Card */
+        .form-card {
+            padding: 1.8rem;
+        }
+
+        /* Profile Progress Header */
+        .profile-progress-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .progress-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #0f172a;
+            white-space: nowrap;
+        }
+
+        .progress-track {
+            flex: 1;
+            height: 7px;
             background: #e2e8f0;
             border-radius: 999px;
             overflow: hidden;
         }
-        .progress-bar {
+
+        .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #2563eb, #3b82f6);
             border-radius: 999px;
             transition: width 0.3s ease;
         }
 
-        /* Section Tabs (Pill Navigation) */
-        .editor-tabs-nav {
+        .progress-percent {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #64748b;
+            white-space: nowrap;
+        }
+
+        /* Horizontal Step Tabs */
+        .step-tabs-bar {
             display: flex;
+            align-items: center;
             gap: 0.45rem;
+            border-bottom: 1.5px solid #f1f5f9;
+            padding-bottom: 1rem;
+            margin-bottom: 1.6rem;
             overflow-x: auto;
-            padding-bottom: 0.6rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-card);
             scrollbar-width: none;
         }
-        .editor-tabs-nav::-webkit-scrollbar { display: none; }
 
-        .tab-pill-btn {
+        .step-tabs-bar::-webkit-scrollbar { display: none; }
+
+        .step-tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            padding: 0.5rem 0.85rem;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.45rem;
-            height: 40px;
-            padding: 0 0.95rem;
-            border-radius: 10px;
-            border: 1px solid var(--border-card);
-            background: #ffffff;
-            color: var(--text-sub);
-            font-size: 0.84rem;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
             transition: all 0.18s ease;
+            white-space: nowrap;
             font-family: inherit;
         }
-        .tab-pill-btn:hover {
+
+        .step-tab-btn:hover {
+            color: #0f172a;
             background: #f8fafc;
-            border-color: #cbd5e1;
-            color: var(--text-main);
         }
-        .tab-pill-btn.active {
+
+        .step-tab-btn.active {
             background: #eff6ff;
             border-color: #bfdbfe;
-            color: var(--primary);
+            color: #2563eb;
             font-weight: 700;
-            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+            box-shadow: 0 1px 3px rgba(37, 99, 235, 0.08);
         }
 
-        /* Tab Content Panes */
-        .tab-content-pane {
-            display: none;
-            animation: fadeIn 0.2s ease;
-        }
-        .tab-content-pane.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(3px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Form Headings */
+        .step-panel-header {
+            margin-bottom: 1.4rem;
         }
 
-        .pane-header {
-            margin-bottom: 1.35rem;
-        }
-        .pane-header h2 {
+        .step-panel-header h2 {
             font-size: 1.25rem;
             font-weight: 800;
-            color: var(--text-main);
-            margin: 0 0 0.25rem;
-            letter-spacing: -0.3px;
-        }
-        .pane-header p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin: 0;
-            line-height: 1.45;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
         }
 
-        /* Form Controls - Uniform Box Sizes, Alignment & Positioning */
-        .form-grid-2 {
+        .step-panel-header p {
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
+        /* Form Grid - Uniform Box Sizes, Alignment & Positioning */
+        .form-grid-2col {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.1rem;
-            margin-bottom: 0.95rem;
-        }
-        @media (max-width: 640px) {
-            .form-grid-2 { grid-template-columns: 1fr; gap: 0.85rem; }
+            margin-bottom: 1.4rem;
         }
 
         .form-group {
-            margin-bottom: 0.95rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
         }
-        .form-label {
-            display: block;
+
+        .form-group label {
             font-size: 0.84rem;
             font-weight: 700;
             color: #1e293b;
-            margin-bottom: 0.4rem;
         }
-        .form-label .req { color: #ef4444; font-weight: 700; margin-left: 2px; }
-        .form-label .opt { color: #94a3b8; font-weight: 500; font-size: 0.78rem; margin-left: 4px; }
 
+        .form-group label .req { color: #ef4444; margin-left: 2px; }
+        .form-group label .opt { color: #94a3b8; font-weight: 500; font-size: 0.78rem; margin-left: 4px; }
+
+        .input-with-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-with-icon .input-icon {
+            position: absolute;
+            left: 0.85rem;
+            font-size: 0.95rem;
+            pointer-events: none;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-with-icon .input-icon-text {
+            position: absolute;
+            left: 0.85rem;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #0a66c2;
+            pointer-events: none;
+        }
+
+        .input-with-icon input,
+        .input-with-icon textarea,
+        .form-textarea,
+        .form-input,
         .form-control,
         .entry .field input,
         .entry .field textarea,
         .entry .field select {
             width: 100%;
             height: 44px;
-            padding: 0 14px;
-            border-radius: 10px;
-            border: 1.5px solid #cbd5e1;
             background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 0.55rem 0.9rem;
             font-size: 0.88rem;
             font-weight: 600;
-            color: var(--text-main);
-            font-family: inherit;
-            box-sizing: border-box;
-            transition: all 0.2s ease;
+            color: #0f172a;
             outline: none;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
         }
+
+        .input-with-icon input {
+            padding-left: 2.35rem;
+        }
+
+        .input-with-icon.no-icon input {
+            padding-left: 0.9rem;
+        }
+
+        .input-with-icon input:focus,
+        .form-textarea:focus,
+        .form-input:focus,
         .form-control:focus,
         .entry .field input:focus,
-        .entry .field textarea:focus,
-        .entry .field select:focus {
-            border-color: var(--border-focus);
+        .entry .field textarea:focus {
+            border-color: #2563eb;
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
         }
-        .form-control::placeholder {
-            color: #94a3b8;
-            font-weight: 400;
-        }
 
-        .input-with-icon {
-            position: relative;
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-        .input-with-icon .input-icon {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.95rem;
-            color: #64748b;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .input-with-icon .form-control {
-            padding-left: 36px !important;
-        }
-
-        textarea.form-control,
+        .form-textarea,
         .entry .field textarea {
             height: auto !important;
-            min-height: 95px !important;
-            padding: 10px 14px !important;
+            min-height: 105px !important;
+            padding: 0.75rem 0.9rem !important;
             line-height: 1.5 !important;
             resize: vertical !important;
         }
 
-        /* Profile Photo Upload Row */
+        /* Profile Photo Upload Box */
         .photo-upload-row {
-            display: flex;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
             gap: 1.2rem;
-            margin: 1.2rem 0 1.4rem;
-            flex-wrap: wrap;
+            align-items: center;
             background: #f8fafc;
             border: 1.5px dashed #cbd5e1;
             border-radius: 14px;
-            padding: 1rem 1.2rem;
+            padding: 1.2rem;
+            margin-bottom: 1.6rem;
         }
-        .photo-dropzone {
-            flex: 1;
-            min-width: 220px;
+
+        .photo-upload-box {
             display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .photo-dropzone:hover {
-            opacity: 0.85;
-        }
-        .photo-cloud-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            color: var(--primary);
-            flex-shrink: 0;
+            cursor: pointer;
+            text-align: center;
+            padding: 0.75rem 0.5rem;
+            border-radius: 10px;
+            transition: all 0.2s;
         }
-        .photo-drop-text strong {
-            display: block;
-            font-size: 0.88rem;
+
+        .photo-upload-box:hover {
+            background: #eff6ff;
+        }
+
+        .photo-upload-icon {
+            font-size: 1.6rem;
+            color: #2563eb;
+            margin-bottom: 0.25rem;
+        }
+
+        .photo-upload-title {
+            font-size: 0.9rem;
             font-weight: 700;
             color: #0f172a;
         }
-        .photo-drop-text span {
+
+        .photo-upload-sub {
             font-size: 0.76rem;
             color: #64748b;
         }
-        .photo-meta {
+
+        .photo-recommend-meta {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            font-size: 0.76rem;
-            color: #64748b;
-            line-height: 1.3;
             border-left: 1px solid #e2e8f0;
             padding-left: 1.2rem;
         }
-        .photo-thumb-wrap {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: #ffffff;
-            padding: 4px 8px;
-            border: 1px solid #cbd5e1;
+
+        .photo-preview-mini {
+            width: 50px;
+            height: 50px;
             border-radius: 10px;
-        }
-        .photo-thumb-wrap img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1.5px solid #2563eb;
-        }
-        .btn-remove-photo {
-            background: #fee2e2;
-            color: #ef4444;
-            border: none;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            cursor: pointer;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.3rem;
+            color: #94a3b8;
+            flex-shrink: 0;
+            overflow: hidden;
         }
 
-        /* Save & Continue Button */
-        .btn-save-next {
-            width: 100%;
-            height: 48px;
-            background: var(--primary);
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            font-size: 0.95rem;
+        .photo-recommend-text strong {
+            display: block;
+            font-size: 0.8rem;
             font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: all 0.2s ease;
-            margin-top: 1.35rem;
-            font-family: inherit;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-        }
-        .btn-save-next:hover {
-            background: var(--primary-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+            color: #0f172a;
         }
 
-        /* Items Entries (Experience, Education, Projects, Certs) */
+        .photo-recommend-text span {
+            font-size: 0.76rem;
+            color: #64748b;
+        }
+
+        /* Buttons */
+        .btn-step-save-continue {
+            width: 100% !important;
+            height: 48px !important;
+            background: #2563eb !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: 12px !important;
+            font-size: 0.95rem !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.5rem !important;
+            transition: all 0.2s ease !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+            font-family: inherit !important;
+        }
+
+        .btn-step-save-continue:hover {
+            background: #1d4ed8 !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35) !important;
+        }
+
+        .btn-add-item-row {
+            width: 100% !important;
+            height: 42px !important;
+            background: #f8fafc !important;
+            border: 1.5px dashed #cbd5e1 !important;
+            color: #2563eb !important;
+            border-radius: 10px !important;
+            font-size: 0.86rem !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            margin: 0.85rem 0 1.4rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.2s !important;
+        }
+
+        .btn-add-item-row:hover {
+            background: #eff6ff !important;
+            border-color: #2563eb !important;
+        }
+
+        .panel-btn-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.2rem;
+        }
+
+        .btn-step-back {
+            height: 48px !important;
+            padding: 0 1.2rem !important;
+            background: #ffffff !important;
+            border: 1.5px solid #cbd5e1 !important;
+            color: #475569 !important;
+            border-radius: 12px !important;
+            font-size: 0.9rem !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            transition: all 0.2s !important;
+        }
+
+        .btn-step-back:hover {
+            background: #f1f5f9 !important;
+            color: #0f172a !important;
+        }
+
+        /* Dynamic Item Cards */
         .item-card-entry,
         .entry {
             background: #f8fafc;
-            border: 1px solid var(--border-card);
-            border-radius: 14px;
-            padding: 1.15rem;
-            margin-bottom: 0.95rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.1rem;
+            margin-bottom: 0.85rem;
             position: relative;
         }
+
         .item-card-head,
         .entry-head {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.65rem;
         }
+
         .item-card-head strong,
         .entry-head strong {
             font-size: 0.88rem;
             color: #0f172a;
         }
+
         .btn-del-item,
         .btn-danger {
-            background: #fee2e2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
-            border-radius: 6px;
-            padding: 0.25rem 0.65rem;
-            font-size: 0.74rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.15s;
-        }
-        .btn-del-item:hover,
-        .btn-danger:hover { background: #fca5a5; }
-
-        .btn-add-item {
-            width: 100%;
-            height: 42px;
-            background: #eff6ff;
-            color: var(--primary);
-            border: 1.5px dashed #bfdbfe;
-            border-radius: 10px;
-            font-size: 0.86rem;
+            background: transparent;
+            border: none;
+            color: #ef4444;
+            font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            transition: all 0.2s;
-            margin-bottom: 0.95rem;
-            font-family: inherit;
-        }
-        .btn-add-item:hover {
-            background: #dbeafe;
-            border-color: var(--primary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
         }
 
-        .btn-secondary-act {
-            background: #ffffff;
-            border: 1px solid var(--border-card);
-            color: #334155;
-            padding: 0.5rem 0.9rem;
-            border-radius: 10px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            transition: all 0.15s;
-            font-family: inherit;
-        }
-        .btn-secondary-act:hover {
-            background: #f8fafc;
-            border-color: #cbd5e1;
-            color: var(--text-main);
+        .btn-del-item:hover,
+        .btn-danger:hover {
+            background: #fee2e2;
         }
 
-        /* RIGHT STICKY PREVIEW COLUMN */
-        .resume-preview-col {
-            position: relative;
-        }
-        .sticky-preview-wrapper {
-            position: -webkit-sticky;
+        /* ===== RIGHT PREVIEW CARD ===== */
+        .preview-card {
+            padding: 1.4rem;
             position: sticky;
             top: 75px;
-            max-height: calc(100vh - 90px);
-            display: flex;
-            flex-direction: column;
-            background: #ffffff;
-            border: 1.5px solid var(--border-card);
-            border-radius: 18px;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-            overflow: hidden;
         }
 
-        /* Preview Toolbar */
-        .preview-header-bar {
-            padding: 0.85rem 1.15rem;
-            border-bottom: 1px solid var(--border-card);
-            background: #ffffff;
+        .preview-toolbar-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 0.65rem;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 1.2rem;
             flex-wrap: wrap;
-            z-index: 10;
         }
-        .preview-select {
-            height: 38px;
-            padding: 0 1.8rem 0 0.85rem;
-            border-radius: 10px;
+
+        .preview-select-template {
+            height: 40px;
+            background: #ffffff;
             border: 1.5px solid #cbd5e1;
-            background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 0.7rem center;
-            background-size: 12px;
-            font-size: 0.84rem;
+            border-radius: 10px;
+            padding: 0.4rem 0.85rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: #0f172a;
             cursor: pointer;
             outline: none;
             font-family: inherit;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-        .preview-select:focus {
-            border-color: var(--primary);
+            transition: border-color 0.2s;
         }
 
-        .btn-preview-pdf {
-            height: 38px;
-            padding: 0 1.15rem;
-            background: var(--primary);
-            color: #ffffff;
-            border: none;
+        .preview-select-template:focus {
+            border-color: #2563eb;
+        }
+
+        .preview-zoom-controls {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
             border-radius: 10px;
-            font-size: 0.86rem;
+            overflow: hidden;
+            height: 40px;
+        }
+
+        .zoom-btn {
+            background: transparent;
+            border: none;
+            width: 32px;
+            height: 100%;
+            cursor: pointer;
+            font-size: 1rem;
             font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
-            transition: all 0.2s ease;
-            font-family: inherit;
-            white-space: nowrap;
-        }
-        .btn-preview-pdf:hover {
-            background: var(--primary-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
-        }
-
-        .preview-subbar {
-            padding: 0.55rem 1.15rem;
-            background: #f8fafc;
-            border-bottom: 1px solid var(--border-card);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        .preview-palette-wrap {
+            color: #475569;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            justify-content: center;
+            transition: background 0.15s;
         }
-        .color-dot {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: transform 0.15s, border-color 0.15s;
-        }
-        .color-dot:hover { transform: scale(1.15); }
-        .color-dot.active { border-color: #0f172a; }
 
-        .preview-scroll-viewport {
-            flex: 1;
-            overflow-y: auto;
-            overflow-x: auto;
-            padding: 1.5rem 1rem 2.5rem;
+        .zoom-btn:hover {
             background: #f1f5f9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 600px;
-            max-height: calc(100vh - 190px);
+            color: #0f172a;
         }
+
+        .zoom-level {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #0f172a;
+            padding: 0 0.5rem;
+            min-width: 48px;
+            text-align: center;
+            user-select: none;
+        }
+
+        .btn-download-pdf-blue {
+            height: 40px !important;
+            padding: 0 1.15rem !important;
+            background: #2563eb !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: 10px !important;
+            font-size: 0.86rem !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.45rem !important;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25) !important;
+            transition: all 0.2s ease !important;
+            font-family: inherit !important;
+            white-space: nowrap !important;
+        }
+
+        .btn-download-pdf-blue:hover {
+            background: #1d4ed8 !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
+        }
+
+        .preview-canvas-viewport {
+            background: #f1f5f9;
+            border-radius: 14px;
+            padding: 1.4rem;
+            min-height: 600px;
+            max-height: calc(100vh - 170px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
         .preview-scale-box {
             transform-origin: top center;
             transition: transform 0.2s ease;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             width: 100%;
         }
 
-        /* A4 SHEET (True Physical Proportion) */
-        .a4-sheet {
-            width: 794px; /* 210mm at 96 DPI */
-            min-height: 1123px; /* 297mm at 96 DPI */
+        .preview-paper {
             background: #ffffff;
-            padding: 18mm 16mm;
-            box-sizing: border-box;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
-            border-radius: 4px;
+            border-radius: 6px;
+            width: 100%;
+            max-width: 595px;
+            min-height: 842px;
+            padding: 2.2rem 2.2rem;
+            box-sizing: border-box;
             position: relative;
             color: #0f172a;
-            margin: 0 auto;
-        }
-        @media (max-width: 860px) {
-            .a4-sheet {
-                width: 100%;
-                min-height: auto;
-                padding: 1.2rem;
-            }
         }
 
-        .sheet-footer-tag {
+        /* Page Break Indicator when Content Exceeds 1 Page */
+        .page-break-marker {
             position: absolute;
-            bottom: 6mm;
-            right: 16mm;
-            font-size: 0.7rem;
-            color: #94a3b8;
-            font-weight: 600;
-        }
-
-        /* Visual Separator between Page 1 and Page 2 (media_1790960328116.png) */
-        .a4-sheet-separator {
-            width: 794px;
-            max-width: 100%;
-            margin: 24px auto;
-            position: relative;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .a4-sheet-separator::before {
-            content: '';
-            position: absolute;
-            left: 0; right: 0;
-            top: 50%;
+            left: 0;
+            right: 0;
             border-top: 2px dashed #94a3b8;
-            z-index: 1;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
         }
-        .sheet-sep-badge {
-            position: relative;
-            z-index: 2;
+
+        .page-break-tag {
             background: #ffffff;
             border: 1px solid #cbd5e1;
             border-radius: 999px;
-            padding: 0.3rem 1rem;
-            font-size: 0.76rem;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.72rem;
             font-weight: 700;
             color: #475569;
+            transform: translateY(-50%);
             box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            white-space: nowrap;
         }
 
-        /* PRINT STYLES - Crisp Vector Native PDF */
+        /* PRINT STYLES */
         @media print {
-            @page {
-                size: A4 portrait;
-                margin: 0;
-            }
-            body {
-                background: #ffffff !important;
-                padding: 0 !important;
-            }
-            body * {
-                visibility: hidden !important;
-            }
-            .preview-scroll-viewport,
-            .preview-scroll-viewport * {
-                visibility: visible !important;
-            }
-            .preview-scroll-viewport {
+            body * { visibility: hidden !important; }
+            #preview, #preview * { visibility: visible !important; }
+            #preview {
                 position: absolute !important;
                 left: 0 !important;
                 top: 0 !important;
                 width: 100% !important;
                 margin: 0 !important;
-                padding: 0 !important;
-                background: transparent !important;
-                overflow: visible !important;
-            }
-            .preview-scale-box {
-                transform: none !important;
-            }
-            .a4-sheet-separator {
-                display: none !important;
-            }
-            .a4-sheet {
+                padding: 15mm !important;
                 box-shadow: none !important;
                 border: none !important;
-                margin: 0 !important;
-                page-break-after: always !important;
-                break-after: page !important;
-                width: 100% !important;
-                min-height: 297mm !important;
             }
-            .a4-sheet:last-child {
-                page-break-after: auto !important;
-                break-after: auto !important;
-            }
+            .page-break-marker { display: none !important; }
         }
 
         /* Responsive Breakpoints */
         @media (max-width: 1080px) {
             .nav-center { display: none !important; }
             .nav-hamburger { display: flex !important; }
-            .builder-split-grid,
-            div[style*="grid-template-columns: 1.05fr 0.95fr"] {
-                grid-template-columns: 1fr !important;
-            }
-            .resume-preview-col { position: static !important; }
+            .builder-split-grid { grid-template-columns: 1fr; }
+            .preview-card { position: static; }
         }
 
         @media (max-width: 768px) {
             .navbar { padding: 0.65rem 1rem; }
             .resume-hero-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-            .form-grid-2 { grid-template-columns: 1fr; }
-            .photo-upload-row { flex-direction: column; align-items: flex-start; }
-            .photo-meta { border-left: none; padding-left: 0; padding-top: 0.75rem; border-top: 1px solid #e2e8f0; width: 100%; }
+            .resume-hero-doodle { display: none; }
+            .form-grid-2col { grid-template-columns: 1fr; }
+            .photo-upload-row { grid-template-columns: 1fr; }
+            .photo-recommend-meta { border-left: none; padding-left: 0; padding-top: 0.75rem; border-top: 1px solid #e2e8f0; }
         }
     </style>
     <link rel="stylesheet" href="/assets/lang-switcher.css">
@@ -971,348 +1087,375 @@
         </div>
     </nav>
 
-    <!-- ===== BREADCRUMB BAR ===== -->
-    <div class="breadcrumb-bar" style="max-width: 1400px; margin: 0.75rem auto 1rem; padding: 0 1.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #64748b;">
-        <a href="/" style="color: #64748b; text-decoration: none; display: flex; align-items: center; gap: 0.25rem;">🏠 Home</a>
-        <span>›</span>
-        <a href="/converter/" style="color: #64748b; text-decoration: none;">Tools</a>
-        <span>›</span>
-        <span style="color: #0f172a; font-weight: 600;">Resume CV Maker</span>
+    <!-- ===== BREADCRUMB NAVIGATION ===== -->
+    <div class="breadcrumb-bar">
+        <a href="/" class="bc-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            Home
+        </a>
+        <span class="bc-sep">›</span>
+        <a href="/resume-cv-maker/" class="bc-link">Resume Tools</a>
+        <span class="bc-sep">›</span>
+        <span class="bc-current">Resume CV Maker</span>
     </div>
 
-    <!-- ===== MAIN CONTENT CONTAINER ===== -->
-    <main class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 1.5rem 3rem;">
-        
-        <!-- Hero Header -->
-        <div class="resume-hero-header" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 280px;">
-                <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.5rem;">
-                    <div style="width: 48px; height: 48px; border-radius: 12px; background: #eff6ff; border: 1.5px solid #bfdbfe; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #2563eb; flex-shrink: 0; box-shadow: 0 4px 12px rgba(37,99,235,0.08);">📄</div>
-                    <div>
-                        <h1 style="font-size: 1.85rem; font-weight: 800; color: #0f172a; margin: 0; letter-spacing: -0.6px; line-height: 1.25;">Create Your Professional Resume</h1>
-                        <p style="font-size: 0.92rem; color: #475569; margin: 0.25rem 0 0; line-height: 1.45;">Build a modern, ATS-friendly resume in minutes. Choose from professional templates, add your details and download as PDF — completely free.</p>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.75rem;">
-                    <span style="background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; border-radius: 999px; padding: 0.25rem 0.85rem; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">🌱 Free</span>
-                    <span style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 999px; padding: 0.25rem 0.85rem; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem;">👤 No account required</span>
-                    <span style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 999px; padding: 0.25rem 0.85rem; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem;">🛡️ Your data stays in the browser</span>
-                </div>
-            </div>
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding-right: 1.5rem; flex-shrink: 0;">
-                <div style="font-family: 'Caveat', cursive, sans-serif; font-size: 1.6rem; font-weight: 700; color: #4338ca; line-height: 1.1; text-align: center;">Stand out<br>from the crowd</div>
-                <svg width="44" height="36" viewBox="0 0 48 42" fill="none" style="margin-top: 2px;">
-                    <path d="M38 6 C 28 22, 10 16, 14 34" stroke="#4338ca" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-                    <path d="M10 28 L 14 35 L 22 31" stroke="#4338ca" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- ===== HERO HEADER ===== -->
+    <header class="resume-hero-header">
+        <div class="resume-hero-left">
+            <div class="resume-hero-icon-box">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
                 </svg>
             </div>
-        </div>
-
-        <!-- Quick Tools & Profiles Bar -->
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 0.75rem 1.1rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; box-shadow: 0 1px 4px rgba(0,0,0,0.02);">
-            <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
-                <span style="font-size: 0.82rem; font-weight: 700; color: #334155;">💼 Workspace:</span>
-                <select id="resumeProfileSelect" class="form-control" style="height: 36px; padding: 0 0.75rem; font-size: 0.82rem; width: auto; min-width: 150px;" onchange="switchResumeProfile(this.value)"></select>
-                <button type="button" class="btn-secondary-act" style="height: 34px; padding: 0 0.75rem; font-size: 0.78rem;" onclick="createNewResumeProfile()" title="Create New Profile">+ New</button>
-                <button type="button" class="btn-secondary-act" style="height: 34px; padding: 0 0.75rem; font-size: 0.78rem;" onclick="renameResumeProfile()" title="Rename Profile">✏️ Rename</button>
-                <button type="button" class="btn-secondary-act" style="height: 34px; padding: 0 0.75rem; font-size: 0.78rem; color:#dc2626;" onclick="deleteResumeProfile()" title="Delete Profile">🗑️</button>
+            <div class="resume-hero-text">
+                <h1 class="resume-hero-title">Create Your Professional Resume</h1>
+                <p class="resume-hero-desc">Build a modern, ATS-friendly resume in minutes. Choose from professional templates, add your details and download as PDF — completely free.</p>
+                <div class="resume-badge-pills">
+                    <span class="badge-pill pill-green">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Free
+                    </span>
+                    <span class="badge-pill pill-blue">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        No account required
+                    </span>
+                    <span class="badge-pill pill-blue">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        Your data stays in the browser
+                    </span>
+                </div>
             </div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                <button type="button" class="btn-secondary-act" style="height: 34px; padding: 0 0.75rem; font-size: 0.8rem;" onclick="openTemplateModal()">🎨 12 Templates</button>
-                <button type="button" class="btn-secondary-act" style="height: 34px; padding: 0 0.75rem; font-size: 0.8rem;" onclick="suggestSummary()">🤖 AI Assistant</button>
-                <button type="button" class="btn-secondary-act" style="height: 34px; padding: 0 0.75rem; font-size: 0.8rem;" onclick="openLinkedInOptimizer()">💼 LinkedIn</button>
-                <button type="button" class="btn-secondary-act" style="height: 34px; padding: 0 0.75rem; font-size: 0.8rem;" onclick="openSmartImportModal()">📥 Smart Import</button>
-                <button type="button" class="btn-secondary-act" style="height: 34px; padding: 0 0.75rem; font-size: 0.8rem;" onclick="exportJSON()">💾 Save JSON</button>
-                <button type="button" class="btn-secondary-act" style="height: 34px; padding: 0 0.75rem; font-size: 0.8rem;" onclick="downloadDOCX()">📄 Word (.docx)</button>
-            </div>
         </div>
+        <div class="resume-hero-doodle">
+            <span class="doodle-text">Stand out<br>from the crowd</span>
+            <svg class="doodle-arrow" width="48" height="42" viewBox="0 0 48 42" fill="none">
+                <path d="M38 6 C 28 22, 10 16, 14 34" stroke="#4338ca" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                <path d="M10 28 L 14 35 L 22 31" stroke="#4338ca" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+        </div>
+    </header>
 
-        <!-- Main 2-Column Split Builder Grid -->
-        <div style="display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 1.8rem; align-items: start;">
-            <!-- LEFT COLUMN: Form Editor Card -->
-            <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.8rem; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);">
+    <!-- ===== MAIN SPLIT BUILDER CONTAINER ===== -->
+    <main class="main-builder-container">
+        <div class="builder-split-grid">
+            
+            <!-- LEFT CARD: STEP-BY-STEP FORM EDITOR -->
+            <div class="builder-card form-card">
                 <!-- Profile Progress Header -->
-                <div class="profile-progress-box">
-                    <div class="progress-info">
-                        <span class="progress-label">Profile Completion</span>
-                        <span class="progress-val" id="profileProgressPercent">25% complete</span>
-                    </div>
+                <div class="profile-progress-header">
+                    <span class="progress-title">Profile</span>
                     <div class="progress-track">
-                        <div class="progress-bar" id="profileProgressFill" style="width: 25%;"></div>
+                        <div class="progress-fill" id="profileProgressFill" style="width: 25%;"></div>
                     </div>
+                    <span class="progress-percent" id="profileProgressPercent">25% complete</span>
                 </div>
 
-                <!-- Horizontal Section Tabs -->
-                <div class="editor-tabs-nav" role="tablist">
-                    <button type="button" class="tab-pill-btn active" data-tab="personal" onclick="switchEditorTab('personal')"><span>👤</span> Personal Info</button>
-                    <button type="button" class="tab-pill-btn" data-tab="experience" onclick="switchEditorTab('experience')"><span>💼</span> Experience</button>
-                    <button type="button" class="tab-pill-btn" data-tab="education" onclick="switchEditorTab('education')"><span>🎓</span> Education</button>
-                    <button type="button" class="tab-pill-btn" data-tab="skills" onclick="switchEditorTab('skills')"><span>⚙️</span> Skills</button>
-                    <button type="button" class="tab-pill-btn" data-tab="projects" onclick="switchEditorTab('projects')"><span>&lt;/&gt;</span> Projects</button>
-                    <button type="button" class="tab-pill-btn" data-tab="summary" onclick="switchEditorTab('summary')"><span>📄</span> Summary</button>
-                    <button type="button" class="tab-pill-btn" data-tab="more" onclick="switchEditorTab('more')"><span>🏅</span> More</button>
+                <!-- Step Navigation Tabs -->
+                <div class="step-tabs-bar" role="tablist">
+                    <button type="button" class="step-tab-btn active" data-step="personal" onclick="switchResumeTab('personal')">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        Personal Info
+                    </button>
+                    <button type="button" class="step-tab-btn" data-step="experience" onclick="switchResumeTab('experience')">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        Experience
+                    </button>
+                    <button type="button" class="step-tab-btn" data-step="education" onclick="switchResumeTab('education')">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                        Education
+                    </button>
+                    <button type="button" class="step-tab-btn" data-step="skills" onclick="switchResumeTab('skills')">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        Skills
+                    </button>
+                    <button type="button" class="step-tab-btn" data-step="projects" onclick="switchResumeTab('projects')">
+                        <span style="font-weight: 800; font-size: 0.85rem;">&lt;/&gt;</span>
+                        Projects
+                    </button>
+                    <button type="button" class="step-tab-btn" data-step="summary" onclick="switchResumeTab('summary')">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                        Summary
+                    </button>
                 </div>
 
-                <!-- TAB 1: Personal Info -->
-                <div class="tab-content-pane active" id="pane-personal">
-                    <div class="pane-header">
+                <!-- STEP 1: PERSONAL INFO PANEL -->
+                <div class="step-panel" id="tab-personal">
+                    <div class="step-panel-header">
                         <h2>Personal Information</h2>
                         <p>Tell us about yourself. This information will appear at the top of your resume.</p>
                     </div>
-                    <div class="form-grid-2">
+
+                    <div class="form-grid-2col">
                         <div class="form-group">
-                            <label class="form-label" for="name">Full Name <span class="req">*</span></label>
+                            <label for="name">Full Name <span class="req">*</span></label>
                             <div class="input-with-icon">
-                                <span class="input-icon">👤</span>
-                                <input type="text" id="name" class="form-control" placeholder="Ali Raza Bhatti" value="Ali Raza Bhatti" oninput="updatePreview()">
+                                <span class="input-icon">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                </span>
+                                <input type="text" id="name" value="Ali Raza Bhatti" placeholder="Ali Raza Bhatti" oninput="updatePreview()">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="targetRole">Professional Title <span class="req">*</span></label>
-                            <div class="input-with-icon">
-                                <span class="input-icon">💼</span>
-                                <input type="text" id="targetRole" class="form-control" placeholder="HR Assistant / Specialist" value="HR Assistant" oninput="updatePreview()">
+                            <label for="targetRole">Professional Title <span class="req">*</span></label>
+                            <div class="input-with-icon no-icon">
+                                <input type="text" id="targetRole" value="HR Assistant" placeholder="HR Assistant" oninput="updatePreview()">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="email">Email Address <span class="req">*</span></label>
+                            <label for="email">Email Address <span class="req">*</span></label>
                             <div class="input-with-icon">
-                                <span class="input-icon">✉️</span>
-                                <input type="email" id="email" class="form-control" placeholder="ali.raza@gmail.com" value="ali.raza@gmail.com" oninput="updatePreview()">
+                                <span class="input-icon">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                </span>
+                                <input type="email" id="email" value="ali.raza@gmail.com" placeholder="ali.raza@gmail.com" oninput="updatePreview()">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="phone">Phone Number <span class="req">*</span></label>
+                            <label for="phone">Phone Number <span class="req">*</span></label>
                             <div class="input-with-icon">
-                                <span class="input-icon">📞</span>
-                                <input type="tel" id="phone" class="form-control" placeholder="+92 331 8058822" value="+92 331 8058822" oninput="updatePreview()">
+                                <span class="input-icon">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                </span>
+                                <input type="tel" id="phone" value="+92 331 8058822" placeholder="+92 331 8058822" oninput="updatePreview()">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="location">Location <span class="req">*</span></label>
+                            <label for="location">Location <span class="req">*</span></label>
                             <div class="input-with-icon">
-                                <span class="input-icon">📍</span>
-                                <input type="text" id="location" class="form-control" placeholder="Lahore, Pakistan" value="Lahore, Pakistan" oninput="updatePreview()">
+                                <span class="input-icon">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                </span>
+                                <input type="text" id="location" value="Lahore, Pakistan" placeholder="Lahore, Pakistan" oninput="updatePreview()">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="linkedin">LinkedIn Profile <span class="opt">(optional)</span></label>
+                            <label for="linkedin">LinkedIn Profile <span class="opt">(optional)</span></label>
                             <div class="input-with-icon">
-                                <span class="input-icon" style="font-size: 0.8rem; font-weight: 800; color: #0a66c2;">in</span>
-                                <input type="url" id="linkedin" class="form-control" placeholder="https://linkedin.com/in/username" value="https://linkedin.com/in/ali-raza-bhatti" oninput="updatePreview()">
+                                <span class="input-icon-text">in</span>
+                                <input type="url" id="linkedin" value="https://linkedin.com/in/ali-raza-bhatti" placeholder="https://linkedin.com/in/ali-raza-bhatti" oninput="updatePreview()">
                             </div>
                         </div>
                         <div class="form-group" style="grid-column: 1 / -1;">
-                            <label class="form-label" for="links">Website / Portfolio <span class="opt">(optional)</span></label>
+                            <label for="links">Website / Portfolio <span class="opt">(optional)</span></label>
                             <div class="input-with-icon">
-                                <span class="input-icon">🔗</span>
-                                <input type="url" id="links" class="form-control" placeholder="https://auratoolkit360.com" value="https://auratoolkit360.com" oninput="updatePreview()">
+                                <span class="input-icon">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                </span>
+                                <input type="url" id="links" value="https://auratoolkit360.com" placeholder="https://auratoolkit360.com" oninput="updatePreview()">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Photo Upload Row -->
+                    <!-- Profile Photo Upload Box -->
                     <div class="photo-upload-row">
-                        <div class="photo-dropzone" onclick="document.getElementById('photoInput').click()">
+                        <div class="photo-upload-box" onclick="document.getElementById('photoInput').click()">
                             <input type="file" id="photoInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload(event)">
-                            <div class="photo-cloud-icon">☁️</div>
-                            <div class="photo-drop-text">
-                                <strong>Upload Profile Photo</strong>
-                                <span>JPG, PNG (max 2MB)</span>
+                            <div class="photo-upload-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path><polyline points="12 12 12 16 16 16"></polyline></svg>
                             </div>
+                            <div class="photo-upload-title">Upload Profile Photo</div>
+                            <div class="photo-upload-sub">JPG, PNG (max 2MB)</div>
                         </div>
-                        <div class="photo-meta">
-                            <div class="photo-thumb-wrap">
-                                <span id="photoPlaceholder" style="font-size: 1.2rem;">📷</span>
-                                <img id="photoImg" style="display: none;" alt="Preview Photo">
-                                <button type="button" id="removePhotoBtn" class="btn-remove-photo" style="display: none;" onclick="removePhoto()" title="Remove Photo">✕</button>
+                        <div class="photo-recommend-meta">
+                            <div class="photo-preview-mini" id="photoPreviewBox">
+                                <span id="photoPlaceholder">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                                </span>
+                                <img id="photoImg" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:10px;">
                             </div>
-                            <div>
-                                <div style="font-weight: 700; color: #1e293b;">Recommended size:</div>
-                                <div>400 x 400px</div>
+                            <div class="photo-recommend-text">
+                                <strong>Recommended size:</strong>
+                                <span>400 x 400px</span>
+                                <button type="button" id="removePhotoBtn" class="btn-del-item" style="display:none; margin-top:4px;" onclick="removePhoto()">Remove</button>
                             </div>
                         </div>
                     </div>
 
-                    <button type="button" class="btn-save-next" onclick="switchEditorTab('experience')">Save &amp; Continue →</button>
+                    <button type="button" class="btn-step-save-continue" onclick="nextResumeTab('experience')">
+                        Save &amp; Continue →
+                    </button>
                 </div>
 
-                <!-- TAB 2: Experience -->
-                <div class="tab-content-pane" id="pane-experience">
-                    <div class="pane-header">
+                <!-- STEP 2: EXPERIENCE PANEL -->
+                <div class="step-panel" id="tab-experience" style="display:none;">
+                    <div class="step-panel-header">
                         <h2>Work Experience</h2>
-                        <p>Highlight your professional experience and key accomplishments.</p>
+                        <p>List your work history starting with your current or most recent job.</p>
                     </div>
                     <div id="experienceList"></div>
-                    <button type="button" class="btn-add-item" onclick="addExperience()">+ Add Work Experience</button>
-                    <button type="button" class="btn-secondary-act" style="display: block; margin-bottom: 1rem; width: 100%; justify-content: center; height: 38px;" onclick="insertRoleBullets()">⭐ Auto-Insert STAR Bullets (Role Based)</button>
-                    <div style="display: flex; gap: 0.75rem;">
-                        <button type="button" class="btn-secondary-act" style="flex: 1; height: 46px; justify-content: center; font-size: 0.9rem;" onclick="switchEditorTab('personal')">← Back</button>
-                        <button type="button" class="btn-save-next" style="flex: 2; margin-top: 0;" onclick="switchEditorTab('education')">Save &amp; Continue →</button>
+                    <button type="button" class="btn-add-item-row" onclick="addExperience()">+ Add Work Experience</button>
+                    <button type="button" class="btn-step-back" style="width:100%; height:38px; margin-bottom:1rem; font-size:0.8rem;" onclick="insertRoleBullets()">⭐ Auto-Insert STAR Bullets</button>
+                    <div class="panel-btn-row">
+                        <button type="button" class="btn-step-back" onclick="switchResumeTab('personal')">← Back</button>
+                        <button type="button" class="btn-step-save-continue" onclick="nextResumeTab('education')">Save &amp; Continue →</button>
                     </div>
                 </div>
 
-                <!-- TAB 3: Education -->
-                <div class="tab-content-pane" id="pane-education">
-                    <div class="pane-header">
-                        <h2>Education &amp; Credentials</h2>
-                        <p>Add your academic degrees, diplomas, or relevant qualifications.</p>
+                <!-- STEP 3: EDUCATION PANEL -->
+                <div class="step-panel" id="tab-education" style="display:none;">
+                    <div class="step-panel-header">
+                        <h2>Education</h2>
+                        <p>Add your degrees, certifications, or academic background.</p>
                     </div>
                     <div id="educationList"></div>
-                    <button type="button" class="btn-add-item" onclick="addEducation()">+ Add Education</button>
-                    <div style="display: flex; gap: 0.75rem;">
-                        <button type="button" class="btn-secondary-act" style="flex: 1; height: 46px; justify-content: center; font-size: 0.9rem;" onclick="switchEditorTab('experience')">← Back</button>
-                        <button type="button" class="btn-save-next" style="flex: 2; margin-top: 0;" onclick="switchEditorTab('skills')">Save &amp; Continue →</button>
+                    <button type="button" class="btn-add-item-row" onclick="addEducation()">+ Add Education</button>
+                    <div class="panel-btn-row">
+                        <button type="button" class="btn-step-back" onclick="switchResumeTab('experience')">← Back</button>
+                        <button type="button" class="btn-step-save-continue" onclick="nextResumeTab('skills')">Save &amp; Continue →</button>
                     </div>
                 </div>
 
-                <!-- TAB 4: Skills -->
-                <div class="tab-content-pane" id="pane-skills">
-                    <div class="pane-header">
-                        <h2>Key Skills &amp; Competencies</h2>
-                        <p>Enter your skills separated by commas or categorize them with colons.</p>
+                <!-- STEP 4: SKILLS PANEL -->
+                <div class="step-panel" id="tab-skills" style="display:none;">
+                    <div class="step-panel-header">
+                        <h2>Skills &amp; Competencies</h2>
+                        <p>Add your technical skills, software tools, and HR operational strengths.</p>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="skills">Key Skills (Comma-separated)</label>
-                        <textarea id="skills" class="form-control" rows="6" oninput="updatePreview()" placeholder="Recruitment &amp; Staffing, HR Operations, Employee Relations, Payroll, ATS Management, Conflict Resolution, Performance Review, Labor Law Compliance, Communication, Leadership"></textarea>
+                        <label for="skills">Key Skills (Comma Separated)</label>
+                        <textarea id="skills" class="form-textarea" rows="6" oninput="updatePreview()"></textarea>
                     </div>
-                    <div style="display: flex; gap: 0.75rem;">
-                        <button type="button" class="btn-secondary-act" style="flex: 1; height: 46px; justify-content: center; font-size: 0.9rem;" onclick="switchEditorTab('education')">← Back</button>
-                        <button type="button" class="btn-save-next" style="flex: 2; margin-top: 0;" onclick="switchEditorTab('projects')">Save &amp; Continue →</button>
+                    <div class="panel-btn-row">
+                        <button type="button" class="btn-step-back" onclick="switchResumeTab('education')">← Back</button>
+                        <button type="button" class="btn-step-save-continue" onclick="nextResumeTab('projects')">Save &amp; Continue →</button>
                     </div>
                 </div>
 
-                <!-- TAB 5: Projects -->
-                <div class="tab-content-pane" id="pane-projects">
-                    <div class="pane-header">
-                        <h2>Projects &amp; Portfolio</h2>
-                        <p>Showcase key initiatives, case studies, or company projects.</p>
+                <!-- STEP 5: PROJECTS PANEL -->
+                <div class="step-panel" id="tab-projects" style="display:none;">
+                    <div class="step-panel-header">
+                        <h2>Projects &amp; Certifications</h2>
+                        <p>Highlight your major achievements, awards, and portfolios.</p>
                     </div>
                     <div id="projectList"></div>
-                    <button type="button" class="btn-add-item" onclick="addProject()">+ Add Project</button>
-                    <div style="display: flex; gap: 0.75rem;">
-                        <button type="button" class="btn-secondary-act" style="flex: 1; height: 46px; justify-content: center; font-size: 0.9rem;" onclick="switchEditorTab('skills')">← Back</button>
-                        <button type="button" class="btn-save-next" style="flex: 2; margin-top: 0;" onclick="switchEditorTab('summary')">Save &amp; Continue →</button>
+                    <button type="button" class="btn-add-item-row" onclick="addProject()">+ Add Project</button>
+
+                    <div style="margin-top:1.5rem; border-top:1px solid #e2e8f0; padding-top:1.2rem;">
+                        <h3 style="font-size:0.95rem; font-weight:700; color:#0f172a; margin-bottom:0.75rem;">Certifications (Optional)</h3>
+                        <div id="certList"></div>
+                        <button type="button" class="btn-add-item-row" onclick="addCert()" style="margin-bottom:0.5rem;">+ Add Certification</button>
+                    </div>
+
+                    <div style="margin-top:1rem; border-top:1px solid #e2e8f0; padding-top:1.2rem;">
+                        <h3 style="font-size:0.95rem; font-weight:700; color:#0f172a; margin-bottom:0.75rem;">Honors &amp; Awards (Optional)</h3>
+                        <div id="awardList"></div>
+                        <button type="button" class="btn-add-item-row" onclick="addAward()" style="margin-bottom:0.5rem;">+ Add Award</button>
+                    </div>
+
+                    <div style="margin-top:1rem; border-top:1px solid #e2e8f0; padding-top:1.2rem;">
+                        <h3 style="font-size:0.95rem; font-weight:700; color:#0f172a; margin-bottom:0.75rem;">Languages (Optional)</h3>
+                        <div id="langList"></div>
+                        <button type="button" class="btn-add-item-row" onclick="addLang()" style="margin-bottom:0.5rem;">+ Add Language</button>
+                    </div>
+
+                    <div class="panel-btn-row">
+                        <button type="button" class="btn-step-back" onclick="switchResumeTab('skills')">← Back</button>
+                        <button type="button" class="btn-step-save-continue" onclick="nextResumeTab('summary')">Save &amp; Continue →</button>
                     </div>
                 </div>
 
-                <!-- TAB 6: Summary -->
-                <div class="tab-content-pane" id="pane-summary">
-                    <div class="pane-header">
+                <!-- STEP 6: SUMMARY PANEL -->
+                <div class="step-panel" id="tab-summary" style="display:none;">
+                    <div class="step-panel-header">
                         <h2>Professional Summary</h2>
-                        <p>A concise 2-4 sentence summary highlighting your career accomplishments.</p>
+                        <p>A concise 2-4 sentence summary highlighting your career achievements.</p>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="summary">Summary Statement</label>
-                        <textarea id="summary" class="form-control" rows="5" oninput="updatePreview()" placeholder="Proactive and results-driven HR professional with expertise in talent acquisition, employee onboarding, and HR operations. Dedicated to building engaging work environments and aligning talent strategies with organizational goals."></textarea>
+                        <label for="summary">Summary Statement</label>
+                        <textarea id="summary" class="form-textarea" rows="5" oninput="updatePreview()"></textarea>
                     </div>
-                    <div class="form-group" style="margin-top: 1rem;">
-                        <label class="form-label" for="footerTagline">Resume Footer Tagline (optional)</label>
-                        <input type="text" id="footerTagline" class="form-control" value="Building People • Supporting Growth" oninput="updatePreview()">
+                    <div class="form-group" style="margin-top:1rem;">
+                        <label for="footerTagline">Resume Footer Tagline (optional)</label>
+                        <input type="text" id="footerTagline" class="form-input" value="Building People • Supporting Growth" oninput="updatePreview()">
                     </div>
-                    <div style="display: flex; gap: 0.75rem;">
-                        <button type="button" class="btn-secondary-act" style="flex: 1; height: 46px; justify-content: center; font-size: 0.9rem;" onclick="switchEditorTab('projects')">← Back</button>
-                        <button type="button" class="btn-save-next" style="flex: 2; margin-top: 0;" onclick="switchEditorTab('more')">Save &amp; Continue →</button>
-                    </div>
-                </div>
 
-                <!-- TAB 7: More (Certifications, Awards, Languages) -->
-                <div class="tab-content-pane" id="pane-more">
-                    <div class="pane-header">
-                        <h2>Additional Sections</h2>
-                        <p>Add certifications, honors, awards, and language proficiencies.</p>
-                    </div>
-                    <h3 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin: 1rem 0 0.5rem;">Certifications</h3>
-                    <div id="certList"></div>
-                    <button type="button" class="btn-add-item" onclick="addCert()">+ Add Certification</button>
-
-                    <h3 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin: 1rem 0 0.5rem;">Honors &amp; Awards</h3>
-                    <div id="awardList"></div>
-                    <button type="button" class="btn-add-item" onclick="addAward()">+ Add Award</button>
-
-                    <h3 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin: 1rem 0 0.5rem;">Languages</h3>
-                    <div id="langList"></div>
-                    <button type="button" class="btn-add-item" onclick="addLang()">+ Add Language</button>
-
-                    <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-                        <button type="button" class="btn-secondary-act" style="flex: 1; height: 46px; justify-content: center; font-size: 0.9rem;" onclick="switchEditorTab('summary')">← Back</button>
-                        <button type="button" class="btn-save-next" style="flex: 2; margin-top: 0;" onclick="downloadPDF()">Download PDF Resume →</button>
+                    <div class="panel-btn-row">
+                        <button type="button" class="btn-step-back" onclick="switchResumeTab('projects')">← Back</button>
+                        <button type="button" class="btn-step-save-continue" onclick="downloadPDF()">Export Finished PDF</button>
                     </div>
                 </div>
 
             </div>
 
-            <!-- RIGHT COLUMN: Sticky Live Resume Preview -->
-            <div class="resume-preview-col">
-                <div class="sticky-preview-wrapper">
-                    <!-- Preview Top Toolbar -->
-                    <div class="preview-header-bar">
-                        <select id="templateSelector" class="preview-select" onchange="selectTemplate(this.value)">
-                            <option value="modern" selected>Template 1 (Modern)</option>
-                            <option value="classic">Template 2 (Classic ATS)</option>
-                            <option value="minimal">Template 3 (Minimalist)</option>
-                            <option value="tech-dev">Template 4 (Tech Developer)</option>
-                            <option value="europass">Template 5 (Europass Format)</option>
-                            <option value="nordic">Template 6 (Nordic Executive)</option>
-                            <option value="dual-split">Template 7 (Dual Column Split)</option>
-                            <option value="fresher-1page">Template 8 (Fresher 1-Page)</option>
-                            <option value="photo-sidebar">Template 9 (Photo Sidebar)</option>
-                            <option value="creative-grad">Template 10 (Creative Gradient)</option>
-                            <option value="photo-exec">Template 11 (Photo Executive)</option>
+            <!-- RIGHT CARD: PREVIEW CARD (Matching media_1790949660715.png) -->
+            <div class="builder-card preview-card">
+                
+                <!-- Toolbar Header -->
+                <div class="preview-toolbar-header">
+                    <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+                        <select id="templateSelector" class="preview-select-template" onchange="changeTemplate(this.value)">
+                            <option value="modern">Template 1 (Modern)</option>
+                            <option value="executive">Template 2 (Executive)</option>
+                            <option value="minimalist">Template 3 (Minimalist)</option>
+                            <option value="elegant">Template 4 (Elegant)</option>
+                            <option value="compact">Template 5 (Compact Tech)</option>
+                            <option value="creative">Template 6 (Creative Slate)</option>
+                            <option value="academic">Template 7 (Ivy League)</option>
+                            <option value="corporate">Template 8 (Corporate Pro)</option>
                         </select>
-
-                        <div style="display: flex; align-items: center; gap: 0.4rem;">
-                            <span id="pageCountBadge" style="background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 999px; padding: 0.2rem 0.65rem; font-size: 0.75rem; font-weight: 700;">📄 1 Page (A4 Fit ✅)</span>
-                            <button type="button" class="btn-secondary-act" style="height: 32px; padding: 0 0.55rem; font-size: 0.74rem;" onclick="autoFitToOnePage()" title="Automatically adjust font &amp; line spacing to fit onto 1 single page">⚡ Fit 1 Page</button>
-                        </div>
-
-                        <div style="display: flex; align-items: center; gap: 0.4rem;">
-                            <button type="button" class="btn-preview-pdf" onclick="downloadPDF()">
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                                <span>Download PDF</span>
-                            </button>
-                            <button type="button" class="btn-secondary-act" style="height: 36px; padding: 0 0.6rem; font-size: 0.8rem;" onclick="downloadDOCX()" title="Download Word DOCX">Word</button>
-                        </div>
+                        <span id="pageCountBadge" style="font-size:0.78rem; font-weight:700; padding:0.25rem 0.6rem; border-radius:8px; border:1px solid rgba(16,185,129,0.25); background:rgba(16,185,129,0.1); color:#059669;">
+                            📄 1 Page (A4 Fit ✅)
+                        </span>
                     </div>
 
-                    <!-- Preview Subbar (Zoom & Colors) -->
-                    <div class="preview-subbar">
-                        <div style="display: flex; align-items: center; gap: 0.3rem;">
-                            <span style="font-size: 0.76rem; font-weight: 700; color: #475569;">Accent:</span>
-                            <div id="accentColorPalette" class="preview-palette-wrap"></div>
+                    <div style="display:flex; align-items:center; gap:0.6rem;">
+                        <div class="preview-zoom-controls">
+                            <button type="button" class="zoom-btn" onclick="zoomPreview(-0.1)" title="Zoom Out">−</button>
+                            <span class="zoom-level" id="zoomLevelIndicator">100%</span>
+                            <button type="button" class="zoom-btn" onclick="zoomPreview(0.1)" title="Zoom In">+</button>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 0.35rem;">
-                            <span style="font-size: 0.76rem; font-weight: 700; color: #475569;">Zoom:</span>
-                            <button type="button" class="btn-secondary-act" style="height: 28px; width: 28px; padding: 0; justify-content: center; font-weight: 800;" onclick="changeZoom(-0.1)">−</button>
-                            <span id="zoomLevelIndicator" style="font-size: 0.78rem; font-weight: 700; min-width: 38px; text-align: center;">100%</span>
-                            <button type="button" class="btn-secondary-act" style="height: 28px; width: 28px; padding: 0; justify-content: center; font-weight: 800;" onclick="changeZoom(0.1)">+</button>
-                        </div>
+                        <button type="button" class="btn-download-pdf-blue" onclick="downloadPDF()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Download PDF</span>
+                        </button>
                     </div>
+                </div>
 
-                    <!-- Preview Scroll Viewport -->
-                    <div class="preview-scroll-viewport" id="previewViewport">
-                        <div class="preview-scale-box" id="previewScaleBox">
-                            <!-- Sheet 1 (A4 Page 1) -->
-                            <div class="a4-sheet" id="sheet1"></div>
+                <!-- Secondary Styling & Quick Tools Toolbar -->
+                <div class="preview-secondary-toolbar" style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem; margin-bottom:1rem; padding:0.45rem 0.8rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; font-size:0.8rem;">
+                    <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                        <span style="font-weight:700; color:#475569;">Accent:</span>
+                        <div id="accentColorPalette" style="display:flex; align-items:center; gap:4px;"></div>
+                        <span style="color:#cbd5e1;">|</span>
+                        <span style="font-weight:700; color:#475569;">Font:</span>
+                        <select onchange="changeFont(this.value)" style="border:1px solid #cbd5e1; border-radius:6px; padding:2px 6px; font-size:0.78rem; background:#fff;">
+                            <option value="Inter, sans-serif">Inter</option>
+                            <option value="'Roboto', sans-serif">Roboto</option>
+                            <option value="'Merriweather', serif">Merriweather</option>
+                            <option value="'Source Sans Pro', sans-serif">Source Sans</option>
+                        </select>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.4rem;">
+                        <button type="button" onclick="openSmartImportModal()" style="border:1px solid #cbd5e1; background:#fff; border-radius:6px; padding:2px 8px; font-size:0.78rem; font-weight:600; cursor:pointer;" title="Import/Export JSON draft">📥 Drafts</button>
+                        <button type="button" onclick="openLinkedInOptimizer()" style="border:1px solid #cbd5e1; background:#fff; border-radius:6px; padding:2px 8px; font-size:0.78rem; font-weight:600; color:#0a66c2; cursor:pointer;" title="Optimize for LinkedIn">in Optimize</button>
+                    </div>
+                </div>
 
-                            <!-- Visual Page Break Separator (Only shown when content overflows to Page 2) -->
-                            <div class="a4-sheet-separator" id="sheetSeparator" style="display: none;">
-                                <span class="sheet-sep-badge">✂️ Page 1 End (A4) • Page 2 Starts Below</span>
-                            </div>
-
-                            <!-- Sheet 2 (A4 Page 2, only shown when content overflows) -->
-                            <div class="a4-sheet" id="sheet2" style="display: none;"></div>
-                        </div>
+                <!-- Canvas Viewport -->
+                <div class="preview-canvas-viewport" id="previewViewport">
+                    <div class="preview-scale-box" id="previewScaleBox">
+                        <div id="preview" class="preview-paper"></div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <!-- Hidden Raw Preview Buffer for backwards compatibility with templates -->
-        <div id="preview" style="display: none;"></div>
+        <!-- Hidden Dummies for any Legacy Sheet References -->
+        <div id="sheet1" style="display:none;"></div>
+        <div id="sheet2" style="display:none;"></div>
+        <div id="sheetSeparator" style="display:none;"></div>
 
         <!-- 1-Click Viral Social Sharing Container -->
-        <div class="aura-share-container" data-title="AuraToolkit360 Free In-Browser ATS Resume Maker" data-subtitle="Build professional ATS-friendly resumes in minutes with zero limits or sign-ups!" style="margin-top: 2.5rem;"></div>
+        <div class="aura-share-container" data-title="AuraToolkit360 Free In-Browser ATS Resume Maker" data-subtitle="Build professional ATS-friendly resumes in minutes with zero limits or sign-ups!" style="margin-top:2.5rem;"></div>
     </main>
 
 <!-- ===== LINKEDIN PROFILE OPTIMIZER MODAL ===== -->
@@ -1803,6 +1946,8 @@
 
         <!-- ===== FOOTER ===== -->
     
+
+
 <footer class="aura-footer-v2">
         <div class="footer-inner">
             <!-- Col 1: Brand Info & Status -->
@@ -1882,6 +2027,12 @@
         </div>
     </footer>
 <script>
+        var activeProfileId = 'default';
+        var currentZoom = 1.0;
+
+        var activeProfileId = 'default';
+        var currentZoom = 1.0;
+
         function setVal(id, val) {
             const el = document.getElementById(id);
             if (el) el.value = val !== undefined && val !== null ? val : '';
@@ -2904,7 +3055,7 @@
 
         
         /* ===== UI NAVIGATION, ZOOM & PAGINATION HELPERS ===== */
-        let currentZoom = 1.0;
+        currentZoom = 1.0;
         function changeZoom(delta) {
             currentZoom = Math.min(1.4, Math.max(0.5, Math.round((currentZoom + delta) * 10) / 10));
             const scaleBox = document.getElementById('previewScaleBox');
@@ -2953,97 +3104,9 @@
         function paginateIntoSheets() {
             const preview = document.getElementById('preview');
             const sheet1 = document.getElementById('sheet1');
-            const sheet2 = document.getElementById('sheet2');
-            const sep = document.getElementById('sheetSeparator');
-            const badge = document.getElementById('pageCountBadge');
-
-            if (!preview || !sheet1) return;
-
-            [sheet1, sheet2].forEach(sheet => {
-                if (!sheet) return;
-                sheet.style.fontFamily = currentFontFamily;
-                let fontSizePx = '13px';
-                let lineHeightVal = '1.5';
-                if (currentFontSize === 'compact') fontSizePx = '11.5px';
-                else if (currentFontSize === 'large') fontSizePx = '14.5px';
-
-                if (currentSpacing === 'tight') lineHeightVal = '1.3';
-                else if (currentSpacing === 'relaxed') lineHeightVal = '1.7';
-
-                sheet.style.fontSize = fontSizePx;
-                sheet.style.lineHeight = lineHeightVal;
-                sheet.style.backgroundColor = currentPaperColor || '#ffffff';
-            });
-
-            const MAX_P1_HEIGHT = 970;
-            const children = Array.from(preview.children);
-
-            if (children.length <= 1) {
-                sheet1.innerHTML = preview.innerHTML;
-                if (sheet2) {
-                    sheet2.innerHTML = '';
-                    sheet2.style.display = 'none';
-                }
-                if (sep) sep.style.display = 'none';
-                if (badge) {
-                    badge.innerHTML = '📄 1 Page (A4 Fit ✅)';
-                    badge.style.background = 'rgba(16, 185, 129, 0.12)';
-                    badge.style.color = '#059669';
-                    badge.style.borderColor = 'rgba(16, 185, 129, 0.25)';
-                }
-                return;
-            }
-
-            sheet1.innerHTML = '';
-            if (sheet2) sheet2.innerHTML = '';
-
-            let sheet1Nodes = [];
-            let sheet2Nodes = [];
-            let overflowed = false;
-
-            for (let i = 0; i < children.length; i++) {
-                const childClone = children[i].cloneNode(true);
-                if (!overflowed) {
-                    sheet1.appendChild(childClone);
-                    if (sheet1.scrollHeight > MAX_P1_HEIGHT && sheet1Nodes.length > 0) {
-                        sheet1.removeChild(childClone);
-                        overflowed = true;
-                        if (sheet2) sheet2.appendChild(childClone);
-                        sheet2Nodes.push(childClone);
-                    } else {
-                        sheet1Nodes.push(childClone);
-                    }
-                } else {
-                    if (sheet2) sheet2.appendChild(childClone);
-                    sheet2Nodes.push(childClone);
-                }
-            }
-
-            if (sheet2Nodes.length > 0 && sheet2) {
-                sheet2.style.display = 'block';
-                if (sep) sep.style.display = 'flex';
-                const p2Percent = Math.min(100, Math.max(15, Math.round((sheet2.scrollHeight / MAX_P1_HEIGHT) * 100)));
-                if (badge) {
-                    badge.innerHTML = `⚠️ 2 Pages (P2: ~${p2Percent}% filled)`;
-                    badge.style.background = 'rgba(245, 158, 11, 0.15)';
-                    badge.style.color = '#d97706';
-                    badge.style.borderColor = 'rgba(245, 158, 11, 0.3)';
-                }
-            } else {
-                if (sheet2) {
-                    sheet2.style.display = 'none';
-                    sheet2.innerHTML = '';
-                }
-                if (sep) sep.style.display = 'none';
-                if (badge) {
-                    badge.innerHTML = '📄 1 Page (A4 Fit ✅)';
-                    badge.style.background = 'rgba(16, 185, 129, 0.12)';
-                    badge.style.color = '#059669';
-                    badge.style.borderColor = 'rgba(16, 185, 129, 0.25)';
-                }
-            }
+            if (preview && sheet1) sheet1.innerHTML = preview.innerHTML;
         }
-    
+
         function updatePreview() {
             const data = getFormData();
             localStorage.setItem('resumeCvMakerDraft', JSON.stringify(data));
@@ -3078,7 +3141,7 @@
             const skillsCategories = parseSkillsInput(data.skills || '');
             const accent = currentAccentColor;
 
-            setTimeout(() => { paginateIntoSheets(); updateProfileProgress(); }, 20);
+            setTimeout(() => { updatePageBreakIndicator(); updateProfileProgress(); }, 20);
             if (document.getElementById('targetJobDescInput') && document.getElementById('targetJobDescInput').value.trim()) runLiveJobMatch();
 
             // Template Dispatcher
@@ -3224,66 +3287,55 @@
             const name = (document.getElementById('name') && document.getElementById('name').value.trim()) || 'resume';
             const filename = `${name.replace(/\s+/g, '-').toLowerCase()}-cv.pdf`;
 
-            updatePreview();
-
-            const sheet1 = document.getElementById('sheet1');
-            const sheet2 = document.getElementById('sheet2');
-
-            if (!sheet1 || !sheet1.innerHTML.trim()) {
+            const preview = document.getElementById('preview');
+            if (!preview || !preview.innerHTML.trim()) {
                 alert('Please enter your resume details first.');
                 return;
             }
 
-            const printContainer = document.createElement('div');
-            printContainer.id = 'auraPdfExportContainer';
-            printContainer.style.position = 'fixed';
-            printContainer.style.left = '-9999px';
-            printContainer.style.top = '0';
-            printContainer.style.width = '794px';
-            printContainer.style.background = '#ffffff';
-            printContainer.style.color = '#0f172a';
-            printContainer.style.zIndex = '-9999';
+            // Create offscreen container with exact A4 proportion (794px width)
+            const exportContainer = document.createElement('div');
+            exportContainer.style.position = 'fixed';
+            exportContainer.style.left = '-9999px';
+            exportContainer.style.top = '0';
+            exportContainer.style.width = '794px';
+            exportContainer.style.background = currentPaperColor || '#ffffff';
+            exportContainer.style.color = '#0f172a';
+            exportContainer.style.padding = '18mm 16mm';
+            exportContainer.style.boxSizing = 'border-box';
+            exportContainer.style.fontFamily = currentFontFamily || 'Inter, sans-serif';
+            exportContainer.style.fontSize = preview.style.fontSize || '13.5px';
+            exportContainer.style.lineHeight = preview.style.lineHeight || '1.55';
+            exportContainer.innerHTML = preview.innerHTML;
 
-            const p1 = document.createElement('div');
-            p1.className = 'a4-sheet-export';
-            p1.style.width = '794px';
-            p1.style.minHeight = '1120px';
-            p1.style.padding = '18mm 16mm';
-            p1.style.boxSizing = 'border-box';
-            p1.style.background = currentPaperColor || '#ffffff';
-            p1.style.fontFamily = currentFontFamily || 'Inter, sans-serif';
-            p1.style.fontSize = sheet1.style.fontSize || '13px';
-            p1.style.lineHeight = sheet1.style.lineHeight || '1.5';
-            p1.innerHTML = sheet1.innerHTML;
-            printContainer.appendChild(p1);
+            // Remove any visual break markers
+            exportContainer.querySelectorAll('.page-break-marker').forEach(el => el.remove());
 
-            const hasPage2 = sheet2 && sheet2.style.display !== 'none' && sheet2.innerHTML.trim().length > 20;
+            document.body.appendChild(exportContainer);
 
-            if (hasPage2) {
-                const pb = document.createElement('div');
-                pb.className = 'html2pdf__page-break';
-                pb.style.pageBreakAfter = 'always';
-                pb.style.pageBreakBefore = 'always';
-                pb.style.breakAfter = 'page';
-                pb.style.breakBefore = 'page';
-                pb.style.height = '0px';
-                printContainer.appendChild(pb);
+            // A4 page content height threshold (~980px printable height)
+            const A4_PAGE_HEIGHT = 980;
+            const contentHeight = exportContainer.scrollHeight;
 
-                const p2 = document.createElement('div');
-                p2.className = 'a4-sheet-export';
-                p2.style.width = '794px';
-                p2.style.minHeight = '1120px';
-                p2.style.padding = '18mm 16mm';
-                p2.style.boxSizing = 'border-box';
-                p2.style.background = currentPaperColor || '#ffffff';
-                p2.style.fontFamily = currentFontFamily || 'Inter, sans-serif';
-                p2.style.fontSize = sheet2.style.fontSize || '13px';
-                p2.style.lineHeight = sheet2.style.lineHeight || '1.5';
-                p2.innerHTML = sheet2.innerHTML;
-                printContainer.appendChild(p2);
+            if (contentHeight > A4_PAGE_HEIGHT + 30) {
+                // Multi-page: Find the natural section boundary before A4_PAGE_HEIGHT
+                let currentH = 0;
+                let breakInserted = false;
+                const children = Array.from(exportContainer.children);
+
+                for (let i = 0; i < children.length; i++) {
+                    const child = children[i];
+                    const childH = child.offsetHeight || child.scrollHeight || 100;
+                    if (!breakInserted && (currentH + childH > A4_PAGE_HEIGHT) && currentH > 200) {
+                        const pageBreak = document.createElement('div');
+                        pageBreak.className = 'html2pdf__page-break';
+                        pageBreak.style.cssText = 'page-break-before: always !important; break-before: page !important; height: 0px !important; margin: 0px !important; padding: 0px !important;';
+                        exportContainer.insertBefore(pageBreak, child);
+                        breakInserted = true;
+                    }
+                    currentH += childH;
+                }
             }
-
-            document.body.appendChild(printContainer);
 
             if (typeof html2pdf !== 'undefined') {
                 const opt = {
@@ -3302,15 +3354,15 @@
                 };
 
                 try {
-                    await html2pdf().set(opt).from(printContainer).save();
+                    await html2pdf().set(opt).from(exportContainer).save();
                 } catch (err) {
-                    console.error('html2pdf generation error, falling back to window.print():', err);
+                    console.error('html2pdf failed, fallback to window.print():', err);
                     window.print();
                 } finally {
-                    printContainer.remove();
+                    exportContainer.remove();
                 }
             } else {
-                printContainer.remove();
+                exportContainer.remove();
                 window.print();
             }
         }
@@ -3942,7 +3994,7 @@
         /* ==========================================================================
            AURA MULTI-PROFILE RESUME WORKSPACE
            ========================================================================== */
-        let activeProfileId = 'default';
+        activeProfileId = activeProfileId || 'default';
 
         function initResumeProfiles() {
             try {
