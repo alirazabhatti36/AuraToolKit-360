@@ -1106,6 +1106,7 @@
     <link rel="stylesheet" href="/assets/saas-ui.css">
     <link rel="stylesheet" href="/assets/aura-fx.css">
     <script defer src="/assets/aura-fx.js"></script>
+    <script defer src="/assets/nav-search.js"></script>
 </head>
 <body>
 
@@ -1128,23 +1129,81 @@
             </a>
             
             <div class="nav-center">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/converter/" class="nav-link">Converter</a>
-                <a href="/resume-cv-maker/" class="nav-link">Resume</a>
-                <a href="/cover-letter-maker/" class="nav-link">Cover Letter</a>
-                <a href="/resume-score-checker/" class="nav-link">Score Checker</a>
-                <a href="/hr-helper/" class="nav-link active">HR Bulk <span class="nav-badge-pill">New</span></a>
-                <a href="/blogs/" class="nav-link">Blogs</a>
-                <a href="/about/" class="nav-link">About</a>
+                <a href="/" class="nav-link ">Home</a>
+                <div class="nav-item-dropdown">
+                    <a href="/converter/" class="nav-link ">Converter <span class="nav-chevron">▾</span></a>
+                    <div class="nav-dropdown-content">
+                        <a href="/converter/#pdf-to-word"><span>📄</span> PDF to Word</a>
+                        <a href="/converter/#word-to-pdf"><span>📝</span> Word to PDF</a>
+                        <a href="/converter/#merge-pdf"><span>📑</span> Merge PDF</a>
+                        <a href="/converter/#compress-pdf"><span>🗜️</span> Compress PDF</a>
+                        <a href="/converter/" class="dropdown-view-all">View All 59+ Tools →</a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="/resume-cv-maker/" class="nav-link ">Resume <span class="nav-chevron">▾</span></a>
+                    <div class="nav-dropdown-content">
+                        <a href="/resume-cv-maker/"><span>📝</span> Resume CV Maker</a>
+                        <a href="/resume-cv-maker/#templates"><span>🎨</span> 12 ATS Templates</a>
+                        <a href="/resume-cv-maker/"><span>⚡</span> 1-Page Resume Fit</a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="/cover-letter-maker/" class="nav-link ">Cover Letter <span class="nav-chevron">▾</span></a>
+                    <div class="nav-dropdown-content">
+                        <a href="/cover-letter-maker/"><span>✉️</span> Cover Letter Builder</a>
+                        <a href="/cover-letter-maker/"><span>🎯</span> Targeted Cover Letter</a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="/resume-score-checker/" class="nav-link ">Score Checker <span class="nav-chevron">▾</span></a>
+                    <div class="nav-dropdown-content">
+                        <a href="/resume-score-checker/"><span>🎯</span> ATS Score Checker</a>
+                        <a href="/resume-score-checker/"><span>🔍</span> Keyword Matcher</a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="/hr-helper/" class="nav-link active">HR Bulk New <span class="nav-chevron">▾</span></a>
+                    <div class="nav-dropdown-content">
+                        <a href="/hr-helper/"><span>👥</span> HR Bulk Screener</a>
+                        <a href="/saas/"><span>🏢</span> AuraHR 360 Enterprise</a>
+                    </div>
+                </div>
+                <a href="/blogs/" class="nav-link ">Blogs</a>
+                <a href="/about/" class="nav-link ">About</a>
+            </div>
+
+            <!-- Search Tools Input Pill (media_1790969611056.png) -->
+            <div class="nav-search-wrap">
+                <span class="nav-search-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+                <input type="text" id="navGlobalSearch" class="nav-search-input" placeholder="Search tools..." autocomplete="off" oninput="handleNavSearch(this.value)" onkeydown="if(event.key==='Enter') executeNavSearch()">
+                <div id="navSearchMenu" class="nav-search-results" style="display:none;"></div>
             </div>
 
             <div class="nav-right-actions">
-                <a href="/saas/" class="btn-aura-saas" title="Launch AuraHR 360 Enterprise SaaS Portal"><span>⚡</span> AuraHR 360</a>
-                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="Bookmark AuraToolkit360 (Ctrl+D)" aria-label="Bookmark site"><span class="bm-star">★</span><span class="bm-text"> Bookmark</span></button>
+                <a href="/saas/" class="btn-aurahr-pill" title="Launch AuraHR 360 Enterprise SaaS Portal">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                        <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                    </svg>
+                    <span>AuraHR 360</span>
+                </a>
+                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="Bookmark AuraToolkit360 (Ctrl+D)" aria-label="Bookmark site">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span class="bm-text">Bookmark</span>
+                </button>
                 <div class="lang-switcher" id="langSwitcherContainer">
                     <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
                         <span class="lang-globe">🌐</span>
-                        <span class="lang-current-flag">🇺🇸</span>
                         <span class="lang-current-label">EN</span>
                         <span class="lang-arrow">▾</span>
                     </button>
@@ -1167,15 +1226,15 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-links">
-                <a href="/saas/" class="mobile-nav-item" style="color:#38bdf8; font-weight:700; background:rgba(56,189,248,0.1); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
-                <a href="/" class="mobile-nav-item"><span>🏠</span> Home</a>
-                <a href="/converter/" class="mobile-nav-item"><span>🔄</span> File Converter Suite</a>
-                <a href="/resume-cv-maker/" class="mobile-nav-item"><span>📄</span> ATS Resume CV Maker</a>
-                <a href="/cover-letter-maker/" class="mobile-nav-item"><span>📝</span> ATS Cover Letter Builder</a>
-                <a href="/resume-score-checker/" class="mobile-nav-item"><span>🎯</span> Resume ATS Checker</a>
-                <a href="/hr-helper/" class="mobile-nav-item"><span>👥</span> HR Bulk Screener <span class="nav-badge-pill">New</span></a>
-                <a href="/blogs/" class="mobile-nav-item"><span>📚</span> Career & Tech Blogs</a>
-                <a href="/about/" class="mobile-nav-item"><span>ℹ️</span> About AuraToolkit360</a>
+                <a href="/saas/" class="mobile-nav-item" style="color:#2563eb; font-weight:700; background:rgba(37,99,235,0.08); border-radius:10px;"><span>⚡</span> AuraHR 360 (B2B Enterprise SaaS)</a>
+                <a href="/" class="mobile-nav-item "><span>🏠</span> Home</a>
+                <a href="/converter/" class="mobile-nav-item "><span>🔄</span> File Converter Suite</a>
+                <a href="/resume-cv-maker/" class="mobile-nav-item "><span>📄</span> ATS Resume CV Maker</a>
+                <a href="/cover-letter-maker/" class="mobile-nav-item "><span>📝</span> ATS Cover Letter Builder</a>
+                <a href="/resume-score-checker/" class="mobile-nav-item "><span>🎯</span> Resume ATS Checker</a>
+                <a href="/hr-helper/" class="mobile-nav-item active"><span>👥</span> HR Bulk Screener</a>
+                <a href="/blogs/" class="mobile-nav-item "><span>📚</span> Career & Tech Blogs</a>
+                <a href="/about/" class="mobile-nav-item "><span>ℹ️</span> About AuraToolkit360</a>
                 <a href="/contact/" class="mobile-nav-item"><span>✉️</span> Help & Support</a>
                 <button type="button" class="mobile-nav-item pwa-install-btn" style="display:none; color:#10b981; width:100%; border:none; text-align:left; background:rgba(16,185,129,0.08); font-size:0.95rem; font-weight:600; cursor:pointer;" onclick="installPwaApp()"><span>📲</span> Install AuraToolkit360 App</button>
                 <div class="mobile-lang-container">

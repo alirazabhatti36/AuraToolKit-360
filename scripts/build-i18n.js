@@ -51,11 +51,10 @@ function generateLangSwitcherHtml(currentLangCode, pagePath) {
     return '<div class="lang-switcher" id="langSwitcherContainer">\n' +
            '    <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">\n' +
            '        <span class="lang-globe">🌐</span>\n' +
-           '        <span class="lang-current-flag">' + currentObj.flag + '</span>\n' +
            '        <span class="lang-current-label">' + currentObj.code.toUpperCase() + '</span>\n' +
            '        <span class="lang-arrow">▾</span>\n' +
            '    </button>\n' +
-           '    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">\n' +
+           '    <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" style="display: none;">\n' +
            '        <a href="/' + trailing + '" class="lang-option ' + (currentLangCode === 'en' ? 'active' : '') + '" data-lang="en" role="menuitem"><span class="flag">🇺🇸</span> English</a>\n' +
            LANGS.map(l => '        <a href="/' + l.code + '/' + trailing + '" class="lang-option ' + (currentLangCode === l.code ? 'active' : '') + '" data-lang="' + l.code + '" role="menuitem"><span class="flag">' + l.flag + '</span> ' + l.name + '</a>').join('\n') + '\n' +
            '    </div>\n' +
