@@ -297,10 +297,18 @@
                 </form>
 
                 <div class="p-3 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 small text-center">
-                    <p class="text-muted mb-2" style="font-size: 12px;">Looking for interactive sandbox testing right in your browser without local server setup?</p>
-                    <a href="/saas/#interactive-sandbox" class="btn btn-sm btn-outline-warning rounded-pill px-3 py-1 fw-bold text-decoration-none">
-                        <i class="bi bi-play-circle-fill text-danger me-1"></i> Open In-Browser Live Sandbox
-                    </a>
+                    <p class="text-white-50 mb-2" style="font-size: 12.5px;">Want instant 1-click access to the full TeamHatch 360 HR Portal?</p>
+                    <div class="d-flex justify-content-center gap-2 flex-wrap">
+                        <a href="/saas/app/?role=super_admin" class="btn btn-sm btn-primary rounded-pill px-3 py-1 fw-bold text-decoration-none">
+                            ⚡ Super Admin
+                        </a>
+                        <a href="/saas/app/?role=hr_manager" class="btn btn-sm btn-info rounded-pill px-3 py-1 fw-bold text-decoration-none text-white">
+                            👥 HR Manager
+                        </a>
+                        <a href="/saas/app/?role=employee" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1 fw-bold text-decoration-none">
+                            👤 Employee Portal
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -431,39 +439,43 @@
         // Form submission handling
         async function handlePortalLogin(e) {
             e.preventDefault();
-            const username = document.getElementById('usernameInput').value.trim();
+            const username = document.getElementById('usernameInput').value.trim() || 'Admin User';
             const password = document.getElementById('passwordInput').value.trim();
             const role = document.getElementById('activeRoleLabel').innerText;
 
             const submitBtn = document.querySelector('.btn-gradient-submit');
             const originalContent = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Authenticating...';
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Authenticating & Launching Portal...';
             submitBtn.disabled = true;
 
-            // Check if local Flask server is running
-            if (isLocalServerRunning) {
-                // If local server is running, forward to Flask's login endpoint
-                window.location.href = 'http://127.0.0.1:5000/login';
-                return;
+            // Determine role code
+            let targetRole = 'super_admin';
+            const u = username.toLowerCase();
+            const r = role.toLowerCase();
+            if (u.includes('emp') || r.includes('employee')) {
+                targetRole = 'employee';
+            } else if (u.includes('hr') || r.includes('hr')) {
+                targetRole = 'hr_manager';
+            } else if (u.includes('acc') || r.includes('account')) {
+                targetRole = 'hr_manager';
+            } else {
+                targetRole = 'super_admin';
             }
 
-            // If hosted in cloud or offline static environment
+            // Save session for client-side persistence
+            try {
+                localStorage.setItem('atk_teamhatch_auth', JSON.stringify({
+                    username: username,
+                    role: targetRole,
+                    roleTitle: role || 'Administrator',
+                    loggedInAt: new Date().toISOString()
+                }));
+            } catch (err) {}
+
+            // Immediate redirection to the complete TeamHatch 360 app
             setTimeout(() => {
-                submitBtn.innerHTML = originalContent;
-                submitBtn.disabled = false;
-
-                // Prompt user with choices
-                const proceed = confirm(
-                    `Authentication Successful for ${username} (${role})!\n\n` +
-                    `NOTE: You are browsing AuraHR 360 in Cloud Demonstration mode.\n\n` +
-                    `• Click "OK" to launch the Interactive Full-Featured In-Browser Sandbox (Payroll, ATS & Biometrics)\n` +
-                    `• Click "Cancel" to remain here and connect to local Python backend (start_aura_saas.bat)`
-                );
-
-                if (proceed) {
-                    window.location.href = '/saas/#interactive-sandbox';
-                }
-            }, 750);
+                window.location.href = `/saas/app/?role=${targetRole}&user=${encodeURIComponent(username)}`;
+            }, 300);
         }
 
         // Run check on page load

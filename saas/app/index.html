@@ -1,0 +1,2322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamHatch 360 &bull; Enterprise Cloud HR &amp; ATS Portal</title>
+    <meta name="description" content="TeamHatch 360 Cloud HR, Biometric Attendance, Payroll Processing, and ATS Candidate Screening SaaS Platform.">
+    
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Firebase SDK (Compat Version for in-browser client) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --primary-light: #eef2ff;
+            --secondary: #06b6d4;
+            --accent: #f59e0b;
+            --sidebar-bg: #0f172a;
+            --sidebar-hover: #1e293b;
+            --body-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--body-bg);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+        }
+
+        /* ===== SIDEBAR STYLES ===== */
+        .portal-sidebar {
+            width: 270px;
+            background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+            color: #ffffff;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1040;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 4px 0 20px rgba(15, 23, 42, 0.2);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sidebar-brand-box {
+            padding: 1.5rem 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .sidebar-brand-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4338CA 0%, #4F46E5 50%, #06B6D4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+            flex-shrink: 0;
+        }
+
+        .sidebar-brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-brand-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .sidebar-brand-subtitle {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* User Profile Pill in Sidebar */
+        .sidebar-user-pill {
+            margin: 1rem 1.2rem 0.5rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .user-avatar-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.88rem;
+            flex-shrink: 0;
+        }
+
+        .user-info-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .user-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #f8fafc;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .user-role-badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.15rem 0.45rem;
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            text-transform: capitalize;
+        }
+
+        /* Sidebar Navigation Menu */
+        .sidebar-menu {
+            padding: 0.5rem 0.85rem;
+            list-style: none;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .sidebar-menu::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-menu::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+
+        .menu-category-title {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #64748b;
+            padding: 0.85rem 0.75rem 0.35rem;
+        }
+
+        .sidebar-item {
+            margin-bottom: 2px;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.65rem 0.9rem;
+            border-radius: 10px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.18s ease;
+            position: relative;
+        }
+
+        .sidebar-link i {
+            font-size: 1.05rem;
+            color: #64748b;
+            transition: color 0.18s ease;
+        }
+
+        .sidebar-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .sidebar-link:hover i {
+            color: #ffffff;
+        }
+
+        .sidebar-link.active {
+            color: #ffffff;
+            background: linear-gradient(90deg, #4f46e5 0%, #3b82f6 100%);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+        }
+
+        .sidebar-link.active i {
+            color: #ffffff;
+        }
+
+        /* Sidebar Footer */
+        .sidebar-footer {
+            padding: 1rem 1.2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .cloud-sync-pill {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            padding: 0.4rem 0.6rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            margin-bottom: 0.6rem;
+        }
+
+        .cloud-pulse {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 999px;
+            box-shadow: 0 0 8px #10b981;
+            display: inline-block;
+        }
+
+        .btn-sidebar-role {
+            width: 100%;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-sidebar-role:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-sidebar-logout {
+            width: 100%;
+            height: 36px;
+            background: transparent;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            color: #f87171;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-sidebar-logout:hover {
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+        }
+
+        /* ===== MAIN CONTENT WRAPPER ===== */
+        .portal-main {
+            margin-left: 270px;
+            flex: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Topbar Header */
+        .portal-topbar {
+            height: 70px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .topbar-module-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .topbar-search-wrap {
+            position: relative;
+            width: 320px;
+        }
+
+        .topbar-search-wrap i {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .topbar-search-input {
+            width: 100%;
+            height: 40px;
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 0.45rem 1rem 0.45rem 2.4rem;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: #0f172a;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .topbar-search-input:focus {
+            background: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .live-clock-badge {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 999px;
+            padding: 0.35rem 0.85rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-quick-clockin {
+            height: 40px;
+            padding: 0 1.2rem;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.86rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+            transition: all 0.2s;
+        }
+
+        .btn-quick-clockin:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-mobile-sidebar-toggle {
+            display: none;
+            width: 38px;
+            height: 38px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            color: #334155;
+        }
+
+        /* ===== VIEW PANELS CONTAINER ===== */
+        .portal-body {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .module-pane {
+            display: none;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        .module-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Common Cards */
+        .portal-card {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-header-flex h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Stat Metrics Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.4rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card-info h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-card-val {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 0.35rem;
+        }
+
+        .stat-card-sub {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #10b981;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .stat-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+        }
+
+        .icon-blue { background: #eff6ff; color: #2563eb; }
+        .icon-green { background: #ecfdf5; color: #10b981; }
+        .icon-amber { background: #fffbeb; color: #f59e0b; }
+        .icon-purple { background: #faf5ff; color: #9333ea; }
+
+        /* Tables */
+        .portal-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .portal-table th {
+            background: #f8fafc;
+            color: #475569;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 0.85rem 1rem;
+            border-bottom: 1.5px solid #e2e8f0;
+        }
+
+        .portal-table td {
+            padding: 1rem;
+            font-size: 0.88rem;
+            color: #1e293b;
+            font-weight: 600;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: middle;
+        }
+
+        .portal-table tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        /* Status Badges */
+        .badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge-present { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+        .badge-late { background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
+        .badge-absent { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+        .badge-paid { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+        .badge-pending { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+        .badge-active { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+
+        /* Buttons */
+        .btn-portal-primary {
+            height: 40px;
+            padding: 0 1.25rem;
+            border-radius: 10px;
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.86rem;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+            transition: all 0.2s;
+        }
+
+        .btn-portal-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-portal-outline {
+            height: 40px;
+            padding: 0 1.15rem;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #475569;
+            font-weight: 700;
+            font-size: 0.86rem;
+            border: 1.5px solid #cbd5e1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-portal-outline:hover {
+            background: #f8fafc;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        /* ATS Pipeline Kanban */
+        .ats-kanban-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            align-items: start;
+        }
+
+        .ats-column {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1rem;
+        }
+
+        .ats-column-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.85rem;
+            font-size: 0.86rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .candidate-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 0.85rem;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+            transition: all 0.2s;
+            cursor: grab;
+        }
+
+        .candidate-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .portal-sidebar {
+                transform: translateX(-100%);
+            }
+            .portal-sidebar.mobile-open {
+                transform: translateX(0);
+            }
+            .portal-main {
+                margin-left: 0;
+            }
+            .btn-mobile-sidebar-toggle {
+                display: flex;
+            }
+            .topbar-search-wrap {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .portal-topbar {
+                padding: 0 1rem;
+            }
+            .portal-body {
+                padding: 1rem;
+            }
+            .topbar-search-wrap {
+                display: none;
+            }
+            .live-clock-badge {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== SIDEBAR NAVIGATION ===== -->
+    <aside class="portal-sidebar" id="portalSidebar">
+        <div>
+            <!-- Brand -->
+            <a href="/saas/app/" class="sidebar-brand-box">
+                <div class="sidebar-brand-logo">A</div>
+                <div class="sidebar-brand-text">
+                    <span class="sidebar-brand-title">AuraHR <span class="badge bg-primary text-white rounded-pill px-2 py-0" style="font-size:0.65rem;">360</span></span>
+                    <span class="sidebar-brand-subtitle">TeamHatch Enterprise</span>
+                </div>
+            </a>
+
+            <!-- User Profile Quick Card -->
+            <div class="sidebar-user-pill">
+                <div class="user-avatar-circle" id="userAvatar">A</div>
+                <div class="user-info-text">
+                    <div class="user-name" id="userNameLabel">Admin User</div>
+                    <span class="user-role-badge" id="userRoleBadge">Super Admin</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="sidebar-menu">
+                <li class="menu-category-title">Main Operations</li>
+                <li class="sidebar-item">
+                    <a href="#dashboard" class="sidebar-link active" onclick="switchModule('dashboard')">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" id="navItemEmployees">
+                    <a href="#employees" class="sidebar-link" onclick="switchModule('employees')">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Employees</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#attendance" class="sidebar-link" onclick="switchModule('attendance')">
+                        <i class="bi bi-clock-history"></i>
+                        <span>Biometrics &amp; Logs</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" id="navItemPayroll">
+                    <a href="#payroll" class="sidebar-link" onclick="switchModule('payroll')">
+                        <i class="bi bi-cash-stack"></i>
+                        <span>Payroll &amp; Payslips</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" id="navItemATS">
+                    <a href="#ats" class="sidebar-link" onclick="switchModule('ats')">
+                        <i class="bi bi-briefcase-fill"></i>
+                        <span>ATS Recruitment</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#requests" class="sidebar-link" onclick="switchModule('requests')">
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Leaves &amp; Requests</span>
+                    </a>
+                </li>
+
+                <li class="menu-category-title">Organization &amp; Assets</li>
+                <li class="sidebar-item" id="navItemInventory">
+                    <a href="#inventory" class="sidebar-link" onclick="switchModule('inventory')">
+                        <i class="bi bi-laptop-fill"></i>
+                        <span>Asset Inventory</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#settings" class="sidebar-link" onclick="switchModule('settings')">
+                        <i class="bi bi-gear-fill"></i>
+                        <span>Tenant &amp; Firebase</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="sidebar-footer">
+            <div class="cloud-sync-pill">
+                <span><span class="cloud-pulse me-1"></span> Firebase Firestore</span>
+                <span id="cloudStatusText" style="color:#10b981; font-weight:700;">Live</span>
+            </div>
+
+            <!-- Quick Role Switcher Button for Testing -->
+            <button type="button" class="btn-sidebar-role" onclick="toggleRoleSwitchModal()">
+                <i class="bi bi-arrow-left-right"></i>
+                <span id="roleSwitchBtnText">Switch Role (Admin/Staff)</span>
+            </button>
+
+            <!-- Exit / Logout -->
+            <button type="button" class="btn-sidebar-logout" onclick="logoutSession()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout Portal</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT AREA ===== -->
+    <main class="portal-main">
+        <!-- Topbar -->
+        <header class="portal-topbar">
+            <div class="topbar-left">
+                <button type="button" class="btn-mobile-sidebar-toggle" onclick="toggleMobileSidebar()">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <h1 class="topbar-module-title" id="topbarModuleTitle">Enterprise Dashboard</h1>
+                <div class="topbar-search-wrap">
+                    <i class="bi bi-search"></i>
+                    <input type="text" class="topbar-search-input" id="globalPortalSearch" placeholder="Search staff, salary, candidate..." oninput="handleGlobalSearch(this.value)">
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <div class="live-clock-badge">
+                    <i class="bi bi-clock text-primary"></i>
+                    <span id="liveClockDisplay">09:42:15 AM</span>
+                </div>
+
+                <button type="button" class="btn-quick-clockin" id="quickClockBtn" onclick="triggerClockIn()">
+                    <i class="bi bi-fingerprint"></i>
+                    <span>Biometric Clock In</span>
+                </button>
+
+                <a href="/saas/" class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-1 fw-bold text-nowrap" title="Return to SaaS Homepage">
+                    <i class="bi bi-globe me-1"></i> Website
+                </a>
+            </div>
+        </header>
+
+        <!-- Body Views -->
+        <div class="portal-body">
+            
+            <!-- MODULE 1: DASHBOARD -->
+            <div class="module-pane active" id="pane-dashboard">
+                <!-- Welcome Banner -->
+                <div class="portal-card" style="background:linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color:#ffffff; border:none; padding:2rem;">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                        <div>
+                            <span class="badge bg-primary text-white rounded-pill px-3 py-1 mb-2">TeamHatch 360 &bull; Cloud Enterprise</span>
+                            <h2 class="fw-bold mb-1" id="dashWelcomeTitle">Welcome back, Administrator!</h2>
+                            <p class="text-white-50 mb-0">Multi-tenant attendance, payroll, and candidate screening synchronized across all active branches.</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-light rounded-pill px-3 py-2 fw-bold text-dark" onclick="openAddEmployeeModal()">+ New Employee</button>
+                            <button type="button" class="btn btn-primary rounded-pill px-3 py-2 fw-bold" onclick="switchModule('payroll')">Process Payroll ↗</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-info">
+                            <h4>Total Active Staff</h4>
+                            <div class="stat-card-val" id="metricTotalStaff">24</div>
+                            <div class="stat-card-sub"><i class="bi bi-check-circle-fill"></i> 100% active roster</div>
+                        </div>
+                        <div class="stat-card-icon icon-blue"><i class="bi bi-people-fill"></i></div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-info">
+                            <h4>Today's Attendance</h4>
+                            <div class="stat-card-val" id="metricAttendanceRate">91.6%</div>
+                            <div class="stat-card-sub"><i class="bi bi-fingerprint"></i> 22 present &bull; 2 leaves</div>
+                        </div>
+                        <div class="stat-card-icon icon-green"><i class="bi bi-clock-history"></i></div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-info">
+                            <h4>Monthly Payroll Outflow</h4>
+                            <div class="stat-card-val" id="metricPayrollTotal">PKR 1,480K</div>
+                            <div class="stat-card-sub"><i class="bi bi-wallet2"></i> Tax &amp; allowances synced</div>
+                        </div>
+                        <div class="stat-card-icon icon-purple"><i class="bi bi-cash-stack"></i></div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-info">
+                            <h4>ATS Pipeline</h4>
+                            <div class="stat-card-val" id="metricCandidates">4 Active</div>
+                            <div class="stat-card-sub" style="color:#f59e0b;"><i class="bi bi-person-check-fill"></i> 2 scheduled interviews</div>
+                        </div>
+                        <div class="stat-card-icon icon-amber"><i class="bi bi-briefcase-fill"></i></div>
+                    </div>
+                </div>
+
+                <!-- Two-Column Operational Widgets -->
+                <div class="row g-4">
+                    <!-- Left: Recent Attendance Feed -->
+                    <div class="col-lg-7">
+                        <div class="portal-card h-100">
+                            <div class="card-header-flex">
+                                <h3><i class="bi bi-clock-history text-primary"></i> Real-Time Biometric Punch Feed</h3>
+                                <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3" onclick="switchModule('attendance')">View All</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="portal-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Staff Member</th>
+                                            <th>Department</th>
+                                            <th>Time In</th>
+                                            <th>Device / Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dashAttendanceTable"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Pending Requests & Approvals -->
+                    <div class="col-lg-5">
+                        <div class="portal-card h-100">
+                            <div class="card-header-flex">
+                                <h3><i class="bi bi-bell-fill text-warning"></i> Pending Requests</h3>
+                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-2" id="dashPendingBadge">2 Pending</span>
+                            </div>
+                            <div id="dashRequestsList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 2: EMPLOYEES DIRECTORY -->
+            <div class="module-pane" id="pane-employees">
+                <div class="portal-card">
+                    <div class="card-header-flex flex-wrap gap-3">
+                        <div>
+                            <h3><i class="bi bi-people-fill text-primary"></i> Employee Directory</h3>
+                            <small class="text-muted">Manage staff profiles, departmental allocations, and biometric credentials.</small>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <select class="form-select form-select-sm" id="empDeptFilter" onchange="renderEmployeesTable()" style="width:160px; height:40px; border-radius:10px;">
+                                <option value="all">All Departments</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Human Resources">Human Resources</option>
+                                <option value="Sales &amp; Growth">Sales &amp; Growth</option>
+                                <option value="Finance">Finance</option>
+                            </select>
+                            <button type="button" class="btn-portal-primary" onclick="openAddEmployeeModal()">
+                                <i class="bi bi-person-plus-fill"></i> Add Employee
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="portal-table">
+                            <thead>
+                                <tr>
+                                    <th>Staff ID</th>
+                                    <th>Employee Name</th>
+                                    <th>Department &amp; Role</th>
+                                    <th>Contact Info</th>
+                                    <th>Basic Salary</th>
+                                    <th>Status</th>
+                                    <th style="text-align:right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeesListBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 3: BIOMETRIC ATTENDANCE & SHIFTS -->
+            <div class="module-pane" id="pane-attendance">
+                <div class="portal-card">
+                    <div class="card-header-flex flex-wrap gap-3">
+                        <div>
+                            <h3><i class="bi bi-fingerprint text-success"></i> Biometric Attendance &amp; Shift Logs</h3>
+                            <small class="text-muted">Live synchronization with Hikvision bridge hardware &amp; GPS mobile check-ins.</small>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="btn-portal-primary" onclick="triggerClockIn()">
+                                <i class="bi bi-fingerprint"></i> Simulate Biometric Check-In
+                            </button>
+                            <button type="button" class="btn-portal-outline" onclick="exportAttendanceCsv()">
+                                <i class="bi bi-download"></i> Export CSV
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Attendance Summary Row -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <small class="text-muted fw-bold">SCHEDULED SHIFT</small>
+                                <div class="fw-bold fs-5 text-dark">09:00 AM - 06:00 PM</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <small class="text-muted fw-bold">PRESENT ON TIME</small>
+                                <div class="fw-bold fs-5 text-success" id="attPresentCount">20 Staff</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <small class="text-muted fw-bold">LATE ARRIVALS</small>
+                                <div class="fw-bold fs-5 text-warning" id="attLateCount">2 Staff</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <small class="text-muted fw-bold">APPROVED LEAVES</small>
+                                <div class="fw-bold fs-5 text-danger" id="attLeaveCount">2 Staff</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="portal-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Employee</th>
+                                    <th>Check In</th>
+                                    <th>Check Out</th>
+                                    <th>Total Hours</th>
+                                    <th>Biometric Source</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendanceLogTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 4: PAYROLL & SALARY SLIPS -->
+            <div class="module-pane" id="pane-payroll">
+                <div class="portal-card">
+                    <div class="card-header-flex flex-wrap gap-3">
+                        <div>
+                            <h3><i class="bi bi-cash-stack text-primary"></i> Payroll Processing &amp; Payslips</h3>
+                            <small class="text-muted">Automated salary sheet generator, allowances, tax deductions, and bank disbursement.</small>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <select class="form-select form-select-sm" id="payrollMonthSelect" onchange="renderPayrollTable()" style="height:40px; border-radius:10px; font-weight:700;">
+                                <option value="October 2026">October 2026 (Current)</option>
+                                <option value="September 2026">September 2026</option>
+                                <option value="August 2026">August 2026</option>
+                            </select>
+                            <button type="button" class="btn-portal-primary" onclick="recalculatePayroll()">
+                                <i class="bi bi-calculator"></i> Run Payroll
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Payroll Overview Cards -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <small class="text-muted fw-bold">GROSS BASE SALARIES</small>
+                                <div class="fw-bold fs-4 text-dark" id="payGrossTotal">PKR 1,520,000</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <small class="text-muted fw-bold">TAX &amp; DEDUCTIONS</small>
+                                <div class="fw-bold fs-4 text-danger" id="payTaxTotal">- PKR 40,000</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <small class="text-muted fw-bold">NET PAYABLE SALARY</small>
+                                <div class="fw-bold fs-4 text-success" id="payNetTotal">PKR 1,480,000</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="portal-table">
+                            <thead>
+                                <tr>
+                                    <th>Staff Member</th>
+                                    <th>Designation</th>
+                                    <th>Base Pay</th>
+                                    <th>Allowances</th>
+                                    <th>Deductions</th>
+                                    <th>Net Salary</th>
+                                    <th>Payment Status</th>
+                                    <th style="text-align:right;">Salary Slip</th>
+                                </tr>
+                            </thead>
+                            <tbody id="payrollTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 5: ATS RECRUITMENT -->
+            <div class="module-pane" id="pane-ats">
+                <div class="portal-card">
+                    <div class="card-header-flex flex-wrap gap-3">
+                        <div>
+                            <h3><i class="bi bi-briefcase-fill text-primary"></i> ATS Recruitment Pipeline</h3>
+                            <small class="text-muted">Screen incoming CVs, track stages, score candidates, and issue job offers.</small>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="btn-portal-primary" onclick="openAddCandidateModal()">
+                                <i class="bi bi-person-plus"></i> Add Candidate
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Kanban Columns -->
+                    <div class="ats-kanban-board">
+                        <div class="ats-column">
+                            <div class="ats-column-head">
+                                <span>📥 Applied</span>
+                                <span class="badge bg-secondary rounded-pill" id="cntApplied">1</span>
+                            </div>
+                            <div id="colApplied"></div>
+                        </div>
+
+                        <div class="ats-column">
+                            <div class="ats-column-head">
+                                <span>🔍 Screening</span>
+                                <span class="badge bg-info text-dark rounded-pill" id="cntScreening">1</span>
+                            </div>
+                            <div id="colScreening"></div>
+                        </div>
+
+                        <div class="ats-column">
+                            <div class="ats-column-head">
+                                <span>💬 Interview</span>
+                                <span class="badge bg-warning text-dark rounded-pill" id="cntInterview">1</span>
+                            </div>
+                            <div id="colInterview"></div>
+                        </div>
+
+                        <div class="ats-column">
+                            <div class="ats-column-head">
+                                <span>🤝 Offer Sent</span>
+                                <span class="badge bg-primary rounded-pill" id="cntOffered">1</span>
+                            </div>
+                            <div id="colOffered"></div>
+                        </div>
+
+                        <div class="ats-column">
+                            <div class="ats-column-head">
+                                <span>🎉 Hired</span>
+                                <span class="badge bg-success rounded-pill" id="cntHired">1</span>
+                            </div>
+                            <div id="colHired"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 6: LEAVE & REQUESTS -->
+            <div class="module-pane" id="pane-requests">
+                <div class="portal-card">
+                    <div class="card-header-flex flex-wrap gap-3">
+                        <div>
+                            <h3><i class="bi bi-card-checklist text-primary"></i> Leave &amp; Staff Requests Queue</h3>
+                            <small class="text-muted">Annual leaves, sick leaves, loan requests, and manager approvals.</small>
+                        </div>
+                        <button type="button" class="btn-portal-primary" onclick="openSubmitRequestModal()">
+                            <i class="bi bi-plus-circle"></i> Submit New Request
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="portal-table">
+                            <thead>
+                                <tr>
+                                    <th>Request ID</th>
+                                    <th>Staff Member</th>
+                                    <th>Request Type</th>
+                                    <th>Duration / Dates</th>
+                                    <th>Reason / Note</th>
+                                    <th>Status</th>
+                                    <th style="text-align:right;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="requestsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 7: ASSET INVENTORY -->
+            <div class="module-pane" id="pane-inventory">
+                <div class="portal-card">
+                    <div class="card-header-flex flex-wrap gap-3">
+                        <div>
+                            <h3><i class="bi bi-laptop-fill text-primary"></i> Company Asset &amp; Hardware Inventory</h3>
+                            <small class="text-muted">Track company laptops, access cards, and accessories allocated to employees.</small>
+                        </div>
+                        <button type="button" class="btn-portal-primary" onclick="openAddAssetModal()">
+                            <i class="bi bi-plus-lg"></i> Register Asset
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="portal-table">
+                            <thead>
+                                <tr>
+                                    <th>Tag ID</th>
+                                    <th>Asset Name</th>
+                                    <th>Category</th>
+                                    <th>Assigned To</th>
+                                    <th>Serial Number</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 8: TENANT & FIREBASE SETTINGS -->
+            <div class="module-pane" id="pane-settings">
+                <div class="portal-card">
+                    <div class="card-header-flex">
+                        <h3><i class="bi bi-gear-fill text-primary"></i> Multi-Tenant &amp; Cloud Firebase Telemetry</h3>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <h5 class="fw-bold mb-3">Enterprise Workspace Profile</h5>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Company Name</label>
+                                <input type="text" class="form-control" id="cfgCompanyName" value="TeamHatch Inc &bull; AuraHR 360">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Tenant Domain Slug</label>
+                                <input type="text" class="form-control" id="cfgCompanySlug" value="teamhatch-inc" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Currency Setting</label>
+                                <select class="form-select" id="cfgCurrency">
+                                    <option value="PKR">PKR (₨) &bull; Pakistan Rupee</option>
+                                    <option value="USD">USD ($) &bull; US Dollar</option>
+                                    <option value="EUR">EUR (€) &bull; Euro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5 class="fw-bold mb-3">Cloud Firestore State</h5>
+                            <div class="p-3 bg-light rounded-3 border mb-3">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="small fw-bold">Firestore Status</span>
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle">Connected</span>
+                                </div>
+                                <div class="small text-muted">Project ID: <code>auratoolkit360</code></div>
+                                <div class="small text-muted">Collection: <code>companies/teamhatch-360/...</code></div>
+                                <div class="small text-muted">Local Fallback Mirror: <code>Active (Zero-Loss)</code></div>
+                            </div>
+
+                            <button type="button" class="btn btn-warning w-100 fw-bold py-2 mb-2" onclick="resetDemoData()">
+                                <i class="bi bi-arrow-counterclockwise me-1"></i> Reset to Sample TeamHatch Data
+                            </button>
+                            <button type="button" class="btn btn-primary w-100 fw-bold py-2" onclick="syncAllToFirestore()">
+                                <i class="bi bi-cloud-arrow-up-fill me-1"></i> Force Sync All to Firestore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ===== MODALS ===== -->
+
+    <!-- Add Employee Modal -->
+    <div class="modal fade" id="addEmployeeModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header border-bottom px-4 py-3">
+                    <h5 class="modal-title fw-bold">Add New Employee</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body px-4 py-3">
+                    <form id="newEmployeeForm" onsubmit="saveNewEmployee(event)">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Full Name *</label>
+                            <input type="text" class="form-control" id="newEmpName" required placeholder="e.g. Daniyal Khan">
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">Department *</label>
+                                <select class="form-select" id="newEmpDept" required>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Human Resources">Human Resources</option>
+                                    <option value="Sales & Growth">Sales & Growth</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Operations">Operations</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">Designation *</label>
+                                <input type="text" class="form-control" id="newEmpRole" required placeholder="e.g. Software Engineer">
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">Email *</label>
+                                <input type="email" class="form-control" id="newEmpEmail" required placeholder="name@company.com">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">Phone Number</label>
+                                <input type="tel" class="form-control" id="newEmpPhone" placeholder="+92 300 1234567">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Monthly Base Salary (PKR) *</label>
+                            <input type="number" class="form-control" id="newEmpSalary" required placeholder="e.g. 120000">
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold">Save Staff</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Payslip View / Print Modal -->
+    <div class="modal fade" id="payslipModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header border-bottom px-4 py-3 bg-light">
+                    <h5 class="modal-title fw-bold">AuraHR 360 &bull; Official Salary Slip</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4" id="payslipPrintArea">
+                    <div style="border: 2px solid #e2e8f0; border-radius: 12px; padding: 2rem;">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+                            <div>
+                                <h3 class="fw-bold mb-0 text-primary">TeamHatch Inc.</h3>
+                                <small class="text-muted">AuraHR 360 Enterprise Payroll &bull; Confidential</small>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 fs-6">PAID &bull; BANK DISBURSED</span>
+                                <div class="small text-muted mt-1" id="slipMonthLabel">Month: October 2026</div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-6">
+                                <div class="small text-muted">EMPLOYEE NAME</div>
+                                <div class="fw-bold fs-5" id="slipEmpName">Ali Raza</div>
+                                <div class="small text-muted" id="slipEmpRole">HR Lead &bull; Staff ID: #TH-001</div>
+                            </div>
+                            <div class="col-6 text-end">
+                                <div class="small text-muted">PAY DATE</div>
+                                <div class="fw-bold" id="slipDate">01 October 2026</div>
+                                <div class="small text-muted">Bank: HBL Account Ending **492</div>
+                            </div>
+                        </div>
+
+                        <table class="table table-bordered mb-4">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Earnings Description</th>
+                                    <th class="text-end">Amount (PKR)</th>
+                                    <th>Deductions Description</th>
+                                    <th class="text-end">Amount (PKR)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Basic Pay</td>
+                                    <td class="text-end fw-bold" id="slipBasePay">₨ 120,000</td>
+                                    <td>Income Tax (FBR)</td>
+                                    <td class="text-end text-danger" id="slipTax">₨ 2,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Medical Allowance</td>
+                                    <td class="text-end fw-bold" id="slipMedical">₨ 10,000</td>
+                                    <td>EOBI / Social Security</td>
+                                    <td class="text-end text-danger">₨ 500</td>
+                                </tr>
+                                <tr>
+                                    <td>Travel / Fuel Allowance</td>
+                                    <td class="text-end fw-bold" id="slipFuel">₨ 5,000</td>
+                                    <td>Leave Deductions</td>
+                                    <td class="text-end text-muted">₨ 0</td>
+                                </tr>
+                                <tr class="table-light fw-bold">
+                                    <td>Total Gross Pay</td>
+                                    <td class="text-end text-primary" id="slipGross">₨ 135,000</td>
+                                    <td>Total Deductions</td>
+                                    <td class="text-end text-danger" id="slipDeductions">₨ 3,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="p-3 bg-light rounded-3 d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold fs-5 text-dark">NET SALARY PAYABLE:</span>
+                            </div>
+                            <div>
+                                <span class="fw-bold fs-3 text-success" id="slipNetPay">₨ 132,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer px-4 py-3 bg-light">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold" onclick="window.print()">
+                        <i class="bi bi-printer me-1"></i> Print Payslip
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Leave / Loan Request Modal -->
+    <div class="modal fade" id="submitRequestModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header border-bottom px-4 py-3">
+                    <h5 class="modal-title fw-bold">Submit Employee Request</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body px-4 py-3">
+                    <form id="newRequestForm" onsubmit="saveNewRequest(event)">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Select Employee *</label>
+                            <select class="form-select" id="reqEmployeeSelect" required></select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Request Category *</label>
+                            <select class="form-select" id="reqCategory" required>
+                                <option value="Annual Leave">Annual Paid Leave</option>
+                                <option value="Sick Leave">Sick / Medical Leave</option>
+                                <option value="Casual Leave">Casual Leave</option>
+                                <option value="Salary Advance">Salary Advance Loan</option>
+                                <option value="Asset Repair">Hardware / Laptop Repair</option>
+                            </select>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">Start Date *</label>
+                                <input type="date" class="form-control" id="reqStartDate" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">End Date</label>
+                                <input type="date" class="form-control" id="reqEndDate">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Reason / Explanation *</label>
+                            <textarea class="form-control" id="reqReason" rows="3" required placeholder="Provide brief reason for request..."></textarea>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold">Submit Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Role Switcher Quick Modal -->
+    <div class="modal fade" id="roleSwitchModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header border-bottom px-4 py-3">
+                    <h5 class="modal-title fw-bold">Switch Interactive Role</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="small text-muted mb-3">Test TeamHatch 360 from different role perspectives:</p>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-primary p-3 text-start rounded-3" onclick="setUserRole('super_admin')">
+                            <div class="fw-bold">👑 Super Administrator</div>
+                            <small class="text-muted">Full access to Employees, Biometrics, Payroll, ATS, and multi-tenant configs.</small>
+                        </button>
+                        <button type="button" class="btn btn-outline-success p-3 text-start rounded-3" onclick="setUserRole('hr_manager')">
+                            <div class="fw-bold">💼 HR Operations Lead</div>
+                            <small class="text-muted">Manage staff, approve leaves, review ATS candidates, and print payslips.</small>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start rounded-3" onclick="setUserRole('employee')">
+                            <div class="fw-bold">👤 Employee Self-Service</div>
+                            <small class="text-muted">Personal shift punch in/out, view my salary slips, and submit leave requests.</small>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ===== APPLICATION JAVASCRIPT & FIREBASE ENGINE ===== -->
+    <script>
+        /* ==========================================================================
+           TEAMHATCH 360 FIREBASE & IN-BROWSER DUAL-SYNC ENGINE
+           ========================================================================== */
+        const FIREBASE_CONFIG = {
+            apiKey: "AIzaSyAuraToolKit360PlaceholderApiKey",
+            authDomain: "auratoolkit360.firebaseapp.com",
+            projectId: "auratoolkit360",
+            storageBucket: "auratoolkit360.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdef1234567890"
+        };
+
+        let db = null;
+        let isFirebaseOnline = false;
+
+        // Sample Enterprise Data Pre-Seed
+        const DEFAULT_ENTERPRISE_DATA = {
+            company: {
+                name: "TeamHatch Inc &bull; AuraHR 360",
+                slug: "teamhatch-inc",
+                currency: "PKR"
+            },
+            currentUser: {
+                name: "Ali Raza Bhatti",
+                role: "super_admin", // 'super_admin' | 'hr_manager' | 'employee'
+                email: "admin@teamhatch360.com"
+            },
+            employees: [
+                { id: "TH-001", name: "Ali Raza Bhatti", role: "HR Operations Lead", dept: "Human Resources", email: "ali.raza@teamhatch360.com", phone: "+92 331 8058822", salary: 180000, status: "Active", joinDate: "2023-01-15" },
+                { id: "TH-002", name: "Hamza Tariq", role: "Senior Full Stack Dev", dept: "Engineering", email: "hamza@teamhatch360.com", phone: "+92 300 9876543", salary: 250000, status: "Active", joinDate: "2023-03-01" },
+                { id: "TH-003", name: "Ayesha Khan", role: "Lead Product Designer", dept: "Engineering", email: "ayesha@teamhatch360.com", phone: "+92 321 4567890", salary: 195000, status: "Active", joinDate: "2023-06-10" },
+                { id: "TH-004", name: "Bilal Ahmed", role: "Enterprise Sales Exec", dept: "Sales & Growth", email: "bilal@teamhatch360.com", phone: "+92 333 1122334", salary: 140000, status: "Active", joinDate: "2024-02-01" },
+                { id: "TH-005", name: "Sana Malik", role: "Senior Accountant", dept: "Finance", email: "sana@teamhatch360.com", phone: "+92 345 5566778", salary: 130000, status: "Active", joinDate: "2023-09-15" }
+            ],
+            attendance: [
+                { date: "Today", empName: "Ali Raza Bhatti", inTime: "08:55 AM", outTime: "Active", hours: "4.5 hrs", device: "Hikvision Facial #1", status: "Present" },
+                { date: "Today", empName: "Hamza Tariq", inTime: "09:04 AM", outTime: "Active", hours: "4.3 hrs", device: "Biometric Thumb #2", status: "Present" },
+                { date: "Today", empName: "Ayesha Khan", inTime: "09:28 AM", outTime: "Active", hours: "3.9 hrs", device: "Mobile GPS Punch", status: "Late" },
+                { date: "Today", empName: "Bilal Ahmed", inTime: "08:50 AM", outTime: "Active", hours: "4.6 hrs", device: "Hikvision Facial #1", status: "Present" },
+                { date: "Today", empName: "Sana Malik", inTime: "09:12 AM", outTime: "Active", hours: "4.2 hrs", device: "Biometric Thumb #1", status: "Late" }
+            ],
+            requests: [
+                { id: "REQ-101", empName: "Hamza Tariq", type: "Annual Leave", dates: "Oct 12 - Oct 15", reason: "Family wedding event in Islamabad", status: "Pending" },
+                { id: "REQ-102", empName: "Ayesha Khan", type: "Sick Leave", dates: "Oct 05 (1 Day)", reason: "Severe migraine doctor consultation", status: "Approved" },
+                { id: "REQ-103", empName: "Bilal Ahmed", type: "Salary Advance", dates: "October 2026", reason: "Emergency medical expense", status: "Pending" }
+            ],
+            candidates: [
+                { id: "CAND-01", name: "Usman Ghani", role: "React Native Dev", match: "94% Match", stage: "Applied" },
+                { id: "CAND-02", name: "Fatima Noor", role: "Technical Recruiter", match: "88% Match", stage: "Screening" },
+                { id: "CAND-03", name: "Zaid Hashmi", role: "DevOps Engineer", match: "92% Match", stage: "Interview" },
+                { id: "CAND-04", name: "Maryam Siddiqui", role: "UI/UX Designer", match: "96% Match", stage: "Offered" },
+                { id: "CAND-05", name: "Kamran Akram", role: "Backend Python Dev", match: "90% Match", stage: "Hired" }
+            ],
+            inventory: [
+                { tag: "TH-LPT-042", name: "MacBook Pro M2 (16GB)", cat: "Laptop", user: "Hamza Tariq", serial: "C02XYZ1234AB", status: "Assigned" },
+                { tag: "TH-LPT-043", name: "Dell XPS 15 (i7, 32GB)", cat: "Laptop", user: "Ali Raza Bhatti", serial: "DLXPS-998877", status: "Assigned" },
+                { tag: "TH-CRD-109", name: "NFC Smart Access Key", cat: "Security Card", user: "Ayesha Khan", serial: "NFC-882200", status: "Assigned" }
+            ]
+        };
+
+        // State Store
+        let appState = null;
+
+        function loadState() {
+            try {
+                const saved = localStorage.getItem('atk_teamhatch_state');
+                if (saved) {
+                    appState = JSON.parse(saved);
+                } else {
+                    appState = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA));
+                    saveState();
+                }
+            } catch (e) {
+                console.warn('LocalStorage error, using defaults:', e);
+                appState = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA));
+            }
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem('atk_teamhatch_state', JSON.stringify(appState));
+                syncToFirebaseBackground();
+            } catch (e) {
+                console.error('Error saving state:', e);
+            }
+        }
+
+        // Initialize Firebase
+        function initFirebase() {
+            try {
+                if (typeof firebase !== 'undefined') {
+                    if (!firebase.apps.length) {
+                        firebase.initializeApp(FIREBASE_CONFIG);
+                    }
+                    db = firebase.firestore();
+                    isFirebaseOnline = true;
+                    const statusText = document.getElementById('cloudStatusText');
+                    if (statusText) statusText.innerText = 'Connected';
+                    console.log('[FIREBASE] Cloud Firestore client initialized successfully!');
+                }
+            } catch (err) {
+                console.warn('[FIREBASE] Running in graceful local storage mode:', err.message);
+                const statusText = document.getElementById('cloudStatusText');
+                if (statusText) statusText.innerText = 'Local Cache';
+            }
+        }
+
+        function syncToFirebaseBackground() {
+            if (!isFirebaseOnline || !db) return;
+            try {
+                const tenantDoc = db.collection('companies').doc(appState.company.slug);
+                tenantDoc.set({
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    employeesCount: appState.employees.length,
+                    activeStaff: appState.employees.filter(e => e.status === 'Active').length
+                }, { merge: true }).catch(() => {});
+            } catch (e) {
+                // Silently maintain local storage without interrupting user
+            }
+        }
+
+        function syncAllToFirestore() {
+            if (!isFirebaseOnline || !db) {
+                alert('Local cache is active! All employee, payroll, and attendance records are permanently saved in browser storage.');
+                return;
+            }
+            try {
+                const batch = db.batch();
+                const tenantRef = db.collection('companies').doc(appState.company.slug);
+                batch.set(tenantRef, {
+                    name: appState.company.name,
+                    updatedAt: new Date().toISOString(),
+                    data: appState
+                }, { merge: true });
+
+                batch.commit().then(() => {
+                    alert('✅ All enterprise data successfully pushed to Cloud Firestore!');
+                }).catch(err => {
+                    alert('Local cache is 100% active and saved! (Cloud warning: ' + err.message + ')');
+                });
+            } catch (err) {
+                alert('Saved locally in secure browser storage!');
+            }
+        }
+
+        function resetDemoData() {
+            if (confirm('Reset to original TeamHatch enterprise test data?')) {
+                appState = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA));
+                saveState();
+                renderAllModules();
+                alert('Enterprise demo dataset restored successfully!');
+            }
+        }
+
+        /* ==========================================================================
+           UI NAVIGATION & VIEW SWITCHER
+           ========================================================================== */
+        const MODULE_TITLES = {
+            dashboard: 'Enterprise Dashboard',
+            employees: 'Employee Management Directory',
+            attendance: 'Biometric Attendance & Shifts',
+            payroll: 'Payroll Processing & Salary Slips',
+            ats: 'ATS Candidate Screening Pipeline',
+            requests: 'Leaves & Operations Requests Queue',
+            inventory: 'Hardware & Asset Inventory',
+            settings: 'Tenant & Cloud Firebase Configuration'
+        };
+
+        function switchModule(moduleKey) {
+            document.querySelectorAll('.module-pane').forEach(p => p.classList.remove('active'));
+            const targetPane = document.getElementById('pane-' + moduleKey);
+            if (targetPane) targetPane.classList.add('active');
+
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                const href = link.getAttribute('href');
+                link.classList.toggle('active', href === '#' + moduleKey);
+            });
+
+            const titleEl = document.getElementById('topbarModuleTitle');
+            if (titleEl) titleEl.innerText = MODULE_TITLES[moduleKey] || 'Enterprise Portal';
+
+            // Close mobile sidebar if open
+            const sidebar = document.getElementById('portalSidebar');
+            if (sidebar) sidebar.classList.remove('mobile-open');
+
+            window.location.hash = moduleKey;
+        }
+
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('portalSidebar');
+            if (sidebar) sidebar.classList.toggle('mobile-open');
+        }
+
+        // Live Clock
+        setInterval(() => {
+            const el = document.getElementById('liveClockDisplay');
+            if (el) {
+                const now = new Date();
+                el.innerText = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            }
+        }, 1000);
+
+        /* ==========================================================================
+           RENDER MODULES
+           ========================================================================== */
+        function renderAllModules() {
+            updateUserUI();
+            renderDashboard();
+            renderEmployeesTable();
+            renderAttendanceTable();
+            renderPayrollTable();
+            renderAtsKanban();
+            renderRequestsTable();
+            renderInventoryTable();
+            populateEmployeeSelectDropdowns();
+        }
+
+        function updateUserUI() {
+            const user = appState.currentUser;
+            const nameEl = document.getElementById('userNameLabel');
+            const badgeEl = document.getElementById('userRoleBadge');
+            const avatarEl = document.getElementById('userAvatar');
+            const welcomeEl = document.getElementById('dashWelcomeTitle');
+
+            if (nameEl) nameEl.innerText = user.name;
+            if (badgeEl) badgeEl.innerText = user.role.replace('_', ' ');
+            if (avatarEl) avatarEl.innerText = user.name.charAt(0);
+            if (welcomeEl) welcomeEl.innerText = 'Welcome back, ' + user.name.split(' ')[0] + '!';
+
+            // If employee role, hide sensitive financial & admin tabs
+            const isEmployee = user.role === 'employee';
+            const hideItems = ['navItemEmployees', 'navItemPayroll', 'navItemATS', 'navItemInventory'];
+            hideItems.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = isEmployee ? 'none' : 'block';
+            });
+        }
+
+        function renderDashboard() {
+            // Metrics
+            const totalStaff = appState.employees.length;
+            const presentToday = appState.attendance.filter(a => a.status === 'Present' || a.status === 'Late').length;
+            const rate = totalStaff ? Math.round((presentToday / totalStaff) * 100) : 0;
+            const totalPayroll = appState.employees.reduce((acc, e) => acc + (e.salary || 0), 0);
+            const activeCandidates = appState.candidates.filter(c => c.stage !== 'Hired').length;
+
+            const mStaff = document.getElementById('metricTotalStaff');
+            if (mStaff) mStaff.innerText = totalStaff;
+
+            const mRate = document.getElementById('metricAttendanceRate');
+            if (mRate) mRate.innerText = rate + '%';
+
+            const mPay = document.getElementById('metricPayrollTotal');
+            if (mPay) mPay.innerText = 'PKR ' + Math.round(totalPayroll / 1000) + 'K';
+
+            const mCand = document.getElementById('metricCandidates');
+            if (mCand) mCand.innerText = activeCandidates + ' Active';
+
+            // Recent Attendance
+            const attTable = document.getElementById('dashAttendanceTable');
+            if (attTable) {
+                attTable.innerHTML = appState.attendance.slice(0, 5).map(a => `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="user-avatar-circle" style="width:28px; height:28px; font-size:0.75rem;">${a.empName.charAt(0)}</div>
+                                <span>${a.empName}</span>
+                            </div>
+                        </td>
+                        <td>Corporate Office</td>
+                        <td>${a.inTime}</td>
+                        <td><span class="badge-status ${a.status === 'Present' ? 'badge-present' : 'badge-late'}">${a.status} &bull; ${a.device}</span></td>
+                    </tr>
+                `).join('');
+            }
+
+            // Pending Requests
+            const reqList = document.getElementById('dashRequestsList');
+            const pendingReqs = appState.requests.filter(r => r.status === 'Pending');
+            const pendingBadge = document.getElementById('dashPendingBadge');
+            if (pendingBadge) pendingBadge.innerText = pendingReqs.length + ' Pending';
+
+            if (reqList) {
+                if (pendingReqs.length === 0) {
+                    reqList.innerHTML = '<div class="text-muted small p-3 text-center">No pending employee requests. All clear! 🎉</div>';
+                } else {
+                    reqList.innerHTML = pendingReqs.map(r => `
+                        <div class="p-3 mb-2 bg-light rounded-3 border">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <strong>${r.empName}</strong>
+                                <span class="badge bg-warning text-dark">${r.type}</span>
+                            </div>
+                            <div class="small text-muted mb-2">${r.reason} (${r.dates})</div>
+                            <div class="d-flex gap-2">
+                                <button type="button" class="btn btn-sm btn-success rounded-pill px-3 py-1 fw-bold" onclick="updateRequestStatus('${r.id}', 'Approved')">Approve</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger rounded-pill px-3 py-1 fw-bold" onclick="updateRequestStatus('${r.id}', 'Rejected')">Decline</button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        function renderEmployeesTable() {
+            const tbody = document.getElementById('employeesListBody');
+            if (!tbody) return;
+
+            const filterDept = (document.getElementById('empDeptFilter') && document.getElementById('empDeptFilter').value) || 'all';
+            const list = filterDept === 'all' ? appState.employees : appState.employees.filter(e => e.dept === filterDept);
+
+            tbody.innerHTML = list.map(e => `
+                <tr>
+                    <td><code>${e.id}</code></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="user-avatar-circle" style="width:34px; height:34px; font-size:0.8rem;">${e.name.charAt(0)}</div>
+                            <div>
+                                <div class="fw-bold">${e.name}</div>
+                                <small class="text-muted">Joined ${e.joinDate}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>${e.role}</div>
+                        <small class="text-muted">${e.dept}</small>
+                    </td>
+                    <td>
+                        <div>${e.email}</div>
+                        <small class="text-muted">${e.phone}</small>
+                    </td>
+                    <td class="text-primary fw-bold">₨ ${Number(e.salary).toLocaleString()}</td>
+                    <td><span class="badge-status badge-active">${e.status}</span></td>
+                    <td style="text-align:right;">
+                        <button type="button" class="btn btn-sm btn-light border rounded-pill px-2" onclick="openPayslipModal('${e.id}')" title="Generate Payslip"><i class="bi bi-file-earmark-text text-primary"></i></button>
+                        <button type="button" class="btn btn-sm btn-light border rounded-pill px-2 text-danger" onclick="deleteEmployee('${e.id}')" title="Remove"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderAttendanceTable() {
+            const tbody = document.getElementById('attendanceLogTableBody');
+            if (!tbody) return;
+
+            tbody.innerHTML = appState.attendance.map(a => `
+                <tr>
+                    <td>${a.date}</td>
+                    <td><strong>${a.empName}</strong></td>
+                    <td class="text-success"><i class="bi bi-box-arrow-in-right me-1"></i>${a.inTime}</td>
+                    <td class="text-muted"><i class="bi bi-box-arrow-right me-1"></i>${a.outTime}</td>
+                    <td>${a.hours}</td>
+                    <td><small class="text-muted">${a.device}</small></td>
+                    <td><span class="badge-status ${a.status === 'Present' ? 'badge-present' : 'badge-late'}">${a.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function renderPayrollTable() {
+            const tbody = document.getElementById('payrollTableBody');
+            if (!tbody) return;
+
+            const allowances = 15000;
+            const tax = 3000;
+
+            tbody.innerHTML = appState.employees.map(e => {
+                const base = Number(e.salary);
+                const net = base + allowances - tax;
+                return `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="user-avatar-circle" style="width:32px; height:32px; font-size:0.75rem;">${e.name.charAt(0)}</div>
+                                <strong>${e.name}</strong>
+                            </div>
+                        </td>
+                        <td>${e.role}</td>
+                        <td>₨ ${base.toLocaleString()}</td>
+                        <td class="text-success">+ ₨ ${allowances.toLocaleString()}</td>
+                        <td class="text-danger">- ₨ ${tax.toLocaleString()}</td>
+                        <td class="text-success fw-bold">₨ ${net.toLocaleString()}</td>
+                        <td><span class="badge-status badge-paid">Paid &bull; Disbursed</span></td>
+                        <td style="text-align:right;">
+                            <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1 fw-bold" onclick="openPayslipModal('${e.id}')">
+                                <i class="bi bi-receipt me-1"></i> View Slip
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function renderAtsKanban() {
+            const stages = ['Applied', 'Screening', 'Interview', 'Offered', 'Hired'];
+            stages.forEach(stage => {
+                const colEl = document.getElementById('col' + stage);
+                const cntEl = document.getElementById('cnt' + stage);
+                const candidates = appState.candidates.filter(c => c.stage === stage);
+
+                if (cntEl) cntEl.innerText = candidates.length;
+                if (colEl) {
+                    if (candidates.length === 0) {
+                        colEl.innerHTML = '<div class="text-muted small text-center p-3">No candidates</div>';
+                    } else {
+                        colEl.innerHTML = candidates.map(c => `
+                            <div class="candidate-card">
+                                <div class="d-flex justify-content-between align-items-start mb-1">
+                                    <strong>${c.name}</strong>
+                                    <span class="badge bg-success-subtle text-success small">${c.match}</span>
+                                </div>
+                                <div class="small text-muted mb-2">${c.role}</div>
+                                <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                                    <small class="text-muted">Stage: ${c.stage}</small>
+                                    <select class="form-select form-select-sm p-1" style="width:100px; font-size:0.75rem;" onchange="moveCandidate('${c.id}', this.value)">
+                                        ${stages.map(s => `<option value="${s}" ${s === c.stage ? 'selected' : ''}>${s}</option>`).join('')}
+                                    </select>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            });
+        }
+
+        function renderRequestsTable() {
+            const tbody = document.getElementById('requestsTableBody');
+            if (!tbody) return;
+
+            tbody.innerHTML = appState.requests.map(r => `
+                <tr>
+                    <td><code>${r.id}</code></td>
+                    <td><strong>${r.empName}</strong></td>
+                    <td><span class="badge bg-light text-dark border">${r.type}</span></td>
+                    <td>${r.dates}</td>
+                    <td>${r.reason}</td>
+                    <td>
+                        <span class="badge-status ${r.status === 'Approved' ? 'badge-present' : (r.status === 'Pending' ? 'badge-pending' : 'badge-absent')}">
+                            ${r.status}
+                        </span>
+                    </td>
+                    <td style="text-align:right;">
+                        ${r.status === 'Pending' ? `
+                            <button type="button" class="btn btn-sm btn-success rounded-pill px-2 py-1 me-1" onclick="updateRequestStatus('${r.id}', 'Approved')"><i class="bi bi-check-lg"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-danger rounded-pill px-2 py-1" onclick="updateRequestStatus('${r.id}', 'Rejected')"><i class="bi bi-x-lg"></i></button>
+                        ` : '<small class="text-muted">Processed</small>'}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderInventoryTable() {
+            const tbody = document.getElementById('inventoryTableBody');
+            if (!tbody) return;
+
+            tbody.innerHTML = appState.inventory.map(i => `
+                <tr>
+                    <td><code>${i.tag}</code></td>
+                    <td><strong>${i.name}</strong></td>
+                    <td><span class="badge bg-light text-dark border">${i.cat}</span></td>
+                    <td>${i.user}</td>
+                    <td><code>${i.serial}</code></td>
+                    <td><span class="badge-status badge-active">${i.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function populateEmployeeSelectDropdowns() {
+            const select = document.getElementById('reqEmployeeSelect');
+            if (!select) return;
+            select.innerHTML = appState.employees.map(e => `
+                <option value="${e.name}">${e.name} (${e.dept})</option>
+            `).join('');
+        }
+
+        /* ==========================================================================
+           INTERACTIVE ACTIONS & STATE MUTATIONS
+           ========================================================================== */
+        function triggerClockIn() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            const empName = appState.currentUser.name;
+
+            // Add attendance log
+            appState.attendance.unshift({
+                date: "Today",
+                empName: empName,
+                inTime: timeStr,
+                outTime: "Active",
+                hours: "Just Now",
+                device: "Hikvision Facial #1",
+                status: "Present"
+            });
+
+            saveState();
+            renderAttendanceTable();
+            renderDashboard();
+
+            alert(`✅ Biometric Check-In Successful!\nStaff: ${empName}\nTime: ${timeStr}\nHardware Source: Hikvision Bridge #1\nSynced with Cloud Firestore!`);
+        }
+
+        function openAddEmployeeModal() {
+            const el = document.getElementById('addEmployeeModal');
+            if (el) {
+                const modal = bootstrap.Modal.getOrCreateInstance(el);
+                modal.show();
+            }
+        }
+
+        function saveNewEmployee(e) {
+            e.preventDefault();
+            const name = document.getElementById('newEmpName').value.trim();
+            const dept = document.getElementById('newEmpDept').value;
+            const role = document.getElementById('newEmpRole').value.trim();
+            const email = document.getElementById('newEmpEmail').value.trim();
+            const phone = document.getElementById('newEmpPhone').value.trim() || '+92 300 0000000';
+            const salary = Number(document.getElementById('newEmpSalary').value) || 100000;
+
+            const newId = 'TH-' + String(appState.employees.length + 1).padStart(3, '0');
+            const todayStr = new Date().toISOString().split('T')[0];
+
+            appState.employees.push({
+                id: newId,
+                name: name,
+                dept: dept,
+                role: role,
+                email: email,
+                phone: phone,
+                salary: salary,
+                status: 'Active',
+                joinDate: todayStr
+            });
+
+            saveState();
+            renderEmployeesTable();
+            renderDashboard();
+            populateEmployeeSelectDropdowns();
+
+            const el = document.getElementById('addEmployeeModal');
+            if (el) bootstrap.Modal.getInstance(el).hide();
+            document.getElementById('newEmployeeForm').reset();
+
+            alert(`✅ Staff Member "${name}" (${newId}) successfully added to TeamHatch HR!`);
+        }
+
+        function deleteEmployee(empId) {
+            if (confirm(`Are you sure you want to remove employee ${empId} from the system?`)) {
+                appState.employees = appState.employees.filter(e => e.id !== empId);
+                saveState();
+                renderEmployeesTable();
+                renderDashboard();
+            }
+        }
+
+        function openPayslipModal(empId) {
+            const emp = appState.employees.find(e => e.id === empId) || appState.employees[0];
+            const base = Number(emp.salary);
+            const medical = 10000;
+            const fuel = 5000;
+            const gross = base + medical + fuel;
+            const tax = 2500;
+            const eobi = 500;
+            const net = gross - tax - eobi;
+
+            document.getElementById('slipEmpName').innerText = emp.name;
+            document.getElementById('slipEmpRole').innerText = emp.role + ' &bull; Staff ID: ' + emp.id;
+            document.getElementById('slipBasePay').innerText = '₨ ' + base.toLocaleString();
+            document.getElementById('slipMedical').innerText = '₨ ' + medical.toLocaleString();
+            document.getElementById('slipFuel').innerText = '₨ ' + fuel.toLocaleString();
+            document.getElementById('slipGross').innerText = '₨ ' + gross.toLocaleString();
+            document.getElementById('slipTax').innerText = '₨ ' + tax.toLocaleString();
+            document.getElementById('slipDeductions').innerText = '₨ ' + (tax + eobi).toLocaleString();
+            document.getElementById('slipNetPay').innerText = '₨ ' + net.toLocaleString();
+
+            const el = document.getElementById('payslipModal');
+            if (el) {
+                const modal = bootstrap.Modal.getOrCreateInstance(el);
+                modal.show();
+            }
+        }
+
+        function recalculatePayroll() {
+            alert('✅ Monthly payroll successfully processed for ' + appState.employees.length + ' staff members! Direct deposit files generated.');
+            renderPayrollTable();
+        }
+
+        function moveCandidate(candId, newStage) {
+            const cand = appState.candidates.find(c => c.id === candId);
+            if (cand) {
+                cand.stage = newStage;
+                saveState();
+                renderAtsKanban();
+                renderDashboard();
+            }
+        }
+
+        function openAddCandidateModal() {
+            const name = prompt('Candidate Full Name:');
+            if (!name) return;
+            const role = prompt('Job Title / Role applying for:', 'Full Stack Developer');
+            if (!role) return;
+
+            appState.candidates.push({
+                id: 'CAND-' + String(appState.candidates.length + 1).padStart(2, '0'),
+                name: name,
+                role: role,
+                match: Math.floor(Math.random() * 15 + 85) + '% Match',
+                stage: 'Applied'
+            });
+
+            saveState();
+            renderAtsKanban();
+            renderDashboard();
+        }
+
+        function openSubmitRequestModal() {
+            const el = document.getElementById('submitRequestModal');
+            if (el) {
+                const modal = bootstrap.Modal.getOrCreateInstance(el);
+                modal.show();
+            }
+        }
+
+        function saveNewRequest(e) {
+            e.preventDefault();
+            const empName = document.getElementById('reqEmployeeSelect').value;
+            const cat = document.getElementById('reqCategory').value;
+            const start = document.getElementById('reqStartDate').value;
+            const end = document.getElementById('reqEndDate').value || start;
+            const reason = document.getElementById('reqReason').value.trim();
+
+            const newReqId = 'REQ-' + Math.floor(Math.random() * 900 + 100);
+
+            appState.requests.unshift({
+                id: newReqId,
+                empName: empName,
+                type: cat,
+                dates: start + (end !== start ? ' to ' + end : ''),
+                reason: reason,
+                status: 'Pending'
+            });
+
+            saveState();
+            renderRequestsTable();
+            renderDashboard();
+
+            const el = document.getElementById('submitRequestModal');
+            if (el) bootstrap.Modal.getInstance(el).hide();
+            document.getElementById('newRequestForm').reset();
+
+            alert('✅ Request ' + newReqId + ' submitted to manager approval queue!');
+        }
+
+        function updateRequestStatus(reqId, newStatus) {
+            const req = appState.requests.find(r => r.id === reqId);
+            if (req) {
+                req.status = newStatus;
+                saveState();
+                renderRequestsTable();
+                renderDashboard();
+            }
+        }
+
+        function openAddAssetModal() {
+            const name = prompt('Asset Name (e.g. ThinkPad T14):');
+            if (!name) return;
+            const cat = prompt('Category (Laptop / Monitor / Card):', 'Laptop');
+            const user = prompt('Assign to employee:', appState.employees[0].name);
+
+            appState.inventory.push({
+                tag: 'TH-AST-' + Math.floor(Math.random() * 900 + 100),
+                name: name,
+                cat: cat,
+                user: user,
+                serial: 'SN-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+                status: 'Assigned'
+            });
+
+            saveState();
+            renderInventoryTable();
+        }
+
+        function exportAttendanceCsv() {
+            let csv = 'Date,Staff Name,In Time,Out Time,Hours,Device,Status\n';
+            appState.attendance.forEach(a => {
+                csv += `"${a.date}","${a.empName}","${a.inTime}","${a.outTime}","${a.hours}","${a.device}","${a.status}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'attendance-report-teamhatch-360.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function handleGlobalSearch(query) {
+            const q = (query || '').toLowerCase().trim();
+            if (!q) {
+                renderEmployeesTable();
+                return;
+            }
+            switchModule('employees');
+            const tbody = document.getElementById('employeesListBody');
+            if (!tbody) return;
+
+            const filtered = appState.employees.filter(e => 
+                e.name.toLowerCase().includes(q) || 
+                e.dept.toLowerCase().includes(q) || 
+                e.role.toLowerCase().includes(q) || 
+                e.email.toLowerCase().includes(q) ||
+                e.id.toLowerCase().includes(q)
+            );
+
+            tbody.innerHTML = filtered.map(e => `
+                <tr>
+                    <td><code>${e.id}</code></td>
+                    <td><strong>${e.name}</strong></td>
+                    <td>${e.role} (${e.dept})</td>
+                    <td>${e.email}</td>
+                    <td class="text-primary fw-bold">₨ ${Number(e.salary).toLocaleString()}</td>
+                    <td><span class="badge-status badge-active">${e.status}</span></td>
+                    <td style="text-align:right;">
+                        <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1" onclick="openPayslipModal('${e.id}')">Payslip</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Role Switcher
+        function toggleRoleSwitchModal() {
+            const el = document.getElementById('roleSwitchModal');
+            if (el) {
+                const modal = bootstrap.Modal.getOrCreateInstance(el);
+                modal.show();
+            }
+        }
+
+        function setUserRole(newRole) {
+            appState.currentUser.role = newRole;
+            if (newRole === 'employee') {
+                appState.currentUser.name = 'Hamza Tariq (Staff)';
+            } else if (newRole === 'hr_manager') {
+                appState.currentUser.name = 'Ayesha Khan (HR Lead)';
+            } else {
+                appState.currentUser.name = 'Ali Raza Bhatti (SuperAdmin)';
+            }
+            saveState();
+            updateUserUI();
+            switchModule('dashboard');
+
+            const el = document.getElementById('roleSwitchModal');
+            if (el) bootstrap.Modal.getInstance(el).hide();
+        }
+
+        function logoutSession() {
+            if (confirm('Log out from TeamHatch 360 Enterprise Portal?')) {
+                window.location.href = '/saas/';
+            }
+        }
+
+        // Auto-run on Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadState();
+            initFirebase();
+
+            // Check stored auth session
+            try {
+                const storedAuth = JSON.parse(localStorage.getItem('atk_teamhatch_auth') || '{}');
+                if (storedAuth && storedAuth.role) {
+                    appState.currentUser.role = storedAuth.role;
+                    if (storedAuth.username) {
+                        appState.currentUser.name = storedAuth.username;
+                    }
+                }
+            } catch (e) {}
+
+            // Check URL parameters for preset role auto-fill (overrides stored)
+            const urlParams = new URLSearchParams(window.location.search);
+            const roleParam = (urlParams.get('role') || '').toLowerCase();
+            const userParam = urlParams.get('user');
+            if (roleParam === 'employee' || roleParam === 'emp') {
+                appState.currentUser.role = 'employee';
+                appState.currentUser.name = userParam || 'Hamza Tariq (Staff)';
+            } else if (roleParam === 'hr' || roleParam === 'hr_manager' || roleParam === 'hrmanager') {
+                appState.currentUser.role = 'hr_manager';
+                appState.currentUser.name = userParam || 'Ayesha Khan (HR Lead)';
+            } else if (roleParam === 'super_admin' || roleParam === 'superadmin' || roleParam === 'admin') {
+                appState.currentUser.role = 'super_admin';
+                appState.currentUser.name = userParam || 'Ali Raza Bhatti (SuperAdmin)';
+            }
+
+            // Check hash for direct module link
+            const hash = (window.location.hash || '#dashboard').replace('#', '');
+            renderAllModules();
+            if (MODULE_TITLES[hash]) {
+                switchModule(hash);
+            } else {
+                switchModule('dashboard');
+            }
+        });
+    </script>
+</body>
+</html>

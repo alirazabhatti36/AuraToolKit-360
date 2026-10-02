@@ -1547,11 +1547,19 @@
                                 </div>
                             </form>
 
-                            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25 flex-wrap gap-2">
-                                <small class="text-white-50">Local Backend Active? <a href="http://127.0.0.1:5000/login" target="_blank" class="text-info text-decoration-underline">Direct 127.0.0.1:5000/login ↗</a></small>
-                                <button type="button" class="btn btn-sm btn-outline-warning rounded-pill px-3" onclick="launchDemoSandboxFromLogin()">
-                                    <span>⚡</span> Open Interactive Sandbox
-                                </button>
+                            <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
+                                <label class="text-white-50 small fw-bold d-block mb-2">⚡ Instant 1-Click Access (Direct to TeamHatch 360 App):</label>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="/saas/app/?role=super_admin" class="btn btn-sm btn-primary rounded-pill px-3 py-2 fw-bold text-decoration-none">
+                                        ⚡ Launch Super Admin
+                                    </a>
+                                    <a href="/saas/app/?role=hr_manager" class="btn btn-sm btn-info text-white rounded-pill px-3 py-2 fw-bold text-decoration-none">
+                                        👥 Launch HR Manager
+                                    </a>
+                                    <a href="/saas/app/?role=employee" class="btn btn-sm btn-outline-light rounded-pill px-3 py-2 fw-bold text-decoration-none">
+                                        👤 Launch Employee Self-Service
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -2445,43 +2453,29 @@
 
         function handleSaasLoginSubmit(e) {
             e.preventDefault();
-            const u = (document.getElementById('saasUsernameInput').value || '').trim();
-            const company = (document.getElementById('saasCompanyInput').value || '').trim();
+            const u = (document.getElementById('saasUsernameInput').value || '').trim() || 'superadmin';
+            const company = (document.getElementById('saasCompanyInput').value || '').trim() || 'auratoolkit360.com';
             const btnText = document.getElementById('loginSubmitBtnText');
-            if (btnText) btnText.innerText = 'Connecting to Secure Tenant...';
+            if (btnText) btnText.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Authenticating & Launching Portal...';
 
-            // Detect if running on localhost with Flask backend active
-            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                if (window.location.port === '5000') {
-                    // Running directly on Flask
-                    window.location.href = '/login';
-                    return;
-                }
-            }
+            let role = 'super_admin';
+            const uLow = u.toLowerCase();
+            if (uLow.includes('emp')) role = 'employee';
+            else if (uLow.includes('hr')) role = 'hr_manager';
+            else if (uLow.includes('acc')) role = 'hr_manager';
 
-            // Test if local server port 5000 is listening
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 800);
+            try {
+                localStorage.setItem('atk_teamhatch_auth', JSON.stringify({
+                    username: u,
+                    company: company,
+                    role: role,
+                    loggedInAt: new Date().toISOString()
+                }));
+            } catch (err) {}
 
-            fetch('http://127.0.0.1:5000/login', { mode: 'no-cors', signal: controller.signal })
-                .then(() => {
-                    clearTimeout(timeoutId);
-                    window.location.href = 'http://127.0.0.1:5000/login';
-                })
-                .catch(() => {
-                    clearTimeout(timeoutId);
-                    // Cloud / Static fallback: authenticated simulated access
-                    setTimeout(() => {
-                        if (btnText) btnText.innerText = 'Sign In to Complete HR System';
-                        const modalEl = document.getElementById('saasLoginModal');
-                        if (modalEl) {
-                            const modal = bootstrap.Modal.getInstance(modalEl);
-                            if (modal) modal.hide();
-                        }
-                        alert(`🔐 AuraHR 360 Authentication Verified!\n\nUser: ${u}\nTenant: ${company}\nStatus: Active Enterprise Session\n\nLaunching Full Interactive System Dashboard...`);
-                        openSaasSandbox();
-                    }, 400);
-                });
+            setTimeout(() => {
+                window.location.href = `/saas/app/?role=${role}&user=${encodeURIComponent(u)}`;
+            }, 300);
         }
 
         function launchDemoSandboxFromLogin() {
