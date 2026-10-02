@@ -409,60 +409,528 @@
                 font-size: 0.85rem !important;
             }
         }
+    
+        /* ===== MODERN AURAHR 360 NAVBAR (Matching media_1790980502275.png) ===== */
+        .aurahr-navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #f1f5f9;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            transition: all 0.25s ease;
+        }
+
+        .aurahr-nav-container {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        /* Brand */
+        .aurahr-brand {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .aurahr-brand-name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.4px;
+            margin-left: 0.55rem;
+        }
+
+        .aurahr-360-pill {
+            background: #eff6ff;
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 999px;
+            margin-left: 0.4rem;
+            border: 1px solid #bfdbfe;
+            line-height: 1;
+        }
+
+        /* Center Links */
+        .aurahr-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+        }
+
+        .aurahr-nav-item {
+            position: relative;
+        }
+
+        .aurahr-nav-link {
+            color: #334155;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.5rem 0.2rem;
+            transition: color 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .aurahr-nav-link:hover {
+            color: #2563eb;
+        }
+
+        .aurahr-nav-link .chevron-icon {
+            transition: transform 0.2s ease;
+            color: #64748b;
+        }
+
+        .aurahr-nav-item:hover .chevron-icon {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+
+        /* Dropdown */
+        .aurahr-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(6px);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.12), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+            padding: 0.6rem;
+            min-width: 260px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1100;
+        }
+
+        .aurahr-nav-item:hover .aurahr-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .aurahr-dropdown-link {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            padding: 0.6rem 0.85rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .aurahr-dropdown-link:hover {
+            background: #f8fafc;
+        }
+
+        .aurahr-dropdown-link strong {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .aurahr-dropdown-link span {
+            font-size: 0.76rem;
+            color: #64748b;
+        }
+
+        /* Right Controls */
+        .aurahr-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-aurahr-search {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+
+        .btn-aurahr-search:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+            border-color: #cbd5e1;
+        }
+
+        .btn-aurahr-currency {
+            height: 38px;
+            padding: 0 0.85rem;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #334155;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+
+        .btn-aurahr-currency:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .btn-aurahr-login {
+            height: 38px;
+            padding: 0 1.35rem;
+            border-radius: 999px;
+            border: 1.5px solid #2563eb;
+            background: #ffffff;
+            color: #2563eb;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .btn-aurahr-login:hover {
+            background: #eff6ff;
+            border-color: #1d4ed8;
+            color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-aurahr-get-started {
+            height: 38px;
+            padding: 0 1.35rem;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: #ffffff !important;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+            transition: all 0.2s ease;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .btn-aurahr-get-started:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+            transform: translateY(-1px);
+            color: #ffffff !important;
+        }
+
+        /* Hamburger for Mobile */
+        .aurahr-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 38px;
+            height: 38px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1060;
+        }
+
+        .aurahr-hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #334155;
+            border-radius: 2px;
+        }
+
+        /* Search Dropdown */
+        .aurahr-search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+            padding: 1rem 2rem;
+            z-index: 1040;
+        }
+
+        .aurahr-search-input-wrap {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+        }
+
+        .aurahr-search-input-wrap input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: #0f172a;
+        }
+
+        .btn-close-search {
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 1150px) {
+            .aurahr-nav-links {
+                display: none;
+            }
+            .aurahr-nav-links.mobile-open {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #ffffff;
+                padding: 1.5rem 2rem;
+                gap: 1.25rem;
+                overflow-y: auto;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            }
+            .aurahr-hamburger {
+                display: flex;
+            }
+            .aurahr-dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: 1px solid #f1f5f9;
+                margin-top: 0.5rem;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+            }
+            .aurahr-nav-item.mobile-expanded .aurahr-dropdown-menu {
+                display: block;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .aurahr-nav-container {
+                padding: 0 1rem;
+            }
+            .btn-aurahr-currency {
+                display: none;
+            }
+            .btn-aurahr-login {
+                padding: 0 0.9rem;
+                font-size: 0.82rem;
+            }
+            .btn-aurahr-get-started {
+                padding: 0 0.95rem;
+                font-size: 0.82rem;
+            }
+        }
+
     </style>
 </head>
 <body id="body">
 
     <!-- Top Navigation Bar -->
-    <nav class="navbar navbar-expand-xl fixed-top border-bottom border-light shadow-sm py-3">
-        <div class="container-fluid container-xl">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="/" aria-label="AuraToolKit 360 Home">
-                <span class="logo-symbol" style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, #4338CA 0%, #4F46E5 50%, #06B6D4 100%); color:#FFFFFF; box-shadow:0 2px 10px rgba(79, 70, 229, 0.35); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="22" height="22" role="img" aria-hidden="true">
+        <!-- ===== MODERN AURAHR 360 NAVBAR (Matching media_1790980502275.png) ===== -->
+    <nav class="aurahr-navbar" id="aurahrNavbar">
+        <div class="aurahr-nav-container">
+            <!-- Brand / Logo (Untouched Symbol + AuraHR + 360 Pill) -->
+            <a class="aurahr-brand" href="/saas/" aria-label="AuraHR 360 Home">
+                <span class="logo-symbol" style="width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg, #4338CA 0%, #4F46E5 50%, #06B6D4 100%); color:#FFFFFF; box-shadow:0 2px 8px rgba(79, 70, 229, 0.35); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="20" height="20" role="img" aria-hidden="true">
                         <circle cx="32" cy="32" r="20" fill="rgba(255,255,255,0.22)"/>
                         <path d="M22 42L32 20l10 22h-5l-2.1-5h-5.8L27 42h-5zm9.9-8h4.2L34 25.7 31.9 34z" fill="#fff"/>
                     </svg>
                 </span>
-                <span class="navbar-brand-logo">AuraToolKit <span>360</span></span>
+                <span class="aurahr-brand-name">AuraHR</span>
+                <span class="aurahr-360-pill">360</span>
             </a>
 
-            <!-- Right Controls for Mobile -->
-            <div class="d-flex align-items-center gap-2 d-xl-none ms-auto me-2">
-                <button type="button" class="btn btn-light border rounded-pill px-2 py-1 fw-bold text-dark d-flex align-items-center gap-1 country-btn-mobile" onclick="openCountryModal()">
-                    <span id="currentFlagMobile">🇵🇰</span>
-                    <span id="currentLangLabelMobile">PKR</span>
-                    <i class="bi bi-globe text-primary small"></i>
-                </button>
-            </div>
+            <!-- Center Navigation Links -->
+            <div class="aurahr-nav-links" id="aurahrNavLinks">
+                <div class="aurahr-nav-item has-dropdown">
+                    <a href="#features" class="aurahr-nav-link">
+                        <span>Features</span>
+                        <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="aurahr-dropdown-menu">
+                        <a href="#features" class="aurahr-dropdown-link">
+                            <strong>Core HR &amp; Biometrics</strong>
+                            <span>Real-time attendance &amp; multi-branch sync</span>
+                        </a>
+                        <a href="#features" class="aurahr-dropdown-link">
+                            <strong>Automated Payroll &amp; Tax</strong>
+                            <span>One-click salary sheets &amp; bank files</span>
+                        </a>
+                        <a href="#features" class="aurahr-dropdown-link">
+                            <strong>Leave &amp; Shift Management</strong>
+                            <span>Automated approval flows &amp; quotas</span>
+                        </a>
+                        <a href="#features" class="aurahr-dropdown-link">
+                            <strong>Employee Self-Service (ESS)</strong>
+                            <span>Mobile portal for requests &amp; slips</span>
+                        </a>
+                    </div>
+                </div>
 
-            <button class="navbar-toggler border-0 p-2 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <div class="aurahr-nav-item has-dropdown">
+                    <a href="#features" class="aurahr-nav-link">
+                        <span>Solutions</span>
+                        <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="aurahr-dropdown-menu">
+                        <a href="#features" class="aurahr-dropdown-link">
+                            <strong>Enterprises (500+ Staff)</strong>
+                            <span>Multi-entity hierarchy &amp; custom roles</span>
+                        </a>
+                        <a href="#features" class="aurahr-dropdown-link">
+                            <strong>Startups &amp; Growing SMBs</strong>
+                            <span>Fast setup with zero IT infrastructure</span>
+                        </a>
+                        <a href="#features" class="aurahr-dropdown-link">
+                            <strong>Multi-Branch &amp; Remote Teams</strong>
+                            <span>Geo-fenced mobile check-ins</span>
+                        </a>
+                    </div>
+                </div>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link text-nowrap" href="https://auratoolkit360.com/" target="_blank"><span class="badge bg-light text-primary border me-1">Free Tools Suite ↗</span></a></li>
-                    <li class="nav-item"><a class="nav-link text-nowrap" href="#features" data-i18n="nav_why">Why Choose Us</a></li>
-                    <li class="nav-item"><a class="nav-link text-nowrap" href="#pricing" data-i18n="nav_pricing">Pricing Plans</a></li>
-                    <li class="nav-item"><a class="nav-link text-nowrap" href="#payments" data-i18n="nav_payments">Payment Methods</a></li>
-                    <li class="nav-item"><a class="nav-link text-nowrap" href="#contact" data-i18n="nav_contact">Contact Us</a></li>
-                    <li class="nav-item"><button type="button" class="btn btn-sm btn-warning rounded-pill px-3 fw-bold ms-lg-2 text-dark" onclick="openSaasSandbox()"><i class="bi bi-play-circle-fill text-danger me-1"></i>Live Sandbox</button></li>
-                    <li class="nav-item d-xl-none"><button type="button" class="btn btn-sm btn-primary rounded-pill px-3 py-2 fw-bold text-white w-100 mt-2 d-flex align-items-center justify-content-center gap-2" onclick="openSaasLoginModal()"><i class="bi bi-box-arrow-in-right"></i><span data-i18n="btn_login">Client Login (HR Portal)</span></button></li>
-                </ul>
-                
-                <div class="d-flex align-items-center gap-2 header-cta-group">
-                    <!-- Desktop Country & Language Selector Button -->
-                    <button type="button" class="btn btn-light border rounded-pill px-3 fw-bold text-dark d-none d-xl-flex align-items-center gap-2 text-nowrap" onclick="openCountryModal()">
-                        <span id="currentFlag">🇵🇰</span>
-                        <span id="currentCountryName">Pakistan — PKR (₨)</span>
-                        <i class="bi bi-globe text-primary ms-1"></i>
-                    </button>
-                    <button type="button" class="btn btn-warning rounded-pill px-3 py-2 text-nowrap fw-bold text-dark d-none d-xl-flex align-items-center gap-1 shadow-sm" onclick="openSaasSandbox()"><i class="bi bi-play-circle-fill text-danger me-1"></i>Live Sandbox</button>
-                    <button type="button" class="btn btn-primary rounded-pill px-3 py-2 text-nowrap fw-bold text-white shadow-sm d-flex align-items-center gap-1" onclick="openSaasLoginModal()"><i class="bi bi-box-arrow-in-right me-1"></i><span data-i18n="btn_login">Client Login</span></button>
-                    <a href="#contact" class="btn btn-gradient-primary rounded-pill px-3 py-2 text-nowrap"><i class="bi bi-calendar-check me-1"></i>Request Demo</a>
-                    <a href="#pricing" class="btn btn-outline-dark-custom rounded-pill px-3 py-2 text-nowrap d-none d-xxl-inline-block"><i class="bi bi-tags me-1"></i>View Plans</a>
+                <div class="aurahr-nav-item">
+                    <a href="/hr-helper/" class="aurahr-nav-link">Recruitment</a>
+                </div>
+
+                <div class="aurahr-nav-item">
+                    <a href="#features" class="aurahr-nav-link">Employee Management</a>
+                </div>
+
+                <div class="aurahr-nav-item">
+                    <a href="#pricing" class="aurahr-nav-link">Pricing</a>
+                </div>
+
+                <div class="aurahr-nav-item has-dropdown">
+                    <a href="#contact" class="aurahr-nav-link">
+                        <span>Resources</span>
+                        <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="aurahr-dropdown-menu">
+                        <a href="https://auratoolkit360.com/" target="_blank" class="aurahr-dropdown-link">
+                            <strong>Free Tools Suite ↗</strong>
+                            <span>40+ PDF, resume, and conversion tools</span>
+                        </a>
+                        <a href="#payments" class="aurahr-dropdown-link">
+                            <strong>Payment Methods</strong>
+                            <span>Bank transfer, cards, EasyPaisa &amp; JazzCash</span>
+                        </a>
+                        <a href="#contact" class="aurahr-dropdown-link">
+                            <strong>Contact &amp; Support</strong>
+                            <span>24/7 dedicated enterprise assistance</span>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openSaasSandbox()" class="aurahr-dropdown-link">
+                            <strong>Interactive Sandbox 🎮</strong>
+                            <span>Try the live dashboard right now</span>
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            <!-- Right Controls: Search, Currency, Login, Get Started -->
+            <div class="aurahr-nav-right">
+                <!-- Search Button (Icon pill) -->
+                <button type="button" class="btn-aurahr-search" aria-label="Search" onclick="toggleAurahrSearch()" title="Search features &amp; modules">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+
+                <!-- Currency/Country Selector -->
+                <button type="button" class="btn-aurahr-currency" onclick="openCountryModal()" title="Change Currency">
+                    <span id="currentFlag">🇵🇰</span>
+                    <span id="currentLangLabel">PKR</span>
+                </button>
+
+                <!-- Login Button (Outline Pill) -->
+                <button type="button" class="btn-aurahr-login" onclick="openSaasLoginModal()">
+                    Login
+                </button>
+
+                <!-- Get Started -> Button (Gradient Pill) -->
+                <a href="#contact" class="btn-aurahr-get-started">
+                    <span>Get Started</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                </a>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button type="button" class="aurahr-hamburger" aria-label="Open navigation menu" onclick="toggleAurahrMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- In-Navbar Quick Search Dropdown Overlay -->
+        <div class="aurahr-search-dropdown" id="aurahrSearchDropdown" style="display:none;">
+            <div class="aurahr-search-input-wrap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="aurahrQuickSearch" placeholder="Search features, modules, pricing, or documentation..." oninput="handleAurahrSearch(this.value)">
+                <button type="button" class="btn-close-search" onclick="toggleAurahrSearch()">✕</button>
+            </div>
+            <div class="aurahr-search-results" id="aurahrSearchResults" style="max-width:800px; margin:0.5rem auto 0; display:none;"></div>
         </div>
     </nav>
 
@@ -2035,5 +2503,59 @@
             }
         });
     </script>
+<script>
+    // AuraHR 360 Navbar Interactivity
+    function toggleAurahrSearch() {
+        const dd = document.getElementById('aurahrSearchDropdown');
+        if (!dd) return;
+        const isShown = dd.style.display !== 'none';
+        dd.style.display = isShown ? 'none' : 'block';
+        if (!isShown) {
+            const inp = document.getElementById('aurahrQuickSearch');
+            if (inp) inp.focus();
+        }
+    }
+
+    function toggleAurahrMobileMenu() {
+        const links = document.getElementById('aurahrNavLinks');
+        if (links) links.classList.toggle('mobile-open');
+    }
+
+    function handleAurahrSearch(query) {
+        const resultsEl = document.getElementById('aurahrSearchResults');
+        if (!resultsEl) return;
+        const q = (query || '').toLowerCase().trim();
+        if (!q) {
+            resultsEl.style.display = 'none';
+            resultsEl.innerHTML = '';
+            return;
+        }
+
+        const items = [
+            { title: 'Core HR & Biometric Attendance', url: '#features', desc: 'Hardware facial/fingerprint integration with auto payroll sync' },
+            { title: 'Smart Payroll & Tax Rules', url: '#features', desc: 'Salary sheets, overtime calculation, deductions, and payslips' },
+            { title: 'Pricing & Enterprise Plans', url: '#pricing', desc: 'Transparent local pricing in PKR with tiered staff packages' },
+            { title: 'Recruitment & Applicant Tracking', url: '/hr-helper/', desc: 'Job posting, CV parsing, and interview scheduling' },
+            { title: 'Leave & Attendance Policies', url: '#features', desc: 'Custom shift rosters, multi-branch geofencing' },
+            { title: 'Payment Options (Bank, JazzCash, EasyPaisa)', url: '#payments', desc: 'Local and international payment gateways' },
+            { title: 'Live Interactive Sandbox', url: 'javascript:openSaasSandbox()', desc: 'Test drive AuraHR 360 dashboard instantly' },
+            { title: 'Schedule a Live Demo', url: '#contact', desc: 'Talk to an enterprise HR solution architect' }
+        ];
+
+        const matches = items.filter(it => it.title.toLowerCase().includes(q) || it.desc.toLowerCase().includes(q));
+
+        if (matches.length === 0) {
+            resultsEl.innerHTML = '<div style="padding:0.75rem; color:#64748b; font-size:0.85rem;">No direct matching modules found. Try "payroll", "pricing", or "attendance".</div>';
+        } else {
+            resultsEl.innerHTML = matches.map(m => `
+                <a href="${m.url}" onclick="toggleAurahrSearch()" style="display:block; padding:0.6rem 0.85rem; border-radius:8px; text-decoration:none; margin-bottom:4px; background:#f8fafc; transition:background 0.15s;">
+                    <div style="font-weight:700; color:#0f172a; font-size:0.88rem;">${m.title}</div>
+                    <div style="font-size:0.78rem; color:#64748b;">${m.desc}</div>
+                </a>
+            `).join('');
+        }
+        resultsEl.style.display = 'block';
+    }
+</script>
 </body>
 </html>
