@@ -481,28 +481,30 @@
         /* TOOL CARD STYLING */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 1.4rem;
+            grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+            gap: 1.45rem;
             align-items: stretch;
         }
         .tool-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(14px);
+            background: #ffffff;
             border-radius: 18px;
-            padding: 1.4rem 1.4rem 1.25rem;
-            border: 1px solid var(--border-card);
-            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+            padding: 1.5rem 1.4rem 1.35rem;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s ease, border-color 0.24s ease;
             color: var(--text-primary);
             display: flex;
             flex-direction: column;
             position: relative;
             box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+            height: 100%;
+            min-height: 310px;
+            box-sizing: border-box;
         }
         .tool-card:hover {
             transform: translateY(-4px);
             border-color: #93c5fd;
             background: #ffffff;
-            box-shadow: 0 14px 28px -6px rgba(37, 99, 235, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+            box-shadow: 0 16px 32px -6px rgba(37, 99, 235, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
         }
         .tool-icon {
             width: 48px;
@@ -525,51 +527,67 @@
         }
         .tool-card h3 {
             font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 0.85rem;
-            color: #0f172a;
             font-weight: 800;
+            color: #0f172a;
+            line-height: 1.35;
+            margin-bottom: 0.85rem;
+            min-height: 2.85rem;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            letter-spacing: -0.2px;
         }
         .tool-card label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             color: #1e293b;
             font-weight: 700;
             margin-bottom: 0.45rem;
         }
-        .extra-text {
-            font-size: 0.76rem;
-            color: #475569;
-            margin-bottom: 0.4rem;
+        .tool-card form {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            width: 100%;
+        }
+        .extra-text, .tool-card .extra-text {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-bottom: 0.85rem;
             font-weight: 500;
+            line-height: 1.5;
+            flex: 1;
         }
         
         input[type="file"], input[type="text"], input[type="number"], select, textarea {
             width: 100%;
+            height: 42px;
             background: #ffffff;
             border: 1.5px solid #cbd5e1;
             border-radius: 10px;
-            padding: 0.6rem 0.8rem;
-            font-size: 0.9rem;
+            padding: 0.55rem 0.8rem;
+            font-size: 0.88rem;
             color: #0f172a;
             font-family: inherit;
             font-weight: 600;
             outline: none;
             transition: border-color 0.2s, box-shadow 0.2s;
             margin-bottom: 0.75rem;
+            box-sizing: border-box;
         }
         input[type="file"] {
-            padding: 0.45rem;
+            padding: 0.35rem 0.5rem;
             cursor: pointer;
             color: var(--text-secondary);
+            line-height: 1.4;
         }
         input[type="file"]::file-selector-button {
             background: #eff6ff;
             color: #1d4ed8;
             border: 1px solid #bfdbfe;
-            padding: 0.4rem 0.85rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 7px;
+            font-size: 0.78rem;
             font-weight: 700;
             cursor: pointer;
             margin-right: 0.6rem;
@@ -584,31 +602,34 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
         
-        button, .btn-primary, .btn-outline, .btn-danger {
+        button, .btn-primary, .btn-outline, .btn-danger, .btn {
             border: none;
             border-radius: 10px;
-            padding: 0.62rem 1rem;
+            height: 44px;
+            padding: 0 1rem;
             cursor: pointer;
-            font-size: 0.84rem;
+            font-size: 0.86rem;
             font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.4rem;
-            transition: all 0.25s;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             font-family: inherit;
             width: 100%;
+            margin-top: auto;
+            box-sizing: border-box;
         }
         button[type="submit"], .btn-primary {
             background: linear-gradient(135deg, #1d4ed8, #2563eb);
             color: #ffffff;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.32);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
         }
         button[type="submit"]:hover, .btn-primary:hover {
             background: linear-gradient(135deg, #1e40af, #1d4ed8);
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.42);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.38);
         }
         
         .result-box {
@@ -622,6 +643,17 @@
         }
         .result-box.success { border-color: #a7f3d0; background: #ecfdf5; color: #047857; font-weight: 600; }
         .result-box.error { border-color: #fecaca; background: #fef2f2; color: #b91c1c; font-weight: 600; }
+
+        @media (max-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.1rem;
+            }
+            .tool-card {
+                min-height: 290px;
+                padding: 1.3rem 1.15rem;
+            }
+        }
 
         /* ===== DETAILED GUIDELINES & FAQ SECTION ===== */
         .info-section { max-width: 1320px; margin: 3.5rem auto 1rem; padding: 0; }
