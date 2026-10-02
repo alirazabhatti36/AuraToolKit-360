@@ -103,6 +103,7 @@ function updateEnglishFile(filePath, pageKey, pagePath) {
         content = content.replace(/(<\/div>\s*<\/div>\s*<\/nav>)/, mobileSwitcherHtml + '\n            $1');
     }
 
+    content = content.replace(/\s*<script defer src="\/assets\/nav-search\.js"><\/script>/g, '');
     fs.writeFileSync(filePath, content, 'utf8');
     console.log('Updated English file: ' + filePath);
 }
@@ -151,19 +152,22 @@ function generateLocalizedFile(sourceFilePath, targetFilePath, lang, pageKey, pa
         content = content.replace(/(<\/div>\s*<\/div>\s*<\/nav>)/, mobileSwitcherHtml + '\n            $1');
     }
 
+    // Clean any old search script
+    content = content.replace(/\s*<script defer src="\/assets\/nav-search\.js"><\/script>/g, '');
+
     // Localize navigation
-    content = content.replace(/<a href="\/" class="nav-link([^"]*)">Home<\/a>/, '<a href="/' + lang.code + '/\" class="nav-link$1">' + lang.nav.home + '</a>');
-    content = content.replace(/<a href="\/converter\/" class="nav-link([^"]*)">Converter<\/a>/, '<a href="/' + lang.code + '/converter/\" class="nav-link$1">' + lang.nav.converter + '</a>');
-    content = content.replace(/<a href="\/resume-cv-maker\/" class="nav-link([^"]*)">Resume<\/a>/, '<a href="/' + lang.code + '/resume-cv-maker/\" class="nav-link$1">' + lang.nav.resume + '</a>');
-    content = content.replace(/<a href="\/cover-letter-maker\/" class="nav-link([^"]*)">Cover Letter<\/a>/, '<a href="/cover-letter-maker/\" class="nav-link$1">' + lang.nav.cover_letter + '</a>');
-    content = content.replace(/<a href="\/resume-score-checker\/" class="nav-link([^"]*)">Score Checker<\/a>/, '<a href="/' + lang.code + '/resume-score-checker/\" class="nav-link$1">' + lang.nav.score_checker + '</a>');
-    content = content.replace(/<a href="\/hr-helper\/" class="nav-link([^"]*)">HR Bulk/, '<a href="/' + lang.code + '/hr-helper/\" class="nav-link$1">' + lang.nav.hr_helper);
-    content = content.replace(/<a href="\/blogs\/" class="nav-link">Blogs<\/a>/, '<a href="/blogs/\" class="nav-link">' + lang.nav.blogs + '</a>');
-    content = content.replace(/<a href="\/about\/" class="nav-link">About<\/a>/, '<a href="/about/\" class="nav-link">' + lang.nav.about + '</a>');
-    content = content.replace(/<a href="\/hr-helper\/" class="btn-try-hr">[\s\S]*?<\/a>/, '<a href="/' + lang.code + '/hr-helper/\" class="btn-try-hr">' + lang.nav.try_hr + '</a>');
-    content = content.replace(/<button class="btn-bookmark-nav"[^>]*>[\s\S]*?<\/button>/, '<button class="btn-bookmark-nav" onclick="bookmarkSite()" title="' + lang.nav.bookmark + '" aria-label="' + lang.nav.bookmark + '"><span class="bm-star">★</span><span class="bm-text"> ' + lang.nav.bookmark.replace('★', '').trim() + '</span></button>');
-    content = content.replace(/<a href="\/" class="logo"([^>]*)>/, '<a href="/' + lang.code + '/\" class="logo"$1>');
-    content = content.replace(/<a href="\/" class="footer-brand-logo"([^>]*)>/, '<a href="/' + lang.code + '/\" class="footer-brand-logo"$1>');
+    content = content.replace(/<a href="\/" class="nav-link([^"]*)">Home<\/a>/, '<a href="/' + lang.code + '/" class="nav-link$1">' + lang.nav.home + '</a>');
+    content = content.replace(/<a href="\/converter\/" class="nav-link([^"]*)">Converter(?: <span[^<]*<\/span>)?<\/a>/, '<a href="/' + lang.code + '/converter/" class="nav-link$1">' + lang.nav.converter + ' <span class="nav-chevron">▾</span></a>');
+    content = content.replace(/<a href="\/resume-cv-maker\/" class="nav-link([^"]*)">Resume(?: <span[^<]*<\/span>)?<\/a>/, '<a href="/' + lang.code + '/resume-cv-maker/" class="nav-link$1">' + lang.nav.resume + ' <span class="nav-chevron">▾</span></a>');
+    content = content.replace(/<a href="\/cover-letter-maker\/" class="nav-link([^"]*)">Cover Letter(?: <span[^<]*<\/span>)?<\/a>/, '<a href="/' + lang.code + '/cover-letter-maker/" class="nav-link$1">' + lang.nav.cover_letter + ' <span class="nav-chevron">▾</span></a>');
+    content = content.replace(/<a href="\/resume-score-checker\/" class="nav-link([^"]*)">Score Checker(?: <span[^<]*<\/span>)?<\/a>/, '<a href="/' + lang.code + '/resume-score-checker/" class="nav-link$1">' + lang.nav.score_checker + ' <span class="nav-chevron">▾</span></a>');
+    content = content.replace(/<a href="\/hr-helper\/" class="nav-link([^"]*)">HR Bulk(?:[^<]*<span[^<]*<\/span>)?(?: <span[^<]*<\/span>)?<\/a>/, '<a href="/' + lang.code + '/hr-helper/" class="nav-link$1">' + lang.nav.hr_helper + ' <span class="nav-chevron">▾</span></a>');
+    content = content.replace(/<a href="\/blogs\/" class="nav-link([^"]*)">Blogs<\/a>/, '<a href="/blogs/" class="nav-link$1">' + lang.nav.blogs + '</a>');
+    content = content.replace(/<a href="\/about\/" class="nav-link([^"]*)">About<\/a>/, '<a href="/about/" class="nav-link$1">' + lang.nav.about + '</a>');
+    content = content.replace(/<a href="\/hr-helper\/" class="btn-try-hr">[\s\S]*?<\/a>/, '<a href="/' + lang.code + '/hr-helper/" class="btn-try-hr">' + lang.nav.try_hr + '</a>');
+    content = content.replace(/<button class="btn-bookmark-nav"[^>]*>[\s\S]*?<\/button>/, '<button class="btn-bookmark-nav" onclick="bookmarkSite()" title="' + lang.nav.bookmark + '" aria-label="' + lang.nav.bookmark + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg><span class="bm-text">' + lang.nav.bookmark.replace('★', '').trim() + '</span></button>');
+    content = content.replace(/<a href="\/" class="logo"([^>]*)>/, '<a href="/' + lang.code + '/" class="logo"$1>');
+    content = content.replace(/<a href="\/" class="footer-brand-logo"([^>]*)>/, '<a href="/' + lang.code + '/" class="footer-brand-logo"$1>');
 
     // RTL for Arabic
     if (lang.dir === 'rtl') {

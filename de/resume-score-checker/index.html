@@ -946,7 +946,6 @@
     <link rel="stylesheet" href="/assets/saas-ui.css">
     <link rel="stylesheet" href="/assets/aura-fx.css">
     <script defer src="/assets/aura-fx.js"></script>
-    <script defer src="/assets/nav-search.js"></script>
 </head>
 <body>
 
@@ -971,7 +970,7 @@
             <div class="nav-center">
                 <a href="/de/" class="nav-link ">Startseite</a>
                 <div class="nav-item-dropdown">
-                    <a href="/converter/" class="nav-link ">Converter <span class="nav-chevron">▾</span></a>
+                    <a href="/de/converter/" class="nav-link ">Konverter <span class="nav-chevron">▾</span></a>
                     <div class="nav-dropdown-content">
                         <a href="/converter/#pdf-to-word"><span>📄</span> PDF to Word</a>
                         <a href="/converter/#word-to-pdf"><span>📝</span> Word to PDF</a>
@@ -981,7 +980,7 @@
                     </div>
                 </div>
                 <div class="nav-item-dropdown">
-                    <a href="/resume-cv-maker/" class="nav-link ">Resume <span class="nav-chevron">▾</span></a>
+                    <a href="/de/resume-cv-maker/" class="nav-link ">Lebenslauf-Editor <span class="nav-chevron">▾</span></a>
                     <div class="nav-dropdown-content">
                         <a href="/resume-cv-maker/"><span>📝</span> Resume CV Maker</a>
                         <a href="/resume-cv-maker/#templates"><span>🎨</span> 12 ATS Templates</a>
@@ -989,40 +988,28 @@
                     </div>
                 </div>
                 <div class="nav-item-dropdown">
-                    <a href="/cover-letter-maker/" class="nav-link ">Cover Letter <span class="nav-chevron">▾</span></a>
+                    <a href="/de/cover-letter-maker/" class="nav-link ">Anschreiben-Generator <span class="nav-chevron">▾</span></a>
                     <div class="nav-dropdown-content">
                         <a href="/cover-letter-maker/"><span>✉️</span> Cover Letter Builder</a>
                         <a href="/cover-letter-maker/"><span>🎯</span> Targeted Cover Letter</a>
                     </div>
                 </div>
                 <div class="nav-item-dropdown">
-                    <a href="/resume-score-checker/" class="nav-link active">Score Checker <span class="nav-chevron">▾</span></a>
+                    <a href="/de/resume-score-checker/" class="nav-link active">ATS-Checker <span class="nav-chevron">▾</span></a>
                     <div class="nav-dropdown-content">
                         <a href="/resume-score-checker/"><span>🎯</span> ATS Score Checker</a>
                         <a href="/resume-score-checker/"><span>🔍</span> Keyword Matcher</a>
                     </div>
                 </div>
                 <div class="nav-item-dropdown">
-                    <a href="/de/hr-helper/" class="nav-link ">HR-Bewerber-Tool New <span class="nav-chevron">▾</span></a>
+                    <a href="/de/hr-helper/" class="nav-link ">HR-Bewerber-Tool <span class="nav-chevron">▾</span></a>
                     <div class="nav-dropdown-content">
                         <a href="/hr-helper/"><span>👥</span> HR Bulk Screener</a>
                         <a href="/saas/"><span>🏢</span> AuraHR 360 Enterprise</a>
                     </div>
                 </div>
-                <a href="/blogs/" class="nav-link ">Blogs</a>
-                <a href="/about/" class="nav-link ">About</a>
-            </div>
-
-            <!-- Search Tools Input Pill (media_1790969611056.png) -->
-            <div class="nav-search-wrap">
-                <span class="nav-search-icon">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </span>
-                <input type="text" id="navGlobalSearch" class="nav-search-input" placeholder="Search tools..." autocomplete="off" oninput="handleNavSearch(this.value)" onkeydown="if(event.key==='Enter') executeNavSearch()">
-                <div id="navSearchMenu" class="nav-search-results" style="display:none;"></div>
+                <a href="/blogs/" class="nav-link ">Blog</a>
+                <a href="/about/" class="nav-link ">Über uns</a>
             </div>
 
             <div class="nav-right-actions">
@@ -1035,7 +1022,7 @@
                     </svg>
                     <span>AuraHR 360</span>
                 </a>
-                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="★ Merken" aria-label="★ Merken"><span class="bm-star">★</span><span class="bm-text"> Merken</span></button>
+                <button class="btn-bookmark-nav" onclick="bookmarkSite()" title="★ Merken" aria-label="★ Merken"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg><span class="bm-text">Merken</span></button>
                 <div class="lang-switcher" id="langSwitcherContainer">
     <button class="lang-switcher-btn" id="langSwitcherBtn" onclick="toggleLangDropdown(event)" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
         <span class="lang-globe">🌐</span>
