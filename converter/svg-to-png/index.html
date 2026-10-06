@@ -353,7 +353,65 @@
         <div class="tool-card">
             <form data-action="/svg-to-png" id="toolForm">
                 <div class="file-upload-box" id="dropZone" onclick="document.getElementById('fileInput').click()">
-                    <div class="icon">SVG➔PNG</div>
+                    <div class="tool-hero-banner" style="width: 180px; max-width: 100%; height: 76px; margin: 0 auto 1rem; background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 2px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); overflow: hidden;"><svg viewBox="0 0 170 68" width="100%" height="68" xmlns="http://www.w3.org/2000/svg" class="tool-landscape-banner" aria-hidden="true">
+      <defs>
+        <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="5" result="blur" />
+        </filter>
+        <linearGradient id="ppt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#ea580c"/>
+        </linearGradient>
+        <linearGradient id="word-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#2563eb"/>
+        </linearGradient>
+        <linearGradient id="excel-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#16a34a"/>
+        </linearGradient>
+        <linearGradient id="pdf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f87171"/><stop offset="100%" stop-color="#dc2626"/>
+        </linearGradient>
+        <linearGradient id="img-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#7c3aed"/>
+        </linearGradient>
+        <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0284c7"/>
+        </linearGradient>
+        <linearGradient id="amber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#d97706"/>
+        </linearGradient>
+        <linearGradient id="arrow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#818cf8"/><stop offset="100%" stop-color="#6366f1"/>
+        </linearGradient>
+      </defs>
+    
+        <circle cx="45" cy="34" r="24" fill="#cffafe" opacity="0.45" filter="url(#soft-glow)"/>
+        <circle cx="125" cy="34" r="24" fill="#fbcfe8" opacity="0.45" filter="url(#soft-glow)"/>
+        <circle cx="85" cy="34" r="20" fill="#e0e7ff" opacity="0.5" filter="url(#soft-glow)"/>
+        <circle cx="14" cy="20" r="2.2" fill="#38bdf8" opacity="0.8"/>
+        <rect x="12" y="42" width="2.5" height="6" rx="1.2" transform="rotate(-30 13 45)" fill="#818cf8" opacity="0.7"/>
+        <circle cx="156" cy="46" r="2.2" fill="#a855f7" opacity="0.8"/>
+        <rect x="152" y="16" width="2.5" height="6" rx="1.2" transform="rotate(35 153 19)" fill="#38bdf8" opacity="0.7"/>
+        
+        <g transform="translate(22, 10)">
+          <rect x="4" y="4" width="34" height="42" rx="5" fill="url(#img-grad)" filter="drop-shadow(0 4px 6px rgba(124,58,237,0.3))"/>
+          <rect x="7" y="7" width="28" height="24" rx="3" fill="#ffffff" opacity="0.95"/>
+          <circle cx="14" cy="13" r="2.5" fill="#f59e0b"/>
+          <path d="M 9,27 L 17,17 L 23,23 L 28,18 L 33,27 Z" fill="#8b5cf6"/>
+          <text x="21" y="41" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="7.5" letter-spacing="0.5" text-anchor="middle">SVG</text>
+        </g>
+        
+        <g transform="translate(74, 28)">
+          <path d="M 0,6 L 13,6 L 13,2 L 22,7 L 13,12 L 13,8 L 0,8 Z" fill="url(#arrow-grad)" filter="drop-shadow(0 2px 4px rgba(99,102,241,0.3))"/>
+        </g>
+        
+        <g transform="translate(106, 10)">
+          <rect x="4" y="4" width="34" height="42" rx="5" fill="url(#img-grad)" filter="drop-shadow(0 4px 6px rgba(124,58,237,0.3))"/>
+          <rect x="7" y="7" width="28" height="24" rx="3" fill="#ffffff" opacity="0.95"/>
+          <circle cx="14" cy="13" r="2.5" fill="#f59e0b"/>
+          <path d="M 9,27 L 17,17 L 23,23 L 28,18 L 33,27 Z" fill="#8b5cf6"/>
+          <text x="21" y="41" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="7.5" letter-spacing="0.5" text-anchor="middle">PNG</text>
+        </g>
+        </svg></div>
                     <div class="title" id="dropTitle">Choose File to Process</div>
                     <div class="subtitle">Drag &amp; drop file here, or click to browse</div>
                     <input type="file" id="fileInput" name="file" accept=".svg" style="display:none" onchange="handleFileChange(this)">
