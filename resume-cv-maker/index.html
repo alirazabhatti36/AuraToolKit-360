@@ -900,21 +900,80 @@
             max-width: 900px;
             margin: 0 auto;
             box-sizing: border-box;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
         }
 
-        /* Print Media Styles */
+        /* Ensure Preview Text is 100% Selectable & Copyable, and Links Clickable */
+        .sticky-preview,
+        #preview,
+        #preview * {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+        }
+        #preview a,
+        .preview-paper a {
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            transition: opacity 0.2s;
+        }
+        #preview a:hover,
+        .preview-paper a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Print Media Styles for 100% Vector, Selectable & Clickable PDF */
         @media print {
-            body * { visibility: hidden; }
-            #preview, #preview * { visibility: visible; }
-            #preview {
-                position: absolute;
-                left: 0;
-                top: 0;
+            @page {
+                size: A4;
+                margin: 1cm;
+            }
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+            }
+            nav, footer, .page-header, .template-top-card, .layout > .card:first-child, .info-section, .btn-row, #linkedInModal, #aiAssistantModal, #smartImportModal, .action-toolbar, .sticky-preview > *:not(#preview) {
+                display: none !important;
+            }
+            .layout {
+                display: block !important;
                 width: 100% !important;
                 margin: 0 !important;
-                padding: 1.2cm !important;
+                padding: 0 !important;
+            }
+            .sticky-preview {
+                position: static !important;
+                max-height: none !important;
+                overflow: visible !important;
                 border: none !important;
                 box-shadow: none !important;
+                padding: 0 !important;
+                background: transparent !important;
+                width: 100% !important;
+            }
+            #preview {
+                position: static !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                background: #ffffff !important;
+            }
+            #preview a {
+                color: inherit !important;
+                text-decoration: underline !important;
+            }
+            .page-break-line, .page-number-tag {
+                display: none !important;
             }
         }
 
@@ -1818,6 +1877,7 @@
                     </div>
                     <div class="btn-row">
                         <button class="btn-primary" aria-label="Download PDF" onclick="downloadPDF()">📄 Download PDF</button>
+                        <button type="button" class="btn-outline" aria-label="Vector PDF" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF (Selectable)</button>
                         <button class="btn-outline" aria-label="Download DOCX" onclick="downloadDOCX()">📝 Download DOCX</button>
                         <button class="btn-outline" aria-label="Save JSON Draft" onclick="exportJSON()">💾 Save JSON Draft</button>
                         <button class="btn-outline" aria-label="Load JSON Draft" onclick="document.getElementById('importFile').click()">📂 Load JSON Draft</button>
@@ -1855,7 +1915,8 @@
                     </div>
                     <div style="display:flex; gap:0.45rem; align-items:center; flex-wrap:wrap;">
                         <button type="button" class="btn-autofit" onclick="autoFitToOnePage()" title="Automatically adjusts spacing and typography to fit content onto exactly 1 page">✨ Auto-Fit 1 Page</button>
-                        <button type="button" class="btn-primary" style="padding:0.45rem 0.9rem; font-size:0.8rem;" onclick="downloadPDF()">📄 PDF</button>
+                        <button type="button" class="btn-primary" style="padding:0.45rem 0.9rem; font-size:0.8rem;" onclick="downloadPDF()" title="Download PDF with preserved links">📄 PDF</button>
+                        <button type="button" class="btn-outline" style="padding:0.45rem 0.9rem; font-size:0.8rem;" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF</button>
                         <button type="button" class="btn-outline" style="padding:0.45rem 0.9rem; font-size:0.8rem;" onclick="downloadDOCX()">📝 Word</button>
                     </div>
                 </div>
@@ -2883,6 +2944,55 @@
             return html;
         }
 
+        // ================= CONTACT & LINK PARSING HELPERS =================
+        function renderContactLinks(rawLinks, accentColor) {
+            if (!rawLinks || !rawLinks.trim()) return '';
+            const acc = accentColor || currentAccentColor || '#2563eb';
+            const items = rawLinks.split(/[|,\n;]+/).map(s => s.trim()).filter(Boolean);
+            if (!items.length) return '';
+
+            return items.map(item => {
+                let url = item;
+                let cleanLabel = item.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/\/$/, '');
+                if (!/^https?:\/\//i.test(url)) {
+                    url = 'https://' + url;
+                }
+                let icon = '🔗';
+                const lower = url.toLowerCase();
+                if (lower.includes('github.com')) icon = '🐙';
+                else if (lower.includes('linkedin.com')) icon = '💼';
+                else if (lower.includes('twitter.com') || lower.includes('x.com')) icon = '𝕏';
+                else if (lower.includes('gitlab.com')) icon = '🦊';
+                else if (lower.includes('portfolio') || lower.includes('.dev') || lower.includes('.me') || lower.includes('.io')) icon = '🌐';
+
+                return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="resume-ext-link" style="color:${acc}; text-decoration:underline; text-underline-offset:2px; font-weight:600; cursor:pointer;" title="Open ${escapeHtml(url)}">${icon} ${escapeHtml(cleanLabel)}</a>`;
+            }).join(' <span style="color:#94a3b8; margin:0 3px;">•</span> ');
+        }
+
+        function renderContactEmail(email) {
+            if (!email || !email.trim()) return '';
+            const val = email.trim();
+            return `<a href="mailto:${escapeHtml(val)}" target="_blank" rel="noopener noreferrer" class="resume-contact-link" style="color:inherit; text-decoration:none; cursor:pointer;" title="Email ${escapeHtml(val)}">✉️ ${escapeHtml(val)}</a>`;
+        }
+
+        function renderContactPhone(phone) {
+            if (!phone || !phone.trim()) return '';
+            const val = phone.trim();
+            const num = val.replace(/[^\d+]/g, '');
+            return `<a href="tel:${escapeHtml(num)}" class="resume-contact-link" style="color:inherit; text-decoration:none; cursor:pointer;" title="Call ${escapeHtml(val)}">📞 ${escapeHtml(val)}</a>`;
+        }
+
+        function renderProjectLink(rawLink, accentColor) {
+            if (!rawLink || !rawLink.trim()) return '';
+            const acc = accentColor || currentAccentColor || '#2563eb';
+            let url = rawLink.trim();
+            let cleanLabel = url.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/\/$/, '');
+            if (!/^https?:\/\//i.test(url)) {
+                url = 'https://' + url;
+            }
+            return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="resume-ext-link" style="font-size:0.74rem; color:${acc}; font-weight:600; text-decoration:underline; text-underline-offset:2px; cursor:pointer;" title="Visit ${escapeHtml(url)}">🔗 ${escapeHtml(cleanLabel)}</a>`;
+        }
+
         // ================= TEMPLATE RENDERERS =================
 
         // 1. Tech Matrix (Developer)
@@ -2895,10 +3005,10 @@
                         <h1 style="font-size:1.55rem; color:#ffffff; font-weight:800; margin:0 0 0.2rem; font-family:'JetBrains Mono',monospace;">${escapeHtml(data.name || 'Your Full Name')}</h1>
                         <div style="font-size:0.88rem; color:#7ee787; font-weight:600; font-family:'JetBrains Mono',monospace;">[${escapeHtml(data.targetRole || 'Software Engineer')}]</div>
                         <div style="font-size:0.75rem; color:#8b949e; margin-top:0.35rem; display:flex; gap:0.6rem; flex-wrap:wrap; font-family:'JetBrains Mono',monospace;">
-                            ${data.email ? `<span>✉️ ${escapeHtml(data.email)}</span>` : ''}
-                            ${data.phone ? `<span>📞 ${escapeHtml(data.phone)}</span>` : ''}
+                            ${data.email ? `<span>${renderContactEmail(data.email)}</span>` : ''}
+                            ${data.phone ? `<span>${renderContactPhone(data.phone)}</span>` : ''}
                             ${data.location ? `<span>📍 ${escapeHtml(data.location)}</span>` : ''}
-                            ${data.links ? `<span>🔗 ${escapeHtml(data.links)}</span>` : ''}
+                            ${data.links ? `<span>${renderContactLinks(data.links, '#7ee787')}</span>` : ''}
                         </div>
                     </div>
                 </div>
@@ -2947,7 +3057,7 @@
                             <div style="margin-bottom:0.5rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:0.6rem;">
                                 <div style="display:flex; justify-content:space-between; align-items:baseline;">
                                     <strong style="font-size:0.82rem; color:#0f172a; font-family:'JetBrains Mono',monospace;">📦 ${escapeHtml(p.name)}</strong>
-                                    <span style="font-size:0.72rem; color:${accent}; font-family:'JetBrains Mono',monospace;">${escapeHtml(p.link || '')}</span>
+                                    ${p.link ? renderProjectLink(p.link, accent) : ''}
                                 </div>
                                 <p style="font-size:0.78rem; color:#475569; margin:0.2rem 0 0;">${escapeHtml(p.desc)}</p>
                             </div>
@@ -3003,10 +3113,10 @@
                     <div style="border-right:1px solid #e2e8f0; padding-right:1rem;">
                         <h4 style="font-size:0.8rem; color:${accent}; text-transform:uppercase; font-weight:700; margin-bottom:0.4rem;">Contact</h4>
                         <div style="font-size:0.75rem; line-height:1.6; color:#475569; margin-bottom:1.2rem;">
-                            ${data.email ? `<div>✉️ ${escapeHtml(data.email)}</div>` : ''}
-                            ${data.phone ? `<div>📞 ${escapeHtml(data.phone)}</div>` : ''}
+                            ${data.email ? `<div>${renderContactEmail(data.email)}</div>` : ''}
+                            ${data.phone ? `<div>${renderContactPhone(data.phone)}</div>` : ''}
                             ${data.location ? `<div>📍 ${escapeHtml(data.location)}</div>` : ''}
-                            ${data.links ? `<div style="word-break:break-all;">🔗 ${escapeHtml(data.links)}</div>` : ''}
+                            ${data.links ? `<div style="word-break:break-all;">${renderContactLinks(data.links, accent)}</div>` : ''}
                         </div>
 
                         ${skillsCategories.length ? `
@@ -3077,8 +3187,12 @@
                             <div>
                                 <h4 style="font-size:0.85rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.4rem;">Projects</h4>
                                 ${data.projects.map(p => `
-                                    <div style="margin-bottom:0.4rem; font-size:0.78rem;">
-                                        <strong>${escapeHtml(p.name)}</strong>: <span style="color:#475569;">${escapeHtml(p.desc)}</span>
+                                    <div style="margin-bottom:0.45rem; font-size:0.78rem;">
+                                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                                            <strong>${escapeHtml(p.name)}</strong>
+                                            ${p.link ? renderProjectLink(p.link, accent) : ''}
+                                        </div>
+                                        <div style="color:#475569; margin-top:0.1rem;">${escapeHtml(p.desc)}</div>
                                     </div>
                                 `).join('')}
                             </div>
@@ -3097,10 +3211,10 @@
                     <div style="font-size:0.95rem; color:${accent}; font-weight:500; margin-bottom:0.6rem;">${escapeHtml(data.targetRole || 'Professional Role')}</div>
                     
                     <div style="display:flex; gap:1rem; flex-wrap:wrap; font-size:0.75rem; color:#64748b; border-top:1px solid #0f172a; border-bottom:1px solid #e2e8f0; padding:0.4rem 0;">
-                        ${data.email ? `<span>${escapeHtml(data.email)}</span>` : ''}
-                        ${data.phone ? `<span>/</span><span>${escapeHtml(data.phone)}</span>` : ''}
-                        ${data.location ? `<span>/</span><span>${escapeHtml(data.location)}</span>` : ''}
-                        ${data.links ? `<span>/</span><span>${escapeHtml(data.links)}</span>` : ''}
+                        ${data.email ? `<span>${renderContactEmail(data.email)}</span>` : ''}
+                        ${data.phone ? `<span>/</span><span>${renderContactPhone(data.phone)}</span>` : ''}
+                        ${data.location ? `<span>/</span><span>📍 ${escapeHtml(data.location)}</span>` : ''}
+                        ${data.links ? `<span>/</span><span>${renderContactLinks(data.links, accent)}</span>` : ''}
                     </div>
                 </div>
 
@@ -3151,7 +3265,15 @@
                         ${data.projects.length ? `
                             <div>
                                 <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#0f172a; margin-bottom:0.4rem;">Projects</div>
-                                ${data.projects.map(p => `<div style="font-size:0.75rem; margin-bottom:0.3rem;"><strong>${escapeHtml(p.name)}</strong>: <span style="color:#64748b;">${escapeHtml(p.desc)}</span></div>`).join('')}
+                                ${data.projects.map(p => `
+                                    <div style="font-size:0.75rem; margin-bottom:0.35rem;">
+                                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                                            <strong>${escapeHtml(p.name)}</strong>
+                                            ${p.link ? renderProjectLink(p.link, accent) : ''}
+                                        </div>
+                                        <span style="color:#64748b;">${escapeHtml(p.desc)}</span>
+                                    </div>
+                                `).join('')}
                             </div>
                         ` : ''}
                         ${data.certifications.length ? `
@@ -3206,8 +3328,11 @@
                             <div>
                                 <h3 style="font-size:0.9rem; color:${accent}; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.2rem; margin-bottom:0.5rem;">Key Projects</h3>
                                 ${data.projects.map(p => `
-                                    <div style="margin-bottom:0.5rem;">
-                                        <strong style="font-size:0.8rem; color:#0f172a;">${escapeHtml(p.name)}</strong>
+                                    <div style="margin-bottom:0.55rem;">
+                                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                                            <strong style="font-size:0.8rem; color:#0f172a;">${escapeHtml(p.name)}</strong>
+                                            ${p.link ? renderProjectLink(p.link, accent) : ''}
+                                        </div>
                                         <p style="font-size:0.76rem; color:#475569; margin:0.15rem 0 0;">${escapeHtml(p.desc)}</p>
                                     </div>
                                 `).join('')}
@@ -3220,10 +3345,10 @@
                         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:0.8rem; margin-bottom:1.1rem;">
                             <strong style="font-size:0.82rem; color:#0f172a; display:block; margin-bottom:0.4rem;">Contact Information</strong>
                             <div style="font-size:0.75rem; line-height:1.6; color:#475569;">
-                                ${data.email ? `<div>✉️ ${escapeHtml(data.email)}</div>` : ''}
-                                ${data.phone ? `<div>📞 ${escapeHtml(data.phone)}</div>` : ''}
+                                ${data.email ? `<div>${renderContactEmail(data.email)}</div>` : ''}
+                                ${data.phone ? `<div>${renderContactPhone(data.phone)}</div>` : ''}
                                 ${data.location ? `<div>📍 ${escapeHtml(data.location)}</div>` : ''}
-                                ${data.links ? `<div style="word-break:break-all;">🔗 ${escapeHtml(data.links)}</div>` : ''}
+                                ${data.links ? `<div style="word-break:break-all;">${renderContactLinks(data.links, accent)}</div>` : ''}
                             </div>
                         </div>
 
@@ -3272,10 +3397,10 @@
                     <h1 style="font-size:1.55rem; color:#0f172a; font-weight:800; margin:0 0 0.15rem;">${escapeHtml(data.name || 'Your Full Name')}</h1>
                     <div style="font-size:0.86rem; color:${accent}; font-weight:700; margin-bottom:0.25rem;">${escapeHtml(data.targetRole || 'Target Role / Title')}</div>
                     <div style="font-size:0.74rem; color:#475569; display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap;">
-                        ${data.email ? `<span>✉️ ${escapeHtml(data.email)}</span>` : ''}
-                        ${data.phone ? `<span>📞 ${escapeHtml(data.phone)}</span>` : ''}
+                        ${data.email ? `<span>${renderContactEmail(data.email)}</span>` : ''}
+                        ${data.phone ? `<span>${renderContactPhone(data.phone)}</span>` : ''}
                         ${data.location ? `<span>📍 ${escapeHtml(data.location)}</span>` : ''}
-                        ${data.links ? `<span>🔗 ${escapeHtml(data.links)}</span>` : ''}
+                        ${data.links ? `<span>${renderContactLinks(data.links, accent)}</span>` : ''}
                     </div>
                 </div>
 
@@ -3312,7 +3437,11 @@
                         <h3 style="font-size:0.88rem; color:${accent}; text-transform:uppercase; font-weight:800; border-bottom:1px solid #e2e8f0; padding-bottom:0.1rem; margin-bottom:0.3rem;">Academic &amp; Personal Projects</h3>
                         ${data.projects.map(p => `
                             <div style="margin-bottom:0.35rem; font-size:0.76rem;">
-                                <strong style="color:#0f172a;">${escapeHtml(p.name)}</strong>: <span style="color:#475569;">${escapeHtml(p.desc)}</span>
+                                <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                                    <strong style="color:#0f172a;">${escapeHtml(p.name)}</strong>
+                                    ${p.link ? renderProjectLink(p.link, accent) : ''}
+                                </div>
+                                <span style="color:#475569;">${escapeHtml(p.desc)}</span>
                             </div>
                         `).join('')}
                     </div>
@@ -3354,10 +3483,10 @@
                         
                         <div style="margin-bottom:1.2rem; font-size:0.75rem; line-height:1.6; color:#cbd5e1;">
                             <h4 style="color:${accent}; font-size:0.8rem; border-bottom:1px solid #334155; padding-bottom:0.2rem; margin-bottom:0.5rem;">CONTACT</h4>
-                            ${data.email ? `<div>✉️ ${escapeHtml(data.email)}</div>` : ''}
-                            ${data.phone ? `<div>📞 ${escapeHtml(data.phone)}</div>` : ''}
+                            ${data.email ? `<div>${renderContactEmail(data.email)}</div>` : ''}
+                            ${data.phone ? `<div>${renderContactPhone(data.phone)}</div>` : ''}
                             ${data.location ? `<div>📍 ${escapeHtml(data.location)}</div>` : ''}
-                            ${data.links ? `<div style="word-break:break-all;">🔗 ${escapeHtml(data.links)}</div>` : ''}
+                            ${data.links ? `<div style="word-break:break-all;">${renderContactLinks(data.links, '#38bdf8')}</div>` : ''}
                         </div>
 
                         ${renderSidebarSkillsSection(skillsCategories, accent)}
@@ -3418,7 +3547,10 @@
                                 <h3 style="font-size:0.95rem; color:#0f172a; border-bottom:2px solid #0f172a; padding-bottom:0.2rem; margin-bottom:0.5rem;">PROJECTS</h3>
                                 ${data.projects.map(p => `
                                     <div style="margin-bottom:0.5rem;">
-                                        <strong style="font-size:0.82rem; color:#0f172a;">${escapeHtml(p.name)}</strong>
+                                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                                            <strong style="font-size:0.82rem; color:#0f172a;">${escapeHtml(p.name)}</strong>
+                                            ${p.link ? renderProjectLink(p.link, accent) : ''}
+                                        </div>
                                         <p style="font-size:0.75rem; color:#334155; margin-top:0.1rem;">${escapeHtml(p.desc)}</p>
                                     </div>
                                 `).join('')}
@@ -3520,10 +3652,10 @@
                         <div style="font-size:0.95rem; color:${selectedTemplate === 'photo-exec' ? '#94a3b8' : (selectedTemplate === 'creative-grad' ? '#e0e7ff' : accent)}; font-weight:600;">${escapeHtml(data.targetRole || 'Target Job Title')}</div>
                         
                         <div style="font-size:0.75rem; color:${selectedTemplate === 'photo-exec' ? '#cbd5e1' : (selectedTemplate === 'creative-grad' ? '#f1f5f9' : '#475569')}; margin-top:0.4rem; display:flex; gap:0.8rem; flex-wrap:wrap; ${selectedTemplate === 'classic' ? 'justify-content:center;' : ''}">
-                            ${data.email ? `<span>✉️ ${escapeHtml(data.email)}</span>` : ''}
-                            ${data.phone ? `<span>📞 ${escapeHtml(data.phone)}</span>` : ''}
+                            ${data.email ? `<span>${renderContactEmail(data.email)}</span>` : ''}
+                            ${data.phone ? `<span>${renderContactPhone(data.phone)}</span>` : ''}
                             ${data.location ? `<span>📍 ${escapeHtml(data.location)}</span>` : ''}
-                            ${data.links ? `<span>🔗 ${escapeHtml(data.links)}</span>` : ''}
+                            ${data.links ? `<span>${renderContactLinks(data.links, selectedTemplate === 'creative-grad' ? '#38bdf8' : accent)}</span>` : ''}
                         </div>
                     </div>
                 </div>
@@ -3572,7 +3704,7 @@
                             <div style="margin-bottom:0.45rem;">
                                 <div style="display:flex; justify-content:space-between; align-items:baseline;">
                                     <strong style="font-size:0.82rem; color:#0f172a;">${escapeHtml(p.name)}</strong>
-                                    ${p.link ? `<span style="font-size:0.72rem; color:${accent};">${escapeHtml(p.link)}</span>` : ''}
+                                    ${p.link ? renderProjectLink(p.link, accent) : ''}
                                 </div>
                                 <p style="font-size:0.78rem; color:#475569; margin-top:0.15rem;">${escapeHtml(p.desc)}</p>
                             </div>
@@ -3634,6 +3766,7 @@
                     margin: [0.3, 0.4, 0.35, 0.4],
                     filename: filename,
                     image: { type: 'jpeg', quality: 0.98 },
+                    enableLinks: true,
                     html2canvas: {
                         scale: 2,
                         useCORS: true,

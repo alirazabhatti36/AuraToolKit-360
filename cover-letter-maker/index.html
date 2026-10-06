@@ -580,6 +580,17 @@
             max-width: 900px;
             margin: 0 auto;
             box-sizing: border-box;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            cursor: text;
+        }
+        .letter-paper * {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+        }
+        .letter-paper a {
+            cursor: pointer !important;
+            pointer-events: auto !important;
         }
         
         .letter-header {
@@ -1012,6 +1023,7 @@
 
                 <div class="btn-row">
                     <button type="button" class="btn-primary" onclick="downloadLetterPDF()">📄 Download PDF</button>
+                    <button type="button" class="btn-outline" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF (Selectable)</button>
                     <button type="button" class="btn-outline" onclick="downloadLetterDOCX()">📝 Download Word (DOCX)</button>
                     <button type="button" class="btn-outline" onclick="copyLetterText()">📋 Copy Text</button>
                     <button type="button" class="btn-outline" style="border-color:#ef4444; color:#f87171;" onclick="resetCoverLetter()">Reset</button>
@@ -1027,6 +1039,7 @@
                     </div>
                     <div style="display:flex; gap:0.4rem;">
                         <button type="button" class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadLetterPDF()">📄 PDF</button>
+                        <button type="button" class="btn-outline" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="window.print()" title="Print or save as 100% Vector PDF">🖨️ Vector PDF</button>
                         <button type="button" class="btn-outline" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadLetterDOCX()">📝 Word</button>
                     </div>
                 </div>
@@ -1273,6 +1286,16 @@
             updateLetter();
         }
 
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         function updateLetter() {
             const get = (id) => (document.getElementById(id) ? document.getElementById(id).value : '');
             
@@ -1280,13 +1303,26 @@
             document.getElementById('prevTitle').textContent = get('candTitle');
             document.getElementById('prevSignoffName').textContent = get('candName');
 
-            const contactHtml = [
-                get('candEmail'),
-                get('candPhone'),
-                get('candLocation'),
-                get('candLink')
-            ].filter(Boolean).map(c => `<div>${c}</div>`).join('');
-            document.getElementById('prevContact').innerHTML = contactHtml;
+            const contactItems = [];
+            const em = get('candEmail');
+            if (em) contactItems.push(`<a href="mailto:${escapeHtml(em)}" style="color:inherit; text-decoration:none; cursor:pointer;" target="_blank" rel="noopener noreferrer" title="Email ${escapeHtml(em)}">✉️ ${escapeHtml(em)}</a>`);
+            const ph = get('candPhone');
+            if (ph) contactItems.push(`<a href="tel:${escapeHtml(ph.replace(/[^\d+]/g, ''))}" style="color:inherit; text-decoration:none; cursor:pointer;" title="Call ${escapeHtml(ph)}">📞 ${escapeHtml(ph)}</a>`);
+            const loc = get('candLocation');
+            if (loc) contactItems.push(`📍 ${escapeHtml(loc)}`);
+            const lk = get('candLink');
+            if (lk) {
+                let url = lk.trim();
+                let clean = url.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/\/$/, '');
+                if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+                let icon = '🔗';
+                const lower = url.toLowerCase();
+                if (lower.includes('linkedin.com')) icon = '💼';
+                else if (lower.includes('github.com')) icon = '🐙';
+                else if (lower.includes('portfolio') || lower.includes('.dev') || lower.includes('.me')) icon = '🌐';
+                contactItems.push(`<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:${currentAccent || '#2563eb'}; text-decoration:underline; font-weight:600; cursor:pointer;" title="Open ${escapeHtml(url)}">${icon} ${escapeHtml(clean)}</a>`);
+            }
+            document.getElementById('prevContact').innerHTML = contactItems.map(c => `<div>${c}</div>`).join('');
 
             const now = new Date();
             const dateStr = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -1314,6 +1350,7 @@
                     margin: [0.5, 0.5, 0.5, 0.5],
                     filename: filename,
                     image: { type: 'jpeg', quality: 0.98 },
+                    enableLinks: true,
                     html2canvas: { scale: 2, useCORS: true },
                     jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
                 };
