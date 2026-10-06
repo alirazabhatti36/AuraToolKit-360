@@ -1209,35 +1209,44 @@
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
         }
 
-        /* Visual Page Break Marker */
+        /* Clean A4 Page Break Guide & Corner Numbering */
         .preview-paper {
             position: relative !important;
             transition: background-color 0.25s ease, max-width 0.25s ease;
         }
-        .page-break-marker {
-            position: absolute;
-            left: -1px;
-            right: -1px;
-            border-top: 2px dashed #f59e0b;
-            z-index: 25;
-            pointer-events: none;
-            display: flex;
-            justify-content: center;
-            transform: translateY(-50%);
+        .preview-paper h1,
+        .preview-paper h2,
+        .preview-paper h3,
+        .preview-paper .section,
+        .preview-paper > div {
+            break-inside: avoid;
+            page-break-inside: avoid;
         }
-        .page-break-tag {
-            background: #78350f;
-            color: #fef3c7;
-            border: 1px solid #f59e0b;
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 0.2rem 0.65rem;
-            border-radius: 999px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.35);
-            white-space: nowrap;
+        .page-break-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            border-top: 1px dashed #cbd5e1;
+            z-index: 15;
+            pointer-events: none;
+        }
+        .page-number-tag {
+            position: absolute;
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.18rem 0.55rem;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            pointer-events: none;
+            z-index: 20;
+            letter-spacing: 0.3px;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+            user-select: none;
         }
         @media print {
-            .page-break-marker { display: none !important; }
+            .page-break-line, .page-number-tag, .page-break-marker { display: none !important; }
             #templateModal { display: none !important; }
         }
 
@@ -3612,9 +3621,17 @@
             const name = document.getElementById('name').value || 'resume';
             const filename = `${name.replace(/\s+/g, '-').toLowerCase()}-cv.pdf`;
 
+            // Temporarily hide on-screen guide lines and page tags during PDF rendering
+            const screenGuideElements = preview.querySelectorAll('.page-break-line, .page-number-tag, .page-break-marker');
+            screenGuideElements.forEach(el => el.style.display = 'none');
+
+            const restoreGuides = () => {
+                screenGuideElements.forEach(el => el.style.display = '');
+            };
+
             if (typeof html2pdf !== 'undefined') {
                 const opt = {
-                    margin: [0.3, 0.4, 0.3, 0.4],
+                    margin: [0.3, 0.4, 0.35, 0.4],
                     filename: filename,
                     image: { type: 'jpeg', quality: 0.98 },
                     html2canvas: {
@@ -3627,10 +3644,27 @@
                     pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
                 };
 
-                html2pdf().set(opt).from(preview).save().catch(_err => {
+                html2pdf().set(opt).from(preview).toPdf().get('pdf').then(function(pdf) {
+                    try {
+                        const totalPages = pdf.internal.getNumberOfPages();
+                        for (let i = 1; i <= totalPages; i++) {
+                            pdf.setPage(i);
+                            pdf.setFontSize(8.5);
+                            pdf.setTextColor(148, 163, 184); // subtle slate-400
+                            const pageWidth = typeof pdf.internal.pageSize.getWidth === 'function' ? pdf.internal.pageSize.getWidth() : pdf.internal.pageSize.width;
+                            const pageHeight = typeof pdf.internal.pageSize.getHeight === 'function' ? pdf.internal.pageSize.getHeight() : pdf.internal.pageSize.height;
+                            const pageText = `Page ${i}`;
+                            pdf.text(pageText, pageWidth - 0.45, pageHeight - 0.22, { align: 'right' });
+                        }
+                    } catch (e) {
+                        console.warn('PDF page numbering hook fallback:', e);
+                    }
+                }).save().then(restoreGuides).catch(_err => {
+                    restoreGuides();
                     window.print();
                 });
             } else {
+                restoreGuides();
                 window.print();
             }
         }
@@ -3860,30 +3894,56 @@
             const preview = document.getElementById('preview');
             if (!preview) return;
 
-            // Remove existing marker
-            const oldMarker = preview.querySelector('.page-break-marker');
-            if (oldMarker) oldMarker.remove();
+            // Remove previous indicators & tags
+            preview.querySelectorAll('.page-break-line, .page-number-tag, .page-break-marker').forEach(el => el.remove());
 
             const pageH = calculatePageHeight();
             const contentH = preview.scrollHeight;
             const pageBadge = document.getElementById('pageCountBadge');
 
-            if (contentH > pageH + 35) {
-                const pages = Math.ceil(contentH / pageH);
+            if (contentH > pageH + 25) {
+                const pages = Math.max(2, Math.ceil(contentH / pageH));
                 const p2Percent = Math.min(100, Math.round(((contentH - pageH) / pageH) * 100));
                 if (pageBadge) {
-                    pageBadge.innerHTML = `⚠️ ${pages} Pages (P2: ~${p2Percent}% filled)`;
-                    pageBadge.style.background = 'rgba(245, 158, 11, 0.15)';
-                    pageBadge.style.color = '#f59e0b';
-                    pageBadge.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+                    pageBadge.innerHTML = `📄 ${pages} Pages (${currentPageFormat.toUpperCase()} • P2 ~${p2Percent}%)`;
+                    pageBadge.style.background = 'rgba(37, 99, 235, 0.1)';
+                    pageBadge.style.color = '#2563eb';
+                    pageBadge.style.borderColor = 'rgba(37, 99, 235, 0.25)';
                 }
 
-                // Add visual dashed line
-                const marker = document.createElement('div');
-                marker.className = 'page-break-marker';
-                marker.style.top = `${pageH}px`;
-                marker.innerHTML = `<span class="page-break-tag">✂️ Page 1 End (${currentPageFormat.toUpperCase()}) • Page 2 Starts Below</span>`;
-                preview.appendChild(marker);
+                // Page 1 number at bottom-right corner of Page 1
+                const p1Tag = document.createElement('div');
+                p1Tag.className = 'page-number-tag';
+                p1Tag.innerText = 'Page 1';
+                p1Tag.style.top = `${pageH - 28}px`;
+                p1Tag.style.right = '20px';
+                preview.appendChild(p1Tag);
+
+                // Subtle dashed hairline sheet divider (clean, no text cut)
+                const divider = document.createElement('div');
+                divider.className = 'page-break-line';
+                divider.style.top = `${pageH}px`;
+                preview.appendChild(divider);
+
+                // Subsequent pages numbering
+                for (let p = 2; p <= pages; p++) {
+                    const pTag = document.createElement('div');
+                    pTag.className = 'page-number-tag';
+                    pTag.innerText = `Page ${p}`;
+                    if (p === pages) {
+                        pTag.style.bottom = '12px';
+                        pTag.style.right = '20px';
+                    } else {
+                        pTag.style.top = `${(p * pageH) - 28}px`;
+                        pTag.style.right = '20px';
+
+                        const nextDivider = document.createElement('div');
+                        nextDivider.className = 'page-break-line';
+                        nextDivider.style.top = `${p * pageH}px`;
+                        preview.appendChild(nextDivider);
+                    }
+                    preview.appendChild(pTag);
+                }
             } else {
                 if (pageBadge) {
                     pageBadge.innerHTML = `📄 1 Page (${currentPageFormat.toUpperCase()} Fit ✅)`;
@@ -3891,6 +3951,14 @@
                     pageBadge.style.color = '#10b981';
                     pageBadge.style.borderColor = 'rgba(16, 185, 129, 0.3)';
                 }
+
+                // Single page number at bottom-right corner
+                const singlePageTag = document.createElement('div');
+                singlePageTag.className = 'page-number-tag';
+                singlePageTag.innerText = 'Page 1';
+                singlePageTag.style.bottom = '12px';
+                singlePageTag.style.right = '20px';
+                preview.appendChild(singlePageTag);
             }
         }
 
