@@ -55,7 +55,7 @@ for hp in html_files:
     # Check hrefs
     for m in re.finditer(r'href=["\']([^"\']+)["\']', c):
         href = m.group(1).strip()
-        if href.startswith("http://") or href.startswith("https://") or href.startswith("mailto:") or href.startswith("tel:") or href.startswith("javascript:") or href.startswith("#"):
+        if href.startswith("http://") or href.startswith("https://") or href.startswith("mailto:") or href.startswith("tel:") or href.startswith("javascript:") or href.startswith("#") or href.startswith("data:"):
             continue
         if "${" in href:  # JS template string
             continue
