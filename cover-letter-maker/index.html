@@ -60,18 +60,18 @@
     
     <style>
         :root {
-            --bg-base: #0b0f19;
-            --bg-card: rgba(18, 24, 38, 0.7);
-            --bg-card-hover: rgba(28, 36, 56, 0.85);
-            --border-card: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(99, 102, 241, 0.35);
-            --accent-cyan: #38bdf8;
-            --accent-purple: #8b5cf6;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
-            --accent-amber: #f59e0b;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --bg-base: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --border-card: #cbd5e1;
+            --border-highlight: #2563eb;
+            --accent-cyan: #1d4ed8;
+            --accent-purple: #1e40af;
+            --accent-green: #047857;
+            --accent-blue: #2563eb;
+            --accent-orange: #d97706;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
             --text-muted: #64748b;
         }
 
@@ -359,88 +359,305 @@
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.4; transform: scale(0.85); }
         }
+        .container {
+            max-width: 1600px;
+            width: 96%;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+            box-sizing: border-box;
+        }
+
         .hero-title, .page-header h1 {
             font-size: clamp(2rem, 4.5vw, 2.7rem);
             font-weight: 800;
             letter-spacing: -0.8px;
             line-height: 1.2;
-            color: #ffffff;
+            color: #0f172a;
             margin-bottom: 0.8rem;
         }
         .gradient-text {
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            background: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             display: inline-block;
         }
         .hero-desc, .page-header p {
-            font-size: 1.02rem;
-            color: var(--text-secondary);
-            max-width: 680px;
-            margin: 0 auto 1.8rem;
+            font-size: 1.05rem;
+            color: #475569;
+            max-width: 780px;
+            margin: 0 auto 2rem;
             line-height: 1.6;
         }
 
-/* ===== DUAL PANE WORKSPACE ===== */
-        .workspace { display: grid; grid-template-columns: 1fr 1.05fr; gap: 1.5rem; align-items: start; }
-        @media (max-width: 1024px) {
-            .workspace { grid-template-columns: 1fr; }
+        /* ===== DUAL PANE WORKSPACE (WIDE LAYOUT) ===== */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 2.2rem;
+            align-items: start;
+        }
+        @media (min-width: 1440px) {
+            .workspace {
+                grid-template-columns: 1.28fr 0.72fr;
+                gap: 2.5rem;
+            }
+        }
+        @media (max-width: 1100px) {
+            .workspace {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
-        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 18px; padding: 1.5rem; backdrop-filter: blur(14px); }
-        .section-title { font-size: 1.1rem; font-weight: 800; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.6rem; }
+        .card {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 20px;
+            padding: 2.2rem 2.4rem;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+        }
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1.5px solid #e2e8f0;
+            padding-bottom: 0.75rem;
+        }
         
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
-        .field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.8rem; }
-        .field label { font-size: 0.8rem; font-weight: 600; color: #cbd5e1; }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-bottom: 1rem;
+        }
+        .field label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
         .field input, .field textarea, .field select {
-            background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 9px; padding: 0.6rem 0.8rem; color: #ffffff; font-family: inherit; font-size: 0.88rem;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            color: #0f172a;
+            font-family: inherit;
+            font-size: 0.92rem;
             transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+            box-sizing: border-box;
         }
         .field input:focus, .field textarea:focus, .field select:focus {
-            outline: none; border-color: var(--accent-cyan); box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        .field input::placeholder, .field textarea::placeholder {
+            color: #94a3b8;
         }
 
         /* Styling Toolbar */
-        .style-bar { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; background: rgba(0,0,0,0.25); padding: 0.85rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 1.2rem; }
-        .style-group { display: flex; align-items: center; gap: 0.4rem; }
-        .color-dot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s; }
-        .color-dot:hover, .color-dot.active { transform: scale(1.2); border-color: #38bdf8; box-shadow: 0 0 8px rgba(56,189,248,0.5); }
+        .style-bar {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            flex-wrap: wrap;
+            background: #f8fafc;
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            border: 1.5px solid #cbd5e1;
+            margin-bottom: 1.5rem;
+        }
+        .style-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .style-group span {
+            color: #475569 !important;
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+        }
+        .color-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #cbd5e1;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .color-dot:hover, .color-dot.active {
+            transform: scale(1.2);
+            border-color: #2563eb;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+        }
 
         /* Tone Selector */
-        .tone-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-        .tone-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-        .tone-btn:hover { background: rgba(255,255,255,0.1); color: #ffffff; }
-        .tone-btn.active { background: linear-gradient(135deg, #0284c7, #38bdf8); color: #ffffff; border-color: transparent; }
+        .tone-pills {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+        .tone-btn {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            color: #334155;
+            padding: 0.55rem 1.1rem;
+            border-radius: 10px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tone-btn:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+        .tone-btn.active {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+        }
 
         /* Cover Letter Preview Paper */
-        .preview-pane { position: sticky; top: 90px; }
+        .preview-pane {
+            position: sticky;
+            top: 90px;
+        }
+        .preview-title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.85rem;
+        }
+        .preview-title-bar h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #0f172a;
+            font-weight: 800;
+        }
         .letter-paper {
-            background: #ffffff; color: #1e293b; border-radius: 12px; padding: 2.2rem;
-            min-height: 720px; box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-            font-size: 13.5px; line-height: 1.65; transition: background-color 0.2s;
+            background: #ffffff;
+            color: #1e293b;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 2.6rem;
+            min-height: 720px;
+            box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.1);
+            font-size: 14px;
+            line-height: 1.7;
+            transition: background-color 0.2s;
         }
         
-        .letter-header { border-bottom: 2px solid #2563eb; padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; }
-        .candidate-name { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0; line-height: 1.2; }
-        .candidate-title { font-size: 0.92rem; font-weight: 600; color: #2563eb; }
-        .candidate-contact { text-align: right; font-size: 0.82rem; color: #64748b; line-height: 1.4; }
+        .letter-header {
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .candidate-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .candidate-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2563eb;
+        }
+        .candidate-contact {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.45;
+        }
         @media (max-width: 576px) { .candidate-contact { text-align: left; } }
 
-        .letter-date-recipient { margin-bottom: 1.2rem; font-size: 0.88rem; color: #334155; }
-        .letter-salutation { font-weight: 700; color: #0f172a; margin-bottom: 0.9rem; font-size: 0.92rem; }
-        .letter-body p { margin-bottom: 1rem; text-align: justify; }
-        .letter-signoff { margin-top: 1.8rem; }
-        .letter-signoff-name { font-weight: 800; color: #0f172a; margin-top: 1.5rem; font-size: 1rem; }
+        .letter-date-recipient {
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .letter-salutation {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.9rem;
+            font-size: 0.95rem;
+        }
+        .letter-body p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .letter-signoff {
+            margin-top: 1.8rem;
+        }
+        .letter-signoff-name {
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 1.5rem;
+            font-size: 1.05rem;
+        }
 
         /* Action Buttons */
-        .btn-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.2rem; }
-        .btn-primary { background: linear-gradient(135deg, #0284c7, #38bdf8); color: #ffffff; border: none; padding: 0.65rem 1.2rem; border-radius: 9px; font-weight: 700; font-size: 0.86rem; cursor: pointer; transition: all 0.2s; }
-        .btn-primary:hover { background: linear-gradient(135deg, #0369a1, #0ea5e9); transform: translateY(-1px); }
-        .btn-outline { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #f8fafc; padding: 0.65rem 1.2rem; border-radius: 9px; font-weight: 600; font-size: 0.86rem; cursor: pointer; transition: all 0.2s; }
-        .btn-outline:hover { background: rgba(255,255,255,0.12); color: #ffffff; }
+        .btn-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem 1.4rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0369a1, #1d4ed8);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+        }
+        .btn-outline {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            color: #334155;
+            padding: 0.75rem 1.4rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
 
         @media print {
             body * { visibility: hidden; }
@@ -449,11 +666,38 @@
         }
 
         /* FAQ Section */
-        .info-card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 18px; padding: 2.2rem; margin-top: 3rem; }
-        .info-card h2 { font-size: 1.45rem; color: #ffffff; margin-bottom: 1.2rem; font-weight: 800; border-left: 4px solid var(--accent-cyan); padding-left: 0.8rem; }
-        .faq-item { margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1rem; }
-        .faq-q { font-weight: 700; color: #ffffff; font-size: 0.98rem; margin-bottom: 0.35rem; }
-        .faq-a { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+        .info-card {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 3.5rem;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+        }
+        .info-card h2 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            border-left: 4px solid #2563eb;
+            padding-left: 0.8rem;
+        }
+        .faq-item {
+            margin-bottom: 1.4rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1.2rem;
+        }
+        .faq-q {
+            font-weight: 700;
+            color: #0f172a;
+            font-size: 1.02rem;
+            margin-bottom: 0.4rem;
+        }
+        .faq-a {
+            color: #475569;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
 
         /* FOOTER */
         footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 3rem 1.5rem 2rem; margin-top: 4rem; color: #475569; }
@@ -649,8 +893,8 @@
                     </div>
 
                     <div class="style-group">
-                        <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">Font:</span>
-                        <select id="fontSelect" style="background:#0f172a; border:1px solid rgba(255,255,255,0.12); color:#fff; padding:0.3rem 0.5rem; border-radius:6px; font-size:0.78rem;" onchange="setFont(this.value)">
+                        <span style="font-size:0.85rem; color:#475569; font-weight:700;">Font:</span>
+                        <select id="fontSelect" style="background:#ffffff; border:1.5px solid #cbd5e1; color:#0f172a; padding:0.4rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600;" onchange="setFont(this.value)">
                             <option value="'Inter', sans-serif">Inter (Tech / Modern)</option>
                             <option value="'Roboto', sans-serif">Roboto (Corporate)</option>
                             <option value="'Merriweather', serif">Merriweather (Classic Serif)</option>
@@ -759,8 +1003,8 @@
             <div class="preview-pane">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
                     <div style="display:flex; align-items:center; gap:0.5rem;">
-                        <h3 style="margin:0; font-size:1.05rem; color:#ffffff;">Live Document Preview</h3>
-                        <span style="font-size:0.72rem; background:rgba(16,185,129,0.15); color:#10b981; padding:0.18rem 0.55rem; border-radius:999px; font-weight:700; border:1px solid rgba(16,185,129,0.3);">A4 Letterhead</span>
+                        <h3 style="margin:0; font-size:1.1rem; color:#0f172a; font-weight:800;">Live Document Preview</h3>
+                        <span style="font-size:0.75rem; background:rgba(16,185,129,0.12); color:#047857; padding:0.2rem 0.6rem; border-radius:999px; font-weight:700; border:1px solid rgba(16,185,129,0.3);">A4 Letterhead</span>
                     </div>
                     <div style="display:flex; gap:0.4rem;">
                         <button type="button" class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="downloadLetterPDF()">📄 PDF</button>
@@ -842,29 +1086,29 @@
     </main>
 
         <!-- ===== FOOTER ===== -->
-    <!-- Related Tools Section -->
-        <div class="info-card" style="margin-top: 2.5rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 2rem; background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;">
-            <h2 style="font-size: 1.45rem; font-weight: 800; color: #38bdf8; margin-bottom: 1.2rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem;">Explore Related Career &amp; Writing Tools</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.2rem;">
-                <a href="/resume-cv-maker/" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 1.2rem; text-decoration: none; color: #f8fafc; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.transform='none'">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📝</div>
-                    <h4 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff;">ATS Resume Builder</h4>
-                    <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin: 0;">Build ATS-compliant resumes fast</p>
+        <!-- Related Tools Section -->
+        <div class="info-card" style="margin-top: 2.5rem; max-width: 1600px; width: 100%; box-sizing: border-box; margin-left: auto; margin-right: auto; padding: 2.4rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 20px; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);">
+            <h2 style="font-size: 1.45rem; font-weight: 800; color: #0f172a; margin-bottom: 1.2rem; border-left: 4px solid #2563eb; padding-left: 0.75rem;">Explore Related Career &amp; Writing Tools</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 1.2rem;">
+                <a href="/resume-cv-maker/" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.5rem 1.2rem; text-decoration: none; color: #0f172a; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#2563eb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.transform='none'">
+                    <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📝</div>
+                    <h4 style="font-size: 1.02rem; font-weight: 800; margin-bottom: 0.35rem; color: #0f172a;">ATS Resume Builder</h4>
+                    <p style="font-size: 0.85rem; color: #64748b; line-height: 1.45; margin: 0;">Build ATS-compliant resumes fast</p>
                 </a>
-                <a href="/resume-score-checker/" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 1.2rem; text-decoration: none; color: #f8fafc; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.transform='none'">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
-                    <h4 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff;">ATS Score Checker</h4>
-                    <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin: 0;">Scan resumes against job descriptions</p>
+                <a href="/resume-score-checker/" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.5rem 1.2rem; text-decoration: none; color: #0f172a; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#2563eb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.transform='none'">
+                    <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🎯</div>
+                    <h4 style="font-size: 1.02rem; font-weight: 800; margin-bottom: 0.35rem; color: #0f172a;">ATS Score Checker</h4>
+                    <p style="font-size: 0.85rem; color: #64748b; line-height: 1.45; margin: 0;">Scan resumes against job descriptions</p>
                 </a>
-                <a href="/paraphrasing-tool/" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 1.2rem; text-decoration: none; color: #f8fafc; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.transform='none'">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✍️</div>
-                    <h4 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff;">Paraphrasing Tool</h4>
-                    <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin: 0;">Enhance tone &amp; rephrase sentences</p>
+                <a href="/paraphrasing-tool/" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.5rem 1.2rem; text-decoration: none; color: #0f172a; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#2563eb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.transform='none'">
+                    <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">✍️</div>
+                    <h4 style="font-size: 1.02rem; font-weight: 800; margin-bottom: 0.35rem; color: #0f172a;">Paraphrasing Tool</h4>
+                    <p style="font-size: 0.85rem; color: #64748b; line-height: 1.45; margin: 0;">Enhance tone &amp; rephrase sentences</p>
                 </a>
-                <a href="/converter/word-counter/" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 1.2rem; text-decoration: none; color: #f8fafc; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.transform='none'">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔤</div>
-                    <h4 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff;">Word Counter</h4>
-                    <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin: 0;">Check character &amp; paragraph count</p>
+                <a href="/converter/word-counter/" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.5rem 1.2rem; text-decoration: none; color: #0f172a; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#2563eb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.transform='none'">
+                    <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🔤</div>
+                    <h4 style="font-size: 1.02rem; font-weight: 800; margin-bottom: 0.35rem; color: #0f172a;">Word Counter</h4>
+                    <p style="font-size: 0.85rem; color: #64748b; line-height: 1.45; margin: 0;">Check character &amp; paragraph count</p>
                 </a>
             </div>
         </div>

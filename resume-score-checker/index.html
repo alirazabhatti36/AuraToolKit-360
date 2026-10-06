@@ -60,19 +60,19 @@
     
     <style>
         :root {
-            --bg-base: #0b0f19;
-            --bg-card: rgba(18, 24, 38, 0.7);
-            --bg-card-hover: rgba(28, 36, 56, 0.85);
-            --border-card: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(99, 102, 241, 0.35);
-            --accent-cyan: #38bdf8;
-            --accent-purple: #8b5cf6;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
-            --accent-amber: #f59e0b;
+            --bg-base: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --border-card: #cbd5e1;
+            --border-highlight: #2563eb;
+            --accent-cyan: #1d4ed8;
+            --accent-purple: #1e40af;
+            --accent-green: #047857;
+            --accent-blue: #2563eb;
+            --accent-amber: #d97706;
             --accent-red: #ef4444;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
             --text-muted: #64748b;
         }
 
@@ -378,10 +378,7 @@
         .page-header h1 {
             font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 60%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #0f172a;
             letter-spacing: -0.8px;
             line-height: 1.2;
             margin-bottom: 0.5rem;
@@ -390,11 +387,11 @@
             .page-header h1 { font-size: 1.9rem; }
         }
         .page-header p {
-            color: var(--text-secondary);
-            font-size: 0.98rem;
-            max-width: 680px;
+            color: #475569;
+            font-size: 1rem;
+            max-width: 760px;
             margin: 0 auto;
-            line-height: 1.55;
+            line-height: 1.6;
         }
 
         /* Feature Pills Row */
@@ -403,116 +400,123 @@
             justify-content: center;
             gap: 0.6rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
+            margin-top: 1.2rem;
         }
         .feat-pill {
-            background: rgba(18, 24, 38, 0.6);
-            border: 1px solid var(--border-card);
-            color: var(--text-secondary);
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 0.3rem 0.85rem;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            color: #334155;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.4rem 1rem;
             border-radius: 999px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        /* MAIN WRAPPER */
+        /* MAIN WRAPPER (WIDE CONTAINER) */
         .main-wrap {
-            max-width: 1040px;
+            max-width: 1560px;
+            width: 95%;
             margin: 0 auto;
-            padding: 1.5rem 1.2rem 3.5rem;
+            padding: 2rem 1.5rem 4.5rem;
+            box-sizing: border-box;
         }
 
-        /* INPUT GRID */
+        /* INPUT GRID (EXPANDED DUAL PANE) */
         .grid-input {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            background: var(--bg-card);
-            backdrop-filter: blur(14px);
+            gap: 2.2rem;
+            background: #ffffff;
             border-radius: 20px;
-            padding: 1.8rem;
-            border: 1px solid var(--border-card);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            padding: 2.4rem;
+            border: 1.5px solid #cbd5e1;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
         }
-        @media(max-width: 768px) {
-            .grid-input { grid-template-columns: 1fr; padding: 1.3rem; }
+        @media(max-width: 900px) {
+            .grid-input { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; }
         }
         .box-title {
-            font-weight: 700;
-            font-size: 0.92rem;
-            margin-bottom: 0.75rem;
-            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-bottom: 0.85rem;
+            color: #0f172a;
             display: flex;
             align-items: center;
-            gap: 0.45rem;
+            gap: 0.5rem;
         }
         .drop-zone {
-            border: 2px dashed rgba(56, 189, 248, 0.35);
+            border: 2px dashed #94a3b8;
             border-radius: 16px;
-            padding: 2rem 1.2rem;
+            padding: 2.5rem 1.5rem;
             text-align: center;
             cursor: pointer;
-            transition: all 0.28s;
-            background: rgba(11, 15, 25, 0.5);
+            transition: all 0.25s;
+            background: #f8fafc;
+            color: #1e293b;
         }
         .drop-zone:hover {
-            border-color: var(--accent-cyan);
-            background: rgba(56, 189, 248, 0.08);
+            border-color: #2563eb;
+            background: rgba(37, 99, 235, 0.04);
             transform: translateY(-2px);
         }
         .drop-icon {
-            font-size: 2.2rem;
-            margin-bottom: 0.4rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
         .file-name {
-            font-size: 0.8rem;
-            color: var(--accent-cyan);
-            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #2563eb;
+            margin-top: 0.6rem;
             word-break: break-all;
-            font-weight: 600;
+            font-weight: 700;
         }
         input[type="file"] { display: none; }
         textarea {
             width: 100%;
-            height: 165px;
-            background: rgba(11, 15, 25, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            height: 185px;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
             border-radius: 14px;
-            padding: 0.85rem;
-            color: #ffffff;
+            padding: 1rem;
+            color: #0f172a;
             font-family: inherit;
-            font-size: 0.85rem;
+            font-size: 0.92rem;
             resize: vertical;
             outline: none;
+            box-sizing: border-box;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         textarea:focus {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        textarea::placeholder {
+            color: #94a3b8;
         }
         .scan-btn-wrap {
             grid-column: 1 / -1;
             text-align: center;
-            margin-top: 0.6rem;
+            margin-top: 0.8rem;
         }
         .btn-scan {
-            background: linear-gradient(135deg, #0284c7, #6366f1);
+            background: linear-gradient(135deg, #0284c7, #2563eb);
             color: #ffffff;
             border: none;
-            font-weight: 700;
-            font-size: 0.98rem;
-            padding: 0.85rem 2.5rem;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 0.95rem 2.8rem;
             border-radius: 999px;
             cursor: pointer;
             transition: all 0.25s;
-            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
         .btn-scan:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(2, 132, 199, 0.6);
+            box-shadow: 0 10px 28px rgba(2, 132, 199, 0.5);
         }
         .btn-scan:disabled {
             opacity: 0.6;
@@ -522,23 +526,22 @@
 
         /* RESULTS CARD */
         .result-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(16px);
+            background: #ffffff;
             border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 1px solid var(--border-card);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+            padding: 2.4rem;
+            margin-top: 2.2rem;
+            border: 1.5px solid #cbd5e1;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
             display: none;
         }
         .res-top {
             display: flex;
             align-items: center;
-            gap: 1.8rem;
+            gap: 2rem;
             flex-wrap: wrap;
-            margin-bottom: 1.8rem;
-            padding-bottom: 1.4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1.5px solid #e2e8f0;
         }
         .score-circle {
             position: relative;
@@ -555,7 +558,7 @@
             stroke-width: 9;
             stroke-linecap: round;
         }
-        .bg-circle { stroke: rgba(255, 255, 255, 0.08); }
+        .bg-circle { stroke: #e2e8f0; }
         .fill-circle {
             stroke: var(--accent-green);
             stroke-dasharray: 264;
@@ -570,118 +573,119 @@
             justify-content: center;
             font-size: 1.6rem;
             font-weight: 900;
+            color: #0f172a;
         }
 
         /* Metrics Grid */
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.6rem;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
         }
         @media(max-width: 650px) {
             .metrics-grid { grid-template-columns: repeat(2, 1fr); }
         }
         .metric-box {
-            background: rgba(11, 15, 25, 0.5);
+            background: #f8fafc;
             border-radius: 14px;
-            padding: 1rem 0.8rem;
+            padding: 1.2rem 1rem;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1.5px solid #cbd5e1;
         }
         .metric-val {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            color: var(--accent-cyan);
+            color: #2563eb;
         }
         .metric-lbl {
-            font-size: 0.74rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-            font-weight: 600;
+            font-size: 0.78rem;
+            color: #475569;
+            margin-top: 0.3rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.4px;
         }
 
         /* Tags */
-        .tags-wrap { margin-bottom: 1.4rem; }
+        .tags-wrap { margin-bottom: 1.5rem; }
         .tags-title {
-            font-weight: 700;
-            font-size: 0.88rem;
-            margin-bottom: 0.6rem;
-            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
         }
         .tag {
             display: inline-block;
-            font-size: 0.76rem;
-            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            padding: 0.35rem 0.85rem;
             border-radius: 999px;
-            margin: 0.2rem;
+            margin: 0.25rem;
             font-weight: 600;
         }
         .tag.g {
-            background: rgba(16, 185, 129, 0.15);
-            color: #34d399;
+            background: rgba(16, 185, 129, 0.12);
+            color: #047857;
             border: 1px solid rgba(16, 185, 129, 0.3);
         }
         .tag.r {
-            background: rgba(239, 68, 68, 0.15);
-            color: #f87171;
+            background: rgba(239, 68, 68, 0.12);
+            color: #b91c1c;
             border: 1px solid rgba(239, 68, 68, 0.3);
         }
         .tag.b {
-            background: rgba(56, 189, 248, 0.15);
-            color: #38bdf8;
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: rgba(37, 99, 235, 0.12);
+            color: #1d4ed8;
+            border: 1px solid rgba(37, 99, 235, 0.3);
         }
 
         .suggestion-box {
-            background: rgba(11, 15, 25, 0.6);
-            border-left: 4px solid var(--accent-cyan);
-            padding: 1rem 1.2rem;
+            background: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.2rem 1.4rem;
             border-radius: 0 14px 14px 0;
-            font-size: 0.88rem;
-            line-height: 1.6;
-            color: #e2e8f0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-right: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: #334155;
+            border-top: 1.5px solid #cbd5e1;
+            border-right: 1.5px solid #cbd5e1;
+            border-bottom: 1.5px solid #cbd5e1;
         }
 
         /* Recommendation CTA Box */
         .cta-recommend-box {
             margin-top: 1.8rem;
-            background: linear-gradient(135deg, rgba(30, 27, 75, 0.9), rgba(49, 46, 129, 0.95));
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
             color: #ffffff;
-            padding: 1.6rem;
+            padding: 1.8rem;
             border-radius: 18px;
             text-align: center;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            border: 1.5px solid #4338ca;
+            box-shadow: 0 8px 25px rgba(30, 27, 75, 0.2);
         }
         .cta-recommend-box h3 {
-            font-size: 1.22rem;
+            font-size: 1.25rem;
             color: #ffffff;
             margin-bottom: 0.5rem;
             font-weight: 800;
         }
         .cta-recommend-box p {
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             color: #c7d2fe;
-            margin-bottom: 1.1rem;
-            max-width: 620px;
+            margin-bottom: 1.2rem;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.5;
+            line-height: 1.55;
         }
         .btn-cta {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            background: linear-gradient(135deg, #0284c7, #6366f1);
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
             color: #ffffff;
             font-weight: 700;
-            padding: 0.7rem 1.8rem;
+            padding: 0.75rem 2rem;
             border-radius: 999px;
             text-decoration: none;
             box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
@@ -693,75 +697,75 @@
         }
 
         /* DETAILED GUIDELINES & FAQ SECTION */
-        .info-section { max-width: 1040px; margin: 3.5rem auto 1rem; padding: 0 1.2rem; }
+        .info-section { max-width: 1560px; width: 95%; margin: 3.5rem auto 1rem; padding: 0 1.5rem; box-sizing: border-box; }
         .info-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(14px);
-            border: 1px solid var(--border-card);
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
             border-radius: 20px;
-            padding: 2.2rem;
+            padding: 2.5rem;
             color: var(--text-primary);
             margin-bottom: 2rem;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
         }
         .info-card h2 {
-            font-size: 1.45rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent-cyan);
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid #2563eb;
             padding-left: 0.8rem;
             font-weight: 800;
         }
         .info-card p {
-            color: var(--text-secondary);
+            color: #475569;
             line-height: 1.7;
-            font-size: 0.94rem;
+            font-size: 0.95rem;
             margin-bottom: 1.2rem;
         }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.2rem;
             margin: 1.5rem 0;
         }
         .feature-box {
-            background: rgba(11, 15, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
             border-radius: 14px;
-            padding: 1.3rem;
+            padding: 1.4rem;
         }
         .feature-box h4 {
-            color: #ffffff;
-            font-size: 1.02rem;
+            color: #0f172a;
+            font-size: 1.05rem;
             margin-bottom: 0.45rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-weight: 700;
+            font-weight: 800;
         }
         .feature-box p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+            color: #64748b;
+            font-size: 0.88rem;
             margin-bottom: 0;
-            line-height: 1.5;
+            line-height: 1.55;
         }
         .faq-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 1.1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1.2rem 0;
         }
         .faq-item:last-child { border-bottom: none; }
         .faq-question {
             font-weight: 700;
-            color: #ffffff;
-            font-size: 1.02rem;
+            color: #0f172a;
+            font-size: 1.05rem;
             margin-bottom: 0.45rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         .faq-answer {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            color: #475569;
+            font-size: 0.92rem;
+            line-height: 1.65;
         }
 
         /* ===== FOOTER ===== */
@@ -1293,29 +1297,29 @@
     </main>
 
         <!-- ===== FOOTER ===== -->
-    <!-- Related Tools Section -->
-        <div class="info-card" style="margin-top: 2.5rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 2rem; background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;">
-            <h2 style="font-size: 1.45rem; font-weight: 800; color: #38bdf8; margin-bottom: 1.2rem; border-left: 4px solid #38bdf8; padding-left: 0.75rem;">Explore Related Career &amp; HR Tools</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.2rem;">
-                <a href="/resume-cv-maker/" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 1.2rem; text-decoration: none; color: #f8fafc; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.transform='none'">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📝</div>
-                    <h4 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff;">ATS Resume Builder</h4>
-                    <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin: 0;">Create single-page ATS-formatted CVs</p>
+        <!-- Related Tools Section -->
+        <div class="info-card" style="margin-top: 2.5rem; max-width: 1560px; width: 95%; margin-left: auto; margin-right: auto; padding: 2.4rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 20px; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);">
+            <h2 style="font-size: 1.45rem; font-weight: 800; color: #0f172a; margin-bottom: 1.2rem; border-left: 4px solid #2563eb; padding-left: 0.75rem;">Explore Related Career &amp; HR Tools</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 1.2rem;">
+                <a href="/resume-cv-maker/" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.5rem 1.2rem; text-decoration: none; color: #0f172a; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#2563eb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.transform='none'">
+                    <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📝</div>
+                    <h4 style="font-size: 1.02rem; font-weight: 800; margin-bottom: 0.35rem; color: #0f172a;">ATS Resume Builder</h4>
+                    <p style="font-size: 0.85rem; color: #64748b; line-height: 1.45; margin: 0;">Create single-page ATS-formatted CVs</p>
                 </a>
-                <a href="/cover-letter-maker/" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 1.2rem; text-decoration: none; color: #f8fafc; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.transform='none'">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✉️</div>
-                    <h4 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff;">Cover Letter Maker</h4>
-                    <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin: 0;">Generate targeted job cover letters</p>
+                <a href="/cover-letter-maker/" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.5rem 1.2rem; text-decoration: none; color: #0f172a; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#2563eb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.transform='none'">
+                    <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">✉️</div>
+                    <h4 style="font-size: 1.02rem; font-weight: 800; margin-bottom: 0.35rem; color: #0f172a;">Cover Letter Maker</h4>
+                    <p style="font-size: 0.85rem; color: #64748b; line-height: 1.45; margin: 0;">Generate targeted job cover letters</p>
                 </a>
-                <a href="/converter/pdf-to-word/" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 1.2rem; text-decoration: none; color: #f8fafc; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.transform='none'">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📕➔📝</div>
-                    <h4 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff;">PDF to Word</h4>
-                    <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin: 0;">Reconstruct editable DOCX from PDF</p>
+                <a href="/converter/pdf-to-word/" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.5rem 1.2rem; text-decoration: none; color: #0f172a; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#2563eb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.transform='none'">
+                    <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📕➔📝</div>
+                    <h4 style="font-size: 1.02rem; font-weight: 800; margin-bottom: 0.35rem; color: #0f172a;">PDF to Word</h4>
+                    <p style="font-size: 0.85rem; color: #64748b; line-height: 1.45; margin: 0;">Reconstruct editable DOCX from PDF</p>
                 </a>
-                <a href="/hr-helper/" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 1.2rem; text-decoration: none; color: #f8fafc; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#38bdf8'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.transform='none'">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">👥</div>
-                    <h4 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff;">HR Bulk Screener</h4>
-                    <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin: 0;">Screen 100+ candidates in minutes</p>
+                <a href="/hr-helper/" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.5rem 1.2rem; text-decoration: none; color: #0f172a; text-align: center; display: block; transition: all 0.25s;" onmouseover="this.style.borderColor='#2563eb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#cbd5e1'; this.style.transform='none'">
+                    <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">👥</div>
+                    <h4 style="font-size: 1.02rem; font-weight: 800; margin-bottom: 0.35rem; color: #0f172a;">HR Bulk Screener</h4>
+                    <p style="font-size: 0.85rem; color: #64748b; line-height: 1.45; margin: 0;">Screen 100+ candidates in minutes</p>
                 </a>
             </div>
         </div>
