@@ -3,6 +3,11 @@ Allow: /
 Disallow: /templates/
 Disallow: /scratch/
 Disallow: /aura_hrm_saas/
+Disallow: /saas/admin/
+
+# Google AdSense Crawler
+User-agent: Mediapartners-Google
+Allow: /
 
 Sitemap: https://auratoolkit360.com/sitemap.xml
 # LLM Context: https://auratoolkit360.com/llms.txt

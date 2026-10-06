@@ -12,6 +12,8 @@ uploads/
 *.zip
 !saas/downloads/*.zip
 !saas/downloads/**/*.zip
+!assets/downloads/*.zip
+!assets/downloads/**/*.zip
 .vscode/
 .idea/
 scratch/
