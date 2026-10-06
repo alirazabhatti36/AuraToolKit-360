@@ -9,8 +9,8 @@
     --aura-bg: #f8fafc;
     --aura-surface: #ffffff;
     --aura-surface-subtle: #f1f5f9;
-    --aura-border: #e2e8f0;
-    --aura-border-strong: #cbd5e1;
+    --aura-border: #cbd5e1;
+    --aura-border-strong: #94a3b8;
     
     /* Black / High-Contrast Typography */
     --aura-black: #0f172a;
@@ -592,7 +592,7 @@ main h1 {
     gap: 0.4rem !important;
 }
 
-/* Pure White Cards with High Contrast & Subtle Elevation */
+/* High-Contrast Prominent Outline Cards (WCAG AAA contrast against white backgrounds) */
 .tool-card,
 .info-card,
 .calc-card,
@@ -610,22 +610,95 @@ main h1 {
 .widget-box,
 .guide-card,
 .testimonial-card,
-.directory-category-card {
+.directory-category-card,
+.blog-card,
+.pillar-card,
+.tool-box,
+.featured-editorial-card,
+.related-card,
+.step-box {
     background: var(--aura-surface) !important;
-    border: 1px solid var(--aura-border) !important;
+    border: 1.5px solid var(--aura-border) !important;
     border-radius: 18px !important;
     color: var(--aura-text-body) !important;
-    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03) !important;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
     backdrop-filter: none !important;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease !important;
+}
+
+.tool-card:hover,
+.info-card:hover,
+.calc-card:hover,
+.highlight-card:hover,
+.conversion-card:hover,
+.widget-box:hover,
+.guide-card:hover,
+.testimonial-card:hover,
+.directory-category-card:hover,
+.related-card:hover,
+.blog-card:hover,
+.pillar-card:hover,
+.detail-card:hover {
+    border-color: #2563eb !important;
+    box-shadow: 0 16px 32px -4px rgba(37, 99, 235, 0.16), 0 4px 12px -2px rgba(15, 23, 42, 0.06) !important;
+    transform: translateY(-3px) !important;
 }
 
 /* Sub-cards and nested row boxes inside widgets */
 .activity-row,
 .mini-tool-card,
-.feature-box {
+.feature-box,
+.stat-badge-box,
+.step-box {
     background: var(--aura-bg) !important;
-    border: 1px solid var(--aura-border) !important;
+    border: 1.5px solid var(--aura-border) !important;
     border-radius: 14px !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* File Upload Box (Drop Zone) - Distinct High-Contrast Dashed Border */
+.file-upload-box,
+.upload-area,
+#dropZone {
+    border: 2px dashed #94a3b8 !important;
+    background: #f8fafc !important;
+    border-radius: 16px !important;
+    transition: all 0.2s ease !important;
+}
+
+.file-upload-box:hover,
+.upload-area:hover,
+#dropZone:hover {
+    border-color: #2563eb !important;
+    background: #eff6ff !important;
+}
+
+/* Tool Landscape Banner & Icon Container - Crisp Prominent Inset Box */
+.tool-icon,
+.tool-hero-banner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 74px !important;
+    background: #f1f5f9 !important;
+    border: 1.5px solid var(--aura-border) !important;
+    border-radius: 14px !important;
+    margin-bottom: 0.95rem !important;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    flex-shrink: 0 !important;
+    box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.03) !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    padding: 2px !important;
+}
+
+.tool-card:hover .tool-icon {
+    background: #eff6ff !important;
+    border-color: #93c5fd !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.1) !important;
 }
 
 /* Card Headings & Titles — Razor-Sharp Jet Black */
