@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraHR Master License Portal - Admin Only</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --dark: #0f172a;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .admin-card {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 720px;
+            overflow: hidden;
+        }
+        .header-strip {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            padding: 24px 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .card-body-custom {
+            padding: 30px;
+        }
+        .form-control, .form-select {
+            background: #0f172a;
+            border: 1.5px solid #334155;
+            color: #f8fafc;
+            border-radius: 12px;
+            padding: 12px 16px;
+        }
+        .form-control:focus, .form-select:focus {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        .key-output {
+            background: #020617;
+            border: 1.5px solid #334155;
+            border-radius: 12px;
+            padding: 14px;
+            color: #38bdf8;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            word-break: break-all;
+        }
+        .btn-gen {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+        }
+        .btn-gen:hover {
+            opacity: 0.95;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="admin-card">
+    <div class="header-strip">
+        <div class="d-flex align-items-center gap-3">
+            <span style="font-size: 28px;">⚡</span>
+            <div>
+                <h4 class="mb-0 fw-bold">AuraHR Master License Generator</h4>
+                <small class="text-white-50">Authorized AuraToolKit 360 Admin Portal</small>
+            </div>
+        </div>
+        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">🔐 Owner Tool</span>
+    </div>
+
+    <!-- Security Check (PIN Protection) -->
+    <div id="pinSection" class="card-body-custom text-center py-5">
+        <i class="bi bi-shield-lock-fill text-warning display-4 mb-3 d-block"></i>
+        <h5 class="fw-bold mb-2">Admin Security Authentication</h5>
+        <p class="text-white-50 small mb-4">Enter Master Admin PIN to access license generation tools.</p>
+        <div class="mx-auto" style="max-width: 300px;">
+            <input type="password" id="adminPin" class="form-control text-center fs-5 mb-3" placeholder="Enter PIN (Default: 360)">
+            <button onclick="verifyPin()" class="btn btn-gen w-100 py-2">Unlock Generator</button>
+        </div>
+    </div>
+
+    <!-- Main Generator Form (Hidden initially) -->
+    <div id="genSection" class="card-body-custom" style="display: none;">
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <label class="form-label small text-white-50">Client / Company Name *</label>
+                <input type="text" id="companyInput" class="form-control" placeholder="e.g. Apex Technologies">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label small text-white-50">Subscription Tier *</label>
+                <select id="planInput" class="form-select">
+                    <option value="STARTER">Starter Edition (50 Employees)</option>
+                    <option value="PRO" selected>Pro Business (200 Employees + ATS + Biometrics)</option>
+                    <option value="ENTERPRISE">Enterprise Unlimited</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label small text-white-50">Duration / Validity</label>
+                <select id="daysInput" class="form-select">
+                    <option value="30">30 Days (1 Month)</option>
+                    <option value="90">90 Days (3 Months)</option>
+                    <option value="180">180 Days (6 Months)</option>
+                    <option value="365" selected>365 Days (1 Year)</option>
+                    <option value="0">Lifetime Access (Permanent)</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label small text-white-50">Max Employee Limit</label>
+                <input type="number" id="empInput" class="form-control" value="200" placeholder="0 for Unlimited">
+            </div>
+        </div>
+
+        <button onclick="generateLicenseKey()" class="btn btn-gen w-100 py-3 mb-4">
+            <i class="bi bi-key-fill me-1"></i> Generate Authentic Cryptographic License Key
+        </button>
+
+        <div id="resultBox" style="display: none;">
+            <label class="form-label small text-white-50 fw-bold">Generated License Key:</label>
+            <div id="keyDisplay" class="key-output mb-3"></div>
+
+            <div class="d-flex gap-2 flex-wrap mb-4">
+                <button onclick="copyKey()" class="btn btn-outline-light btn-sm rounded-pill px-3 py-2">
+                    <i class="bi bi-clipboard me-1"></i> Copy Key
+                </button>
+                <button onclick="copyCustomerMessage()" class="btn btn-outline-info btn-sm rounded-pill px-3 py-2">
+                    <i class="bi bi-file-text me-1"></i> Copy Full Customer Message
+                </button>
+                <button onclick="shareOnWhatsApp()" class="btn btn-success btn-sm rounded-pill px-3 py-2">
+                    <i class="bi bi-whatsapp me-1"></i> Send Direct to Client via WhatsApp
+                </button>
+            </div>
+        </div>
+
+        <!-- Recent Website Subscriptions -->
+        <hr class="border-secondary my-4">
+        <h6 class="fw-bold mb-3"><i class="bi bi-inbox-fill text-info me-2"></i>Recent Website Leads &amp; Orders</h6>
+        <div id="ordersList" class="small text-white-50">
+            <em>No incoming website orders recorded yet.</em>
+        </div>
+    </div>
+</div>
+
+<script>
+    const MASTER_SECRET = "AURA_TOOLKIT_360_ENTERPRISE_MASTER_KEY_2026_X92J_SECURE";
+
+    function verifyPin() {
+        const pin = document.getElementById('adminPin').value.trim();
+        if (pin === "360" || pin === "aura360" || pin === "admin123") {
+            document.getElementById('pinSection').style.display = 'none';
+            document.getElementById('genSection').style.display = 'block';
+            loadOrders();
+        } else {
+            alert('Invalid PIN. Please try again.');
+        }
+    }
+
+    function base64UrlEncode(arrayBuffer) {
+        let binary = '';
+        const bytes = new Uint8Array(arrayBuffer);
+        for (let i = 0; i < bytes.byteLength; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+    }
+
+    function base64UrlEncodeString(str) {
+        return btoa(unescape(encodeURIComponent(str))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+    }
+
+    async function hmacSha256(keyStr, dataStr) {
+        const enc = new TextEncoder();
+        const keyData = enc.encode(keyStr);
+        const msgData = enc.encode(dataStr);
+
+        const cryptoKey = await crypto.subtle.importKey(
+            'raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
+        );
+        const signature = await crypto.subtle.sign('HMAC', cryptoKey, msgData);
+        return base64UrlEncode(signature).slice(0, 24);
+    }
+
+    function randomSerial(len = 8) {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let res = '';
+        for (let i = 0; i < len; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
+        return res;
+    }
+
+    let generatedKey = '';
+    let customerMessage = '';
+
+    async function generateLicenseKey() {
+        const company = document.getElementById('companyInput').value.trim() || 'Demo Client';
+        const plan = document.getElementById('planInput').value;
+        const days = parseInt(document.getElementById('daysInput').value);
+        const emps = parseInt(document.getElementById('empInput').value) || 100;
+
+        const today = new Date();
+        const todayStr = today.toISOString().split('T')[0];
+
+        let expiryStr = 'lifetime';
+        let periodDesc = 'Lifetime Access';
+        if (days > 0) {
+            const expDate = new Date();
+            expDate.setDate(expDate.getDate() + days);
+            expiryStr = expDate.toISOString().split('T')[0];
+            periodDesc = `${days} Days (Valid until ${expiryStr})`;
+        }
+
+        const payload = {
+            company: company,
+            expires_at: expiryStr,
+            features: ['employees', 'attendance', 'biometric_sync', 'ats', 'payroll', 'increment_sheet', 'inventory'],
+            issued_at: todayStr,
+            max_employees: emps <= 0 ? 'Unlimited' : emps,
+            plan: plan,
+            serial: randomSerial(8)
+        };
+
+        // Canonical JSON (sorted keys)
+        const sortedKeys = Object.keys(payload).sort();
+        const canonicalObj = {};
+        sortedKeys.forEach(k => canonicalObj[k] = payload[k]);
+        const canonicalJson = JSON.stringify(canonicalObj);
+
+        const dataB64 = base64UrlEncodeString(canonicalJson);
+        const sig = await hmacSha256(MASTER_SECRET, canonicalJson);
+
+        generatedKey = `AURA-${plan}-${dataB64}.${sig}`;
+
+        customerMessage = 
+`*** AuraHR Enterprise -- Official License Key ***\n` +
+`Client / Company:  ${payload.company}\n` +
+`Subscription Plan: ${payload.plan} Edition\n` +
+`Validity Period:   ${periodDesc}\n` +
+`Max Employees:     ${payload.max_employees}\n` +
+`Issue Date:        ${payload.issued_at}\n` +
+`Serial Number:     ${payload.serial}\n` +
+`--------------------------------------------------------------\n` +
+`YOUR ACTIVATION KEY:\n${generatedKey}\n` +
+`--------------------------------------------------------------\n` +
+`ACTIVATION INSTRUCTIONS:\n` +
+`1. Open AuraHR Desktop on your PC.\n` +
+`2. Go to the Activation screen (or click 'License' in top bar).\n` +
+`3. Paste the activation key above and click 'Activate Now'.\n` +
+`4. Enjoy unlimited full access to AuraHR Enterprise!\n\n` +
+`Official Support: https://auratoolkit360.com`;
+
+        document.getElementById('keyDisplay').innerText = generatedKey;
+        document.getElementById('resultBox').style.display = 'block';
+    }
+
+    function copyKey() {
+        navigator.clipboard.writeText(generatedKey);
+        alert('License key copied to clipboard!');
+    }
+
+    function copyCustomerMessage() {
+        navigator.clipboard.writeText(customerMessage);
+        alert('Full customer message copied to clipboard!');
+    }
+
+    function shareOnWhatsApp() {
+        const text = encodeURIComponent(customerMessage);
+        window.open(`https://wa.me/?text=${text}`, '_blank');
+    }
+
+    function loadOrders() {
+        const subs = JSON.parse(localStorage.getItem('aurahr_subscriptions') || '[]');
+        const container = document.getElementById('ordersList');
+        if (subs.length === 0) {
+            container.innerHTML = '<em>No website order submissions yet.</em>';
+            return;
+        }
+        let html = '<div class="list-group">';
+        subs.slice(0, 5).forEach((sub, idx) => {
+            html += `
+                <div class="list-group-item bg-dark text-white border-secondary mb-2 rounded-3 d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong class="text-primary">${sub.company}</strong> (${sub.person}) • <span class="badge bg-info text-dark">${sub.plan}</span><br>
+                        <small class="text-white-50">📱 ${sub.phone} | ✉️ ${sub.email} | 📍 ${sub.location || 'N/A'}</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline-warning rounded-pill px-3" onclick="fillOrder('${sub.company}', '${sub.plan}')">
+                        Fill Key Form
+                    </button>
+                </div>
+            `;
+        });
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    function fillOrder(company, plan) {
+        document.getElementById('companyInput').value = company;
+        document.getElementById('planInput').value = plan;
+        generateLicenseKey();
+    }
+</script>
+</body>
+</html>

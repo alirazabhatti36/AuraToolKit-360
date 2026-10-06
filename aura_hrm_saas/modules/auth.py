@@ -150,15 +150,24 @@ def verify_password(stored_password, provided_password):
 # ============= USER AUTHENTICATION =============
 
 def authenticate_user(username, password):
-    """Authenticate user with username and password and fetch company details"""
+    """Authenticate user with username or email (case-insensitive) and password and fetch company details"""
+    if not username or not password:
+        return None
+        
+    username_clean = username.strip()
+    password_clean = password.strip()
+    
     conn = get_db_connection('users.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT id, username, password, full_name, email, employee_id, role, department, is_active, company_id FROM users WHERE username = ?', (username,))
+    cursor.execute('''SELECT id, username, password, full_name, email, employee_id, role, department, is_active, company_id 
+                      FROM users 
+                      WHERE (LOWER(username) = LOWER(?) OR LOWER(email) = LOWER(?))''', 
+                   (username_clean, username_clean))
     user = cursor.fetchone()
     
-    if user and verify_password(user[2], password) and user[8] == 1:
+    if user and verify_password(user[2], password_clean) and user[8] == 1:
         company_id = user[9] if len(user) > 9 and user[9] else 1
-        company_name = "TeamHatch Inc"
+        company_name = "AuraToolKit 360 Inc"
         if user[6] == 'super_admin':
             company_name = "Platform Super Admin"
         else:

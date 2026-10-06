@@ -4,11 +4,7 @@ import PyPDF2
 import docx
 import sqlite3
 
-DB_PATH = 'databases/'
-
-def get_db_connection(db_name):
-    os.makedirs(DB_PATH, exist_ok=True)
-    return sqlite3.connect(os.path.join(DB_PATH, db_name))
+from modules.database import get_db_connection
 
 def extract_pdf_text(filepath):
     try:

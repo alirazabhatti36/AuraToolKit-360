@@ -1,0 +1,41 @@
+========================================================================
+⚡ AuraHR Enterprise Desktop — Quick Installation & Setup Guide ⚡
+========================================================================
+
+Welcome to AuraHR Enterprise!
+This on-premise desktop edition runs 100% locally on your computer / server.
+All employee records, payroll, biometric attendance logs, and databases 
+stay secure on your machine with zero cloud latency.
+
+------------------------------------------------------------------------
+HOW TO START (Takes 10 Seconds):
+------------------------------------------------------------------------
+1. Extract all files from this ZIP package into any folder (e.g. C:\AuraHR).
+2. Double-click "AuraHR_Desktop.bat" or "AuraHR_Desktop.vbs".
+3. AuraHR will automatically start in a dedicated Desktop App window!
+
+------------------------------------------------------------------------
+DEFAULT LOGIN CREDENTIALS:
+------------------------------------------------------------------------
+* Super Admin Login:
+    Username: superadmin
+    Password: admin123
+
+* Company Admin Login:
+    Username: admin
+    Password: admin123
+
+* HR Manager Login:
+    Username: hr_manager
+    Password: admin123
+
+------------------------------------------------------------------------
+SUBSCRIPTION & LICENSE:
+------------------------------------------------------------------------
+* A 14-day Free Trial is enabled automatically upon initial launch.
+* To activate your permanent license key, open the app, click "License"
+  in the top bar, paste your activation key, and click "Activate".
+
+Official Support & License Renewal: https://auratoolkit360.com
+WhatsApp Helpline: +92 300 0000000
+========================================================================

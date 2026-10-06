@@ -721,7 +721,7 @@
     <aside class="portal-sidebar" id="portalSidebar">
         <div>
             <!-- Brand -->
-            <a href="/saas/app/" class="sidebar-brand-box">
+            <a href="./" class="sidebar-brand-box">
                 <div class="sidebar-brand-logo">A</div>
                 <div class="sidebar-brand-text">
                     <span class="sidebar-brand-title">AuraHR <span class="badge bg-primary text-white rounded-pill px-2 py-0" style="font-size:0.65rem;">360</span></span>
@@ -841,7 +841,7 @@
                     <span>Biometric Clock In</span>
                 </button>
 
-                <a href="/saas/" class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-1 fw-bold text-nowrap" title="Return to SaaS Homepage">
+                <a href="../" class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-1 fw-bold text-nowrap" title="Return to SaaS Homepage">
                     <i class="bi bi-globe me-1"></i> Website
                 </a>
             </div>
@@ -1585,7 +1585,14 @@
             try {
                 const saved = localStorage.getItem('atk_teamhatch_state');
                 if (saved) {
-                    appState = JSON.parse(saved);
+                    const parsed = JSON.parse(saved);
+                    appState = Object.assign({}, JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA)), parsed);
+                    if (!Array.isArray(appState.employees) || !appState.employees.length) appState.employees = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA.employees));
+                    if (!Array.isArray(appState.attendance) || !appState.attendance.length) appState.attendance = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA.attendance));
+                    if (!Array.isArray(appState.requests) || !appState.requests.length) appState.requests = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA.requests));
+                    if (!Array.isArray(appState.candidates) || !appState.candidates.length) appState.candidates = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA.candidates));
+                    if (!Array.isArray(appState.inventory) || !appState.inventory.length) appState.inventory = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA.inventory));
+                    if (!appState.currentUser) appState.currentUser = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA.currentUser));
                 } else {
                     appState = JSON.parse(JSON.stringify(DEFAULT_ENTERPRISE_DATA));
                     saveState();
@@ -1724,15 +1731,15 @@
            RENDER MODULES
            ========================================================================== */
         function renderAllModules() {
-            updateUserUI();
-            renderDashboard();
-            renderEmployeesTable();
-            renderAttendanceTable();
-            renderPayrollTable();
-            renderAtsKanban();
-            renderRequestsTable();
-            renderInventoryTable();
-            populateEmployeeSelectDropdowns();
+            try { updateUserUI(); } catch (e) { console.error('updateUserUI error:', e); }
+            try { renderDashboard(); } catch (e) { console.error('renderDashboard error:', e); }
+            try { renderEmployeesTable(); } catch (e) { console.error('renderEmployeesTable error:', e); }
+            try { renderAttendanceTable(); } catch (e) { console.error('renderAttendanceTable error:', e); }
+            try { renderPayrollTable(); } catch (e) { console.error('renderPayrollTable error:', e); }
+            try { renderAtsKanban(); } catch (e) { console.error('renderAtsKanban error:', e); }
+            try { renderRequestsTable(); } catch (e) { console.error('renderRequestsTable error:', e); }
+            try { renderInventoryTable(); } catch (e) { console.error('renderInventoryTable error:', e); }
+            try { populateEmployeeSelectDropdowns(); } catch (e) { console.error('populateEmployeeSelectDropdowns error:', e); }
         }
 
         function updateUserUI() {
@@ -2273,14 +2280,23 @@
 
         function logoutSession() {
             if (confirm('Log out from TeamHatch 360 Enterprise Portal?')) {
-                window.location.href = '/saas/';
+                window.location.href = '../';
             }
         }
 
         // Auto-run on Page Load
         window.addEventListener('DOMContentLoaded', () => {
-            loadState();
-            initFirebase();
+            try {
+                loadState();
+            } catch (err) {
+                console.warn('loadState fallback:', err);
+            }
+
+            try {
+                initFirebase();
+            } catch (err) {
+                console.warn('initFirebase fallback:', err);
+            }
 
             // Check stored auth session
             try {
@@ -2294,27 +2310,35 @@
             } catch (e) {}
 
             // Check URL parameters for preset role auto-fill (overrides stored)
-            const urlParams = new URLSearchParams(window.location.search);
-            const roleParam = (urlParams.get('role') || '').toLowerCase();
-            const userParam = urlParams.get('user');
-            if (roleParam === 'employee' || roleParam === 'emp') {
-                appState.currentUser.role = 'employee';
-                appState.currentUser.name = userParam || 'Hamza Tariq (Staff)';
-            } else if (roleParam === 'hr' || roleParam === 'hr_manager' || roleParam === 'hrmanager') {
-                appState.currentUser.role = 'hr_manager';
-                appState.currentUser.name = userParam || 'Ayesha Khan (HR Lead)';
-            } else if (roleParam === 'super_admin' || roleParam === 'superadmin' || roleParam === 'admin') {
-                appState.currentUser.role = 'super_admin';
-                appState.currentUser.name = userParam || 'Ali Raza Bhatti (SuperAdmin)';
-            }
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const roleParam = (urlParams.get('role') || '').toLowerCase();
+                const userParam = urlParams.get('user');
+                if (roleParam === 'employee' || roleParam === 'emp') {
+                    appState.currentUser.role = 'employee';
+                    appState.currentUser.name = userParam || 'Hamza Tariq (Staff)';
+                } else if (roleParam === 'hr' || roleParam === 'hr_manager' || roleParam === 'hrmanager') {
+                    appState.currentUser.role = 'hr_manager';
+                    appState.currentUser.name = userParam || 'Ayesha Khan (HR Lead)';
+                } else if (roleParam === 'super_admin' || roleParam === 'superadmin' || roleParam === 'admin') {
+                    appState.currentUser.role = 'super_admin';
+                    appState.currentUser.name = userParam || 'Ali Raza Bhatti (SuperAdmin)';
+                }
+            } catch (e) {}
 
-            // Check hash for direct module link
-            const hash = (window.location.hash || '#dashboard').replace('#', '');
-            renderAllModules();
-            if (MODULE_TITLES[hash]) {
-                switchModule(hash);
-            } else {
-                switchModule('dashboard');
+            // Render modules and switch to initial hash
+            try {
+                renderAllModules();
+                const hash = (window.location.hash || '#dashboard').replace('#', '');
+                if (MODULE_TITLES[hash]) {
+                    switchModule(hash);
+                } else {
+                    switchModule('dashboard');
+                }
+            } catch (err) {
+                console.error('Render error:', err);
+                const pane = document.getElementById('pane-dashboard');
+                if (pane) pane.classList.add('active');
             }
         });
     </script>

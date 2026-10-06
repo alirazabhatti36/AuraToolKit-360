@@ -3,11 +3,15 @@ import csv
 import io
 import math
 import os
+import sys
 import ssl
 import urllib.error
 import urllib.request
 from datetime import datetime
 from werkzeug.utils import secure_filename
+
+# Ensure current module directory is in sys.path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Import all modules
 from modules.database import init_all_dbs
@@ -35,6 +39,7 @@ from modules.requests import (get_all_requests, get_pending_requests, get_reques
 from modules.increment import (get_all_increments, get_increments_by_team, get_teams as get_increment_teams, get_increment_stats,
                                add_or_update_increment, approve_increment, reject_increment, 
                                implement_increment, bulk_update_increment)
+from license_manager import get_license_info, is_license_valid, activate_license
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'auratoolkit360_secret_key_super_secure_2026')
@@ -77,7 +82,49 @@ def utility_processor():
             return '₨ 0'
     
     current_company = session.get('company_name', 'AuraToolKit 360 Inc')
-    return dict(has_permission=check_permission, format_currency=format_currency, current_company=current_company)
+    license_info = get_license_info()
+    return dict(has_permission=check_permission, format_currency=format_currency, current_company=current_company, license_info=license_info)
+
+
+# ============= LICENSE & SUBSCRIPTION GUARDS & ROUTES =============
+@app.before_request
+def enforce_license():
+    allowed_endpoints = ['static', 'license_view', 'activate_license_route', 'license_api_status']
+    if request.endpoint in allowed_endpoints:
+        return
+    if request.path.startswith('/static'):
+        return
+    
+    if not is_license_valid():
+        flash('Your subscription is expired or inactive. Please activate your license to continue.', 'warning')
+        return redirect(url_for('license_view'))
+
+
+@app.route('/license')
+def license_view():
+    info = get_license_info()
+    return render_template('license.html', license=info)
+
+
+@app.route('/license/activate', methods=['POST'])
+def activate_license_route():
+    key = request.form.get('license_key', '').strip()
+    if not key:
+        flash('Please enter a license key to activate.', 'danger')
+        return redirect(url_for('license_view'))
+    
+    success, message = activate_license(key)
+    if success:
+        flash(f'🎉 {message}', 'success')
+        return redirect(url_for('dashboard'))
+    else:
+        flash(f'❌ Activation failed: {message}', 'danger')
+        return redirect(url_for('license_view'))
+
+
+@app.route('/api/license/status')
+def license_api_status():
+    return jsonify(get_license_info())
 
 
 # ============= SUPER ADMIN ROUTES =============
@@ -151,12 +198,6 @@ def login():
             
             if user[6] == 'super_admin':
                 return redirect(url_for('superadmin_dashboard'))
-            elif user[6] == 'admin':
-                return redirect(url_for('dashboard'))
-            elif user[6] == 'hr_manager':
-                return redirect(url_for('employees'))
-            elif user[6] == 'accountant':
-                return redirect(url_for('payroll'))
             else:
                 return redirect(url_for('dashboard'))
         else:
@@ -201,6 +242,10 @@ def change_password_route():
 # ============= HOME / LANDING ROUTE =============
 @app.route('/')
 def home():
+    if session.get('logged_in'):
+        if session.get('user_role') == 'super_admin':
+            return redirect(url_for('superadmin_dashboard'))
+        return redirect(url_for('dashboard'))
     return render_template('landing.html')
 
 
@@ -277,7 +322,8 @@ def register_company_route():
         comp_id = add_company(company_name, domain, domain + "@company.com", "0300-0000000", plan)
         
         # 2. Add company admin user
-        conn = sqlite3.connect(os.path.join('databases', 'users.db'))
+        from modules.database import get_db_connection
+        conn = get_db_connection('users.db')
         c = conn.cursor()
         c.execute('''
             INSERT OR IGNORE INTO users (company_id, username, password, full_name, email, employee_id, role, department)
@@ -1498,21 +1544,21 @@ def dashboard():
     if user_role == 'super_admin':
         return redirect(url_for('superadmin_dashboard'))
     
-    if user_role == 'employee' and employee_id > 0:
+    if user_role == 'employee':
         from modules.employees import get_employee_by_id
         from modules.inventory import get_all_assets
         from modules.payroll import get_all_payroll
         from modules.requests import get_requests_by_employee
         
-        employee = get_employee_by_id(employee_id)
+        employee = get_employee_by_id(employee_id) if employee_id > 0 else None
         emp_dict = {
-            'id': employee[0] if employee else 0,
-            'name': employee[1] if employee else 'Unknown',
-            'email': employee[2] if employee else '',
-            'phone': employee[3] if employee else '',
-            'department': employee[5] if employee else '',
-            'position': employee[4] if employee else '',
-            'joining_date': employee[6] if employee else ''
+            'id': employee[0] if employee else (employee_id if employee_id > 0 else 1),
+            'name': employee[1] if employee else session.get('user_full_name', session.get('username', 'Employee')),
+            'email': employee[2] if employee else (session.get('username', 'employee') + '@auratoolkit360.com'),
+            'phone': employee[3] if employee else '+92 300 1234567',
+            'department': employee[5] if employee else 'Operations',
+            'position': employee[4] if employee else 'Staff Specialist',
+            'joining_date': employee[6] if employee else '2026-01-01'
         }
         
         all_assets = get_all_assets()
@@ -1521,7 +1567,7 @@ def dashboard():
         all_payroll = get_all_payroll()
         employee_payroll = [p for p in all_payroll if p[1] == employee_id]
         
-        employee_requests = get_requests_by_employee(employee_id)
+        employee_requests = get_requests_by_employee(employee_id) if employee_id > 0 else []
         
         stats = {'present_days': 22, 'absent_days': 2, 'late_days': 1, 'leave_balance': 12}
         

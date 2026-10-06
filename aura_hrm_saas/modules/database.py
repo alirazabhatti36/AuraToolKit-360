@@ -1,8 +1,9 @@
-﻿import sqlite3
+import sqlite3
 import os
 from werkzeug.security import generate_password_hash
 
-DB_PATH = 'databases/'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DB_PATH = os.path.join(BASE_DIR, 'databases')
 
 def get_db_connection(db_name):
     """Get database connection"""
@@ -105,6 +106,54 @@ def init_all_dbs():
     conn.commit()
     conn.close()
     print("[OK] Employees database ready!")
+
+    # Attendance database
+    conn = get_db_connection('attendance.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS attendance (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        company_id INTEGER DEFAULT 1,
+        employee_id INTEGER,
+        employee_name TEXT,
+        team TEXT,
+        date TEXT,
+        check_in TEXT,
+        check_out TEXT,
+        status TEXT DEFAULT 'Present',
+        late_minutes INTEGER DEFAULT 0,
+        overtime_minutes INTEGER DEFAULT 0,
+        working_hours REAL DEFAULT 0,
+        remarks TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )''')
+    ensure_company_id_column(conn, 'attendance')
+    c.execute('''CREATE TABLE IF NOT EXISTS holidays (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        company_id INTEGER DEFAULT 1,
+        date TEXT,
+        name TEXT,
+        year TEXT
+    )''')
+    ensure_company_id_column(conn, 'holidays')
+    c.execute('''CREATE TABLE IF NOT EXISTS leave_requests (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        company_id INTEGER DEFAULT 1,
+        employee_id INTEGER,
+        employee_name TEXT,
+        team TEXT,
+        from_date TEXT,
+        to_date TEXT,
+        leave_type TEXT DEFAULT 'Leave',
+        reason TEXT,
+        status TEXT DEFAULT 'Pending',
+        applied_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        approved_by TEXT,
+        approved_on TIMESTAMP
+    )''')
+    ensure_company_id_column(conn, 'leave_requests')
+    conn.commit()
+    conn.close()
+    print("[OK] Attendance database ready!")
     
     # Inventory database
     conn = get_db_connection('inventory.db')
@@ -135,7 +184,9 @@ def init_all_dbs():
     default_cats = ['Laptop', 'Desktop', 'Monitor', 'Mouse', 'Keyboard', 'Headphone', 
                     'Access Card', 'Dongle', 'WiFi Device', 'Chair', 'Table', 'Locker']
     for cat in default_cats:
-        c.execute("INSERT OR IGNORE INTO asset_categories (category_name) VALUES (?)", (cat,))
+        c.execute("SELECT COUNT(*) FROM asset_categories WHERE category_name = ?", (cat,))
+        if c.fetchone()[0] == 0:
+            c.execute("INSERT INTO asset_categories (company_id, category_name) VALUES (1, ?)", (cat,))
     conn.commit()
     conn.close()
     print("[OK] Inventory database ready!")

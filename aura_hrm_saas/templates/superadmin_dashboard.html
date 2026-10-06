@@ -1,4 +1,4 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Super Admin Dashboard - AuraToolKit 360{% endblock %}
 
@@ -10,9 +10,14 @@
                 <h2 class="fw-bold text-gradient mb-1">⚡ Super Admin SaaS Control Portal</h2>
                 <p class="text-muted">Manage B2B Client Companies, Subscriptions, and SaaS Platform Health</p>
             </div>
-            <button class="btn btn-primary shadow-sm rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#addCompanyModal">
-                <i class="bi bi-building-add me-2"></i>Register New Client Company
-            </button>
+            <div class="d-flex gap-2">
+                <a href="/license" class="btn btn-warning shadow-sm rounded-pill px-3 fw-bold text-dark d-flex align-items-center">
+                    <i class="bi bi-key-fill me-2"></i>License &amp; Subscription
+                </a>
+                <button class="btn btn-primary shadow-sm rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#addCompanyModal">
+                    <i class="bi bi-building-add me-2"></i>Register New Client Company
+                </button>
+            </div>
         </div>
     </div>
 

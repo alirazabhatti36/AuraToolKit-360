@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>AuraToolKit 360 - {% block title %}{% endblock %}</title>
@@ -613,6 +613,10 @@
                     <span class="nav-icon">📋</span>
                     <span>Platform Activity Logs</span>
                 </a>
+                <a href="/license" class="nav-item {% if request.endpoint == 'license_view' %}active{% endif %}">
+                    <span class="nav-icon">🔑</span>
+                    <span>License & Subscription</span>
+                </a>
                 <a href="/change-password" class="nav-item">
                     <span class="nav-icon">🔐</span>
                     <span>Change Password</span>
@@ -624,7 +628,7 @@
                 
                 <!-- Employee specific menus -->
                 {% elif session.get('user_role') == 'employee' %}
-                <a href="/" class="nav-item {% if request.endpoint == 'dashboard' or request.endpoint == 'home' %}active{% endif %}">
+                <a href="/dashboard" class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
                     <span class="nav-icon">📊</span>
                     <span>Dashboard</span>
                 </a>
@@ -643,7 +647,7 @@
                 
                 <!-- Management - View only + Approvals -->
                 {% elif session.get('user_role') == 'management' %}
-                <a href="/" class="nav-item {% if request.endpoint == 'dashboard' or request.endpoint == 'home' %}active{% endif %}">
+                <a href="/dashboard" class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
                     <span class="nav-icon">📊</span>
                     <span>Dashboard</span>
                 </a>
@@ -684,7 +688,7 @@
                 
                 <!-- Admin, HR, Accountant menus -->
                 {% else %}
-                <a href="/" class="nav-item {% if request.endpoint == 'dashboard' or request.endpoint == 'home' %}active{% endif %}">
+                <a href="/dashboard" class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
                     <span class="nav-icon">📊</span>
                     <span>Dashboard</span>
                 </a>
@@ -780,6 +784,10 @@
                 </a>
                 {% endif %}
                 
+                <a href="/license" class="nav-item {% if request.endpoint == 'license_view' %}active{% endif %}">
+                    <span class="nav-icon">🔑</span>
+                    <span>License & Subscription</span>
+                </a>
                 <a href="/change-password" class="nav-item">
                     <span class="nav-icon">🔐</span>
                     <span>Change Password</span>
@@ -809,6 +817,23 @@
                     {% block page_title %}Dashboard{% endblock %}
                 </div>
                 <div class="user-info">
+                    {% if license_info %}
+                        <a href="/license" class="text-decoration-none me-2" title="Manage Subscription & License">
+                            {% if license_info.status in ['active', 'active_lifetime'] %}
+                                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 rounded-pill" style="font-size:12px;">
+                                    <i class="bi bi-patch-check-fill me-1"></i> {{ license_info.plan }} ({{ license_info.days_remaining }}d)
+                                </span>
+                            {% elif license_info.status == 'trial' %}
+                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle px-2 py-1 rounded-pill" style="color:#b45309 !important; font-size:12px;">
+                                    <i class="bi bi-hourglass-split me-1"></i> Trial ({{ license_info.days_remaining }}d)
+                                </span>
+                            {% else %}
+                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1 rounded-pill" style="font-size:12px;">
+                                    <i class="bi bi-exclamation-triangle-fill me-1"></i> Expired
+                                </span>
+                            {% endif %}
+                        </a>
+                    {% endif %}
                     <button onclick="toggleDashboardTheme()" class="btn btn-sm btn-outline-secondary rounded-pill me-2" id="themeToggleBtn">
                         🌙 Dark Mode
                     </button>

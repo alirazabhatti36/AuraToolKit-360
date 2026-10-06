@@ -198,12 +198,12 @@
 
     <!-- Header Navigation -->
     <nav class="navbar-custom container d-flex justify-content-between align-items-center">
-        <a href="/saas/" class="text-white text-decoration-none d-flex align-items-center gap-2 fw-bold fs-5">
+        <a href="../" class="text-white text-decoration-none d-flex align-items-center gap-2 fw-bold fs-5">
             <span class="fs-4">🚀</span>
             <span>AuraHR <span class="badge bg-primary text-white rounded-pill px-2 py-1 fs-6">360</span></span>
         </a>
         <div class="d-flex align-items-center gap-2">
-            <a href="/saas/" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1 text-decoration-none">
+            <a href="../" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1 text-decoration-none">
                 <i class="bi bi-arrow-left me-1"></i> SaaS Solution
             </a>
             <a href="/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 text-decoration-none d-none d-sm-inline-block text-white">
@@ -262,7 +262,7 @@
                             <span class="input-group-text bg-dark border-secondary border-opacity-50 text-white-50">
                                 <i class="bi bi-person"></i>
                             </span>
-                            <input type="text" class="form-control form-control-custom border-start-0" id="usernameInput" placeholder="Enter username (e.g. superadmin)" required autofocus>
+                            <input type="text" class="form-control form-control-custom border-start-0" id="usernameInput" placeholder="Enter username (e.g. admin or superadmin)" required autofocus value="admin">
                         </div>
                     </div>
 
@@ -275,7 +275,7 @@
                             <span class="input-group-text bg-dark border-secondary border-opacity-50 text-white-50">
                                 <i class="bi bi-lock"></i>
                             </span>
-                            <input type="password" class="form-control form-control-custom border-start-0 border-end-0" id="passwordInput" placeholder="Enter password (e.g. admin123)" required>
+                            <input type="password" class="form-control form-control-custom border-start-0 border-end-0" id="passwordInput" placeholder="Enter password (e.g. admin123)" required value="admin123">
                             <button class="btn btn-outline-secondary border-start-0 text-white-50" type="button" onclick="togglePassword()">
                                 <i class="bi bi-eye" id="pwdToggleIcon"></i>
                             </button>
@@ -287,25 +287,32 @@
                             <input class="form-check-input" type="checkbox" id="rememberMeCheck" checked>
                             <label class="form-check-label text-muted small" for="rememberMeCheck">Remember my session</label>
                         </div>
-                        <span class="badge bg-secondary bg-opacity-25 text-white-50 px-2 py-1 small" id="activeRoleLabel">No Role Chosen</span>
+                        <span class="badge bg-primary text-white px-2 py-1 small" id="activeRoleLabel">Company Admin</span>
                     </div>
 
-                    <button type="submit" class="btn btn-gradient-submit w-100 mb-3 d-flex align-items-center justify-content-center gap-2">
+                    <button type="submit" class="btn btn-gradient-submit w-100 mb-2 d-flex align-items-center justify-content-center gap-2">
                         <i class="bi bi-box-arrow-in-right fs-5"></i>
                         <span id="loginSubmitBtnText">Authenticate & Launch Portal</span>
                     </button>
+
+                    <a href="http://127.0.0.1:5000/login" class="btn btn-sm btn-outline-info w-100 rounded-pill py-2 mb-2 d-flex align-items-center justify-content-center gap-2 text-decoration-none">
+                        <i class="bi bi-cpu-fill text-info"></i> Open Running Local Backend (127.0.0.1:5000) ↗
+                    </a>
+                    <a href="../subscribe/index.html" class="btn btn-sm btn-outline-warning w-100 rounded-pill py-2 mb-3 d-flex align-items-center justify-content-center gap-2 text-decoration-none">
+                        <i class="bi bi-key-fill text-warning"></i> Need a License Key or Desktop App? Subscribe Here
+                    </a>
                 </form>
 
                 <div class="p-3 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 small text-center">
                     <p class="text-white-50 mb-2" style="font-size: 12.5px;">Want instant 1-click access to the full TeamHatch 360 HR Portal?</p>
                     <div class="d-flex justify-content-center gap-2 flex-wrap">
-                        <a href="/saas/app/?role=super_admin" class="btn btn-sm btn-primary rounded-pill px-3 py-1 fw-bold text-decoration-none">
+                        <a href="../app/index.html?role=super_admin" class="btn btn-sm btn-primary rounded-pill px-3 py-1 fw-bold text-decoration-none">
                             ⚡ Super Admin
                         </a>
-                        <a href="/saas/app/?role=hr_manager" class="btn btn-sm btn-info rounded-pill px-3 py-1 fw-bold text-decoration-none text-white">
+                        <a href="../app/index.html?role=hr_manager" class="btn btn-sm btn-info rounded-pill px-3 py-1 fw-bold text-decoration-none text-white">
                             👥 HR Manager
                         </a>
-                        <a href="/saas/app/?role=employee" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1 fw-bold text-decoration-none">
+                        <a href="../app/index.html?role=employee" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1 fw-bold text-decoration-none">
                             👤 Employee Portal
                         </a>
                     </div>
@@ -347,7 +354,7 @@
         <div class="container">
             <p class="mb-1">&copy; 2026 AuraToolKit 360 &bull; All Rights Reserved.</p>
             <div class="d-flex justify-content-center gap-3">
-                <a href="/saas/" class="text-muted text-decoration-none">SaaS Overview</a> &bull;
+                <a href="../" class="text-muted text-decoration-none">SaaS Overview</a> &bull;
                 <a href="/privacy-policy/" class="text-muted text-decoration-none">Privacy Policy</a> &bull;
                 <a href="/terms/" class="text-muted text-decoration-none">Terms of Service</a> &bull;
                 <a href="/contact/" class="text-muted text-decoration-none">Enterprise Support</a>
@@ -439,16 +446,37 @@
         // Form submission handling
         async function handlePortalLogin(e) {
             e.preventDefault();
-            const username = document.getElementById('usernameInput').value.trim() || 'Admin User';
-            const password = document.getElementById('passwordInput').value.trim();
+            const username = document.getElementById('usernameInput').value.trim() || 'admin';
+            const password = document.getElementById('passwordInput').value.trim() || 'admin123';
             const role = document.getElementById('activeRoleLabel').innerText;
 
             const submitBtn = document.querySelector('.btn-gradient-submit');
-            const originalContent = submitBtn.innerHTML;
             submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Authenticating & Launching Portal...';
             submitBtn.disabled = true;
 
-            // Determine role code
+            // If local Flask server is running, POST directly to local backend!
+            if (isLocalServerRunning) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'http://127.0.0.1:5000/login';
+                form.style.display = 'none';
+
+                const uInput = document.createElement('input');
+                uInput.name = 'username';
+                uInput.value = username;
+                form.appendChild(uInput);
+
+                const pInput = document.createElement('input');
+                pInput.name = 'password';
+                pInput.value = password;
+                form.appendChild(pInput);
+
+                document.body.appendChild(form);
+                form.submit();
+                return;
+            }
+
+            // Fallback: Cloud Demo App
             let targetRole = 'super_admin';
             const u = username.toLowerCase();
             const r = role.toLowerCase();
@@ -472,9 +500,10 @@
                 }));
             } catch (err) {}
 
-            // Immediate redirection to the complete TeamHatch 360 app
+            // Immediate redirection to the complete AuraHR app
             setTimeout(() => {
-                window.location.href = `/saas/app/?role=${targetRole}&user=${encodeURIComponent(username)}`;
+                const targetAppUrl = (window.location.pathname.includes('/login') ? `../app/index.html` : `./app/index.html`) + `?role=${targetRole}&user=${encodeURIComponent(username)}`;
+                window.location.href = targetAppUrl;
             }, 300);
         }
 

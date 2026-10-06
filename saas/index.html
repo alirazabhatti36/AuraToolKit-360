@@ -609,6 +609,7 @@
             color: #2563eb;
             font-size: 0.88rem;
             font-weight: 700;
+            text-decoration: none;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
@@ -897,13 +898,23 @@
                     <span id="currentLangLabel">PKR</span>
                 </button>
 
+                <!-- Download Desktop App Button -->
+                <a href="./downloads/AuraHR_Desktop_Setup.zip" download class="btn btn-sm btn-outline-success rounded-pill px-3 py-1 fw-bold d-inline-flex align-items-center gap-1 text-decoration-none" title="Download AuraHR Desktop App (14-Day Free Trial)">
+                    <span>📥 Download</span>
+                </a>
+
+                <!-- Buy License Button -->
+                <a href="./subscribe/index.html" class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1 fw-bold d-inline-flex align-items-center gap-1 text-decoration-none" title="Buy Subscription & License Key">
+                    <span>🔑 Buy License</span>
+                </a>
+
                 <!-- Login Button (Outline Pill) -->
-                <button type="button" class="btn-aurahr-login" onclick="openSaasLoginModal()">
+                <a href="./login/index.html" class="btn-aurahr-login">
                     Login
-                </button>
+                </a>
 
                 <!-- Get Started -> Button (Gradient Pill) -->
-                <a href="#contact" class="btn-aurahr-get-started">
+                <a href="./subscribe/index.html" class="btn-aurahr-get-started">
                     <span>Get Started</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14"></path>
@@ -949,17 +960,17 @@
                 instant Hikvision biometric hardware syncing, and localized country-wise payroll management.
             </p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <button type="button" class="btn btn-primary btn-lg fw-bold rounded-pill text-white px-4 shadow d-inline-flex align-items-center gap-2" onclick="openSaasLoginModal()">
+                <a href="./login/index.html" class="btn btn-primary btn-lg fw-bold rounded-pill text-white px-4 shadow d-inline-flex align-items-center gap-2 text-decoration-none">
                     <i class="bi bi-box-arrow-in-right fs-5"></i> <span>HR Complete System Login</span>
-                </button>
-                <button type="button" class="btn btn-warning btn-lg fw-bold rounded-pill text-dark px-4 shadow d-inline-flex align-items-center gap-2" onclick="openSaasSandbox()">
-                    <span class="fs-5">⚡</span> <span>Launch Interactive Sandbox (No Login)</span>
-                </button>
-                <a href="#pricing" class="btn btn-gradient-primary btn-lg rounded-pill px-4 text-white">
-                    <i class="bi bi-stars me-2"></i><span>Explore Plans</span>
                 </a>
-                <a href="#contact" class="btn btn-outline-dark-custom btn-lg rounded-pill px-4">
-                    <i class="bi bi-calendar2-check me-2"></i><span>Book Enterprise Demo</span>
+                <a href="./downloads/AuraHR_Desktop_Setup.zip" download class="btn btn-success btn-lg fw-bold rounded-pill text-white px-4 shadow d-inline-flex align-items-center gap-2 text-decoration-none">
+                    <i class="bi bi-download fs-5"></i> <span>Download Desktop App (.zip)</span>
+                </a>
+                <a href="./subscribe/index.html" class="btn btn-warning btn-lg fw-bold rounded-pill text-dark px-4 shadow d-inline-flex align-items-center gap-2 text-decoration-none">
+                    <i class="bi bi-key-fill fs-5"></i> <span>Purchase &amp; Get License</span>
+                </a>
+                <a href="./app/index.html" class="btn btn-outline-dark-custom btn-lg rounded-pill px-4 text-dark shadow-sm">
+                    <span class="fs-5">⚡</span> <span>Interactive Sandbox</span>
                 </a>
             </div>
 
@@ -1423,7 +1434,7 @@
                     <a href="/disclaimer/" class="text-muted text-decoration-none small">Disclaimer</a> <span class="text-muted">|</span> <a href="/privacy-policy/" class="text-muted text-decoration-none small">Privacy</a>
                     <a href="/terms/" class="text-muted text-decoration-none small">Terms</a>
                     <a href="/privacy-policy/#cookies" class="text-muted text-decoration-none small">Cookies</a>
-                    <a href="javascript:void(0)" onclick="openSaasLoginModal()" class="text-muted text-decoration-none small">Client Login</a>
+                    <a href="./login/index.html" class="text-muted text-decoration-none small">Client Login</a>
                 </div>
             </div>
         </div>
@@ -1550,13 +1561,13 @@
                             <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
                                 <label class="text-white-50 small fw-bold d-block mb-2">⚡ Instant 1-Click Access (Direct to TeamHatch 360 App):</label>
                                 <div class="d-flex flex-wrap gap-2">
-                                    <a href="/saas/app/?role=super_admin" class="btn btn-sm btn-primary rounded-pill px-3 py-2 fw-bold text-decoration-none">
+                                    <a href="./app/index.html?role=super_admin" class="btn btn-sm btn-primary rounded-pill px-3 py-2 fw-bold text-decoration-none">
                                         ⚡ Launch Super Admin
                                     </a>
-                                    <a href="/saas/app/?role=hr_manager" class="btn btn-sm btn-info text-white rounded-pill px-3 py-2 fw-bold text-decoration-none">
+                                    <a href="./app/index.html?role=hr_manager" class="btn btn-sm btn-info text-white rounded-pill px-3 py-2 fw-bold text-decoration-none">
                                         👥 Launch HR Manager
                                     </a>
-                                    <a href="/saas/app/?role=employee" class="btn btn-sm btn-outline-light rounded-pill px-3 py-2 fw-bold text-decoration-none">
+                                    <a href="./app/index.html?role=employee" class="btn btn-sm btn-outline-light rounded-pill px-3 py-2 fw-bold text-decoration-none">
                                         👤 Launch Employee Self-Service
                                     </a>
                                 </div>
@@ -2409,13 +2420,9 @@
             if (kpi) kpi.innerText = pendingLeaveCount + ' Requests';
         }
 
-        // ===== ENTERPRISE LOGIN MODAL CONTROLS =====
+        // ===== ENTERPRISE LOGIN CONTROLS =====
         function openSaasLoginModal() {
-            const el = document.getElementById('saasLoginModal');
-            if (el) {
-                const modal = bootstrap.Modal.getOrCreateInstance(el);
-                modal.show();
-            }
+            window.location.href = './login/index.html';
         }
 
         function selectLoginPreset(username, password, roleLabel, btn) {
@@ -2474,7 +2481,8 @@
             } catch (err) {}
 
             setTimeout(() => {
-                window.location.href = `/saas/app/?role=${role}&user=${encodeURIComponent(u)}`;
+                const targetUrl = (window.location.pathname.endsWith('/') ? './app/' : (window.location.pathname.endsWith('.html') ? 'app/' : './app/')) + `?role=${role}&user=${encodeURIComponent(u)}`;
+                window.location.href = targetUrl;
             }, 300);
         }
 

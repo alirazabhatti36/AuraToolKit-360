@@ -10,6 +10,8 @@ uploads/
 *.docx
 *.xlsx
 *.zip
+!saas/downloads/*.zip
+!saas/downloads/**/*.zip
 .vscode/
 .idea/
 scratch/

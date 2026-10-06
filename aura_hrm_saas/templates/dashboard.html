@@ -225,8 +225,27 @@
         <h2>👋 Welcome back!</h2>
         <p>Here's your HR management overview for today</p>
     </div>
-    <div class="date-badge">
-        <i class="far fa-calendar-alt"></i> {{ current_date }}
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+        {% if license_info %}
+            <a href="/license" class="text-decoration-none">
+                {% if license_info.status in ['active', 'active_lifetime'] %}
+                    <span class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill fs-6">
+                        <i class="bi bi-patch-check-fill me-1"></i> {{ license_info.plan }} Edition • {{ license_info.days_remaining }} Days
+                    </span>
+                {% elif license_info.status == 'trial' %}
+                    <span class="badge bg-warning bg-opacity-25 border border-warning text-warning px-3 py-2 rounded-pill fs-6">
+                        <i class="bi bi-hourglass-split me-1"></i> Trial: {{ license_info.days_remaining }} Days Left
+                    </span>
+                {% else %}
+                    <span class="badge bg-danger bg-opacity-25 border border-danger text-danger px-3 py-2 rounded-pill fs-6">
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i> Subscription Expired • Activate
+                    </span>
+                {% endif %}
+            </a>
+        {% endif %}
+        <div class="date-badge">
+            <i class="far fa-calendar-alt"></i> {{ current_date }}
+        </div>
     </div>
 </div>
 
