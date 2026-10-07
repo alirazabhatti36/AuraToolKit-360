@@ -736,7 +736,7 @@
                     <div style="font-size:1.8rem; margin-bottom:0.4rem;">📁</div>
                     <div style="font-weight:700; color:#ffffff;" id="mergeFileNames">Click to Select Multiple PDF Files</div>
                     <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:0.3rem;">Hold Ctrl or Cmd to select multiple files</p>
-                    <input type="file" id="mergeFileInput" name="files" accept=".pdf" multiple required style="display:none" onchange="document.getElementById('mergeFileNames').textContent = this.files.length > 0 ? this.files.length + ' PDF files selected' : 'Click to Select Multiple PDF Files'">
+                    <input type="file" id="mergeFileInput" name="files" accept=".pdf" multiple style="display:none" onchange="document.getElementById('mergeFileNames').textContent = this.files.length > 0 ? this.files.length + ' PDF files selected' : 'Click to Select Multiple PDF Files'">
                 </div>
 
                 <button class="btn-primary" type="submit">⚡ Merge PDF Files &amp; Download</button>

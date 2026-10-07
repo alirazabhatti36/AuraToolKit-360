@@ -1303,12 +1303,12 @@
                     <form id="newEmployeeForm" onsubmit="saveNewEmployee(event)">
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Full Name *</label>
-                            <input type="text" class="form-control" id="newEmpName" required placeholder="e.g. Daniyal Khan">
+                            <input type="text" class="form-control" id="newEmpName" placeholder="e.g. Daniyal Khan">
                         </div>
                         <div class="row g-2 mb-3">
                             <div class="col-6">
                                 <label class="form-label small fw-bold">Department *</label>
-                                <select class="form-select" id="newEmpDept" required>
+                                <select class="form-select" id="newEmpDept">
                                     <option value="Engineering">Engineering</option>
                                     <option value="Human Resources">Human Resources</option>
                                     <option value="Sales & Growth">Sales & Growth</option>
@@ -1318,13 +1318,13 @@
                             </div>
                             <div class="col-6">
                                 <label class="form-label small fw-bold">Designation *</label>
-                                <input type="text" class="form-control" id="newEmpRole" required placeholder="e.g. Software Engineer">
+                                <input type="text" class="form-control" id="newEmpRole" placeholder="e.g. Software Engineer">
                             </div>
                         </div>
                         <div class="row g-2 mb-3">
                             <div class="col-6">
                                 <label class="form-label small fw-bold">Email *</label>
-                                <input type="email" class="form-control" id="newEmpEmail" required placeholder="name@company.com">
+                                <input type="email" class="form-control" id="newEmpEmail" placeholder="name@company.com">
                             </div>
                             <div class="col-6">
                                 <label class="form-label small fw-bold">Phone Number</label>
@@ -1333,7 +1333,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Monthly Base Salary (PKR) *</label>
-                            <input type="number" class="form-control" id="newEmpSalary" required placeholder="e.g. 120000">
+                            <input type="number" class="form-control" id="newEmpSalary" placeholder="e.g. 120000">
                         </div>
                         <div class="d-flex justify-content-end gap-2 mt-4">
                             <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
@@ -1448,11 +1448,11 @@
                     <form id="newRequestForm" onsubmit="saveNewRequest(event)">
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Select Employee *</label>
-                            <select class="form-select" id="reqEmployeeSelect" required></select>
+                            <select class="form-select" id="reqEmployeeSelect"></select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Request Category *</label>
-                            <select class="form-select" id="reqCategory" required>
+                            <select class="form-select" id="reqCategory">
                                 <option value="Annual Leave">Annual Paid Leave</option>
                                 <option value="Sick Leave">Sick / Medical Leave</option>
                                 <option value="Casual Leave">Casual Leave</option>
@@ -1463,7 +1463,7 @@
                         <div class="row g-2 mb-3">
                             <div class="col-6">
                                 <label class="form-label small fw-bold">Start Date *</label>
-                                <input type="date" class="form-control" id="reqStartDate" required>
+                                <input type="date" class="form-control" id="reqStartDate">
                             </div>
                             <div class="col-6">
                                 <label class="form-label small fw-bold">End Date</label>
@@ -1472,7 +1472,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-bold">Reason / Explanation *</label>
-                            <textarea class="form-control" id="reqReason" rows="3" required placeholder="Provide brief reason for request..."></textarea>
+                            <textarea class="form-control" id="reqReason" rows="3" placeholder="Provide brief reason for request..."></textarea>
                         </div>
                         <div class="d-flex justify-content-end gap-2 mt-4">
                             <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
@@ -2079,7 +2079,11 @@
 
         function openPayslipModal(empId) {
             const emp = appState.employees.find(e => e.id === empId) || appState.employees[0];
-            const base = Number(emp.salary);
+            if (!emp) {
+                alert('No employee record available to generate payslip.');
+                return;
+            }
+            const base = Number(emp.salary || 0);
             const medical = 10000;
             const fuel = 5000;
             const gross = base + medical + fuel;

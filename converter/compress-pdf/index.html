@@ -766,7 +766,7 @@
                     <div style="font-size:1.8rem; margin-bottom:0.4rem;">📁</div>
                     <div style="font-weight:700; color:#ffffff;" id="compressFileName">Click or Drag PDF File Here</div>
                     <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:0.3rem;">Supports any PDF (multi-page, certificates, reports)</p>
-                    <input type="file" id="compressFileInput" name="file" accept=".pdf" required style="display:none" onchange="document.getElementById('compressFileName').textContent = this.files[0] ? this.files[0].name + ' (' + (this.files[0].size/1024).toFixed(1) + ' KB)' : 'Click or Drag PDF File Here'">
+                    <input type="file" id="compressFileInput" name="file" accept=".pdf" style="display:none" onchange="document.getElementById('compressFileName').textContent = this.files[0] ? this.files[0].name + ' (' + (this.files[0].size/1024).toFixed(1) + ' KB)' : 'Click or Drag PDF File Here'">
                 </div>
 
                 <div class="controls-row">
