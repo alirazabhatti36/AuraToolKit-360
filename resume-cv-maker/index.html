@@ -475,24 +475,30 @@
             letter-spacing: -0.2px;
         }
 
-        .field { margin-bottom: 0.7rem; width: 100%; }
+        .field { margin-bottom: 0.65rem; width: 100%; min-width: 0; }
         .field label {
-            display: block;
-            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.74rem;
             font-weight: 700;
             color: #334155;
             margin-bottom: 0.28rem;
             letter-spacing: 0.1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-height: 18px;
+            line-height: 18px;
         }
         .field input, .field select {
             width: 100%;
-            height: 38px;
-            line-height: 38px;
+            height: 36px;
+            line-height: 36px;
             background: #ffffff;
             border: 1.5px solid #cbd5e1;
             border-radius: 8px;
-            padding: 0 0.75rem;
-            font-size: 0.84rem;
+            padding: 0 0.65rem;
+            font-size: 0.80rem;
             color: #0f172a;
             font-family: inherit;
             outline: none;
@@ -504,8 +510,8 @@
             background: #ffffff;
             border: 1.5px solid #cbd5e1;
             border-radius: 8px;
-            padding: 0.55rem 0.75rem;
-            font-size: 0.84rem;
+            padding: 0.5rem 0.65rem;
+            font-size: 0.80rem;
             color: #0f172a;
             font-family: inherit;
             outline: none;
@@ -523,63 +529,79 @@
         /* Responsive Grid Rows for Wide Form Editing */
         .form-row-grid {
             display: grid;
-            gap: 0.85rem;
+            gap: 0.75rem;
             margin-bottom: 0.65rem;
             width: 100%;
-            align-items: start;
+            align-items: end;
         }
         .form-row-grid.grid-2 {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         }
         .form-row-grid.grid-3 {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr) minmax(0, 110px);
+        }
+        .form-row-grid.grid-item-cert,
+        .form-row-grid.grid-item-award {
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.3fr) minmax(0, 85px);
+        }
+        .form-row-grid.grid-item-edu {
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr) minmax(0, 110px);
+        }
+        .form-row-grid.grid-item-exp {
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr) minmax(0, 120px);
         }
         @media (max-width: 768px) {
             .form-row-grid.grid-2,
-            .form-row-grid.grid-3 {
+            .form-row-grid.grid-3,
+            .form-row-grid.grid-item-cert,
+            .form-row-grid.grid-item-award,
+            .form-row-grid.grid-item-edu,
+            .form-row-grid.grid-item-exp {
                 grid-template-columns: 1fr;
-                gap: 0.65rem;
+                gap: 0.55rem;
             }
         }
 
         .btn-row {
             display: flex;
-            gap: 0.6rem;
+            gap: 0.55rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
+            margin-top: 0.9rem;
         }
         button, .btn-link {
             border: none;
             border-radius: 8px;
-            padding: 0.5rem 0.95rem;
+            padding: 0.45rem 0.85rem;
             cursor: pointer;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.4rem;
+            gap: 0.35rem;
             transition: all 0.2s;
             font-family: inherit;
+            line-height: 1;
+            box-sizing: border-box;
         }
         .btn-primary {
             background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
             color: #ffffff;
             border: 1px solid #1d4ed8;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.32);
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.24);
         }
         .btn-primary:hover {
             background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
             color: #ffffff;
         }
         .btn-outline {
             background: #ffffff;
             color: #1d4ed8;
             border: 1.5px solid #bfdbfe;
-            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
         }
         .btn-outline:hover {
             background: #eff6ff;
@@ -596,6 +618,194 @@
             background: #fee2e2;
             border-color: #ef4444;
             color: #991b1b;
+        }
+        .section-head button {
+            height: 30px;
+            padding: 0 0.7rem;
+            font-size: 0.74rem;
+            border-radius: 7px;
+        }
+
+        /* Workspace Multi-Profile Bar Clean Layout */
+        .resume-workspace-bar {
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 0.75rem 0.9rem;
+            margin-bottom: 1.15rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .profile-bar-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .profile-select-group {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex: 1;
+            min-width: 220px;
+        }
+        .profile-bar-label {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #0f172a;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            white-space: nowrap;
+        }
+        #resumeProfileSelect {
+            flex: 1;
+            height: 34px;
+            line-height: 34px;
+            padding: 0 0.65rem;
+            font-size: 0.78rem;
+            border-radius: 8px;
+            border: 1.5px solid #cbd5e1;
+            font-weight: 700;
+            background: #ffffff;
+            color: #0f172a;
+            outline: none;
+            box-sizing: border-box;
+        }
+        .profile-btn-group {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .profile-btn-group button {
+            height: 34px;
+            padding: 0 0.65rem;
+            font-size: 0.76rem;
+            line-height: 1;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        .profile-tools-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            padding-top: 0.55rem;
+            border-top: 1px dashed #cbd5e1;
+        }
+        @media (max-width: 540px) {
+            .profile-tools-row { grid-template-columns: 1fr; }
+        }
+        .btn-compact-tool {
+            height: 34px;
+            padding: 0 0.85rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            box-sizing: border-box;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        /* Preview Action Toolbar Buttons Sizing */
+        .preview-action-btn {
+            height: 32px !important;
+            padding: 0 0.75rem !important;
+            font-size: 0.76rem !important;
+            font-weight: 700 !important;
+            border-radius: 8px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            line-height: 1 !important;
+            box-sizing: border-box !important;
+            margin: 0 !important;
+        }
+        .btn-autofit.preview-action-btn {
+            background: linear-gradient(135deg, #10b981, #059669) !important;
+            color: #ffffff !important;
+            border: 1px solid #059669 !important;
+            box-shadow: 0 1px 3px rgba(16, 185, 129, 0.25) !important;
+        }
+        .btn-primary.preview-action-btn {
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%) !important;
+            color: #ffffff !important;
+            border: 1px solid #1d4ed8 !important;
+            box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25) !important;
+        }
+        .btn-outline.preview-action-btn {
+            background: #ffffff !important;
+            color: #1d4ed8 !important;
+            border: 1.5px solid #bfdbfe !important;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+        }
+
+        /* Step 3 Export Grid Layout */
+        .export-grid-primary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.55rem;
+            margin-bottom: 0.55rem;
+        }
+        .export-grid-secondary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 0.55rem;
+        }
+        .export-grid-tools {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.55rem;
+        }
+        @media (max-width: 700px) {
+            .export-grid-primary { grid-template-columns: 1fr; }
+            .export-grid-secondary { grid-template-columns: 1fr 1fr; }
+            .export-grid-tools { grid-template-columns: 1fr; }
+        }
+        .export-btn-main {
+            height: 38px !important;
+            padding: 0 0.85rem !important;
+            font-size: 0.80rem !important;
+            font-weight: 700 !important;
+            border-radius: 8px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .export-btn-sub {
+            height: 35px !important;
+            padding: 0 0.45rem !important;
+            font-size: 0.76rem !important;
+            font-weight: 700 !important;
+            border-radius: 8px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            white-space: nowrap !important;
+        }
+        .export-btn-companion {
+            height: 38px !important;
+            padding: 0 0.75rem !important;
+            font-size: 0.78rem !important;
+            font-weight: 700 !important;
+            border-radius: 8px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            white-space: nowrap !important;
+            text-align: center !important;
         }
 
         .entry {
@@ -1252,16 +1462,20 @@
         .btn-autofit {
             background: linear-gradient(135deg, #10b981, #059669);
             color: #ffffff;
-            border: none;
-            border-radius: 7px;
-            padding: 0.35rem 0.75rem;
+            border: 1px solid #059669;
+            border-radius: 8px;
+            height: 32px;
+            padding: 0 0.75rem;
             font-size: 0.76rem;
             font-weight: 700;
             cursor: pointer;
             transition: transform 0.15s, box-shadow 0.15s;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.35rem;
+            box-sizing: border-box;
+            line-height: 1;
         }
         .btn-autofit:hover {
             transform: translateY(-1px);
@@ -1733,22 +1947,24 @@
                 </div>
 
                 <!-- ===== RESUME MULTI-PROFILE WORKSPACE BAR ===== -->
-                <div class="resume-workspace-bar" style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:14px; padding:0.85rem 1.1rem; margin-bottom:1.3rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
-                    <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
-                        <span style="font-size:0.84rem; font-weight:800; color:#0f172a; display:flex; align-items:center; gap:0.35rem;">
-                            <span>📂</span> Profile:
-                        </span>
-                        <select id="resumeProfileSelect" onchange="switchResumeProfile(this.value)" style="padding:0.4rem 0.75rem; font-size:0.82rem; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700; background:#ffffff; color:#0f172a; min-width:170px;"></select>
-                        <button type="button" class="btn-outline" style="padding:0.35rem 0.7rem; font-size:0.78rem;" onclick="createNewResumeProfile()">+ New</button>
-                        <button type="button" class="btn-outline" style="padding:0.35rem 0.7rem; font-size:0.78rem;" onclick="renameResumeProfile()">✏️ Rename</button>
-                        <button type="button" class="btn-danger" style="padding:0.35rem 0.7rem; font-size:0.78rem;" onclick="deleteResumeProfile()" title="Delete Profile">🗑️</button>
+                <div class="resume-workspace-bar">
+                    <div class="profile-bar-row">
+                        <div class="profile-select-group">
+                            <span class="profile-bar-label"><span>📂</span> Profile:</span>
+                            <select id="resumeProfileSelect" onchange="switchResumeProfile(this.value)" aria-label="Select Resume Profile"></select>
+                        </div>
+                        <div class="profile-btn-group">
+                            <button type="button" class="btn-outline" onclick="createNewResumeProfile()">+ New</button>
+                            <button type="button" class="btn-outline" onclick="renameResumeProfile()">✏️ Rename</button>
+                            <button type="button" class="btn-danger" onclick="deleteResumeProfile()" title="Delete Profile">🗑️</button>
+                        </div>
                     </div>
-                    <div style="display:flex; align-items:center; gap:0.5rem;">
-                        <button type="button" class="btn-primary" style="padding:0.45rem 0.95rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.35rem; cursor:pointer;" onclick="openSmartImportModal()">
-                            <span>⚡</span> Import CV (PDF/Text)
+                    <div class="profile-tools-row">
+                        <button type="button" class="btn-primary btn-compact-tool" onclick="openSmartImportModal()">
+                            <span>⚡</span> Import CV (PDF / Text)
                         </button>
-                        <button type="button" class="btn-outline" style="padding:0.45rem 0.95rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.35rem; cursor:pointer;" onclick="suggestSummary()">
-                            <span>✨</span> AI Assistant
+                        <button type="button" class="btn-outline btn-compact-tool" onclick="suggestSummary()">
+                            <span>✨</span> AI Content Assistant
                         </button>
                     </div>
                 </div>
@@ -1775,7 +1991,7 @@
                 </div>
                 <div class="form-row-grid grid-2">
                     <div class="field"><label for="location">Location (City, Country)</label><input type="text" id="location" aria-label="location" placeholder="San Francisco, CA" oninput="updatePreview()"></div>
-                    <div class="field"><label for="links">LinkedIn / Portfolio / GitHub Links</label><input type="text" id="links" aria-label="links" placeholder="linkedin.com/in/johndoe | github.com/johndoe" oninput="updatePreview()"></div>
+                    <div class="field"><label for="links" title="LinkedIn / GitHub / Portfolio Links">LinkedIn / GitHub / Portfolio</label><input type="text" id="links" aria-label="links" placeholder="linkedin.com/in/... | github.com/..." oninput="updatePreview()"></div>
                 </div>
 
                 <div class="section">
@@ -1868,25 +2084,33 @@
                 </div>
 
                 <!-- Export & Action Toolbar -->
-                <div class="action-toolbar" style="margin-top: 1.3rem; padding-top: 1rem; border-top: 1.5px solid #e2e8f0;">
+                <div class="action-toolbar">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
-                        <h3 style="font-size:0.98rem; color:#0f172a; font-weight:800; margin:0; display:flex; align-items:center; gap:0.45rem;">
+                        <h3 style="font-size:0.95rem; color:#0f172a; font-weight:800; margin:0; display:flex; align-items:center; gap:0.45rem;">
                             <span>💾</span> Step 3: Export &amp; Save Resume
                         </h3>
                         <span class="small">100% In-Browser · No Signup</span>
                     </div>
-                    <div class="btn-row">
-                        <button class="btn-primary" aria-label="Download PDF" onclick="downloadPDF()">📄 Download PDF</button>
-                        <button type="button" class="btn-outline" aria-label="Vector PDF" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF (Selectable)</button>
-                        <button class="btn-outline" aria-label="Download DOCX" onclick="downloadDOCX()">📝 Download DOCX</button>
-                        <button class="btn-outline" aria-label="Save JSON Draft" onclick="exportJSON()">💾 Save JSON Draft</button>
-                        <button class="btn-outline" aria-label="Load JSON Draft" onclick="document.getElementById('importFile').click()">📂 Load JSON Draft</button>
-                        <input type="file" id="importFile" aria-label="importFile" accept=".json" style="display:none" onchange="importJSON(event)">
-                        <button class="btn-danger" aria-label="Reset All" onclick="resetForm()">Reset All</button>
+
+                    <!-- Primary Export (PDF & Vector PDF) -->
+                    <div class="export-grid-primary">
+                        <button class="btn-primary export-btn-main" aria-label="Download PDF" onclick="downloadPDF()">📄 Download PDF</button>
+                        <button type="button" class="btn-outline export-btn-main" aria-label="Vector PDF" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF (Selectable)</button>
                     </div>
-                    <div style="margin-top:0.75rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
-                        <a href="/cover-letter-maker/" class="btn-outline" style="border-color:#10b981; color:#10b981; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1rem;">📝 1-Click Matching Cover Letter</a>
-                        <button type="button" class="btn-outline" style="border-color:#0284c7; color:#38bdf8; font-weight:700; padding:0.6rem 1rem;" onclick="openLinkedInOptimizer()">💼 LinkedIn Profile Optimizer</button>
+
+                    <!-- Secondary Formats & Draft Actions -->
+                    <div class="export-grid-secondary">
+                        <button class="btn-outline export-btn-sub" aria-label="Download DOCX" onclick="downloadDOCX()">📝 Download Word</button>
+                        <button class="btn-outline export-btn-sub" aria-label="Save JSON Draft" onclick="exportJSON()">💾 Save Draft</button>
+                        <button class="btn-outline export-btn-sub" aria-label="Load JSON Draft" onclick="document.getElementById('importFile').click()">📂 Load Draft</button>
+                        <button class="btn-danger export-btn-sub" aria-label="Reset All" onclick="resetForm()">🔄 Reset All</button>
+                    </div>
+                    <input type="file" id="importFile" aria-label="importFile" accept=".json" style="display:none" onchange="importJSON(event)">
+
+                    <!-- Companion Career Tools -->
+                    <div class="export-grid-tools">
+                        <a href="/cover-letter-maker/" class="btn-outline export-btn-companion" style="border-color:#10b981; color:#059669; font-weight:700; text-decoration:none;">📝 1-Click Matching Cover Letter</a>
+                        <button type="button" class="btn-outline export-btn-companion" style="border-color:#0284c7; color:#0284c7; font-weight:700;" onclick="openLinkedInOptimizer()">💼 LinkedIn Profile Optimizer</button>
                     </div>
                 </div>
             </div>
@@ -1903,7 +2127,7 @@
                         <span id="matcherToggleIcon" style="color:#64748b; font-size:0.8rem; font-weight:600;">▼ Click to expand</span>
                     </div>
                     <div id="jobMatcherBody" style="display:none; margin-top:0.75rem;">
-                        <textarea id="targetJobDescInput" placeholder="Paste the job requirements or target job description here to check live keyword matches in real time..." rows="3" style="width:100%; background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px; color:#0f172a; padding:0.65rem 0.85rem; font-size:0.84rem; resize:vertical; font-family:inherit; box-sizing:border-box;" oninput="runLiveJobMatch()"></textarea>
+                        <textarea id="targetJobDescInput" placeholder="Paste the job requirements or target job description here to check live keyword matches in real time..." rows="3" style="width:100%; background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px; color:#0f172a; padding:0.65rem 0.85rem; font-size:0.80rem; resize:vertical; font-family:inherit; box-sizing:border-box;" oninput="runLiveJobMatch()"></textarea>
                         <div id="jobKeywordChips" style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.5rem;"></div>
                     </div>
                 </div>
@@ -1914,10 +2138,10 @@
                         <span id="pageCountBadge" style="font-size:0.74rem; background:#ecfdf5; color:#047857; padding:0.2rem 0.6rem; border-radius:999px; font-weight:700; border:1px solid #a7f3d0;">📄 1 Page (Clean Fit ✅)</span>
                     </div>
                     <div style="display:flex; gap:0.45rem; align-items:center; flex-wrap:wrap;">
-                        <button type="button" class="btn-autofit" onclick="autoFitToOnePage()" title="Automatically adjusts spacing and typography to fit content onto exactly 1 page">✨ Auto-Fit 1 Page</button>
-                        <button type="button" class="btn-primary" style="padding:0.45rem 0.9rem; font-size:0.8rem;" onclick="downloadPDF()" title="Download PDF with preserved links">📄 PDF</button>
-                        <button type="button" class="btn-outline" style="padding:0.45rem 0.9rem; font-size:0.8rem;" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF</button>
-                        <button type="button" class="btn-outline" style="padding:0.45rem 0.9rem; font-size:0.8rem;" onclick="downloadDOCX()">📝 Word</button>
+                        <button type="button" class="btn-autofit preview-action-btn" onclick="autoFitToOnePage()" title="Automatically adjusts spacing and typography to fit content onto exactly 1 page">✨ Auto-Fit 1 Page</button>
+                        <button type="button" class="btn-primary preview-action-btn" onclick="downloadPDF()" title="Download PDF with preserved links">📄 PDF</button>
+                        <button type="button" class="btn-outline preview-action-btn" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF</button>
+                        <button type="button" class="btn-outline preview-action-btn" onclick="downloadDOCX()">📝 Word</button>
                     </div>
                 </div>
                 <div id="preview" class="preview-paper"></div>
@@ -2702,7 +2926,7 @@
             document.getElementById('experienceList').innerHTML = experienceItems.map((item, idx) => `
                 <div class="entry">
                     <div class="entry-head"><strong>Role #${idx + 1}</strong><button type="button" class="btn-danger" style="padding:0.25rem 0.6rem;font-size:0.75rem;" onclick="removeExperience(${idx})">Remove</button></div>
-                    <div class="form-row-grid grid-3">
+                    <div class="form-row-grid grid-item-exp">
                         <div class="field"><label>Job Title</label><input type="text" placeholder="e.g. Senior Software Engineer" value="${escapeHtml(item.title)}" oninput="experienceItems[${idx}].title = this.value; updatePreview();"></div>
                         <div class="field"><label>Company Name</label><input type="text" placeholder="e.g. Google / Microsoft" value="${escapeHtml(item.company)}" oninput="experienceItems[${idx}].company = this.value; updatePreview();"></div>
                         <div class="field"><label>Dates / Duration</label><input type="text" placeholder="e.g. 2021 - Present" value="${escapeHtml(item.years)}" oninput="experienceItems[${idx}].years = this.value; updatePreview();"></div>
@@ -2724,10 +2948,10 @@
             document.getElementById('educationList').innerHTML = educationItems.map((item, idx) => `
                 <div class="entry">
                     <div class="entry-head"><strong>Education #${idx + 1}</strong><button type="button" class="btn-danger" style="padding:0.25rem 0.6rem;font-size:0.75rem;" onclick="removeEducation(${idx})">Remove</button></div>
-                    <div class="form-row-grid grid-3">
-                        <div class="field"><label>Degree / Certificate</label><input type="text" placeholder="e.g. B.S. in Computer Science" value="${escapeHtml(item.degree)}" oninput="educationItems[${idx}].degree = this.value; updatePreview();"></div>
-                        <div class="field"><label>School / University / College</label><input type="text" placeholder="e.g. Stanford University" value="${escapeHtml(item.school)}" oninput="educationItems[${idx}].school = this.value; updatePreview();"></div>
-                        <div class="field"><label>Graduation Year / Duration</label><input type="text" placeholder="e.g. 2018 - 2022" value="${escapeHtml(item.years)}" oninput="educationItems[${idx}].years = this.value; updatePreview();"></div>
+                    <div class="form-row-grid grid-item-edu">
+                        <div class="field"><label>Degree / Qualification</label><input type="text" placeholder="e.g. B.S. in Computer Science" value="${escapeHtml(item.degree)}" oninput="educationItems[${idx}].degree = this.value; updatePreview();"></div>
+                        <div class="field"><label>School / University</label><input type="text" placeholder="e.g. Stanford University" value="${escapeHtml(item.school)}" oninput="educationItems[${idx}].school = this.value; updatePreview();"></div>
+                        <div class="field"><label>Graduation Year</label><input type="text" placeholder="e.g. 2018 - 2022" value="${escapeHtml(item.years)}" oninput="educationItems[${idx}].years = this.value; updatePreview();"></div>
                     </div>
                 </div>
             `).join('');
@@ -2739,10 +2963,10 @@
             document.getElementById('certList').innerHTML = certItems.map((item, idx) => `
                 <div class="entry">
                     <div class="entry-head"><strong>Certification #${idx + 1}</strong><button type="button" class="btn-danger" style="padding:0.25rem 0.6rem;font-size:0.75rem;" onclick="removeCert(${idx})">Remove</button></div>
-                    <div class="form-row-grid grid-3">
-                        <div class="field"><label>Certificate Name</label><input type="text" placeholder="e.g. AWS Certified Solutions Architect" value="${escapeHtml(item.title)}" oninput="certItems[${idx}].title = this.value; updatePreview();"></div>
+                    <div class="form-row-grid grid-item-cert">
+                        <div class="field"><label>Certificate Name</label><input type="text" placeholder="e.g. AWS Solutions Architect" value="${escapeHtml(item.title)}" oninput="certItems[${idx}].title = this.value; updatePreview();"></div>
                         <div class="field"><label>Issuing Organization</label><input type="text" placeholder="e.g. Amazon Web Services" value="${escapeHtml(item.issuer)}" oninput="certItems[${idx}].issuer = this.value; updatePreview();"></div>
-                        <div class="field"><label>Year</label><input type="text" placeholder="e.g. 2024" value="${escapeHtml(item.year)}" oninput="certItems[${idx}].year = this.value; updatePreview();"></div>
+                        <div class="field"><label>Year</label><input type="text" placeholder="e.g. 2026" value="${escapeHtml(item.year)}" oninput="certItems[${idx}].year = this.value; updatePreview();"></div>
                     </div>
                 </div>
             `).join('');
@@ -2754,10 +2978,10 @@
             document.getElementById('awardList').innerHTML = awardItems.map((item, idx) => `
                 <div class="entry">
                     <div class="entry-head"><strong>Award #${idx + 1}</strong><button type="button" class="btn-danger" style="padding:0.25rem 0.6rem;font-size:0.75rem;" onclick="removeAward(${idx})">Remove</button></div>
-                    <div class="form-row-grid grid-3">
+                    <div class="form-row-grid grid-item-award">
                         <div class="field"><label>Award Title</label><input type="text" placeholder="e.g. Best Innovator of the Year" value="${escapeHtml(item.title)}" oninput="awardItems[${idx}].title = this.value; updatePreview();"></div>
                         <div class="field"><label>Grantor / Organization</label><input type="text" placeholder="e.g. Global Tech Forum" value="${escapeHtml(item.issuer)}" oninput="awardItems[${idx}].issuer = this.value; updatePreview();"></div>
-                        <div class="field"><label>Year</label><input type="text" placeholder="e.g. 2023" value="${escapeHtml(item.year)}" oninput="awardItems[${idx}].year = this.value; updatePreview();"></div>
+                        <div class="field"><label>Year</label><input type="text" placeholder="e.g. 2026" value="${escapeHtml(item.year)}" oninput="awardItems[${idx}].year = this.value; updatePreview();"></div>
                     </div>
                 </div>
             `).join('');
