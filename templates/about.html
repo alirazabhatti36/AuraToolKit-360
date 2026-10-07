@@ -663,14 +663,15 @@
             font-size: 0.90rem !important;
             color: #475569 !important;
         }
-        .contact-box a {
+        .contact-box a:not(.btn-contact-page) {
             color: #2563eb !important;
             font-weight: 600 !important;
             text-decoration: none !important;
         }
-        .contact-box a:hover {
+        .contact-box a:not(.btn-contact-page):hover {
             text-decoration: underline !important;
         }
+        .contact-box a.btn-contact-page,
         .btn-contact-page {
             background: linear-gradient(135deg, #0284c7, #2563eb) !important;
             color: #ffffff !important;
@@ -682,8 +683,15 @@
             box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3) !important;
             transition: all 0.25s ease !important;
             white-space: nowrap !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.4rem !important;
         }
+        .contact-box a.btn-contact-page:hover,
         .btn-contact-page:hover {
+            background: linear-gradient(135deg, #0369a1, #1d4ed8) !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
             transform: translateY(-2px) !important;
             box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45) !important;
         }
