@@ -71,7 +71,7 @@
     
     <style>
         :root {
-            --bg-base: #f8fafc;
+            --bg-base: #f1f5f9;
             --bg-card: #ffffff;
             --bg-card-hover: #f1f5f9;
             --border-card: #cbd5e1;
@@ -387,12 +387,11 @@
         }
         .featured-carousel-wrapper {
             position: relative;
-            background: linear-gradient(135deg, rgba(20, 27, 45, 0.7), rgba(15, 23, 42, 0.85));
-            border: 1px solid var(--border-card);
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
             border-radius: 20px;
-            backdrop-filter: blur(16px);
             overflow: hidden;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
             margin-bottom: 2.8rem;
         }
         .carousel-slides {
@@ -435,7 +434,7 @@
         .slide-content h2 {
             font-size: 2rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #0f172a;
             line-height: 1.2;
             margin-bottom: 0.6rem;
             letter-spacing: -0.5px;
@@ -557,15 +556,16 @@
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            background: rgba(18, 24, 38, 0.85);
-            border: 1px solid var(--border-card);
-            color: #ffffff;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            color: #334155;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s;
             z-index: 10;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
         }
         .carousel-btn:hover {
             background: var(--accent-cyan);
@@ -594,7 +594,7 @@
             font-weight: 800;
             letter-spacing: -0.8px;
             line-height: 1.15;
-            color: #ffffff;
+            color: #0f172a;
             margin-bottom: 0.8rem;
         }
         @media (max-width: 768px) {
@@ -657,8 +657,8 @@
 
         .pillar-card h4 {
             font-size: 1.05rem;
-            font-weight: 700;
-            color: #ffffff;
+            font-weight: 800;
+            color: #0f172a;
             margin-bottom: 0.25rem;
         }
         .pillar-card .pillar-sub {
@@ -686,9 +686,9 @@
             border-radius: 999px;
             text-decoration: none;
             transition: all 0.25s;
-            background: rgba(255, 255, 255, 0.06);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #f8fafc;
+            color: #2563eb;
+            border: 1.5px solid #cbd5e1;
         }
         .pillar-card:hover .btn-pillar-pill {
             background: linear-gradient(135deg, #0284c7, #6366f1);
@@ -705,12 +705,11 @@
         .search-bar-wrap {
             display: flex;
             align-items: center;
-            background: rgba(18, 24, 38, 0.85);
-            backdrop-filter: blur(18px);
-            border: 1px solid var(--border-card);
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
             border-radius: 14px;
             padding: 0.55rem 0.85rem;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.08);
             transition: all 0.25s;
         }
         .search-bar-wrap:focus-within {
@@ -728,7 +727,7 @@
             border: none;
             outline: none;
             font-size: 0.95rem;
-            color: #ffffff;
+            color: #0f172a;
             font-family: inherit;
         }
         .search-bar-wrap input::placeholder {
@@ -748,11 +747,10 @@
             top: calc(100% + 8px);
             left: 0;
             right: 0;
-            background: rgba(15, 21, 35, 0.96);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-card);
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
             border-radius: 14px;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.12);
             max-height: 380px;
             overflow-y: auto;
             z-index: 100;
@@ -767,8 +765,8 @@
             gap: 0.8rem;
             padding: 0.75rem 1.1rem;
             text-decoration: none;
-            color: #ffffff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: #0f172a;
+            border-bottom: 1px solid #f1f5f9;
             transition: background 0.2s;
         }
         .search-res-item:hover {
@@ -790,14 +788,16 @@
             margin-top: 0.75rem;
         }
         .chip-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            color: var(--text-secondary);
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            color: #334155;
             font-size: 0.76rem;
+            font-weight: 700;
             padding: 0.28rem 0.75rem;
             border-radius: 999px;
             cursor: pointer;
             transition: all 0.2s;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
         }
         .chip-btn:hover {
             border-color: var(--accent-cyan);
@@ -812,7 +812,7 @@
         .section-headline-wrap h3 {
             font-size: 1.1rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #0f172a;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             display: flex;
