@@ -626,114 +626,95 @@
             border-radius: 7px;
         }
 
-        /* Workspace Multi-Profile Bar Clean 1-Line Layout */
+        /* Workspace Multi-Profile Bar Clean Layout */
         .resume-workspace-bar {
             background: #f8fafc;
             border: 1.5px solid #cbd5e1;
-            border-radius: 10px;
-            padding: 0.45rem 0.6rem;
+            border-radius: 12px;
+            padding: 0.75rem 0.9rem;
             margin-bottom: 1.15rem;
             display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .profile-bar-row {
+            display: flex;
             align-items: center;
-            gap: 0.35rem;
-            box-sizing: border-box;
-            white-space: nowrap;
-            overflow-x: auto;
-            scrollbar-width: thin;
+            justify-content: space-between;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .profile-select-group {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex: 1;
+            min-width: 180px;
         }
         .profile-bar-label {
-            font-size: 0.74rem;
+            font-size: 0.78rem;
             font-weight: 800;
             color: #0f172a;
             display: inline-flex;
             align-items: center;
-            gap: 0.2rem;
+            gap: 0.3rem;
             white-space: nowrap;
-            flex-shrink: 0;
         }
         #resumeProfileSelect {
-            flex: 1 1 150px;
-            min-width: 130px;
-            max-width: 240px;
-            height: 32px !important;
-            min-height: 32px !important;
+            flex: 1;
+            min-width: 120px;
+            height: 34px !important;
             line-height: normal !important;
-            padding: 2px 6px !important;
-            font-size: 0.74rem !important;
-            font-weight: 600 !important;
-            border-radius: 7px !important;
-            border: 1.5px solid #cbd5e1 !important;
-            background-color: #ffffff !important;
-            color: #0f172a !important;
-            outline: none !important;
-            box-sizing: border-box !important;
-            cursor: pointer !important;
-            vertical-align: middle !important;
+            padding: 2px 8px !important;
+            font-size: 0.76rem !important;
+            border-radius: 8px;
+            border: 1.5px solid #cbd5e1;
+            font-weight: 700;
+            background: #ffffff;
+            color: #0f172a;
+            outline: none;
+            box-sizing: border-box;
+            cursor: pointer;
         }
-        #resumeProfileSelect:focus {
-            border-color: #2563eb !important;
-            box-shadow: 0 0 0 2px rgba(37,99,235,0.15) !important;
-        }
-        .profile-btn-action {
-            height: 32px !important;
-            padding: 0 0.5rem !important;
-            font-size: 0.72rem !important;
-            font-weight: 700 !important;
-            border-radius: 7px !important;
-            box-sizing: border-box !important;
-            white-space: nowrap !important;
-            flex-shrink: 0 !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 0.2rem !important;
-            cursor: pointer !important;
-        }
-        .ws-sep {
-            width: 1px;
-            height: 20px;
-            background: #cbd5e1;
+        .profile-btn-group {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
             flex-shrink: 0;
-            margin: 0 0.15rem;
+        }
+        .profile-btn-group button {
+            height: 34px;
+            padding: 0 0.65rem;
+            font-size: 0.76rem;
+            line-height: 1;
+            border-radius: 8px;
+            box-sizing: border-box;
+            white-space: nowrap;
+        }
+        .profile-tools-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            padding-top: 0.55rem;
+            border-top: 1px dashed #cbd5e1;
+        }
+        @media (max-width: 580px) {
+            .profile-tools-row { grid-template-columns: 1fr; }
         }
         .btn-compact-tool {
-            height: 32px !important;
-            min-height: 32px !important;
-            padding: 0 0.6rem !important;
-            font-size: 0.72rem !important;
-            font-weight: 700 !important;
-            white-space: nowrap !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 0.25rem !important;
-            flex-shrink: 0 !important;
-            box-sizing: border-box !important;
-            border-radius: 7px !important;
-            cursor: pointer !important;
-        }
-        .btn-add-another-link {
-            width: 100%;
-            height: 36px;
-            background: #ffffff;
-            border: 1.5px dashed #2563eb;
-            border-radius: 8px;
-            color: #1d4ed8;
-            font-size: 0.78rem;
+            height: 34px;
+            padding: 0 0.75rem;
+            font-size: 0.76rem;
             font-weight: 700;
+            line-height: 1;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.4rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-top: 0.55rem;
+            gap: 0.35rem;
             box-sizing: border-box;
-        }
-        .btn-add-another-link:hover {
-            background: #eff6ff;
-            border-color: #1d4ed8;
-            color: #1e40af;
+            border-radius: 8px;
+            width: 100%;
+            white-space: nowrap !important;
         }
 
         /* Preview Action Toolbar Buttons Sizing */
@@ -1972,20 +1953,25 @@
 
                 <!-- ===== RESUME MULTI-PROFILE WORKSPACE BAR ===== -->
                 <div class="resume-workspace-bar">
-                    <span class="profile-bar-label"><span>📂</span> Profile:</span>
-                    <select id="resumeProfileSelect" onchange="switchResumeProfile(this.value)" aria-label="Select Resume Profile"></select>
-                    <button type="button" class="btn-outline profile-btn-action" onclick="createNewResumeProfile()" title="Create New Profile">+ New</button>
-                    <button type="button" class="btn-outline profile-btn-action" onclick="renameResumeProfile()" title="Rename Profile">✏️ Rename</button>
-                    <button type="button" class="btn-danger profile-btn-action" onclick="deleteResumeProfile()" title="Delete Profile" style="padding:0 0.4rem !important;">🗑️</button>
-                    
-                    <div class="ws-sep"></div>
-
-                    <button type="button" class="btn-primary btn-compact-tool" onclick="openSmartImportModal()" title="Import CV">
-                        <span>⚡</span> Import CV
-                    </button>
-                    <button type="button" class="btn-outline btn-compact-tool" onclick="suggestSummary()" title="AI Assistant">
-                        <span>✨</span> AI Assistant
-                    </button>
+                    <div class="profile-bar-row">
+                        <div class="profile-select-group">
+                            <span class="profile-bar-label"><span>📂</span> Profile:</span>
+                            <select id="resumeProfileSelect" onchange="switchResumeProfile(this.value)" aria-label="Select Resume Profile"></select>
+                        </div>
+                        <div class="profile-btn-group">
+                            <button type="button" class="btn-outline" onclick="createNewResumeProfile()">+ New</button>
+                            <button type="button" class="btn-outline" onclick="renameResumeProfile()">✏️ Rename</button>
+                            <button type="button" class="btn-danger" onclick="deleteResumeProfile()" title="Delete Profile">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="profile-tools-row">
+                        <button type="button" class="btn-primary btn-compact-tool" onclick="openSmartImportModal()">
+                            <span>⚡</span> Import CV (PDF / Text)
+                        </button>
+                        <button type="button" class="btn-outline btn-compact-tool" onclick="suggestSummary()">
+                            <span>✨</span> AI Content Assistant
+                        </button>
+                    </div>
                 </div>
 
                 <div class="photo-picker">
@@ -2008,27 +1994,18 @@
                     <div class="field"><label for="email">Email Address</label><input type="email" id="email" aria-label="email" placeholder="john@example.com" oninput="updatePreview()"></div>
                     <div class="field"><label for="phone">Phone Number</label><input type="text" id="phone" aria-label="phone" placeholder="+1 555-0199" oninput="updatePreview()"></div>
                 </div>
-                <div class="field" style="margin-bottom:0.75rem;"><label for="location">Location (City, Country)</label><input type="text" id="location" aria-label="location" placeholder="San Francisco, CA" oninput="updatePreview()"></div>
-                <input type="hidden" id="links" aria-label="links">
-
-                <!-- DEDICATED MULTIPLE LINKS MANAGER -->
-                <div class="resume-links-section" style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:12px; padding:0.85rem 1rem; margin-bottom:1.15rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.65rem; flex-wrap:wrap; gap:0.45rem;">
-                        <div style="display:flex; align-items:center; gap:0.4rem;">
-                            <strong style="font-size:0.84rem; color:#0f172a;">🔗 Websites &amp; Profiles (Multiple Links):</strong>
-                            <span id="linksCountBadge" style="font-size:0.68rem; font-weight:700; background:#e2e8f0; color:#334155; padding:0.12rem 0.45rem; border-radius:999px;">0 Links</span>
+                <div class="form-row-grid grid-2">
+                    <div class="field"><label for="location">Location (City, Country)</label><input type="text" id="location" aria-label="location" placeholder="San Francisco, CA" oninput="updatePreview()"></div>
+                    <div class="field">
+                        <label for="links" title="LinkedIn / GitHub / Portfolio Links">LinkedIn / GitHub / Portfolio</label>
+                        <div id="linksContainer" style="display:flex; flex-direction:column; gap:0.35rem;">
+                            <input type="text" id="links" aria-label="links" placeholder="linkedin.com/in/... | github.com/..." oninput="updatePreview()">
+                            <div id="additionalLinksList" style="display:flex; flex-direction:column; gap:0.35rem;"></div>
                         </div>
-                        <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
-                            <button type="button" class="btn-outline" style="font-size:0.72rem; padding:0.25rem 0.5rem; height:28px; border-radius:6px; font-weight:700;" onclick="addResumeLink('linkedin', 'linkedin.com/in/')">+ 💼 LinkedIn</button>
-                            <button type="button" class="btn-outline" style="font-size:0.72rem; padding:0.25rem 0.5rem; height:28px; border-radius:6px; font-weight:700;" onclick="addResumeLink('github', 'github.com/')">+ 🐙 GitHub</button>
-                            <button type="button" class="btn-outline" style="font-size:0.72rem; padding:0.25rem 0.5rem; height:28px; border-radius:6px; font-weight:700;" onclick="addResumeLink('portfolio', '')">+ 🌐 Portfolio</button>
-                            <button type="button" class="btn-outline" style="font-size:0.72rem; padding:0.25rem 0.5rem; height:28px; border-radius:6px; font-weight:700;" onclick="addResumeLink('other', '')">+ ➕ Other</button>
-                        </div>
+                        <button type="button" class="btn-outline" style="margin-top:0.4rem; width:100%; height:28px; font-size:0.72rem; font-weight:700; border:1px dashed #2563eb; color:#2563eb; background:#eff6ff; border-radius:6px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:0.25rem;" onclick="addAnotherLinkField()">
+                            <span>➕</span> Add Another Link
+                        </button>
                     </div>
-                    <div id="resumeLinksList" style="display:flex; flex-direction:column; gap:0.45rem;"></div>
-                    <button type="button" class="btn-add-another-link" onclick="addResumeLink('other', '')">
-                        <span>➕</span> Add Another Link
-                    </button>
                 </div>
 
                 <div class="section">
@@ -3061,143 +3038,50 @@
             `).join('');
         }
 
-        /* ==========================================================================
-           MULTIPLE LINKS & SOCIAL PROFILES MANAGER
-           ========================================================================== */
-        let resumeLinks = [];
-
-        const LINK_PLATFORM_OPTIONS = [
-            { id: 'linkedin', label: 'LinkedIn', icon: '💼', placeholder: 'linkedin.com/in/username' },
-            { id: 'github', label: 'GitHub', icon: '🐙', placeholder: 'github.com/username' },
-            { id: 'portfolio', label: 'Portfolio', icon: '🌐', placeholder: 'yourportfolio.com' },
-            { id: 'website', label: 'Website', icon: '💻', placeholder: 'yourwebsite.com' },
-            { id: 'twitter', label: 'Twitter / X', icon: '𝕏', placeholder: 'x.com/username' },
-            { id: 'gitlab', label: 'GitLab', icon: '🦊', placeholder: 'gitlab.com/username' },
-            { id: 'behance', label: 'Behance / Dribbble', icon: '🎨', placeholder: 'behance.net/username' },
-            { id: 'leetcode', label: 'LeetCode / Code', icon: '💻', placeholder: 'leetcode.com/username' },
-            { id: 'medium', label: 'Blog / Medium', icon: '✍️', placeholder: 'medium.com/@username' },
-            { id: 'other', label: 'Custom Link', icon: '🔗', placeholder: 'https://...' }
-        ];
-
-        function detectPlatformFromUrl(url) {
-            const u = (url || '').toLowerCase();
-            if (u.includes('linkedin.com')) return 'linkedin';
-            if (u.includes('github.com')) return 'github';
-            if (u.includes('twitter.com') || u.includes('x.com')) return 'twitter';
-            if (u.includes('gitlab.com')) return 'gitlab';
-            if (u.includes('behance.net') || u.includes('dribbble.com')) return 'behance';
-            if (u.includes('leetcode.com') || u.includes('hackerrank.com')) return 'leetcode';
-            if (u.includes('medium.com') || u.includes('substack.com')) return 'medium';
-            if (u.includes('portfolio') || u.includes('.dev') || u.includes('.me') || u.includes('.io')) return 'portfolio';
-            return 'other';
-        }
-
-        function syncLinksToInput() {
-            const valid = resumeLinks
-                .map(l => (l.url || '').trim())
-                .filter(Boolean);
-            const joined = valid.join(' | ');
-            const inputEl = document.getElementById('links');
-            if (inputEl) inputEl.value = joined;
-            
-            const badge = document.getElementById('linksCountBadge');
-            if (badge) {
-                const count = valid.length;
-                badge.innerText = count === 1 ? '1 Link' : `${count} Links`;
-                badge.style.background = count > 0 ? '#dbeafe' : '#e2e8f0';
-                badge.style.color = count > 0 ? '#1d4ed8' : '#334155';
+        function addAnotherLinkField(val = '') {
+            const list = document.getElementById('additionalLinksList');
+            if (!list) return;
+            const row = document.createElement('div');
+            row.className = 'extra-link-row';
+            row.style.cssText = 'display:flex; align-items:center; gap:0.35rem;';
+            row.innerHTML = `
+                <input type="text" class="extra-link-input" placeholder="github.com/... or portfolio..." value="${escapeHtml(val)}" style="flex:1; height:34px; padding:0 0.65rem; font-size:0.8rem; border-radius:8px; border:1.5px solid #cbd5e1; background:#ffffff; color:#0f172a;" oninput="updatePreview()" aria-label="Additional Link">
+                <button type="button" class="btn-danger" style="height:32px; width:32px; padding:0; display:inline-flex; align-items:center; justify-content:center; border-radius:6px; font-size:0.75rem; flex-shrink:0; cursor:pointer;" onclick="this.parentElement.remove(); updatePreview();" title="Remove link">🗑️</button>
+            `;
+            list.appendChild(row);
+            if (!val) {
+                const inp = row.querySelector('input');
+                if (inp) inp.focus();
             }
             updatePreview();
         }
 
-        function renderResumeLinks() {
-            const container = document.getElementById('resumeLinksList');
-            if (!container) return;
-
-            if (!resumeLinks.length) {
-                container.innerHTML = `
-                    <div style="font-size:0.76rem; color:#64748b; font-style:italic; padding:0.4rem 0.2rem; display:flex; align-items:center; justify-content:space-between;">
-                        <span>No links added yet. Click "+ Add Another Link" or a preset button above to add LinkedIn, GitHub, Portfolio, etc.</span>
-                        <button type="button" class="btn-outline" style="font-size:0.72rem; padding:0.2rem 0.55rem; height:26px;" onclick="addResumeLink('linkedin', 'linkedin.com/in/')">+ Add First Link</button>
-                    </div>
-                `;
-                syncLinksToInput();
-                return;
-            }
-
-            container.innerHTML = resumeLinks.map((item, idx) => {
-                const optionsHtml = LINK_PLATFORM_OPTIONS.map(opt => `
-                    <option value="${opt.id}" ${item.type === opt.id ? 'selected' : ''}>
-                        ${opt.icon} ${opt.label}
-                    </option>
-                `).join('');
-
-                const currentPlat = LINK_PLATFORM_OPTIONS.find(p => p.id === item.type) || LINK_PLATFORM_OPTIONS[LINK_PLATFORM_OPTIONS.length - 1];
-
-                return `
-                    <div class="resume-link-row" style="display:flex; align-items:center; gap:0.45rem; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:0.35rem 0.5rem; transition:border 0.2s;">
-                        <select class="resume-link-type-select" style="width:140px; height:32px; padding:0 0.45rem; font-size:0.75rem; font-weight:700; border-radius:6px; border:1px solid #cbd5e1; background:#f8fafc; color:#0f172a; cursor:pointer;" onchange="updateLinkType(${idx}, this.value)" aria-label="Link Platform">
-                            ${optionsHtml}
-                        </select>
-                        <input type="text" class="resume-link-url-input" style="flex:1; height:32px; padding:0 0.65rem; font-size:0.78rem; border-radius:6px; border:1px solid #cbd5e1; background:#ffffff; color:#0f172a; font-family:inherit;" placeholder="${currentPlat.placeholder}" value="${escapeHtml(item.url || '')}" oninput="updateLinkUrl(${idx}, this.value)" aria-label="Link URL">
-                        <button type="button" class="btn-danger" style="height:32px; width:32px; padding:0; display:inline-flex; align-items:center; justify-content:center; border-radius:6px; font-size:0.75rem; flex-shrink:0; cursor:pointer;" onclick="removeResumeLink(${idx})" title="Remove link">🗑️</button>
-                    </div>
-                `;
-            }).join('');
-
-            syncLinksToInput();
+        function getAllLinksValue() {
+            const main = document.getElementById('links');
+            const mainVal = main ? main.value.trim() : '';
+            const extras = Array.from(document.querySelectorAll('.extra-link-input')).map(el => el.value.trim()).filter(Boolean);
+            const all = [];
+            if (mainVal) all.push(mainVal);
+            all.push(...extras);
+            return all.join(' | ');
         }
 
-        function addResumeLink(type = 'other', url = '') {
-            resumeLinks.push({ type, url });
-            renderResumeLinks();
-            setTimeout(() => {
-                const inputs = document.querySelectorAll('.resume-link-url-input');
-                if (inputs.length) {
-                    inputs[inputs.length - 1].focus();
+        function populateAdditionalLinks(linksString) {
+            const list = document.getElementById('additionalLinksList');
+            if (!list) return;
+            list.innerHTML = '';
+            if (!linksString) return;
+            const parts = linksString.split(/[|,\n;]+/).map(s => s.trim()).filter(Boolean);
+            if (parts.length > 1) {
+                const mainInput = document.getElementById('links');
+                if (mainInput) mainInput.value = parts[0];
+                for (let i = 1; i < parts.length; i++) {
+                    addAnotherLinkField(parts[i]);
                 }
-            }, 50);
-        }
-
-        function updateLinkType(idx, newType) {
-            if (resumeLinks[idx]) {
-                resumeLinks[idx].type = newType;
-                renderResumeLinks();
+            } else if (parts.length === 1) {
+                const mainInput = document.getElementById('links');
+                if (mainInput) mainInput.value = parts[0];
             }
-        }
-
-        function updateLinkUrl(idx, newUrl) {
-            if (resumeLinks[idx]) {
-                resumeLinks[idx].url = newUrl;
-                if (resumeLinks[idx].type === 'other') {
-                    const detected = detectPlatformFromUrl(newUrl);
-                    if (detected !== 'other') {
-                        resumeLinks[idx].type = detected;
-                        renderResumeLinks();
-                        return;
-                    }
-                }
-                syncLinksToInput();
-            }
-        }
-
-        function removeResumeLink(idx) {
-            resumeLinks.splice(idx, 1);
-            renderResumeLinks();
-        }
-
-        function populateLinksFromRaw(rawString) {
-            if (!rawString || !rawString.trim()) {
-                resumeLinks = [];
-                renderResumeLinks();
-                return;
-            }
-            const parts = rawString.split(/[|,\n;]+/).map(s => s.trim()).filter(Boolean);
-            resumeLinks = parts.map(part => {
-                const detected = detectPlatformFromUrl(part);
-                return { type: detected, url: part };
-            });
-            renderResumeLinks();
         }
 
         function getFormData() {
@@ -3211,8 +3095,7 @@
                 email: getVal('email'),
                 phone: getVal('phone'),
                 location: getVal('location'),
-                links: getVal('links'),
-                linkItems: resumeLinks,
+                links: getAllLinksValue(),
                 summary: getVal('summary'),
                 skills: getVal('skills'),
                 photoData: photoData,
@@ -3354,14 +3237,7 @@
 
             return items.map(item => {
                 let url = item;
-                let customLabel = '';
-                const colonMatch = item.match(/^([a-zA-Z0-9\s_+/𝕏]+):\s*(https?:\/\/|[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}.*)$/i);
-                if (colonMatch) {
-                    customLabel = colonMatch[1].trim();
-                    url = colonMatch[2].trim();
-                }
-
-                let cleanLabel = customLabel || url.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/\/$/, '');
+                let cleanLabel = item.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/\/$/, '');
                 if (!/^https?:\/\//i.test(url)) {
                     url = 'https://' + url;
                 }
@@ -3371,9 +3247,6 @@
                 else if (lower.includes('linkedin.com')) icon = '💼';
                 else if (lower.includes('twitter.com') || lower.includes('x.com')) icon = '𝕏';
                 else if (lower.includes('gitlab.com')) icon = '🦊';
-                else if (lower.includes('behance.net') || lower.includes('dribbble.com')) icon = '🎨';
-                else if (lower.includes('leetcode.com') || lower.includes('hackerrank.com')) icon = '💻';
-                else if (lower.includes('medium.com') || lower.includes('substack.com')) icon = '✍️';
                 else if (lower.includes('portfolio') || lower.includes('.dev') || lower.includes('.me') || lower.includes('.io')) icon = '🌐';
 
                 return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="resume-ext-link" style="color:${acc}; text-decoration:underline; text-underline-offset:2px; font-weight:600; cursor:pointer;" title="Open ${escapeHtml(url)}">${icon} ${escapeHtml(cleanLabel)}</a>`;
@@ -4335,6 +4208,7 @@
                     setVal('phone', data.phone);
                     setVal('location', data.location);
                     setVal('links', data.links);
+                    populateAdditionalLinks(data.links);
                     setVal('summary', data.summary);
                     setVal('skills', data.skills);
                     photoData = data.photoData || '';
@@ -4355,7 +4229,6 @@
                     renderAward();
                     renderProject();
                     renderLang();
-                    populateLinksFromRaw(data.links);
                     renderTemplateSelector();
                     updatePreview();
                 } catch (_err) {
@@ -4846,6 +4719,7 @@
             setVal('phone', data.phone);
             setVal('location', data.location);
             setVal('links', data.links);
+            populateAdditionalLinks(data.links);
             setVal('summary', data.summary);
             setVal('skills', data.skills);
             photoData = data.photoData || '';
@@ -4867,7 +4741,6 @@
             renderAward();
             renderProject();
             renderLang();
-            populateLinksFromRaw(data.links);
             initResumeProfiles();
             updatePreview();
             setTimeout(updatePageBreakIndicator, 200);
@@ -4977,6 +4850,7 @@
             setVal('phone', data.phone);
             setVal('location', data.location);
             setVal('links', data.links);
+            populateAdditionalLinks(data.links);
             setVal('summary', data.summary);
             setVal('skills', data.skills);
             photoData = data.photoData || '';
@@ -4997,7 +4871,6 @@
             renderAward();
             renderProject();
             renderLang();
-            populateLinksFromRaw(data.links);
             updatePreview();
         }
 
@@ -5225,7 +5098,7 @@
             if (phoneMatch) setVal('phone', phoneMatch[0]);
             if (linkMatch) {
                 setVal('links', linkMatch.join(' | '));
-                populateLinksFromRaw(linkMatch.join(' | '));
+                populateAdditionalLinks(linkMatch.join(' | '));
             }
 
             // Extract skills
