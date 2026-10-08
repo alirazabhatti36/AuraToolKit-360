@@ -414,55 +414,108 @@
             background: #ffffff;
             border: 1.5px solid #cbd5e1;
             border-radius: 18px;
-            padding: 1.5rem 1.6rem;
+            padding: 1.35rem;
             box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
         }
-        .section-title {
-            font-size: 0.98rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 0.9rem;
+        
+        /* Left Pane Form Section Cards */
+        .form-section-card {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1.15rem 1.25rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-section-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+        }
+        .form-section-card:last-of-type {
+            margin-bottom: 1.15rem;
+        }
+        .form-section-head {
             display: flex;
             align-items: center;
-            gap: 0.45rem;
-            border-bottom: 1.5px solid #e2e8f0;
-            padding-bottom: 0.5rem;
+            justify-content: space-between;
+            margin-bottom: 0.95rem;
+            padding-bottom: 0.65rem;
+            border-bottom: 1.5px solid #f1f5f9;
         }
-        
-        .form-grid {
+        .form-section-title {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+            letter-spacing: -0.01em;
+        }
+        .form-section-title .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            background: #eff6ff;
+            border-radius: 6px;
+            font-size: 0.88rem;
+        }
+        .form-section-badge {
+            font-size: 0.70rem;
+            font-weight: 700;
+            color: #64748b;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* 2-Column Responsive Form Grid */
+        .form-grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 0.85rem;
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.2rem;
+        }
+        @media (max-width: 600px) {
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
         }
         .field {
             display: flex;
             flex-direction: column;
-            gap: 0.28rem;
+            gap: 0.32rem;
             margin-bottom: 0.75rem;
         }
+        .field:last-child {
+            margin-bottom: 0;
+        }
         .field label {
-            font-size: 0.75rem;
+            font-size: 0.76rem;
             font-weight: 700;
             color: #334155;
             display: flex;
             align-items: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            min-height: 18px;
-            line-height: 18px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
         }
         .field input, .field select {
             background: #ffffff;
             border: 1.5px solid #cbd5e1;
             border-radius: 8px;
-            padding: 0 0.65rem;
-            height: 36px;
-            line-height: 36px;
+            padding: 0 0.75rem;
+            height: 38px;
+            line-height: 38px;
             color: #0f172a;
             font-family: inherit;
-            font-size: 0.80rem;
+            font-size: 0.82rem;
+            font-weight: 500;
             transition: border-color 0.2s, box-shadow 0.2s;
             width: 100%;
             box-sizing: border-box;
@@ -471,15 +524,16 @@
             background: #ffffff;
             border: 1.5px solid #cbd5e1;
             border-radius: 8px;
-            padding: 0.55rem 0.75rem;
+            padding: 0.65rem 0.75rem;
             color: #0f172a;
             font-family: inherit;
-            font-size: 0.84rem;
+            font-size: 0.83rem;
             transition: border-color 0.2s, box-shadow 0.2s;
             width: 100%;
             box-sizing: border-box;
-            min-height: 80px;
+            min-height: 85px;
             line-height: 1.5;
+            resize: vertical;
         }
         .field input:focus, .field textarea:focus, .field select:focus {
             outline: none;
@@ -490,41 +544,49 @@
             color: #94a3b8;
         }
 
-        /* Styling Toolbar */
+        /* Styling Toolbar inside Card */
         .style-bar {
-            display: flex;
-            gap: 1.2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
             align-items: center;
-            flex-wrap: wrap;
             background: #f8fafc;
-            padding: 1rem 1.2rem;
-            border-radius: 14px;
-            border: 1.5px solid #cbd5e1;
-            margin-bottom: 1.5rem;
+            padding: 0.75rem 0.95rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 0.75rem;
+        }
+        @media (max-width: 580px) {
+            .style-bar {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
         }
         .style-group {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.45rem;
         }
         .style-group span {
             color: #475569 !important;
             font-weight: 700 !important;
-            font-size: 0.85rem !important;
+            font-size: 0.78rem !important;
+            white-space: nowrap;
         }
         #fontSelect {
             background: #ffffff;
             border: 1.5px solid #cbd5e1;
             color: #0f172a;
-            padding: 6px 12px;
+            padding: 6px 10px;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.80rem;
             font-weight: 600;
             font-family: inherit;
             cursor: pointer;
             outline: none;
             box-sizing: border-box;
             line-height: normal;
+            width: 100%;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         #fontSelect:focus {
@@ -532,47 +594,111 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
         .color-dot {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             cursor: pointer;
             border: 2px solid #cbd5e1;
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .color-dot:hover, .color-dot.active {
-            transform: scale(1.2);
+            transform: scale(1.18);
             border-color: #2563eb;
-            box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
         }
 
-        /* Tone Selector */
-        .tone-pills {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.2rem;
+        /* Tone Selector 3-Column Grid */
+        .tone-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.55rem;
+        }
+        @media (max-width: 520px) {
+            .tone-grid {
+                grid-template-columns: 1fr;
+            }
         }
         .tone-btn {
             background: #ffffff;
-            border: 1.5px solid #cbd5e1;
+            border: 1.5px solid #e2e8f0;
             color: #334155;
-            padding: 0.55rem 1.1rem;
-            border-radius: 10px;
-            font-size: 0.86rem;
+            padding: 0.6rem 0.5rem;
+            border-radius: 9px;
+            font-size: 0.78rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            white-space: nowrap;
         }
         .tone-btn:hover {
-            background: #f1f5f9;
+            background: #f8fafc;
             color: #0f172a;
-            border-color: #94a3b8;
+            border-color: #cbd5e1;
         }
         .tone-btn.active {
-            background: #2563eb;
-            color: #ffffff;
+            background: #eff6ff;
+            color: #1d4ed8;
             border-color: #2563eb;
-            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+        }
+
+        /* Form Export Toolbar (2x2 Grid + Full Reset) */
+        .export-grid-primary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+        }
+        .export-grid-secondary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-bottom: 0.75rem;
+        }
+        @media (max-width: 480px) {
+            .export-grid-primary, .export-grid-secondary {
+                grid-template-columns: 1fr;
+            }
+        }
+        .btn-export {
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            font-size: 0.80rem;
+            font-weight: 700;
+            border-radius: 9px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            padding: 0 0.85rem;
+        }
+        .btn-reset-full {
+            width: 100%;
+            height: 34px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            border-radius: 8px;
+            border: 1.5px dashed #fca5a5;
+            color: #dc2626;
+            background: #fef2f2;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            transition: all 0.2s ease;
+        }
+        .btn-reset-full:hover {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #b91c1c;
         }
 
         /* Cover Letter Preview Paper */
@@ -1013,141 +1139,185 @@
         <div class="workspace">
             <!-- LEFT PANE: CONTROLS & FORM -->
             <div class="card">
-                <!-- Styling Bar -->
-                <div class="style-bar">
-                    <div class="style-group">
-                        <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">Accent:</span>
-                        <div style="display:flex; gap:0.4rem;" id="colorPalette">
-                            <div class="color-dot active" style="background:#2563eb;" onclick="setAccent('#2563eb')"></div>
-                            <div class="color-dot" style="background:#059669;" onclick="setAccent('#059669')"></div>
-                            <div class="color-dot" style="background:#be123c;" onclick="setAccent('#be123c')"></div>
-                            <div class="color-dot" style="background:#1e293b;" onclick="setAccent('#1e293b')"></div>
-                            <div class="color-dot" style="background:#7c3aed;" onclick="setAccent('#7c3aed')"></div>
-                        </div>
+                <!-- 1. Styling & Theme Card -->
+                <div class="form-section-card">
+                    <div class="form-section-head">
+                        <h3 class="form-section-title"><span class="section-icon">🎨</span> Styling &amp; Typography</h3>
+                        <span class="form-section-badge">Theme</span>
                     </div>
-
-                    <div class="style-group">
-                        <span style="font-size:0.85rem; color:#475569; font-weight:700;">Font:</span>
+                    
+                    <div class="field" style="margin-bottom:0.75rem;">
+                        <label for="fontSelect">Document Typography / Font</label>
                         <select id="fontSelect" onchange="setFont(this.value)">
-                            <option value="'Inter', sans-serif">Inter (Tech / Modern)</option>
-                            <option value="'Roboto', sans-serif">Roboto (Corporate)</option>
+                            <option value="'Inter', sans-serif">Inter (Modern Clean)</option>
+                            <option value="'Roboto', sans-serif">Roboto (Corporate Tech)</option>
                             <option value="'Merriweather', serif">Merriweather (Classic Serif)</option>
-                            <option value="'Poppins', sans-serif">Poppins (Creative)</option>
+                            <option value="'Poppins', sans-serif">Poppins (Creative Warm)</option>
                         </select>
                     </div>
 
-                    <div class="style-group">
-                        <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">Paper:</span>
-                        <div style="display:flex; gap:0.35rem;">
-                            <div class="color-dot active" style="background:#ffffff;" title="White" onclick="setPaper('#ffffff')"></div>
-                            <div class="color-dot" style="background:#faf8f5;" title="Ivory Cream" onclick="setPaper('#faf8f5')"></div>
-                            <div class="color-dot" style="background:#f8fafc;" title="Alabaster" onclick="setPaper('#f8fafc')"></div>
-                            <div class="color-dot" style="background:#f5f5f0;" title="Linen" onclick="setPaper('#f5f5f0')"></div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:0.65rem 0.95rem; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.6rem;">
+                        <div style="display:flex; align-items:center; gap:0.5rem;">
+                            <span style="font-size:0.78rem; font-weight:700; color:#475569;">Accent:</span>
+                            <div style="display:flex; gap:0.4rem;" id="colorPalette">
+                                <div class="color-dot active" style="background:#2563eb;" title="Royal Blue" onclick="setAccent('#2563eb')"></div>
+                                <div class="color-dot" style="background:#059669;" title="Emerald Green" onclick="setAccent('#059669')"></div>
+                                <div class="color-dot" style="background:#be123c;" title="Ruby Red" onclick="setAccent('#be123c')"></div>
+                                <div class="color-dot" style="background:#1e293b;" title="Slate Navy" onclick="setAccent('#1e293b')"></div>
+                                <div class="color-dot" style="background:#7c3aed;" title="Modern Purple" onclick="setAccent('#7c3aed')"></div>
+                            </div>
+                        </div>
+
+                        <div style="display:flex; align-items:center; gap:0.5rem;">
+                            <span style="font-size:0.78rem; font-weight:700; color:#475569;">Paper:</span>
+                            <div style="display:flex; gap:0.35rem;">
+                                <div class="color-dot active" style="background:#ffffff;" title="White" onclick="setPaper('#ffffff')"></div>
+                                <div class="color-dot" style="background:#faf8f5;" title="Ivory Cream" onclick="setPaper('#faf8f5')"></div>
+                                <div class="color-dot" style="background:#f8fafc;" title="Alabaster" onclick="setPaper('#f8fafc')"></div>
+                                <div class="color-dot" style="background:#f5f5f0;" title="Linen" onclick="setPaper('#f5f5f0')"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Sync with Resume Profile Workspace Bar -->
-                <div style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:10px; padding:0.6rem 0.85rem; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-                    <div style="display:flex; align-items:center; gap:0.4rem;">
-                        <span style="font-size:0.85rem;">⚡</span>
-                        <span style="font-size:0.78rem; font-weight:700; color:#0f172a;">Sync with Resume:</span>
-                    </div>
-                    <button type="button" class="btn-primary" style="padding:0.35rem 0.8rem; font-size:0.74rem; font-weight:700; border-radius:7px; display:inline-flex; align-items:center; gap:0.35rem; cursor:pointer; white-space:nowrap; border:none; background:linear-gradient(135deg, #0284c7, #2563eb);" onclick="syncFromResumeProfile()">
-                        <span>📥</span> Auto-Fill from My Resume
-                    </button>
-                </div>
-
-                <!-- Tone Preset Selector -->
-                <div class="field">
-                    <label>⚡ Select Writing Tone &amp; Style:</label>
-                    <div class="tone-pills">
-                        <button type="button" class="tone-btn active" data-tone="confident" onclick="selectTone('confident')">🚀 Confident &amp; Results-Driven</button>
-                        <button type="button" class="tone-btn" data-tone="formal" onclick="selectTone('formal')">🎩 Formal &amp; Corporate</button>
-                        <button type="button" class="tone-btn" data-tone="creative" onclick="selectTone('creative')">💡 Enthusiastic &amp; Startup</button>
+                    <!-- Sync with Resume Profile Workspace Bar -->
+                    <div style="background:#f1f5f9; border:1px solid #e2e8f0; border-radius:10px; padding:0.6rem 0.85rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+                        <div style="display:flex; align-items:center; gap:0.4rem;">
+                            <span style="font-size:0.85rem;">⚡</span>
+                            <span style="font-size:0.78rem; font-weight:700; color:#0f172a;">Sync with Resume:</span>
+                        </div>
+                        <button type="button" class="btn-primary" style="padding:0.35rem 0.8rem; font-size:0.74rem; font-weight:700; border-radius:7px; display:inline-flex; align-items:center; gap:0.35rem; cursor:pointer; white-space:nowrap; border:none; background:linear-gradient(135deg, #0284c7, #2563eb);" onclick="syncFromResumeProfile()">
+                            <span>📥</span> Auto-Fill from My Resume
+                        </button>
                     </div>
                 </div>
 
-                <!-- Candidate Info -->
-                <div class="section-title"><span>👤</span> Your Information</div>
-                <div class="form-grid">
-                    <div class="field">
-                        <label for="candName">Your Full Name</label>
-                        <input type="text" id="candName" value="John Doe" oninput="updateLetter()">
+                <!-- 2. Tone Preset Selector Card -->
+                <div class="form-section-card">
+                    <div class="form-section-head">
+                        <h3 class="form-section-title"><span class="section-icon">⚡</span> Writing Tone &amp; Style</h3>
+                        <span class="form-section-badge">AI Presets</span>
                     </div>
-                    <div class="field">
-                        <label for="candTitle">Your Professional Title</label>
-                        <input type="text" id="candTitle" value="Senior Software Engineer" oninput="updateLetter()">
+                    <div class="tone-grid">
+                        <button type="button" class="tone-btn active" data-tone="confident" onclick="selectTone('confident')">🚀 Confident</button>
+                        <button type="button" class="tone-btn" data-tone="formal" onclick="selectTone('formal')">🎩 Formal</button>
+                        <button type="button" class="tone-btn" data-tone="creative" onclick="selectTone('creative')">💡 Creative</button>
                     </div>
-                    <div class="field">
-                        <label for="candEmail">Email Address</label>
-                        <input type="email" id="candEmail" value="john.doe@example.com" oninput="updateLetter()">
+                </div>
+
+                <!-- 3. Candidate Info Card -->
+                <div class="form-section-card">
+                    <div class="form-section-head">
+                        <h3 class="form-section-title"><span class="section-icon">👤</span> Your Information</h3>
+                        <span class="form-section-badge">Personal Details</span>
                     </div>
-                    <div class="field">
-                        <label for="candPhone">Phone Number</label>
-                        <input type="text" id="candPhone" value="+1 (555) 234-5678" oninput="updateLetter()">
+                    <div class="form-grid-2">
+                        <div class="field">
+                            <label for="candName">Full Name</label>
+                            <input type="text" id="candName" value="John Doe" placeholder="e.g. John Doe" oninput="updateLetter()">
+                        </div>
+                        <div class="field">
+                            <label for="candTitle">Professional Title</label>
+                            <input type="text" id="candTitle" value="Senior Software Engineer" placeholder="e.g. Senior Software Engineer" oninput="updateLetter()">
+                        </div>
+                        <div class="field">
+                            <label for="candEmail">Email Address</label>
+                            <input type="email" id="candEmail" value="john.doe@example.com" placeholder="e.g. alex@example.com" oninput="updateLetter()">
+                        </div>
+                        <div class="field">
+                            <label for="candPhone">Phone Number</label>
+                            <input type="text" id="candPhone" value="+1 (555) 234-5678" placeholder="e.g. +1 (555) 019-2834" oninput="updateLetter()">
+                        </div>
                     </div>
-                    <div class="field">
-                        <label for="candLocation">Location (City, State / Country)</label>
-                        <input type="text" id="candLocation" value="San Francisco, CA" oninput="updateLetter()">
+                    <div class="field" style="margin-bottom:0.75rem;">
+                        <label for="candLocation">Location</label>
+                        <input type="text" id="candLocation" value="San Francisco, CA" placeholder="e.g. San Francisco, CA" oninput="updateLetter()">
                     </div>
-                    <div class="field">
+                    <div class="field" style="margin-bottom:0;">
                         <label for="candLink">Portfolio / LinkedIn Links</label>
-                        <div id="coverLinksContainer" style="display:flex; flex-direction:column; gap:0.35rem;">
+                        <div id="coverLinksContainer" style="display:flex; flex-direction:column; gap:0.4rem;">
                             <input type="text" id="candLink" value="linkedin.com/in/johndoe" placeholder="linkedin.com/in/... | github.com/..." oninput="updateLetter()">
-                            <div id="additionalCoverLinksList" style="display:flex; flex-direction:column; gap:0.35rem;"></div>
+                            <div id="additionalCoverLinksList" style="display:flex; flex-direction:column; gap:0.4rem;"></div>
                         </div>
-                        <button type="button" class="btn-outline" style="margin-top:0.4rem; width:100%; height:28px; font-size:0.72rem; font-weight:700; border:1px dashed #2563eb; color:#2563eb; background:#eff6ff; border-radius:6px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:0.25rem;" onclick="addAnotherCoverLinkField()">
+                        <button type="button" class="btn-outline" style="margin-top:0.45rem; width:100%; height:32px; font-size:0.74rem; font-weight:700; border:1px dashed #2563eb; color:#2563eb; background:#eff6ff; border-radius:7px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:0.35rem;" onclick="addAnotherCoverLinkField()">
                             <span>➕</span> Add Another Link
                         </button>
                     </div>
                 </div>
 
-                <!-- Company & Recruiter Details -->
-                <div class="section-title"><span>🏢</span> Company &amp; Recruiter Details</div>
-                <div class="form-grid">
-                    <div class="field">
-                        <label for="compName">Company Name</label>
-                        <input type="text" id="compName" value="Acme Technologies" oninput="updateLetter()">
+                <!-- 4. Company & Recruiter Details Card -->
+                <div class="form-section-card">
+                    <div class="form-section-head">
+                        <h3 class="form-section-title"><span class="section-icon">🏢</span> Company &amp; Recruiter</h3>
+                        <span class="form-section-badge">Employer</span>
                     </div>
-                    <div class="field">
-                        <label for="hiringManager">Recipient / Hiring Manager Name</label>
-                        <input type="text" id="hiringManager" value="Hiring Team" oninput="updateLetter()">
-                    </div>
-                    <div class="field">
-                        <label for="jobTitle">Job Title Applying For</label>
-                        <input type="text" id="jobTitle" value="Senior Software Engineer" oninput="updateLetter()">
-                    </div>
-                    <div class="field">
-                        <label for="compLocation">Company Location / Department</label>
-                        <input type="text" id="compLocation" value="Engineering Department" oninput="updateLetter()">
+                    <div class="form-grid-2">
+                        <div class="field">
+                            <label for="compName">Company Name</label>
+                            <input type="text" id="compName" value="Acme Technologies" placeholder="e.g. Google, Acme Corp" oninput="updateLetter()">
+                        </div>
+                        <div class="field">
+                            <label for="hiringManager">Hiring Manager / Team</label>
+                            <input type="text" id="hiringManager" value="Hiring Team" placeholder="e.g. Jane Smith, Hiring Team" oninput="updateLetter()">
+                        </div>
+                        <div class="field">
+                            <label for="jobTitle">Job Title Applying For</label>
+                            <input type="text" id="jobTitle" value="Senior Software Engineer" placeholder="e.g. Senior Software Engineer" oninput="updateLetter()">
+                        </div>
+                        <div class="field">
+                            <label for="compLocation">Location / Department</label>
+                            <input type="text" id="compLocation" value="Engineering Department" placeholder="e.g. Mountain View, CA" oninput="updateLetter()">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Letter Content Editor -->
-                <div class="section-title"><span>✍️</span> Cover Letter Paragraphs</div>
-                
-                <div class="field">
-                    <label for="para1">Paragraph 1: Opening Hook &amp; Reason for Applying</label>
-                    <textarea id="para1" rows="3" oninput="updateLetter()"></textarea>
+                <!-- 5. Letter Content Editor Card -->
+                <div class="form-section-card">
+                    <div class="form-section-head">
+                        <h3 class="form-section-title"><span class="section-icon">✍️</span> Cover Letter Paragraphs</h3>
+                        <span class="form-section-badge">Editable Body</span>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="para1">Paragraph 1: Opening Hook &amp; Reason for Applying</label>
+                        <textarea id="para1" rows="3" placeholder="Explain what role you are targeting and why you are excited..." oninput="updateLetter()"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="para2">Paragraph 2: Core Value &amp; Quantified Achievements</label>
+                        <textarea id="para2" rows="4" placeholder="Detail your relevant experience and specific accomplishments..." oninput="updateLetter()"></textarea>
+                    </div>
+
+                    <div class="field" style="margin-bottom:0;">
+                        <label for="para3">Paragraph 3: Company Alignment &amp; Call to Action</label>
+                        <textarea id="para3" rows="3" placeholder="Reiterate your enthusiasm and request an interview..." oninput="updateLetter()"></textarea>
+                    </div>
                 </div>
 
-                <div class="field">
-                    <label for="para2">Paragraph 2: Core Value &amp; Quantified Achievements</label>
-                    <textarea id="para2" rows="4" oninput="updateLetter()"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="para3">Paragraph 3: Company Alignment &amp; Call to Action</label>
-                    <textarea id="para3" rows="3" oninput="updateLetter()"></textarea>
-                </div>
-
-                <div class="btn-row">
-                    <button type="button" class="btn-primary" style="white-space:nowrap;" onclick="downloadLetterPDF()">📄 Download PDF</button>
-                    <button type="button" class="btn-outline" style="white-space:nowrap;" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF (Selectable)</button>
-                    <button type="button" class="btn-outline" style="white-space:nowrap;" onclick="downloadLetterDOCX()">📝 Download Word (DOCX)</button>
-                    <button type="button" class="btn-outline" style="white-space:nowrap;" onclick="copyLetterText()">📋 Copy Text</button>
-                    <button type="button" class="btn-outline" style="border-color:#ef4444; color:#f87171; white-space:nowrap;" onclick="resetCoverLetter()">Reset</button>
+                <!-- 6. Form Export & Action Toolbar Card -->
+                <div class="form-section-card" style="margin-bottom:0;">
+                    <div class="form-section-head">
+                        <h3 class="form-section-title"><span class="section-icon">📥</span> Export &amp; Actions</h3>
+                        <span class="form-section-badge">Downloads</span>
+                    </div>
+                    <div class="export-grid-primary">
+                        <button type="button" class="btn-primary btn-export" onclick="downloadLetterPDF()" title="Download PDF with clickable links">
+                            <span>📄</span> Download PDF
+                        </button>
+                        <button type="button" class="btn-outline btn-export" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable text">
+                            <span>🖨️</span> Vector PDF
+                        </button>
+                    </div>
+                    <div class="export-grid-secondary">
+                        <button type="button" class="btn-outline btn-export" onclick="downloadLetterDOCX()" title="Download Microsoft Word Document">
+                            <span>📝</span> Word (DOCX)
+                        </button>
+                        <button type="button" class="btn-outline btn-export" onclick="copyLetterText()" title="Copy entire letter text to clipboard">
+                            <span>📋</span> Copy Text
+                        </button>
+                    </div>
+                    <button type="button" class="btn-reset-full" onclick="resetCoverLetter()" title="Reset cover letter to default template">
+                        <span>🔄</span> Reset to Default
+                    </button>
                 </div>
             </div>
 
