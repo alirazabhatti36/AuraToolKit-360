@@ -931,7 +931,7 @@
 
                     <div class="style-group">
                         <span style="font-size:0.85rem; color:#475569; font-weight:700;">Font:</span>
-                        <select id="fontSelect" style="background:#ffffff; border:1.5px solid #cbd5e1; color:#0f172a; padding:0.4rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600;" onchange="setFont(this.value)">
+                        <select id="fontSelect" style="background:#ffffff; border:1.5px solid #cbd5e1; color:#0f172a; padding:2px 8px; border-radius:8px; font-size:0.8rem; font-weight:600; height:34px; line-height:normal;" onchange="setFont(this.value)">
                             <option value="'Inter', sans-serif">Inter (Tech / Modern)</option>
                             <option value="'Roboto', sans-serif">Roboto (Corporate)</option>
                             <option value="'Merriweather', serif">Merriweather (Classic Serif)</option>
@@ -950,6 +950,17 @@
                     </div>
                 </div>
 
+                <!-- Sync with Resume Profile Workspace Bar -->
+                <div style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:10px; padding:0.6rem 0.85rem; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+                    <div style="display:flex; align-items:center; gap:0.4rem;">
+                        <span style="font-size:0.85rem;">⚡</span>
+                        <span style="font-size:0.78rem; font-weight:700; color:#0f172a;">Sync with Resume:</span>
+                    </div>
+                    <button type="button" class="btn-primary" style="padding:0.35rem 0.8rem; font-size:0.74rem; font-weight:700; border-radius:7px; display:inline-flex; align-items:center; gap:0.35rem; cursor:pointer; white-space:nowrap; border:none; background:linear-gradient(135deg, #0284c7, #2563eb);" onclick="syncFromResumeProfile()">
+                        <span>📥</span> Auto-Fill from My Resume
+                    </button>
+                </div>
+
                 <!-- Tone Preset Selector -->
                 <div class="field">
                     <label>⚡ Select Writing Tone &amp; Style:</label>
@@ -964,28 +975,34 @@
                 <div class="section-title"><span>👤</span> Your Information</div>
                 <div class="form-grid">
                     <div class="field">
-                        <label>Your Full Name</label>
+                        <label for="candName">Your Full Name</label>
                         <input type="text" id="candName" value="John Doe" oninput="updateLetter()">
                     </div>
                     <div class="field">
-                        <label>Your Professional Title</label>
+                        <label for="candTitle">Your Professional Title</label>
                         <input type="text" id="candTitle" value="Senior Software Engineer" oninput="updateLetter()">
                     </div>
                     <div class="field">
-                        <label>Email Address</label>
+                        <label for="candEmail">Email Address</label>
                         <input type="email" id="candEmail" value="john.doe@example.com" oninput="updateLetter()">
                     </div>
                     <div class="field">
-                        <label>Phone Number</label>
+                        <label for="candPhone">Phone Number</label>
                         <input type="text" id="candPhone" value="+1 (555) 234-5678" oninput="updateLetter()">
                     </div>
                     <div class="field">
-                        <label>Location (City, State / Country)</label>
+                        <label for="candLocation">Location (City, State / Country)</label>
                         <input type="text" id="candLocation" value="San Francisco, CA" oninput="updateLetter()">
                     </div>
                     <div class="field">
-                        <label>Portfolio / LinkedIn Link</label>
-                        <input type="text" id="candLink" value="linkedin.com/in/johndoe" oninput="updateLetter()">
+                        <label for="candLink">Portfolio / LinkedIn Links</label>
+                        <div id="coverLinksContainer" style="display:flex; flex-direction:column; gap:0.35rem;">
+                            <input type="text" id="candLink" value="linkedin.com/in/johndoe" placeholder="linkedin.com/in/... | github.com/..." oninput="updateLetter()">
+                            <div id="additionalCoverLinksList" style="display:flex; flex-direction:column; gap:0.35rem;"></div>
+                        </div>
+                        <button type="button" class="btn-outline" style="margin-top:0.4rem; width:100%; height:28px; font-size:0.72rem; font-weight:700; border:1px dashed #2563eb; color:#2563eb; background:#eff6ff; border-radius:6px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:0.25rem;" onclick="addAnotherCoverLinkField()">
+                            <span>➕</span> Add Another Link
+                        </button>
                     </div>
                 </div>
 
@@ -993,19 +1010,19 @@
                 <div class="section-title"><span>🏢</span> Company &amp; Recruiter Details</div>
                 <div class="form-grid">
                     <div class="field">
-                        <label>Company Name</label>
+                        <label for="compName">Company Name</label>
                         <input type="text" id="compName" value="Acme Technologies" oninput="updateLetter()">
                     </div>
                     <div class="field">
-                        <label>Recipient / Hiring Manager Name</label>
+                        <label for="hiringManager">Recipient / Hiring Manager Name</label>
                         <input type="text" id="hiringManager" value="Hiring Team" oninput="updateLetter()">
                     </div>
                     <div class="field">
-                        <label>Job Title Applying For</label>
+                        <label for="jobTitle">Job Title Applying For</label>
                         <input type="text" id="jobTitle" value="Senior Software Engineer" oninput="updateLetter()">
                     </div>
                     <div class="field">
-                        <label>Company Location / Department</label>
+                        <label for="compLocation">Company Location / Department</label>
                         <input type="text" id="compLocation" value="Engineering Department" oninput="updateLetter()">
                     </div>
                 </div>
@@ -1014,26 +1031,26 @@
                 <div class="section-title"><span>✍️</span> Cover Letter Paragraphs</div>
                 
                 <div class="field">
-                    <label>Paragraph 1: Opening Hook &amp; Reason for Applying</label>
+                    <label for="para1">Paragraph 1: Opening Hook &amp; Reason for Applying</label>
                     <textarea id="para1" rows="3" oninput="updateLetter()"></textarea>
                 </div>
 
                 <div class="field">
-                    <label>Paragraph 2: Core Value &amp; Quantified Achievements</label>
+                    <label for="para2">Paragraph 2: Core Value &amp; Quantified Achievements</label>
                     <textarea id="para2" rows="4" oninput="updateLetter()"></textarea>
                 </div>
 
                 <div class="field">
-                    <label>Paragraph 3: Company Alignment &amp; Call to Action</label>
+                    <label for="para3">Paragraph 3: Company Alignment &amp; Call to Action</label>
                     <textarea id="para3" rows="3" oninput="updateLetter()"></textarea>
                 </div>
 
                 <div class="btn-row">
-                    <button type="button" class="btn-primary" onclick="downloadLetterPDF()">📄 Download PDF</button>
-                    <button type="button" class="btn-outline" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF (Selectable)</button>
-                    <button type="button" class="btn-outline" onclick="downloadLetterDOCX()">📝 Download Word (DOCX)</button>
-                    <button type="button" class="btn-outline" onclick="copyLetterText()">📋 Copy Text</button>
-                    <button type="button" class="btn-outline" style="border-color:#ef4444; color:#f87171;" onclick="resetCoverLetter()">Reset</button>
+                    <button type="button" class="btn-primary" style="white-space:nowrap;" onclick="downloadLetterPDF()">📄 Download PDF</button>
+                    <button type="button" class="btn-outline" style="white-space:nowrap;" onclick="window.print()" title="Print or save as 100% Vector PDF with selectable & copyable text">🖨️ Vector PDF (Selectable)</button>
+                    <button type="button" class="btn-outline" style="white-space:nowrap;" onclick="downloadLetterDOCX()">📝 Download Word (DOCX)</button>
+                    <button type="button" class="btn-outline" style="white-space:nowrap;" onclick="copyLetterText()">📋 Copy Text</button>
+                    <button type="button" class="btn-outline" style="border-color:#ef4444; color:#f87171; white-space:nowrap;" onclick="resetCoverLetter()">Reset</button>
                 </div>
             </div>
 
@@ -1303,6 +1320,84 @@
                 .replace(/'/g, '&#039;');
         }
 
+        function addAnotherCoverLinkField(val = '') {
+            const list = document.getElementById('additionalCoverLinksList');
+            if (!list) return;
+            const row = document.createElement('div');
+            row.className = 'extra-cover-link-row';
+            row.style.cssText = 'display:flex; align-items:center; gap:0.35rem;';
+            row.innerHTML = `
+                <input type="text" class="extra-cover-link-input" placeholder="github.com/... or portfolio..." value="${escapeHtml(val)}" style="flex:1; height:34px; padding:0 0.65rem; font-size:0.8rem; border-radius:8px; border:1.5px solid #cbd5e1; background:#ffffff; color:#0f172a;" oninput="updateLetter()" aria-label="Additional Link">
+                <button type="button" class="btn-danger" style="height:32px; width:32px; padding:0; display:inline-flex; align-items:center; justify-content:center; border-radius:6px; font-size:0.75rem; flex-shrink:0; cursor:pointer;" onclick="this.parentElement.remove(); updateLetter();" title="Remove link">🗑️</button>
+            `;
+            list.appendChild(row);
+            if (!val) {
+                const inp = row.querySelector('input');
+                if (inp) inp.focus();
+            }
+            updateLetter();
+        }
+
+        function getAllCoverLinks() {
+            const main = document.getElementById('candLink');
+            const mainVal = main ? main.value.trim() : '';
+            const extras = Array.from(document.querySelectorAll('.extra-cover-link-input')).map(el => el.value.trim()).filter(Boolean);
+            const all = [];
+            if (mainVal) {
+                const parts = mainVal.split(/[|,\n;]+/).map(s => s.trim()).filter(Boolean);
+                all.push(...parts);
+            }
+            all.push(...extras);
+            return all;
+        }
+
+        function populateAdditionalCoverLinks(linksString) {
+            const list = document.getElementById('additionalCoverLinksList');
+            if (list) list.innerHTML = '';
+            if (!linksString) return;
+            const parts = linksString.split(/[|,\n;]+/).map(s => s.trim()).filter(Boolean);
+            if (parts.length > 0) {
+                const mainInput = document.getElementById('candLink');
+                if (mainInput) mainInput.value = parts[0];
+                for (let i = 1; i < parts.length; i++) {
+                    addAnotherCoverLinkField(parts[i]);
+                }
+            }
+        }
+
+        function syncFromResumeProfile() {
+            try {
+                const saved = localStorage.getItem('resumeCvMakerDraft');
+                if (!saved) {
+                    alert('No saved resume draft found in browser storage. Create or edit a resume in ATS Resume Builder first!');
+                    return;
+                }
+                const data = JSON.parse(saved);
+                let filledCount = 0;
+                if (data.name) { document.getElementById('candName').value = data.name; filledCount++; }
+                if (data.targetRole) {
+                    document.getElementById('candTitle').value = data.targetRole;
+                    document.getElementById('jobTitle').value = data.targetRole;
+                    filledCount++;
+                }
+                if (data.email) { document.getElementById('candEmail').value = data.email; filledCount++; }
+                if (data.phone) { document.getElementById('candPhone').value = data.phone; filledCount++; }
+                if (data.location) { document.getElementById('candLocation').value = data.location; filledCount++; }
+                if (data.links) {
+                    populateAdditionalCoverLinks(data.links);
+                    filledCount++;
+                }
+                if (data.accentColor) {
+                    setAccent(data.accentColor);
+                }
+                generateDefaultDraft(currentTone);
+                updateLetter();
+                alert(`⚡ Successfully synced ${filledCount} fields from your Resume Profile!`);
+            } catch (e) {
+                alert('Could not sync from Resume draft: ' + e.message);
+            }
+        }
+
         function updateLetter() {
             const get = (id) => (document.getElementById(id) ? document.getElementById(id).value : '');
             
@@ -1317,8 +1412,9 @@
             if (ph) contactItems.push(`<a href="tel:${escapeHtml(ph.replace(/[^\d+]/g, ''))}" style="color:inherit; text-decoration:none; cursor:pointer;" title="Call ${escapeHtml(ph)}">📞 ${escapeHtml(ph)}</a>`);
             const loc = get('candLocation');
             if (loc) contactItems.push(`📍 ${escapeHtml(loc)}`);
-            const lk = get('candLink');
-            if (lk) {
+            
+            const allLinks = getAllCoverLinks();
+            allLinks.forEach(lk => {
                 let url = lk.trim();
                 let clean = url.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/\/$/, '');
                 if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
@@ -1326,9 +1422,11 @@
                 const lower = url.toLowerCase();
                 if (lower.includes('linkedin.com')) icon = '💼';
                 else if (lower.includes('github.com')) icon = '🐙';
-                else if (lower.includes('portfolio') || lower.includes('.dev') || lower.includes('.me')) icon = '🌐';
+                else if (lower.includes('twitter.com') || lower.includes('x.com')) icon = '𝕏';
+                else if (lower.includes('gitlab.com')) icon = '🦊';
+                else if (lower.includes('portfolio') || lower.includes('.dev') || lower.includes('.me') || lower.includes('.io')) icon = '🌐';
                 contactItems.push(`<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" style="color:${currentAccent || '#2563eb'}; text-decoration:underline; font-weight:600; cursor:pointer;" title="Open ${escapeHtml(url)}">${icon} ${escapeHtml(clean)}</a>`);
-            }
+            });
             document.getElementById('prevContact').innerHTML = contactItems.map(c => `<div>${c}</div>`).join('');
 
             const now = new Date();
@@ -1375,6 +1473,9 @@
             const { Document, Paragraph, TextRun, AlignmentType } = window.docx;
             const get = (id) => (document.getElementById(id) ? document.getElementById(id).value : '');
 
+            const linksLine = getAllCoverLinks().join(' | ');
+            const contactLine = [get('candEmail'), get('candPhone'), get('candLocation'), linksLine].filter(Boolean).join(' | ');
+
             const doc = new Document({
                 sections: [{
                     properties: {},
@@ -1391,7 +1492,7 @@
                         }),
                         new Paragraph({
                             children: [
-                                new TextRun({ text: `${get('candEmail')} | ${get('candPhone')} | ${get('candLocation')}`, size: 18, color: "64748B" })
+                                new TextRun({ text: contactLine, size: 18, color: "64748B" })
                             ],
                             spacing: { after: 300 }
                         }),
@@ -1448,8 +1549,10 @@
 
         function copyLetterText() {
             const get = (id) => (document.getElementById(id) ? document.getElementById(id).value : '');
-            const text = `${get('candName')}\n${get('candTitle')}\n${get('candEmail')} | ${get('candPhone')} | ${get('candLocation')}\n\n` +
-                `${new Date().toLocaleDateString()}\n\n` +
+            const linksLine = getAllCoverLinks().join(' | ');
+            const contactLine = [get('candEmail'), get('candPhone'), get('candLocation'), linksLine].filter(Boolean).join(' | ');
+            const text = `${get('candName')}\n${get('candTitle')}\n${contactLine}\n\n` +
+                `${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}\n\n` +
                 `${get('hiringManager')}\n${get('compName')}\n\n` +
                 `Dear ${get('hiringManager') || 'Hiring Team'},\n\n` +
                 `${get('para1')}\n\n` +
@@ -1464,6 +1567,9 @@
 
         function resetCoverLetter() {
             if (confirm('Reset cover letter to default values?')) {
+                const list = document.getElementById('additionalCoverLinksList');
+                if (list) list.innerHTML = '';
+                document.getElementById('candLink').value = 'linkedin.com/in/johndoe';
                 generateDefaultDraft(currentTone);
             }
         }
@@ -1490,6 +1596,7 @@
                     if (data.email) document.getElementById('candEmail').value = data.email;
                     if (data.phone) document.getElementById('candPhone').value = data.phone;
                     if (data.location) document.getElementById('candLocation').value = data.location;
+                    if (data.links) populateAdditionalCoverLinks(data.links);
                     if (data.accentColor) setAccent(data.accentColor);
                 }
             } catch (e) {}
